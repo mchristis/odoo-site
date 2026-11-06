@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>STRØHM.ENERGY Architecture v2 | Internal</title>
+<style> body { margin:0; background:#FFFFFF; } table { border-collapse:collapse; width:100%; } th,td { border:1px solid var(--color-divider); padding:8px 10px; font-size:13px; text-align:left; vertical-align:top; } th { background:var(--color-surface-card); font-weight:700; } </style>
+</helmet>
+<div style="font-family:var(--font-web);color:var(--color-text-primary);max-width:1100px;margin:0 auto;padding:40px 24px 120px;line-height:1.5;">
+
+<div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-grey-70);margin-bottom:8px;">98 Internal / Architecture</div>
+<h1 style="font-size:30px;margin:0 0 8px;">STRØHM.ENERGY — Architecture v2</h1>
+<p style="color:var(--color-text-primary);max-width:800px;">Built bottom-up from the 413 files actually present in the project today, not from the prior sitemap. Page existence below is inferred from filenames and this session's build history — a filename match is not the same as a verified content read; flagged where genuinely uncertain. No existing file has been renamed, moved or edited to produce this document. Out of scope: menu order, user journeys, homepage flow, content.</p>
+
+<h2 style="font-size:20px;margin:40px 0 4px;border-top:1px solid var(--color-text-primary);padding-top:16px;">Level 1 — Sections</h2>
+<table>
+<tr><th>Section</th><th>Purpose</th><th>Brands / pages</th></tr>
+<tr><td><b>Home</b></td><td>Single site entry point</td><td>STROHM.ENERGY - SITE - Homepage - EN.dc.html. Landing.dc.html is an alternate draft with near-zero live links (Phase 1 pair 8: archived).</td></tr>
+<tr><td><b>Products</b></td><td>Brand hardware information — what it is, range, install, ownership</td><td>ANDO, AIRO, CHILL, DODO, FEU, FLUXX, GLOW, AGRIX (Agri-PV), LINA, MOEBIUS, MOX, MUKI, NENDO, OGO, OZZY, PROP, SHELTR, SYNQ, TOGU, TERRIX, PONTIX, TECTIX, PARX, WURK, XOOM — 25 brands</td></tr>
+<tr><td><b>Systems</b></td><td>Software / integration layer, not a physical product line</td><td>EMON (+ its Commercial/Industrial/Pro variants) — Live. Plus approved systems with no pages yet, status Planned: PUSH (notifications), DEPOT (inventory &amp; logistics), KALK (calculation/configurator), TRIBE (installer partner network, B2B), PACT (contract management), KERN (core backend).</td></tr>
+<tr><td><b>Projects</b></td><td>Project delivery service, sectors, case studies</td><td>STROHM.ENERGY - PROJECT - Overview - EN (current hub), Projects.dc.html (older hub, Phase 1 pair 7: kept as "Get Started" sub-page), Project - Case Study, Project Engineering, ProjectRoute. Old: Projects - Residential/Commercial/Utility, Segment - Residential/Commercial/Utility — decided: check each for unique content first (MOEBIUS-pair style review), not yet archived.</td></tr>
+<tr><td><b>Finance</b></td><td>Financing, leasing, investment, cooperatives</td><td>STRØHM.ENERGY - FINANCE - Overview / Invest / Cooperatives / Product Angel, Finance - LEASE (older name, not yet folded into the FINANCE convention)</td></tr>
+<tr><td><b>Webshop</b></td><td>Transactional catalogue and ordering</td><td>Webshop - Catalogue (hub) + one Webshop - {BRAND} per brand, Webshop - How It Works. Webshop.dc.html (older duplicate hub, Phase 1 pair 11: merge approved into Catalogue, not yet executed).</td></tr>
+<tr><td><b>Support &amp; Resources</b></td><td>Cross-brand help, and the News/Knowledge/References content system</td><td>Find an Installer, PartnerProgramme, KnowledgeArticle, ContentArchive, TechnicalResource, and 23 sets of {brand}-knowledge/-news/-references (one set per brand + a sitewide "strohm" and "webshop" set)</td></tr>
+<tr><td><b>Company</b></td><td>About the company, R&amp;D</td><td>Company - About, Product Lab and R&amp;D</td></tr>
+<tr><td><b>Archive addition</b></td><td>—</td><td>STRØHM.ENERGY Company - About (standalone).html moved to _ARCHIVE — 0 incoming links, export artifact, not a site page</td></tr>
+<tr><td><b>Account</b></td><td>Login, registration, customer portal</td><td>Login, Register, Account.dc.html, Portal.dc.html (older), Portal v2.dc.html (current — Phase 1 pair 10), Portal Workflows</td></tr>
+<tr><td><b>Legal</b></td><td>Privacy, terms</td><td>STROHM.ENERGY - SITE - Privacy - EN.dc.html, Terms.dc.html</td></tr>
+<tr><td><b>Components (90)</b></td><td>Shared interface pieces — never public pages</td><td>NavBar / NavBar2, every {Brand}Nav, Footer, WebshopNav, LanguageSelector, ContactModal, CatalogueModal, ReachSpecialist, ContentSections, SupportModule, NewsFeed, MediaPlaceholder, WarrantyPDF, WarrantyPhoto, AndoProductFinder, AndoScanSheet, AndoSections, AgriConfigCTA, StructureCategory, MoxConfigurator, BrandHow, ProductBrand, SegmentPage, StockPartner</td></tr>
+<tr><td><b>Data / Scripts</b></td><td>Shared data and logic, not pages</td><td>content-data.js, agri-data.js, product-brands.js, project-data.js, save-earn-data.js, support.js, doc-page.js, image-slot.js</td></tr>
+<tr><td><b>Internal (98)</b></td><td>Design/process documentation — never public</td><td>STRØHM.ENERGY - DOC - Sitemap / Brand Page Blueprint, ANDO - DOC - *, STRØHM.ENERGY - DOC - Rename Map Phase 1, this document, _rename_map*.md, _restructure_register.md, _master_inventory.md, _advisory_decisions.md, site-audit.md, design-system-v2-decisions.md, portal-*-decisions/backlog.md, _wb_*.xml/json (spreadsheet extracts), _moebius_arch.txt, _nav_v5.txt, _company_content.txt, _dodo_content.txt, <b>Design System v2 Audit.dc.html</b> (moved here per your correction)</td></tr>
+<tr><td><b>Archive (99)</b></td><td>Superseded versions, kept for reference</td><td>_ARCHIVE/ folder (10 files so far — ANDO originals + Product - FEU). Candidates not yet moved: MOEBIUS(old 5 pages), Landing, Portal(v1), Webshop.dc.html(old), Product - MOEBIUS2 duplicate set, EMON standalone variants, ProjectRoute.standalone. <b>Confirmed: zero live pages link into <code>site/</code> or <code>website-export/</code> by path (checked project-wide) — both folders are complete stale mirrors with no live incoming references. Marked ARCHIVE WHOLE.</b></td></tr>
+</table>
+
+<h2 style="font-size:20px;margin:40px 0 4px;border-top:1px solid var(--color-text-primary);padding-top:16px;">Level 2 — Brands</h2>
+<table>
+<tr><th>Brand</th><th>What it is</th><th>Section</th><th>Status</th></tr>
+<tr><td>ANDO</td><td>Solar panels</td><td>Products</td><td>Live — fully renamed to convention this session</td></tr>
+<tr><td>LINA</td><td>Vertical rooftop solar</td><td>Products</td><td>Live — convention-named, webshop connected</td></tr>
+<tr><td>MOEBIUS</td><td>Energy inverters</td><td>Products</td><td>In progress — old MOEBIUS (20+ pages) vs MOEBIUS2 (4 pages) duplicate resolution ongoing per Phase 1: Commissioning merge approved, Ownership/Responsibility split into 2 pages each (approved, not yet written), PIXIE resolved</td></tr>
+<tr><td>SYNQ</td><td>Smart meters &amp; plugs</td><td>Products</td><td>Live-ish — convention Products/Support pages exist, plus 7 extra pages (NEXUS, How It Works, Local First, Protocols, Wi-Fi Mesh, NFC and QR, Digital Installation Record) — decided: product-detail pages, to be renamed SYNQ - PRODUCT - {Page} - EN</td></tr>
+<tr><td>OZZY</td><td>Energy switching / relays</td><td>Products</td><td>In progress — Ownership and Support convention page + "Ask OZZY" tool exist; old Product - OZZY.dc.html overview not yet renamed</td></tr>
+<tr><td>NENDO</td><td>Heat pump technology</td><td>Products</td><td>In progress — pattern-brand set (CORE, Installation, Talk to an Expert) built; old Product - NENDO.dc.html not yet renamed</td></tr>
+<tr><td>MOX</td><td>Structural mounting</td><td>Products</td><td>In progress — many product-group pages (Architectural, Carports, Engineering, FENCE, Floating Solar, OMBRAS, PERGOLA, PORCH, Public Bikeport, Public Infrastructure, Utility &amp; Special) + Ownership convention page; old Product - MOX.dc.html not yet renamed; owns the Agri-PV structural product line (AGRIX - PRODUCT - Overview - EN.dc.html) — relationship to AGRIX below needs confirming</td></tr>
+<tr><td>TOGU</td><td>Electrical connectivity</td><td>Products</td><td>In progress — Products/Cable Routing convention pages + Support convention page exist; old finder tool pending rename to Finder-EN; old Product - TOGU.dc.html not yet renamed</td></tr>
+<tr><td>DODO</td><td>Bird / cable protection</td><td>Products</td><td>In progress — DODO - Home overview + 10 sub-pages, none yet convention-renamed</td></tr>
+<tr><td>SHELTR</td><td>Asset protection (product group — HUSH and KUBO are products under it)</td><td>Products</td><td>In progress — Landing overview + CARA/HUSH/KUBO products + Engineering/Support pages; old Product - SHELTR.dc.html also exists</td></tr>
+<tr><td>WURK</td><td>Installation equipment</td><td>Products</td><td>In progress — Overview + Inspection/Kits/Knowledge/Products/Selector/Support; old Product - WURK.dc.html not yet renamed</td></tr>
+<tr><td>MUKI</td><td>Small plug-in energy devices</td><td>Products</td><td>Live-ish — Overview/Products/Ownership built this session; old Product - MUKI.dc.html is a dead stub (unused, confirmed earlier this session)</td></tr>
+<tr><td>FLUXX</td><td>Battery storage</td><td>Products</td><td>In progress — Overview/Compare/Find Your Battery/Support built; old Product - FLUXX.dc.html (webshop catalogue data) not yet renamed</td></tr>
+<tr><td>OGO</td><td>Water systems</td><td>Products</td><td>In progress — light 3-page set (Overview/Installation/Talk to an Expert); old Product - OGO.dc.html not yet renamed</td></tr>
+<tr><td>XOOM</td><td>EV charging</td><td>Products</td><td>In progress — light 3-page set; old Product - XOOM.dc.html not yet renamed</td></tr>
+<tr><td>PROP</td><td>Wind generation</td><td>Products</td><td>In progress — light 3-page set; old Product - PROP.dc.html not yet renamed</td></tr>
+<tr><td>AIRO</td><td>Airflow / ventilation systems</td><td>Products</td><td>In progress — Commissioning/Overview/Ownership/Products/Projects/Solutions; old Product - AIRO.dc.html not yet renamed</td></tr>
+<tr><td>GLOW</td><td>Solar lighting (modular: frame + inserts + heads)</td><td>Products</td><td>In progress — Overview/Documentation/Installation/Talk to an Expert/Tender built this session; Product - GLOW.dc.html rewritten this session as the real 9-family Products page — not yet convention-renamed</td></tr>
+<tr><td>CHILL</td><td>Energy-integrated infrastructure</td><td>Products</td><td>In progress — light 3-page set; old Product - CHILL.dc.html not yet renamed</td></tr>
+<tr><td>FEU</td><td>Radiant heating</td><td>Products</td><td>In progress — FEU - Home overview + PRODUCT - Products - EN (already convention-named); old Product - FEU.dc.html confirmed dead (0 live incoming links) and archived</td></tr>
+<tr><td>AGRIX (temporary name for Agri-PV)</td><td>Agri-PV product range</td><td>Products</td><td>In progress — rebranded this session (AgrixNav, Ownership convention page), but the ~24 underlying files still use the old <code>Agri-PV - *</code> filename prefix (rename to AGRIX approved in Phase 1 Q1, not yet executed). Decided: AGRIX absorbs everything Agri-PV, including AGRIX - PRODUCT - Overview - EN.dc.html — MOX keeps no Agri-PV content once executed.</td></tr>
+<tr><td>EMON</td><td>Energy management software (System, not a hardware brand)</td><td>Systems</td><td>In progress — Overview/Commercial/Commissioning/Home/Industrial/Ownership/Pro/Responsibility/Save &amp; Earn built; old System - EMON.dc.html duplicate merge approved (Phase 1 pair 9, not yet executed); 3 standalone-export variants are archive candidates</td></tr>
+</table>
+<p style="color:var(--color-grey-70);font-size:12px;">EMON - WEBSHOP - Shop - EN.dc.html is the target of EMON's Shop button — it's EMON's own webshop page, just not named per convention. Corrected proposed name: <code>EMON - WEBSHOP - Shop - EN</code> (matching the BRAND - WEBSHOP - Shop - EN pattern for every brand webshop page; rename in a future Phase 2 batch, not executed here).</p>
+
+<h2 style="font-size:20px;margin:40px 0 4px;border-top:1px solid var(--color-text-primary);padding-top:16px;">Page model decisions (Missing Part 1)</h2>
+<p style="color:var(--color-text-primary);">Proposal rule: 4 or fewer brand pages<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg> A (one-page); 5&#8211;9<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg> B (hybrid); 10+<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg> C (multi-page, as today). Tools always stay separate.</p>
+<table><tr><th>Brand</th><th>Page count</th><th>Proposal</th><th>Decision</th></tr>
+<tr><td>ANDO</td><td>8</td><td>B</td><td><b>C — multi-page, as today</b> (overrides proposal)</td></tr>
+<tr><td>LINA</td><td>4</td><td>A</td><td><b>B — hybrid</b>: merge Overview+Products, keep Install&amp;Commission and Ownership&amp;Support separate (overrides proposal)</td></tr>
+<tr><td>MOEBIUS</td><td>~27 (8 core + ~19 old deep-dive)</td><td>C</td><td><b>C — multi-page</b>, matches proposal</td></tr>
+<tr><td>SYNQ</td><td>12 (4 core + 8 extras)</td><td>C</td><td><b>DECISION LATER</b> — resolve after the 8 extras are renamed</td></tr>
+<tr><td>OZZY</td><td>2 core + 1 tool</td><td>A</td><td><b>C — multi-page</b>: split Overview and Products apart, keep Ownership separate (overrides proposal)</td></tr>
+<tr><td>NENDO</td><td>4 (CORE, Installation, Talk to an Expert, old Overview)</td><td>A</td><td><b>B — hybrid</b>: Overview+Products merged, Installation and Ownership separate (overrides proposal)</td></tr>
+<tr><td>MOX</td><td>13+ (11 product-group pages + Overview + Ownership)</td><td>C</td><td><b>B — hybrid</b>: consolidate the 11 product-group pages under one Products page with sections, Ownership stays separate (overrides proposal)</td></tr>
+<tr><td>TOGU</td><td>6</td><td>B</td><td><b>B — hybrid</b>, matches proposal</td></tr>
+<tr><td>DODO</td><td>11 + 1 tool</td><td>C</td><td><b>B — hybrid</b>: fold Bird Guide/Guide Cables/Improve Drainage/Protect Birds into Products or Knowledge as sections; Home, Install Faster and Support stay separate (overrides proposal)</td></tr>
+<tr><td>SHELTR</td><td>8 + 1 tool</td><td>B</td><td><b>B — hybrid</b>, matches proposal</td></tr>
+<tr><td>WURK</td><td>5 + 1 tool</td><td>B</td><td><b>B — hybrid</b>, matches proposal</td></tr>
+<tr><td>MUKI</td><td>3</td><td>A</td><td><b>C — multi-page</b>, keep as today (overrides proposal)</td></tr>
+<tr><td>FLUXX</td><td>2 + 2 tools</td><td>A</td><td><b>C — multi-page</b>: Overview/Support separate, build Products as its own page (overrides proposal)</td></tr>
+<tr><td>OGO / XOOM / PROP / CHILL</td><td>3 each</td><td>A</td><td><b>C — multi-page</b>, keep all 4 as today (overrides proposal, applied to all 4 at once)</td></tr>
+<tr><td>AIRO</td><td>6</td><td>B</td><td><b>B — hybrid</b>: merge Overview+Products, Commissioning/Ownership separate, fold Projects+Solutions in (matches proposal)</td></tr>
+<tr><td>GLOW</td><td>6</td><td>B</td><td><b>B — hybrid</b>, matches proposal</td></tr>
+<tr><td>FEU</td><td>2</td><td>A</td><td><b>A — one-page</b>, matches proposal</td></tr>
+<tr><td>AGRIX</td><td>~26 + 2 tools</td><td>C</td><td><b>B — hybrid</b>: 6 crop pages<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg> one Applications page, 7 model variants<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg> under Products, rest stays separate (overrides proposal)</td></tr>
+<tr><td>EMON</td><td>9 (+dupes)</td><td>C</td><td><b>B — hybrid</b>: Commercial/Pro/Industrial<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg> segments of one page; Home/Commissioning/Ownership/Responsibility/Save&amp;Earn stay separate (overrides proposal)</td></tr>
+</table>
+
+<h2 style="font-size:20px;margin:40px 0 4px;border-top:1px solid var(--color-text-primary);padding-top:16px;">Missing Part 2 — Comparison with _rename_map_phase1.md</h2>
+<table>
+<tr><th>File(s)</th><th>Phase-1 planned name</th><th>Changed by v2?</th><th>New proposed name</th><th>Reason</th></tr>
+<tr><td>Product - ANDO / ANDO - Products / Commissioning / Ownership / Responsibility / Knowledge Base</td><td>ANDO - PRODUCT - Overview/Range - EN, ANDO - SUPPORT - Commissioning/Ownership and Support - EN, ANDO - PRODUCT - Responsibility - EN, ANDO - CONTENT - Knowledge - EN</td><td>No</td><td>(unchanged — already executed)</td><td>v2 confirmed ANDO stays multi-page (C), matching what was already renamed</td></tr>
+<tr><td>MOEBIUS2 - Ownership / MOEBIUS - Ownership</td><td>MOEBIUS - PRODUCT - Ownership Experience - EN + MOEBIUS - SUPPORT - Warranty and Service - EN (2 files, both kept)</td><td>No</td><td>(unchanged)</td><td>v2 confirmed MOEBIUS multi-page (C); the 2-file split still holds</td></tr>
+<tr><td>MOEBIUS2 - Responsibility / MOEBIUS - Responsibility</td><td>MOEBIUS - PRODUCT - Responsibility - EN + MOEBIUS - PRODUCT - Operating Boundaries and Firmware - EN (2 files, both kept)</td><td>No</td><td>(unchanged)</td><td>Same reasoning as above</td></tr>
+<tr><td>MOEBIUS2 - Commissioning / MOEBIUS - Commissioning</td><td>Merge into MOEBIUS2 - Commissioning (base), pulling in the 8-step sequence, MPPT diagram, grid-profile callout, handoff copy</td><td>No</td><td>(unchanged)</td><td>Not affected by the page-model decision</td></tr>
+<tr><td>MOEBIUS - PIXIE / MOEBIUS - PRODUCT - PIXIE - EN</td><td>Keep MOEBIUS - PRODUCT - PIXIE - EN, archive old</td><td>No</td><td>(unchanged)</td><td>Already executed logically consistent with C</td></tr>
+<tr><td>TOGU - Products.dc.html</td><td>Rename to TOGU - PRODUCT - Finder - EN, kept separate from TOGU - PRODUCT - Products - EN</td><td><b>Yes</b></td><td>TOGU - PRODUCT - Overview and Range - EN (merged), Finder stays its own tool page</td><td>v2's Hybrid (B) decision merges TOGU's Overview and Products into one page — Phase 1 only separated the finder tool from the catalogue, it didn't anticipate an Overview+Products merge</td></tr>
+<tr><td>STROHM.ENERGY - PROJECT - All Projects - EN.dc.html / STRØHM.ENERGY - PROJECT - Overview - EN</td><td>Keep both — hub renamed unchanged, Projects.dc.html<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg> STRØHM.ENERGY - PROJECT - Get Started - EN</td><td>No</td><td>(unchanged)</td><td>Not a brand — out of Missing Part 1's per-brand scope</td></tr>
+<tr><td>STROHM.ENERGY - SITE - Homepage - EN.dc.html / Landing.dc.html</td><td>STRØHM.ENERGY - SITE - Home - EN / STRØHM.ENERGY - SITE - Home Draft - EN (archived)</td><td>No</td><td>(unchanged)</td><td>Not affected</td></tr>
+<tr><td>EMON - Overview / System - EMON</td><td>Merge into EMON - Overview (base), pulling in Features/Integration/Case studies</td><td>No, but <b>extended</b></td><td>Same base, plus: Commercial/Pro/Industrial to be folded into one page per v2's Hybrid decision</td><td>The Phase-1 merge target doesn't change; v2 adds a further consolidation Phase 1 never considered</td></tr>
+<tr><td>Portal.dc.html / Portal v2.dc.html</td><td>Keep Portal v2, archive Portal</td><td>No</td><td>(unchanged)</td><td>Not a brand — unaffected</td></tr>
+<tr><td>WEBSHOP - SITE - Home - EN.dc.html / Webshop - Catalogue.dc.html</td><td>Merge into Webshop - Catalogue (base)</td><td>No</td><td>(unchanged)</td><td>Not affected</td></tr>
+<tr><td>EMON - WEBSHOP - Shop - EN.dc.html</td><td>Not in Phase 1 at all</td><td><b>Yes — new</b></td><td>EMON - WEBSHOP - Shop - EN</td><td>Discovered and corrected this round; Phase 1 never saw this file</td></tr>
+<tr><td>LINA - PRODUCT - Overview - EN / LINA - PRODUCT - Products - EN</td><td>Both already convention-named, kept as 2 separate live pages</td><td><b>Yes</b></td><td>Merge into one LINA - PRODUCT - Overview - EN (Overview+Products combined)</td><td>v2's Hybrid (B) decision merges these two already-renamed pages that Phase 1 had treated as final</td></tr>
+<tr><td>Agri-PV - * (~24 files)</td><td>Rename prefix to AGRIX (approved, not executed)</td><td><b>Yes — extended</b></td><td>Same AGRIX rename, plus: 6 crop-application files consolidate into one AGRIX - PRODUCT - Applications - EN, 7 model-variant files consolidate under AGRIX - PRODUCT - Products - EN</td><td>Phase 1 only set the brand-code rename; v2 adds page consolidation on top</td></tr>
+</table>
+<p style="font-weight:700;">Totals: 9 unchanged &#183; 4 changed/extended (TOGU, EMON, LINA, AGRIX) &#183; 1 entirely new (Webshop - MON VISTA / EMON - WEBSHOP - Shop - EN).</p>
+<h2 style="font-size:20px;margin:40px 0 4px;border-top:1px solid var(--color-text-primary);padding-top:16px;">Level 3 — Page types</h2>
+<p style="color:var(--color-text-primary);">Standard types this session has converged on per brand: <b>Overview</b>, <b>Products/Range</b>, <b>Install &amp; Commission</b>, <b>Ownership &amp; Support</b>, <b>Responsibility</b>, <b>Knowledge</b>, <b>News</b>, <b>References</b>, plus a <b>Webshop</b> link (never a page on the brand site itself). <b>Responsibility policy (decided):</b> one company-level page <code>STRØHM.ENERGY - SITE - Responsibility - EN</code> (Planned), plus a brand-level Responsibility page only where brand-specific content already exists — today that's ANDO, MOEBIUS and EMON. Every other brand's Responsibility column reads "Not needed".</p>
+<table>
+<tr><th>Brand</th><th>Overview</th><th>Products</th><th>Install&amp;Commission</th><th>Ownership&amp;Support</th><th>Responsibility</th><th>Knowledge</th><th>News</th><th>References</th><th>Brand-specific extras (tools/pages, stay separate)</th></tr>
+<tr><td>ANDO</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Exists (wrapper)</td><td>Exists (wrapper)</td><td>AndoProductFinder, AndoScanSheet, Asset Register (archived)</td></tr>
+<tr><td>LINA</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>—</td></tr>
+<tr><td>MOEBIUS</td><td>Exists (2 versions)</td><td>Exists</td><td>Exists (2 versions)</td><td>Exists (2 versions)</td><td>Exists (2 versions)</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Find Your Inverter (selector), Grid Compliance, Grid Intelligence, System Design, Energy System, Backup and UPS, Cybersecurity, Smart Load Control, NFC and QR, EMON Monitoring, Connected Fast, Your Phone Is The Screen, Micro/String/Hybrid/Off-grid/Off-grid Hybrid family pages, PIXIE, Asset Register</td></tr>
+<tr><td>SYNQ</td><td>Exists, not renamed (Product-SYNQ)</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>NEXUS, How It Works, Local First, Protocols, Wi-Fi Mesh, NFC and QR, Digital Installation Record, EMON Integration (7 extras — decided: product pages, to rename)</td></tr>
+<tr><td>OZZY</td><td>Exists, not renamed</td><td>Exists, not renamed</td><td>Not needed yet</td><td>Exists</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Ask OZZY (tool)</td></tr>
+<tr><td>NENDO</td><td>Exists (CORE)</td><td>Exists, not renamed</td><td>Exists</td><td>Exists, not renamed</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>—</td></tr>
+<tr><td>MOX</td><td>Exists, not renamed</td><td>Exists (11 product-group pages)</td><td>Not needed yet</td><td>Exists</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>MoxConfigurator (tool), StructureCategory (component); Agri-PV content moving to AGRIX per decision above</td></tr>
+<tr><td>TOGU</td><td>Exists, not renamed</td><td>Exists</td><td>Not needed yet</td><td>Exists</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>TOGU - Products.dc.html finder (tool, pending rename to Finder-EN), Solar Cable and CPR</td></tr>
+<tr><td>DODO</td><td>Exists (Home)</td><td>Exists</td><td>Exists (Commissioning, Install Faster)</td><td>Exists (Support)</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>RIG (product), Bird Guide, Calculator (tool), Guide Cables, Improve Drainage, Protect Birds, Installers</td></tr>
+<tr><td>SHELTR</td><td>Exists (Landing)</td><td>Exists</td><td>Exists (Install and Register)</td><td>Exists (Support)</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>CARA/HUSH/KUBO (products), Find Your SHELTR (selector), Engineering</td></tr>
+<tr><td>WURK</td><td>Exists</td><td>Exists</td><td>Not needed yet</td><td>Exists (Support)</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Inspection, Kits, Selector (tool)</td></tr>
+<tr><td>MUKI</td><td>Exists</td><td>Exists</td><td>Not needed (plug-in)</td><td>Exists</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>—</td></tr>
+<tr><td>FLUXX</td><td>Exists</td><td>Exists, not renamed (Product-FLUXX is webshop data + old page)</td><td>Not needed yet</td><td>Exists (Support)</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Compare (tool), Find Your Battery (selector)</td></tr>
+<tr><td>OGO</td><td>Exists</td><td>Exists, not renamed</td><td>Exists</td><td>Not needed yet</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>—</td></tr>
+<tr><td>XOOM</td><td>Exists</td><td>Exists, not renamed</td><td>Exists</td><td>Not needed yet</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>—</td></tr>
+<tr><td>PROP</td><td>Exists</td><td>Exists, not renamed</td><td>Exists</td><td>Not needed yet</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>—</td></tr>
+<tr><td>AIRO</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Projects, Solutions</td></tr>
+<tr><td>GLOW</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Not needed yet</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Tender and Custom Design, Documentation, Talk to an Expert</td></tr>
+<tr><td>CHILL</td><td>Exists</td><td>Exists, not renamed</td><td>Exists</td><td>Not needed yet</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Talk to an Expert</td></tr>
+<tr><td>FEU</td><td>Exists (Home)</td><td>Exists</td><td>Not needed yet</td><td>Not needed yet</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>—</td></tr>
+<tr><td>AGRIX</td><td>Planned</td><td>Exists (many, old Agri-PV filenames)</td><td>Not needed yet</td><td>Exists</td><td>Not needed yet</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Crop Selector, Calculator, App Arable/Berries/Livestock/Orchards/Tropical/Vegetables, Biodiversity, Water &amp; Climate, TWIG/HEDGE model variants, AgriConfigCTA (component)</td></tr>
+<tr><td>EMON</td><td>Exists (+dupes)</td><td>Not applicable (software)</td><td>Exists (+dupes)</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Exists</td><td>Commercial, Industrial, Pro, Save &amp; Earn; Webshop - MON VISTA is EMON's webshop page (proposed rename: Webshop - EMON)</td></tr>
+</table>
+<p style="color:var(--color-grey-70);font-size:12px;">"Exists" here means a matching file was found — not that its content has been re-verified in this pass. "Planned" means the brand's own live Overview/Products button currently points at an un-renamed <code>Product - {BRAND}.dc.html</code> file rather than a convention-named one.</p>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

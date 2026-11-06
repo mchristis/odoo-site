@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="nav-data.js"></script>
+<script src="webshop-data.js"></script>
+</helmet>
+<div style="position:sticky;top:0;z-index:50;background:#4F4F4E;color:#FFFFFF;font-family:var(--font-web,'Helvetica Neue',Helvetica,Arial,sans-serif);">
+  <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 28px;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
+    <div style="display:flex;align-items:center;gap:16px;min-width:0;">
+      <a href="STROHM.ENERGY - SITE - Homepage - EN.dc.html" style="color:#FFFFFF;text-decoration:none;font-size:12px;letter-spacing:0.22em;font-weight:500;white-space:nowrap;">STRØHM.ENERGY</a>
+      <a href="WEBSHOP - SITE - Catalogue - EN.dc.html" style="color:#D9DADA;text-decoration:none;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;white-space:nowrap;font-weight:var(--web-eyebrow-weight);" style-hover="color:#FFFFFF;">Catalogue</a>
+    </div>
+    <div style="position:relative;">
+      <button style-hover="background:#5F5E5E;color:#F4F4F4;" type="button" onClick="{{ toggle }}" aria-expanded="{{ open }}" style="cursor:pointer;font-family:inherit;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#F4F4F4;background:#4F4F4E;display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #898989;border-radius:var(--radius-btn,8px);">Browse all lines<span style="font-size:9px;">&#9662;</span></button>
+      <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;right:0;top:calc(100% + 8px);width:720px;max-width:88vw;max-height:76vh;overflow:auto;background:#FFFFFF;color:#4F4F4E;border:1px solid #DDDDDD;border-radius:var(--radius-card,12px);padding:16px 20px;box-sizing:border-box;z-index:60;">
+          <a href="WEBSHOP - SITE - Catalogue - EN.dc.html" style="display:block;font-size:var(--web-small-size);font-weight:500;color:#4F4F4E;text-decoration:none;padding:4px 0 12px;line-height:var(--web-small-lh);">All product lines</a>
+          <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+            <div style="border-top:1px solid #DDDDDD;padding:12px 0 8px;">
+              <div style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;font-weight:var(--web-eyebrow-weight);margin-bottom:8px;">{{ g.title }}</div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:4px 16px;">
+                <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="0">
+                  <a href="{{ it.href }}" style="display:flex;align-items:center;gap:10px;padding:6px 8px;border-radius:8px;text-decoration:none;color:#4F4F4E;" style-hover="background:#F4F4F4;">
+                    <sc-if value="{{ it.logo }}" hint-placeholder-val="{{ false }}"><img src="{{ it.logo }}" alt="{{ it.name }}" style="height:20px;width:auto;max-width:96px;display:block;flex:none;"></sc-if>
+                    <span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);">{{ it.label }}</span>
+                  </a>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:600}}">
+class Component extends DCLogic {
+  state = { open: false };
+  componentDidMount() {
+    this._close = (e) => { if (this.state.open && e.key === "Escape") this.setState({ open: false }); };
+    window.addEventListener("keydown", this._close);
+    if (!window.STROHM_NAV || !window.STROHM_WEBSHOP) this._t = setInterval(() => { if (window.STROHM_NAV && window.STROHM_WEBSHOP) { clearInterval(this._t); this.forceUpdate(); } }, 100);
+  }
+  componentWillUnmount() { window.removeEventListener("keydown", this._close); clearInterval(this._t); }
+  renderVals() {
+    const N = window.STROHM_NAV, W = window.STROHM_WEBSHOP;
+    let groups = [];
+    if (N && W) {
+      const m = N.menu("products");
+      groups = m.groups.map((g) => ({
+        title: g.title,
+        items: g.items.concat((W.EXTRA[g.title] || [])).map((x) => {
+          const code = x.name || x.code, shop = W.SHOPS[code];
+          return { name: code, logo: W.LOGOS[code] || "", href: shop || x.href || (N.HREF[code] || "#"), label: shop ? x.subtitle : x.subtitle + " · shop in preparation" };
+        }),
+      }));
+    }
+    return { groups, open: this.state.open, toggle: () => this.setState((s) => ({ open: !s.open })) };
+  }
+}
+</script>
+</body>
+</html>

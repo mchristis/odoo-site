@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>SYNQ NEXUS | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:#4a5c59; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="SynqNav" active="nexus" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="SYNQ" rgb="89,143,148" eyebrow="SYNQ NEXUS &#183; Energy Management Hub" title="The point where the complete energy system comes together." intro="Solar panels generate energy." slot="nexus-hero" shot="Drop a NEXUS wall-mounted hub render" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 12px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:660px;">Batteries store it. EV chargers, heat pumps and buildings consume it. SYNQ NEXUS connects these components into one coordinated installation &#8212; one wall-mounted hub that measures at the grid connection and decides when energy should be consumed, stored, reduced or exported.</p>
+    <a href="#tiers" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;white-space:nowrap;background:var(--color-brand-synq);color:#FFFFFF;border-radius:var(--cta-radius,8px);margin:24px 0 48px;font-weight:400;justify-content:center;box-sizing:border-box;">Compare configurations<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    
+  </section>
+
+  <!-- ONE HUB INSTEAD OF SEPARATE SYSTEMS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start;--cg:48px;">
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">One hub instead of separate systems</div>
+        <h2 style="margin:0 0 20px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Without coordination, <span style="color:#8E8E8E;">every device follows its own settings.</span></h2>
+        <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">NEXUS provides one measurement and decision point for the complete installation &#8212; grid, solar, battery, EV charging, heat pump, backup and flexible loads.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;">
+        <sc-for list="{{ withoutCoord }}" as="w" hint-placeholder-count="7">
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);padding:11px 0;border-top:1px solid var(--color-divider);line-height:var(--web-small-lh);">{{ w }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IT DOES -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:24px;">What NEXUS does</div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ functions }}" as="f" hint-placeholder-count="8">
+          <div style="padding:22px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:14px;font-weight:400;margin-bottom:6px;">{{ f.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ f.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- QR + NFC NO SCREEN -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">QR + NFC instant access</div>
+      <h2 style="margin:0 0 20px;max-width:520px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">No screen. <span style="color:#8E8E8E;">No menu. No waiting.</span></h2>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:start;">
+        <div>
+          <p style="margin:0 0 18px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Every NEXUS hub has a unique QR code and NFC identity. Scan the code or tap the hub with a compatible phone to open the correct device directly in EMON &#8212; no searching for the installation, no serial numbers, no menus. The phone becomes the screen only when information is needed.</p>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Screenless does not mean information-free. A built-in LED shows local status; the phone shows far more than any small display could.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ liveReadings }}" as="r" hint-placeholder-count="8">
+            <div style="display:flex;gap:10px;padding:10px 0;border-top:1px solid var(--color-divider);">
+              <span style="color:var(--color-text-primary);font-size:12px;flex:none;">&#10003;</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ r }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="padding:24px;margin-top:32px;background:#F4F4F4;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Role-based access</div>
+        <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;--cg:24px;">
+          <sc-for list="{{ access }}" as="a" hint-placeholder-count="3">
+            <div>
+              <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:6px;">{{ a.role }}</div>
+              <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ a.desc }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">The full interface depends on a compatible phone and authenticated access. NEXUS retains local LED status and essential safe operation when internet access is unavailable.</p>
+    </div>
+  </section>
+
+  <!-- TIERS -->
+  <section id="tiers" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:24px;">Essential &#183; Pro &#183; Max</div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:32px;--cg:16px;">
+        <sc-for list="{{ tiers }}" as="t" hint-placeholder-count="3">
+          <div style="padding:28px;border-top:3px solid var(--color-brand-synq);background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:20px;font-weight:700;margin-bottom:6px;">{{ t.name }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);margin-bottom:16px;min-height:60px;">{{ t.desc }}</div>
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ t.tag }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- comparison -->
+      <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);background:#F4F5F4;">
+          <div style="padding:14px 20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Function level</div>
+          <div style="padding:14px 20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Essential</div>
+          <div style="padding:14px 20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Pro</div>
+          <div style="padding:14px 20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Max</div>
+        </div>
+        <sc-for list="{{ comparison }}" as="c" hint-placeholder-count="10">
+          <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--color-divider);">
+            <div style="padding:14px 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ c.fn }}</div>
+            <div style="padding:14px 20px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ c.ess }}</div>
+            <div style="padding:14px 20px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ c.pro }}</div>
+            <div style="padding:14px 20px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ c.max }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT RANGE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:24px;">The NEXUS range</div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ products }}" as="p" hint-placeholder-count="8">
+          <div style="padding:22px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:8px;">{{ p.tier }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:4px;line-height:var(--web-h3-lh);">{{ p.power }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ p.detail }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Stated kW and A values describe the intended functional architecture and are being confirmed in the hardware specification. Continuous, peak, main-breaker and transfer ratings are published separately per model.</p>
+    </div>
+  </section>
+
+  <!-- CROSS LINKS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="SYNQ - PRODUCT - Overview - EN.dc.html" style="font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);padding:14px 20px;background:#F4F5F4;border-radius:8px;">SYNQ metering<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <a href="EMON - SYSTEM - System - EN.dc.html" style="font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);padding:14px 20px;background:#F4F5F4;border-radius:8px;">EMON platform<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <a href="MOEBIUS - PRODUCT - Overview - EN.dc.html" style="font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);padding:14px 20px;background:#F4F5F4;border-radius:8px;">MOEBIUS inverters<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="background:var(--color-card-synq);border-radius:12px;padding:28px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Trade customer?</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Prices, stock and ordering are in the webshop after trade login. Homeowners buy through an installer.</div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="SYNQ - WEBSHOP - Shop - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Shop SYNQ<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+        <a href="SYNQ - SUPPORT - Talk to an Expert - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;background:#FFFFFF;color:var(--color-text-primary);border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Contact a specialist</a>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:88px;"></div>
+
+  <div style="height:32px;"></div>
+  <dc-import name="EpcInfo" brand="SYNQ" product="NEXUS" hint-size="100%,420px"></dc-import>
+  <dc-import name="ContentSections" brand="SYNQ" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="SYNQ" photo-slot-id="synq-nexus-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="SYNQ" accent="var(--color-brand-synq)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      withoutCoord: [
+        "Unnecessary grid import",
+        "Uncontrolled export",
+        "Simultaneous high-power consumption",
+        "Main-breaker overload",
+        "Poor use of solar surplus",
+        "Battery charging at the wrong time",
+        "EV charging during expensive periods",
+      ],
+      functions: [
+        { title: "One system view", desc: "Grid, solar, battery, EV, heat pump and loads together." },
+        { title: "Import & export control", desc: "Zero-export, limited export, main-connection protection." },
+        { title: "Dynamic load balancing", desc: "High-power loads within the connection limit." },
+        { title: "Dynamic tariff operation", desc: "Use energy when prices are lower." },
+        { title: "Solar-surplus management", desc: "Direct surplus to battery, EV or thermal loads." },
+        { title: "Battery coordination", desc: "Self-consumption, tariffs and backup reserve." },
+        { title: "EV charging control", desc: "Solar, price and capacity-aware charging." },
+        { title: "Heat-pump & thermal", desc: "Preheat on surplus within comfort limits." },
+      ],
+      liveReadings: [
+        "Current grid import and export",
+        "Solar production",
+        "Total building consumption",
+        "Battery charge / discharge and state of charge",
+        "EV-charging power",
+        "Heat-pump consumption",
+        "Available connection capacity",
+        "Active backup status and alarms",
+      ],
+      access: [
+        { role: "Public scan", desc: "Safe information only — product name, basic status, manual, support, warranty registration." },
+        { role: "Owner", desc: "Live energy flows, history, tariffs and battery planning for the building." },
+        { role: "Installer", desc: "Configuration, measurements, logs and commissioning — critical settings require confirmation." },
+      ],
+      tiers: [
+        { name: "Essential", desc: "Core measurement and energy control: everything required to measure, connect and coordinate a modern installation.", tag: "Standard systems" },
+        { name: "Pro", desc: "Advanced control with backup transfer, load prioritisation, load shedding and full installation documentation.", tag: "Advanced buildings" },
+        { name: "Max", desc: "Site-level control for larger power flows, multiple devices, zones and commercial peak management.", tag: "Larger sites" },
+      ],
+      comparison: [
+        { fn: "Energy monitoring", ess: "Yes", pro: "Yes", max: "Yes" },
+        { fn: "Import / export control", ess: "Yes", pro: "Yes", max: "Yes" },
+        { fn: "Solar-surplus management", ess: "Yes", pro: "Yes", max: "Yes" },
+        { fn: "Battery coordination", ess: "Yes", pro: "Yes", max: "Yes" },
+        { fn: "EV & heat-pump control", ess: "Basic", pro: "Advanced", max: "Multi-device" },
+        { fn: "Dynamic load balancing", ess: "Basic", pro: "Advanced", max: "Site-level" },
+        { fn: "Backup management", ess: "Optional", pro: "Advanced", max: "Multi-zone" },
+        { fn: "Load shedding", ess: "Limited", pro: "Yes", max: "Multi-level" },
+        { fn: "Multi-inverter / battery", ess: "Limited", pro: "Yes", max: "Yes" },
+        { fn: "Commercial peak control", ess: "No", pro: "Limited", max: "Yes" },
+        { fn: "BMS / Modbus integration", ess: "No", pro: "Optional", max: "Yes" },
+        { fn: "Technical-file generation", ess: "Yes", pro: "Yes", max: "Yes" },
+      ],
+      products: [
+        { tier: "Essential", power: "1P · 12 kW", detail: "Single-phase homes and smaller commercial." },
+        { tier: "Essential", power: "3P · 30 kW", detail: "Three-phase commercial monitoring and control." },
+        { tier: "Pro", power: "1P · 12 kW", detail: "Backup and load prioritisation for homes." },
+        { tier: "Pro", power: "1P · 22 kW", detail: "Higher-power single-phase, electrified homes." },
+        { tier: "Pro", power: "1P · 22 kW · 100 A", detail: "Whole-building control with 100 A main path." },
+        { tier: "Pro", power: "3P · 30 kW", detail: "Professional three-phase commercial control." },
+        { tier: "Max", power: "1P · 22/23/24 kW", detail: "Maximum single-phase for high-demand buildings." },
+        { tier: "Max", power: "3P · 50/52,6 kW", detail: "Site-level three-phase commercial power." },
+        { tier: "NEXUS BOWI", power: "1P · 3P · power to be confirmed", detail: "Grid and backup connection unit for FLUXX BOWI systems." },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>MOEBIUS Energy System | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoebiusNav" active="system" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="MOEBIUS" rgb="241,147,27" eyebrow="One connected system" title="One inverter. One connected energy system." intro="MOEBIUS sits at the centre of the STRØHM.ENERGY ecosystem." slot="moebius-energy-system-hero" shot="MOEBIUS · Energy System · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:640px;">Every product is designed, configured and validated to work together as one tested system — not assembled from unrelated brands and hoped into compatibility.</p>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div data-stack="1" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:start;">
+      <div style="aspect-ratio:16/11;">
+        <image-slot id="moebius-sys-diagram" shape="rounded" radius="12" placeholder="Drop the STRØHM.ENERGY energy-system diagram"></image-slot>
+      </div>
+      <div data-cols="2" style="display:grid;gap:12px;grid-template-columns:1fr 1fr;align-content:start;--cg:12px;">
+        <sc-for list="{{ ecosystem }}" as="e" hint-placeholder-count="11">
+          <div style="border-radius:12px;background:#F4F4F4;padding:14px 16px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:{{ e.color }};flex:none;"></span>
+              <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ e.code }}</span>
+            </div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ e.role }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="border-radius:12px;padding:16px 24px;background:var(--color-card-moebius);margin-top:32px;">
+      <p style="margin:0;font-size:14px;font-weight:400;font-style:italic;color:var(--color-text-primary);line-height:1.6;max-width:760px;">All products belong to one tested STRØHM.ENERGY energy system. Because we define the products and the digital layer together, we validate how they communicate and operate as a complete installation.</p>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:24px;">The roles in the system</div>
+      <div data-cols="5" style="display:grid;gap:12px;grid-template-columns:repeat(5,1fr);--cg:12px;">
+        <sc-for list="{{ roles }}" as="r" hint-placeholder-count="5">
+          <div style="border-radius:12px;background:#F4F4F4;padding:24px 20px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">{{ r.code }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ r.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="EMON - SYSTEM - System - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:var(--color-card-moebius);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">EMON platform<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <a href="ANDO - PRODUCT - Overview - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:var(--color-card-moebius);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">ANDO solar<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <a href="MOEBIUS - PRODUCT - Find Your Inverter - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:var(--color-card-moebius);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Find your inverter<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="ContentSections" brand="MOEBIUS" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOEBIUS" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MOEBIUS" accent="var(--color-brand-moebius)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      ecosystem: [
+        { code: "ANDO", role: "Solar modules", color: "#CDD62B" },
+        { code: "MOEBIUS", role: "Inverter", color: "var(--color-brand-moebius)" },
+        { code: "FLUXX", role: "Battery storage", color: "#FDC706" },
+        { code: "SYNQ", role: "Smart metering", color: "#5F5E5E" },
+        { code: "EMON", role: "Control & monitoring", color: "#21AE8F" },
+        { code: "XOOM", role: "EV charging", color: "#8EB15F" },
+        { code: "NENDO", role: "Heat pump", color: "#1B8B9A" },
+        { code: "OGO", role: "Hot water", color: "#00A0E3" },
+        { code: "AIRO", role: "Ventilation", color: "#0083BB" },
+        { code: "FEU", role: "Heating", color: "#D8392C" },
+        { code: "OZZY", role: "Smart switching", color: "#8BCF3F" },
+      ],
+      roles: [
+        { code: "ANDO", desc: "Generates — high-efficiency solar modules." },
+        { code: "MOEBIUS", desc: "Converts — solar DC into usable AC power." },
+        { code: "FLUXX", desc: "Stores — low- and high-voltage batteries." },
+        { code: "SYNQ", desc: "Measures — metering and communication hardware." },
+        { code: "EMON", desc: "Understands — control, monitoring and documentation." },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

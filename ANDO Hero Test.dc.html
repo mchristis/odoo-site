@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<style>body{margin:0;background:#F7F7F5;font-family:var(--font-web);color:#252525;} a{color:#252525;text-decoration:none;} a:hover{color:#6b8f1f;}</style>
+</helmet>
+<section style="padding:80px;display:flex;flex-direction:column;gap:40px;border-bottom:1px solid #DDDDDD;">
+  <div style="display:flex;flex-direction:column;gap:8px;max-width:900px;">
+    <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#898989;">ANDO test · Q4 · slider controls · 60 / 40, 5 : 4 and typography 3a approved</div>
+    <div style="font-size:16px;font-weight:300;line-height:1.6;">Arrows, position indicator and (for videos) play/pause. Swipe and keyboard arrows work in every option.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:80px;">
+    <sc-for list="{{ opts4 }}" as="o" hint-placeholder-count="3">
+      <div id="{{ o.id }}" style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;">
+          <span style="font-size:14px;font-weight:500;background:#252525;color:#FFFFFF;border-radius:8px;padding:4px 10px;">{{ o.id }}</span>
+          <span style="font-size:20px;font-weight:300;">{{ o.name }}</span>
+          <span style="font-size:14px;font-weight:300;color:#5B5B5B;">{{ o.note }}</span>
+        </div>
+        <div style="width:1312px;height:625px;border-radius:24px;overflow:hidden;display:flex;background:#FFFFFF;">
+          <div style="position:relative;flex:3;min-width:0;">
+            <img src="assets/ando-hero/2.png" alt="Installer carrying an ANDO panel on a roof" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <sc-if value="{{ o.onMediaCorner }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;left:24px;bottom:24px;display:flex;gap:8px;align-items:center;">
+                <span style="width:40px;height:40px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:16px;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+                <span style="width:40px;height:40px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:16px;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+                <div style="display:flex;gap:6px;margin-left:8px;"><span style="width:20px;height:3px;border-radius:2px;background:#FFFFFF;"></span><span style="width:20px;height:3px;border-radius:2px;background:#FFFFFF;opacity:0.5;"></span><span style="width:20px;height:3px;border-radius:2px;background:#FFFFFF;opacity:0.5;"></span></div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ o.onMediaSides }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute;left:20px;top:50%;margin-top:-20px;width:40px;height:40px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:16px;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+              <span style="position:absolute;right:20px;top:50%;margin-top:-20px;width:40px;height:40px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:16px;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+              <div style="position:absolute;left:0;right:0;bottom:24px;display:flex;gap:6px;justify-content:center;"><span style="width:20px;height:3px;border-radius:2px;background:#FFFFFF;"></span><span style="width:20px;height:3px;border-radius:2px;background:#FFFFFF;opacity:0.5;"></span><span style="width:20px;height:3px;border-radius:2px;background:#FFFFFF;opacity:0.5;"></span></div>
+            </sc-if>
+          </div>
+          <div style="flex:2;min-width:0;background:#CDD62B;box-sizing:border-box;padding:56px 48px;display:flex;flex-direction:column;justify-content:space-between;">
+            <div style="display:flex;flex-direction:column;gap:24px;">
+              <h1 style="margin:0;font-size:44px;font-weight:100;line-height:1.2;letter-spacing:0.01em;word-spacing:0.12em;text-transform:uppercase;text-wrap:balance;">A solar panel is a long-life electrical product.</h1>
+              <p style="margin:0;font-size:16px;font-weight:300;line-height:1.6;max-width:440px;">Claims about output, durability and warranty need verifiable records. ANDO is built around traceability, certification and documented performance. Every panel should be able to prove what it promises.</p>
+            </div>
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;">
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;">02 / 06</div>
+                <div style="font-size:20px;font-weight:200;line-height:1.3;letter-spacing:0.01em;">Lorem ipsum 2</div>
+              </div>
+              <sc-if value="{{ o.inPanel }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;gap:8px;flex:none;">
+                  <span style="width:40px;height:40px;border-radius:50%;border:1px solid #252525;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:16px;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+                  <span style="width:40px;height:40px;border-radius:50%;border:1px solid #252525;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:16px;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+<section style="padding:80px;display:flex;flex-direction:column;gap:40px;border-bottom:1px solid #DDDDDD;">
+  <div style="display:flex;flex-direction:column;gap:8px;max-width:900px;">
+    <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#898989;">ANDO test · Q3 · hero typography · 60 / 40 and 5 : 4 approved</div>
+    <div style="font-size:16px;font-weight:300;line-height:1.6;">Each panel is the real 525 × 625 px right panel. Short title and the longest existing ANDO title, next to Dauwke's reference. Font check: this computer shows {{ fontNote }}</div>
+  </div>
+  <div style="display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;">
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <span style="font-size:14px;font-weight:500;">Reference · Dauwke</span>
+      <img src="assets/ref/dauwke-high-quality-solar-panels.png" alt="Dauwke reference: HIGH QUALITY SOLAR PANELS in thin Helvetica capitals" style="width:575px;border-radius:12px;display:block;">
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:56px;">
+    <sc-for list="{{ opts3 }}" as="o" hint-placeholder-count="3">
+      <div id="{{ o.id }}" style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;">
+          <span style="font-size:14px;font-weight:500;background:#252525;color:#FFFFFF;border-radius:8px;padding:4px 10px;">{{ o.id }}</span>
+          <span style="font-size:20px;font-weight:300;">{{ o.name }}</span>
+          <span style="font-size:14px;font-weight:300;color:#5B5B5B;">{{ o.spec }}</span>
+        </div>
+        <div style="display:flex;gap:24px;flex-wrap:wrap;">
+          <sc-for list="{{ o.titles }}" as="tt" hint-placeholder-count="2">
+            <div style="width:525px;height:625px;border-radius:12px;background:#CDD62B;box-sizing:border-box;padding:56px 48px;display:flex;flex-direction:column;justify-content:space-between;">
+              <div style="display:flex;flex-direction:column;gap:24px;">
+                <h1 style="{{ tt.style }}">{{ tt.text }}</h1>
+                <p style="margin:0;font-size:16px;font-weight:300;line-height:1.6;max-width:440px;">Claims about output, durability and warranty need verifiable records. ANDO is built around traceability, certification and documented performance.</p>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;">02 / 06</div>
+                <div style="{{ o.media }}">Lorem ipsum 2</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+<section style="padding:80px;display:flex;flex-direction:column;gap:40px;border-bottom:1px solid #DDDDDD;">
+  <div style="display:flex;flex-direction:column;gap:8px;max-width:900px;">
+    <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#898989;">ANDO test · Q2 · image ratio · split 60 / 40 approved (1a)</div>
+    <div style="font-size:16px;font-weight:300;line-height:1.6;">Photos and videos share one media box; every slide is cropped to it, so the hero never changes size. Width stays 1312 px; the ratio sets the height and how much of the next section shows on a 1440 × 900 screen.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:80px;">
+    <sc-for list="{{ opts2 }}" as="o" hint-placeholder-count="3">
+      <div id="{{ o.id }}" style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;">
+          <span style="font-size:14px;font-weight:500;background:#252525;color:#FFFFFF;border-radius:8px;padding:4px 10px;">{{ o.id }}</span>
+          <span style="font-size:20px;font-weight:300;">{{ o.name }}</span>
+          <span style="font-size:14px;font-weight:300;color:#5B5B5B;">{{ o.note }}</span>
+        </div>
+        <div style="width:1312px;height:{{ o.h }};border-radius:24px;overflow:hidden;display:flex;background:#FFFFFF;">
+          <div style="position:relative;flex:3;min-width:0;">
+            <img src="assets/ando-hero/2.png" alt="Installer carrying an ANDO panel on a roof" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;left:24px;bottom:24px;display:flex;gap:8px;align-items:center;">
+              <span style="width:36px;height:36px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:16px;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+              <span style="width:36px;height:36px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:16px;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+            </div>
+          </div>
+          <div style="flex:2;min-width:0;background:#CDD62B;box-sizing:border-box;padding:56px 48px;display:flex;flex-direction:column;justify-content:space-between;">
+            <div style="display:flex;flex-direction:column;gap:24px;">
+              <h1 style="margin:0;font-size:44px;font-weight:100;line-height:1.15;letter-spacing:0;text-transform:uppercase;text-wrap:balance;">A solar panel is a long-life electrical product.</h1>
+              <p style="margin:0;font-size:16px;font-weight:300;line-height:1.6;max-width:440px;">Claims about output, durability and warranty need verifiable records. ANDO is built around traceability, certification and documented performance. Every panel should be able to prove what it promises.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;min-height:72px;justify-content:flex-end;">
+              <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;">02 / 06</div>
+              <div style="font-size:20px;font-weight:300;line-height:1.25;">Lorem ipsum 2</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+<section style="padding:80px;display:flex;flex-direction:column;gap:40px;">
+  <div style="display:flex;flex-direction:column;gap:8px;max-width:900px;">
+    <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#898989;">ANDO test · Q1 · hero dimensions and column proportions · desktop 1440 px</div>
+    <div style="font-size:16px;font-weight:300;line-height:1.6;">Same outer width (1312 px, the current Products hero edges), same height (625 px, current ratio 2.1 : 1), media left, one brand-colour panel right, no CTAs, media title in the panel. Only the split changes. Typography here is a neutral placeholder; it is Q3.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:80px;">
+    <sc-for list="{{ opts }}" as="o" hint-placeholder-count="3">
+      <div id="{{ o.id }}" style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;gap:12px;align-items:baseline;">
+          <span style="font-size:14px;font-weight:500;background:#252525;color:#FFFFFF;border-radius:8px;padding:4px 10px;">{{ o.id }}</span>
+          <span style="font-size:20px;font-weight:300;">{{ o.name }}</span>
+          <span style="font-size:14px;font-weight:300;color:#5B5B5B;">{{ o.note }}</span>
+        </div>
+        <div style="width:1312px;height:625px;border-radius:24px;overflow:hidden;display:flex;background:#FFFFFF;">
+          <div style="position:relative;flex:{{ o.media }};min-width:0;">
+            <img src="assets/ando-hero/2.png" alt="Installer carrying an ANDO panel on a roof" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;left:24px;bottom:24px;display:flex;gap:8px;align-items:center;">
+              <span style="width:36px;height:36px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:16px;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+              <span style="width:36px;height:36px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:16px;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+              <div style="display:flex;gap:6px;margin-left:8px;">
+                <span style="width:20px;height:3px;border-radius:2px;background:#FFFFFF;"></span>
+                <span style="width:20px;height:3px;border-radius:2px;background:#FFFFFF;opacity:0.5;"></span>
+                <span style="width:20px;height:3px;border-radius:2px;background:#FFFFFF;opacity:0.5;"></span>
+              </div>
+            </div>
+          </div>
+          <div style="flex:{{ o.panel }};min-width:0;background:#CDD62B;box-sizing:border-box;padding:56px 48px;display:flex;flex-direction:column;justify-content:space-between;">
+            <div style="display:flex;flex-direction:column;gap:24px;">
+              <h1 style="margin:0;font-size:{{ o.h1 }};font-weight:100;line-height:1.15;letter-spacing:0;text-transform:uppercase;text-wrap:balance;">A solar panel is a long-life electrical product.</h1>
+              <p style="margin:0;font-size:16px;font-weight:300;line-height:1.6;max-width:440px;">Claims about output, durability and warranty need verifiable records. ANDO is built around traceability, certification and documented performance. Every panel should be able to prove what it promises.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;min-height:72px;justify-content:flex-end;">
+              <div style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;">02 / 06</div>
+              <div style="font-size:20px;font-weight:300;line-height:1.25;">Lorem ipsum 2</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const base = 'margin:0;font-family:var(--font-web);text-transform:uppercase;color:#252525;text-wrap:balance;';
+    const mk = (fs, w, lh, ls, ws) => base + `font-size:${fs};font-weight:${w};line-height:${lh};letter-spacing:${ls};word-spacing:${ws};`;
+    const short = 'High quality solar panels', long = 'A solar panel is a long-life electrical product.';
+    const T = (st) => [{ text: short, style: st }, { text: long, style: st }];
+    if (!this._fn) { this._fn = 'checking…'; setTimeout(() => { const ok = document.fonts && document.fonts.check('100 40px "Helvetica Neue"'); this._fn = ok ? 'Helvetica Neue installed (UltraLight 100 available on Mac). Windows/Android fall back to Arial without thin weights until the licensed web font files are added.' : 'NO Helvetica Neue: the browser falls back to Arial/Roboto, which has no thin weight, so all three options render heavier here. Licensed web font files are still missing.'; this.forceUpdate(); }, 300); }
+    return { opts4: [
+      { id: '4a', name: 'In the panel, next to the counter', note: 'Recommended: nothing covers the photo; counter, title and arrows read as one unit; video play/pause stays on the video', inPanel: true },
+      { id: '4b', name: 'Bottom-left on the media', note: 'Close to the image; covers the lower-left corner of every photo', onMediaCorner: true },
+      { id: '4c', name: 'Arrows on the media edges, dots bottom-centre', note: 'Familiar slider pattern; arrows sit over the product on narrow crops', onMediaSides: true }
+    ], fontNote: this._fn, opts3: [
+      { id: '3·now', name: 'Current', spec: '100 UltraLight · line height 1.08 · letter spacing −1.5 px (letters touch)', titles: T(mk('44px', 100, 1.08, '-1.5px', 'normal')), media: 'font-size:20px;font-weight:300;line-height:1.25;' },
+      { id: '3a', name: 'Dauwke match', spec: 'Recommended · 100 UltraLight · line height 1.2 · letter spacing +0.01 em · word spacing +0.12 em · media title 20 px / 200', titles: T(mk('44px', 100, 1.2, '0.01em', '0.12em')), media: 'font-size:20px;font-weight:200;line-height:1.3;letter-spacing:0.01em;' },
+      { id: '3b', name: 'Sturdier thin', spec: '200 Thin · 40 px · line height 1.22 · letter spacing +0.02 em · word spacing +0.15 em · media title 20 px / 300', titles: T(mk('40px', 200, 1.22, '0.02em', '0.15em')), media: 'font-size:20px;font-weight:300;line-height:1.3;letter-spacing:0.01em;' }
+    ], opts2: [
+      { id: '2a', name: 'Media 5 : 4 (787 × 625 px), hero 2.1 : 1', note: 'Recommended: current height, panel and roof both visible, ~180 px of the next section shows', h: '625px' },
+      { id: '2b', name: 'Media 16 : 10 (787 × 492 px), hero 2.67 : 1', note: 'Lower; more of the next section, but the long title gets tight in the panel', h: '492px' },
+      { id: '2c', name: 'Media 1 : 1 (787 × 787 px), hero 1.67 : 1', note: 'Tallest; most product detail, next section drops below the fold', h: '787px' }
+    ], opts: [
+      { id: '1a', name: 'Media 60 / panel 40', note: 'Recommended: product photo stays dominant, panel fits the long title in 4 lines', media: 3, panel: 2, h1: '44px' },
+      { id: '1b', name: 'Media 50 / panel 50', note: 'Calm Swiss split; photo crops harder on the sides', media: 1, panel: 1, h1: '52px' },
+      { id: '1c', name: 'Media 67 / panel 33', note: 'Most image; long titles need a smaller size or more lines', media: 2, panel: 1, h1: '36px' }
+    ] };
+  }
+}
+</script>
+</body>
+</html>

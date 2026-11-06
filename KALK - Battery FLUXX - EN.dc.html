@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<style>:root{--web-side:clamp(20px,5.8vw,84px);}body{margin:0;background:#F7F7F5;font-family:var(--font-web);}a{color:#4F4F4E;}a:hover{color:#252525;}</style>
+<style data-q4-reflow>/* Q4 grid reflow (DEPTH-897, user 26 Oct 2026). Desktop above 1024px unchanged.
+   data-cols="N": equal 2–6 column grids reflow by available width, cards at least 240px, never more than N columns.
+   data-stack: mixed-width grids stack to one column below 720px. Charts (7+ columns) and label/value rows are not marked. */
+@media (max-width:1024px){
+ [data-cols="2"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 1 * var(--cg,0px)) / 2 - 1px))),1fr)) !important}
+ [data-cols="3"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 2 * var(--cg,0px)) / 3 - 1px))),1fr)) !important}
+ [data-cols="4"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 3 * var(--cg,0px)) / 4 - 1px))),1fr)) !important}
+ [data-cols="5"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 4 * var(--cg,0px)) / 5 - 1px))),1fr)) !important}
+ [data-cols="6"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 5 * var(--cg,0px)) / 6 - 1px))),1fr)) !important}
+ [data-cols]>[style*="grid-column:span"],[data-cols]>[style*="grid-column: span"]{grid-column:1/-1 !important}
+}
+@media (max-width:720px){
+ [data-stack]{grid-template-columns:minmax(0,1fr) !important}
+ [data-stack]>*{grid-column:auto !important;grid-row:auto !important}
+}</style>
+</helmet>
+<div data-screen-label="KALK Battery FLUXX" style="display:flex;flex-direction:column;min-height:100vh;">
+  <dc-import name="NavBar" active="systems" hint-size="100%,80px"></dc-import>
+  <div style="width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:24px auto 48px;min-height:clamp(600px,calc(100vh - 160px),820px);border-radius:24px;overflow:hidden;background:#FFFFFF;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));box-sizing:border-box;">
+    <div style="background:#F4F4F4;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;box-sizing:border-box;">
+      <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#5F5E5E;">{{ visualTitle }}</div>
+      <div style="width:100%;display:flex;justify-content:center;">{{ visual }}</div>
+    </div>
+    <div style="padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:16px;box-sizing:border-box;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:15px;color:#252525;">FLUXX by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:20px;width:auto;display:block;filter:brightness(0);"></div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:#5F5E5E;"><div style="width:64px;height:4px;border-radius:2px;background:#E3E3E3;overflow:hidden;"><div style="height:4px;width:{{ progressPct }};background:#FDC706;"></div></div><span>{{ progressLabel }}</span></div>
+      </div>
+
+      <sc-if value="{{ isUse }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <h1 style="margin:0;font-size:32px;font-weight:200;line-height:1.1;color:#252525;">Find your battery</h1>
+          <p style="margin:0;font-size:15px;font-weight:300;line-height:1.5;color:#5F5E5E;">Tell KALK how much electricity you use and what you pay. KALK shows the FLUXX battery and the capacity that fit. The configuration follows by email. Your local distributor sends the price.</p>
+          <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;--cg:8px;">
+            <sc-for list="{{ segOpts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.pick }}" style="min-height:48px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:14px;color:#252525;cursor:pointer;">{{ o.label }}</button></sc-for>
+          </div>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+            <sc-for list="{{ phaseOpts }}" as="o" hint-placeholder-count="2"><button onClick="{{ o.pick }}" style="min-height:44px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:14px;color:#252525;cursor:pointer;">{{ o.label }}</button></sc-for>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;color:#252525;">Yearly electricity use (kWh)<input type="number" value="{{ kwh }}" onChange="{{ onKwh }}" style="min-height:48px;padding:0 16px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:16px;"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;color:#252525;">Electricity price (€ per kWh)<input type="number" step="0.01" value="{{ price }}" onChange="{{ onPrice }}" style="min-height:48px;padding:0 16px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:16px;"></label>
+          <div style="font-size:12px;font-weight:300;color:#5F5E5E;">Both numbers are on your yearly energy bill.</div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isSolar }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Solar panels</h2>
+          <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;--cg:8px;">
+            <sc-for list="{{ solarOpts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.pick }}" style="min-height:48px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:14px;color:#252525;cursor:pointer;">{{ o.label }}</button></sc-for>
+          </div>
+          <sc-if value="{{ hasSolar }}" hint-placeholder-val="{{ false }}"><label style="display:flex;flex-direction:column;gap:6px;font-size:14px;color:#252525;">Solar power (kWp)<input type="number" step="0.1" value="{{ kwp }}" onChange="{{ onKwp }}" style="min-height:48px;padding:0 16px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:16px;"></label></sc-if>
+          <sc-if value="{{ hasExisting }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:10px;background:#F4F4F4;border-radius:8px;padding:12px;">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;color:#252525;">Which inverter do you have now<input value="{{ curInv }}" onChange="{{ onCurInv }}" placeholder="Brand and model, for example on the label" style="min-height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;background:#FFFFFF;"></label>
+              <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;--cg:6px;">
+                <sc-for list="{{ invTypeOpts }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.pick }}" style="min-height:40px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:13px;color:#252525;cursor:pointer;">{{ o.label }}</button></sc-for>
+              </div>
+              <div style="font-size:14px;color:#252525;">How do you want to add the battery</div>
+              <sc-for list="{{ coupleOpts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.pick }}" style="display:flex;flex-direction:column;gap:2px;text-align:left;padding:10px 12px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);color:#252525;cursor:pointer;"><b style="font-size:14px;">{{ o.label }}</b><span style="font-size:12px;font-weight:300;">{{ o.sub }}</span></button></sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ fromScan }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;font-weight:300;color:#5F5E5E;">Filled in from your KALK roof scan.</div></sc-if>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isTariff }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Tariff and goals</h2>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <sc-for list="{{ tariffOpts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.pick }}" style="display:flex;flex-direction:column;gap:2px;text-align:left;padding:12px 14px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);color:#252525;cursor:pointer;"><b style="font-size:15px;">{{ o.label }}</b><span style="font-size:13px;font-weight:300;">{{ o.sub }}</span></button></sc-for>
+          </div>
+          <div style="font-size:14px;color:#252525;">Also important to you</div>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+            <sc-for list="{{ goalOpts }}" as="o" hint-placeholder-count="2"><button onClick="{{ o.pick }}" style="min-height:48px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:14px;color:#252525;cursor:pointer;">{{ o.label }}</button></sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">What you need</h2>
+          <div style="background:#FDC706;border-radius:12px;padding:16px;color:#252525;display:flex;flex-direction:column;gap:4px;"><span style="font-size:14px;">Recommended</span><span style="font-size:28px;"><b>{{ model }}</b></span><span style="font-size:14px;">{{ modelLine }}</span></div>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+            <sc-for list="{{ figures }}" as="f" hint-placeholder-count="4"><div style="background:#F4F4F4;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;"><span style="font-size:12px;color:#5F5E5E;">{{ f.label }}</span><span style="font-size:17px;color:#252525;"><b>{{ f.value }}</b> {{ f.unit }}</span></div></sc-for>
+          </div>
+          <sc-if value="{{ showCouple }}" hint-placeholder-val="{{ false }}"><div style="background:#F4F4F4;border-radius:8px;padding:12px;font-size:14px;line-height:1.5;color:#252525;">{{ coupleNote }}</div></sc-if>
+          <sc-if value="{{ showInvLink }}" hint-placeholder-val="{{ false }}"><a href="KALK - Inverter MOEBIUS - EN.dc.html" style="display:flex;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:8px;background:#FB8C00;color:#252525;font-size:14px;text-decoration:none;"><span>Calculate the new hybrid inverter</span><span>MOEBIUS by KALK &#8250;</span></a></sc-if>
+          <div style="font-size:14px;color:#252525;">A typical day (state of charge)</div>
+          <div style="display:grid;grid-template-columns:auto 1fr auto;gap:6px 10px;align-items:center;font-size:13px;color:#252525;">
+            <sc-for list="{{ socRows }}" as="r" hint-placeholder-count="8">
+              <span>{{ r.h }}</span><div style="height:8px;border-radius:4px;background:#E3E3E3;overflow:hidden;"><div style="height:8px;width:{{ r.pct }};background:#FDC706;"></div></div><span><b>{{ r.pct }}</b> · {{ r.kwh }} kWh · {{ r.what }}</span>
+            </sc-for>
+          </div>
+          <p style="margin:0;font-size:12px;font-weight:300;line-height:1.5;color:#5F5E5E;">Indicative sizing, not a detailed calculation. Usable window 10–100 % SoC, solar yield 950 kWh/kWp, evening and night share of use 60 %: TO CONFIRM. Savings and payback follow in the PDF.</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Configuration by email</h2>
+          <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:#5F5E5E;">The configuration, savings and payback are sent as a PDF. Your local distributor sends the price. A TRIBE installer checks the location and the connection.</p>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+            <input placeholder="First name" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+            <input placeholder="Last name" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+            <input placeholder="Email" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+            <input placeholder="Phone" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+          </div>
+          <label style="display:flex;gap:12px;align-items:flex-start;font-size:13px;line-height:1.5;color:#252525;"><input type="checkbox" checked="{{ consent }}" onChange="{{ toggleConsent }}" style="margin-top:3px;accent-color:#FDC706;"><span>I agree that STRØHM.ENERGY uses these details to send my battery check and passes them to a local distributor for the price. Required. <a href="#">Privacy policy</a></span></label>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Sent</h2>
+          <p style="margin:0;font-size:16px;font-weight:300;line-height:1.5;color:#5F5E5E;">Your battery check and the configuration are on their way as a PDF. A TRIBE installer will contact you.</p>
+          <a href="FLUXX - PRODUCT - Overview - EN.dc.html" style="font-size:14px;">Back to FLUXX &#8250;</a>
+        </div>
+      </sc-if>
+
+      <div style="margin-top:auto;display:flex;justify-content:space-between;gap:12px;">
+        <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}"><button onClick="{{ back }}" style="min-height:48px;padding:0 20px;border:0;border-radius:8px;background:#F4F4F4;font-family:var(--font-web);font-size:16px;color:#252525;cursor:pointer;">&#8249; Back</button></sc-if>
+        <sc-if value="{{ showNext }}" hint-placeholder-val="{{ true }}"><button onClick="{{ next }}" disabled="{{ nextDisabled }}" style="margin-left:auto;min-height:48px;padding:0 24px;border:0;border-radius:8px;background:{{ nextBg }};font-family:var(--font-web);font-size:16px;color:#252525;cursor:pointer;">{{ nextLabel }} &#8250;</button></sc-if>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { curInv: "", invType: "string", couple: "ac", seg: "home", phase: "1P", step: 0, kwh: 3500, price: 0.35, solar: "yes", kwp: 4, scan: false, tariff: "fixed", backup: false, ev: false, consent: false };
+  componentDidMount() { try { const pv = JSON.parse(localStorage.getItem("kalk-pv") || "null"); if (pv && pv.kwp) this.setState({ solar: "yes", kwp: Math.round(pv.kwp * 10) / 10, scan: true }); } catch (e) {} }
+  calc() {
+    const s = this.state, use = Math.max(500, +s.kwh || 0), day = use / 365, night = day * 0.6;
+    const sol = s.solar === "no" ? 0 : (+s.kwp || 0) * 950 / 365, surplus = Math.max(0, sol * 0.7 - day * 0.4);
+    let need = s.solar === "no" ? night * 0.6 : Math.min(night, surplus);
+    if (s.tariff === "dynamic") need = Math.max(need, night * 0.8) * 1.2; else if (s.tariff === "daynight") need = Math.max(need, night * 0.7);
+    if (s.backup) need += 2; if (s.ev) need += 3;
+    need = Math.max(2.56, need) / 0.9;
+    let model, modelLine, cap;
+    if (s.seg === "utility") { const m = Math.max(1, Math.ceil(need / 500)); cap = m * 500; model = "SILO"; modelLine = m + " × utility container (TO CONFIRM), 3-phase"; }
+    else if (s.seg === "commercial" && need > 15.36 || need > 32.12) { const m = Math.ceil(need / 12.06); cap = m * 12.06; model = "KYUZ"; modelLine = m + " × 12,06 kWh commercial module" + (m > 1 ? "s" : "") + ", 3-phase"; }
+    else if (need <= 15.36) { const m = Math.max(1, Math.ceil(need / 5.12)); cap = m * 5.12; model = "STAQ"; modelLine = m + " × 5,12 kWh stackable module" + (m > 1 ? "s" : ""); }
+    else if (false) { cap = Math.min(32.12, Math.ceil(need / 5.12) * 5.12); model = "BLOQ"; modelLine = "Fixed battery, " + cap.toFixed(2).replace(".", ",") + " kWh"; }
+    else { cap = Math.min(32.12, Math.ceil(need / 5.12) * 5.12); model = "BLOQ"; modelLine = "Fixed battery, " + cap.toFixed(2).replace(".", ",") + " kWh"; }
+    if (model !== "KYUZ" && model !== "SILO") modelLine += s.phase === "3P" ? ", 3-phase connection" : ", single-phase connection";
+    const usable = cap * 0.9, cyc = Math.min(usable, Math.max(need * 0.9, surplus));
+    return { use, day, night, sol, surplus, need, cap, usable, cyc, model, modelLine };
+  }
+  soc(c) {
+    const lo = 10, hi = Math.min(100, 10 + c.cyc / c.cap * 100), dyn = this.state.tariff === "dynamic", solar = this.state.solar !== "no";
+    const rows = [["06:00", lo + (dyn ? (hi - lo) * 0.4 : 0), dyn ? "charged at night price" : "empty after the night"], ["09:00", lo + (hi - lo) * (solar ? 0.2 : (dyn ? 0.3 : 0)), solar ? "charging from solar" : "waiting"], ["12:00", lo + (hi - lo) * (solar ? 0.65 : (dyn ? 0.3 : 0)), solar ? "charging from solar" : "waiting"], ["15:00", solar ? hi : lo + (hi - lo) * 0.3, solar ? (hi >= 95 ? "full" : "highest of the day") : "waiting"], ["18:00", lo + (hi - lo) * 0.75, "powering the home"], ["21:00", lo + (hi - lo) * 0.4, "powering the home"], ["00:00", lo + (hi - lo) * 0.15, "powering the home"], ["03:00", dyn ? lo + (hi - lo) * 0.25 : lo, dyn ? "charging at low price" : "reserve kept"]];
+    return rows.map(([h, p, what]) => ({ h, pct: Math.round(p) + "%", kwh: (c.cap * p / 100).toFixed(1).replace(".", ","), what }));
+  }
+  visual(c) {
+    const e = React.createElement, k = [], mods = c ? (c.model === "STAQ" ? Math.round(c.cap / 5.12) : c.model === "KYUZ" ? Math.min(6, Math.round(c.cap / 12.06)) : 1) : 2, pct = c ? Math.min(100, 10 + c.cyc / c.cap * 100) : 60;
+    const W = 150, x = 155, top = 300 - Math.max(1, mods) * 46;
+    for (let i = 0; i < Math.max(1, mods); i++) { const y = top + i * 46; k.push(e("rect", { key: "m" + i, x, y, width: W, height: 40, rx: 6, fill: "none", stroke: "#252525", strokeWidth: 1 })); k.push(e("line", { key: "l" + i, x1: x + 10, y1: y + 10, x2: x + W - 10, y2: y + 10, stroke: "#252525", strokeWidth: 0.6 })); }
+    k.push(e("rect", { key: "base", x: x - 6, y: 300, width: W + 12, height: 10, rx: 3, fill: "none", stroke: "#252525", strokeWidth: 1 }));
+    k.push(e("rect", { key: "socb", x: 340, y: 60, width: 22, height: 240, rx: 6, fill: "none", stroke: "#252525", strokeWidth: 1 }));
+    k.push(e("rect", { key: "socf", x: 343, y: 63 + 234 * (1 - pct / 100), width: 16, height: 234 * pct / 100, rx: 4, fill: "#FDC706" }));
+    k.push(e("text", { key: "st", x: 351, y: 50, fontSize: 11, textAnchor: "middle", fill: "#252525", fontFamily: "inherit" }, "SoC"));
+    k.push(e("text", { key: "nm", x: x + W / 2, y: 336, fontSize: 12, letterSpacing: 2, textAnchor: "middle", fill: "#252525", fontFamily: "inherit" }, c ? c.model : "FLUXX"));
+    return e("svg", { width: "100%", viewBox: "0 0 460 360", style: { maxWidth: 460 }, "aria-label": "Line drawing of the FLUXX battery" }, k);
+  }
+  renderVals() {
+    const s = this.state, fmt = (v, d) => Number(v || 0).toLocaleString("nl-BE", { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 });
+    const c = s.step >= 3 ? this.calc() : null, pick = (on) => (on ? "#FDC706" : "#F4F4F4");
+    const can = [+s.kwh > 0 && +s.price > 0, true, true, true, s.consent, false][s.step];
+    return {
+      visualTitle: c ? "Your FLUXX battery" : "FLUXX", visual: this.visual(c),
+      progressPct: Math.round(Math.min(s.step, 5) / 5 * 100) + "%", progressLabel: Math.min(s.step + 1, 6) + " of 6",
+      isUse: s.step === 0, isSolar: s.step === 1, isTariff: s.step === 2, isResult: s.step === 3, isContact: s.step === 4, isDone: s.step === 5,
+      segOpts: [["home", "Home"], ["commercial", "Commercial"], ["utility", "Utility"]].map(([v, l]) => ({ label: l, bg: pick(s.seg === v), pick: () => this.setState({ seg: v, phase: v === "home" ? s.phase : "3P", kwh: v === "home" ? 3500 : v === "commercial" ? 40000 : 2000000 }) })),
+      phaseOpts: [["1P", "Single phase"], ["3P", "Three phase"]].map(([v, l]) => ({ label: l, bg: pick(s.phase === v), pick: () => { if (s.seg !== "home" && v === "1P") return; this.setState({ phase: v }); } })),
+      kwh: s.kwh, onKwh: (e) => this.setState({ kwh: e.target.value }), price: s.price, onPrice: (e) => this.setState({ price: e.target.value }),
+      solarOpts: [["yes", "I have solar"], ["planned", "Solar planned"], ["no", "No solar"]].map(([v, l]) => ({ label: l, bg: pick(s.solar === v), pick: () => this.setState({ solar: v }) })),
+      hasExisting: s.solar === "yes", curInv: s.curInv, onCurInv: (e) => this.setState({ curInv: e.target.value }),
+      invTypeOpts: [["string", "String"], ["micro", "Micro"], ["hybrid", "Hybrid"], ["unknown", "Not sure"]].map(([v, l]) => ({ label: l, bg: pick(s.invType === v), pick: () => this.setState({ invType: v, couple: v === "hybrid" ? "dc" : s.couple }) })),
+      coupleOpts: [["ac", "Keep my inverter, add an AC-coupled battery", "FLUXX with its own battery inverter, connected on the AC side"], ["replace", "Replace my inverter with a MOEBIUS hybrid", "One inverter for solar and battery, DC-coupled"], ["dc", "My inverter is already hybrid", "Connect FLUXX to the battery input, if compatible (TO CONFIRM)"], ["unsure", "Not sure", "A TRIBE installer advises on site"]].map(([v, l, sub]) => ({ label: l, sub, bg: pick(s.couple === v), pick: () => this.setState({ couple: v }) })),
+      showCouple: s.step === 3 && s.solar === "yes", coupleNote: "Connection: " + ({ ac: "AC-coupled next to your current inverter", replace: "new MOEBIUS hybrid inverter, DC-coupled", dc: "on the battery input of your hybrid inverter (compatibility TO CONFIRM)", unsure: "to be advised by a TRIBE installer" })[s.couple] + (s.curInv ? ". Current inverter: " + s.curInv + "." : "."),
+      showInvLink: s.step === 3 && s.solar === "yes" && s.couple === "replace",
+      hasSolar: s.solar !== "no", kwp: s.kwp, onKwp: (e) => this.setState({ kwp: e.target.value, scan: false }), fromScan: s.scan && s.solar !== "no",
+      tariffOpts: [["fixed", "Fixed price", "The same price all day"], ["daynight", "Day and night tariff", "Cheaper at night"], ["dynamic", "Dynamic tariff", "Price changes every hour; FLUXX charges when it is cheap"]].map(([v, l, sub]) => ({ label: l, sub, bg: pick(s.tariff === v), pick: () => this.setState({ tariff: v }) })),
+      goalOpts: [["backup", "Backup during outages"], ["ev", "Charge an electric car"]].map(([v, l]) => ({ label: l, bg: pick(s[v]), pick: () => this.setState({ [v]: !s[v] }) })),
+      model: c ? c.model : "", modelLine: c ? c.modelLine : "",
+      figures: c ? [{ label: "Battery capacity", value: fmt(c.cap, 2), unit: "kWh" }, { label: "Usable (10–100 %)", value: fmt(c.usable, 1), unit: "kWh" }, { label: "Your use per day", value: fmt(c.day, 1), unit: "kWh" }, { label: "Shifted per day", value: fmt(c.cyc, 1), unit: "kWh" }] : [],
+      socRows: c ? this.soc(c) : [],
+      consent: s.consent, toggleConsent: () => this.setState({ consent: !s.consent }),
+      canBack: s.step > 0 && s.step < 5, back: () => this.setState({ step: s.step - 1 }),
+      showNext: s.step < 5, nextLabel: ["Next", "Next", "See what you need", "Configuration by email", "Send", ""][s.step], nextDisabled: !can, nextBg: can ? "#FDC706" : "#E3E3E3",
+      next: () => { if (can) this.setState({ step: s.step + 1 }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

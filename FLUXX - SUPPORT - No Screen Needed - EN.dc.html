@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<title>FLUXX No screen needed | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } html { scroll-behavior:smooth; } [id] { scroll-margin-top:120px; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="FluxxNav" active="support" hint-size="100%,57px"></dc-import>
+  <dc-import name="PageHero" brand="FLUXX" rgb="253,199,6" eyebrow="FLUXX · No screen needed" title="No screen needed." intro="Tap NFC or scan QR for state of charge and battery details. Wi-Fi Mesh connects every module." slot="fluxx-no-screen-hero" shot="FLUXX · No screen needed · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start;--cg:48px;">
+      <div style="display:flex;flex-direction:column;gap:32px;">
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">What you see in EMON</div>
+          <h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Your phone <span style="color:#8E8E8E;">is the screen.</span></h2>
+          <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">EMON shows what the battery did and why. It stays inside the limits you set.</p>
+        </div>
+        <div style="background:var(--color-card-fluxx, #F1EFE9);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Tap for the essentials</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <sc-for list="{{ owner }}" as="o" hint-placeholder-count="7"><span style="background:#FFFFFF;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);font-weight:300;color:#252525;">{{ o }}</span></sc-for>
+          </div>
+        </div>
+        <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Go deeper with EMON</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <sc-for list="{{ installer }}" as="i" hint-placeholder-count="10"><span style="background:#FFFFFF;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);font-weight:300;color:#252525;">{{ i }}</span></sc-for>
+          </div>
+        </div>
+      </div>
+      <div style="aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:#EBECEC;">
+        <image-slot id="fluxx-no-screen-phone" shape="rect" placeholder="Hand holding a phone with the EMON battery screen: state of charge, battery details"></image-slot>
+      </div>
+    </div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:flex;gap:24px;flex-wrap:wrap;">
+      <a href="FLUXX - SUPPORT - NFC and QR - EN.dc.html" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">NFC and QR &#8250;</a>
+      <a href="FLUXX - PRODUCT - FLUXX with EMON - EN.dc.html" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">FLUXX with EMON &#8250;</a>
+      <a href="FLUXX - SUPPORT - Connected Fast - EN.dc.html" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Wi-Fi Mesh &#8250;</a>
+    </div>
+  </section>
+  <div style="height:64px;"></div>
+  <dc-import name="ContentSections" brand="FLUXX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="FLUXX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="FLUXX" accent="var(--color-brand-fluxx)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      owner: ["State of charge", "Solar output", "Home or site load", "Grid import and export", "Current price", "What EMON did and why", "Battery details"],
+      installer: ["Product code and serial", "Capacity and firmware", "Coupling and phase", "Inverter pairing", "Reserve and limits", "Export limit", "Test results", "Temperature", "Cell lifetime", "Degradation"],
+    };
+  }
+}
+</script>
+</body>
+</html>

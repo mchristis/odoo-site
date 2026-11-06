@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>MUKI Knowledge | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style> body { margin:0; } </style>
+</helmet>
+<dc-import name="ContentArchive" brand="MUKI" section="knowledge" lead="{{ lead }}" lead-title="Frequently asked questions" lead-intro="Questions about MUKI and MUKI ZORBA." hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+// DEPTH-1074: MUKI questions from MUKI_ZORBA_Productdossier ch. 05 point 11 (verbatim).
+const MUKI_LEAD = [{"title":"What is MUKI?","text":"MUKI is the brand for coordinated energy kits, preassembled modules and integrated systems.","note":"","link":"","href":""},{"title":"What is ZORBA?","text":"ZORBA is the integrated energy unit within the MUKI product architecture. Its configuration defines the electrical and thermal functions included.","note":"","link":"","href":""},{"title":"Does every ZORBA include the same equipment?","text":"No. Check the configuration-specific equipment list and technical documentation.","note":"","link":"","href":""},{"title":"Are solar panels inside the unit?","text":"Solar panels may form part of the overall package while being installed separately on the building.","note":"","link":"","href":""},{"title":"Is an installer required?","text":"Prepared connections can simplify installation. The site work, checks and commissioning specified for the configuration still apply.","note":"","link":"","href":""},{"title":"Can ZORBA connect to existing equipment?","text":"Compatibility must be assessed against the existing installation and selected configuration.","note":"","link":"","href":""},{"title":"Can ZORBA be expanded?","text":"Expansion depends on compatibility, available capacity, interfaces and installation conditions.","note":"","link":"","href":""},{"title":"Does ZORBA provide backup power?","text":"Backup operation must be explicitly included in the electrical design and configuration documentation.","note":"","link":"","href":""},{"title":"Is KALK available?","text":"The MUKI configuration calculation is planned and is not available yet.","note":"","link":"","href":""},{"title":"Which controls does EMON support?","text":"Available monitoring and control depend on connected devices, supported interfaces and commissioned functions.","note":"","link":"","href":""}];
+class Component extends DCLogic { renderVals() { return { lead: MUKI_LEAD }; } }
+</script>
+</body>
+</html>

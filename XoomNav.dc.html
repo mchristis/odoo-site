@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="BrandBar" brand="XOOM" hint-size="100%,57px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+// DEPTH-188: thin wrapper around BrandBar (data: brandbar-data.js). Old bar in _ARCHIVE/DEPTH-188 brand bars. The active prop is ignored; the active slot comes from the page file name.
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

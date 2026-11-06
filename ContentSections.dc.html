@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<script src="./content-data.js"></script>
+<style>
+  a { text-decoration:none; }
+  .cs-rail { scrollbar-width:none; -ms-overflow-style:none; scroll-snap-type:x mandatory; }
+  .cs-rail::-webkit-scrollbar { display:none; }
+  .cs-card { scroll-snap-align:start; }
+  .cs-chips { scrollbar-width:none; }
+  .cs-chips::-webkit-scrollbar { display:none; }
+  @media (max-width:900px) {
+    .cs-card { min-width:78% !important; }
+    .cs-navbtns { display:none !important; }
+  }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);color:#4F4F4E;">
+  <sc-for list="{{ sections }}" as="s" hint-placeholder-count="3">
+    <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 72px;box-sizing:border-box;">
+      <div style="border-top:1px solid #DDDDDD;padding-top:32px;">
+
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:20px;">
+          <div>
+            <sc-if value="{{ heroTitles }}" hint-placeholder-val="{{ false }}"><h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ s.headA }}<span style="color:#898989;">{{ s.headB }}</span></h2></sc-if><sc-if value="{{ plainTitles }}" hint-placeholder-val="{{ true }}"><h2 style="margin:0 0 8px;font-size:14px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#898989;">{{ s.heading }}</h2></sc-if>
+            <sc-if value="{{ s.hasHeadline }}" hint-placeholder-val="{{ false }}"><div style="margin:0 0 12px;font-size:var(--web-sub-size,28px);font-weight:var(--web-sub-weight,300);line-height:var(--web-sub-lh,1.25);color:#252525;">{{ s.lineA }}<span style="color:#898989;">{{ s.lineB }}</span></div></sc-if>
+            <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#898989;max-width:600px;">{{ s.intro }}</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="cs-navbtns" style="display:flex;gap:8px;">
+              <button onClick="{{ s.onPrev }}" aria-label="Previous" style="cursor:pointer;width:40px;height:40px;border:1px solid #DDDDDD;background:#F4F4F4;color:#898989;font-size:16px;border-radius:8px;font-family:inherit;">&#8249;</button>
+              <button onClick="{{ s.onNext }}" aria-label="Next" style="cursor:pointer;width:40px;height:40px;border:1px solid #DDDDDD;background:#F4F4F4;color:#898989;font-size:16px;border-radius:8px;font-family:inherit;">&#8250;</button>
+            </div>
+            <a href="{{ s.archiveHref }}" style="height:40px;padding:0 20px;display:inline-flex;align-items:center;background:#898989;color:#D9DADA;font-size:var(--cta-font);letter-spacing:0.04em;border-radius:8px;white-space:nowrap;font-weight:var(--web-btn-weight);">View all</a>
+          </div>
+        </div>
+
+        <div class="cs-chips" style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:24px;">
+          <sc-for list="{{ s.chips }}" as="c" hint-placeholder-count="6">
+            <button onClick="{{ c.onClick }}" style="cursor:pointer;font-family:inherit;white-space:nowrap;font-size:var(--web-btn-sm-size);font-weight:400;letter-spacing:0.02em;padding:8px 14px;border-radius:8px;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.color }};">{{ c.label }}</button>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{ s.hasItems }}" hint-placeholder-val="{{ true }}">
+          <div ref="{{ s.railRef }}" class="cs-rail" style="display:flex;gap:20px;overflow-x:auto;padding-bottom:4px;">
+            <sc-for list="{{ s.cards }}" as="card" hint-placeholder-count="4">
+              <a href="{{ card.href }}" class="cs-card" style="flex:0 0 calc((100% - 60px) / 4);min-width:280px;display:flex;flex-direction:column;background:#F4F4F4;border-radius:12px;overflow:hidden;">
+                <div style="aspect-ratio:16/10;background:#EBECEC;position:relative;">
+                  <image-slot id="{{ card.slotId }}" shape="rect" placeholder="{{ card.imageDir }}"></image-slot>
+                  <span style="position:absolute;top:12px;left:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#FFFFFF;background:{{ card.typeBg }};padding:5px 9px;border-radius:4px;">{{ card.type }}</span>
+                </div>
+                <div style="padding:20px;display:flex;flex-direction:column;flex:1;">
+                  <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+                    <span style="font-size:11px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:{{ card.accent }};">{{ card.topic }}</span>
+                    <span style="font-size:11px;font-weight:{{ card.dateWeight }};letter-spacing:0.04em;color:{{ card.dateColor }};">{{ card.dateLabel }}</span>
+                  </div>
+                  <h3 style="margin:0 0 10px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#4F4F4E;">{{ card.title }}</h3>
+                  <p style="margin:0 0 18px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;max-width:760px;">{{ card.summary }}</p>
+                  <span style="margin-top:auto;font-size:12px;font-weight:500;letter-spacing:0.04em;color:{{ card.accent }};">{{ card.cta }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+                </div>
+              </a>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ s.empty }}" hint-placeholder-val="{{ false }}">
+          <div style="border:1px dashed #DDDDDD;border-radius:8px;padding:48px;text-align:center;background:#F4F4F4;">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;margin-bottom:6px;line-height:var(--web-small-lh);">Nothing filed under this topic yet.</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#AEAEAE;line-height:var(--web-small-lh);">New {{ s.headingLower }} is published weekly. Choose “All” to see everything.</div>
+          </div>
+        </sc-if>
+
+      </div>
+    </section>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1480,&quot;height&quot;:900},&quot;brand&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;MOX&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;scope&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;brand&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;homepage&quot;,&quot;brand&quot;,&quot;product&quot;]},&quot;family&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;sections&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;news,knowledge,references&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const SECTION_META = {
+  news: { heading: "News", intro: "Company developments, launches, projects and market updates." },
+  knowledge: { heading: "Knowledge", intro: "How the products are designed, engineered, built and installed." },
+  references: { heading: "References", intro: "Selected projects and systems, with real data and outcomes." },
+};
+// Approved company-level section titles (v5): NEWS → STROHM Updates, KNOWLEDGE CENTRE → Knowledge and Methods, CASES → Proven in Practice.
+const COMPANY_HEADING = { news: "STRØHM.ENERGY Updates", knowledge: "Knowledge and Methods", references: "Proven in Practice" };
+
+class Component extends DCLogic {
+  state = { filters: { news: "All", knowledge: "All", references: "All" } };
+  _rails = {};
+
+  componentDidMount() {
+    if (!window.STROHM_CONTENT) {
+      this._t = setInterval(() => { if (window.STROHM_CONTENT) { clearInterval(this._t); this.forceUpdate(); } }, 60);
+    }
+  }
+  componentWillUnmount() { if (this._t) clearInterval(this._t); }
+
+  scrollRail(section, dir) {
+    const el = this._rails[section];
+    if (!el) return;
+    const amount = Math.round(el.clientWidth * 0.8) * dir;
+    el.scrollBy({ left: amount, behavior: "smooth" });
+  }
+
+  renderVals() {
+    const C = window.STROHM_CONTENT;
+    const brand = this.props.brand || "ALL";              // "ALL"/"STROHM" = company (company-level content only)
+    const scope = this.props.scope || "brand";            // "homepage" | "brand" | "product"
+    const family = this.props.family || null;
+    const isCompany = brand === "ALL" || brand === "STROHM";
+    const accent = isCompany ? "#898989" : (C ? C.brandAccent(brand) : "#898989");
+    const only = (this.props.sections || "news,knowledge,references").split(",");
+
+    const intros = {
+      homepage: {
+        news: "Company-level developments from across every STRØHM.ENERGY brand.",
+        knowledge: "How STRØHM.ENERGY designs, engineers and manufactures as one organisation.",
+        references: "Selected projects and complete multi-brand systems.",
+      },
+      product: {
+        news: "Updates from the wider " + brand + " range, most relevant first.",
+        knowledge: "Guidance for this product, its family and its technology.",
+        references: "Installations featuring this product and related " + brand + " systems.",
+      },
+    };
+
+    const mkSection = (section) => {
+      const meta = SECTION_META[section];
+      const active = this.state.filters[section] || "All";
+      const taxBrand = isCompany ? "STROHM" : brand;
+      const tax = C ? ((C.taxonomy[taxBrand] || {})[section] || []) : [];
+      const chipList = ["All"].concat(tax.slice(0, 10));
+      const items = C ? C.getContent(brand, section, { topic: active, limit: 12 }) : [];
+
+      const typeBg = section === "news" ? accent : section === "knowledge" ? "#898989" : "#4F4F4E";
+      const introText = (intros[scope] && intros[scope][section]) || meta.intro;
+
+      const heading = isCompany ? (COMPANY_HEADING[section] || meta.heading) : meta.heading;
+
+      return {
+        key: section,
+        heading: heading,
+        headA: heading.indexOf(" and ") > 0 ? heading.slice(0, heading.indexOf(" and ")) : heading,
+        headB: heading.indexOf(" and ") > 0 ? heading.slice(heading.indexOf(" and ")) : "",
+        lineA: "Technical knowledge",
+        lineB: " without the sales fog",
+        headline: scope === "homepage" && section === "knowledge" ? "Technical knowledge without the sales fog" : "",
+        hasHeadline: scope === "homepage" && section === "knowledge",
+        headingLower: heading.toLowerCase(),
+        intro: introText,
+        archiveHref: C ? C.archiveHref(isCompany ? "strohm" : brand, section) : "#",
+        railRef: (el) => { if (el) this._rails[section] = el; },
+        onPrev: () => this.scrollRail(section, -1),
+        onNext: () => this.scrollRail(section, 1),
+        chips: chipList.map((t) => ({
+          label: t,
+          onClick: () => this.setState((s) => ({ filters: Object.assign({}, s.filters, { [section]: t }) })),
+          bg: active === t ? "#4F4F4E" : "#FFFFFF",
+          color: active === t ? "#FFFFFF" : "#898989",
+          border: active === t ? "#4F4F4E" : "#DDDDDD",
+        })),
+        hasItems: items.length > 0,
+        empty: items.length === 0,
+        cards: items.map((it) => ({
+          href: it.href || "#",
+          slotId: "cs-" + it.id,
+          imageDir: it.imageDir,
+          type: it.type,
+          typeBg,
+          topic: it.topic,
+          dateLabel: it.sample ? "SAMPLE" : it.date, dateColor: it.sample ? "#B07818" : "#AEAEAE", dateWeight: it.sample ? 700 : 300,
+          title: it.title,
+          summary: it.summary,
+          cta: it.cta,
+          accent: accent,
+        })),
+      };
+    };
+
+    return { heroTitles: !!this.props.hero, plainTitles: !this.props.hero, sections: only.map(mkSection) };
+  }
+}
+</script>
+</body>
+</html>

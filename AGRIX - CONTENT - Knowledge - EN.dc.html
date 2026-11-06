@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>AGRIX Knowledge | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:#6B8E4E; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="AgrixNav" active="structures" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="AGRIX" rgb="107,142,78" eyebrow="Knowledge centre" title="The field deserves more than a brochure." intro="Agri-PV decisions combine agriculture, structures, electricity and water." slot="agrix-knowledge-hero" shot="AGRIX · Knowledge · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;"><a href="AGRIX - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">Agri-PV</a> &#8250; <span style="color:var(--color-text-primary);">KNOWLEDGE CENTRE</span></div>
+    <p style="margin:0 0 24px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:820px;">Each article explains one question at a time and links directly to the selector, calculator or relevant system.</p>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <!-- filter chips -->
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
+        <sc-for list="{{ topics }}" as="t" hint-placeholder-count="6">
+          <button onClick="{{ t.onClick }}" style="cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;padding:8px 14px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};border-radius:8px;">{{ t.label }}</button>
+        </sc-for>
+      </div>
+      <!-- featured -->
+      <span style="display:grid;grid-template-columns:1.3fr 1fr;gap:24px;margin-bottom:16px;background:#F4F4F4;border-radius:12px;" data-placeholder-link="true">
+        <div style="padding:32px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6B8E4E;margin-bottom:10px;">Featured explainer</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);margin-bottom:10px;">{{ featured.title }}</div>
+          <p style="margin:0 0 14px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ featured.desc }}</p>
+          <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);">{{ featured.meta }}</span>
+        </div>
+        <div style="min-height:220px;"><image-slot id="agri-knowledge-featured" shape="rounded" radius="8" placeholder="BNR-KNOWLEDGE-01 · field-study scene: crop row, TWIG detail, distant HEDGE, notebook · awaiting upload"></image-slot></div>
+      </span>
+      <!-- article grid -->
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;--cg:16px;">
+        <sc-for list="{{ articles }}" as="a" hint-placeholder-count="9">
+          <span style="padding:22px;display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:12px;" data-placeholder-link="true">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ a.tagColor }};">{{ a.topic }}</span>
+            <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ a.title }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);margin-top:auto;line-height:var(--web-min-lh);">{{ a.meta }}</span>
+          </span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+const TOPICS = ["All topics", "Agriculture", "Structure", "Water", "Energy", "Safety", "Standards"];
+const COLORS = { Agriculture: "#2C7A3F", Structure: "#6B8E4E", Water: "#2A6F9E", Energy: "#B07818", Safety: "#B33", Standards: "#5F5E5E" };
+class Component extends DCLogic {
+  state = { topic: "All topics" };
+  renderVals() {
+    const all = [
+      { topic: "Agriculture", title: "What makes a project Agri-PV rather than ordinary ground-mounted solar?", meta: "Explainer \u00b7 Updated Jul 2026" },
+      { topic: "Agriculture", title: "How much light does a crop need?", meta: "Explainer \u00b7 Updated Jul 2026" },
+      { topic: "Structure", title: "Transparent modules or standard modules with gaps?", meta: "Explainer \u00b7 Updated Jul 2026" },
+      { topic: "Structure", title: "How is HEDGE row spacing calculated?", meta: "Explainer \u00b7 Updated Jul 2026" },
+      { topic: "Structure", title: "TWIG or HEDGE: which is more suitable?", meta: "Explainer \u00b7 Updated Jul 2026" },
+      { topic: "Energy", title: "How does vertical bifacial production differ during the day?", meta: "Explainer \u00b7 Updated Jul 2026" },
+      { topic: "Water", title: "How does Agri-PV change rainfall distribution?", meta: "Explainer \u00b7 Updated Jul 2026" },
+      { topic: "Water", title: "Can harvested rainwater supply irrigation or animals?", meta: "Explainer \u00b7 Updated Jul 2026" },
+      { topic: "Safety", title: "What changes when livestock can reach the installation?", meta: "Explainer \u00b7 Updated Jul 2026" },
+      { topic: "Safety", title: "How do machinery crossings work?", meta: "Explainer \u00b7 Updated Jul 2026" },
+      { topic: "Standards", title: "What do DIN SPEC 91434 and DIN SPEC 91492 cover?", meta: "Explainer \u00b7 Updated Jul 2026" },
+      { topic: "Structure", title: "How are modules mapped and warranties registered in EMON?", meta: "Explainer \u00b7 Updated Jul 2026" },
+      { topic: "Agriculture", title: "How are biodiversity accessories selected and maintained?", meta: "Explainer \u00b7 Updated Jul 2026" },
+      { topic: "Energy", title: "When can small wind be integrated?", meta: "Explainer \u00b7 Updated Jul 2026" },
+      { topic: "Standards", title: "What information is needed before an engineering meeting?", meta: "Explainer \u00b7 Updated Jul 2026" },
+    ];
+    const st = this.state;
+    const filtered = st.topic === "All topics" ? all : all.filter(a => a.topic === st.topic);
+    return {
+      topics: TOPICS.map(t => ({ label: t, onClick: () => this.setState({ topic: t }),
+        bg: st.topic === t ? "#4F4F4E" : "#FFFFFF", color: st.topic === t ? "#FFFFFF" : "#4F4F4E", border: st.topic === t ? "#1E1E1E" : "#E4E2E0" })),
+      featured: { title: "What makes a project Agri-PV rather than ordinary ground-mounted solar?", desc: "The difference is not height. Light distribution, cultivated-area retention, machinability, drainage, soil, access, safety and long-term agricultural use must be addressed together.", meta: "Agriculture \u00b7 6 min read \u00b7 Updated July 2026" },
+      articles: filtered.map(a => ({ topic: a.topic, title: a.title, meta: a.meta, tagColor: COLORS[a.topic] || "#5F5E5E" })),
+    };
+  }
+}
+</script>
+</body>
+</html>

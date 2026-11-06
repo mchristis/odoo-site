@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Serial Registration | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>body{margin:0;background:#F7F7F5;color:#4F4F4E;font-family:var(--font-web)}a{color:#4F4F4E}a:hover{color:#F1931B}</style>
+</helmet>
+<section data-screen-label="12 Serial registration" style="padding:64px 48px 80px;max-width:1296px;margin:0 auto;color:#4F4F4E">
+  <div style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;margin-bottom:24px;font-weight:var(--web-eyebrow-weight);">
+<dc-import name="PageHero" brand="STROHM.ENERGY" rgb="200,200,200" title="Scan, registered, connected." intro="The installer scans the QR code on the unit." slot="strohm-energy-serial-registration-hero" shot="STROHM.ENERGY · Serial Registration · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import>
+Study 12 · Serial registration · installer app</div>
+  <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between;margin-bottom:40px">
+    <div>
+      <p style="margin:12px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);max-width:620px;text-wrap:pretty;line-height:var(--web-body-lh);">The serial number fills in, the warranty registers, and the product joins the system in EMON.</p>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:6px;width:88px">
+          <div style="height:4px;border-radius:2px;background:{{ s.bg }}"></div>
+          <div style="font-size:12px;font-weight:{{ s.fw }}">{{ s.label }}</div>
+        </div>
+      </sc-for>
+      <button style-hover="background:#5F5E5E;color:#F4F4F4;" onClick="{{ replay }}" style="font:inherit;font-size:var(--web-btn-sm-size);padding:10px 16px;border-radius:8px;border:1px solid #BBBBBB;cursor:pointer;background:#4F4F4E;color:#F4F4F4;margin-left:16px;font-weight:var(--web-btn-weight);">Replay</button>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:64px;align-items:center;justify-content:center">
+    <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="393px" height="852px" hint-size="393px,852px">
+      <div style="position:absolute;inset:0;background:#FFFFFF;padding:64px 20px 40px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px;font-family:var(--font-web);color:#4F4F4E">
+        <div style="font-size:24px;line-height:1.2"><span style="font-weight:700">Register</span><span style="font-weight:300"> product</span></div>
+        <div style="position:relative;height:300px;border-radius:12px;background:#E3E3E3;overflow:hidden;display:flex;align-items:center;justify-content:center">
+          <div style="width:168px;height:168px;background:#FFFFFF;padding:10px;box-sizing:border-box;display:grid;grid-template-columns:repeat(21,minmax(0,1fr));opacity:{{ qrOp }};transition:opacity 300ms ease">
+            <sc-for list="{{ qr }}" as="c" hint-placeholder-count="441">
+              <div style="background:{{ c }}"></div>
+            </sc-for>
+          </div>
+          <div style="position:absolute;width:{{ frameSize }};height:{{ frameSize }};left:50%;top:50%;transform:translate(-50%,-50%);transition:width 300ms ease,height 300ms ease">
+            <div style="position:absolute;left:0;top:0;width:24px;height:24px;border-left:2px solid {{ frameCol }};border-top:2px solid {{ frameCol }}"></div>
+            <div style="position:absolute;right:0;top:0;width:24px;height:24px;border-right:2px solid {{ frameCol }};border-top:2px solid {{ frameCol }}"></div>
+            <div style="position:absolute;left:0;bottom:0;width:24px;height:24px;border-left:2px solid {{ frameCol }};border-bottom:2px solid {{ frameCol }}"></div>
+            <div style="position:absolute;right:0;bottom:0;width:24px;height:24px;border-right:2px solid {{ frameCol }};border-bottom:2px solid {{ frameCol }}"></div>
+          </div>
+          <div style="position:absolute;left:52px;right:52px;top:{{ scanY }};height:1px;background:#4F4F4E;opacity:{{ scanOp }}"></div>
+          <div style="position:absolute;left:20px;bottom:16px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ camText }}</div>
+        </div>
+        <div>
+          <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;line-height:var(--web-small-lh);">Serial number</div>
+          <div style="height:48px;border-radius:8px;border:1px solid {{ fieldCol }};display:flex;align-items:center;padding:0 16px;font-size:17px;letter-spacing:.04em;transition:border-color 200ms ease">
+            <span style="font-weight:700">{{ serial }}</span>
+            <span style="width:1px;height:20px;background:#4F4F4E;margin-left:2px;opacity:{{ caretOp }}"></span>
+          </div>
+        </div>
+        <div style="background:#F4F4F4;border-radius:12px;padding:20px;display:flex;align-items:center;justify-content:space-between;opacity:{{ prodOp }};transform:translateY({{ prodDy }}px);transition:opacity 400ms ease,transform 400ms ease">
+          <div>
+            <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">MOEBIUS</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;margin-top:4px;line-height:var(--web-small-lh);">Inverter · {{ warranty }}</div>
+          </div>
+          <div style="width:12px;height:12px;border-radius:50%;background:{{ dotCol }};transition:background 300ms ease"></div>
+        </div>
+        <div style="margin-top:auto;display:flex;flex-direction:column;gap:12px">
+          <div style="font-size:14px;font-weight:300;text-align:center;min-height:20px">{{ toast }}</div>
+          <div style="height:48px;border-radius:8px;background:{{ btnBg }};color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:var(--web-small-size);font-weight:400;transition:background 300ms ease;line-height:var(--web-small-lh);">{{ btnText }}</div>
+        </div>
+      </div>
+    </x-import>
+
+    <div style="flex:1 1 420px;max-width:620px">
+      <div style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;margin-bottom:16px;font-weight:var(--web-eyebrow-weight);">EMON · system view</div>
+      <svg viewBox="0 0 600 420" style="width:100%;height:auto;display:block" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" fill="#4F4F4E">
+        <rect x="10" y="10" width="580" height="400" fill="none" stroke="#BBBBBB" stroke-dasharray="4 6"></rect>
+        <path d="M200 90 H250 V190 H300" fill="none" stroke="#DDDDDD" stroke-width="1"></path>
+        <path d="M200 330 H250 V230 H300" fill="none" stroke="#DDDDDD" stroke-width="1"></path>
+        <path d="M460 210 H500 V90 H520" fill="none" stroke="#DDDDDD" stroke-width="1"></path>
+        <path d="M200 90 H250 V190 H300" fill="none" stroke="{{ lineCol }}" stroke-width="{{ lineW }}" pathLength="1" stroke-dasharray="{{ lineDash }}" style="stroke-dashoffset:{{ lineOff }};transition:stroke-dashoffset 700ms ease"></path>
+        <path d="M200 330 H250 V230 H300" fill="none" stroke="{{ lineCol }}" stroke-width="{{ lineW }}" pathLength="1" stroke-dasharray="{{ lineDash }}" style="stroke-dashoffset:{{ lineOff }};transition:stroke-dashoffset 700ms ease 200ms"></path>
+        <path d="M460 210 H500 V90 H520" fill="none" stroke="{{ lineCol }}" stroke-width="{{ lineW }}" pathLength="1" stroke-dasharray="{{ lineDash }}" style="stroke-dashoffset:{{ lineOff }};transition:stroke-dashoffset 700ms ease 500ms"></path>
+        <g>
+          <rect x="40" y="50" width="160" height="80" fill="#FFFFFF" stroke="#4F4F4E"></rect>
+          <circle cx="184" cy="66" r="6" fill="#CDD62B"></circle>
+          <text x="56" y="84" font-size="15" font-weight="700">ANDO</text>
+          <text x="56" y="104" font-size="12" font-weight="300">Solar · online</text>
+        </g>
+        <g>
+          <rect x="40" y="290" width="160" height="80" fill="#FFFFFF" stroke="#4F4F4E"></rect>
+          <circle cx="184" cy="306" r="6" fill="#FDC706" stroke="#4F4F4E"></circle>
+          <text x="56" y="324" font-size="15" font-weight="700">FLUXX</text>
+          <text x="56" y="344" font-size="12" font-weight="300">Battery · online</text>
+        </g>
+        <g>
+          <rect x="300" y="160" width="160" height="100" fill="#FFFFFF" stroke="#4F4F4E" stroke-dasharray="{{ moeDash }}"></rect>
+          <circle cx="444" cy="176" r="6" fill="{{ dotCol }}" stroke="#4F4F4E"></circle>
+          <text x="316" y="196" font-size="15" font-weight="700">MOEBIUS</text>
+          <text x="316" y="216" font-size="12" font-weight="300" style="opacity:{{ offOp }}">Not registered</text>
+          <text x="316" y="216" font-size="12" font-weight="700" style="opacity:{{ onOp }}">Connected</text>
+          <text x="316" y="240" font-size="11" font-weight="300" style="opacity:{{ onOp }}">MOE-2611-004827</text>
+        </g>
+        <g>
+          <rect x="520" y="50" width="60" height="80" fill="#F4F4F4" stroke="#4F4F4E"></rect>
+          <text x="530" y="84" font-size="13" font-weight="700">Grid</text>
+        </g>
+      </svg>
+      <div style="display:flex;flex-direction:column;gap:0;margin-top:24px;font-size:14px">
+        <sc-for list="{{ log }}" as="l" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;padding:10px 0;border-top:1px solid #DDDDDD;opacity:{{ l.op }};transition:opacity 300ms ease">
+            <span style="font-weight:300">{{ l.time }}</span>
+            <span style="font-weight:{{ l.fw }}">{{ l.text }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  <div style="font-size:var(--web-min-size);font-weight:300;margin-top:32px;line-height:var(--web-min-lh);">Serial number, QR pattern and warranty wording are placeholders.</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1296,&quot;height&quot;:1100}}">
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.state = { t: 0 };
+    let x = 7; const rnd = () => (x = (x * 16807) % 2147483647) / 2147483647;
+    const finder = (r, c) => { for (const [R, C] of [[0, 0], [0, 14], [14, 0]]) { if (r >= R && r < R + 7 && c >= C && c < C + 7) { const a = r - R, b = c - C; return (a === 0 || a === 6 || b === 0 || b === 6 || (a >= 2 && a <= 4 && b >= 2 && b <= 4)) ? 1 : 0; } } return -1; };
+    this.qr = [];
+    for (let r = 0; r < 21; r++) for (let c = 0; c < 21; c++) { const f = finder(r, c); this.qr.push((f === -1 ? rnd() > 0.52 : f === 1) ? '#4F4F4E' : '#FFFFFF'); }
+  }
+  componentDidMount() { this.run(); }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); }
+  run() {
+    cancelAnimationFrame(this.raf);
+    const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { this.setState({ t: 10 }); return; }
+    const t0 = performance.now(); let last = 0;
+    const loop = now => {
+      const t = (now - t0) / 1000;
+      if (now - last > 40) { last = now; this.setState({ t }); }
+      if (t < 10) this.raf = requestAnimationFrame(loop);
+    };
+    this.raf = requestAnimationFrame(loop);
+  }
+  renderVals() {
+    const t = (this.state && this.state.t) || 0, S = 'MOE-2611-004827';
+    const phase = t < 2.6 ? 0 : t < 5.6 ? 1 : t < 6.8 ? 2 : 3;
+    const found = t >= 2.6, typed = t < 3.4 ? 0 : Math.min(S.length, Math.floor((t - 3.4) / 1.8 * S.length));
+    const done = phase === 3, checking = phase === 2;
+    const scanP = (Math.sin(t * 2.4) + 1) / 2;
+    const labels = ['Scan', 'Serial', 'Check', 'Connected'];
+    const logs = [[0, 'Scanning QR code'], [2.6, 'Product found: MOEBIUS'], [5.6, 'Checking serial and warranty'], [6.8, 'Registered. Everything lined up politely.']];
+    return {
+      replay: () => this.run(),
+      steps: labels.map((l, i) => ({ label: l, bg: i <= phase ? '#4F4F4E' : '#DDDDDD', fw: i === phase ? 700 : 300 })),
+      qr: this.qr, qrOp: done ? 0.4 : 1,
+      frameSize: found ? '184px' : '220px', frameCol: found ? '#F1931B' : '#FFFFFF',
+      scanY: (60 + scanP * 180) + 'px', scanOp: found ? 0 : 1,
+      camText: found ? 'Code read' : 'Point the camera at the QR code',
+      serial: S.slice(0, typed), caretOp: !done && Math.floor(t * 2) % 2 === 0 ? 1 : 0,
+      fieldCol: found ? '#F1931B' : '#BBBBBB',
+      prodOp: typed >= S.length ? 1 : 0, prodDy: typed >= S.length ? 0 : 8,
+      warranty: done ? 'warranty registered' : 'checking',
+      dotCol: done ? '#F1931B' : '#DDDDDD',
+      toast: done ? 'Registered. Everything lined up politely.' : checking ? 'Checking…' : '',
+      btnBg: done ? '#F1931B' : '#4F4F4E', btnText: done ? 'Done' : 'Register',
+      moeDash: done ? 'none' : '4 4', offOp: done ? 0 : 1, onOp: done ? 1 : 0,
+      lineCol: done ? '#F1931B' : '#DDDDDD', lineW: done ? 2 : 1, lineDash: '1', lineOff: done ? 0 : 1,
+      log: logs.map(([at, text], i) => ({ time: '00:0' + Math.floor(at), text, op: t >= at ? 1 : 0, fw: i === phase ? 700 : 300 }))
+    };
+  }
+}
+</script>
+</body>
+</html>

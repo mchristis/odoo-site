@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<title>MUKI Commissioning | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-brand-muki); } html { scroll-behavior:smooth; } [id] { scroll-margin-top:120px; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="BrandBar" brand="MUKI" hint-size="100%,73px"></dc-import>
+  <dc-import name="PageHero" brand="MUKI" rgb="223,85,12" eyebrow="MUKI · Commissioning" title="Commissioning" intro="Check the installation, protection settings, measurements and supported communication. Confirm intended operating functions before handover." slot="muki-commissioning-hero" shot="MUKI · Commissioning · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import>
+  <!-- DEPTH-1078: intro from dossier ch. 05 point 9; AndoPattern scansheet,steps removed (panel-specific, TO CONFIRM); previous intro under Read more -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 72px;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;"><a href="MUKI - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">MUKI</a> &#8250; <span style="color:var(--color-text-primary);">COMMISSIONING</span></div>
+    <a href="MUKI - SUPPORT - Installation - EN.dc.html" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;border-top:1px solid var(--color-text-primary);border-bottom:1px solid var(--color-divider);padding:28px 0;color:var(--color-text-primary);" style-hover="color:var(--color-text-primary);">
+      <span style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Installation · step 04</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Commissioning is part of the MUKI installation steps.</span></span>
+      <span style="font-size:var(--web-small-size);font-weight:300;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">MUKI installation &#8250;</span>
+    </a>
+    <button type="button" aria-expanded="{{ moreExpanded }}" onClick="{{ toggleMore }}" style="margin-top:24px;padding:0 0 2px;border:0;border-bottom:1px solid var(--color-text-primary);background:none;font-family:var(--font-web);font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);cursor:pointer;">{{ moreLabel }}</button>
+    <sc-if value="{{ moreOpen }}" hint-placeholder-val="{{ false }}"><div style="margin-top:16px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Previous intro: Content pending</div></sc-if>
+  </section>
+  <dc-import name="ContentSections" brand="MUKI" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MUKI" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MUKI" accent="var(--color-brand-muki)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { more: false };
+  renderVals() { return { moreOpen: this.state.more, moreExpanded: this.state.more ? "true" : "false", moreLabel: this.state.more ? "Read less" : "Read more", toggleMore: () => this.setState((s) => ({ more: !s.more })) }; }
+}
+</script>
+</body>
+</html>

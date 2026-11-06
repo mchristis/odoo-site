@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="strohm-type.css">
+<script src="./image-slot.js"></script>
+<style> a { color:#4F4F4E; text-decoration:none; } a:hover { color:#1E1E1E; } </style>
+</helmet>
+<div style="font-family:var(--font-web);color:#4F4F4E;background:#FFFFFF;">
+  <dc-import name="PageHero" brand="{{ brand }}" eyebrow="Ownership and warranty" title="A structured record. Not a paper promise." intro="{{ intro }}" split="{{ true }}" slot="{{ heroSlot }}" shot="{{ heroDir }}" hint-size="100%,625px"></dc-import>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #E3E1DB;padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A88;margin-bottom:12px;">Warranty overview</div>
+        <h2 style="margin:0 0 20px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ warrantyHeading }}</h2>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ warranty }}" as="w" hint-placeholder-count="3">
+            <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:24px;padding:16px 12px;border-top:1px solid #E3E1DB;background:{{ w.bg }};">
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">{{ w.title }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:{{ w.color }};">{{ w.desc }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="border:1px solid #E3E1DB;border-radius:12px;overflow:hidden;">
+        <div style="aspect-ratio:4/3;background:#F5F5F5;"><image-slot id="{{ chartSlot }}" shape="rect" placeholder="{{ chartDir }}"></image-slot></div>
+        <div style="padding:16px;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">Illustration only. Values shown once confirmed.</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #E3E1DB;padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A88;margin-bottom:12px;">Commission. Register. Confirm.</div>
+      <h2 style="margin:0 0 28px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Steps to a confirmed <span style="color:#8E8E8E;">ownership record.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;margin-bottom:16px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+          <div style="border:1px solid #E3E1DB;border-radius:12px;overflow:hidden;">
+            <div style="aspect-ratio:4/3;background:#F5F5F5;"><image-slot id="{{ s.slotId }}" shape="rect" placeholder="{{ s.dir }}"></image-slot></div>
+            <div style="padding:16px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#8A8A88;margin-bottom:6px;letter-spacing:var(--web-eyebrow-ls);">{{ s.n }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:4px;line-height:var(--web-small-lh);">{{ s.title }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:{{ s.color }};">{{ s.desc }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:20px 24px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;margin-bottom:8px;line-height:var(--web-h3-lh);">{{ noteTitle }}</div>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:{{ noteColor }};max-width:760px;">{{ noteBody }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #E3E1DB;padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:center;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A88;margin-bottom:12px;">Ownership document</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One document. <span style="color:#8E8E8E;">Everything confirmed.</span></h2>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <sc-for list="{{ docFields }}" as="d" hint-placeholder-count="6">
+            <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:{{ d.color }};background:#F5F5F5;border-radius:12px;padding:6px 12px;">{{ d.label }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div style="border:1px solid #E3E1DB;border-radius:12px;overflow:hidden;">
+        <div style="aspect-ratio:3/4;background:#F5F5F5;"><image-slot id="{{ docSlot }}" shape="rect" placeholder="{{ docDir }}"></image-slot></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #E3E1DB;padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start;">
+      <div>
+        <sc-if value="{{ showSharing }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-bottom:48px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A88;margin-bottom:12px;">Sharing</div>
+            <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ sharingTitle }}</h2>
+            <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">{{ sharingBody }}</p>
+            <div style="border:1px solid #E3E1DB;border-radius:12px;overflow:hidden;"><div style="aspect-ratio:16/10;background:#F5F5F5;"><image-slot id="{{ sharingSlot }}" shape="rect" placeholder="{{ sharingDir }}"></image-slot></div></div>
+          </div>
+        </sc-if>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A88;margin-bottom:12px;">Public and private</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">This page explains. <span style="color:#8E8E8E;">The Portal holds your records.</span></h2>
+        <p style="margin:0 0 24px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:560px;">Serial numbers, photographs, warranty status and documents for a specific installation are only visible in the Portal, to the owner and the roles they grant access to.</p>
+        <a href="{{ portalHref }}" style="display:inline-flex;align-items:center;height:var(--cta-height);padding:0 var(--cta-pad-x);border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);font-weight:400;" style-hover="background:#4F4F4E;color:#FFFFFF;">Open the Portal</a>
+      </div>
+      <div style="display:flex;flex-direction:column;">
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;padding:0 12px 12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A88;--cg:16px;"><span>On this page</span><span>In the Portal only</span></div>
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;padding:14px 12px;border-top:1px solid #E3E1DB;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);--cg:16px;"><span>How registration works</span><span>Your serial numbers and positions</span></div>
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;padding:14px 12px;border-top:1px solid #E3E1DB;background:#F5F5F5;font-size:13px;font-weight:300;color:#5F5E5E;--cg:16px;"><span>Warranty terms per model</span><span>Your warranty status</span></div>
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;padding:14px 12px;border-top:1px solid #E3E1DB;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);--cg:16px;"><span>Document contents</span><span>Your ownership document</span></div>
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;padding:14px 12px;border-top:1px solid #E3E1DB;background:#F5F5F5;font-size:13px;font-weight:300;color:#5F5E5E;--cg:16px;"><span>Sharing options</span><span>Your sharing permissions</span></div>
+      </div>
+    </div>
+  </section>
+  <div style="height:64px;"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:960},&quot;brand&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;BRAND&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;unit&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;product&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;intro&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;warranty&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;{title:string,desc:string}[]&quot;},&quot;steps&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;{title:string,desc:string,dir?:string}[]&quot;},&quot;docFields&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string[]&quot;},&quot;noteTitle&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;noteBody&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;portalHref&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    const b = (p.brand || "BRAND").toUpperCase();
+    const k = b.toLowerCase();
+    const unit = p.unit || "product";
+    const TC = (what) => `[TO CONFIRM: ${what}]`;
+    const tcColor = "#B07818";
+    const warranty = (p.warranty && p.warranty.length) ? p.warranty : [{ title: "Warranty terms", desc: TC(`${b} warranty terms per model`), tc: true }];
+    const steps = (p.steps && p.steps.length) ? p.steps : [
+      { title: "Installer registers", desc: TC(`${b} registration method (QR, NFC or serial)`), tc: true },
+      { title: "Owner confirms", desc: TC(`${b} owner confirmation step`), tc: true },
+      { title: "Record confirmed", desc: TC(`${b} record and status`), tc: true },
+    ];
+    const docFields = (p.docFields && p.docFields.length) ? p.docFields : [TC(`${b} ownership document fields`)];
+    return {
+      unit,
+      intro: p.intro || TC(`${b} ownership intro, max 60 words`), introColor: p.intro ? "#5F5E5E" : tcColor,
+      heroSlot: `${k}-own-hero`, heroDir: `${b}_OWNERSHIP_HERO_BANNER_01 · installed ${b} ${unit} with registration record in restrained interface overlay · 21:9 · placeholder (P1)`,
+      chartSlot: `${k}-own-warranty-chart`, chartDir: `${b}_OWNERSHIP_WARRANTY_CHART_01 · warranty chart, confirmed values only · 4:3 · placeholder (P1)`,
+      docSlot: `${k}-own-document`, docDir: `${b}_OWNERSHIP_DOCUMENT_PDF-PREVIEW_01 · ownership document preview, no real personal data · 3:4 · placeholder (P1)`,
+      warranty: warranty.map((w, i) => ({ title: w.title, desc: w.desc, bg: i % 2 ? "#F5F5F5" : "#FFFFFF", color: w.tc ? tcColor : "#5F5E5E" })),
+      steps: steps.map((s, i) => ({ n: String(i + 1).padStart(2, "0"), title: s.title, desc: s.desc, color: s.tc ? tcColor : "#5F5E5E", slotId: `${k}-own-step-${i + 1}`, dir: s.dir || `${b}_OWNERSHIP_REGISTRATION_STEP-${i + 1}_01 · ${s.title} · 4:3 · placeholder (P1)` })),
+      noteTitle: p.noteTitle || "Warranty activation",
+      noteBody: p.noteBody || TC(`${b} activation conditions and deadlines`),
+      noteColor: p.noteBody ? "#5F5E5E" : tcColor,
+      docFields: docFields.map((d) => ({ label: d, color: d.startsWith("[TO CONFIRM") ? tcColor : "#4F4F4E" })),
+      portalHref: p.portalHref || "Portal v2.dc.html",
+      warrantyHeading: p.warrantyHeading || `Warranty terms per ${unit}.`,
+      showSharing: !!p.sharingBody,
+      sharingTitle: p.sharingTitle || "Owners choose what stays private.",
+      sharingBody: p.sharingBody || "",
+      sharingSlot: `${k}-own-sharing`,
+      sharingDir: p.sharingDir || `${b}_OWNERSHIP_SHARING_INTERFACE_PERMISSION_01 · private record vs public reference permission · 16:10 · placeholder (P2)`,
+    };
+  }
+}
+</script>
+</body>
+</html>

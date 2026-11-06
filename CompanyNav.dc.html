@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<style>
+  [data-cn] a:focus, [data-cn] button:focus { outline: none; }
+  [data-cn] a:focus-visible, [data-cn] button:focus-visible { outline: none; box-shadow: 0 2px 0 0 #4F4F4E; }
+</style>
+</helmet>
+<div data-cn="" ref="{{ barRef }}" style="position:sticky;top:81px;z-index:900;background:#FFFFFF;font-family:var(--font-web);">
+  <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;height:56px;box-sizing:border-box;display:flex;align-items:center;gap:32px;padding:0 var(--web-side);">
+    <div style="flex:none;position:relative;width:{{ brandW }};min-width:{{ brandMin }};box-sizing:border-box;display:flex;align-items:center;gap:10px;">
+      <a href="{{ titleHref }}" style="text-decoration:none;font-size:16px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:#4F4F4E;white-space:nowrap;">{{ title }}</a>
+      <button type="button" aria-label="Company sections" aria-expanded="{{ pickExpanded }}" onClick="{{ togglePick }}" style="cursor:pointer;background:none;border:none;padding:4px;display:flex;align-items:center;">
+        <svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="#F36D1C" stroke-width="1" style="transition:transform .2s ease;transform:rotate({{ pickRot }});"><polyline points="2,4 6,8 10,4"></polyline></svg>
+      </button>
+      <sc-if value="{{ pickOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;top:calc(100% + 12px);left:0;z-index:950;background:#FFFFFF;border:1px solid #DDDDDD;border-radius:12px;padding:12px 0;min-width:280px;display:flex;flex-direction:column;">
+          <sc-for list="{{ picks }}" as="p" hint-placeholder-count="7">
+            <a href="{{ p.href }}" aria-current="{{ p.current }}" style="text-decoration:none;display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:10px 20px;" style-hover="background:#F4F4F4;"><span style="font-size:var(--web-nav-size);font-weight:{{ p.weight }};color:#4F4F4E;">{{ p.label }}</span><span style="font-size:var(--web-nav-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">{{ p.sub }}</span></a>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+    <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="{{ navLabel }}" style="flex:1 1 auto;min-width:0;display:flex;align-items:center;gap:32px;height:56px;">
+        <sc-for list="{{ tabs }}" as="s" hint-placeholder-count="6">
+          <div onMouseEnter="{{ s.enter }}" onMouseLeave="{{ hoverOut }}" style="flex:none;position:relative;display:flex;align-items:center;height:56px;">
+            <a href="{{ s.href }}" aria-current="{{ s.ariaCurrent }}" style="text-decoration:none;font-size:var(--web-nav-size);font-weight:{{ s.weight }};color:{{ s.color }};white-space:nowrap;" style-hover="color:#222222;">{{ s.label }}</a>
+            <sc-if value="{{ s.open }}" hint-placeholder-val="{{ false }}">
+              <div onMouseEnter="{{ hoverIn }}" style="position:absolute;top:100%;left:-32px;z-index:950;background:#FFFFFF;border:1px solid #E3E3E3;border-top:none;padding:16px 0;min-width:300px;display:flex;flex-direction:column;">
+                <sc-for list="{{ s.items }}" as="it" hint-placeholder-count="4">
+                  <a href="{{ it.href }}" style="text-decoration:none;padding:10px 32px;font-size:var(--web-nav-size);font-weight:{{ it.weight }};color:#4F4F4E;white-space:nowrap;" style-hover="color:#222222;background:#F7F7F5;">{{ it.label }}</a>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isNarrow }}" hint-placeholder-val="{{ false }}"><div style="flex:1 1 auto;"></div></sc-if>
+    <button type="button" onClick="{{ openContact }}" style="flex:none;margin-left:auto;cursor:pointer;background:none;border:none;font-family:inherit;display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 4px;font-size:var(--web-nav-size);font-weight:300;color:#4F4F4E;white-space:nowrap;" style-hover="color:#222222;"><svg aria-hidden="true" width="9" height="18" viewBox="0 0 11 22" fill="none" stroke="#F36D1C" stroke-width="1.2" style="flex:none;"><polyline points="1.5,1.5 9.5,11 1.5,20.5"></polyline></svg>Talk to us</button>
+    <sc-if value="{{ isNarrow }}" hint-placeholder-val="{{ false }}">
+      <button type="button" aria-label="Sections" aria-expanded="{{ menuExpanded }}" onClick="{{ toggleMenu }}" style="flex:none;cursor:pointer;background:none;border:none;padding:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#666666;">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="19" y2="6"></line><line x1="3" y1="11" x2="19" y2="11"></line><line x1="3" y1="16" x2="19" y2="16"></line></svg>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;top:100%;left:0;right:0;background:#FFFFFF;border-bottom:1px solid #D9D9D9;max-height:calc(100vh - 160px);overflow-y:auto;padding:8px 16px 16px;box-sizing:border-box;">
+      <sc-for list="{{ tabs }}" as="s" hint-placeholder-count="6">
+        <a href="{{ s.href }}" onClick="{{ closeMenu }}" style="text-decoration:none;display:flex;align-items:center;min-height:44px;border-bottom:1px solid #D9D9D9;font-size:var(--web-nav-size);font-weight:{{ s.weight }};color:{{ s.color }};">{{ s.label }}</a>
+      </sc-for>
+    </div>
+  </sc-if>
+  <dc-import name="ContactModal" open="{{ contactOpen }}" mode="detailed" on-close="{{ closeContact }}" hint-size="0,0"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:72},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;why&quot;,&quot;what&quot;,&quot;who&quot;,&quot;where&quot;,&quot;how&quot;,&quot;when&quot;],&quot;default&quot;:&quot;what&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;sub&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;quality&quot;,&quot;experts&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const PG = (n) => "STROHM.ENERGY - COMPANY - " + n + " - EN.dc.html";
+const ABOUT = "STROHM.ENERGY - SITE - About - EN.dc.html";
+const CN = {
+  "": { title: "About", subtitle: "", href: ABOUT, tabs: [["Why", "co-landing-why"], ["What", "co-landing-what"], ["Who", "co-landing-who"], ["Where", "co-landing-where"], ["How", "co-landing-how"], ["When", "co-landing-when"]] },
+  why: { title: "Why", subtitle: "Purpose", href: PG("Why"), tabs: [["Purpose", "purpose"], ["Fragmentation", "fragmentation"], ["Six differences", "differences"], ["Philosophy", "philosophy"], ["Sustainability", "sustainability"]] },
+  what: { title: "What", subtitle: "Activities", href: PG("What"), tabs: [["In short", "what-short"], ["About", "about"], ["System", "system"], ["The range", "range"]] },
+  how: { title: "How", subtitle: "Methods", href: PG("How"), tabs: [["In short", "how-short"], ["Our process", "process"], ["Development rules", "development"], ["Design approach", "punk-attitude"], ["Engineering & manufacturing", "engineering"], ["Quality", "quality-head", "quality"], ["Automation & people", "automation"]] },
+  who: { title: "Who", subtitle: "People", href: PG("Who"), tabs: [["Find your contact", "contact"], ["Why you are in good hands", "good-hands"], ["Product experts", null, "experts", PG("Who - Product Experts")]] },
+  where: { title: "Where", subtitle: "Locations and data", href: PG("Where"), tabs: [["Hubs", "offices"], ["How the hubs work together", "locations"], ["Network", "network"], ["Where your data lives", "your-data"], ["Where is your data stored?", "product-data"], ["No guesswork", "no-guesswork"]] },
+  when: { title: "When", subtitle: "Timeline", href: PG("When"), tabs: [["Since 1988", "since-1988"], ["Our story", "story"], ["Milestones", "milestones"], ["What\u2019s next", "next"]] },
+};
+const WIDE = 1100;
+class Component extends DCLogic {
+  state = { menu: false, contactOpen: false, w: typeof window !== "undefined" ? window.innerWidth : 1280 };
+  componentDidMount() {
+    this._onResize = () => { const w = window.innerWidth; if (w !== this.state.w) this.setState({ w, menu: false }); };
+    this._onKey = (e) => { if (e.key === "Escape" && (this.state.menu || this.state.pick)) this.setState({ menu: false, pick: false }); };
+    this._onDown = (e) => { if ((this.state.menu || this.state.pick) && this._bar && !this._bar.contains(e.target)) this.setState({ menu: false, pick: false }); };
+    this._onScroll = () => {
+      if (this.props.sub) return;
+      const c = CN[this.props.active || ""] || CN[""];
+      let cur = null;
+      c.tabs.forEach(([, anchor]) => { if (!anchor) return; const el = document.getElementById(anchor); if (el && el.getBoundingClientRect().top <= 200) cur = anchor; });
+      if (cur !== this.state.spy) this.setState({ spy: cur });
+    };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    setTimeout(this._onScroll, 300);
+    window.addEventListener("resize", this._onResize);
+    document.addEventListener("keydown", this._onKey);
+    document.addEventListener("mousedown", this._onDown);
+    this._onResize();
+    this._align = () => { const main = document.querySelector('nav[aria-label="Main"] a, nav[aria-label="Main"] button'); const inner = this._bar && this._bar.firstElementChild; if (!main || !inner) return; const pl = parseFloat(getComputedStyle(inner).paddingLeft) || 0; const bw = Math.round(main.getBoundingClientRect().left - inner.getBoundingClientRect().left - pl - 32); if (bw > 80 && bw !== this.state.bw) this.setState({ bw }); };
+    this._at = setInterval(this._align, 500); window.addEventListener("resize", this._align); setTimeout(this._align, 100);
+  }
+  componentWillUnmount() {
+    clearInterval(this._at); clearTimeout(this._ht); window.removeEventListener("resize", this._align);
+    window.removeEventListener("scroll", this._onScroll);
+    window.removeEventListener("resize", this._onResize);
+    document.removeEventListener("keydown", this._onKey);
+    document.removeEventListener("mousedown", this._onDown);
+  }
+  renderVals() {
+    const a = this.props.active || "", sub = this.props.sub || "", st = this.state, wide = st.w >= WIDE;
+    const c = CN[a] || CN[""];
+    const ACT = "color-mix(in oklch, #F36D1C 55%, #000)";
+    const tabs = ["Why", "What", "Who", "Where", "How", "When"].map((l) => {
+      const k = l.toLowerCase(), cur = k === a, d = CN[k];
+      const items = [{ label: l, href: PG(l), weight: 500 }].concat(d.tabs.filter(([, anc, , pg]) => anc || pg).map(([lab, anc, , pg]) => ({ label: lab, href: pg || PG(l) + "#" + anc, weight: 300 })));
+      return { label: l, href: PG(l), weight: cur ? 500 : 300, color: cur ? ACT : "#666666", ariaCurrent: cur ? "page" : "false", items, open: st.hov === k, enter: () => { clearTimeout(this._ht); this.setState({ hov: k }); } };
+    });
+    return {
+      barRef: (el) => { this._bar = el; },
+      title: "About", subtitle: c.subtitle, hoverIn: () => clearTimeout(this._ht), hoverOut: () => { clearTimeout(this._ht); this._ht = setTimeout(() => this.setState({ hov: null }), 200); }, hasSubtitle: !!c.subtitle, titleHref: ABOUT,
+      navLabel: c.title + " sections", tabs,
+      brandMin: wide ? "120px" : "0px", brandW: wide && st.bw ? st.bw + "px" : "auto", identitySub: "About", pickOpen: !!st.pick, pickExpanded: st.pick ? "true" : "false", pickRot: st.pick ? "180deg" : "0deg", togglePick: () => this.setState((s) => ({ pick: !s.pick })), picks: [["", "About", "Overview", ABOUT], ["why", "Why", "Purpose"], ["what", "What", "Activities"], ["who", "Who", "People"], ["where", "Where", "Locations"], ["how", "How", "Methods"], ["when", "When", "Timeline"]].map(([k, l, s2, h]) => ({ label: l, sub: s2, href: h || PG(l), current: k === a ? "page" : "false", weight: k === a ? 500 : 300 })), isWide: wide, isNarrow: !wide,
+      menuOpen: !wide && st.menu, menuExpanded: st.menu ? "true" : "false",
+      toggleMenu: () => this.setState((s) => ({ menu: !s.menu })), closeMenu: () => this.setState({ menu: false }),
+      contactOpen: st.contactOpen,
+      openContact: () => this.setState({ contactOpen: true, menu: false }),
+      closeContact: () => this.setState({ contactOpen: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

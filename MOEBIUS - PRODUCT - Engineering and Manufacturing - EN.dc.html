@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>MOEBIUS Engineering and Manufacturing | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoebiusNav" active="overview" hint-size="100%,49px"></dc-import>
+  <dc-import name="BrandManufacturing" brand="MOEBIUS" walk="moebius" walk-start="{{ opening }}" walk-chapter="{{ chapter }}" hint-size="100%,1800px"></dc-import>
+  <div style="height:64px;"></div>
+  <sc-if value="{{ fullPage }}" hint-placeholder-val="{{ true }}">
+  <dc-import name="ContentSections" brand="MOEBIUS" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOEBIUS" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MOEBIUS" accent="var(--color-brand-moebius)" hint-size="100%,520px"></dc-import>
+  </sc-if>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;opening&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Station by station&quot;,&quot;Whole line&quot;,&quot;Guided tour&quot;],&quot;default&quot;:&quot;Station by station&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Factory walk&quot;},&quot;chapter&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Production&quot;,&quot;Testing&quot;,&quot;To site&quot;,&quot;Traceability&quot;,&quot;Circularity&quot;],&quot;default&quot;:&quot;Production&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Factory walk&quot;},&quot;pageFocus&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Full page&quot;,&quot;Walk only&quot;],&quot;default&quot;:&quot;Full page&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Page&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const O = { 'Station by station': 'station', 'Whole line': 'line', 'Guided tour': 'tour' };
+    const C = { 'Production': 'prod', 'Testing': 'test', 'To site': 'home', 'Traceability': 'trace', 'Circularity': 'circ' };
+    return {
+      opening: O[this.props.opening ?? 'Station by station'] || 'station',
+      chapter: C[this.props.chapter ?? 'Production'] || 'prod',
+      fullPage: (this.props.pageFocus ?? 'Full page') !== 'Walk only',
+    };
+  }
+}
+</script>
+</body>
+</html>

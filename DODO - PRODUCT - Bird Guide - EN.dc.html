@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>DODO Bird Guide | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  ::placeholder { color:var(--color-grey-70); opacity:1; }
+  input:disabled, select:disabled, textarea:disabled { color:var(--color-grey-40); }
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  select:focus, input:focus { outline:none; border-color:var(--color-grey-70); }
+  .dodo-chip:hover { border-color:var(--color-text-primary) !important; color:var(--color-text-primary) !important; }
+  .dodo-species:hover { border-color:var(--color-grey-70) !important; }
+  .dodo-species:hover .dodo-species-t { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="DodoNav" active="guide" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="DODO" rgb="229,183,59" title="Know who may be sharing your roof." intro="Choose a country, month and habitat." slot="dodo-bird-guide-hero" shot="DODO · Bird Guide · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:20px;">DODO &#183; <span style="color:var(--color-text-primary);">Europe Bird Guide</span></div>
+    <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">DODO shows relevant roof, cavity and ledge-nesting birds, how they live, when they usually nest and what to do before closing the solar-panel edge.</p>
+  </section>
+
+  <!-- SELECTOR -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+    <div class="emon-card"  style="">
+      <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;padding:24px 28px;border-bottom:1px solid var(--color-divider);background:var(--color-card-dodo);">
+        <div>
+          <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Country</label>
+          <select onChange="{{ onCountry }}" class="emon-input" style="height:44px;min-width:200px;padding:0 12px;font-family:var(--font-web);;font-size:var(--web-input-size);background:#FFFFFF;font-weight:var(--web-input-weight);">
+            <sc-for list="{{ countryOptions }}" as="o" hint-placeholder-count="5"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Month</label>
+          <select onChange="{{ onMonth }}" class="emon-input" style="height:44px;min-width:160px;padding:0 12px;font-family:var(--font-web);;font-size:var(--web-input-size);background:#FFFFFF;font-weight:var(--web-input-weight);">
+            <sc-for list="{{ monthOptions }}" as="o" hint-placeholder-count="12"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+          </select>
+        </div>
+        <div style="flex:1;min-width:260px;">
+          <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Habitat</label>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            <sc-for list="{{ habitatChips }}" as="h" hint-placeholder-count="6">
+              <button class="dodo-chip" onClick="{{ h.onClick }}" style="cursor:pointer;font-family:inherit;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ h.color }};border:1px solid {{ h.border }};background:{{ h.bg }};padding:7px 13px;border-radius:8px;">{{ h.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      <div style="padding:22px 28px;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;">
+        <div style="display:flex;flex-wrap:wrap;gap:8px 20px;">
+          <sc-for list="{{ seasonKey }}" as="k" hint-placeholder-count="4">
+            <div style="display:flex;gap:8px;align-items:center;"><span style="width:9px;height:9px;border-radius:50%;border:1px solid var(--color-grey-40);background:{{ k.color }};"></span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ k.label }}</span></div>
+          </sc-for>
+        </div>
+        <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ resultCount }} species shown for {{ contextLabel }} &#183; Indicative data</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIES CARDS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px;">
+      <sc-for list="{{ species }}" as="s" hint-placeholder-count="9">
+        <div class="emon-card dodo-species" style="display:flex;flex-direction:column;">
+          <div style="aspect-ratio:16/10;background:var(--color-card-dodo);position:relative;border-radius:12px;overflow:hidden;">
+            <image-slot id="{{ s.slot }}" shape="rounded" radius="12" placeholder="{{ s.name }}"></image-slot>
+            <span style="position:absolute;top:10px;left:10px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);background:{{ s.statusColor }};border:1px solid var(--color-grey-40);padding:4px 9px;">{{ s.status }}</span>
+          </div>
+          <div style="padding:22px 20px;display:flex;flex-direction:column;gap:10px;flex:1;">
+            <div>
+              <div class="dodo-species-t" style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ s.name }}</div>
+              <div style="font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ s.latin }}</div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11px;font-weight:300;color:var(--color-text-primary);">
+              <span><span style="font-weight:700;color:var(--color-text-primary);">Nests</span> {{ s.window }}</span>
+              <span><span style="font-weight:700;color:var(--color-text-primary);">Nest</span> {{ s.nest }}</span>
+            </div>
+            <p style="margin:0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);flex:1;max-width:760px;">{{ s.why }}</p>
+            <div style="background:var(--color-surface-info);border-radius:12px;padding:8px 12px;">
+              <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">DODO guidance</span>
+              <p style="margin:4px 0 0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);max-width:760px;">{{ s.guidance }}</p>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:20px;background:var(--color-surface-info);border-radius:12px;padding:14px 20px;max-width:900px;"><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;"><span style="font-weight:700;color:var(--color-text-primary);">Guidance only.</span> Species, nesting windows and likelihood bands are indicative and do not change by country. Local law applies: active nests, eggs and dependent young may be protected. Check your national or regional rules before any work.</p></div>
+    <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-text-primary);max-width:900px;line-height:var(--web-min-lh);">Likelihood bands combine species range, habitat and typical seasonal activity. A digital selector cannot confirm an exact species or replace a site inspection. Always inspect before closing the edge and follow local law on active nests, eggs and dependent young.</p>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+    <div style="background:var(--color-surface-secondary);border-radius:12px;padding:56px;color:var(--color-text-primary);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;">
+      <div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Found signs on <span style="color:#8E8E8E;">your roof?</span></h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Check timing and the right QUILL, then let a DODO specialist confirm the roof and assign an installer.</p>
+      </div>
+      <a href="DODO - PRODUCT - Calculator - EN.dc.html" style="font-size:var(--cta-font,16px);padding:0 26px;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--radius-btn);font-weight:700;white-space:nowrap;">Calculate what I need</a>
+    </div>
+  </section>
+
+  <dc-import name="ContentSections" brand="DODO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="DODO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="DODO" accent="var(--color-brand-dodo)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const COUNTRIES = { nl: "Netherlands", be: "Belgium", de: "Germany", fr: "France", uk: "United Kingdom" };
+const HABITATS = ["Urban", "Suburban", "Coastal", "Rural", "Agricultural", "Industrial"];
+
+// peak = months of active nesting; habitats it uses
+const SPECIES = [
+  { name: "House sparrow", latin: "Passer domesticus", window: "Mar\u2013Aug", nest: "Cavity", peak: [3,4,5,6,7,8], habitats: ["Urban","Suburban","Rural","Agricultural"], why: "Small repeated openings beneath arrays resemble traditional eaves and tile cavities. Chirping groups and grass strands are typical signs.", guidance: "Provide sparrow terraces or grouped nestboxes nearby. Preserve colonies; never close active entrances." },
+  { name: "Common starling", latin: "Sturnus vulgaris", window: "Apr\u2013Jul", nest: "Cavity", peak: [4,5,6,7], habitats: ["Urban","Suburban","Rural","Agricultural"], why: "Warm roof cavities and panel gaps offer sheltered nesting close to grassland feeding.", guidance: "Use starling-sized boxes where suitable. Established cavity sites may be traditional and legally protected while active." },
+  { name: "Feral pigeon", latin: "Columba livia domestica", window: "Year-round", nest: "Ledge / platform", peak: [1,2,3,4,5,6,7,8,9,10,11,12], habitats: ["Urban","Suburban","Industrial"], why: "Large panel gaps, dry ledges and warm urban roofs offer shelter close to food. Cooing, droppings and bulky twigs are common.", guidance: "Inspect carefully and close only when inactive. Standard boxes are unsuitable; focus on exclusion timing and specialist advice for colonies." },
+  { name: "Common swift", latin: "Apus apus", window: "May\u2013Aug", nest: "Cavity (high)", peak: [5,6,7,8], habitats: ["Urban","Suburban"], why: "High arrays and roof cavities can resemble traditional swift access points. Screaming parties near the roof are a strong sign.", guidance: "Known swift sites need exceptional care. Provide sited swift boxes or integrated swift bricks and retain established access." },
+  { name: "House martin", latin: "Delichon urbicum", window: "May\u2013Sep", nest: "Mud cup", peak: [5,6,7,8,9], habitats: ["Urban","Suburban","Rural"], why: "Sheltered eaves and array edges near open feeding areas attract mud-nest colonies.", guidance: "Do not obstruct active mud nests. Artificial martin cups may suit the same area after expert advice." },
+  { name: "Western jackdaw", latin: "Coloeus monedula", window: "Mar\u2013Jun", nest: "Cavity (large)", peak: [3,4,5,6], habitats: ["Urban","Suburban","Rural","Agricultural"], why: "Large roof gaps and high arrays may attract exploratory birds near colonies. Twigs and loud calls are conspicuous.", guidance: "Do not rely on a small birdhouse. Use specialist assessment for established building colonies and large nests." },
+  { name: "Black redstart", latin: "Phoenicurus ochruros", window: "Apr\u2013Jul", nest: "Ledge / recess", peak: [4,5,6,7], habitats: ["Urban","Industrial","Coastal"], why: "Industrial roofs and solar structures create sheltered recesses similar to rocky ledges.", guidance: "Provide open-fronted boxes or ledge habitat in a protected location. Check regional conservation guidance." },
+  { name: "Barn swallow", latin: "Hirundo rustica", window: "Apr\u2013Sep", nest: "Open cup", peak: [4,5,6,7,8,9], habitats: ["Rural","Agricultural"], why: "Farm buildings and sheltered structures near open feeding grounds support open-cup nests.", guidance: "Maintain access to established agricultural nesting spaces where lawful. Use dedicated cups rather than enclosed boxes." },
+  { name: "White wagtail", latin: "Motacilla alba", window: "Apr\u2013Jul", nest: "Ledge / recess", peak: [4,5,6,7], habitats: ["Industrial","Coastal","Rural"], why: "Open panel corners and industrial roofs provide sheltered platforms near feeding ground.", guidance: "Use open-fronted boxes where appropriate and maintain nearby insect-rich habitat." },
+  { name: "Eurasian tree sparrow", latin: "Passer montanus", window: "Apr\u2013Aug", nest: "Cavity", peak: [4,5,6,7,8], habitats: ["Rural","Agricultural"], why: "Rural roofs and sheltered panel edges offer cavities close to seed and insect resources.", guidance: "Use species-appropriate small-hole nestboxes in rural habitat. Check local conservation status before work." },
+  { name: "Wood pigeon", latin: "Columba palumbus", window: "Apr\u2013Sep", nest: "Platform", peak: [4,5,6,7,8,9], habitats: ["Suburban","Rural","Agricultural"], why: "Wide high-mounted arrays or quiet roof corners may be investigated where trees and gardens provide food.", guidance: "Use habitat planting rather than a cavity box. Do not remove an active nest; confirm local rules." },
+  { name: "Eurasian wren", latin: "Troglodytes troglodytes", window: "Apr\u2013Jul", nest: "Domed / recess", peak: [4,5,6,7], habitats: ["Suburban","Rural","Coastal"], why: "Dense cover and concealed recesses near arrays can offer nesting sites.", guidance: "Dense native planting and small open-fronted boxes offer alternatives. Do not disturb a concealed active nest." },
+];
+
+class Component extends DCLogic {
+  state = { country: "nl", month: (new Date()).getMonth() + 1, habitat: "Urban" };
+  renderVals() {
+    const st = this.state;
+    const m = st.month;
+    const ranked = SPECIES.map(s => {
+      const usesHab = s.habitats.includes(st.habitat);
+      const inPeak = s.peak.includes(m);
+      const shoulder = s.peak.includes(m === 1 ? 12 : m - 1) || s.peak.includes(m === 12 ? 1 : m + 1);
+      let status, statusColor, rank;
+      if (usesHab && inPeak) { status = "Active nesting"; statusColor = "var(--color-brand-dodo)"; rank = 0; }
+      else if (usesHab && shoulder) { status = "Preparing / fledging"; statusColor = "#FFEB9E"; rank = 1; }
+      else if (usesHab) { status = "Possible"; statusColor = "#E3E3E3"; rank = 2; }
+      else if (inPeak) { status = "Possible"; statusColor = "#E3E3E3"; rank = 3; }
+      else { status = "Lower risk"; statusColor = "#F4F4F4"; rank = 4; }
+      return { ...s, status, statusColor, rank, slot: "dodo-bird-" + s.latin.split(" ").join("-").toLowerCase() };
+    }).sort((a, b) => a.rank - b.rank);
+
+    return {
+      countryOptions: Object.keys(COUNTRIES).map(k => ({ value: k, label: COUNTRIES[k], selected: k === st.country })),
+      monthOptions: MONTHS.map((label, i) => ({ value: (i + 1).toString(), label, selected: (i + 1) === m })),
+      habitatChips: HABITATS.map(label => ({
+        label,
+        onClick: () => this.setState({ habitat: label }),
+        color: st.habitat === label ? "#4F4F4E" : "#4F4F4E",
+        border: st.habitat === label ? "var(--color-brand-dodo)" : "#DDDDDD",
+        bg: st.habitat === label ? "#F4F4F4" : "#FFFFFF",
+      })),
+      onCountry: (e) => this.setState({ country: e.target.value }),
+      onMonth: (e) => this.setState({ month: parseInt(e.target.value, 10) }),
+      seasonKey: [
+        { label: "Active nesting", color: "var(--color-brand-dodo)" },
+        { label: "Preparing / fledging", color: "#FFEB9E" },
+        { label: "Possible", color: "#E3E3E3" },
+        { label: "Lower risk", color: "#F4F4F4" },
+      ],
+      contextLabel: COUNTRIES[st.country] + ", " + MONTHS[m - 1] + ", " + st.habitat.toLowerCase(),
+      resultCount: ranked.length,
+      species: ranked,
+    };
+  }
+}
+</script>
+</body>
+</html>

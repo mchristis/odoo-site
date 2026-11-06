@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="strohm-type.css">
+<title>Sitemap | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#F7F7F5; }
+  a { color:var(--color-text-primary); } a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);color:var(--color-text-primary);max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 96px;box-sizing:border-box;">
+  <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-grey-70);margin-bottom:12px;">Internal · draft for review</div>
+  <h1 style="margin:0 0 12px;font-size:40px;font-weight:300;line-height:1.1;">STRØHM.ENERGY <span style="font-weight:700;">sitemap</span></h1>
+  <p style="margin:0 0 20px;font-size:16px;font-weight:300;line-height:1.6;color:var(--color-text-primary);max-width:780px;">Four sections plus the site pages and the trade webshop. Every brand has an Overview and a Products page. All other brand pages come from that brand's own content and USPs.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px;">
+    <sc-for list="{{ legend }}" as="l" hint-placeholder-count="5">
+      <span style="font-size:12px;font-weight:400;padding:5px 10px;border-radius:6px;background:{{ l.bg }};color:{{ l.fg }};">{{ l.label }}</span>
+    </sc-for>
+  </div>
+
+  <sc-for list="{{ sections }}" as="s" hint-placeholder-count="6">
+    <div style="margin-bottom:40px;">
+      <div style="display:flex;align-items:baseline;gap:16px;border-bottom:2px solid var(--color-text-primary);padding-bottom:10px;margin-bottom:16px;flex-wrap:wrap;">
+        <h2 style="margin:0;font-size:24px;font-weight:700;letter-spacing:0.02em;">{{ s.name }}</h2>
+        <span style="font-size:13px;font-weight:300;color:var(--color-text-primary);">{{ s.note }}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:16px;">
+        <sc-for list="{{ s.groups }}" as="g" hint-placeholder-count="4">
+          <div style="background:#FFFFFF;border-radius:var(--radius-card);padding:20px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:4px;">
+              <span style="font-size:17px;font-weight:700;">{{ g.name }}</span>
+              <span style="font-size:11px;font-weight:300;color:var(--color-grey-70);">{{ g.count }}</span>
+            </div>
+            <div style="font-size:12px;font-weight:300;color:var(--color-text-primary);margin-bottom:12px;min-height:1em;">{{ g.sub }}</div>
+            <sc-for list="{{ g.pages }}" as="p" hint-placeholder-count="4">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:7px 0 7px {{ p.indent }};border-top:1px solid #EEEEEE;">
+                <span style="font-size:13.5px;font-weight:{{ p.weight }};line-height:1.35;color:#333331;">{{ p.t }}</span>
+                <span style="flex:none;font-size:10.5px;font-weight:400;padding:2px 7px;border-radius:5px;background:{{ p.bg }};color:{{ p.fg }};white-space:nowrap;">{{ p.label }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-for>
+
+  <div style="background:#FFFFFF;border-radius:var(--radius-card);padding:24px;">
+    <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Archive candidates</div>
+    <div style="font-size:13.5px;font-weight:300;line-height:1.6;color:var(--color-text-primary);">{{ archive }}</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const ST = {
+  ok:   { label: "Exists", bg: "#E4F3EC", fg: "#2E6B4F" },
+  done: { label: "Rewritten", bg: "#1E1E1E", fg: "#FFFFFF" },
+  mrg:  { label: "Merge", bg: "#FFEB9E", fg: "#5B4A00" },
+  wait: { label: "Awaiting content", bg: "#EEEEEE", fg: "#5F5E5E" },
+  up:   { label: "Upload needed", bg: "#CCEDF0", fg: "#1F5A60" },
+};
+const p = (t, s, sub) => ({ t, s, sub: !!sub });
+const G = (name, sub, pages) => ({ name, sub, pages });
+
+const SECTIONS = [
+  { name: "SITE", note: "Site-wide pages", groups: [
+    G("STROHM.ENERGY", "", [ p("Home (Strohm-Landing-Page design)", "up"), p("About", "ok"), p("Find an installer", "ok"), p("Partner programme", "ok"), p("News · Knowledge · References", "ok"), p("Login · Register", "ok"), p("Privacy · Terms", "ok") ]),
+  ] },
+  { name: "PRODUCTS", note: "Overview + Products for every brand; other pages from the brand's content", groups: [
+    G("ANDO", "Solar panels · USP: factory flash test and panel record", [ p("Overview", "ok"), p("Products (AALTO · MIES · FOSTER · NOUVEL)", "done"), p("Commissioning (scan sheet, flash data)", "ok"), p("Ownership and warranty", "done"), p("Responsibility", "ok"), p("Knowledge base \u2192 shared knowledge", "mrg") ]),
+    G("LINA", "Vertical solar · concept (was VERT)", [ p("Overview", "done"), p("Products", "wait") ]),
+    G("MOEBIUS", "Inverters · USP: one-scan commissioning, no screen", [ p("Overview", "done"), p("Products", "done"), p("PIXIE microinverters", "done", 1), p("Commissioning", "done"), p("Ownership", "done"), p("Responsibility", "done") ]),
+    G("SYNQ", "Smart metering · USP: one installation record", [ p("Overview", "done"), p("Products", "done"), p("NEXUS energy hub", "done", 1), p("Install and commission", "done"), p("Ownership and support", "done") ]),
+    G("FLUXX", "Energy storage · 148 master rows", [ p("Overview", "up"), p("Products (BOWI, KUBUZ, PICO, WORK …)", "up") ]),
+    G("OZZY", "Energy switching", [ p("Overview", "ok"), p("Products (NUBO · RUGO · FLIP · OCTO · KATTO · LOOP)", "wait"), p("Ask OZZY", "ok") ]),
+    G("NENDO", "Heat pumps", [ p("Overview", "ok"), p("Products", "wait"), p("CORE", "ok", 1) ]),
+    G("FEU", "Radiant heating", [ p("Overview (FEU Home)", "ok"), p("Products", "wait") ]),
+    G("AIRO", "Airflow systems", [ p("Overview", "ok"), p("Products", "ok"), p("Solutions", "ok"), p("Projects", "ok"), p("Commissioning", "ok") ]),
+    G("AGRI (Agri-PV)", "Code, colour, subtitle missing · USP: crop first", [ p("Overview (from Systems + Applications)", "mrg"), p("Your crop (Applications)", "ok"), p("Arable · Berries · Livestock · Orchards · Tropical · Vegetables", "ok", 1), p("Crop selector", "ok"), p("Structures (Products): HEDGE · TWIG", "ok"), p("HEDGE 1V · 2V", "ok", 1), p("TWIG CN · GB-2P · SP-1P", "ok", 1), p("Farm and environment: Biodiversity · Water and climate · Hybrid energy", "ok"), p("Project: Process + Engineering + Calculator", "mrg"), p("Monitoring (EMON)", "ok"), p("Knowledge + FAQ", "mrg") ]),
+    G("MOX", "Structural mounting · USP: one coordinated structure, not parts · 5 categories match the master", [ p("Overview", "ok"), p("Products: What are you building?", "ok"), p("Architectural: OMBRAS · PORCH · PERGOLA · FENCE · FACADE · BIPV", "ok", 1), p("Carports and parking: EEPARK · CURVE · CLASSIC · Public bikeport", "ok", 1), p("Public and movement: ARCADE · CANOPY · Bus shelter", "ok", 1), p("Utility and special: Noise barrier · Floating · Utility fence · Containerised", "ok", 1), p("Configurator", "ok"), p("Engineering", "ok") ]),
+    G("DODO", "Bird and installation protection", [ p("Overview (DODO Home)", "ok"), p("Products", "ok"), p("RIG", "ok", 1), p("Protect birds · Improve drainage · Install faster", "ok"), p("Guides: birds · cables", "ok"), p("Calculator", "ok"), p("Installers · Commissioning · Support", "mrg") ]),
+    G("SHELTR", "Asset protection", [ p("Overview (Landing)", "ok"), p("Products", "ok"), p("CARA · HUSH · KUBO", "ok", 1), p("Find your SHELTR", "ok"), p("Install and register", "ok"), p("Engineering · Support", "ok") ]),
+    G("WURK", "Installation equipment", [ p("Overview", "ok"), p("Products", "ok"), p("Kits · Selector", "ok"), p("Inspection", "ok"), p("Knowledge · Support", "ok") ]),
+    G("TOGU", "Electrical connectivity · paused (advisory)", [ p("Overview", "ok"), p("Products", "ok"), p("Solar cable and CPR", "ok") ]),
+    G("GLOW", "Solar lighting · 39 master rows", [ p("Overview", "up"), p("Products", "up") ]),
+    G("XOOM", "EV charging · 33 master rows", [ p("Overview", "up"), p("Products", "up") ]),
+    G("OGO", "Water systems · 12 master rows", [ p("Overview", "up"), p("Products", "up") ]),
+    G("CHILL", "Energy-integrated infrastructure · 11 rows", [ p("Overview", "up"), p("Products", "up") ]),
+    G("PROP", "Wind generation · 11 master rows", [ p("Overview", "up"), p("Products", "up") ]),
+    G("MUKI", "Energy sets · not in master", [ p("Overview", "up"), p("Products", "up") ]),
+  ] },
+  { name: "PROJECTS", note: "", groups: [
+    G("Projects", "", [ p("Overview", "ok"), p("Residential", "ok"), p("Commercial", "ok"), p("Utility", "ok"), p("Engineering", "ok"), p("Lab and R&D", "ok"), p("Product training", "wait"), p("Case study (template)", "ok") ]),
+  ] },
+  { name: "SYSTEMS", note: "The 7 approved systems", groups: [
+    G("EMON", "Energy management", [ p("Overview", "ok"), p("Home · Pro · Commercial · Industrial", "ok"), p("Save and earn", "ok"), p("Commissioning", "ok") ]),
+    G("PUSH", "Installer growth", [ p("Overview", "wait"), p("Lead generators", "wait", 1) ]),
+    G("DEPOT", "Supply infrastructure", [ p("Overview", "wait"), p("Stock partner", "ok", 1) ]),
+    G("KALK · TRIBE · PACT · KERN", "Calculation · partners · group purchasing · operations", [ p("Overview for each", "wait") ]),
+  ] },
+  { name: "FINANCE", note: "Only confirmed offers and contracted partners", groups: [
+    G("Finance", "", [ p("Lease and funds", "ok"), p("Invest", "wait"), p("Cooperatives", "wait"), p("Product Angel", "wait") ]),
+  ] },
+  { name: "SHOP", note: "Trade only, after login", groups: [
+    G("Webshop", "", [ p("Webshop home", "ok"), p("Catalogue", "ok"), p("How it works", "ok"), p("Portal (Portal v2)", "ok"), p("Brand catalogues (19)", "ok"), p("EMON MON VISTA", "ok") ]),
+  ] },
+];
+
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      legend: Object.values(ST),
+      sections: SECTIONS.map((s) => ({ ...s, groups: s.groups.map((g) => ({ ...g, count: g.pages.length + (g.pages.length === 1 ? " item" : " items"), pages: g.pages.map((x) => ({ t: x.t, ...ST[x.s], indent: x.sub ? "16px" : "0", weight: x.sub ? 300 : 400 })) })) })),
+      archive: "Old MOEBIUS pages (about 25) · 7 old SYNQ feature pages · Homepage and Landing (after the new home) · Segment pages (3) + SegmentPage · Portal (v1) · Account · System - EMON · ProductBrand template wrappers (DODO, FEU, SHELTR, WURK, AIRO) · 12 brand navs + NavBar + WebshopNav · export copies (standalone, print) · site/ and website-export/ · Brand Page Blueprint.",
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>SYNQ Installation | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  html { scroll-behavior:smooth; }
+  section[id] { scroll-margin-top:96px; }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="SynqNav" active="install" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="SYNQ" rgb="89,143,148" title="The installer scans. EMON remembers." intro="Conventional commissioning means finding serial numbers, typing article codes, downloading manuals and registering warranties by hand." slot="synq-install-and-commission-hero" shot="SYNQ · Install and Commission · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;"><a href="SYNQ - PRODUCT - Overview - EN.dc.html" style="color:var(--color-text-primary);">SYNQ</a> · Install and commission</div>
+    <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#898989;max-width:700px;">Each active SYNQ device has its own digital identity. The installer scans a QR code or taps an NFC tag, and EMON recognises the rest.</p>
+  </section>
+
+  <section id="identify" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:40px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">NFC · tap to identify</div>
+        <sc-for list="{{ nfc }}" as="n" hint-placeholder-count="9">
+          <div style="padding:11px 0;border-top:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ n }}</div>
+        </sc-for>
+      </div>
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">QR · scan to commission</div>
+        <sc-for list="{{ qr }}" as="q" hint-placeholder-count="4">
+          <div style="padding:11px 0;border-top:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ q }}</div>
+        </sc-for>
+        <div style="background:var(--color-card-synq);border-radius:12px;padding:24px;margin-top:28px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">Even before power-up</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;">The NFC tag is passive, so product information, manuals and support routes can be reached while the device is switched off. Scanning always opens the workflow for the exact hardware installed. Live readings require EMON.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="specific" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <h2 style="margin:0 0 10px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The installer only adds <span style="font-weight:300;">what is specific.</span></h2>
+      <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#898989;max-width:680px;">The device supplies its own identity. The installer adds the installation-specific details, such as the location, the circuit and the CT assignment, and never re-enters what the product already knows.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <sc-for list="{{ recognised }}" as="r" hint-placeholder-count="8">
+          <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:8px 14px;background:var(--color-card-synq);border-radius:18px;color:var(--color-text-primary);">{{ r }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="record" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px;align-items:start;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">Digital installation record</div>
+        <h2 style="margin:0 0 12px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Every installation <span style="font-weight:300;">documents itself.</span></h2>
+        <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#898989;max-width:760px;">During commissioning, EMON creates the digital installation record and links it permanently to that exact product.</p>
+        <h3 style="margin:28px 0 8px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">The next installer arrives informed.</h3>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;max-width:760px;">Circuit names, CT locations, meter assignments, phase and current ratings are recorded against the serial number. Service, extension or fault-finding starts from the installation as it is, not from a folder of unrelated manuals.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:0 24px;">
+        <sc-for list="{{ fields }}" as="f" hint-placeholder-count="16">
+          <div style="padding:11px 0;border-top:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ f }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="photos" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="background:var(--color-card-synq);border-radius:12px;padding:32px;">
+      <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">Photographs for the record</div>
+      <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;margin-bottom:20px;">Four photographs complete the installation record.</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px;">
+        <sc-for list="{{ uploads }}" as="u" hint-placeholder-count="4">
+          <div role="img" aria-label="{{ u.label }}" data-slot="{{ u.slot }}" style="aspect-ratio:4/3;border:1.5px dashed var(--color-grey-40);border-radius:12px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#898989;">{{ u.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:88px;"></div>
+  <dc-import name="AndoPattern" brand="SYNQ" items="scansheet,steps" hint-size="100%,600px"></dc-import>
+
+  <div style="height:32px;"></div>
+  <dc-import name="ContentSections" brand="SYNQ" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="SYNQ" photo-slot-id="synq-install-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="SYNQ" accent="var(--color-brand-synq)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      nfc: ["Product information and model", "Serial number", "Firmware version", "Calibration", "Warranty type", "Certificates", "Manuals", "Installation history", "EMON registration and installer notes"],
+      qr: ["Opens the correct commissioning workflow in EMON", "No searching for the correct product or version", "No downloading the wrong documentation", "Always starts with the exact hardware installed"],
+      recognised: ["Article code", "Product model", "Serial number", "Firmware", "Warranty type", "Calibration", "Communication protocol", "Certificates and documentation"],
+      fields: ["Location in the building", "Distribution board", "Room", "GPS", "Photographs", "Electrical drawings", "CT locations", "Meter assignments", "Circuit names", "Current ratings", "Voltage", "Phase", "Cable routes", "Installer", "Commissioning date", "Warranty, certificates and firmware"],
+      uploads: [
+        { label: "Meter label, serial and QR", slot: "synq-rec-photo-label" },
+        { label: "Device in the distribution board", slot: "synq-rec-photo-board" },
+        { label: "CT clamp at the connection point", slot: "synq-rec-photo-ct" },
+        { label: "Meter cabinet, full view", slot: "synq-rec-photo-cabinet" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

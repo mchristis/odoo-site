@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>Design System Audit | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; }
+  a { text-decoration:none; color:var(--color-text-primary); }
+  a:hover { color:var(--color-text-primary); }
+  doc-page:not(:defined) { visibility:hidden; }
+</style>
+<script src="./doc-page.js"></script>
+</helmet>
+<doc-page margin="0.7in">
+
+  <div style="font-family:var(--font-web);color:var(--color-text-primary);font-weight:300;line-height:1.5;">
+
+    <div style="border-bottom:1px solid var(--color-divider);padding-bottom:20px;margin-bottom:32px;">
+      <div style="font-size:10px;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">STRØHM.ENERGY &#183; Design system review</div>
+      <h1 style="font-size:34px;font-weight:300;letter-spacing:-0.02em;line-height:1.1;margin:0 0 10px;">Website Design System v2</h1>
+      <p style="font-size:16px;font-weight:300;color:var(--color-text-primary);margin:0 0 18px;max-width:56ch;">Audit against EMON / STRØHM.ENERGY Design System v1.0, plus a gap check. Source: webDesign-system.pdf, 10 sections.</p>
+      <div style="display:flex;gap:32px;flex-wrap:wrap;font-size:12px;color:var(--color-text-primary);">
+        <div><b style="font-weight:700;color:var(--color-text-primary);">Reviewed</b> &#183; 1 August 2026</div>
+        <div><b style="font-weight:700;color:var(--color-text-primary);">Scope</b> &#183; Website + webshop only</div>
+        <div><b style="font-weight:700;color:var(--color-text-primary);">Affected files</b> &#183; ~279 in this project</div>
+      </div>
+    </div>
+
+    <!-- VERDICT -->
+    <div style="background:var(--color-surface-card);border-radius:16px;padding:28px 32px;margin-bottom:36px;break-inside:avoid;">
+      <div style="font-size:10px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">Verdict</div>
+      <p style="font-size:17px;font-weight:300;line-height:1.55;margin:0 0 14px;">v2 is a genuine step forward and it is <b style="font-weight:700;">not a replacement for v1</b>. It covers the web layer only, and it silently reverses three of v1's founding rules.</p>
+      <p style="font-size:15px;font-weight:300;line-height:1.6;color:var(--color-text-primary);margin:0;">It closes the single worst v1 gap &mdash; the truncated brand hex codes &mdash; with a full 22-brand ramp, and it finally specifies a type scale, button states, and a spacing scale. But it drops the app system, the copy voice model, and the input states, and it introduces internal contradictions that will produce inconsistent builds until they are resolved. Treat it as <b style="font-weight:700;color:var(--color-text-primary);">v2 of the web layer, sitting on top of v1</b>, and state that explicitly in the file.</p>
+    </div>
+
+    <!-- WHAT CHANGED -->
+    <h2 style="font-size:11px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-text-primary);padding-bottom:8px;border-bottom:1px solid var(--color-divider);margin:0 0 20px;">01 &#183; What changed</h2>
+
+    <h3 style="font-size:19px;font-weight:400;margin:0 0 8px;">Neutrals: the whole canvas moves</h3>
+    <p style="font-size:14px;font-weight:300;line-height:1.6;color:var(--color-text-primary);margin:0 0 16px;">Every surface value in the project changes. This is the largest mechanical change in v2.</p>
+    <div style="border:1px solid var(--color-divider);border-radius:16px;overflow:hidden;margin:0 0 28px;break-inside:avoid;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:12px 16px;background:var(--color-surface-card);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-primary);">Role</th>
+            <th style="text-align:left;padding:12px 16px;background:var(--color-surface-card);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-primary);">v1.0</th>
+            <th style="text-align:left;padding:12px 16px;background:var(--color-surface-card);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-primary);">v2</th>
+            <th style="text-align:left;padding:12px 16px;background:var(--color-surface-card);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-primary);">Impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ neutrals }}" as="n" hint-placeholder-count="6">
+            <tr style="break-inside:avoid;">
+              <td style="padding:11px 16px;border-top:1px solid #D9D9D9;vertical-align:top;font-weight:700;">{{ n.role }}</td>
+              <td style="padding:11px 16px;border-top:1px solid #D9D9D9;vertical-align:top;color:var(--color-text-primary);">{{ n.v1 }}</td>
+              <td style="padding:11px 16px;border-top:1px solid #D9D9D9;vertical-align:top;color:var(--color-text-primary);">{{ n.v2 }}</td>
+              <td style="padding:11px 16px;border-top:1px solid #D9D9D9;vertical-align:top;color:var(--color-text-primary);">{{ n.impact }}</td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:19px;font-weight:400;margin:0 0 8px;">Product colours: 22 brands, fully specified</h3>
+    <p style="font-size:14px;font-weight:300;line-height:1.6;color:var(--color-text-primary);margin:0 0 16px;">v1 listed 12 truncated or unknown hex codes. v2 gives all 22 brands a 10&ndash;100 ramp with a token path. Seven brands changed value, one of them radically.</p>
+    <div style="border:1px solid var(--color-divider);border-radius:16px;overflow:hidden;margin:0 0 16px;break-inside:avoid;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:12px 16px;background:var(--color-surface-card);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-primary);">Brand</th>
+            <th style="text-align:left;padding:12px 16px;background:var(--color-surface-card);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-primary);">v1.0</th>
+            <th style="text-align:left;padding:12px 16px;background:var(--color-surface-card);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-primary);">v2</th>
+            <th style="text-align:left;padding:12px 16px;background:var(--color-surface-card);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-primary);">Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ brands }}" as="b" hint-placeholder-count="8">
+            <tr style="break-inside:avoid;">
+              <td style="padding:11px 16px;border-top:1px solid #D9D9D9;font-weight:700;">{{ b.name }}</td>
+              <td style="padding:11px 16px;border-top:1px solid #D9D9D9;color:var(--color-text-primary);">
+                <span style="display:inline-flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;border-radius:50%;background:{{ b.oldSwatch }};flex:none;"></span>{{ b.old }}</span>
+              </td>
+              <td style="padding:11px 16px;border-top:1px solid #D9D9D9;color:var(--color-text-primary);">
+                <span style="display:inline-flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;border-radius:50%;background:{{ b.newSwatch }};flex:none;"></span>{{ b.new }}</span>
+              </td>
+              <td style="padding:11px 16px;border-top:1px solid #D9D9D9;color:var(--color-text-primary);">{{ b.note }}</td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px;font-weight:300;line-height:1.6;color:var(--color-text-primary);margin:0 0 28px;">FLUXX is the one to escalate: pink to amber is a brand identity change, not a token correction. Confirm it is deliberate before anything ships. Also note <b style="font-weight:700;color:var(--color-text-primary);">21 of 22 brands are marked Unverified</b> &mdash; only SYNQ was sampled from real screens. The ramps are computed, so they are a starting point, not truth.</p>
+
+    <h3 style="font-size:19px;font-weight:400;margin:0 0 8px;">Three reversals of v1 rules</h3>
+    <div style="display:flex;flex-direction:column;gap:12px;margin:0 0 28px;">
+      <sc-for list="{{ reversals }}" as="r" hint-placeholder-count="3">
+        <div style="background:var(--color-surface-card);border-radius:16px;padding:20px 24px;break-inside:avoid;">
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px;">{{ r.title }}</div>
+          <div style="font-size:13px;font-weight:300;line-height:1.6;color:var(--color-text-primary);">{{ r.body }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <h3 style="font-size:19px;font-weight:400;margin:0 0 8px;">Net additions</h3>
+    <p style="font-size:14px;font-weight:300;line-height:1.6;color:var(--color-text-primary);margin:0 0 12px;">Things v1 did not have at all, and v2 does. All are welcome.</p>
+    <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 32px;--cg:12px;">
+      <sc-for list="{{ additions }}" as="a" hint-placeholder-count="6">
+        <div style="border:1px solid var(--color-divider);border-radius:16px;padding:18px 20px;break-inside:avoid;">
+          <div style="font-size:14px;font-weight:700;margin-bottom:4px;">{{ a.title }}</div>
+          <div style="font-size:13px;font-weight:300;line-height:1.55;color:var(--color-text-primary);">{{ a.body }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <!-- BLOCKERS -->
+    <h2 style="font-size:11px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-text-primary);padding-bottom:8px;border-bottom:1px solid var(--color-divider);margin:0 0 20px;break-before:page;">02 &#183; Contradictions to resolve before use</h2>
+    <p style="font-size:14px;font-weight:300;line-height:1.6;color:var(--color-text-primary);margin:0 0 20px;">Each of these will make two designers produce two different results. Fix in the file, not in conversation.</p>
+    <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--color-divider);border-radius:16px;overflow:hidden;margin:0 0 32px;">
+      <sc-for list="{{ blockers }}" as="b" hint-placeholder-count="7">
+        <div style="display:grid;grid-template-columns:28px 1fr;gap:16px;padding:18px 22px;border-bottom:1px solid #D9D9D9;break-inside:avoid;">
+          <div style="font-size:12px;font-weight:700;color:#B42318;">{{ b.n }}</div>
+          <div>
+            <div style="font-size:15px;font-weight:700;margin-bottom:4px;">{{ b.title }}</div>
+            <div style="font-size:13px;font-weight:300;line-height:1.6;color:var(--color-text-primary);">{{ b.body }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <!-- GAP CHECK -->
+    <h2 style="font-size:11px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-text-primary);padding-bottom:8px;border-bottom:1px solid var(--color-divider);margin:0 0 20px;">03 &#183; Gap check against v1's five known gaps</h2>
+    <div style="border:1px solid var(--color-divider);border-radius:16px;overflow:hidden;margin:0 0 32px;break-inside:avoid;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:12px 16px;background:var(--color-surface-card);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-primary);">v1 gap</th>
+            <th style="text-align:left;padding:12px 16px;background:var(--color-surface-card);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-primary);width:130px;">Status</th>
+            <th style="text-align:left;padding:12px 16px;background:var(--color-surface-card);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-primary);">Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ gaps }}" as="g" hint-placeholder-count="5">
+            <tr style="break-inside:avoid;">
+              <td style="padding:12px 16px;border-top:1px solid #D9D9D9;vertical-align:top;font-weight:700;">{{ g.gap }}</td>
+              <td style="padding:12px 16px;border-top:1px solid #D9D9D9;vertical-align:top;">
+                <span style="display:inline-block;font-size:10px;font-weight:400;letter-spacing:0.06em;text-transform:uppercase;padding:4px 10px;border-radius:16px;background:{{ g.bg }};color:{{ g.fg }};white-space:nowrap;">{{ g.status }}</span>
+              </td>
+              <td style="padding:12px 16px;border-top:1px solid #D9D9D9;vertical-align:top;color:var(--color-text-primary);">{{ g.detail }}</td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:19px;font-weight:400;margin:0 0 8px;">New gaps v2 opens</h3>
+    <p style="font-size:14px;font-weight:300;line-height:1.6;color:var(--color-text-primary);margin:0 0 12px;">Referenced but never specified, or present in v1 and now absent. Ordered by how soon it will block work.</p>
+    <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 32px;--cg:10px;">
+      <sc-for list="{{ newGaps }}" as="g" hint-placeholder-count="10">
+        <div style="border:1px solid var(--color-divider);border-radius:16px;padding:16px 18px;break-inside:avoid;">
+          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px;">
+            <span style="width:8px;height:8px;border-radius:50%;background:{{ g.dot }};flex:none;"></span>
+            <span style="font-size:14px;font-weight:700;">{{ g.title }}</span>
+          </div>
+          <div style="font-size:12px;font-weight:300;line-height:1.55;color:var(--color-text-primary);">{{ g.body }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <!-- ACCESSIBILITY -->
+    <h2 style="font-size:11px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-text-primary);padding-bottom:8px;border-bottom:1px solid var(--color-divider);margin:0 0 20px;break-before:page;">04 &#183; Contrast and legibility</h2>
+    <p style="font-size:14px;font-weight:300;line-height:1.6;color:var(--color-text-primary);margin:0 0 20px;">Approximate contrast ratios against the v2 primary background <b style="font-weight:700;color:var(--color-text-primary);">#FFFFFF</b>. WCAG AA needs 4.5:1 for body text, 3:1 for large text and UI borders.</p>
+    <div style="border:1px solid var(--color-divider);border-radius:16px;overflow:hidden;margin:0 0 20px;break-inside:avoid;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:12px 16px;background:var(--color-surface-card);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-primary);">Token</th>
+            <th style="text-align:left;padding:12px 16px;background:var(--color-surface-card);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-primary);">Hex</th>
+            <th style="text-align:left;padding:12px 16px;background:var(--color-surface-card);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-primary);">Approx.</th>
+            <th style="text-align:left;padding:12px 16px;background:var(--color-surface-card);font-size:10px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-primary);">Reading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ contrast }}" as="c" hint-placeholder-count="6">
+            <tr style="break-inside:avoid;">
+              <td style="padding:11px 16px;border-top:1px solid #D9D9D9;font-weight:700;">{{ c.token }}</td>
+              <td style="padding:11px 16px;border-top:1px solid #D9D9D9;color:var(--color-text-primary);">
+                <span style="display:inline-flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;border-radius:50%;background:{{ c.hex }};border:1px solid #D9D9D9;flex:none;"></span>{{ c.hex }}</span>
+              </td>
+              <td style="padding:11px 16px;border-top:1px solid #D9D9D9;font-weight:700;color:{{ c.fg }};">{{ c.ratio }}</td>
+              <td style="padding:11px 16px;border-top:1px solid #D9D9D9;color:var(--color-text-primary);">{{ c.reading }}</td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+    <div style="background:#FEF3F2;border-radius:16px;padding:20px 24px;margin:0 0 20px;break-inside:avoid;">
+      <div style="font-size:14px;font-weight:700;color:#B42318;margin-bottom:6px;">Two real failures</div>
+      <p style="font-size:13px;font-weight:300;line-height:1.6;color:#B42318;margin:0;">Text / Placeholder at var(--color-grey-70) and Text / Disabled at #C8C7C3 both fall under 3:1 on white. Placeholders carry real instruction in the registration and filter forms, so this is not cosmetic. Darken placeholder to roughly var(--color-grey-70) and keep #C8C7C3 for disabled only, where the low contrast is the intended signal.</p>
+    </div>
+    <div style="background:#FFFAEB;border-radius:16px;padding:20px 24px;margin:0 0 32px;break-inside:avoid;">
+      <div style="font-size:14px;font-weight:700;color:#B54708;margin-bottom:6px;">Thin weights at small sizes</div>
+      <p style="font-size:13px;font-weight:300;line-height:1.6;color:#B54708;margin:0;">The scale specifies Helvetica Neue <b style="font-weight:700;">Thin</b> for 12px body on mobile and 12px minimum body on desktop. Thin at 12px is close to unreadable on a standard display, and it degrades badly on Windows. Set a floor: no Thin below 24px, and use Light or Regular for anything at or under 16px.</p>
+    </div>
+
+    <!-- MIGRATION -->
+    <h2 style="font-size:11px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-text-primary);padding-bottom:8px;border-bottom:1px solid var(--color-divider);margin:0 0 20px;">05 &#183; What adoption costs in this project</h2>
+    <p style="font-size:14px;font-weight:300;line-height:1.6;color:var(--color-text-primary);margin:0 0 20px;">The webshop, brand catalogues, and portal are built against v1 values, inline. Every v1 surface token changes in v2, so this is a find-and-replace across roughly 279 files &mdash; mechanical, but not free, and it needs a visual pass afterwards because the radius change alters the character of every card.</p>
+    <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--color-divider);border-radius:16px;overflow:hidden;margin:0 0 24px;">
+      <sc-for list="{{ migration }}" as="m" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:1fr 92px;gap:16px;padding:16px 22px;border-bottom:1px solid #D9D9D9;align-items:center;break-inside:avoid;">
+          <div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:3px;">{{ m.task }}</div>
+            <div style="font-size:12px;font-weight:300;line-height:1.5;color:var(--color-text-primary);">{{ m.note }}</div>
+          </div>
+          <div style="font-size:11px;font-weight:400;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-primary);text-align:right;">{{ m.effort }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <!-- RECOMMENDATION -->
+    <div style="background:var(--color-surface-card);border-radius:16px;padding:28px 32px;break-inside:avoid;">
+      <div style="font-size:10px;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">Recommended sequence</div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:24px 1fr;gap:14px;">
+            <div style="font-size:13px;font-weight:700;color:var(--color-text-primary);">{{ s.n }}</div>
+            <div>
+              <div style="font-size:15px;font-weight:700;margin-bottom:3px;">{{ s.title }}</div>
+              <div style="font-size:13px;font-weight:300;line-height:1.6;color:var(--color-text-primary);">{{ s.body }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <p style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin:28px 0 0;">Audit produced from webDesign-system.pdf against EMON / STRØHM.ENERGY Design System v1.0, April 2026. Contrast figures are approximate and should be confirmed with a checker before sign-off.</p>
+
+  </div>
+
+</doc-page>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      neutrals: [
+        { role:"Canvas / primary bg", v1:"#F7F7F5 off-white", v2:"#FFFFFF", impact:"Every page background changes. v1's warmth is gone." },
+        { role:"Alternate section bg", v1:"not defined", v2:"#FAFAFA", impact:"New. Resolves the ad-hoc banding used today." },
+        { role:"Card / component bg", v1:"#F4F4F4 + var(--color-surface-card-mid)", v2:"#F5F5F5 single value", impact:"Two-tier card system collapses to one. Stats rows lose their darker fill." },
+        { role:"Border default", v1:"#DDDDDD", v2:"#D4D4D4", impact:"Slightly darker. Global replace." },
+        { role:"Border subtle", v1:"not defined", v2:"#D9D9D9", impact:"New hairline tier. Useful for table rows." },
+        { role:"Primary text", v1:"#4F4F4E, never true black", v2:"#4F4F4E", impact:"Reverses v1's darkest-text rule. See reversals." },
+        { role:"Secondary text", v1:"#727271 in practice", v2:"#5F5E5E", impact:"Minor shift, global replace." },
+        { role:"Input stroke", v1:"#BBBBBB default, brand on focus", v2:"not specified", impact:"Regression. See new gaps." },
+      ],
+      brands: [
+        { name:"FLUXX", old:"#FDC706", oldSwatch:"#FDC706", new:"#FDC706", newSwatch:"#FDC706", note:"Pale pink to saturated amber. Escalate \u2014 identity change, not a correction." },
+        { name:"ANDO", old:"#CDD62B", oldSwatch:"#CDD62B", new:"#CDD62B", newSwatch:"#CDD62B", note:"Same family, much more saturated." },
+        { name:"GLOW", old:"#FCDE15", oldSwatch:"#FCDE15", new:"#E7D13D", newSwatch:"#E7D13D", note:"Deeper yellow. Now close to MUKI and DODO." },
+        { name:"MOEBIUS", old:"#F1931B", oldSwatch:"#F1931B", new:"#F1931B", newSwatch:"#F1931B", note:"Slightly muted. Used across many built pages." },
+        { name:"MOX", old:"#D8392C", oldSwatch:"#D8392C", new:"#D8392C", newSwatch:"#D8392C", note:"Warmer red. Now near the error token \u2014 check side by side." },
+        { name:"FEU", old:"#ED704C", oldSwatch:"#ED704C", new:"#DA5E70", newSwatch:"#DA5E70", note:"One-digit shift, likely a correction." },
+        { name:"SYNQ", old:"#598F94", oldSwatch:"#598F94", new:"#5F7773", newSwatch:"#5F7773", note:"One-digit shift. The only brand marked Verified." },
+        { name:"NENDO", old:"teal, unspecified", oldSwatch:"#D9D9D9", new:"#1B8B9A", newSwatch:"#1B8B9A", note:"Now specified. Gap closed." },
+        { name:"EMON", old:"not in brand table", oldSwatch:"#D9D9D9", new:"#21AE8F", newSwatch:"#21AE8F", note:"New. Existing pages use #0E7A61 and #25AD8E \u2014 both wrong now." },
+        { name:"11 others", old:"verify Figma", oldSwatch:"#D9D9D9", new:"specified", newSwatch:"#D4D4D4", note:"TOGU, OGO, XOOM, CHILL, PROP, AIRO, SHELTR, MUKI, WURK, DODO, TRIBE, KALK all resolved." },
+      ],
+      reversals: [
+        { title:"1. Darkest text is now var(--color-text-primary), not var(--color-text-primary)", body:"v1 stated the darkest text is var(--color-text-primary) and never true black. v2 sets Text / Heading and Text / Primary to var(--color-text-primary). That is a deliberate-looking decision for web legibility and it is the right call, but it directly contradicts v1 and must be written down as a web-layer exception, or the app and web will drift apart." },
+        { title:"2. Icons move from bespoke SVGs to Material Symbols", body:"v1 said all icons are bespoke, third-party libraries must not be substituted, and no icon font is used. v2 specifies the Material Symbols kit, Rounded, optical size 200, at 32 and 40. This unblocks the long-standing icon gap and is the most practically useful change in the document \u2014 but it retires a stated brand principle. Confirm it holds for the app too, or state that the app stays bespoke." },
+        { title:"3. Grid moves from 8px to 4px, and transparency appears", body:"v1 required all spacing to be a multiple of 8px. v2's scale includes 4, 12, 20, 36, 52 and 84 \u2014 a 4px base. Separately, v1 forbade transparency outright, while v2's product ramps are built on 'Stop 10 + Opacity 40%'. Both are reasonable for web; both need to be stated as changes rather than left as contradictions." },
+      ],
+      additions: [
+        { title:"Responsive type scale", body:"Desktop, tablet and mobile sizes with line heights. v1 had no scale at all \u2014 this was the biggest practical hole." },
+        { title:"Semantic colour set", body:"Success, warning, error, info, each with background, border and text. v1 named the tokens but gave no values." },
+        { title:"Button states + motion", body:"Primary, secondary, ghost, navigation, circular, link. 150\u2013200ms ease out, with the useful rule that motion communicates feedback, never decoration." },
+        { title:"Named spacing scale", body:"space-1 through space-21 with a stated purpose for each step. The naming is coherent: token number \u00D7 4 = px." },
+        { title:"Filter panel spec", body:"The webshop filter sidebar is specified with real facets \u2014 power, length, efficiency, series, application, warranty. Directly usable." },
+        { title:"Brand primary / secondary split", body:"Brand primary for interaction, brand secondary reserved for Bauhaus decorative graphics. A clear, enforceable division." },
+      ],
+      blockers: [
+        { n:"01", title:"Grey 925 has two different values", body:"Grey 925 is var(--color-text-primary) under Text and #4F4F4E under Brand / Primary. Grey 550 is var(--color-text-primary) under Text and var(--color-grey-70) under Brand / Secondary. Same token name, different hex, one document. Rename or re-map \u2014 this is the single most likely source of wrong builds." },
+        { n:"02", title:"Radius has three values and no component mapping", body:"24, 20 and 16px are given with nothing saying which belongs to cards, buttons, inputs or modals. v1 mapped every one. Also note 16px is the smallest available, so buttons and inputs become noticeably rounder than the current build \u2014 confirm that is intended." },
+        { n:"03", title:"Primary and secondary button hover have no values", body:"'Darkens slightly' and 'subtle background appears' are not specifications. Ghost gets var(--color-surface-card) and circular gets #EBEBEB, so the pattern exists \u2014 finish it for primary and secondary." },
+        { n:"04", title:"No button sizes", body:"Three sizes are shown per button type with no heights, padding, or font sizes. Add px values, and keep the smallest at a 44px minimum hit target." },
+        { n:"05", title:"Tablet type scale is incomplete and probably wrong", body:"Heading 1 drops from 48px desktop to 24px tablet, which lands it at the same size as Sub Heading. The tablet table is also missing its TITLE column header and the Min body text row. Expect 32\u201336px was intended." },
+        { n:"06", title:"No focus state, despite Focus Border being listed", body:"Brand Primary lists 'Focus Border' as a use, but no focus ring is specified anywhere \u2014 no width, offset, or colour. Keyboard users and the registration form both need this." },
+        { n:"07", title:"Grid system is desktop only", body:"Margin 80, gutter 24, no column count, no tablet or mobile grid, and no breakpoint pixel values. This is what blocks the filter-sidebar question already open on the catalogues \u2014 there is no defined tablet width to hold the sidebar to." },
+      ],
+      gaps: [
+        { gap:"Truncated brand hex codes", status:"Closed", bg:"#ECFDF3", fg:"#067647", detail:"All 22 brands now have a full ramp and a token path. Caveat: 21 of 22 are marked Computed / Unverified against real screens." },
+        { gap:"Bespoke icons unavailable", status:"Closed", bg:"#ECFDF3", fg:"#067647", detail:"Resolved by switching to Material Symbols, Rounded, optical size 200. Weight, fill and grade axes are still unspecified \u2014 pin them." },
+        { gap:"Logo SVGs are placeholders", status:"Open", bg:"#FEF3F2", fg:"#B42318", detail:"v2 does not mention logos at all. No lockup, clear space, or minimum size guidance." },
+        { gap:"Font files (Source Han Sans KR)", status:"Not addressed", bg:"#FFFAEB", fg:"#B54708", detail:"v2 is web-only and specifies Helvetica Neue. The app font question is untouched, and no web font files or fallback stack are named." },
+        { gap:"Figma access", status:"Open", bg:"#FEF3F2", fg:"#B42318", detail:"Still no file reference in v2. The 'not yet checked against real screens' notes throughout suggest the source of truth is still the Figma file." },
+      ],
+      newGaps: [
+        { title:"Card component", dot:"#B42318", body:"The most-used element in the webshop. v1 specified fill, padding and radius; v2 has no card spec at all." },
+        { title:"Input states", dot:"#B42318", body:"Form shows four field examples. No default, focus, error, or disabled stroke; no height. v1 had stroke values \u2014 this is a regression." },
+        { title:"Breakpoint values", dot:"#B42318", body:"Three type scales named desktop, tablet and mobile, with no pixel widths that switch between them." },
+        { title:"Copy and voice system", dot:"#B54708", body:"v1's four-voice model, no-exclamation-marks rule, and European decimal comma are absent. Presumed still in force \u2014 say so explicitly." },
+        { title:"App layer", dot:"#B54708", body:"v2 is titled WEBSITE. The 393\u00D7852 canvas, app font, and top and bottom bars are only in v1. State the split." },
+        { title:"Modal spec", dot:"#B54708", body:"v1 had modal radius and a preview. v2 does not mention modals, and the catalogue uses them." },
+        { title:"Table / inventory row", dot:"#B54708", body:"Spacing references 'inventory row padding' but no table component is defined. The portal is full of them." },
+        { title:"Tag, badge, carousel, mega-menu", dot:"#B54708", body:"All four are referenced in the spacing scale's usage notes, none are specified as components." },
+        { title:"Empty state", dot:"#5F5E5E", body:"Listed as a Brand Secondary use, never specified. Filters with no results need it." },
+        { title:"Shadow / elevation policy", dot:"#5F5E5E", body:"v1 banned shadows outright. v2 is silent, which will read as permission." },
+        { title:"Photography direction", dot:"#5F5E5E", body:"v1 had warm amber editorial direction. v2 mentions hero image overlays but gives no art direction." },
+        { title:"KERN, PUSH, DEPOT, PACT", dot:"#5F5E5E", body:"Four software systems from v1 have no colour in v2's 22-brand table. KALK and TRIBE do." },
+      ],
+      contrast: [
+        { token:"Text / Primary", hex:"#4F4F4E", ratio:"~15.9:1", fg:"#067647", reading:"Passes comfortably." },
+        { token:"Text / Secondary", hex:"#5F5E5E", ratio:"~6.9:1", fg:"#067647", reading:"Passes for body text." },
+        { token:"Brand / Primary", hex:"#4F4F4E", ratio:"~8.6:1", fg:"#067647", reading:"Passes. Fine for buttons and active nav." },
+        { token:"Text / Tertiary", hex:"#898989", ratio:"~2.1:1", fg:"#B42318", reading:"Fails for text. Acceptable only for non-essential metadata." },
+        { token:"Text / Placeholder", hex:"#898989", ratio:"~2.1:1", fg:"#B42318", reading:"Fails. Placeholders carry instruction \u2014 must be darkened." },
+        { token:"Text / Disabled", hex:"#C8C7C3", ratio:"~1.7:1", fg:"#B54708", reading:"Fails, but intentional for disabled. Keep." },
+        { token:"Border / Default", hex:"#D4D4D4", ratio:"~1.5:1", fg:"#B54708", reading:"Below 3:1 for UI borders. Fine decoratively, not for input outlines." },
+      ],
+      migration: [
+        { task:"Swap the neutral surface set", note:"Canvas, card, border, text \u2014 four global replacements across the webshop, catalogues, and portal.", effort:"Mechanical" },
+        { task:"Re-point 22 brand colours", note:"Includes EMON, which currently appears as two different greens in built pages.", effort:"Mechanical" },
+        { task:"Move radii from 12 / 8 to 24 / 20 / 16", note:"Needs the component mapping decided first, then a visual pass \u2014 this visibly changes every card and button.", effort:"Needs a decision" },
+        { task:"Adopt the type scale", note:"Current pages use a clamp-based scale that does not match. Also needs the Thin-weight floor agreed.", effort:"Medium" },
+        { task:"Adopt Material Symbols", note:"Straightforward once weight, fill and grade axes are pinned.", effort:"Low" },
+        { task:"Reconcile the navigation IA", note:"v2 shows Products / Systems / Projects / Finance and Series / Ownership / Commissioning / Monitoring. That is not what the built nav uses.", effort:"Needs a decision" },
+      ],
+      steps: [
+        { n:"1", title:"Reframe the document", body:"Title it Website Design System v2 and state on page one that it supersedes v1's web layer only, that v1 still governs the app and the copy voice, and that the three reversals are intentional." },
+        { n:"2", title:"Fix the seven contradictions", body:"Grey 925 and Grey 550 duplicates, radius-to-component mapping, primary and secondary hover values, button sizes, the tablet scale, the focus ring, and the missing tablet and mobile grids." },
+        { n:"3", title:"Confirm FLUXX", body:"Pink to amber needs an explicit sign-off before any page ships, and the 21 unverified ramps need a sampling pass against real screens." },
+        { n:"4", title:"Darken placeholder, floor the Thin weight", body:"Two small changes that remove the only genuine accessibility failures in the document." },
+        { n:"5", title:"Then migrate, in one pass", body:"Neutrals and brand colours first as a mechanical sweep, radii and type second with a visual review. Do not start until step 2 is closed \u2014 migrating twice costs more than deciding once." },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>AGRIX Overview | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style> @media (max-width:720px){ .hero-card{width:calc(100% - 40px) !important;margin-top:20px !important;min-height:calc((100vw - 40px) * 1.25) !important;align-items:flex-end !important;} .hero-card-panel{width:100% !important;align-self:auto !important;padding:28px 20px !important;} } 
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:#6B8E4E; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="AgrixNav" active="overview" hint-size="100%,57px"></dc-import>
+  <!-- HEADER. Art direction for hero picture 1 (BNR-AGRI-HOME-01, 21:9): working mixed farm, TWIG canopy over a crop zone with HEDGE rows in the distance; product 5-15%, 35-45% negative space left -->
+  <dc-import name="BrandHero2" counter="dots" brand="AGRIX" rgb="107,142,78" dark="#3A5228" title="Agriculture first. Energy designed around it." intro="AGRIX turns a field, orchard, vineyard or livestock area into productive energy infrastructure without treating agriculture as the secondary use. Choose fixed overhead TWIG canopies or vertical bifacial HEDGE rows, then configure light, water, machinery access, protection and documentation around the farm." items="{{ agrixSix }}" hint-size="100%,760px"></dc-import>
+  <!-- DEPTH-1261: shared range block (ANDO layout); former block archived in _ARCHIVE/DEPTH-1261 range block/ -->
+  <dc-import name="RangeBlock" hide-tool="1" brand="AGRIX" hint-size="100%,900px"></dc-import>
+  <!-- KALK CHECK (DEPTH-1354) -->
+  <section id="kalk-check" data-screen-label="KALK check" data-stack="1" style="position:relative;width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:72px auto 0;min-height:max(380px,calc(min(100vw - 2 * var(--web-side),1312px) / 3.2));border-radius:24px;overflow:hidden;background:#4F4F4E;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);box-sizing:border-box;">
+    
+    <div style="grid-column:span 1;background:#FFFFFF;padding:clamp(24px,2.6vw,36px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:12px;">
+      <div style="display:flex;align-items:center;gap:8px;font-size:15px;color:#252525;">AGRIX by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:20px;width:auto;display:block;filter:brightness(0);"></div>
+      <h2 style="margin:0;font-size:clamp(28px,2.6vw,38px);font-weight:200;line-height:1.1;letter-spacing:-0.5px;color:#252525;text-wrap:balance;">Plan your agri-PV</h2>
+      
+      <p style="margin:0;font-size:15px;font-weight:300;line-height:1.45;color:#5F5E5E;text-wrap:pretty;">Find your field on the satellite map, draw it and tell KALK the crop or animals. KALK suggests the AGRIX structure, the row spacing and the power. Your local distributor sends the price.</p>
+      <a href="KALK - Agri-PV AGRIX - EN.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:8px;background:#6B8E4E;color:#252525;font-size:16px;text-decoration:none;" style-hover="background:#252525;color:#FFFFFF;">Start the agri-PV check &#8250;</a>
+      <a href="KERN - SYSTEM - Overview - EN.dc.html" style="align-self:flex-start;font-size:14px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #BBBBBB;padding-bottom:2px;" style-hover="color:#252525;border-bottom-color:#252525;">Professional project team? Deliver with KERN &#8250;</a>
+      
+    </div>
+    <div style="grid-column:span 1;position:relative;min-height:240px;"><img src="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=4.4180,51.0920,4.4380,51.1015&bboxSR=4326&imageSR=3857&size=1600,760&format=jpg&f=image" alt="Satellite view of farmland" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+  
+  </section>
+  <!-- WHO IT IS FOR (DEPTH-1329) -->
+  <dc-import name="AudienceTiles" brand="AGRIX" rgb="107,142,78" hint-size="100%,640px"></dc-import>
+  <!-- DEPTH-1265: BRAND with EMON block under the range -->
+  <dc-import name="EmonBlock" brand="AGRIX" hint-size="100%,860px"></dc-import>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;--cg:48px;">
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">A system that continues after installation</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Every module has a place, <span style="color:#8E8E8E;">a serial number and a history.</span></h2>
+        <p style="margin:0 0 20px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Every eligible product is identified by QR/NFC. EMON records the as-built layout, module and string positions, serial numbers, commissioning, warranty, production, faults and replacements. When a module is changed, the project file changes with it.</p>
+        <a href="AGRIX - PRODUCT - AGRIX with EMON - EN.dc.html" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#6B8E4E;">See EMON for Agri-PV<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      </div>
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">From 50 kWp to multi-megawatt</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Capacity is not the line between standard <span style="color:#8E8E8E;">and custom.</span></h2>
+        <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">AGRIX can begin with projects around 50&#8211;100 kWp. A small project can still require custom engineering when spans, soil, wind, snow, machinery, water or livestock conditions are unusual. The farm defines the geometry, not the other way round.</p>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+  <dc-import name="PlanningOperation" brand="AGRIX" hint-size="100%,760px"></dc-import>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6B8E4E;margin-bottom:16px;">Screen your project online</div>
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;--cg:16px;">
+        <a href="AGRIX - PRODUCT - Crop Selector - EN.dc.html" style="background:var(--color-surface-card);padding:36px;display:block;border-radius:12px;" style-hover="background:#EDEDEA;">
+          <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:10px;line-height:var(--web-h3-lh);">Crop &amp; livestock selector</div>
+          <p style="margin:0 0 16px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">Screen 253 crops and 8 livestock uses by climate, shade response, weather risk, machinery and TWIG or HEDGE suitability.</p>
+          <span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#6B8E4E;">Open the selector<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+        </a>
+        <a href="AGRIX - PRODUCT - Calculator - EN.dc.html" style="background:var(--color-surface-card);padding:36px;display:block;border-radius:12px;" style-hover="background:#EDEDEA;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:10px;line-height:var(--web-h3-lh);">Agri-PV calculator</div>
+          <p style="margin:0 0 16px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">Enter land, crop, machinery, water and energy data for an indicative system, generation, water, cost and risk file.</p>
+          <span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#6B8E4E;">Start calculating<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+  <dc-import name="AndoPattern" brand="AGRIX" items="facts" hint-size="100%,600px"></dc-import>
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;"><p style="margin:0 0 16px;max-width:760px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#4F4F4E;">One field. More than one output.</p><div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0;">
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="AGRIX - PRODUCT - Systems - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;white-space:nowrap;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Explore the systems<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+        
+      </div></section>
+  <!-- SYSTEM CHOICE -->
+  <!-- BENEFITS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Not simply solar installed higher</div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ benefits }}" as="b" hint-placeholder-count="4">
+          <div style="background:#F4F4F4;padding:24px;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">{{ b.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ b.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <!-- APPLICATIONS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Where it works</div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ applications }}" as="a" hint-placeholder-count="6">
+          <a href="AGRIX - PRODUCT - Applications - EN.dc.html" style="padding:22px;display:block;background:#F4F4F4;border-radius:12px;" style-hover="border-color:#6B8E4E;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:4px;line-height:var(--web-h3-lh);">{{ a.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ a.desc }}</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <!-- MORE CHAPTERS behind Read more (DEPTH-1329) -->
+  <details data-screen-label="More about AGRIX" style="margin:0;padding:0;"><summary style="list-style:none;cursor:pointer;max-width:calc(1312px + 2 * var(--web-side));margin:48px auto 0;padding:0 var(--web-side);box-sizing:border-box;min-height:44px;display:flex;align-items:center;font-family:var(--font-web);font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;"><span style="border-bottom:1px solid #4F4F4E;padding-bottom:2px;">Read more about AGRIX (2)</span></summary>
+  <!-- TOOLS -->
+  
+  <!-- LIFECYCLE -->
+  
+  <!-- CHAPTER INDEX -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Explore the chapter</div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ chapter }}" as="c" hint-placeholder-count="8">
+          <a href="{{ c.href }}" style="background:#F4F4F4;padding:20px 22px;display:block;border-radius:12px;" style-hover="background:#E3E3E3;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:4px;line-height:var(--web-h3-lh);">{{ c.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ c.desc }}</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <!-- CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;--cg:24px;">
+        <div style="background:var(--color-surface-card);padding:40px;border-radius:12px;">
+          <h3 style="margin:0 0 12px;font-size:20px;font-weight:300;line-height:1.25;color:#252525;">Request a preliminary farm study</h3>
+          <p style="margin:0 0 22px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">Send plot plan, coordinates, crop, machinery dimensions, electricity consumption and water requirements for a preliminary direction.</p>
+          <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="AGRIX - PRODUCT - Calculator - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Start a study<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+        </div>
+        <div style="background:var(--color-text-primary);color:#FFFFFF;padding:40px;border-radius:12px;">
+          <h3 style="margin:0 0 12px;font-size:20px;font-weight:300;line-height:1.25;color:#252525;">Talk to the engineering team</h3>
+          <p style="margin:0 0 22px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#D9D9D9;max-width:760px;">Crop light, water, mooring of the layout to your machinery, livestock safety or approvals &#8212; review the project before you plan.</p>
+          <a href="AGRIX - SUPPORT - Engineering - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#FFFFFF;color:var(--color-text-primary);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Book a review<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  </details>
+  <!-- ENGINEERING AND MANUFACTURING LINK (DEPTH-77) -->
+  <!-- MANUFACTURING (DEPTH-1230) -->
+  <section id="manufacturing" data-screen-label="Manufacturing" style="scroll-margin-top:156px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:40px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px 72px;align-items:center;">
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Manufacturing</h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">AGRIX structures are configured around cultivation, machinery, soil and water requirements. Steel and aluminium components are formed, machined, finished and verified as TWIG canopy or HEDGE row assemblies. Module supports, cable protection and agricultural interfaces are supplied as identified project kits, with manufacturing records connected to installation and digital handover.</p>
+        <a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - AGRIX - EN.dc.html#em-agrix-machines" style="align-self:flex-start;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;" style-hover="color:#F76801;border-bottom-color:#F76801;">Explore the manufacturing process &#8250;</a>
+      </div>
+      <div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="agrix-manufacturing-photo" shape="rounded" radius="12" placeholder="AGRIX manufacturing photo, 4:3: production line or test station"></image-slot></div>
+    </div>
+    <details style="border-top:1px solid #DDDDDD;padding-top:16px;">
+      <summary style="cursor:pointer;list-style:none;display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;">Read more</summary>
+      <div style="display:flex;flex-direction:column;gap:16px;padding-top:24px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Production · 14 stages</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px;">
+        <a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - AGRIX - EN.dc.html#em-agrix-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-agrix,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">01</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Farm assessment</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - AGRIX - EN.dc.html#em-agrix-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-agrix,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">02</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Project engineering</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - AGRIX - EN.dc.html#em-agrix-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-agrix,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">03</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Extrusion dies</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - AGRIX - EN.dc.html#em-agrix-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-agrix,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">04</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Extrusion</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - AGRIX - EN.dc.html#em-agrix-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-agrix,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">05</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Cutting and machining</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - AGRIX - EN.dc.html#em-agrix-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-agrix,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">06</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Steel fabrication and welding</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - AGRIX - EN.dc.html#em-agrix-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-agrix,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">07</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Roll forming and stamping</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - AGRIX - EN.dc.html#em-agrix-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-agrix,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">08</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Agricultural accessories</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - AGRIX - EN.dc.html#em-agrix-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-agrix,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">09</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Finishes</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - AGRIX - EN.dc.html#em-agrix-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-agrix,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">10</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Drainage and seals</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - AGRIX - EN.dc.html#em-agrix-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-agrix,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">11</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Trial assembly</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - AGRIX - EN.dc.html#em-agrix-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-agrix,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">12</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Project kit and QR</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - AGRIX - EN.dc.html#em-agrix-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-agrix,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">13</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Robotic packing</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - AGRIX - EN.dc.html#em-agrix-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-agrix,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">14</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">From factory to site</span></a></div>
+      </div>
+    </details>
+    <div data-editor-only="" style="display:flex;flex-direction:column;gap:8px;border:1px dashed #BBBBBB;border-radius:12px;padding:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Earlier titles · editor only</div>
+      <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">01 Roll-formed steel members · 02 Columns, beams and braces · 03 Brackets, clamps and clips · 04 Corrosion protection · 05 TWIG and HEDGE bays · 06 System qualification · 07 Identification and packing</p>
+    </div>
+  </section>
+  <div style="height:96px;"></div>
+  <dc-import name="ProjectRequest" brand="AGRIX" hint-size="100%,1400px"></dc-import>
+  <dc-import name="ContentSections" brand="AGRIX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="AGRIX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="AGRIX" accent="var(--color-brand-agrix)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { frame: 0 };
+  componentDidMount() {
+    if (!(window.omelette && window.omelette.writeFile)) document.querySelectorAll('[data-editor-only]').forEach((el) => { el.style.display = 'none'; });  }
+  componentWillUnmount() { if (this._heroTimer) clearInterval(this._heroTimer); }
+  renderVals() {
+    const fr = this.state.frame, hv = {};
+    for (let i = 0; i < 6; i++) { hv["op" + i] = i === fr ? 1 : 0; hv["pe" + i] = i === fr ? "auto" : "none"; }
+    return { agrixSix: [{"label":"Range","heading":"TWIG above the crop. HEDGE between the lanes.","sentence":"TWIG places canopies above the crop. HEDGE stands bifacial rows between the lanes.","media":{"type":"slot","slot":"mox-agri-hero","alt":"AGRIX · Range · drop a photo or video"}},{"label":"Installation","heading":"Review the project before you plan.","sentence":"Send plot plan, coordinates, crop, machinery dimensions, electricity consumption and water requirements for a preliminary direction.","media":{"type":"slot","slot":"agrix-hero-2","alt":"AGRIX · Installation · drop a photo or video"}},{"label":"QR record","heading":"Every module has a history.","sentence":"Every eligible product is identified by QR/NFC.","media":{"type":"slot","slot":"agrix-hero-3","alt":"AGRIX · QR record · drop a photo or video"}},{"label":"Agriculture first","heading":"Agriculture first.","sentence":"Fixed overhead canopies that protect and shade the crop, manage rain and let machinery pass beneath.","media":{"type":"slot","slot":"agrix-hero-4","alt":"AGRIX · Agriculture first · drop a photo or video"}},{"label":"Crop selector","heading":"Screen 253 crops online.","sentence":"Screen 253 crops and 8 livestock uses by climate, shade response, weather risk, machinery and TWIG or HEDGE suitability.","media":{"type":"slot","slot":"agrix-hero-5","alt":"AGRIX · Crop selector · drop a photo or video"}},{"label":"Geometry","heading":"The farm defines the geometry.","sentence":"A small project can still require custom engineering when spans, soil, wind, snow, machinery, water or livestock conditions are unusual.","media":{"type":"slot","slot":"agrix-hero-6","alt":"AGRIX · Geometry · drop a photo or video"}}],
+      ...hv,
+      heroDots: [0, 1, 2, 3, 4, 5].map(i => ({ w: i === fr ? "22px" : "10px", bg: i === fr ? "#6B8E4E" : "rgba(255,255,255,0.4)" })),
+      benefits: [
+        { title: "Production continues", desc: "Food or livestock production stays active beneath or between the modules &#8212; the agricultural task defines the structure." },
+        { title: "Farm energy", desc: "Electricity can supply pumps, cooling, buildings, charging and storage rather than only feeding the grid." },
+        { title: "Climate protection", desc: "Shade and weather cover can reduce heat, hail and heavy-rain exposure for selected crops, subject to validation." },
+        { title: "Documented for life", desc: "As-built layout, warranty and production stay connected to the installation through EMON." },
+      ],
+      applications: [
+        { title: "Vegetables & herbs", desc: "Protected, shade-managed cropping under transparent or spaced canopies." },
+        { title: "Berries & soft fruit", desc: "Heat, rain and hail-sensitive production beneath GB-2P gable canopies." },
+        { title: "Orchards & vineyards", desc: "Tree and trellis integration with light and machinery clearance." },
+        { title: "Arable & field crops", desc: "Machinery-led HEDGE layouts across broad open lanes." },
+        { title: "Livestock & poultry", desc: "Shade, fencing, safety and water with a livestock-safe configuration." },
+        { title: "Tropical & arid farms", desc: "Heat, water and ventilation strategy for water-constrained sites." },
+      ],
+      chapter: [
+        { title: "Systems", href: "AGRIX - PRODUCT - Systems - EN.dc.html", desc: "Compare TWIG and HEDGE configurations." },
+        { title: "Applications", href: "AGRIX - PRODUCT - Applications - EN.dc.html", desc: "Browse Agri-PV by what the land does." },
+        { title: "Water & climate", href: "AGRIX - CONTENT - Water and Climate - EN.dc.html", desc: "Rain-through, drainage, harvesting, protection." },
+        { title: "Biodiversity", href: "AGRIX - CONTENT - Biodiversity - EN.dc.html", desc: "Optional habitat and ecological package." },
+        { title: "Hybrid farm energy", href: "AGRIX - PRODUCT - Hybrid Energy - EN.dc.html", desc: "Battery, pumps, cooling, charging, wind." },
+        { title: "EMON", href: "AGRIX - PRODUCT - AGRIX with EMON - EN.dc.html", desc: "Layout, warranty and production file." },
+        { title: "Project process", href: "AGRIX - SUPPORT - Process - EN.dc.html", desc: "From farm data to commissioning." },
+        { title: "Knowledge centre", href: "AGRIX - CONTENT - Knowledge - EN.dc.html", desc: "Practical explainers, one question at a time." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

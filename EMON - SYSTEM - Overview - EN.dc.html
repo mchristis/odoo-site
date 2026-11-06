@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="var(--color-brand-emon)">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" style="fill:var(--color-brand-emon)"/>
+    <g fill="#FFFFFF">
+      <text x="600" y="420" font-family="Helvetica,Arial,sans-serif" font-size="200" font-weight="700" letter-spacing="-6" text-anchor="middle">EMON</text>
+      <rect x="360" y="500" width="480" height="10"/>
+      <circle cx="470" cy="560" r="14"/>
+      <circle cx="600" cy="560" r="14"/>
+      <circle cx="730" cy="560" r="14"/>
+    </g>
+  </svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>EMON Overview | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style> @media (max-width:720px){ .hero-card{width:calc(100% - 40px) !important;margin-top:20px !important;min-height:calc((100vw - 40px) * 1.25) !important;align-items:flex-end !important;} .hero-card-panel{width:100% !important;align-self:auto !important;padding:28px 20px !important;} } 
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  select:focus, input:focus { outline:none; border-color:var(--color-brand-emon); }
+  .em-route:hover { border-color:var(--color-brand-emon) !important; }
+  .em-route:hover .em-route-t { color:var(--color-text-primary); }
+  .em-card:hover { border-color:var(--color-brand-emon) !important; }
+  .em-seg:hover { color:var(--color-text-primary) !important; }
+  .em-chip:hover { border-color:var(--color-brand-emon) !important; }
+  .em-brand:hover { border-color:var(--color-brand-emon) !important; }
+  .em-brand:hover .em-brand-t { color:var(--color-text-primary); }
+  .em-util:hover { border-color:var(--color-brand-emon) !important; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="systems" hint-size="100%,80px"></dc-import>
+  <dc-import name="EmonNav" active="overview" hint-size="100%,57px"></dc-import>
+
+  <!-- 01. HERO -->
+  <!-- 01. HERO. Art direction for hero picture 1 (emon-hero): live energy-flow animation: ANDO, MOEBIUS, FLUXX, SYNQ, XOOM, OGO, NENDO, AIRO + grid. Grey background, EMON green highlights. -->
+  <dc-import name="BrandHero2" brand="EMON" rgb="33,174,143" dark="#146A57" title="One platform for the complete energy installation." intro="EMON brings solar, batteries, inverters, meters, EV charging, heating, hot water, ventilation, smart switching and energy markets into one coordinated system, connected, controlled, optimised, commissioned and documented." items="{{ heroItems }}" hint-size="100%,760px"></dc-import>
+
+
+  <!-- 02. FOUR AUDIENCE ROUTES -->
+  <section id="routes" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:{{ tkGap }} var(--web-side) 0;">
+    <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;--cg:16px;">
+      <sc-for list="{{ audienceRoutes }}" as="r" hint-placeholder-count="4">
+        <a class="em-route" href="{{ r.href }}" style="border:1px solid transparent;padding:28px 24px;display:flex;flex-direction:column;gap:12px;min-height:210px;background:{{ tkCard }};border-radius:12px;">
+          <div class="em-route-t" style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ r.title }}</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);flex:1;">{{ r.body }}</p>
+          <span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">{{ r.cta }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- 02b. SAVE & EARN TEASER -->
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:{{ tkGapS }} var(--web-side) 0;">
+    <a href="EMON - SYSTEM - Save and Earn - EN.dc.html" style="display:block;border:1px solid transparent;background:{{ tkCard }};padding:36px 40px;border-radius:12px;" style-hover="border-color:var(--color-brand-emon);">
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:center;">
+        <div>
+          <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ tkEyebrow }};">Save &amp; Earn</div>
+          <h2 style="margin:0 0 12px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">See the financial value <span style="color:#8E8E8E;">EMON creates.</span></h2>
+          <p style="margin:0;max-width:620px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">100 practical examples across homes, installers, commercial and industrial sites, plus 100 plain-language explainers of the energy terms behind them. Illustrative scenarios, not guaranteed savings.</p>
+          <span style="display:inline-flex;margin-top:16px;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">Explore Save &amp; Earn<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+        </div>
+        <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;--cg:12px;">
+          <div style="background:#FFFFFF;padding:20px;display:flex;flex-direction:column;gap:4px;border-radius:8px;"><span style="font-size:30px;font-weight:700;color:var(--color-text-primary);line-height:1;">100</span><span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">use cases</span></div>
+          <div style="background:#FFFFFF;padding:20px;display:flex;flex-direction:column;gap:4px;border-radius:8px;"><span style="font-size:30px;font-weight:700;color:var(--color-text-primary);line-height:1;">100</span><span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">explainers</span></div>
+          <div style="background:#FFFFFF;padding:20px;display:flex;flex-direction:column;gap:4px;border-radius:8px;"><span style="font-size:15px;font-weight:700;color:var(--color-text-primary);line-height:1.2;">Save</span><span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">cheaper, less waste</span></div>
+          <div style="background:#FFFFFF;padding:20px;display:flex;flex-direction:column;gap:4px;border-radius:8px;"><span style="font-size:15px;font-weight:700;color:var(--color-text-primary);line-height:1.2;">Earn</span><span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">where markets allow</span></div>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- 03. ENERGY-FLOW VISUALISATION (interactive modes) -->
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:{{ tkGap }} var(--web-side) 0;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ tkEyebrow }};">Live energy-flow visualisation</div>
+      <h2 style="margin:0 0 16px;max-width:760px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">EMON visualises the whole system, <span style="color:#8E8E8E;">not one device.</span></h2>
+      <p style="margin:0 0 28px;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Every user understands energy differently. See the same system as a visual flow, a simple linear diagram, a proportional Sankey diagram or a numeric technical view.</p>
+      <div style="display:inline-flex;margin-bottom:20px;flex-wrap:wrap;background:#F4F4F4;border-radius:12px;overflow:hidden;">
+        <sc-for list="{{ flowModes }}" as="m" hint-placeholder-count="4">
+          <button class="em-seg" onClick="{{ m.onClick }}" style="cursor:pointer;font-family:inherit;border:none;background:{{ m.bg }};color:{{ m.color }};font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;padding:12px 22px;border-radius:8px;">{{ m.label }}</button>
+        </sc-for>
+      </div>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px;align-items:center;">
+        <div style="aspect-ratio:16/9;background:#F4F4F4;border-radius:12px;overflow:hidden;">
+          <image-slot id="{{ activeFlow.slot }}" shape="rounded" radius="12" placeholder="{{ activeFlow.ph }}"></image-slot>
+        </div>
+        <div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:10px;line-height:var(--web-h3-lh);">{{ activeFlow.label }} view</div>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);">{{ activeFlow.desc }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04. DEFINE YOUR NEEDS (wizard) -->
+  <section id="define" style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ tkEyebrow }};">Define your needs</div>
+      <h2 style="margin:0 0 32px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Four questions. <span style="color:#8E8E8E;">One recommended EMON setup.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px;align-items:start;">
+        <div style="background:#F4F4F4;padding:32px;border-radius:12px;overflow:hidden;">
+          <div style="display:flex;gap:6px;margin-bottom:24px;">
+            <sc-for list="{{ wizardProgress }}" as="p" hint-placeholder-count="4"><span style="flex:1;height:4px;background:{{ p }};"></span></sc-for>
+          </div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:6px;">Step {{ wizardStepNum }} of 4</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:20px;line-height:var(--web-h3-lh);">{{ activeWizard.q }}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <sc-for list="{{ activeWizard.options }}" as="o" hint-placeholder-count="6">
+              <button class="em-chip" onClick="{{ o.onClick }}" style="cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;color:{{ o.color }};border:1px solid {{ o.border }};background:{{ o.bg }};padding:9px 14px;border-radius:8px;">{{ o.label }}</button>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:26px;">
+            <button onClick="{{ wizardBack }}" style="cursor:pointer;font-family:inherit;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);border:1px solid #D9D9D9;background:#F4F4F4;color:var(--color-text-primary);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Back</button>
+            <button onClick="{{ wizardNext }}" style="cursor:pointer;font-family:inherit;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);border:none;background:var(--color-brand-emon);color:#FFFFFF;border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">{{ wizardNextLabel }}</button>
+          </div>
+        </div>
+        <div style="background:#F4F4F4;border-radius:12px;overflow:hidden;">
+          <div style="padding:18px 24px;border-bottom:1px solid #D9D9D9;background:#EDEDED;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Your EMON recommendation</span></div>
+          <div style="padding:8px 24px 16px;">
+            <sc-for list="{{ recommendation }}" as="r" hint-placeholder-count="5">
+              <div style="padding:14px 0;border-bottom:1px solid var(--color-surface-card);display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;align-items:baseline;">
+                <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);">{{ r.k }}</span>
+                <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ r.v }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="padding:18px 24px;">
+            <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#brand" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Explore matching brands</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05. BRAND SELECTOR (interactive) -->
+  <section id="brand" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:{{ tkGap }} var(--web-side) 0;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ tkEyebrow }};">Brand selector</div>
+      <h2 style="margin:0 0 16px;max-width:760px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Select a STRØHM.ENERGY brand <span style="color:#8E8E8E;">and see exactly what EMON adds.</span></h2>
+      <p style="margin:0 0 28px;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">See whether EMON measures, controls, optimises, commissions, documents or supports each brand. Filter by audience, energy role and EMON function.</p><dc-import name="EcosystemGrid" entries="{{ emonEntries }}" layout="grid5" default-first="{{ true }}" hint-text="Hover a logo to see what EMON adds." hint-size="100%,640px"></dc-import><details style="margin-top:32px;"><summary style="cursor:pointer;min-height:44px;display:flex;align-items:center;font-size:var(--web-small-size);color:#4F4F4E;text-decoration:underline;text-underline-offset:3px;">Read more: Filter all brands</summary><div style="padding-top:16px;">
+      <div data-cols="5" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;padding:16px;margin-bottom:20px;background:#F4F4F4;border-radius:12px;overflow:hidden;--cg:12px;">
+        <div>
+          <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-grey-70);margin-bottom:6px;">Audience</label>
+          <select onChange="{{ onAudience }}" style="width:100%;height:42px;padding:0 10px;border:1px solid #D9D9D9;font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+            <sc-for list="{{ audienceOptions }}" as="o" hint-placeholder-count="5"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-grey-70);margin-bottom:6px;">Financial objective</label>
+          <select onChange="{{ onObjective }}" style="width:100%;height:42px;padding:0 10px;border:1px solid #D9D9D9;font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+            <sc-for list="{{ objectiveOptions }}" as="o" hint-placeholder-count="4"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-grey-70);margin-bottom:6px;">Energy role</label>
+          <select onChange="{{ onRole }}" style="width:100%;height:42px;padding:0 10px;border:1px solid #D9D9D9;font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+            <sc-for list="{{ roleOptions }}" as="o" hint-placeholder-count="8"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-grey-70);margin-bottom:6px;">EMON function</label>
+          <select onChange="{{ onScope }}" style="width:100%;height:42px;padding:0 10px;border:1px solid #D9D9D9;font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+            <sc-for list="{{ scopeOptions }}" as="o" hint-placeholder-count="7"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-grey-70);margin-bottom:6px;">Search brand or hardware</label>
+          <input type="text" value="{{ searchValue }}" onInput="{{ onSearch }}" placeholder="FLUXX, heat pump, P1" style="width:100%;box-sizing:border-box;height:42px;padding:0 10px;border:1px solid #D9D9D9;font-size:var(--web-input-size);border-radius:8px;font-weight:var(--web-input-weight);">
+        </div>
+      </div>
+      <div style="font-size:12px;font-weight:300;color:var(--color-text-primary);margin-bottom:16px;"><span style="font-weight:700;color:var(--color-text-primary);">{{ brandCount }}</span> brands shown</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:14px;">
+        <sc-for list="{{ brands }}" as="b" hint-placeholder-count="6">
+          <div class="em-brand" style="background:#F4F4F4;padding:20px;display:flex;flex-direction:column;gap:12px;min-height:260px;border-radius:12px;overflow:hidden;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;border-bottom:1px solid #D9D9D9;padding-bottom:12px;">
+              <div>
+                <div class="em-brand-t" style="font-size:var(--web-h3-size);font-weight:300;letter-spacing:-0.02em;line-height:var(--web-h3-lh);">{{ b.brand }}</div>
+                <div style="font-size:var(--web-eyebrow-size);text-transform:uppercase;letter-spacing:var(--web-eyebrow-ls);color:var(--color-grey-70);margin-top:4px;font-weight:var(--web-eyebrow-weight);">{{ b.role }}</div>
+              </div>
+              <span style="font-size:var(--web-tag-size);border:1px solid transparent;color:var(--color-text-primary);padding:5px 8px;border-radius:8px;font-weight:var(--web-tag-weight);text-align:right;">{{ b.level }}</span>
+            </div>
+            <sc-if value="{{ b.showOutcome }}" hint-placeholder-val="{{ true }}">
+              <span style="align-self:flex-start;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;padding:4px 9px;color:{{ b.outcomeColor }};background:{{ b.outcomeBg }};border-radius:8px;">{{ b.outcomeLabel }}</span>
+            </sc-if>
+            <p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#333333;">{{ b.does }}</p>
+            <div style="font-size:12px;line-height:1.45;color:#555555;background:#F0FAF7;padding:10px;border-radius:8px;"><span style="font-weight:700;">Hardware:</span> {{ b.hardware }}</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;">
+              <sc-for list="{{ b.scope }}" as="t" hint-placeholder-count="4"><span style="font-size:var(--web-eyebrow-size);text-transform:uppercase;letter-spacing:var(--web-eyebrow-ls);border:1px solid #D9D9D9;padding:4px 7px;color:#555555;border-radius:8px;font-weight:var(--web-eyebrow-weight);">{{ t }}</span></sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ brandEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:22px;color:var(--color-text-primary);font-size:14px;background:#F4F4F4;border-radius:12px;overflow:hidden;">No matching brand. Change the filters or search term.</div>
+      </sc-if>
+    </div></details></div>
+  </section>
+
+  <!-- 06. HARDWARE SELECTOR (role-first) -->
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:{{ tkGap }} var(--web-side) 0;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:40px;"><details><summary style="cursor:pointer;min-height:44px;display:flex;align-items:center;font-size:var(--web-small-size);color:#4F4F4E;text-decoration:underline;text-underline-offset:3px;">Read more: Choose by energy role</summary><div style="padding-top:16px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ tkEyebrow }};">Hardware selector</div>
+      <h2 style="margin:0 0 32px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Start from the energy role, <span style="color:#8E8E8E;">not the product name.</span></h2>
+      <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:start;">
+        <div style="flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:1px;background:#D9D9D9;max-height:520px;overflow-y:auto;border-radius:12px;">
+          <sc-for list="{{ roleList }}" as="r" hint-placeholder-count="12">
+            <button class="em-seg" onClick="{{ r.onClick }}" style="text-align:left;cursor:pointer;font-family:inherit;border:none;padding:13px 18px;background:{{ r.bg }};font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);color:{{ r.color }};border-radius:8px;">{{ r.label }}</button>
+          </sc-for>
+        </div>
+        <div style="flex:999 1 min(100%,400px);min-width:0;padding:32px;min-height:300px;background:#F4F4F4;border-radius:12px;overflow:hidden;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">{{ activeRole.label }}</div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:10px;">Hardware</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
+            <sc-for list="{{ activeRole.hardware }}" as="h" hint-placeholder-count="4"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:var(--color-text-primary);border:1px solid #D9D9D9;padding:6px 12px;border-radius:8px;">{{ h }}</span></sc-for>
+          </div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:10px;">EMON functions</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <sc-for list="{{ activeRole.functions }}" as="f" hint-placeholder-count="4"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);display:flex;gap:8px;align-items:baseline;"><span style="color:var(--color-text-primary);font-size:9px;">&#9679;</span>{{ f }}</span></sc-for>
+          </div>
+        </div>
+      </div>
+    </div></details></div>
+  </section>
+
+  <!-- 07. COMMISSIONING -->
+  <section style="margin-top:96px;background:{{ cxBg }};">
+    <div style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:{{ cxPad }} var(--web-side);">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ tkEyebrow }};">Commissioning &#183; a main reason EMON exists</div>
+      <h2 style="margin:0 0 12px;max-width:760px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:{{ cxHead }};text-wrap:balance;">Scan. <span style="color:{{ cxHead2 }};">Connect. Validate. Document. Handover.</span></h2>
+      <p style="margin:0 0 36px;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:{{ cxText }};text-wrap:pretty;">QR/NFC scan, Wi-Fi mesh discovery, automatic serial recognition, product mapping, a guided installer workflow, photo evidence, an automatic commissioning PDF, warranty activation and a permanent digital passport.</p>
+      <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:24px;--cg:16px;">
+        <div style="background:{{ cxCard }};padding:28px;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ cxText }};margin-bottom:10px;">ANDO commissioning</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:8px;color:{{ cxHead }};line-height:var(--web-h3-lh);">Every panel verified, mapped and documented.</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:{{ cxText }};">Scan module QR, register serials, attach flash-test data, record peak power, map roof position, assign string to MPPT, upload photos and activate the warranty: one permanent solar passport.</p>
+        </div>
+        <div style="background:{{ cxCard }};padding:28px;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ cxText }};margin-bottom:10px;">MOEBIUS commissioning</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:8px;color:{{ cxHead }};line-height:var(--web-h3-lh);">Inverter setup without scattered paperwork.</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:{{ cxText }};">Scan the inverter, confirm firmware and grid settings, map MPPTs and strings, link battery and SYNQ meter, set export limits, run pass/fail checks and generate the report automatically.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;">
+        <sc-for list="{{ commissionSteps }}" as="c" hint-placeholder-count="7">
+          <div style="background:{{ cxCard }};padding:18px 14px;display:flex;flex-direction:column;gap:8px;min-height:120px;border-radius:12px;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:{{ cxText }};letter-spacing:var(--web-eyebrow-ls);">{{ c.n }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:400;line-height:var(--web-min-lh);color:{{ cxHead }};">{{ c.t }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:28px;"><a href="EMON - SYSTEM - Commissioning - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;" style-hover="background:#5F5E5E;color:#F4F4F4;">See the full commissioning flow</a></div>
+    </div>
+  </section>
+
+  <!-- 08. DIGITAL PASSPORT -->
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:{{ tkGap }} var(--web-side) 0;">
+    <div data-stack="1" style="border-top:1px solid #D9D9D9;padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center;">
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ tkEyebrow }};">Digital installation passport</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One digital passport <span style="color:#8E8E8E;">for the life of the system.</span></h2>
+        <p style="margin:0 0 16px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Every commissioned STRØHM.ENERGY system receives a permanent digital passport, product identities, serials, photos, firmware, flash-test records, test results, warranty and service history.</p>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Access is controlled: owner, authorised installer and STRØHM.ENERGY support, transferable to a new owner or service company with permission controls.</p>
+      </div>
+      <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ passportItems }}" as="p" hint-placeholder-count="10">
+          <div style="background:#F4F4F4;padding:13px 16px;font-size:12px;font-weight:300;color:var(--color-text-primary);display:flex;gap:8px;align-items:baseline;border-radius:12px;overflow:hidden;"><span style="color:var(--color-text-primary);font-size:8px;">&#9679;</span>{{ p }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09. MARKETS -->
+  <section id="markets" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:{{ tkGap }} var(--web-side) 0;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ tkEyebrow }};">EMON Markets</div>
+      <h2 style="margin:0 0 12px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Turn flexibility into value, <span style="color:#8E8E8E;">where the market allows.</span></h2>
+      <p style="margin:0 0 32px;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Dynamic tariffs, energy-supplier partners, VPP access, grid balancing and flexibility income, coordinated across battery, EV, heat pump and boiler.</p>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:20px;--cg:12px;">
+        <sc-for list="{{ marketFeatures }}" as="m" hint-placeholder-count="8">
+          <div style="background:#F4F4F4;padding:20px 18px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:var(--color-text-primary);min-height:60px;display:flex;align-items:center;border-radius:12px;overflow:hidden;">{{ m }}</div>
+        </sc-for>
+      </div>
+      <div style="background:#F0FAF7;padding:16px 22px;border-radius:12px;">
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:900px;">Availability, earnings and participation depend on country, market partner, tariff, connected equipment, system size and local regulation. EMON does not promise guaranteed income.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. PRICING (interactive) -->
+  <section style="margin-top:96px;">
+    <div style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ tkEyebrow }};">Pricing</div>
+      <h2 style="margin:0 0 12px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Build your monthly EMON, <span style="color:#8E8E8E;">with the EMS cap applied.</span></h2>
+      <p style="margin:0 0 32px;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">EMON Basic, the dynamic tariff engine and installer mode are free forever. Add EMS modules below, total EMS is capped at &#8364;25/month.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px;align-items:start;">
+        <div style="background:#F4F4F4;border-radius:12px;overflow:hidden;">
+          <div style="padding:18px 24px;border-bottom:1px solid #D9D9D9;background:#EDEDED;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">EMS modules</span></div>
+          <sc-for list="{{ modules }}" as="m" hint-placeholder-count="10">
+            <label style="display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:14px;padding:14px 24px;border-bottom:1px solid var(--color-surface-card);align-items:center;cursor:pointer;">
+              <input type="checkbox" checked="{{ m.checked }}" onChange="{{ m.onToggle }}" style="width:16px;height:16px;accent-color:var(--color-brand-emon);">
+              <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ m.name }}</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">&#8364;{{ m.price }}/mo</span>
+            </label>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="background:#F4F4F4;padding:28px;border-radius:12px;overflow:hidden;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:8px;">EMS modules total</div>
+            <div style="font-size:40px;font-weight:700;color:var(--color-text-primary);line-height:1;">&#8364;{{ emsTotal }}<span style="font-size:16px;font-weight:300;color:var(--color-text-primary);">/month</span></div>
+            <sc-if value="{{ capped }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:10px;font-size:12px;font-weight:700;color:var(--color-text-primary);">&#10003; &#8364;25 EMS cap applied, you save &#8364;{{ savings }}/mo</div>
+            </sc-if>
+            <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--color-surface-card);font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);">Uncapped selection: &#8364;{{ rawTotal }}/mo across {{ selectedCount }} modules.</div>
+          </div>
+          <div style="background:#F4F4F4;padding:22px 24px;border-radius:12px;overflow:hidden;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;margin-bottom:10px;">Outside the cap</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;justify-content:space-between;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);"><span>Full Service / Energy Watcher</span><span style="font-weight:700;">&#8364;9.90/mo</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);"><span>Grid Balancing / DSO Mode</span><span style="font-weight:700;">&#8364;9.90/mo</span></div>
+            </div>
+          </div>
+          <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#support" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;background:#4F4F4E;color:#F4F4F4;font-weight:400;border-radius:var(--cta-radius,8px);box-sizing:border-box;">Check country availability</a>
+        </div>
+      </div>
+      <p style="margin:20px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:900px;line-height:var(--web-min-lh);">Working basis only. Pricing may vary by country, partner, hardware and energy-market availability. Smart-plug activation &#8364;25 one-time; per plug/switch &#8364;1/month or &#8364;9.90/year.</p>
+    </div>
+  </section>
+
+  <!-- 11. VISTA -->
+  <section id="vista" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:{{ tkGap }} var(--web-side) 0;">
+    <div data-stack="1" style="border-top:1px solid #D9D9D9;padding-top:40px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:center;">
+      <div style="aspect-ratio:16/10;background:#F4F4F4;border-radius:12px;overflow:hidden;">
+        <image-slot id="emon-vista" shape="rounded" radius="12" placeholder="VISTA 10.1-inch wall display showing live energy flow, EMON var(--color-brand-emon) highlights"></image-slot>
+      </div>
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ tkEyebrow }};">VISTA</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">A permanent window <span style="color:#8E8E8E;">into EMON.</span></h2>
+        <p style="margin:0 0 16px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The optional 10.1-inch wall display shows live energy flow, alerts, controls, documentation access and guided setup for homes and professional sites.</p>
+        <p style="margin:0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);line-height:var(--web-min-lh);">10.1-inch, 16:10 display, active area approximately 217,6 &#215; 136,0 mm. Final physical size confirmed against the LCD module datasheet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. SUPPORT -->
+  <section id="support" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:{{ tkGap }} var(--web-side) 0;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ tkEyebrow }};">Support</div>
+      <h2 style="margin:0 0 32px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Help for every user <span style="color:#8E8E8E;">and every stage.</span></h2>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ support }}" as="s" hint-placeholder-count="8">
+          <div class="em-util" style="padding:22px 20px;display:flex;flex-direction:column;gap:6px;min-height:100px;background:#F4F4F4;border-radius:12px;overflow:hidden;">
+            <span style="font-size:14px;font-weight:700;letter-spacing:0.02em;">{{ s.t }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);">{{ s.d }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. FINAL CTA -->
+  <section id="find-installer" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);">
+    <div style="background:var(--color-brand-emon);padding:64px 56px;color:#FFFFFF;border-radius:12px;">
+      <div style="margin-bottom:20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ tkEyebrow }};">One platform. Every part of the installation.</div>
+      <h2 style="margin:0 0 16px;max-width:760px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#FFFFFF;text-wrap:balance;">Connect, control <span style="color:#B2B3B3;">and document your energy system.</span></h2>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;">
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#define" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Define your needs</a>
+        <a href="EMON - SYSTEM - Commissioning - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:transparent;border:1px solid #FFFFFF;color:#FFFFFF;font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Explore commissioning</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="ContentSections" brand="EMON" scope="brand" hint-size="100%,1600px"></dc-import>
+  <div style="height:48px;"></div>
+  <dc-import name="ReachSpecialist" brand="EMON" lead="TO CONFIRM" photo-slot-id="emon-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="Footer" show-ebook="{{ true }}" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;rhythm&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Airy&quot;,&quot;Standard&quot;,&quot;Compact&quot;],&quot;default&quot;:&quot;Standard&quot;,&quot;tsType&quot;:&quot;'Airy' | 'Standard' | 'Compact'&quot;,&quot;section&quot;:&quot;Page feel&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Neutral&quot;,&quot;EMON&quot;],&quot;default&quot;:&quot;Neutral&quot;,&quot;tsType&quot;:&quot;'Neutral' | 'EMON'&quot;,&quot;section&quot;:&quot;Page feel&quot;},&quot;commissioningBand&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Light&quot;,&quot;Dark&quot;],&quot;default&quot;:&quot;Light&quot;,&quot;tsType&quot;:&quot;'Light' | 'Dark'&quot;,&quot;section&quot;:&quot;Page feel&quot;}}">
+const EMON_ENTRIES = [{"name":"EMON by brand","items":[{"label":"ANDO","colour":"#CDD62B","title":"ANDO","subtitle":"Solar generation","text":"EMON links module identity, flash-test data, layout, string mapping, installer evidence and production context into a permanent solar passport.","href":"ANDO - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View ANDO","flag":"Passport + performance","lists":[{"title":"Hardware · Generation","items":["ANDO solar"]},{"title":"EMON functions","items":["Production monitoring","Forecast context","Passport & documentation","Performance context"]}]},{"label":"LINA","colour":"#B5C64A","title":"LINA","subtitle":"Vertical flat-roof solar","text":"EMON can show the output of the connected solar system after commissioning.","href":"LINA - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View LINA"},{"label":"PROP","colour":"#527A83","title":"PROP","subtitle":"Wind generation","text":"EMON combines wind generation with battery control, site demand, export rules, weather data, service records and market opportunities.","href":"PROP - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View PROP","flag":"Full applicable scope","lists":[{"title":"Hardware · Generation","items":["PROP wind"]},{"title":"EMON functions","items":["Production monitoring","Forecast context","Passport & documentation","Performance context"]}]},{"label":"MOEBIUS","colour":"#F1931B","title":"MOEBIUS","subtitle":"Inverter","text":"EMON monitors inverter status, controls operating modes where supported, manages grid interaction, maps strings and creates inverter commissioning records.","href":"MOEBIUS - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View MOEBIUS","flag":"Full applicable scope","lists":[{"title":"Hardware · Inverter","items":["MOEBIUS single-phase","Three-phase","Hybrid","Microinverter","C&I"]},{"title":"EMON functions","items":["Status monitoring","Mode control where supported","MPPT & string mapping","Commissioning report"]}]},{"label":"FLUXX","colour":"#FDC706","title":"FLUXX","subtitle":"Storage","text":"EMON controls charging and discharging according to tariff, solar forecast, backup reserve, battery longevity and market-service priorities.","href":"FLUXX - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View FLUXX","flag":"Full applicable scope","lists":[{"title":"Hardware · Storage","items":["FLUXX BLOCK","FLUXX STACK","C&I storage"]},{"title":"EMON functions","items":["Charge / discharge control","Tariff & solar optimisation","Backup reserve","Battery health"]}]},{"label":"SYNQ","colour":"#598F94","title":"SYNQ","subtitle":"Metering","text":"SYNQ gives EMON the verified measurement foundation: grid import/export, production, loads, phase data, circuit data and tariff signals.","href":"SYNQ - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View SYNQ","flag":"Required entry","lists":[{"title":"Hardware · Metering","items":["SYNQ P1","Single-phase","Three-phase","CT meter"]},{"title":"EMON functions","items":["Grid import / export","Live consumption","Tariff matching","Phase monitoring","Commissioning & documentation"]}]},{"label":"OZZY","colour":"#8BCF3F","title":"OZZY","subtitle":"Controllable loads","text":"EMON turns selected loads into measurable and controllable energy assets for schedules, solar surplus, tariff response and grid limits.","href":"OZZY - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View OZZY","flag":"Device + load control","lists":[{"title":"Hardware · Smart plugs & switches","items":["OZZY plug","OZZY switch","25A / 32A"]},{"title":"EMON functions","items":["Controllable loads","Solar-surplus control","Tariff response","Remote control"]}]},{"label":"NENDO","colour":"#1B8B9A","title":"NENDO","subtitle":"Heating and cooling","text":"EMON coordinates comfort with weather forecast, energy price, solar production, building demand, schedules and professional diagnostics.","href":"NENDO - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View NENDO","flag":"Comfort optimisation","lists":[{"title":"Hardware · Heating & cooling","items":["NENDO heat pumps","FEU infrared"]},{"title":"EMON functions","items":["Comfort optimisation","Tariff pre-heat / pre-cool","Peak reduction","Monitoring"]}]},{"label":"FEU","colour":"#ED704C","title":"FEU","subtitle":"Infrared heating","text":"EMON manages infrared heating by room, schedule, occupancy, price period and available renewable energy.","href":"FEU - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View FEU","flag":"Zone control","lists":[{"title":"Hardware · Heating & cooling","items":["NENDO heat pumps","FEU infrared"]},{"title":"EMON functions","items":["Comfort optimisation","Tariff pre-heat / pre-cool","Peak reduction","Monitoring"]}]},{"label":"OGO","colour":"#00A0E3","title":"OGO","subtitle":"Hot water","text":"EMON heats water during solar-rich or low-price periods while respecting comfort, hygiene settings and household demand.","href":"OGO - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View OGO","flag":"Thermal storage optimisation","lists":[{"title":"Hardware · Hot water","items":["OGO heat-pump boiler"]},{"title":"EMON functions","items":["Solar-surplus heating","Cheap-tariff heating","Hygiene-safe logic","Energy reports"]}]},{"label":"XOOM","colour":"#8EB15F","title":"XOOM","subtitle":"EV charging","text":"EMON charges vehicles around user deadlines, solar surplus, dynamic prices, site limits and market signals without exceeding the grid connection.","href":"XOOM - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View XOOM","flag":"Full applicable scope","lists":[{"title":"Hardware · EV charging","items":["XOOM AC charger"]},{"title":"EMON functions","items":["Solar charging","Tariff charging","Peak avoidance","Site-limit control"]}]},{"label":"AIRO","colour":"#0083BB","title":"AIRO","subtitle":"Ventilation","text":"EMON coordinates ventilation with air quality, heat recovery, occupancy, comfort, tariff timing and service evidence.","href":"AIRO - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View AIRO","flag":"Air and energy balance","lists":[{"title":"Hardware · Ventilation","items":["AIRO MVHR / ERV / HRV"]},{"title":"EMON functions","items":["Air-quality coordination","Energy-aware ventilation","Filter alerts","Documentation"]}]},{"label":"GLOW","colour":"#FCDE15","title":"GLOW","subtitle":"Lighting","text":"EMON can automate selected lighting and outdoor loads using time, sensor, tariff and system-state logic.","href":"GLOW - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View GLOW","flag":"Outdoor and lighting loads"},{"label":"MOX","colour":"#D8392C","title":"MOX","subtitle":"Mounting infrastructure","text":"EMON records project identity, layout evidence, installed product references and documentation where it improves service and warranty traceability.","href":"MOX - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View MOX","flag":"Documentation only"},{"label":"AGRIX","colour":"#6B8E4E","title":"AGRIX","subtitle":"Agri-PV structures","text":"EMON can combine connected generation data with supported site measurements.","href":"AGRIX - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View AGRIX"},{"label":"TERRIX","colour":"#6B755F","title":"TERRIX","subtitle":"Utility PV mounting","text":"EMON can show the connected plant’s operating performance.","href":"TERRIX - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View TERRIX"},{"label":"PONTIX","colour":"#06768A","title":"PONTIX","subtitle":"Floating PV mounting","text":"EMON can show generation and supported site measurements from the installed PV system.","href":"PONTIX - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View PONTIX"},{"label":"TECTIX","colour":"#4A5B73","title":"TECTIX","subtitle":"Roof PV mounting","text":"EMON monitors the connected PV installation.","href":"TECTIX - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View TECTIX"},{"label":"PARX","colour":"#7A9337","title":"PARX","subtitle":"Solar parking","text":"EMON coordinates supported energy equipment across the site.","href":"PARX - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View PARX"},{"label":"CHILL","colour":"#6BC0B0","title":"CHILL","subtitle":"Outdoor energy use","text":"EMON can include selected CHILL loads in schedules, outdoor scenes, solar-surplus use and user comfort settings.","href":"CHILL - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View CHILL","flag":"Selected controllable loads"},{"label":"TOGU","colour":"#C48723","title":"TOGU","subtitle":"Electrical connectivity","text":"EMON displays circuit measurements where compatible metering is installed.","href":"TOGU - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View TOGU"},{"label":"DODO","colour":"#E5B73B","title":"DODO","subtitle":"Protection and cable guidance","text":"EMON can store installation evidence, project photos, warranty status and product references where documentation value is useful.","href":"DODO - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View DODO","flag":"Documentation only"},{"label":"SHELTR","colour":"#5B6592","title":"SHELTR","subtitle":"Protection","text":"EMON links shelter identity, installed equipment, photographs, service access notes and warranty records to the installation passport.","href":"SHELTR - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View SHELTR","flag":"Passport + service context"},{"label":"MUKI","colour":"#DF550C","title":"MUKI","subtitle":"Sensors","text":"MUKI gives EMON the context needed for better automation, comfort, diagnostics, alerts and reporting.","href":"MUKI - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View MUKI","flag":"Context layer"},{"label":"WURK","colour":"#9E3D2E","title":"WURK","subtitle":"Installer tools","text":"EMON does not control WURK hardware. It can reference tool use, installation evidence and safety documentation inside installer workflows where relevant.","href":"WURK - PRODUCT - Overview - EN.dc.html#planning","firstLabel":"View WURK","flag":"Installer workflow"}]}];
+const BRANDS = [
+  {brand:'SYNQ', role:'Metering', level:'Required entry', hardware:'P1, single-phase meter, three-phase meter, CT inputs, circuit measurement', does:'SYNQ gives EMON the verified measurement foundation: grid import/export, production, loads, phase data, circuit data and tariff signals.', scope:['Monitor','Commission','Document','Support'], audience:['Homeowner','Installer','Commercial','Industrial']},
+  {brand:'MOEBIUS', role:'Inverter', level:'Full applicable scope', hardware:'Microinverters, string inverters, hybrid inverters, C&I inverters', does:'EMON monitors inverter status, controls operating modes where supported, manages grid interaction, maps strings and creates inverter commissioning records.', scope:['Monitor','Control','Optimise','Commission','Document','Support'], audience:['Homeowner','Installer','Commercial','Industrial']},
+  {brand:'FLUXX', role:'Storage', level:'Full applicable scope', hardware:'Plug & play battery, residential storage, stackable batteries, C&I storage', does:'EMON controls charging and discharging according to tariff, solar forecast, backup reserve, battery longevity and market-service priorities.', scope:['Monitor','Control','Optimise','Commission','Document','Market','Support'], audience:['Homeowner','Installer','Commercial','Industrial']},
+  {brand:'ANDO', role:'Solar generation', level:'Passport + performance', hardware:'Framed modules, flexible modules, bifacial modules, string layout', does:'EMON links module identity, flash-test data, layout, string mapping, installer evidence and production context into a permanent solar passport.', scope:['Monitor','Commission','Document','Support'], audience:['Homeowner','Installer','Commercial','Industrial']},
+  {brand:'PROP', role:'Wind generation', level:'Full applicable scope', hardware:'Residential, commercial and industrial small wind systems', does:'EMON combines wind generation with battery control, site demand, export rules, weather data, service records and market opportunities.', scope:['Monitor','Control','Optimise','Commission','Document','Market','Support'], audience:['Homeowner','Installer','Commercial','Industrial']},
+  {brand:'OZZY', role:'Controllable loads', level:'Device + load control', hardware:'Smart plugs, switches, relays, circuit switching', does:'EMON turns selected loads into measurable and controllable energy assets for schedules, solar surplus, tariff response and grid limits.', scope:['Monitor','Control','Optimise','Commission','Document','Support'], audience:['Homeowner','Installer','Commercial','Industrial']},
+  {brand:'XOOM', role:'EV charging', level:'Full applicable scope', hardware:'Residential, workplace and commercial EV chargers', does:'EMON charges vehicles around user deadlines, solar surplus, dynamic prices, site limits and market signals without exceeding the grid connection.', scope:['Monitor','Control','Optimise','Commission','Document','Market','Support'], audience:['Homeowner','Installer','Commercial','Industrial']},
+  {brand:'NENDO', role:'Heating and cooling', level:'Comfort optimisation', hardware:'Heat pumps, HVAC units and supported thermal systems', does:'EMON coordinates comfort with weather forecast, energy price, solar production, building demand, schedules and professional diagnostics.', scope:['Monitor','Control','Optimise','Commission','Document','Support'], audience:['Homeowner','Installer','Commercial','Industrial']},
+  {brand:'OGO', role:'Hot water', level:'Thermal storage optimisation', hardware:'Heat-pump boiler, hot-water tank, controllable thermal storage', does:'EMON heats water during solar-rich or low-price periods while respecting comfort, hygiene settings and household demand.', scope:['Monitor','Control','Optimise','Commission','Document','Support'], audience:['Homeowner','Installer','Commercial']},
+  {brand:'AIRO', role:'Ventilation', level:'Air and energy balance', hardware:'ERV, HRV, MVHR and ventilation products', does:'EMON coordinates ventilation with air quality, heat recovery, occupancy, comfort, tariff timing and service evidence.', scope:['Monitor','Control','Optimise','Commission','Document','Support'], audience:['Homeowner','Installer','Commercial','Industrial']},
+  {brand:'FEU', role:'Infrared heating', level:'Zone control', hardware:'Infrared heaters, zones and thermostatic controls', does:'EMON manages infrared heating by room, schedule, occupancy, price period and available renewable energy.', scope:['Monitor','Control','Optimise','Commission','Document'], audience:['Homeowner','Installer','Commercial']},
+  {brand:'GLOW', role:'Lighting', level:'Outdoor and lighting loads', hardware:'Solar lighting, connected lighting, garden and outdoor loads', does:'EMON can automate selected lighting and outdoor loads using time, sensor, tariff and system-state logic.', scope:['Monitor','Control','Optimise','Document'], audience:['Homeowner','Installer','Commercial']},
+  {brand:'CHILL', role:'Outdoor energy use', level:'Selected controllable loads', hardware:'Outdoor furniture power, lighting, heating and accessory loads', does:'EMON can include selected CHILL loads in schedules, outdoor scenes, solar-surplus use and user comfort settings.', scope:['Monitor','Control','Optimise','Document'], audience:['Homeowner','Installer','Commercial']},
+  {brand:'MUKI', role:'Sensors', level:'Context layer', hardware:'Temperature, humidity, air quality, occupancy, outdoor and site sensors', does:'MUKI gives EMON the context needed for better automation, comfort, diagnostics, alerts and reporting.', scope:['Monitor','Commission','Document','Support'], audience:['Homeowner','Installer','Commercial','Industrial']},
+  {brand:'SHELTR', role:'Protection', level:'Passport + service context', hardware:'Inverter shelters, battery shelters and protective enclosures', does:'EMON links shelter identity, installed equipment, photographs, service access notes and warranty records to the installation passport.', scope:['Commission','Document','Support'], audience:['Homeowner','Installer','Commercial','Industrial']},
+  {brand:'MOX', role:'Mounting infrastructure', level:'Documentation only', hardware:'Roof mounting, ground mounting, carport, pergola and cable infrastructure', does:'EMON records project identity, layout evidence, installed product references and documentation where it improves service and warranty traceability.', scope:['Commission','Document','Support'], audience:['Installer','Commercial','Industrial']},
+  {brand:'DODO', role:'Protection and cable guidance', level:'Documentation only', hardware:'Bird protection strips, cable guidance and drainage accessories', does:'EMON can store installation evidence, project photos, warranty status and product references where documentation value is useful.', scope:['Commission','Document','Support'], audience:['Homeowner','Installer','Commercial']},
+  {brand:'WURK', role:'Installer tools', level:'Installer workflow', hardware:'Scaffold, ladders, lifting and site tools', does:'EMON does not control WURK hardware. It can reference tool use, installation evidence and safety documentation inside installer workflows where relevant.', scope:['Document','Support'], audience:['Installer','Commercial','Industrial']},
+  {brand:'VISTA', role:'Physical interface', level:'Optional display', hardware:'10.1-inch wall display and mounting options', does:'VISTA shows live energy flow, alerts, controls, documentation access and guided setup as a permanent window into EMON.', scope:['Monitor','Control','Commission','Document','Support'], audience:['Homeowner','Installer','Commercial','Industrial']},
+];
+
+const FLOW_MODES = [
+  { key: "3d", label: "3D flow", desc: "A three-dimensional property view showing energy moving through the building in real time \u2014 intuitive for homeowners.", slot: "emon-flow-3d", ph: "3D property energy view" },
+  { key: "linear", label: "Linear flow", desc: "A simple left-to-right diagram from generation through storage to loads and grid \u2014 clear at a glance.", slot: "emon-flow-linear", ph: "Linear energy-flow screen" },
+  { key: "sankey", label: "Sankey flow", desc: "A proportional Sankey diagram where band width shows how much energy takes each path \u2014 ideal for understanding losses and splits.", slot: "emon-flow-sankey", ph: "Sankey energy-flow screen" },
+  { key: "numeric", label: "Numeric", desc: "A dense numeric technical view with live values for every circuit and device \u2014 built for installers and industrial users.", slot: "emon-flow-numeric", ph: "Numeric installer view" },
+];
+
+const ROLES = [
+  { label: "Metering", hardware: ["SYNQ P1", "Single-phase", "Three-phase", "CT meter"], functions: ["Grid import / export", "Live consumption", "Tariff matching", "Phase monitoring", "Commissioning & documentation"] },
+  { label: "Generation", hardware: ["ANDO solar", "PROP wind"], functions: ["Production monitoring", "Forecast context", "Passport & documentation", "Performance context"] },
+  { label: "Inverter", hardware: ["MOEBIUS single-phase", "Three-phase", "Hybrid", "Microinverter", "C&I"], functions: ["Status monitoring", "Mode control where supported", "MPPT & string mapping", "Commissioning report"] },
+  { label: "Storage", hardware: ["FLUXX BLOCK", "FLUXX STACK", "C&I storage"], functions: ["Charge / discharge control", "Tariff & solar optimisation", "Backup reserve", "Battery health"] },
+  { label: "EV charging", hardware: ["XOOM AC charger"], functions: ["Solar charging", "Tariff charging", "Peak avoidance", "Site-limit control"] },
+  { label: "Heating & cooling", hardware: ["NENDO heat pumps", "FEU infrared"], functions: ["Comfort optimisation", "Tariff pre-heat / pre-cool", "Peak reduction", "Monitoring"] },
+  { label: "Hot water", hardware: ["OGO heat-pump boiler"], functions: ["Solar-surplus heating", "Cheap-tariff heating", "Hygiene-safe logic", "Energy reports"] },
+  { label: "Ventilation", hardware: ["AIRO MVHR / ERV / HRV"], functions: ["Air-quality coordination", "Energy-aware ventilation", "Filter alerts", "Documentation"] },
+  { label: "Smart plugs & switches", hardware: ["OZZY plug", "OZZY switch", "25A / 32A"], functions: ["Controllable loads", "Solar-surplus control", "Tariff response", "Remote control"] },
+  { label: "Sensors", hardware: ["MUKI sensors"], functions: ["Environmental context", "Automation triggers", "Diagnostics & alerts", "Reporting"] },
+  { label: "Display", hardware: ["VISTA 10.1-inch"], functions: ["Live energy flow", "Alerts & controls", "Documentation access", "Guided setup"] },
+  { label: "Energy markets", hardware: ["Dynamic tariffs", "VPP partners", "DSO mode"], functions: ["Tariff optimisation", "VPP participation", "Grid balancing", "Flexibility income"] },
+];
+
+const WIZARD = [
+  { key: "who", q: "What are you?", options: ["Homeowner", "Installer", "Commercial site owner", "Industrial energy user", "Energy supplier / market partner"] },
+  { key: "improve", q: "What do you want to improve?", options: ["Lower energy cost", "Use more solar", "Control battery charging", "Manage EV charging", "Reduce peak demand", "Use dynamic tariffs", "Commission products faster", "Document installations", "Monitor multiple sites"] },
+  { key: "hardware", q: "Which hardware do you have or plan?", options: ["ANDO solar", "MOEBIUS inverter", "FLUXX battery", "SYNQ meter", "XOOM EV charger", "NENDO heat pump", "OGO boiler", "AIRO ventilation", "VISTA display"] },
+  { key: "show", q: "What should EMON show?", options: ["Monitoring", "Control", "Optimisation", "Commissioning", "Documentation", "Energy markets", "Support"] },
+];
+
+const MODULES = [
+  { key: "battery", name: "Battery AI", price: 4.99 },
+  { key: "ev", name: "EV Charger PRO", price: 4.99 },
+  { key: "hp", name: "Heat Pump PRO", price: 4.99 },
+  { key: "boiler", name: "Boiler PRO", price: 4.99 },
+  { key: "diag", name: "Deep Diagnostics", price: 4.99 },
+  { key: "wind", name: "Wind PRO", price: 4.99 },
+  { key: "ir", name: "Infrared Heater PRO", price: 1 },
+  { key: "vent", name: "Ventilation PRO", price: 1 },
+  { key: "chill", name: "CHILL Outdoor PRO", price: 1 },
+  { key: "light", name: "Lighting / Garden PRO", price: 1 },
+];
+
+const AUD = ["all", "Homeowner", "Installer", "Commercial", "Industrial"];
+const SCOPES = ["all", "Monitor", "Control", "Optimise", "Commission", "Document", "Market", "Support"];
+
+function money(n) { return (Math.round(n * 100) / 100).toFixed(2).replace(/\.00$/, ""); }
+
+const HERO_ITEMS = [{"label":"The whole system, not one device","heading":"EMON visualises the whole system, not one device.","sentence":"TO CONFIRM","media":{"type":"slot","slot":"emon-hero","alt":"EMON hero picture 1"}},{"label":"Four questions. One setup","heading":"Four questions. One recommended EMON setup.","sentence":"TO CONFIRM","media":{"type":"slot","slot":"emon-hero-2","alt":"EMON hero picture 2"}},{"label":"Scan. Connect. Validate. Document","heading":"Scan. Connect. Validate. Document. Handover.","sentence":"TO CONFIRM","media":{"type":"slot","slot":"emon-hero-3","alt":"EMON hero picture 3"}},{"label":"One digital passport","heading":"One digital passport for the life of the system.","sentence":"Every commissioned STRØHM.ENERGY system receives a permanent digital passport, product identities, serials, photos, firmware, flash-test records, test results, warranty and service history.","media":{"type":"slot","slot":"emon-hero-4","alt":"EMON hero picture 4"}},{"label":"Flexibility into value","heading":"Turn flexibility into value, where the market allows.","sentence":"TO CONFIRM","media":{"type":"slot","slot":"emon-hero-5","alt":"EMON hero picture 5"}},{"label":"EMS capped at €25/month","heading":"Build your monthly EMON, with the EMS cap applied.","sentence":"EMON Basic, the dynamic tariff engine and installer mode are free forever. Add EMS modules below, total EMS is capped at €25/month.","media":{"type":"slot","slot":"emon-hero-6","alt":"EMON hero picture 6"}}];
+class Component extends DCLogic {
+  renderVals() { return Object.assign({}, this._rvBase(), { heroItems: HERO_ITEMS }); }
+  tk() {
+    const p = this.props, rhythm = p.rhythm || "Standard", accent = p.accent || "Neutral", band = p.commissioningBand || "Light";
+    const gap = { Airy: ["136px", "88px"], Standard: ["96px", "64px"], Compact: ["56px", "40px"] }[rhythm] || ["96px", "64px"];
+    const emon = accent === "EMON";
+    const dark = band === "Dark";
+    return {
+      tkGap: gap[0], tkGapS: gap[1],
+      tkEyebrow: emon ? "#146A57" : "#898989", tkCard: emon ? "var(--color-card-emon)" : "#F4F4F4",
+      cxBg: dark ? "#2B2B2A" : "transparent", cxPad: dark ? "88px" : "0", cxHead: dark ? "#FFFFFF" : "#4F4F4E", cxHead2: dark ? "#B2B3B3" : "#8E8E8E",
+      cxCard: dark ? "#3A3A39" : "#F4F4F4", cxText: dark ? "#C9C9C7" : "#666666"
+    };
+  }
+
+  state = { frame: 0, 
+    flow: 0, role: 0,
+    aud: "all", role_f: "all", scope: "all", obj: "all", search: "",
+    wizStep: 0, wizPick: { who: null, improve: null, hardware: null, show: null },
+    mods: { battery: true, ev: true, hp: false, boiler: false, diag: false, wind: false, ir: false, vent: false, chill: false, light: false },
+  };
+  componentDidMount() {  }
+  componentWillUnmount() { if (this._heroTimer) clearInterval(this._heroTimer); }
+  heroVals() { const fr = this.state.frame || 0, hv = {}; for (let i = 0; i < 6; i++) { hv["op" + i] = i === fr ? 1 : 0; hv["pe" + i] = i === fr ? "auto" : "none"; } hv.heroDots = [0, 1, 2, 3, 4, 5].map(i => ({ w: i === fr ? "22px" : "10px", bg: i === fr ? "#21AE8F" : "rgba(255,255,255,0.4)" })); return hv; }
+  _rvBase() { return { ...this.tk(), emonEntries: EMON_ENTRIES, brandSix: [{ n: "01", title: "The whole system, not one device", media: { type: "slot", slot: "emon-hero", alt: "EMON · The whole system, not one device · drop a photo or video" } }, { n: "02", title: "Four questions. One setup", media: { type: "slot", slot: "emon-hero-2", alt: "EMON · Four questions. One setup · drop a photo or video" } }, { n: "03", title: "Scan. Connect. Validate. Document", media: { type: "slot", slot: "emon-hero-3", alt: "EMON · Scan. Connect. Validate. Document · drop a photo or video" } }, { n: "04", title: "One digital passport", media: { type: "slot", slot: "emon-hero-4", alt: "EMON · One digital passport · drop a photo or video" } }, { n: "05", title: "Flexibility into value", media: { type: "slot", slot: "emon-hero-5", alt: "EMON · Flexibility into value · drop a photo or video" } }, { n: "06", title: "EMS capped at €25/month", media: { type: "slot", slot: "emon-hero-6", alt: "EMON · EMS capped at €25/month · drop a photo or video" } }], ...this.heroVals(), ...this._rv() }; }
+  _rv() {
+    const st = this.state;
+    const roles = [...new Set(BRANDS.map(b => b.role))].sort();
+
+    // brand filter
+    const outcomeOf = (b) => b.scope.includes("Market") ? "Both" : (b.scope.includes("Optimise") ? "Save" : null);
+    const matchObj = (b) => {
+      if (st.obj === "all") return true;
+      const o = outcomeOf(b);
+      if (st.obj === "Save") return o === "Save" || o === "Both";
+      if (st.obj === "Earn") return o === "Both";
+      if (st.obj === "Both") return o === "Both";
+      return true;
+    };
+    const q = st.search.toLowerCase().trim();
+    const brands = BRANDS.filter(b =>
+      (st.aud === "all" || b.audience.includes(st.aud)) &&
+      (st.role_f === "all" || b.role === st.role_f) &&
+      (st.scope === "all" || b.scope.includes(st.scope)) &&
+      matchObj(b) &&
+      (!q || [b.brand, b.role, b.hardware, b.does].join(" ").toLowerCase().includes(q))
+    ).map(b => {
+      const o = outcomeOf(b);
+      const meta = o === "Both"
+        ? { outcomeLabel: "Save & Earn", outcomeColor: "var(--color-brand-emon)", outcomeBg: "#E4F5EF" }
+        : o === "Save"
+          ? { outcomeLabel: "Save", outcomeColor: "var(--color-brand-emon)", outcomeBg: "#F0FAF7" }
+          : { outcomeLabel: "", outcomeColor: "", outcomeBg: "" };
+      return { ...b, showOutcome: !!o, ...meta };
+    });
+
+    // pricing
+    const selected = MODULES.filter(m => st.mods[m.key]);
+    const rawTotal = selected.reduce((s, m) => s + m.price, 0);
+    const emsTotal = Math.min(25, rawTotal);
+    const capped = rawTotal > 25;
+
+    // wizard recommendation
+    const p = st.wizPick;
+    const layer = p.who === "Homeowner" ? "EMON Home" : p.who === "Installer" ? "EMON Pro" : (p.who === "Commercial site owner") ? "EMON Commercial" : (p.who === "Industrial energy user") ? "EMON Industrial" : (p.who === "Energy supplier / market partner") ? "EMON Markets" : "EMON Core";
+    const sub = (p.show === "Energy markets") ? "EMS + Grid Balancing" : (p.improve === "Lower energy cost" || p.improve === "Use dynamic tariffs") ? "Free tariff engine + EMS modules" : (p.who === "Installer") ? "Installer mode (free)" : "EMON Basic (free) + EMS as needed";
+
+    return {
+      heroRoutes: ["For homeowners", "For installers", "For commercial", "For industrial"],
+      symbols: [{ g: "\u25B2", t: "Flow" }, { g: "\u25CF", t: "Health" }, { g: "\u25A0", t: "Connectivity" }, { g: "\u2661", t: "Care" }],
+
+      audienceRoutes: [
+        { title: "Homeowners", body: "Understand your energy. Let EMON control the expensive moments.", cta: "Explore EMON Home", href: "EMON - SYSTEM - Home - EN.dc.html" },
+        { title: "Installers", body: "Commission faster, document automatically and support every system remotely.", cta: "Explore EMON Pro", href: "EMON - SYSTEM - Pro - EN.dc.html" },
+        { title: "Commercial", body: "Coordinate solar, storage, EV charging, heating and controllable loads across one site.", cta: "Explore commercial", href: "EMON - SYSTEM - Commercial - EN.dc.html" },
+        { title: "Industrial", body: "Manage large flexible loads, grid limits, tariffs and energy-market participation.", cta: "Explore industrial", href: "EMON - SYSTEM - Industrial - EN.dc.html" },
+      ],
+
+      flowModes: FLOW_MODES.map((m, i) => ({
+        label: m.label,
+        onClick: () => this.setState({ flow: i }),
+        bg: st.flow === i ? "var(--color-brand-emon)" : "#FFFFFF",
+        color: st.flow === i ? "#FFFFFF" : "#5F5E5E",
+      })),
+      activeFlow: FLOW_MODES[st.flow],
+
+      // wizard
+      wizardProgress: WIZARD.map((w, i) => i <= st.wizStep ? "var(--color-brand-emon)" : "#D4D4D4"),
+      wizardStepNum: st.wizStep + 1,
+      activeWizard: {
+        q: WIZARD[st.wizStep].q,
+        options: WIZARD[st.wizStep].options.map(label => {
+          const sel = p[WIZARD[st.wizStep].key] === label;
+          return {
+            label,
+            onClick: () => this.setState(s => ({ wizPick: { ...s.wizPick, [WIZARD[s.wizStep].key]: label } })),
+            color: sel ? "var(--color-brand-emon)" : "#5F5E5E",
+            border: sel ? "var(--color-brand-emon)" : "#D4D4D4",
+            bg: sel ? "#F0FAF7" : "#FFFFFF",
+          };
+        }),
+      },
+      wizardNextLabel: st.wizStep === 3 ? "See result" : "Next",
+      wizardBack: () => this.setState(s => ({ wizStep: Math.max(0, s.wizStep - 1) })),
+      wizardNext: () => this.setState(s => ({ wizStep: Math.min(3, s.wizStep + 1) })),
+      recommendation: [
+        { k: "EMON layer", v: layer },
+        { k: "Subscription", v: sub },
+        { k: "You are", v: p.who || "\u2014" },
+        { k: "Priority", v: p.improve || "\u2014" },
+        { k: "Key hardware", v: p.hardware || "\u2014" },
+      ],
+
+      // brand selector
+      audienceOptions: AUD.map(a => ({ value: a, label: a === "all" ? "All audiences" : a, selected: a === st.aud })),
+      roleOptions: [{ value: "all", label: "All roles", selected: st.role_f === "all" }, ...roles.map(r => ({ value: r, label: r, selected: r === st.role_f }))],
+      scopeOptions: SCOPES.map(s => ({ value: s, label: s === "all" ? "All functions" : s, selected: s === st.scope })),
+      objectiveOptions: ["all", "Save", "Earn", "Both"].map(o => ({ value: o, label: o === "all" ? "Save & Earn" : (o === "Both" ? "Save & Earn only" : o), selected: o === st.obj })),
+      searchValue: st.search,
+      onAudience: (e) => this.setState({ aud: e.target.value }),
+      onRole: (e) => this.setState({ role_f: e.target.value }),
+      onScope: (e) => this.setState({ scope: e.target.value }),
+      onObjective: (e) => this.setState({ obj: e.target.value }),
+      onSearch: (e) => this.setState({ search: e.target.value }),
+      brandCount: brands.length,
+      brands,
+      brandEmpty: brands.length === 0,
+
+      // hardware selector
+      roleList: ROLES.map((r, i) => ({
+        label: r.label,
+        onClick: () => this.setState({ role: i }),
+        bg: st.role === i ? "#F0FAF7" : "#FFFFFF",
+        bar: st.role === i ? "var(--color-brand-emon)" : "transparent",
+        color: st.role === i ? "#4F4F4E" : "#5F5E5E",
+        weight: st.role === i ? 400 : 400,
+      })),
+      activeRole: ROLES[st.role],
+
+      commissionSteps: [
+        { n: "01", t: "Scan QR / tap NFC" },
+        { n: "02", t: "Identify product & serial" },
+        { n: "03", t: "Detect connected devices" },
+        { n: "04", t: "Map product relationships" },
+        { n: "05", t: "Validate & run checks" },
+        { n: "06", t: "Photos & PDF report" },
+        { n: "07", t: "Warranty & passport" },
+      ],
+      passportItems: ["Product identities", "Serial numbers", "Project address", "Installer identity", "Installation photos", "Firmware versions", "Flash-test records", "Commissioning results", "Warranty status", "Ownership transfer"],
+
+      marketFeatures: ["Dynamic tariffs", "Supplier partner tariffs", "VPP access", "Grid balancing", "DSO mode", "Flexibility income", "Negative-price protection", "Dynamic export limit"],
+
+      modules: MODULES.map(m => ({
+        name: m.name, price: money(m.price), checked: !!st.mods[m.key],
+        onToggle: () => this.setState(s => ({ mods: { ...s.mods, [m.key]: !s.mods[m.key] } })),
+      })),
+      emsTotal: money(emsTotal), rawTotal: money(rawTotal), capped, savings: money(rawTotal - 25), selectedCount: selected.length,
+
+      support: [
+        { t: "Homeowner", d: "Setup, app help and everyday questions." },
+        { t: "Installer", d: "Commissioning, fleet and remote diagnostics." },
+        { t: "Commercial", d: "Site dashboards, reports and service." },
+        { t: "Industrial", d: "Multi-site, grid limits and integration." },
+        { t: "Commissioning", d: "QR/NFC scan, mapping and PDF records." },
+        { t: "VISTA", d: "Display setup and troubleshooting." },
+        { t: "Subscription", d: "Modules, EMS cap and billing." },
+        { t: "Warranty & passport", d: "Access records and warranty status." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

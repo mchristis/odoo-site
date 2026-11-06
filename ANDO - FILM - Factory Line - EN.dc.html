@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>html,body{margin:0;background:#F7F7F5;} a{color:#4F4F4E;text-decoration:none;} a:hover{color:#252525;}</style>
+<script>window.OM_SCENES = '[{"name":"Opening","dur":3,"desc":"The whole ANDO line, then the camera moves in on the first station"},{"name":"Cells","dur":8,"desc":"Cell inspection, sorting and laser cutting"},{"name":"Strings","dur":8,"desc":"Stringing and string EL"},{"name":"Layup","dur":9,"desc":"Glass, encapsulant, robotic layup, EL and taping"},{"name":"Lamination","dur":8,"desc":"Lamination, buffer and visual inspection"},{"name":"Frame","dur":8,"desc":"Framing, junction box soldering, potting and curing"},{"name":"Test","dur":12,"desc":"Flash test, final EL and safety, labelling, sorting, packing and dispatch"},{"name":"Close","dur":4,"desc":"The camera pulls back to the whole line; from factory to site"}]';</script>
+<script src="./image-slot.js"></script>
+<script>if (/[?&]embed=1/.test(location.search)) { var s = document.createElement("style"); s.textContent = 'div:has(> button[title^="Play/pause"]){display:none !important}'; document.head.appendChild(s); window.FILM_EMBED = true; }</script>
+<script>window.OM_PLAYBACK = '{"mode":"loop"}';</script>
+<script>window.FILM_TWEAKS = /*EDITMODE-BEGIN*/{
+  "motionEditor": true,
+  "showTests": true,
+  "visual": "Line drawing"
+}/*EDITMODE-END*/;</script>
+</helmet>
+<div data-screen-label="ANDO film" style="position:fixed;inset:0;background:#F7F7F5;">
+  <x-import component-from-global-scope="AndoFilm" from="./animations-v3.jsx ./tweaks-panel.jsx ./ando-film.jsx" hint-size="100%,100%"></x-import>
+</div>
+</x-dc>
+</body>
+</html>

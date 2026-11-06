@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>ANDO Feature Icons | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>body{margin:0;background:#FFFFFF;} a{color:#4F4F4E;} a:hover{color:#CDD62B;}</style>
+</helmet>
+<div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#4F4F4E;max-width:1100px;margin:0 auto;padding:var(--space-16) var(--space-6);box-sizing:border-box;">
+  <div style="font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#898989;">ANDO · Design system · Icons</div>
+  <h1 style="margin:var(--space-3) 0 var(--space-4);font-size:var(--web-h1-size);line-height:var(--web-h1-lh);font-weight:100;">Feature icons</h1>
+  <p style="margin:0 0 var(--space-12);max-width:720px;font-size:var(--web-body-size);line-height:var(--web-body-lh);font-weight:300;">Names from the 16 Oct 2026 icon sheet. Drop each SVG or PNG on its tile. Values the sheet did not show clearly are marked TO CONFIRM.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:var(--space-6);">
+    <sc-for list="{{ icons }}" as="i" hint-placeholder-count="12">
+      <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+        <div style="width:96px;height:96px;"><image-slot id="{{ i.id }}" shape="rounded" radius="16" fit="contain" placeholder="Icon"></image-slot></div>
+        <div style="font-size:12px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;line-height:16px;">{{ i.name }}</div>
+        <sc-if value="{{ i.tbc }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;font-weight:500;color:#B07818;">TO CONFIRM: {{ i.note }}</div></sc-if>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const L = [
+      ["Low LCOE (levelized cost of energy)"], ["Extreme weather"], ["Durable materials"], ["Recyclable frame"],
+      ["End-of-life program"], ["ANDO junction box"], ["ANDO frame system"], ["Bifacial technology"],
+      ["Multi-busbar"], ["Low temperature coefficient"], ["RoHS and REACH compliance"], ["PFAS-free, sustainable and safe"],
+      ["ANDO anti-reflection coating"], ["Linear power output guarantee", "years and % after year 1 / year 30"],
+      ["High mechanical strength"], ["Sustainable packaging"], ["Wave module design", "sheet says \"WAWE\""],
+      ["PID resistant"], ["Hot spot protection"], ["European quality assurance"], ["Salt and ammonia resistant"],
+      ["European brand and offices"], ["Long-term warranty", "number of years"], ["100% EL inspection", "inspection interval"],
+      ["European partner network"], ["Positive power tolerance", "W range"], ["Shading tolerant"], ["Triple tested", "factor"],
+      ["EU Stäubli connectors", "sheet text unclear"], ["Efficiency", "% value"],
+    ];
+    return { icons: L.map(([name, note], k) => ({ id: "ando-icon-" + (k + 1), name, tbc: !!note, note: note || "" })) };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>AIRO with EMON | STRØHM.ENERGY</title>
+<script src="airo-emon.js"></script>
+<script src="./image-slot.js"></script>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="AiroNav" active="products" hint-size="100%,49px"></dc-import>
+  <dc-import name="PageHero" brand="AIRO" rgb="0,131,187" eyebrow="AIRO + EMON" title="Air should follow people." intro="Ventilation should not exist as an isolated box." slot="airo-airo-with-emon-hero" shot="AIRO · AIRO with EMON · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;display:flex;gap:6px;"><a href="AIRO - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">AIRO</a><span>&#8250;</span><span style="color:var(--color-text-primary);">AIRO with EMON</span></div>
+    <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">With EMON, AIRO knows who is in which room, what the humidity is doing, how warm it is outside and what the heat pump is doing, and ventilates accordingly.</p>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="aspect-ratio:21/9;background:var(--color-card-airo);border-radius:24px;overflow:hidden;"><image-slot id="airo-emon-hero" shape="rounded" radius="24" placeholder="AIRO_EMON_HERO_01 · 21:9 · living room with AIRO unit, EMON app on a phone showing air quality and tariff · awaiting upload"></image-slot></div>
+  </section>
+
+  <section id="tariffs" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;display:flex;flex-direction:column;gap:20px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Time of use and dynamic tariffs</div>
+      <h2 style="margin:0;max-width:820px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Fresh air at the <span style="color:#8E8E8E;">cheapest hour.</span></h2>
+      <p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">EMON knows the electricity price for every hour: fixed day and night rates, or dynamic prices that change each hour. AIRO keeps the air fresh at all times, but EMON decides when the extra work happens. Boost ventilation, free cooling and the heating or cooling of GUST move to the hours when power is cheap or your own solar is producing.</p>
+      <div role="tablist" aria-label="Tariff" style="display:flex;gap:8px;flex-wrap:wrap;">
+        <sc-for list="{{ modes }}" as="m" hint-placeholder-count="3"><button type="button" role="tab" aria-selected="{{ m.sel }}" onClick="{{ m.pick }}" style="font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:{{ m.weight }};height:40px;padding:0 16px;border-radius:12px;border:1px solid {{ m.border }};background:{{ m.bg }};color:{{ m.fg }};cursor:pointer;">{{ m.label }}</button></sc-for>
+      </div>
+      <div style="background:var(--color-card-airo);padding:24px;display:flex;flex-direction:column;gap:10px;border-radius:12px;">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;"><span style="font-size:14px;font-weight:700;">{{ chartTitle }}</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;text-transform:uppercase;">ILLUSTRATION</span></div>
+        <div style="display:grid;grid-template-columns:repeat(24,minmax(0,1fr));gap:2px;align-items:end;height:150px;">
+          <sc-for list="{{ bars }}" as="b" hint-placeholder-count="24"><div style="display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:2px;"><div style="height:{{ b.sun }};background:#E0E0DC;"></div><div style="height:{{ b.p }};background:{{ b.pc }};"></div></div></sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(24,minmax(0,1fr));gap:2px;"><sc-for list="{{ bars }}" as="b" hint-placeholder-count="24"><div style="height:14px;background:{{ b.run }};"></div></sc-for></div>
+        <div style="display:grid;grid-template-columns:repeat(24,minmax(0,1fr));gap:2px;"><sc-for list="{{ bars }}" as="b" hint-placeholder-count="24"><span style="font-size:9px;font-weight:300;color:var(--color-grey-70);text-align:center;">{{ b.l }}</span></sc-for></div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:12px;font-weight:300;color:var(--color-text-primary);"><span style="display:flex;gap:6px;align-items:center;"><span style="width:12px;height:12px;background:var(--color-grey-70);"></span>Electricity price</span><span style="display:flex;gap:6px;align-items:center;"><span style="width:12px;height:12px;background:#E0E0DC;"></span>Solar</span><span style="display:flex;gap:6px;align-items:center;"><span style="width:12px;height:12px;background:var(--color-text-primary);"></span>Boost, free cooling or GUST heating</span><span style="display:flex;gap:6px;align-items:center;"><span style="width:12px;height:12px;background:var(--color-divider);"></span>Basic ventilation, always on</span></div>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ chartNote }}</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;">
+        <sc-for list="{{ savers }}" as="s" hint-placeholder-count="6"><div style="background:#F4F4F4;padding:20px;display:flex;flex-direction:column;gap:8px;border-radius:12px;"><span style="font-size:14px;font-weight:700;">{{ s.t }}</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ s.d }}</span></div></sc-for>
+      </div>
+      <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);max-width:820px;">Honest numbers: the fans of a ventilation unit use little electricity. Most of the saving comes from heat recovery, from free cooling instead of air conditioning, and from moving the heating and cooling of GUST to cheap or solar hours. Savings per home: TO CONFIRM with EMON data.</div>
+    </div>
+  </section>
+
+  <section id="visuals" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;display:flex;flex-direction:column;gap:20px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">See it work</div>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One day <span style="color:#8E8E8E;">with AIRO and EMON.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px;">
+        <sc-for list="{{ media }}" as="m" hint-placeholder-count="9">
+          <figure style="margin:0;display:flex;flex-direction:column;gap:8px;"><div style="aspect-ratio:{{ m.ratio }};background:var(--color-surface-card);"><image-slot id="{{ m.id }}" shape="rounded" radius="12" placeholder="{{ m.ph }}"></image-slot></div><figcaption style="display:flex;flex-direction:column;gap:2px;"><span style="font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--color-text-primary);">{{ m.type }}</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ m.cap }}</span></figcaption></figure>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px;align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Air quality dashboard</div>
+        <h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Indoor air, <span style="color:#8E8E8E;">understandable.</span></h2>
+        <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A few clear values and a plain reason, not twenty unexplained numbers.</p>
+        <div style="font-size:var(--web-min-size);font-weight:300;color:#B07818;line-height:var(--web-min-lh);">Example values.</div>
+      </div>
+      <div style="background:var(--color-card-airo);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px;max-width:393px;">
+        <div style="font-size:18px;"><span style="font-weight:700;">Air</span> <span style="font-weight:300;">quality</span></div>
+        <sc-for list="{{ dash }}" as="d" hint-placeholder-count="9"><div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--color-divider);padding-top:8px;"><span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ d.k }}</span><span style="font-size:var(--web-small-size);font-weight:700;color:var(--color-text-primary);text-align:right;line-height:var(--web-small-lh);">{{ d.v }}</span></div></sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;display:flex;flex-direction:column;gap:12px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Why is AIRO running faster?</div>
+      <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The system <span style="color:#8E8E8E;">explains itself.</span></h2>
+      <sc-for list="{{ why }}" as="w" hint-placeholder-count="3"><div style="display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--color-divider);"><span style="width:12px;height:12px;border-radius:6px;background:#FFEB9E;margin-top:5px;"></span><span style="font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:var(--color-text-primary);">{{ w }}</span></div></sc-for>
+    </div>
+  </section>
+
+  <sc-for list="{{ sections }}" as="s" hint-placeholder-count="9">
+    <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+      <div style="border-top:1px solid var(--color-divider);padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:32px;">
+        <div style="display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">{{ s.num }}</div><h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ s.title }}</h2></div>
+        <div style="grid-column:span 2;min-width:0;display:flex;flex-direction:column;gap:10px;"><sc-for list="{{ s.paras }}" as="p" hint-placeholder-count="3"><p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ p }}</p></sc-for></div>
+      </div>
+    </section>
+  </sc-for>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-text-primary);padding-top:32px;display:flex;gap:24px;flex-wrap:wrap;">
+      <a href="AIRO - CONTENT - Why Ventilation - EN.dc.html" style="font-size:14px;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Why ventilation matters &#8250;</a>
+      <a href="NENDO - PRODUCT - Overview - EN.dc.html" style="font-size:14px;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">NENDO heat pumps &#8250;</a>
+      <a href="EMON - SYSTEM - Overview - EN.dc.html" style="font-size:14px;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">EMON &#8250;</a>
+    </div>
+  </section>
+  <div style="height:64px;"></div>
+  <dc-import name="ContentSections" brand="AIRO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="AIRO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="AIRO" accent="var(--color-brand-airo)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const PR = [0.24, 0.22, 0.20, 0.19, 0.19, 0.21, 0.28, 0.36, 0.34, 0.27, 0.20, 0.15, 0.12, 0.11, 0.13, 0.17, 0.24, 0.35, 0.42, 0.39, 0.33, 0.29, 0.27, 0.25];
+const SUN = [0, 0, 0, 0, 0, 0, 0.05, 0.15, 0.3, 0.5, 0.7, 0.85, 0.95, 0.95, 0.85, 0.7, 0.5, 0.3, 0.12, 0.02, 0, 0, 0, 0];
+const MODES = {
+  tou: { label: "Day and night tariff", run: [0, 1, 2, 3, 4, 5, 22, 23], title: "Day and night tariff: boost and GUST heating at night", note: "Extra ventilation and GUST heating run in the night window. During the day AIRO keeps the basic airflow for fresh air." },
+  dynamic: { label: "Dynamic tariff", run: [2, 3, 11, 12, 13, 14], title: "Dynamic tariff: the cheapest hours of the day", note: "EMON picks the cheapest hours for flushing, pre-heating or pre-cooling with GUST. Evening peak hours stay at basic ventilation." },
+  summer: { label: "Summer night", run: [0, 1, 2, 3, 4, 5], title: "Summer: free cooling at night", note: "Cool night air flushes the heat out of the house through the bypass, so less or no air conditioning is needed during the day." },
+};
+class Component extends DCLogic {
+  state = { mode: "dynamic" };
+  componentDidMount() { const t = () => { if (window.AIRO_EMON_PAGE) this.forceUpdate(); else this.t = setTimeout(t, 100); }; t(); }
+  componentWillUnmount() { clearTimeout(this.t); }
+  renderVals() {
+    const D = window.AIRO_EMON_PAGE || { emon: [], why: [], dash: [] };
+    const cap = (s) => /^[A-Z0-9 %°³/.,-]+$/.test(s) && s.length > 3 ? s.charAt(0) + s.slice(1).toLowerCase() : s;
+    const M = MODES[this.state.mode], mx = Math.max(...PR);
+    const out = {
+      modes: Object.entries(MODES).map(([k, m]) => { const sel = k === this.state.mode; return { label: m.label, sel, pick: () => this.setState({ mode: k }), bg: sel ? "#1E1E1E" : "#FFFFFF", fg: sel ? "#FFFFFF" : "#4F4F4E", border: sel ? "#1E1E1E" : "#D4D4D4", weight: sel ? 400 : 400 }; }),
+      chartTitle: M.title, chartNote: M.note,
+      bars: PR.map((p, i) => ({ p: Math.round(p / mx * 70) + "%", pc: M.run.includes(i) ? "#4F4F4E" : "#8A8A88", sun: (this.state.mode === "dynamic" ? Math.round(SUN[i] * 25) : 0) + "%", run: M.run.includes(i) ? "#4F4F4E" : "#D4D4D4", l: i % 3 === 0 ? String(i).padStart(2, "0") : "" })),
+      savers: [
+        { t: "Heat recovery", d: "The warmth of the outgoing air stays in the house, so the heating has less to do. The biggest saving in winter." },
+        { t: "Boost at cheap hours", d: "Flushing rooms with extra fresh air, after cooking or before guests arrive, is planned in low-price or solar hours where comfort allows." },
+        { t: "Free cooling", d: "In summer, cool night air replaces air conditioning. EMON opens the bypass when outside is cooler than inside." },
+        { t: "GUST at the right time", d: "GUST heats and cools the supply air with its heat pump. EMON moves that work to cheap hours and solar surplus." },
+        { t: "Lower peaks", d: "Where grid fees depend on the highest power drawn, EMON keeps GUST out of the evening peak together with the other large loads." },
+        { t: "Solar first", d: "With solar panels, extra ventilation and GUST run on your own power before it is exported for a low price." },
+      ],
+      media: [
+        ["VIDEO", "16/9", "airo-emon-video-day", "AIRO_EMON_VIDEO_DAY_01 · 16:9 video, 60 s · one day in a home: morning CO₂, shower, cooking, solar noon boost, summer night free cooling", "A day with AIRO and EMON, 60 seconds."],
+        ["VIDEO", "16/9", "airo-emon-video-tariff", "AIRO_EMON_VIDEO_TARIFF_01 · 16:9 animation, 30 s · price curve, EMON moves boost and GUST heating to cheap hours", "How EMON uses the dynamic tariff, 30 seconds."],
+        ["VIDEO", "9/16", "airo-emon-video-app", "AIRO_EMON_VIDEO_APP_01 · 9:16 screen recording, 20 s · EMON app: air quality, reason line, tariff, schedule", "The EMON app, for social media."],
+        ["PHOTO", "4/3", "airo-emon-photo-bedroom", "AIRO_EMON_PHOTO_BEDROOM_01 · 4:3 · calm bedroom at night, SHIFT on the wall, phone on the bedside table showing CO₂ good", "Bedroom at night, CO₂ kept low."],
+        ["PHOTO", "4/3", "airo-emon-photo-bathroom", "AIRO_EMON_PHOTO_BATHROOM_01 · 4:3 · bathroom after a shower, mirror clearing, extract valve on the ceiling", "Bathroom after a shower, humidity boost."],
+        ["PHOTO", "4/3", "airo-emon-photo-classroom", "AIRO_EMON_PHOTO_CLASSROOM_01 · 4:3 · classroom during a lesson, WAVE unit against the wall, windows closed, pupils blurred", "Classroom, fresh air with windows closed."],
+        ["DIAGRAM", "16/9", "airo-emon-diagram-system", "AIRO_EMON_DIAGRAM_SYSTEM_01 · 16:9 · house section: AIRO, GUST, NENDO, solar, battery, meter, EMON in the centre", "AIRO in the complete energy system."],
+        ["DIAGRAM", "16/9", "airo-emon-diagram-freecooling", "AIRO_EMON_DIAGRAM_FREECOOLING_01 · 16:9 · summer night: cool air in through the bypass, warm air out, temperatures inside and outside", "Free cooling on a summer night."],
+        ["SKETCH", "4/3", "airo-emon-sketch-zones", "AIRO_EMON_SKETCH_ZONES_01 · 4:3 · floor plan with day zone and night zone, CO₂ sensors and dampers", "Zone control: day and night areas."],
+      ].map(([type, ratio, id, ph, cap]) => ({ type, ratio, id, ph, cap })),
+    };
+    return {
+      ...out,
+      dash: D.dash.map(([k, v]) => ({ k, v: cap(v) })),
+      why: D.why,
+      sections: D.emon.map((s, i) => ({ ...s, num: String(i + 1).padStart(2, "0") })),
+    };
+  }
+}
+</script>
+</body>
+</html>

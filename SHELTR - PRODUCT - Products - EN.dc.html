@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>SHELTR Products | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  .sh-prod:hover { border-color:var(--color-brand-sheltr) !important; }
+  .sh-prod:hover .sh-prod-t { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="SheltrNav" active="products" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="SHELTR" rgb="91,101,146" eyebrow="SHELTR products" title="Three families, one equipment-first method." intro="SHELTR begins with the equipment &#8212; its airflow, weight, clearances, service requirements and environment &#8212; not with a box." slot="sheltr-products-hero" shot="SHELTR · Products · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 40px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:720px;">Choose the family, or start from the equipment you need to protect.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:44px;">
+      <sc-for list="{{ statusKey }}" as="s" hint-placeholder-count="2">
+        <div style="display:flex;gap:8px;align-items:center;border:1px solid var(--color-divider);padding:8px 14px;border-radius:8px;"><span style="width:9px;height:9px;background:{{ s.color }};"></span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ s.label }}</span></div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- FAMILY SECTIONS -->
+  <sc-for list="{{ families }}" as="fam" hint-placeholder-count="3">
+    <section id="{{ fam.id }}" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:8px var(--web-side) 0;box-sizing:border-box;">
+      <div style="border-top:1px solid var(--color-divider);padding-top:36px;padding-bottom:8px;">
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;margin-bottom:28px;--cg:48px;">
+          <div style="order:{{ fam.orderText }};">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+              <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ fam.role }}</span>
+              <sc-if value="{{ fam.chip }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);background:#EEEDFB;padding:3px 8px;border-radius:8px;">{{ fam.chip }}</span></sc-if>
+            </div>
+            <h2 style="margin:0 0 12px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">SHELTR {{ fam.code }}</h2>
+            <p style="margin:0 0 20px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ fam.body }}</p>
+            <a href="SHELTR - PRODUCT - {{ fam.code }} - EN.dc.html" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">{{ fam.cta }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+          </div>
+          <div style="order:{{ fam.orderImg }};aspect-ratio:16/10;background:var(--color-surface-card);border-radius:12px;overflow:hidden;">
+            <image-slot id="{{ fam.slot }}" shape="rounded" radius="12" placeholder="{{ fam.ph }}"></image-slot>
+          </div>
+        </div>
+        <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;--cg:16px;">
+          <sc-for list="{{ fam.variants }}" as="v" hint-placeholder-count="4">
+            <div class="sh-prod" style="border-top:3px solid var(--color-brand-sheltr);padding:22px 20px;display:flex;flex-direction:column;gap:10px;background:#F4F4F4;border-radius:12px;">
+              <span class="sh-prod-t" style="font-size:15px;font-weight:700;letter-spacing:0.01em;">{{ v.name }}</span>
+              <p style="margin:0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);flex:1;max-width:760px;">{{ v.desc }}</p>
+              <a href="{{ fam.ctaHref }}" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">{{ fam.variantCta }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ fam.note }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">{{ fam.note }}</p>
+        </sc-if>
+      </div>
+    </section>
+  </sc-for>
+
+  <!-- CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 96px;box-sizing:border-box;">
+    <div style="background:var(--color-text-primary);padding:56px;color:#FFFFFF;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;border-radius:12px;">
+      <div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#FFFFFF;text-wrap:balance;">Not sure which family <span style="color:#B2B3B3;">fits the equipment?</span></h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The selector checks dimensions, weight, airflow, clearances and environment before recommending a solution.</p>
+      </div>
+      <a href="SHELTR - PRODUCT - Find Your SHELTR - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-sheltr);color:var(--color-text-primary);font-weight:400;white-space:nowrap;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Find your SHELTR</a>
+    </div>
+  </section>
+
+  <dc-import name="ContentSections" brand="SHELTR" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="SHELTR" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="SHELTR" accent="var(--color-brand-sheltr)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    const raw = [
+      { id: "cara", code: "CARA", role: "Open protection", chip: "", body: "CARA supports equipment beneath a protective roof while keeping ventilation and service access open. Best for compatible inverters and electrical equipment that do not require a sealed enclosure.", cta: "Explore CARA", ctaHref: "SHELTR - PRODUCT - CARA - EN.dc.html", variantCta: "View variant", slot: "sh-prod-cara", ph: "CARA open-frame roof over a rooftop inverter",
+        note: "Available launch range with 16 existing dimensional variants across the four types.",
+        variants: [
+          { name: "CARA-WALL", desc: "Wall-mounted open protection for compatible wall-fixed inverters." },
+          { name: "CARA-DECK", desc: "Ballasted wall-floor protection on the roof deck, with free airflow and access." },
+          { name: "CARA-DUO", desc: "Back-to-back configuration for two units or a wider equipment envelope." },
+          { name: "CARA-TILT", desc: "Angled roof geometry for drainage and specific site conditions." },
+        ] },
+      { id: "kubo", code: "KUBO", role: "Enclosed electrical protection", chip: "Project solutions", body: "KUBO protects compatible electrical equipment inside a controlled cabinet. Passive ventilation, active ventilation, thermal management and enhanced separation are selected by equipment and location.", cta: "Explore KUBO", ctaHref: "SHELTR - PRODUCT - KUBO - EN.dc.html", variantCta: "Submit a project", slot: "sh-prod-kubo", ph: "KUBO enclosed cabinet for battery / switchgear",
+        note: "KUBO is a project solution. No \u201COrder now\u201D until engineering, dimensions, materials, airflow performance and relevant testing are confirmed.",
+        variants: [
+          { name: "KUBO WALL", desc: "Wall-mounted enclosed configuration." },
+          { name: "KUBO GROUND", desc: "Ground-standing enclosed configuration." },
+          { name: "KUBO ROOF", desc: "Roof-mounted enclosed configuration." },
+          { name: "KUBO DOUBLE", desc: "Double enclosed configuration for larger equipment." },
+        ] },
+      { id: "hush", code: "HUSH", role: "Acoustic protection", chip: "Project solutions", body: "HUSH combines acoustic treatment, weather protection and designed airflow around heat pumps, ventilation units, pumps and similar equipment.", cta: "Explore HUSH", ctaHref: "SHELTR - PRODUCT - HUSH - EN.dc.html", variantCta: "Submit a project", slot: "sh-prod-hush", ph: "HUSH acoustic enclosure around a heat pump",
+        note: "HUSH is a project solution. Airflow and acoustic performance are confirmed before supply.",
+        variants: [
+          { name: "HUSH WALL", desc: "Wall-mounted acoustic configuration." },
+          { name: "HUSH GROUND", desc: "Ground-standing acoustic configuration." },
+          { name: "HUSH ROOF", desc: "Roof-mounted acoustic configuration." },
+          { name: "HUSH DOUBLE", desc: "Double acoustic configuration for larger or paired units." },
+        ] },
+    ];
+    return {
+      statusKey: [
+        { label: "Available launch range", color: "#4CAF50" },
+        { label: "Project solutions", color: "var(--color-brand-sheltr)" },
+      ],
+      families: raw.map((f, i) => ({ ...f, orderText: i % 2 === 0 ? 1 : 2, orderImg: i % 2 === 0 ? 2 : 1 })),
+    };
+  }
+}
+</script>
+</body>
+</html>

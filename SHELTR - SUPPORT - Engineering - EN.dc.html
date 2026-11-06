@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>SHELTR Engineering | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  input:focus, select:focus { outline:none; border-color:var(--color-brand-sheltr); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="SheltrNav" active="" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="SHELTR" rgb="91,101,146" eyebrow="SHELTR engineering" title="Standard where possible. Engineered where necessary." intro="Some projects fit a standard SHELTR configuration." slot="sheltr-engineering-hero" shot="SHELTR · Engineering · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 40px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:740px;">Others require confirmation of roof loads, wall fixing, ballast, airflow, fire separation or acoustic performance. Upload the equipment data and installation information; SHELTR engineering returns the suitable configuration, required conditions and next actions.</p>
+  </section>
+
+  <!-- WHEN ENGINEERING -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+    <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;--cg:20px;">
+      <div style="border-top:3px solid #4CAF50;padding:32px;background:#F4F4F4;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4CAF50;margin-bottom:14px;">Standard configuration</div>
+        <p style="margin:0 0 14px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">When the equipment, mounting and environment fall inside a known envelope, the selector returns a standard SHELTR configuration directly.</p>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          <sc-for list="{{ standardWhen }}" as="s" hint-placeholder-count="3"><span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);display:flex;gap:8px;align-items:baseline;line-height:var(--web-small-lh);"><span style="color:#4CAF50;font-size:9px;">&#9679;</span>{{ s }}</span></sc-for>
+        </div>
+      </div>
+      <div style="border-top:3px solid var(--color-brand-sheltr);padding:32px;background:#F4F4F4;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">Engineering review</div>
+        <p style="margin:0 0 14px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">When a project exceeds the standard envelope, SHELTR engineering confirms the configuration and the conditions it depends on.</p>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          <sc-for list="{{ engineeredWhen }}" as="e" hint-placeholder-count="6"><span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);display:flex;gap:8px;align-items:baseline;line-height:var(--web-small-lh);"><span style="color:var(--color-text-primary);font-size:9px;">&#9679;</span>{{ e }}</span></sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBMIT A PROJECT -->
+  <section style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Submit a project</div>
+      <h2 style="margin:0 0 32px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Give us the equipment and the site. <span style="color:#8E8E8E;">We return the configuration.</span></h2>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:start;">
+        <div style="background:var(--color-surface-card);padding:32px;border-radius:12px;">
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;--cg:18px;">
+            <sc-for list="{{ formFields }}" as="f" hint-placeholder-count="8">
+              <div style="grid-column:{{ f.span }};">
+                <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">{{ f.label }}</label>
+                <input type="text" placeholder="{{ f.ph }}" style="width:100%;box-sizing:border-box;height:42px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);border-radius:8px;font-weight:var(--web-input-weight);">
+              </div>
+            </sc-for>
+          </div>
+          <div style="margin-top:18px;border:1px dashed #C7C7C4;padding:20px;text-align:center;border-radius:8px;">
+            <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Upload equipment datasheet, roof / wall plan and site photographs</span>
+          </div>
+          <span style="margin-top:22px;font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-sheltr);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Submit a project</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="background:var(--color-surface-card);border-radius:12px;">
+            <div style="padding:16px 24px;border-bottom:1px solid var(--color-divider);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Engineering returns</span></div>
+            <div style="padding:8px 24px 16px;">
+              <sc-for list="{{ returns }}" as="r" hint-placeholder-count="4">
+                <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);padding:11px 0;border-bottom:1px solid var(--color-surface-card);display:flex;gap:10px;align-items:baseline;line-height:var(--web-small-lh);"><span style="color:var(--color-text-primary);font-size:9px;">&#9679;</span>{{ r }}</div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="aspect-ratio:4/3;background:#EDEDEB;border-radius:12px;overflow:hidden;">
+            <image-slot id="sheltr-eng-img" shape="rounded" radius="12" placeholder="Engineer reviewing equipment data, roof plan and 3D SHELTR model"></image-slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="ContentSections" brand="SHELTR" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="SHELTR" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="SHELTR" accent="var(--color-brand-sheltr)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      standardWhen: ["Equipment inside a known dimensional envelope", "Standard wall or roof mounting", "Common installation environment"],
+      engineeredWhen: ["Roof load and ballast confirmation", "Wall fixing into a specific construction", "Airflow and heat-rejection performance", "Fire separation requirements", "Acoustic performance targets", "Non-standard or combined equipment"],
+      formFields: [
+        { label: "Equipment category", ph: "Inverter, battery, heat pump\u2026", span: "auto" },
+        { label: "Brand & model", ph: "Manufacturer and model", span: "auto" },
+        { label: "Installation location", ph: "Wall / ground / roof", span: "auto" },
+        { label: "Environment", ph: "Residential / commercial / coastal", span: "auto" },
+        { label: "Roof or wall construction", ph: "If known", span: "auto" },
+        { label: "Country", ph: "Country", span: "auto" },
+        { label: "Company", ph: "Company name", span: "auto" },
+        { label: "Email", ph: "you@company.com", span: "auto" },
+      ],
+      returns: ["The suitable SHELTR configuration", "The conditions it depends on", "Required technical checks", "Clear next actions"],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>GLOW Visual Prompts | STRØHM.ENERGY</title>
+<script src="./doc-page.js"></script>
+<style> doc-page:not(:defined){visibility:hidden} body { margin:0; } a { color:var(--color-text-primary); } </style>
+</helmet>
+<doc-page size="a4" margin="18mm">
+<div style="font-family:var(--font-web);color:var(--color-text-primary);font-size:10pt;line-height:1.5;">
+  <div style="font-size:8pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-text-primary);">STRØHM.ENERGY · GLOW · Internal document</div>
+  <h1 style="margin:8px 0 6px;font-size:24pt;font-weight:700;">Visual prompts</h1>
+  <div style="font-size:10pt;font-weight:300;color:var(--color-text-primary);margin-bottom:16px;">Version 1 · 27 September 2026 · 16 visuals. Based on the module structure in the GLOW product list screenshots (solar modules, path module, EV module, open frame, inserts, ecology inserts, streetlight and park heads, LED tube, sensor, battery, MPPT).</div>
+
+  <h2 style="margin:16px 0 6px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">1. Style base</h2>
+  <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.3pt;">Architectural product photograph, slim anthracite modular lighting column with square cross-section, black four-sided solar module wrapped around the upper column, minimal LED head, European public space, soft overcast daylight or blue hour, straight verticals, neutral colour grade, no people unless stated, no text, no logos except a small GLOW wordmark, photorealistic</div>
+  <p style="margin:6px 0 0;font-weight:300;"><b>Avoid:</b> glowing halos, lens flare, orange sodium light, sci-fi styling, cables to the ground, visible brand names.</p>
+
+  <sc-for list="{{ groups }}" as="g" hint-placeholder-count="5">
+    <h2 style="margin:18px 0 6px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">{{ g.title }}</h2>
+    <sc-for list="{{ g.items }}" as="p" hint-placeholder-count="3">
+      <div style="break-inside:avoid;border-bottom:1px solid #DDDDDD;padding:8px 0;">
+        <div style="display:flex;justify-content:space-between;gap:12px;"><b>{{ p.id }} · {{ p.name }}</b><span style="font-weight:300;color:var(--color-text-primary);">{{ p.fmt }}</span></div>
+        <div style="font-weight:300;color:var(--color-text-primary);margin:2px 0 4px;">{{ p.use }}</div>
+        <div style="background:var(--color-surface-card);padding:7px 10px;font-family:Menlo,Consolas,monospace;font-size:8.3pt;">{{ p.prompt }}</div>
+      </div>
+    </sc-for>
+  </sc-for>
+</div>
+</doc-page>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const B = "[Style base] + ";
+const I = (id, name, fmt, use, prompt) => ({ id, name, fmt, use, prompt });
+class Component extends DCLogic {
+  renderVals() {
+    return { groups: [
+      { title: "2. Overview", items: [
+        I("01", "GLOW_HERO_01", "21:9 · hero", "Overview hero.", B + "row of five GLOW columns with streetlight heads along a quiet residential road at blue hour, lights on at a soft level, trees and houses behind, no cars, product 20% of frame"),
+        I("02", "GLOW_DAY_NIGHT_ANIM_01", "16:9 loop · 12 s", "How solar lighting works (#day-night).", "Animation, flat greyscale line style: one GLOW column, sun moves across the sky, battery bar fills; dusk, head switches on; night, light dims; a cyclist passes, light rises for a moment, then dims; dawn, off. Time labels 06:00, dusk, night, dawn."),
+        I("03", "GLOW_EXPLODED_01", "1:1", "Inside a GLOW light (#parts).", "Studio exploded view on white of one GLOW column: LED head, four-sided solar module, open module frame with LED insert, battery module, MPPT controller, motion sensor, base; parts aligned on one vertical axis, labels as numbers only"),
+      ] },
+      { title: "3. Autonomy and profiles", items: [
+        I("04", "GLOW_AUTONOMY_DIAGRAM_01", "16:9 · diagram", "Autonomy (#autonomy). Vector, not generated.", "Bar chart over 12 months: solar yield per night (light grey) against light use per night (black line); December bars just above the line; label \"design month\". Helvetica, 1 px lines, greyscale."),
+        I("05", "GLOW_PROFILE_DIAGRAM_01", "16:9 · diagram", "Dimming and motion (#profiles). Vector.", "Line chart from dusk to dawn: light level 100% until 23:00, 30% after, short spikes to 100% at motion events; below it a row of small cyclist and pedestrian icons at the spike times."),
+        I("06", "GLOW_BIKEPATH_01", "16:9", "Park and bike path heads.", B + "mid-height LED park heads along a bike path through a park at dusk, one cyclist blurred, path lit evenly, dark grass and trees beside"),
+        I("07", "GLOW_BOLLARD_01", "4:3", "Path / bollard module.", B + "low solar bollard modules lining a garden path to a front door, evening, soft downward light on gravel"),
+      ] },
+      { title: "4. Modules and inserts", items: [
+        I("08", "GLOW_EV_MODULE_01", "16:9", "EV module with XOOM pedestal charger.", B + "GLOW column combined with a XOOM pedestal charger on a parking bay, tethered cable plugged into a compact car, daylight"),
+        I("09", "GLOW_LIGHT_INSERT_01", "4:3", "LED light engine insert, clear glass.", B + "close-up of the open four-beam module frame with a clear glass LED light insert glowing softly at dusk"),
+        I("10", "GLOW_PRINT_INSERT_01", "4:3", "Four-sided light module with printed surface.", B + "open module with a four-sided illuminated printed panel showing a simple map pictogram, city square at night"),
+        I("11", "GLOW_ECOLOGY_01", "4:3", "Birdhouse, insect hotel and bee hotel inserts.", B + "three GLOW columns in a park meadow, each open module carrying a different insert: wooden birdhouse, insect hotel, bee hotel; morning light, a small bird on one"),
+        I("12", "GLOW_TUBE_01", "4:3", "LED tube component.", "Studio product photo on light grey: slim LED tube Ø 50 mm, lit, lying on a concrete block, soft light"),
+      ] },
+      { title: "5. Monitoring and projects", items: [
+        I("13", "GLOW_MONITORING_UI_01", "16:10 · UI", "Monitoring (#monitoring). Build as UI, not generated.", "Map of a municipality with GLOW lights as dots (green ok, orange attention, red fault); side panel for one light: battery %, charge today, light output, profile, last fault."),
+        I("14", "GLOW_MUNICIPAL_01", "21:9", "Tender and custom design page.", B + "GLOW streetlights along a new urban cycle route beside a canal, wide view, overcast daylight, product 15% of frame"),
+        I("15", "GLOW_INSTALL_01", "16:9", "Installation page.", B + "two technicians placing a GLOW column on a precast foundation with a small crane, no trench or cable visible, daylight"),
+        I("16", "GLOW_MAINTENANCE_01", "4:3", "Ownership and Support.", B + "technician replacing a battery module in the open frame from a small platform, tablet with the monitoring app in hand"),
+      ] },
+    ] };
+  }
+}
+</script>
+</body>
+</html>

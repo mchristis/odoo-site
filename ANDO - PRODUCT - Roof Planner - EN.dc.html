@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>ANDO Roof Planner | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style> body { margin:0; background:#F7F7F5; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:#9DAB3E; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#F7F7F5;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,64px"></dc-import>
+  <dc-import name="AndoNav" active="products" hint-size="100%,48px"></dc-import>
+
+  <dc-import name="PageHero" brand="ANDO" rgb="205,214,43" title="Roof planner" intro="Find the building, click the four corners of the roof and see how many ANDO panels fit." slot="ando-roof-planner-hero" shot="ANDO · Roof Planner · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 32px;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;display:flex;gap:6px;"><a href="ANDO - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">ANDO</a><span>&#8250;</span><a href="ANDO - PRODUCT - Range - EN.dc.html" style="color:var(--color-grey-70);">PRODUCTS</a><span>&#8250;</span><span style="color:var(--color-text-primary);">ROOF PLANNER</span></div>
+    <a href="KALK - SYSTEM - Overview - EN.dc.html" style="display:inline-flex;align-items:center;gap:6px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:12px;" style-hover="color:#8E6F93;">Powered by KALK</a>
+    <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:720px;text-wrap:pretty;">The result can go straight into a quotation request.</p>
+  </section>
+
+  <sc-if value="{{ locked }}" hint-placeholder-val="{{ true }}">
+    <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 96px;box-sizing:border-box;">
+      <div style="max-width:520px;background:var(--color-card-ando);border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:20px;">
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;--cg:8px;">
+          <div style="display:flex;flex-direction:column;gap:8px;"><div style="height:2px;background:var(--color-text-primary);"></div><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Step 1 of 2 · Contact</div></div>
+          <div style="display:flex;flex-direction:column;gap:8px;"><div style="height:2px;background:{{ step2Bar }};"></div><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ step2Color }};">Step 2 of 2 · Code</div></div>
+        </div>
+        <sc-if value="{{ showContact }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSendCode }}" style="display:flex;flex-direction:column;gap:16px;">
+            <div style="font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);">Enter your email address and mobile number. We send a code to your email to open the planner.</div>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Email address
+              <input type="email" required="required" value="{{ email }}" onChange="{{ onEmail }}" autoComplete="email" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;padding:0 16px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);box-sizing:border-box;"></input>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Mobile number
+              <input type="tel" required="required" value="{{ phone }}" onChange="{{ onPhone }}" autoComplete="tel" placeholder="+31 6 12345678" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;padding:0 16px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);box-sizing:border-box;"></input>
+            </label>
+            <button type="submit" style="font-family:inherit;font-size:var(--cta-font);font-weight:400;height:var(--cta-height);border:none;border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;cursor:pointer;padding:0 var(--cta-pad-x);" style-hover="background:#5F5E5E;color:#F4F4F4;">Send code</button>
+          </form>
+        </sc-if>
+        <sc-if value="{{ showCode }}" hint-placeholder-val="{{ false }}">
+          <form onSubmit="{{ onVerify }}" style="display:flex;flex-direction:column;gap:16px;">
+            <div style="font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);">Code sent to {{ email }}. Enter the 6 digits.</div>
+            <input type="text" inputMode="numeric" maxLength="6" value="{{ entered }}" onChange="{{ onEntered }}" aria-label="Code" autoComplete="one-time-code" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);letter-spacing:0.3em;height:56px;padding:0 16px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);box-sizing:border-box;"></input>
+            <button type="submit" style="font-family:inherit;font-size:var(--cta-font);font-weight:400;height:var(--cta-height);border:none;border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;cursor:pointer;padding:0 var(--cta-pad-x);" style-hover="background:#5F5E5E;color:#F4F4F4;">Open planner</button>
+            <div style="display:flex;gap:16px;flex-wrap:wrap;">
+              <button type="button" onClick="{{ onResend }}" style="font-family:inherit;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:0;border:none;background:none;color:var(--color-text-primary);cursor:pointer;text-decoration:underline;">Send a new code</button>
+              <button type="button" onClick="{{ onChangeContact }}" style="font-family:inherit;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:0;border:none;background:none;color:var(--color-text-primary);cursor:pointer;text-decoration:underline;">Change email or number</button>
+            </div>
+            <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#B07818;">PROTOTYPE: no email is sent yet. Demo code: {{ demoCode }}</div>
+          </form>
+        </sc-if>
+        <sc-if value="{{ gateMsg }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ gateMsg }}</div></sc-if>
+        <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-grey-70);">Used to send the code and to follow up on your roof plan. See the <a href="STROHM.ENERGY - SITE - Privacy - EN.dc.html" style="text-decoration:underline;">Privacy Policy</a>.</div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ verified }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 80px;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px;align-items:start;">
+    <div style="display:flex;flex-direction:column;gap:16px;min-width:0;">
+      <form onSubmit="{{ onSearch }}" style="display:flex;gap:8px;">
+        <input type="text" value="{{ query }}" onChange="{{ onQuery }}" placeholder="Address, postcode or city" aria-label="Address" style="flex:1;min-width:0;font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;padding:0 16px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);box-sizing:border-box;"></input>
+        <button type="submit" style="font-family:inherit;font-size:var(--cta-font);font-weight:400;height:var(--cta-height);padding:0 var(--cta-pad-x);border:none;border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;cursor:pointer;" style-hover="background:#5F5E5E;color:#F4F4F4;">Find</button>
+      </form>
+      <sc-if value="{{ searchMsg }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ searchMsg }}</div></sc-if>
+      <div style="position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:var(--color-surface-card-mid);">
+        <div ref="{{ mapRef }}" style="position:absolute;inset:0;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
+        <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ stepText }}</div>
+        <button type="button" onClick="{{ onReset }}" style="font-family:inherit;font-size:var(--cta-font);font-weight:400;height:var(--cta-height);padding:0 var(--cta-pad-x);border:1px solid var(--color-grey-40);border-radius:var(--cta-radius);background:#FFFFFF;color:var(--color-text-primary);cursor:pointer;" style-hover="border-color:var(--color-text-primary);">Reset corners</button>
+      </div>
+      <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);">Corners can be dragged after placing. Imagery: Esri World Imagery. Address search: OpenStreetMap Nominatim.</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px;min-width:0;">
+      <div style="background:var(--color-card-ando);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Roof</div>
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;--cg:16px;">
+          <div><div style="font-size:var(--web-min-size);font-weight:300;margin-bottom:4px;line-height:var(--web-min-lh);">Roof area</div><div style="font-size:var(--web-h2card-size);line-height:var(--web-h2card-lh);"><span style="font-weight:700;">{{ areaTxt }}</span> <span style="font-weight:300;">m²</span></div></div>
+          <div><div style="font-size:var(--web-min-size);font-weight:300;margin-bottom:4px;line-height:var(--web-min-lh);">Usable area</div><div style="font-size:var(--web-h2card-size);line-height:var(--web-h2card-lh);"><span style="font-weight:700;">{{ usableTxt }}</span> <span style="font-weight:300;">m²</span></div></div>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Edge distance to roof edge (m)
+          <input type="number" min="0" max="3" step="0.1" value="{{ edge }}" onChange="{{ onEdge }}" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:40px;padding:0 12px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);box-sizing:border-box;"></input>
+        </label>
+        <sc-if value="{{ hasTilt }}" hint-placeholder-val="{{ false }}">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Roof tilt (°)
+            <input type="number" min="0" max="90" step="1" value="{{ tilt }}" onChange="{{ onTilt }}" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:40px;padding:0 12px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);box-sizing:border-box;"></input>
+          </label>
+        </sc-if>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">{{ facingLabel }}
+          <select value="{{ facing }}" onChange="{{ onFacing }}" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:40px;padding:0 12px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);">
+            <sc-for list="{{ facingOpts }}" as="o" hint-placeholder-count="2"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+          </select>
+        </label>
+      </div>
+
+      <div style="background:var(--color-card-ando);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">System</div>
+        <sc-if value="{{ hasModels }}" hint-placeholder-val="{{ false }}">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Panel
+            <select value="{{ model }}" onChange="{{ onModel }}" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:40px;padding:0 12px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);">
+              <sc-for list="{{ models }}" as="m" hint-placeholder-count="4"><option value="{{ $index }}">{{ m.label }}</option></sc-for>
+            </select>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Area per panel incl. spacing (m²) <span style="color:#B07818;">TO CONFIRM: no panel dimensions in the project yet</span>
+            <input type="number" min="0.5" max="5" step="0.01" value="{{ m2 }}" onChange="{{ onM2 }}" placeholder="Enter area per panel" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:40px;padding:0 12px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);box-sizing:border-box;"></input>
+          </label>
+        </sc-if>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:16px;">
+          <div><div style="font-size:var(--web-min-size);font-weight:300;margin-bottom:4px;line-height:var(--web-min-lh);">{{ unitWord }}</div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ unitsTxt }}</div></div>
+          <div><div style="font-size:var(--web-min-size);font-weight:300;margin-bottom:4px;line-height:var(--web-min-lh);">Peak power</div><div style="font-size:var(--web-h2card-size);line-height:var(--web-h2card-lh);"><span style="font-weight:700;">{{ kwpTxt }}</span> <span style="font-weight:300;">kWp</span></div></div>
+          <sc-if value="{{ hasPallets }}" hint-placeholder-val="{{ true }}"><div><div style="font-size:var(--web-min-size);font-weight:300;margin-bottom:4px;line-height:var(--web-min-lh);">Pallets</div><div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ palletsTxt }}</div></div></sc-if>
+        </div>
+        <div style="background:#FFFFFF;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;"><span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);">Yearly yield</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;text-transform:uppercase;">SAMPLE, NOT PVGIS</span></div>
+          <div style="font-size:var(--web-h2card-size);line-height:var(--web-h2card-lh);"><span style="font-weight:700;">{{ kwhTxt }}</span> <span style="font-weight:300;">kWh/year</span></div>
+          <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);">Placeholder until the PVGIS connection is built. Uses a fixed sample of 700 kWh per kWp.</div>
+        </div>
+        <div style="background:#FFFFFF;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;"><span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);">MOEBIUS inverters</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;text-transform:uppercase;">TO CONFIRM</span></div>
+          <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Inverter count follows once the MOEBIUS models and their kWp ranges are provided.</div>
+        </div>
+        <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#B07818;">{{ sourceNote }}</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <a href="{{ quoteHref }}" style="display:flex;align-items:center;justify-content:center;height:var(--cta-height);border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);font-weight:400;padding:0 var(--cta-pad-x);" style-hover="background:#5F5E5E;color:#F4F4F4;">Request a quotation</a>
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;--cg:8px;">
+          <button type="button" onClick="{{ onPdf }}" style="font-family:inherit;font-size:var(--cta-font);font-weight:400;height:var(--cta-height);border:1px solid var(--color-grey-40);border-radius:var(--cta-radius);background:#FFFFFF;color:var(--color-text-primary);cursor:pointer;padding:0 var(--cta-pad-x);" style-hover="border-color:var(--color-text-primary);">Download PDF</button>
+          <button type="button" onClick="{{ onSave }}" style="font-family:inherit;font-size:var(--cta-font);font-weight:400;height:var(--cta-height);border:1px solid var(--color-grey-40);border-radius:var(--cta-radius);background:#FFFFFF;color:var(--color-text-primary);cursor:pointer;padding:0 var(--cta-pad-x);" style-hover="border-color:var(--color-text-primary);">Save to Portal</button>
+        </div>
+        <sc-if value="{{ saveMsg }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ saveMsg }}</div></sc-if>
+      </div>
+
+      <details style="border-top:1px solid var(--color-divider);padding-top:12px;">
+        <summary style="font-size:var(--web-body-size);font-weight:500;cursor:pointer;">Request for PVGIS (for developers)</summary>
+        <div style="margin-top:8px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);line-height:1.5;word-break:break-all;background:#FFFFFF;border-radius:8px;padding:12px;">{{ pvgisUrl }}</div>
+        <div style="margin-top:8px;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);">PVGIS does not accept requests straight from a web page. A small server has to send this request and return the result. loss=14 is the PVGIS default.</div>
+      </details>
+    </div>
+  </section>
+  </sc-if>
+
+  <dc-import name="ContentSections" brand="ANDO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="ANDO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="ANDO" accent="var(--color-brand-ando)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+// CFG is the only brand-specific block. Source: "LINA - PRODUCT - Roof Planner - EN".
+const CFG = {
+  brand: "ANDO", unitWord: "ANDO panels", accent: "var(--color-brand-ando)", perPallet: null, tilt: 35,
+  // Models and Wp from AndoProductFinder (ANDO_product_search_filters_demo_apr12_v8). Panel area: no source yet.
+  models: [
+    { label: "AALTO Full Black · 460 Wp", wp: 460, m2: null }, { label: "AALTO Transparent · 470 Wp", wp: 470, m2: null },
+    { label: "MIES Full Black · 500 Wp", wp: 500, m2: null }, { label: "MIES Transparent · 505 Wp", wp: 505, m2: null },
+    { label: "FOSTER Full Black · 600 Wp", wp: 600, m2: null }, { label: "FOSTER Transparent · 620 Wp", wp: 620, m2: null },
+    { label: "NOUVEL L · 460 Wp", wp: 460, m2: null }, { label: "NOUVEL XL · 555 Wp", wp: 555, m2: null },
+  ],
+  facingLabel: "Roof facing", facing: [{ v: "0", label: "South" }, { v: "-45", label: "South-east" }, { v: "45", label: "South-west" }, { v: "-90", label: "East" }, { v: "90", label: "West" }],
+  quote: "ANDO - WEBSHOP - Shop - EN.dc.html", quoteHash: "", // NEEDS DECISION: ANDO has no quotation form; Webshop - ANDO for now
+  sourceNote: "[TO CONFIRM: area per panel incl. spacing per model; Wp from the ANDO product finder data; roof tilt 35° is only a starting value, enter your own]",
+};
+const SAMPLE_KWH_PER_KWP = 700, GATE_KEY = "strohm-planner-verified";
+class Component extends DCLogic {
+  state = (() => {
+    let v = null; try { v = JSON.parse(sessionStorage.getItem(GATE_KEY) || "null"); } catch (e) {}
+    return { verified: !!v, email: v?.email || "", phone: v?.phone || "", codeSent: false, code: "", entered: "", gateMsg: "",
+      query: "", searchMsg: "", pts: [], edge: 1, tilt: CFG.tilt, facing: CFG.facing[0].v, model: 0, m2: CFG.models[0].m2 ?? "", saveMsg: "" };
+  })();
+  mapRef = React.createRef();
+  componentDidMount() { this.tryInit(); }
+  componentWillUnmount() { clearTimeout(this.t); if (this.map) this.map.remove(); }
+  tryInit() {
+    const L = window.L;
+    if (!L || !this.mapRef.current) { this.t = setTimeout(() => this.tryInit(), 200); return; }
+    const map = L.map(this.mapRef.current, { zoomControl: true }).setView([52.37, 4.89], 18);
+    L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", { maxZoom: 21, maxNativeZoom: 19, attribution: "Esri World Imagery" }).addTo(map);
+    this.poly = L.polygon([], { color: CFG.accent, weight: 2, fillColor: CFG.accent, fillOpacity: 0.25 }).addTo(map);
+    this.markers = [];
+    map.on("click", (e) => { if (this.state.pts.length < 4) this.addPt(e.latlng); });
+    this.map = map;
+  }
+  addPt(ll) {
+    const L = window.L;
+    const icon = L.divIcon({ className: "", html: `<div style="width:14px;height:14px;border-radius:7px;background:#FFFFFF;border:2px solid ${CFG.accent};box-sizing:border-box;"></div>`, iconSize: [14, 14], iconAnchor: [7, 7] });
+    const m = L.marker(ll, { draggable: true, icon }).addTo(this.map);
+    m.on("drag", () => this.setPts(this.markers.map(x => x.getLatLng())));
+    this.markers.push(m);
+    this.setPts(this.markers.map(x => x.getLatLng()));
+  }
+  setPts(pts) { this.poly.setLatLngs(pts); this.setState({ pts: pts.map(p => [p.lat, p.lng]), saveMsg: "" }); }
+  reset() { (this.markers || []).forEach(m => m.remove()); this.markers = []; if (this.poly) this.poly.setLatLngs([]); this.setState({ pts: [], saveMsg: "" }); }
+  sendCode(e) {
+    if (e) e.preventDefault();
+    const { email, phone } = this.state;
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { this.setState({ gateMsg: "That email address looks slightly imaginary." }); return; }
+    if (phone.replace(/[^0-9]/g, "").length < 8) { this.setState({ gateMsg: "The mobile number seems a few digits short." }); return; }
+    const code = String(Math.floor(100000 + Math.random() * 900000));
+    this.setState({ codeSent: true, code, entered: "", gateMsg: "" });
+  }
+  verify(e) {
+    e.preventDefault();
+    if (this.state.entered.trim() !== this.state.code) { this.setState({ gateMsg: "Wrong code. It happens to the best of us." }); return; }
+    try { sessionStorage.setItem(GATE_KEY, JSON.stringify({ email: this.state.email, phone: this.state.phone, at: new Date().toISOString() })); } catch (err) {}
+    this.setState({ verified: true, gateMsg: "" });
+  }
+  async search(e) {
+    e.preventDefault();
+    const q = this.state.query.trim(); if (!q || !this.map) return;
+    this.setState({ searchMsg: "Searching." });
+    try {
+      const r = await fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" + encodeURIComponent(q));
+      const j = await r.json();
+      if (!j.length) { this.setState({ searchMsg: "No address found. The map is still here." }); return; }
+      this.map.setView([+j[0].lat, +j[0].lon], 19);
+      this.reset();
+      this.setState({ searchMsg: j[0].display_name });
+    } catch (err) { this.setState({ searchMsg: "Couldn't reach the address search. The internet seems to be thinking it over." }); }
+  }
+  calc() {
+    const { pts, edge, model, m2 } = this.state;
+    if (pts.length < 3) return null;
+    const lat0 = pts.reduce((s, p) => s + p[0], 0) / pts.length, lon0 = pts.reduce((s, p) => s + p[1], 0) / pts.length;
+    const xy = pts.map(p => [(p[1] - lon0) * Math.cos(lat0 * Math.PI / 180) * 111320, (p[0] - lat0) * 110540]);
+    let a = 0, per = 0;
+    for (let i = 0; i < xy.length; i++) { const [x1, y1] = xy[i], [x2, y2] = xy[(i + 1) % xy.length]; a += x1 * y2 - x2 * y1; per += Math.hypot(x2 - x1, y2 - y1); }
+    const area = Math.abs(a) / 2, e = Math.max(0, +edge || 0);
+    const usable = Math.max(0, area - per * e + 4 * e * e);
+    const mdl = CFG.models[model] || CFG.models[0], perUnit = +m2;
+    const units = perUnit > 0 ? Math.floor(usable / perUnit) : null;
+    const kwp = units != null ? units * mdl.wp / 1000 : null;
+    return { lat: lat0, lon: lon0, area, usable, units, kwp, model: mdl.label, pallets: units != null && CFG.perPallet ? Math.ceil(units / CFG.perPallet) : null, kwh: kwp != null ? Math.round(kwp * SAMPLE_KWH_PER_KWP) : null };
+  }
+  fmt(n, d) { return n == null ? "–" : n.toLocaleString("de-DE", { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  pdf(r) {
+    if (!r) { this.setState({ saveMsg: "Place the roof corners first." }); return; }
+    const w = window.open("", "_blank"); if (!w) return;
+    const row = (k, v) => `<tr><td style="padding:8px 0;border-bottom:1px solid #DDD;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);">${k}</td><td style="padding:8px 0;border-bottom:1px solid #DDD;font-weight:700;text-align:right;font-size:var(--web-small-size);line-height:var(--web-small-lh);">${v}</td></tr>`;
+    w.document.write(`<html><head><title>${CFG.brand} Roof Planner</title></head><body style="font-family:var(--font-web);color:var(--color-text-primary);padding:40px;max-width:640px"><h1 style="font-size:var(--web-h1-size);font-weight:100;line-height:var(--web-h1-lh);">${CFG.brand} roof plan</h1><p style="font-weight:300;max-width:760px;">${this.state.searchMsg || ""}</p><table style="width:100%;border-collapse:collapse;font-size:14px">${row("Roof area", this.fmt(r.area, 1) + " m²")}${row("Usable area", this.fmt(r.usable, 1) + " m²")}${row("Edge distance", this.fmt(+this.state.edge, 1) + " m")}${row("Model", r.model)}${row(CFG.unitWord, r.units ?? "–")}${row("Peak power", this.fmt(r.kwp, 2) + " kWp")}${r.pallets != null ? row("Pallets", r.pallets) : ""}${row("Yearly yield (SAMPLE, not PVGIS)", this.fmt(r.kwh, 0) + " kWh")}${row("MOEBIUS inverters", "TO CONFIRM")}</table><p style="font-size:var(--web-min-size);font-weight:300;max-width:760px;line-height:var(--web-min-lh);">Indicative. Final design by STROHM.ENERGY. Contact: ${this.state.email}, ${this.state.phone}</p></body></html>`);
+    w.document.close(); w.focus(); w.print();
+  }
+  save(r) {
+    if (!r) { this.setState({ saveMsg: "Place the roof corners first." }); return; }
+    try { localStorage.setItem(CFG.brand.toLowerCase() + "-roof-plan", JSON.stringify({ ...r, pts: this.state.pts, edge: this.state.edge, facing: this.state.facing, address: this.state.searchMsg, email: this.state.email, saved: new Date().toISOString() })); } catch (e) {}
+    this.setState({ saveMsg: "Saved. The roof has been filed neatly. Portal sync follows once the Portal reads plans." });
+  }
+  renderVals() {
+    const s = this.state, r = s.verified ? this.calc() : null, n = s.pts.length;
+    const angle = CFG.tilt == null ? 90 : (+s.tilt || 0);
+    const q = r && r.units != null ? `?units=${r.units}&kwp=${r.kwp.toFixed(2)}&area=${r.area.toFixed(1)}&lat=${r.lat.toFixed(6)}&lon=${r.lon.toFixed(6)}&email=${encodeURIComponent(s.email)}&phone=${encodeURIComponent(s.phone)}` : "";
+    return {
+      locked: !s.verified, verified: s.verified, showContact: !s.codeSent, showCode: s.codeSent,
+      step2Bar: s.codeSent ? "#4F4F4E" : "#DDDDDD", step2Color: s.codeSent ? "#4F4F4E" : "#8A8A88",
+      email: s.email, phone: s.phone, entered: s.entered, gateMsg: s.gateMsg, demoCode: s.code,
+      onEmail: (e) => this.setState({ email: e.target.value }), onPhone: (e) => this.setState({ phone: e.target.value }),
+      onEntered: (e) => this.setState({ entered: e.target.value.replace(/[^0-9]/g, "") }),
+      onSendCode: (e) => this.sendCode(e), onResend: () => this.sendCode(), onVerify: (e) => this.verify(e),
+      onChangeContact: () => this.setState({ codeSent: false, code: "", entered: "", gateMsg: "" }),
+      query: s.query, searchMsg: s.searchMsg, saveMsg: s.saveMsg, mapRef: this.mapRef,
+      edge: s.edge, tilt: s.tilt ?? "", hasTilt: CFG.tilt != null, facing: s.facing, facingOpts: CFG.facing, facingLabel: CFG.facingLabel,
+      hasModels: CFG.models.length > 1, models: CFG.models, model: String(s.model), m2: s.m2,
+      unitWord: CFG.unitWord, hasPallets: !!CFG.perPallet, sourceNote: CFG.sourceNote,
+      onQuery: (e) => this.setState({ query: e.target.value }), onSearch: (e) => this.search(e), onReset: () => this.reset(),
+      onEdge: (e) => this.setState({ edge: e.target.value }), onTilt: (e) => this.setState({ tilt: e.target.value }),
+      onFacing: (e) => this.setState({ facing: e.target.value }), onModel: (e) => this.setState({ model: +e.target.value }),
+      onM2: (e) => this.setState({ m2: e.target.value }),
+      onPdf: () => this.pdf(r), onSave: () => this.save(r),
+      stepText: n < 4 ? `Click corner ${n + 1} of 4 on the roof.` : "Roof outlined. Drag a corner to adjust.",
+      areaTxt: r ? this.fmt(r.area, 1) : "–", usableTxt: r ? this.fmt(r.usable, 1) : "–",
+      unitsTxt: r && r.units != null ? String(r.units) : "–", kwpTxt: r ? this.fmt(r.kwp, 2) : "–", palletsTxt: r && r.pallets != null ? String(r.pallets) : "–", kwhTxt: r ? this.fmt(r.kwh, 0) : "–",
+      quoteHref: CFG.quote + q + CFG.quoteHash,
+      pvgisUrl: r && r.kwp ? `https://re.jrc.ec.europa.eu/api/v5_2/PVcalc?lat=${r.lat.toFixed(5)}&lon=${r.lon.toFixed(5)}&peakpower=${r.kwp.toFixed(2)}&loss=14&angle=${angle}&aspect=${s.facing}&outputformat=json` : "Place the roof corners first.",
+    };
+  }
+}
+</script>
+</body>
+</html>

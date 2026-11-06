@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>MOEBIUS NFC and QR | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoebiusNav" active="connected" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="MOEBIUS" rgb="241,147,27" eyebrow="NFC &amp; QR &#8212; digital identity" title="Every inverter has a permanent digital identity." intro="NFC is not just another way to open a website." slot="moebius-nfc-and-qr-hero" shot="MOEBIUS · NFC and QR · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:640px;">It is the permanent identity of the physical inverter. Tap the unit with an NFC-enabled phone to open the record connected to that exact serial number — the QR code opens the matching commissioning workflow.</p>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:24px;">What NFC and QR do</div>
+      <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;--cg:48px;">
+        <div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:16px;line-height:var(--web-small-lh);">NFC &#8212; tap to identify</div>
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ nfc }}" as="n" hint-placeholder-count="6">
+              <div style="display:flex;gap:10px;padding:11px 0;border-top:1px solid var(--color-divider);">
+                <span style="color:var(--color-text-primary);font-size:12px;flex:none;">&#10003;</span>
+                <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ n }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:16px;line-height:var(--web-small-lh);">QR &#8212; scan to commission</div>
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ qr }}" as="q" hint-placeholder-count="5">
+              <div style="display:flex;gap:10px;padding:11px 0;border-top:1px solid var(--color-divider);">
+                <span style="color:var(--color-text-primary);font-size:12px;flex:none;">&#10003;</span>
+                <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ q }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;--cg:48px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Even when unpowered</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Information, even <span style="color:#8E8E8E;">before power-up.</span></h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Because the NFC tag is passive, essential product information, documentation and support routes can be accessed while the inverter is switched off. No forgotten password should prevent someone from identifying the product or finding safety and support information. Live readings require EMON.</p>
+      </div>
+      <div style="aspect-ratio:4/3;">
+        <image-slot id="moebius-nfc-photo" shape="rounded" radius="12" placeholder="Drop a phone-tapping-inverter photo"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Exact documents for the exact inverter</div>
+      <p style="margin:0 0 24px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Tapping the inverter never opens a generic download page. It opens the files that match the exact model, power variant, hardware revision, firmware, installation country, grid standard and battery configuration — so the right manual, certificate and firmware are always used.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <sc-for list="{{ exact }}" as="e" hint-placeholder-count="7">
+          <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:8px 14px;border-radius:8px;background:var(--color-card-moebius);color:var(--color-text-primary);">{{ e }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="MOEBIUS - PRODUCT - Overview - EN.dc.html#connected" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:var(--color-card-moebius);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Connected fast<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <a href="MOEBIUS - PRODUCT - Overview - EN.dc.html#connected" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:var(--color-card-moebius);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Your phone is the screen<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <a href="MOEBIUS - PRODUCT - Overview - EN.dc.html#connected" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:var(--color-card-moebius);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">EMON monitoring<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="ScanSweep" brand="MOEBIUS" hint-size="100%,420px"></dc-import>
+  <dc-import name="ContentSections" brand="MOEBIUS" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOEBIUS" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MOEBIUS" accent="var(--color-brand-moebius)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      nfc: [
+        "Product and serial identification",
+        "Installer activation",
+        "EMON pairing",
+        "Warranty registration",
+        "Manual and certificate access",
+        "Fault reporting, firmware and service status",
+      ],
+      qr: [
+        "Opens the correct commissioning workflow in EMON",
+        "Always starts with the exact hardware installed",
+        "No searching for the correct product version",
+        "No downloading the wrong documentation",
+        "Links the installation record to the serial number",
+      ],
+      exact: ["Exact model", "Power variant", "Hardware revision", "Firmware version", "Installation country", "Grid standard", "Battery configuration"],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>NENDO Overview | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style> @media (max-width:720px){ .hero-card{width:calc(100% - 40px) !important;margin-top:20px !important;min-height:calc((100vw - 40px) * 1.25) !important;align-items:flex-end !important;} .hero-card-panel{width:100% !important;align-self:auto !important;padding:28px 20px !important;} } 
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:#3f857f; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="NendoNav" active="products" hint-size="100%,57px"></dc-import>
+  <!-- HERO -->
+  <dc-import name="BrandHero2" brand="NENDO" rgb="27,139,154" dark="#0F4D55" title="Heat-pump systems engineered as part of a complete energy system." intro="NENDO develops and manufactures heat pumps, heat pump boilers and thermal-system equipment — indoor all-in-one units, air-to-water outdoor units, heat pump boilers for hot water, hydraulic control and storage — that can be selected, commissioned, monitored and serviced properly, and integrated with EMON and the wider Strohm.energy ecosystem." items="{{ nendoSix }}" hint-size="100%,760px"></dc-import>
+  <!-- DEPTH-1261: shared range block (ANDO layout); former block archived in _ARCHIVE/DEPTH-1261 range block/ -->
+  <dc-import name="RangeBlock" hide-tool="1" brand="NENDO" hint-size="100%,900px"></dc-import>
+  <!-- KALK CHECK (DEPTH-1354) -->
+  <section id="kalk-check" data-screen-label="KALK check" data-stack="1" style="position:relative;width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:72px auto 0;min-height:max(380px,calc(min(100vw - 2 * var(--web-side),1312px) / 3.2));border-radius:24px;overflow:hidden;background:#4F4F4E;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);box-sizing:border-box;">
+    
+    <div style="grid-column:span 1;background:#FFFFFF;padding:clamp(24px,2.6vw,36px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:12px;">
+      <div style="display:flex;align-items:center;gap:8px;font-size:15px;color:#252525;">NENDO by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:20px;width:auto;display:block;filter:brightness(0);"></div>
+      <h2 style="margin:0;font-size:clamp(28px,2.6vw,38px);font-weight:200;line-height:1.1;letter-spacing:-0.5px;color:#252525;text-wrap:balance;">Size your heat pump</h2>
+      
+      <p style="margin:0;font-size:15px;font-weight:300;line-height:1.45;color:#5F5E5E;text-wrap:pretty;">Tell KALK about your house and how you heat it. KALK estimates the heat demand and suggests the NENDO system. Your local distributor sends the price.</p>
+      <a href="KALK - Heat pump NENDO - EN.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:8px;background:#1B8B9A;color:#252525;font-size:16px;text-decoration:none;" style-hover="background:#252525;color:#FFFFFF;">Start the heat pump check &#8250;</a>
+      <a href="KERN - SYSTEM - Overview - EN.dc.html" style="align-self:flex-start;font-size:14px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #BBBBBB;padding-bottom:2px;" style-hover="color:#252525;border-bottom-color:#252525;">Professional project team? Deliver with KERN &#8250;</a>
+      
+    </div>
+    <div style="grid-column:span 1;position:relative;min-height:240px;"><div style="position:absolute;inset:0;background:#FFFFFF;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;border-left:1px solid #E3E3E3;"><img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="" style="width:40%;max-width:220px;filter:brightness(0);opacity:0.12;"></div></div>
+  </section>
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;"><div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0;"><a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#products" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;white-space:nowrap;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Explore the product range</a><a href="#selector" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;white-space:nowrap;background:#FFFFFF;color:#4F4F4E;border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Find the correct system</a><!-- DEPTH-1264: catalogue removed (no product catalogues) --></div></section>
+  
+  <section id="products" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+  <details>
+    <summary style="cursor:pointer;min-height:44px;display:inline-flex;align-items:center;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;text-decoration:underline;text-underline-offset:3px;">Read more: the product range</summary>
+
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">The product range</div>
+      <h2 style="margin:0 0 12px;max-width:600px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Heat pumps, hot water <span style="color:#8E8E8E;">and three extras.</span></h2>
+      <p style="margin:0 0 32px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">CORE and AERO are the heat pumps. NENDO heat pump boilers make the hot water. The extras are added when the installation needs them: FLOW for the hydraulics, RAY to send solar power directly to the immersion heater in the tank, VESSEL for buffer and sanitary hot-water storage. EMON controls the system on dynamic tariffs. <a href="NENDO - PRODUCT - Products - EN.dc.html" style="border-bottom:1px solid var(--color-text-primary);">All products</a></p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ families }}" as="f" hint-placeholder-count="5">
+          <div style="padding:28px;display:flex;flex-direction:column;background:#F4F4F4;border-radius:12px;">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;">
+              <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ f.name }}</div>
+              <div style="font-size:var(--web-min-size);font-weight:400;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ f.count }}</div>
+            </div>
+            <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;">{{ f.plain }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);margin-bottom:14px;">{{ f.pro }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);margin-top:auto;">Role: {{ f.role }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  
+  </details>
+  </section>
+  
+  <!-- WHO IT IS FOR (DEPTH-1329) -->
+  <dc-import name="AudienceTiles" brand="NENDO" rgb="27,139,154" hint-size="100%,640px"></dc-import>
+  <!-- DEPTH-1265: BRAND with EMON block under the range -->
+  <dc-import name="EmonBlock" brand="NENDO" hint-size="100%,860px"></dc-import>
+  <section id="emon" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start;--cg:48px;">
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">EMON integration</div>
+        <h2 style="margin:0 0 20px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Heating, managed as part of <span style="color:#8E8E8E;">the energy system.</span></h2>
+        <p style="margin:0 0 16px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">EMON turns NENDO into a flexible load. The AI forecasts heat demand, solar yield and prices 36 hours ahead, then plans every compressor hour. Comfort limits come first. Cost, peak and grid signals decide the rest. Homeowner controls are separated from installer-only technical settings. Safety-critical settings cannot be altered by users.</p>
+        <div style="aspect-ratio:16/10;">
+          <image-slot id="nendo-system-diagram" src="assets/nendo/nendo-system-diagram-01.png" shape="rounded" radius="12" placeholder="Drop the NENDO system diagram (outdoor unit, indoor hydraulics, buffer + DHW storage, EMON — 4:3)"></image-slot>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:8px;">Functions</div>
+        <div style="font-size:var(--web-min-size);font-weight:300;color:#B07818;margin-bottom:16px;line-height:var(--web-min-lh);">[TO CONFIRM: support matrix per NENDO model: function, protocol (Modbus TCP, SG Ready, EEBus, API), status]</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;">
+          <sc-for list="{{ emonFns }}" as="e" hint-placeholder-count="12">
+            <a href="{{ e.href }}" style="background:#F4F4F4;padding:16px;display:flex;flex-direction:column;gap:6px;border-radius:12px;" style-hover="background:#E3E3E3;">
+              <span style="font-size:14px;font-weight:700;color:var(--color-text-primary);">{{ e.name }}</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ e.tile }}</span>
+            </a>
+          </sc-for>
+        </div>
+        <a href="NENDO - PRODUCT - EMON Functions - EN.dc.html" style="display:inline-block;margin-top:20px;font-size:14px;font-weight:400;color:var(--color-text-primary);border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">All functions in detail &#8250;</a>
+      </div>
+    </div>
+  </section>
+  
+  <div style="height:96px;"></div>
+  
+  <dc-import name="PlanningOperation" brand="NENDO" hint-size="100%,760px"></dc-import>
+  <section id="systems" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">System configurations</div>
+      <h2 style="margin:0 0 12px;max-width:600px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Complete systems, <span style="color:#8E8E8E;">not only individual products.</span></h2>
+      <p style="margin:0 0 32px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Each configuration combines NENDO products for a building type and goal. Final sizing, hydraulic design and commissioning must be completed by a qualified professional.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ systems }}" as="s" hint-placeholder-count="6">
+          <div style="padding:24px;display:flex;flex-direction:column;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;line-height:var(--web-small-lh);">{{ s.name }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);margin-bottom:14px;">{{ s.desc }}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;">
+              <sc-for list="{{ s.parts }}" as="pt" hint-placeholder-count="3">
+                <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:5px 10px;background:#F1F4F3;color:#3f857f;border-radius:8px;">{{ pt }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="padding-top:24px;"><a href="NENDO - PRODUCT - Products - EN.dc.html" style="display:inline-flex;font-size:14px;font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">See the systems in the range &#8250;</a></div>
+  </section>
+  <section id="selector" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Product selector</div>
+      <h2 style="margin:0 0 24px;max-width:560px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">What are you trying <span style="color:#8E8E8E;">to build?</span></h2>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:32px;--cg:12px;">
+        <sc-for list="{{ goals }}" as="g" hint-placeholder-count="8">
+          <button onClick="{{ g.onClick }}" style="cursor:pointer;text-align:left;font-family:inherit;padding:18px;border:1px solid {{ g.border }};background:{{ g.bg }};color:{{ g.color }};border-radius:12px;">
+            <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);display:block;">{{ g.label }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="padding:32px;background:#F4F4F4;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">Suggested starting point</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:10px;line-height:var(--web-h3-lh);">{{ result.title }}</div>
+        <p style="margin:0 0 16px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);max-width:720px;">{{ result.desc }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
+          <sc-for list="{{ result.parts }}" as="pt" hint-placeholder-count="3">
+            <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:6px 12px;background:var(--color-card-nendo);border:1px solid var(--color-divider);color:#3f857f;border-radius:8px;">{{ pt }}</span>
+          </sc-for>
+        </div>
+        <p style="margin:0;font-size:12px;font-weight:400;font-style:italic;color:var(--color-text-primary);max-width:760px;">Final sizing, hydraulic design and commissioning must be completed by a qualified professional.</p>
+      </div>
+    </div>
+    <div style="padding-top:24px;"><a href="NENDO - SUPPORT - Talk to an Expert - EN.dc.html" style="display:inline-flex;font-size:14px;font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Contact a specialist &#8250;</a></div>
+  </section>
+  
+  <dc-import name="AndoPattern" brand="NENDO" items="facts" hint-size="100%,600px"></dc-import>
+  
+  <!-- PRODUCT RANGE -->
+  
+  <!-- PRODUCT LIST -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px;">
+        <h3 style="margin:0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">All products</h3>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <sc-for list="{{ familyTabs }}" as="t" hint-placeholder-count="6">
+            <button onClick="{{ t.onClick }}" style="cursor:pointer;font-family:inherit;font-size:11px;font-weight:400;letter-spacing:0.04em;text-transform:uppercase;padding:8px 14px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};border-radius:8px;">{{ t.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#F4F4F4;border-radius:12px;">
+        <sc-for list="{{ products }}" as="p" hint-placeholder-count="8">
+          <div style="display:grid;grid-template-columns:90px minmax(0,1fr) 200px;gap:20px;padding:16px 20px;border-top:1px solid var(--color-divider);align-items:center;">
+            <span style="font-size:11px;font-weight:700;letter-spacing:0.04em;color:var(--color-text-primary);">{{ p.series }}</span>
+            <div>
+              <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:2px;">{{ p.title }}</div>
+              <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);">{{ p.code }}</div>
+            </div>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);text-align:right;line-height:var(--web-min-lh);">{{ p.spec }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Performance values, refrigerant data, sound levels and certification status are shown per product page. Where a value is not yet confirmed it is marked "Product data required".</p>
+    </div>
+  </section>
+  <!-- MORE CHAPTERS behind Read more (DEPTH-1329) -->
+  <details data-screen-label="More about NENDO" style="margin:0;padding:0;"><summary style="list-style:none;cursor:pointer;max-width:calc(1312px + 2 * var(--web-side));margin:48px auto 0;padding:0 var(--web-side);box-sizing:border-box;min-height:44px;display:flex;align-items:center;font-family:var(--font-web);font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;"><span style="border-bottom:1px solid #4F4F4E;padding-bottom:2px;">Read more about NENDO (4)</span></summary>
+  <!-- SYSTEMS -->
+  
+  <!-- GUIDED SELECTOR -->
+  
+  <!-- EMON -->
+  
+  <!-- INSTALLED COMMISSIONED DOCUMENTED -->
+  <dc-import name="WarrantyPDF" accent="var(--color-brand-nendo)" heading="Installed, commissioned and documented." product-name="NENDO" intro="A NENDO installation should not disappear into a folder of unrelated manuals. Eligible products use QR and/or NFC identification, so after installation and commissioning the system can create an automatic product and installation PDF — linking product identity, serial numbers, installed components, commissioning results and warranty. This is professional product lifecycle management, not a novelty. If the installer did not register it, you can submit photos and details below." slot-id="nendo-warranty-pdf" placeholder="Drop a sample NENDO installation & warranty PDF" contents="{{ warrantyContents }}" upload-labels="{{ uploadLabels }}" hint-size="100%,900px"></dc-import>
+  <!-- BUILT FOR THE JOB (DEPTH-111) -->
+  <section id="built" data-screen-label="Built for the job" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:flex;flex-direction:column;gap:24px;">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Built for the job</div>
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B07818;border:1px solid #B07818;padding:2px 6px;border-radius:8px;">Draft</span>
+      </div>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Warm in winter. <span style="color:#8E8E8E;">Quiet at night. Safe all year.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;">
+        <div style="background:var(--color-card-nendo);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Cold-climate heating</div><div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Rated heating output down to low outdoor temperatures, with defrost that runs only when the coil needs it.</div><div style="font-size:var(--web-min-size);font-weight:300;color:#B07818;line-height:var(--web-min-lh);">TO CONFIRM: minimum operating temperature, refrigerant, compressor type, defrost method</div></div>
+        <div style="background:var(--color-card-nendo);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Quiet operation</div><div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Insulated compressor compartment and vibration damping for use close to bedrooms and neighbours.</div><div style="font-size:var(--web-min-size);font-weight:300;color:#B07818;line-height:var(--web-min-lh);">TO CONFIRM: sound power level per model (dB(A))</div></div>
+        <div style="background:var(--color-card-nendo);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Safety protection</div><div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Sensors watch pressures, temperatures and flow, and the unit shuts down safely if a value goes out of range.</div><div style="font-size:var(--web-min-size);font-weight:300;color:#B07818;line-height:var(--web-min-lh);">TO CONFIRM: protection functions, refrigerant leak detection, certifications</div></div>
+        <div style="background:var(--color-card-nendo);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Quick installation</div><div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Compact hydraulics, flexible pipe connections and a controller that can be placed where it is easy to reach.</div><div style="font-size:var(--web-min-size);font-weight:300;color:#B07818;line-height:var(--web-min-lh);">TO CONFIRM: included hydraulic parts, connection sides, wireless options</div></div>
+        <div style="background:var(--color-card-nendo);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Heat during a power cut</div><div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">With a FLUXX battery, EMON can keep NENDO running when the grid is down.</div><div style="font-size:var(--web-min-size);font-weight:300;color:#B07818;line-height:var(--web-min-lh);">TO CONFIRM: backup support per NENDO and FLUXX model</div></div>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html" style="font-size:14px;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">How NENDO is made &#8250;</a>
+        <a href="FLUXX - PRODUCT - FLUXX with EMON - EN.dc.html" style="font-size:14px;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Works with FLUXX batteries &#8250;</a>
+      </div>
+    </div>
+  </section>
+  <!-- DOCUMENTATION -->
+  <section id="docs" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Documentation centre</div>
+      <h2 style="margin:0 0 12px;max-width:560px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Everything a professional needs <span style="color:#8E8E8E;">to specify and install.</span></h2>
+      <p style="margin:0 0 32px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Filter by product category, series, model, document type, language, country and version. Version and publication date are always shown.</p>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ docs }}" as="d" hint-placeholder-count="12">
+          <span style="text-decoration:none;padding:20px;display:flex;justify-content:space-between;align-items:center;background:#F4F4F4;border-radius:12px;" data-placeholder-link="true">
+            <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ d }}</span>
+            <span style="font-size:var(--web-min-size);color:var(--color-grey-70);line-height:var(--web-min-lh);">PDF</span>
+          </span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="padding-top:24px;"><a href="NENDO - SUPPORT - Ownership and Support - EN.dc.html" style="display:inline-flex;font-size:14px;font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Ownership and support &#8250;</a></div>
+  </section>
+  <!-- FOR PROFESSIONALS + END USER -->
+  
+  <div style="height:64px;"></div>
+  <!-- ENGINEERING AND MANUFACTURING LINK (DEPTH-77) -->
+  
+  <section id="hot-water" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;"><div style="border-top:1px solid #D9D9D9;padding-top:32px;"><details><summary style="cursor:pointer;min-height:44px;display:flex;align-items:center;font-size:var(--web-small-size);color:#4F4F4E;text-decoration:underline;text-underline-offset:3px;">Read more: Hot water (heat pump boilers)</summary><div style="padding-top:16px;"><dc-import name="NendoHwOverview" hint-size="100%,800px"></dc-import></div></details></div></section>
+  </details>
+  
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;border-top:1px solid var(--color-text-primary);border-bottom:1px solid var(--color-divider);padding:28px 0;color:var(--color-text-primary);" style-hover="color:var(--color-text-primary);">
+      <span style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Engineering and manufacturing</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Designed in Europe and manufactured by us.</span></span>
+      <span style="font-size:var(--web-small-size);font-weight:300;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">How NENDO is made &#8250;</span>
+    </a>
+  </section>
+  <!-- MANUFACTURING (DEPTH-1230) -->
+  <section id="manufacturing" data-screen-label="Manufacturing" style="scroll-margin-top:156px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:40px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px 72px;align-items:center;">
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Manufacturing</h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Approved compressors, heat exchangers, hydraulic components and electronics are integrated into controlled mechanical assemblies. Refrigerant circuits are pressure tested, leak tested, evacuated and charged. Completed products are programmed, functionally tested and checked for system communication before protected packing and traceable dispatch.</p>
+        <a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="align-self:flex-start;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;" style-hover="color:#4F4F4E;border-bottom-color:var(--color-brand-nendo);">Walk through the NENDO factory &#8250;</a>
+        <div style="display:flex;flex-wrap:wrap;gap:0 24px;border-top:1px solid #DDDDDD;"><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html?chapter=test#mfg-walk" style="display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;" style-hover="color:#252525;">Testing</a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html?chapter=home#mfg-walk" style="display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;" style-hover="color:#252525;">To site</a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html?chapter=trace#mfg-walk" style="display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;" style-hover="color:#252525;">Traceability</a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html?chapter=circ#mfg-walk" style="display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;" style-hover="color:#252525;">Circularity</a></div>
+      </div>
+      <div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="nendo-manufacturing-photo" shape="rounded" radius="12" placeholder="NENDO manufacturing photo, 4:3: production line or test station"></image-slot></div>
+    </div>
+    <details style="border-top:1px solid #DDDDDD;padding-top:16px;">
+      <summary style="cursor:pointer;list-style:none;display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;">Read more</summary>
+      <div style="display:flex;flex-direction:column;gap:16px;padding-top:24px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Production · 15 stages</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px;">
+        <a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-nendo,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">01</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Incoming components</span></a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-nendo,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">02</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Metal and moulding</span></a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-nendo,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">03</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Heat exchangers</span></a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-nendo,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">04</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Electronics</span></a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-nendo,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">05</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Refrigeration circuit</span></a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-nendo,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">06</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Leak test, evacuation, charge</span></a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-nendo,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">07</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Fans and hydraulics</span></a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-nendo,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">08</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">FLOW units</span></a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-nendo,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">09</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">VESSEL tanks</span></a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-nendo,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">10</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">RAY controller</span></a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-nendo,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">11</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">EMON test</span></a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-nendo,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">12</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Run test</span></a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-nendo,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">13</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Labels</span></a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-nendo,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">14</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Packing</span></a><a href="NENDO - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-nendo,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">15</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">From factory to site</span></a></div>
+      </div>
+    </details>
+    <div data-editor-only="" style="display:flex;flex-direction:column;gap:8px;border:1px dashed #BBBBBB;border-radius:12px;padding:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Earlier titles · editor only</div>
+      <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">01 Chassis, panels and plastic parts · 02 Heat exchangers and pipework · 03 Control and power electronics · 04 Refrigeration circuit assembly · 05 Leak test, evacuation and charge · 06 Fans, hydraulics and electrics · 07 Test, release and packing</p>
+    </div>
+  </section>
+  <dc-import name="ContentSections" brand="NENDO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="NENDO" hint-size="100%,420px"></dc-import>
+  
+  <section id="pro" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;--cg:24px;">
+      <div style="background:var(--color-text-primary);color:#FFFFFF;padding:40px;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8BBFB8;margin-bottom:16px;">For professionals</div>
+        <h3 style="margin:0 0 14px;font-size:20px;font-weight:300;line-height:1.25;color:#252525;">Advice and support, centrally. Installation and sales, locally.</h3>
+        <p style="margin:0 0 24px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#D9D9D9;max-width:760px;">NENDO advises and supports; final local installation and sales are handled by qualified partners. Register for project support, system design, technical training, commissioning support and spare parts.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <span style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#FFFFFF;color:var(--color-text-primary);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Become a partner</span>
+          <span style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);border:1px solid var(--color-text-primary);color:#D9D9D9;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Request technical support</span>
+        </div>
+      </div>
+      <div style="background:#F4F5F4;padding:40px;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Researching for your home or building?</div>
+        <h3 style="margin:0 0 14px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Understand the system first. Local advice follows.</h3>
+        <p style="margin:0 0 24px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">Understand which system category may suit you, then we direct you to your country website and a qualified local installer for final advice. This international site does not provide a final local quotation.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#selector" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Understand the systems</a>
+          <span style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);border:1px solid #C9CCCB;color:var(--color-text-primary);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Find a qualified installer</span>
+        </div>
+      </div>
+    </div>
+    <div style="padding-top:24px;"><a href="NENDO - SUPPORT - Installation - EN.dc.html" style="display:inline-flex;font-size:14px;font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Installation &#8250;</a></div>
+  </section>
+  <dc-import name="SupportModule" kind="product" brand="NENDO" accent="#1B8B9A" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const PRODUCTS = [
+  { series: "CORE", title: "Indoor All-in-One Heat Pump — R290 1P 9,000 BTU", code: "NE-AIO-HP-1P-9KBTU-V1", spec: "Heating & cooling", family: "CORE" },
+  { series: "CORE", title: "Indoor All-in-One Solar HP — MPPT 1P 9,000 BTU", code: "NE-AIO-HP-1P-MPPT-9KBTU-V1", spec: "MPPT integrated", family: "CORE" },
+  { series: "CORE", title: "Indoor All-in-One Solar HP — MPPT 1P 12,000 BTU", code: "NE-AIO-HP-1P-MPPT-12KBTU-V1", spec: "MPPT integrated", family: "CORE" },
+  { series: "AERO", title: "Vertical Outdoor Unit — MPPT 1P 8,3 kW", code: "NE-SHP-VOU-1P-8K3KW-V1", spec: "Air-to-water · R290 · 8,3 kW", family: "AERO" },
+  { series: "AERO", title: "Vertical Outdoor Unit — MPPT 1P 16,5 kW", code: "NE-SHP-VOU-1P-16K5KW-V1", spec: "Air-to-water · R290 · 16,5 kW", family: "AERO" },
+  { series: "AERO", title: "Vertical Outdoor Unit — MPPT 3P 18 kW", code: "NE-SHP-VOU-3P-18KW-V1", spec: "Air-to-water · R290 · 18 kW", family: "AERO" },
+  { series: "AERO", title: "Horizontal Flat-Roof Outdoor Unit — MPPT 1P 8,3 kW", code: "NE-SHP-HOU-FRS-1P-8K3KW-V1", spec: "Air-to-water · flat-roof · 8,3 kW", family: "AERO" },
+  { series: "FLOW", title: "Hybrid System Controller", code: "NE-HSC-V1", spec: "System control", family: "FLOW" },
+  { series: "FLOW", title: "Hydraulic Thermal Switching & Distribution (no tank)", code: "NE-HTSD-V1", spec: "Hydraulic control", family: "FLOW" },
+  { series: "FLOW", title: "HydroTower — with 250 L DHW tank", code: "NE-HT-250L-V1", spec: "610×610×1725 mm · 250 L", family: "FLOW" },
+  { series: "RAY", title: "PV-Direct Water Immersion Controller — MPPT 4000 W", code: "NE-OG-PV-WHC-4K-V1", spec: "Shared with OGO", family: "RAY" },
+  { series: "VESSEL", title: "Water Storage Buffer Tank — 150 L", code: "NE-OG-WSBT-150L-60CM-105CM-V1", spec: "Ø60 · H105 cm", family: "VESSEL" },
+  { series: "VESSEL", title: "Water Storage Buffer Tank — 200 L", code: "NE-OG-WSBT-200L-60CM-130CM-V1", spec: "Ø60 · H130 cm", family: "VESSEL" },
+  { series: "VESSEL", title: "Water Storage Buffer Tank — 300 L", code: "NE-OG-WSBT-300L-60CM-180CM-V1", spec: "Ø60 · H180 cm", family: "VESSEL" },
+  { series: "VESSEL", title: "DHW Storage Tank — 150 L", code: "NE-OG-DHW-150L-V1", spec: "Ø60 · enamelled, Mg anode, one coil", family: "VESSEL" },
+  { series: "VESSEL", title: "DHW Storage Tank — 200 L", code: "NE-OG-DHW-200L-V1", spec: "Ø60 · enamelled, Mg anode, one coil", family: "VESSEL" },
+  { series: "VESSEL", title: "DHW Storage Tank — 300 L", code: "NE-OG-DHW-300L-V1", spec: "Ø60 · enamelled, Mg anode, one coil", family: "VESSEL" },
+];
+
+const GOALS = [
+  { key: "boiler", label: "Replace or supplement a boiler", title: "Hybrid heating with your existing boiler", desc: "A NENDO outdoor unit works alongside the existing boiler, with a hybrid controller deciding which source runs. Suited to phased retrofits before a full all-electric conversion.", parts: ["AERO outdoor unit", "FLOW hybrid controller", "EMON"] },
+  { key: "electric", label: "Create an all-electric heating system", title: "All-electric space heating", desc: "A CORE indoor all-in-one, or an AERO air-to-water outdoor unit with FLOW hydraulics, provides full electric heating and cooling. Buffer storage from VESSEL smooths operation.", parts: ["CORE or AERO", "FLOW distribution", "VESSEL buffer"] },
+  { key: "dhw", label: "Add domestic hot water", title: "Domestic hot-water production", desc: "A HydroTower with an integrated DHW tank, or a separate VESSEL cylinder, adds hot-water production to the heat-pump system.", parts: ["FLOW HydroTower 250 L", "VESSEL storage"] },
+  { key: "cooling", label: "Add cooling", title: "Heating and cooling", desc: "CORE and AERO systems provide reversible heating and cooling. Distribution and controls are handled by FLOW.", parts: ["CORE or AERO", "FLOW control"] },
+  { key: "hydraulic", label: "Add hydraulic control & distribution", title: "Hydraulic switching and distribution", desc: "FLOW switching and distribution equipment coordinates flow between the heat pump, storage and the building's circuits.", parts: ["FLOW switching unit", "FLOW controller"] },
+  { key: "storage", label: "Add thermal storage", title: "Buffer and hot-water storage", desc: "VESSEL buffer tanks (150–300 L) stabilise the system and store thermal energy for later use.", parts: ["VESSEL 150/200/300 L"] },
+  { key: "solar", label: "Use surplus solar for heating", title: "Solar-PV-optimised heating", desc: "With the RAY solar plug-in, CORE and AERO units use surplus solar energy for heating and cooling, coordinated by EMON.", parts: ["CORE/AERO MPPT", "RAY PV controller", "EMON"] },
+  { key: "commercial", label: "Specify a commercial / multi-unit project", title: "Light-commercial configuration", desc: "Three-phase AERO units with FLOW distribution and VESSEL storage suit larger residential and light-commercial projects. Engage NENDO project support for specification.", parts: ["AERO 3P 18 kW", "FLOW distribution", "Project support"] },
+];
+
+class Component extends DCLogic {
+  state = { frame: 0,  family: "All", goal: "electric" };
+
+  componentDidMount() {
+    if (!(window.omelette && window.omelette.writeFile)) document.querySelectorAll('[data-editor-only]').forEach((el) => { el.style.display = 'none'; });  }
+  componentWillUnmount() { if (this._heroTimer) clearInterval(this._heroTimer); }
+  heroVals() { const fr = this.state.frame || 0, hv = {}; for (let i = 0; i < 6; i++) { hv["op" + i] = i === fr ? 1 : 0; hv["pe" + i] = i === fr ? "auto" : "none"; } hv.heroDots = [0, 1, 2, 3, 4, 5].map(i => ({ w: i === fr ? "22px" : "10px", bg: i === fr ? "#1B8B9A" : "rgba(255,255,255,0.4)" })); return hv; }
+  renderVals() { return { nendoSix: [{"label":"Range","heading":"Heat pumps, hot water and three extras.","sentence":"CORE and AERO are the heat pumps. NENDO heat pump boilers make the hot water.","media":{"type":"slot","slot":"nendo-hero-range","alt":"NENDO · Range · drop a photo or video"}},{"label":"Commissioning","heading":"Commission the heat pump from one scan.","sentence":"Commissioning connects NENDO to EMON, records every circuit and sensor, and proves the system heats as designed.","media":{"type":"slot","slot":"nendo-hero-2","alt":"NENDO · Commissioning · drop a photo or video"}},{"label":"One connected system","heading":"Plans every compressor hour.","sentence":"EMON turns NENDO into a flexible load.","media":{"type":"slot","slot":"nendo-hero-3","alt":"NENDO · One connected system · drop a photo or video"}},{"label":"Comfort first","heading":"Comfort limits come first.","sentence":"Cost, peak and grid signals decide the rest.","media":{"type":"slot","slot":"nendo-hero-6","alt":"NENDO · Comfort first · drop a photo or video"}},{"label":"NFC, QR and Wi-Fi Mesh","heading":"No screen needed.","sentence":"Tap NFC or scan QR for heat pump details. Wi-Fi Mesh connects every device. TO CONFIRM.","media":{"type":"slot","slot":"nendo-hero-4","alt":"NENDO · NFC, QR and Wi-Fi Mesh · drop a photo or video"}},{"label":"Europe","heading":"Designed and hosted in Europe.","sentence":"Hosted in Europe. Data stays in Europe.","media":{"type":"slot","slot":"nendo-hero-5","alt":"NENDO · Europe · drop a photo or video"}}], ...this.heroVals(), ...this._rv() }; }
+  _rv() {
+    const st = this.state;
+    const fams = ["All", "CORE", "AERO", "FLOW", "RAY", "VESSEL"];
+    const goal = GOALS.find(g => g.key === st.goal) || GOALS[1];
+    return {
+      families: [
+        { name: "CORE", count: "3 products", plain: "Indoor all-in-one heat pumps.", pro: "Compact indoor units combining heating, cooling and controls in one enclosure.", role: "Generation + control, indoor" },
+        { name: "AERO", count: "4 products", plain: "Air-to-water outdoor units.", pro: "Vertical and flat-roof outdoor units, single- and three-phase, R290, MPPT-integrated.", role: "Generation, outdoor" },
+        { name: "FLOW", count: "Extra · 3 products", plain: "Hydraulic distribution and control.", pro: "Hybrid controllers, hydraulic switching/distribution and HydroTower indoor hydraulics.", role: "Distribution + control" },
+        { name: "RAY", count: "Extra · 1 product", plain: "Direct solar panel connection.", pro: "Connects solar panels directly to the heat pump, so heating and hot water run on solar as it is produced.", role: "Direct solar" },
+        { name: "VESSEL", count: "Extra · 3 products", plain: "Sanitary hot-water tank.", pro: "Needed when the heat pump also supplies hot water. In a hybrid system the boiler keeps supplying hot water.", role: "Sanitary hot water" },
+      ],
+      familyTabs: fams.map(f => ({
+        label: f, onClick: () => this.setState({ family: f }),
+        bg: st.family === f ? "#4F4F4E" : "#FFFFFF",
+        color: st.family === f ? "#FFFFFF" : "#5F5E5E",
+        border: st.family === f ? "#4F4F4E" : "#D4D4D4",
+      })),
+      products: st.family === "All" ? PRODUCTS : PRODUCTS.filter(p => p.family === st.family),
+      systems: [
+        { name: "Hybrid with existing boiler", desc: "NENDO outdoor unit alongside the current boiler, with a hybrid controller choosing the source.", parts: ["AERO", "FLOW", "EMON"] },
+        { name: "All-electric heating", desc: "Full electric heating and cooling from a CORE or AERO system with FLOW hydraulics.", parts: ["CORE / AERO", "FLOW", "VESSEL"] },
+        { name: "Heating + domestic hot water", desc: "Space heating plus DHW via a HydroTower or a separate storage cylinder.", parts: ["AERO", "FLOW HydroTower", "VESSEL"] },
+        { name: "Solar-optimised heating", desc: "With RAY, the heat pumps use surplus solar for heating and cooling.", parts: ["CORE/AERO MPPT", "RAY", "EMON"] },
+        { name: "Tariff-aware heating", desc: "EMON shifts heating and DHW to the cheapest, cleanest hours within comfort limits.", parts: ["Any NENDO", "EMON", "SYNQ"] },
+        { name: "Light-commercial", desc: "Three-phase AERO with FLOW distribution and VESSEL storage for larger projects.", parts: ["AERO 3P", "FLOW", "VESSEL"] },
+      ],
+      goals: GOALS.map(g => ({
+        label: g.label, onClick: () => this.setState({ goal: g.key }),
+        bg: st.goal === g.key ? "var(--color-brand-nendo)" : "#FFFFFF",
+        color: st.goal === g.key ? "#FFFFFF" : "#4F4F4E",
+        border: st.goal === g.key ? "var(--color-brand-nendo)" : "#D4D4D4",
+      })),
+      result: { title: goal.title, desc: goal.desc, parts: goal.parts },
+      emonFns: [{"name":"Heating scheduling","tile":"Set comfort periods per zone and per day. EMON translates them into an operating plan for NENDO that reaches the target temperature on time, at the lowest energy cost.","href":"NENDO - PRODUCT - EMON Functions - EN.dc.html#heating-scheduling"},{"name":"Pre-heating and pre-cooling","tile":"EMON stores heat or cooling in the building ahead of expensive, high-demand or low-solar periods. NENDO then coasts through those periods while every room stays inside the comfort band.","href":"NENDO - PRODUCT - EMON Functions - EN.dc.html#pre-heating"},{"name":"Solar-surplus heating","tile":"When the PV system produces more than the house uses, EMON directs the surplus into NENDO: space heating, buffer or hot water. Solar energy is stored as heat and used later.","href":"NENDO - PRODUCT - EMON Functions - EN.dc.html#solar-surplus"},{"name":"Dynamic-tariff optimisation","tile":"With a dynamic electricity contract, EMON reads tomorrow's prices and plans NENDO's operation around the cheapest hours. Works with dynamic contracts across Europe, no supplier lock-in.","href":"NENDO - PRODUCT - EMON Functions - EN.dc.html#dynamic-tariff"},{"name":"Battery-aware operation","tile":"EMON plans NENDO and the home battery as one system. Heat and electricity storage are used where each is most valuable, so the battery is not emptied by the compressor and grid peaks stay low.","href":"NENDO - PRODUCT - EMON Functions - EN.dc.html#battery-aware"},{"name":"COP monitoring","tile":"EMON shows NENDO's efficiency live and over time: heat delivered divided by electricity used. Daily, monthly and seasonal (SCOP) values, with the measurement method stated per installation.","href":"NENDO - PRODUCT - EMON Functions - EN.dc.html#cop-monitoring"},{"name":"Consumption monitoring","tile":"EMON measures NENDO's electricity use and heat output per quarter hour and shows it next to the whole-house picture: solar, battery, grid and other loads. Costs in euro, per day, month and year.","href":"NENDO - PRODUCT - EMON Functions - EN.dc.html#consumption-monitoring"},{"name":"DHW scheduling","tile":"EMON plans domestic hot water production around the household's usage pattern, solar surplus and electricity prices. Hot water is ready when needed, produced when it is cheapest and most efficient.","href":"NENDO - PRODUCT - EMON Functions - EN.dc.html#dhw-scheduling"},{"name":"Frost protection","tile":"NENDO protects itself, the hydraulic circuit and the building against freezing. EMON monitors the protection, alerts when it activates and never lets cost optimisation interfere with it.","href":"NENDO - PRODUCT - EMON Functions - EN.dc.html#frost-protection"},{"name":"Legionella prevention cycles","tile":"NENDO periodically heats the hot water tank to a disinfection temperature. EMON schedules this cycle at the most efficient moment, verifies it completed and logs every run.","href":"NENDO - PRODUCT - EMON Functions - EN.dc.html#legionella-prevention"},{"name":"Homeowner controls","tile":"Temperatures, schedules, hot water, holiday mode and comfort limits in one app. Homeowners control comfort; EMON handles optimisation; safety-critical settings stay with the installer.","href":"NENDO - PRODUCT - EMON Functions - EN.dc.html#homeowner-controls"},{"name":"Installer diagnostics","tile":"Installers see live operating data, fault history, efficiency trends and settings for every NENDO in their fleet. Many issues are diagnosed and solved remotely, with the homeowner's consent.","href":"NENDO - PRODUCT - EMON Functions - EN.dc.html#installer-diagnostics"}],
+      warrantyContents: [
+        "Product identity, model & serial numbers",
+        "Installed components & configuration",
+        "Installer information & installation date",
+        "Commissioning date & results",
+        "Applicable factory-test records",
+        "Technical-document links",
+        "Warranty confirmation & service traceability",
+        "EMON connection & service history",
+      ],
+      uploadLabels: [
+        "Product label / serial + QR",
+        "Outdoor unit location",
+        "Indoor hydraulics & tank",
+        "Overall installation",
+      ],
+      docs: [
+        "Product catalogue", "Datasheets", "Installation manuals", "User manuals",
+        "Commissioning guides", "Wiring diagrams", "Hydraulic diagrams", "Certificates",
+        "Declaration documents", "Warranty conditions", "BIM & CAD resources", "Spare-parts documents",
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

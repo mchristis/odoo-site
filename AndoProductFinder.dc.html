@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<style>
+  ::placeholder { color:#6F6F6D; opacity:1; }
+  input:disabled, select:disabled, textarea:disabled { color:#C8C7C3; }
+  a { text-decoration:none; }
+  select.andf { font-family:var(--font-web); }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);color:#4F4F4E;">
+  <!-- FILTERS -->
+  <div data-cols="5" style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:20px;--cg:14px;">
+    <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+      <div>
+        <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#4F4F4E;margin-bottom:6px;">{{ f.label }}</label>
+        <select class="andf" value="{{ f.value }}" onChange="{{ f.onChange }}" style="width:100%;padding:11px 12px;border:1px solid #BBBBBB;border-radius:12px;background:#FFFFFF;font-size:var(--web-input-size);font-weight:var(--web-input-weight);color:#4F4F4E;">
+          <sc-for list="{{ f.options }}" as="o" hint-placeholder-count="4"><option value="{{ o }}">{{ o }}</option></sc-for>
+        </select>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- LOGIC READOUT -->
+  <div style="background:#F5F5F5;border-radius:12px;padding:14px 16px;margin-bottom:20px;display:flex;flex-direction:column;gap:5px;">
+    <div style="font-size:12px;font-weight:300;color:#5F5E5E;"><span style="font-weight:700;color:#4F4F4E;">Result logic:</span> {{ logicResults }}</div>
+    <div style="font-size:12px;font-weight:300;color:#5F5E5E;"><span style="font-weight:700;color:#4F4F4E;">Application logic:</span> {{ logicApplication }}</div>
+  </div>
+
+  <!-- RESULT COUNT -->
+  <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:14px;">{{ count }} matching products</div>
+
+  <!-- CARDS -->
+  <sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+      <sc-for list="{{ cards }}" as="c" hint-placeholder-count="6">
+        <div style="border:1px solid #E3E1DB;border-radius:12px;overflow:hidden;background:#FFFFFF;display:flex;flex-direction:column;">
+          <div style="aspect-ratio:4/3;background:#F5F5F5;">
+            <image-slot id="{{ c.slotId }}" shape="rect" placeholder="{{ c.imageDir }}"></image-slot>
+          </div>
+          <div style="padding:18px;display:flex;flex-direction:column;flex:1;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);color:#4F4F4E;margin-bottom:2px;">{{ c.product }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:#9A9A98;margin-bottom:14px;line-height:var(--web-min-lh);">{{ c.variantType }} &#183; {{ c.finish }}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
+              <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#4F4F4E;background:#F5F5F5;border-radius:12px;padding:5px 10px;">{{ c.size }}</span>
+              <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#4F4F4E;background:#F5F5F5;border-radius:12px;padding:5px 10px;">{{ c.wp }}</span>
+              <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#4F4F4E;background:#F5F5F5;border-radius:12px;padding:5px 10px;">{{ c.application }}</span>
+            </div>
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;margin-bottom:16px;">{{ c.note }}</div>
+            <span style="margin-top:auto;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#4F4F4E;" data-placeholder-link="true">View product<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+    <div style="border:1px dashed #D6D4D2;border-radius:12px;padding:48px;text-align:center;background:#FAFAF9;">
+      <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:6px;line-height:var(--web-small-lh);">No products match this combination.</div>
+      <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">Reset a filter to see more of the range.</div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:700}}">
+// Exact range + logic from ANDO_product_search_filters_demo_apr12_v8.
+const PRODUCTS = [
+  { product:"AALTO Full Black", productSeries:"AALTO", application:"Residential", size:"Small", wp:"460 Wp", finish:"Full Black", variantType:"Framed · glass-glass · bifacial", note:"AND-N-AB-BI-BG-GG-460WP-V1" },
+  { product:"AALTO Transparent", productSeries:"AALTO", application:"Residential", size:"Small", wp:"470 Wp", finish:"Black frame, transparent rear", variantType:"Framed · glass-glass · bifacial", note:"AND-N-AB-BI-TRA-GG-470WP-V1" },
+  { product:"MIES Full Black", productSeries:"MIES", application:"Residential / Commercial", size:"Mid", wp:"500 Wp", finish:"Full Black", variantType:"Framed · glass-glass · bifacial", note:"AND-N-MI-BI-BG-GG-500WP-V1" },
+  { product:"MIES Transparent", productSeries:"MIES", application:"Residential / Commercial", size:"Mid", wp:"505 Wp", finish:"Black frame, transparent rear", variantType:"Framed · glass-glass · bifacial", note:"AND-N-MI-BI-TRA-GG-505WP-V1" },
+  { product:"FOSTER Full Black", productSeries:"FOSTER", application:"Commercial / Utility", size:"Large", wp:"600 Wp", finish:"Full Black", variantType:"Framed · glass-glass · bifacial", note:"AND-N-FO-BI-BG-GG-600WP-V1" },
+  { product:"FOSTER Transparent", productSeries:"FOSTER", application:"Commercial / Utility", size:"Large", wp:"620 Wp", finish:"Aluminium frame, transparent rear", variantType:"Framed · glass-glass · bifacial", note:"AND-N-FO-BI-TRA-GG-620WP-V1" },
+  { product:"NOUVEL L", productSeries:"NOUVEL", application:"Residential / Commercial", size:"Mid", wp:"460 Wp", finish:"Flexible, frameless", variantType:"Flexible · lightweight", note:"AND-N-NV-L-FL-FR-460WP-V1" },
+  { product:"NOUVEL XL", productSeries:"NOUVEL", application:"Residential / Commercial", size:"Large", wp:"555 Wp", finish:"Flexible, frameless", variantType:"Flexible · lightweight", note:"AND-N-NV-XL-FL-FR-555WP-V1" },
+];
+// Application match: Nouvel flexible excluded from Utility; a product matches when its
+// application field contains the selected application token.
+function matchesApplication(prod, a) {
+  if (a === "All") return true;
+  if (a === "Utility" && prod.productSeries === "NOUVEL") return false;
+  return prod.application.split(" / ").indexOf(a) !== -1;
+}
+
+class Component extends DCLogic {
+  state = { application:"All", productSeries:"All", size:"All", finish:"All", wp:"All" };
+  set(k){ return (e)=>this.setState({ [k]: e.target.value }); }
+  // NAV-12: SectionNav links #aalto / #mies / #foster / #nouvel preselect the series filter.
+  componentDidMount(){
+    this._onHash = () => { const h = (location.hash || "").slice(1).toUpperCase(); if (["AALTO","MIES","FOSTER","NOUVEL"].includes(h)) this.setState({ productSeries: h }); };
+    window.addEventListener("hashchange", this._onHash); this._onHash();
+  }
+  componentWillUnmount(){ window.removeEventListener("hashchange", this._onHash); }
+
+  renderVals() {
+    const st = this.state;
+    const filtered = PRODUCTS.filter((p) => {
+      if (!matchesApplication(p, st.application)) return false;
+      if (st.productSeries !== "All" && p.productSeries !== st.productSeries) return false;
+      if (st.size !== "All" && p.size !== st.size) return false;
+      if (st.finish !== "All" && p.finish !== st.finish) return false;
+      if (st.wp !== "All" && p.wp !== st.wp) return false;
+      return true;
+    });
+
+    const s = st.productSeries;
+    let logicResults = "Show all products that match the selected application, size and Wp.";
+    if (s === "AALTO") logicResults = "Show AALTO Full Black + AALTO Transparent.";
+    else if (s === "MIES") logicResults = "Show MIES Full Black + MIES Transparent.";
+    else if (s === "FOSTER") logicResults = "Show FOSTER Full Black + FOSTER Transparent.";
+    else if (s === "NOUVEL") logicResults = "Show NOUVEL L + NOUVEL XL.";
+    const logicApplication = st.application === "Utility"
+      ? "NOUVEL flexible products are excluded from Utility."
+      : "NOUVEL flexible products belong to Residential and Commercial.";
+
+    const mk = (label, key, options) => ({ label, value: st[key], onChange: this.set(key), options });
+
+    return {
+      filters: [
+        mk("Application","application",["All","Residential","Commercial","Utility"]),
+        mk("Product series","productSeries",["All","AALTO","MIES","FOSTER","NOUVEL"]),
+        mk("Size","size",["All","Small","Mid","Large"]),
+        mk("Finish","finish",["All","Full Black","Black frame, transparent rear","Aluminium frame, transparent rear","Flexible, frameless"]),
+        mk("Wp","wp",["All","460 Wp","470 Wp","500 Wp","505 Wp","555 Wp","600 Wp","620 Wp"]),
+      ],
+      logicResults, logicApplication,
+      count: filtered.length,
+      hasResults: filtered.length > 0,
+      empty: filtered.length === 0,
+      cards: filtered.map((p) => ({
+        product: p.product, variantType: p.variantType, finish: p.finish,
+        size: p.size, wp: p.wp, application: p.application, note: p.note,
+        slotId: "andf-" + p.product.toLowerCase().replace(/[^a-z0-9]+/g,"-"),
+        imageDir: "ANDO_PRODUCTS_" + p.productSeries + "_PRODUCT-CARD_" + p.finish.toUpperCase().replace(/[^A-Z0-9]+/g,"-") + "_01 · front-view " + p.variantType.toLowerCase() + " module, accurate proportions, correct " + p.finish.toLowerCase() + " finish, neutral studio · 4:3 · placeholder",
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

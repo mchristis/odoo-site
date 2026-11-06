@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>[data-mfg],[data-mfg] *{color:#D6291F !important;border-color:#D6291F !important;}</style>
+<title>Generate energy | Engineering and Manufacturing | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./nav-data.js"></script>
+<script src="./em-data-generate.js"></script>
+<script src="./em-data-generate-2.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4F4F4E; text-decoration:none; }
+  a:hover { color:#252525; }
+  summary::-webkit-details-marker { display:none; }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+  <dc-import name="NavBar" active="company" hint-size="100%,89px"></dc-import>
+  <dc-import name="CompanyNav" active="how" hint-size="100%,57px"></dc-import>
+  <dc-import name="BrandHero2" brand="GENERATE" rgb="205,214,43" dark="#4F4F4E" title="How an ANDO solar module is made." intro="Approved solar cells are inspected, matched and interconnected into strings." items="{{ heroItems }}" hint-size="100%,760px"></dc-import><section data-screen-label="E&M Generate — Intro" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:40px;">
+    <div style="display:flex;flex-wrap:wrap;gap:12px 32px;align-self:flex-start;"><a href="ANDO - PRODUCT - Overview - EN.dc.html#manufacturing" style="font-size:14px;font-weight:300;color:#5F5E5E;border-bottom:1px solid #BBBBBB;padding-bottom:2px;" style-hover="color:#252525;border-bottom-color:#CDD62B;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg>ANDO</a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - EN.dc.html" style="font-size:14px;font-weight:300;color:#5F5E5E;border-bottom:1px solid #BBBBBB;padding-bottom:2px;" style-hover="color:#252525;border-bottom-color:#CDD62B;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg>Engineering and manufacturing</a></div>
+    </section>
+  <div style="height:96px;"></div>
+  <dc-import name="FactoryWalk" set="ando" three="lab" hint-size="100%,900px"></dc-import>
+  
+  
+  
+  <section data-screen-label="E&M Generate — Back to ANDO" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;"><a href="ANDO - PRODUCT - Overview - EN.dc.html#manufacturing" style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;" style-hover="color:#252525;border-bottom-color:#CDD62B;">Back to ANDO &#8250;</a></section>
+  <section data-screen-label="E&M Generate — Next" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:120px var(--web-side) 120px;box-sizing:border-box;"><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - EN.dc.html#em-chooser" style="text-decoration:none;border-top:1px solid #4F4F4E;padding-top:24px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;transition:border-color 180ms ease;" style-hover="border-top-color:#CDD62B;"><span style="font-size:var(--web-min-size);letter-spacing:0.08em;color:#5F5E5E;line-height:var(--web-min-lh);">Back</span><span style="font-size:clamp(28px,3vw,40px);font-weight:200;color:#252525;">All products<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></a></section>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const HERO_ITEMS = [{"label":"Engineering","heading":"From cell to site.","sentence":"Choose a stage to see the machine, what is done there and how it is tested.","href":"em-generate-machines","media":{"type":"slot","slot":"strohm-energy-how-engineering-and-manufacturing-generate-hero","alt":"GENERATE engineering and manufacturing hero picture 1"}},{"label":"Manufacturing","heading":"Production sequence.","sentence":"Every production step, grouped by phase.","href":"em-generate-sequence","media":{"type":"slot","slot":"strohm-energy-how-engineering-and-manufacturing-generate-hero-2","alt":"GENERATE engineering and manufacturing hero picture 2"}},{"label":"Quality","heading":"Records kept for every module.","sentence":"They trace a delivered panel to its materials, process conditions and measured performance.","href":"em-generate-records","media":{"type":"slot","slot":"strohm-energy-how-engineering-and-manufacturing-generate-hero-3","alt":"GENERATE engineering and manufacturing hero picture 3"}}];
+
+class _EmBase extends DCLogic {
+  state = { ready: !!(window.EM_GENERATE_A && window.EM_GENERATE_B) };
+  componentDidMount() { if (!this.state.ready) { this._i = setInterval(() => { if (window.EM_GENERATE_A && window.EM_GENERATE_B) { clearInterval(this._i); this.setState({ ready: true }); } }, 100); } }
+  componentWillUnmount() { clearInterval(this._i); }
+  machineVals() {
+    const S = [
+      ['Cell inspection', 'Incoming inspection station with camera, electrical tester and electroluminescence (EL) imaging.', 'ANDO uses monocrystalline N-type TOPCon cells in 182 mm (M10) format. Every cell batch is scanned and checked for chips, cracks, contamination and dimensions before it enters production.', 'Electrical verification and EL imaging to the inspection plan. Rejected cells are held separately.', '', ''],
+      ['Cell sorting', 'Automatic cell sorting machine.', 'Cells are sorted automatically by their measured grade, so that cells of the same grade are strung together.', 'Sorted cells are checked against the grade list.', '', ''],
+      ['Laser cutting', 'Laser cutting and separation station with vision inspection.', 'Full M10 cells are laser-cut into half cells in the factory and separated with low-stress handling.', 'Cut edges and cell condition are inspected by camera; damaged cells are removed automatically.', '', ''],
+      ['Stringing', 'Automatic tabber stringer.', 'Multi-busbar (MBB) round copper wires are cut, aligned and soldered to the half cells, which are connected into strings of the correct length and polarity.', 'Automated optical inspection of alignment and soldering, inline imaging for cell damage and scheduled bond-strength checks.', '', ''],
+      ['String EL', 'EL tester for strings.', 'Each string is imaged after stringing, so cell damage from soldering is found before the strings are laid up.', 'EL images are evaluated against defect criteria; faulty strings are removed.', 'EL image of each string.', ''],
+      ['Glass preparation', 'Glass loading robot, washer and dryer.', 'Front glass is picked up sheet by sheet, washed, dried and covered with the first encapsulant layer.', 'Cleanliness and coated-side orientation are checked by camera.', '', ''],
+      ['Encapsulant cutting', 'Automatic encapsulant film cutter.', 'Encapsulant film is cut from the roll to the size of the module layers.', 'Cut size and film condition are checked.', '', ''],
+      ['Robotic layup', 'Layup robot with camera alignment and automatic bussing.', 'Strings are placed on the encapsulant, connected with cross ribbons and the module receives its serial number.', 'Vision checks of string spacing, orientation and polarity.', 'The module serial number is created and becomes the key for every later result.', ''],
+      ['Pre-lamination EL', 'EL tester before lamination.', 'Upper encapsulant and rear layer are added, then the full stack is imaged while it can still be repaired.', 'EL images are evaluated against defect criteria; eligible defects are repaired and re-inspected.', 'Pre-lamination EL image and inspection result.', ''],
+      ['Taping', 'Automatic taping machine.', 'The strings are fixed in position with tape before the module goes into the laminator.', 'Camera check that the strings have not moved.', '', ''],
+      ['Lamination', 'Vacuum laminator.', 'The layers are bonded under a controlled vacuum, temperature and pressure cycle, then cooled and trimmed.', 'Temperature, pressure, vacuum and cycle time are recorded; laminates are inspected for bubbles and delamination.', '', ''],
+      ['Buffer', 'Conveyor buffer.', 'Laminates are held in a buffer between lamination and the next station so the line keeps moving.', 'Module identity is read when a laminate enters and leaves the buffer.', '', ''],
+      ['Visual inspection', 'Inspection station that turns the module to 90 degrees.', 'The laminate is inspected by eye at 90 degrees for bubbles, misplaced cells and surface defects.', 'Visual criteria for appearance; failed laminates are separated.', '', ''],
+      ['Framing', 'Sealant dispenser and automatic framing press.', 'ANDO: anodised aluminium frame profiles are fitted around the laminate with silicone sealant and the corner keys are pressed. NOUVEL is frameless; its edges are sealed with edge tape or encapsulant overlap.', 'Squareness, corner closure and frame attachment are checked.', '', ''],
+      ['Junction box soldering', 'Adhesive dispensing robot with soldering station.', 'The junction box is bonded and the conductors are joined to its terminals.', 'Joint inspection, bypass diode check, cable length and connector identity.', '', ''],
+      ['Junction box potting', 'Potting station.', 'The box is potted and closed.', 'Fill and closure are inspected.', '', ''],
+      ['Curing', 'Curing line with conveyors.', 'Modules travel along the curing line while the adhesive and potting compound cure.', 'Curing time and conditions are recorded.', '', ''],
+      ['Flash test', 'Solar simulator (flash tester).', 'Each finished module is measured under defined conditions to determine its electrical performance and power class.', 'Complete current–voltage (I–V) curve with corrections to reference conditions.', 'I–V curve, Pmax, Vmp, Imp, Voc, Isc and power class.', ''],
+      ['Final EL and safety', 'EL camera, dielectric and insulation tester, continuity tester.', 'Every module is imaged once more and tested for electrical safety.', 'Final EL against defect criteria, dielectric withstand, insulation and bonding continuity.', 'Final EL image and electrical safety results.', ''],
+      ['Labelling', 'Label printer and camera verification.', 'The rating label and the serial and QR label are applied and checked against the measured power class.', 'Camera check that label, QR code and production record match.', 'Link between serial number, QR code and production record.', ''],
+      ['Sorting by power class', 'Automatic sorting by measured power class.', 'Tested modules are sorted by their measured power class before packing.', 'Power class is checked against the flash test record.', 'Power class sorting result per serial number.', ''],
+      ['Robotic packing', 'Packing robot with validated vacuum tooling or frame support.', 'Modules are lifted without flexing, fitted with corner protection and packed on pallets in the approved pattern.', 'Position check of every module; quantity and power class verified per pallet.', 'Which module serials are on which pallet.', ''],
+      ['From factory to site', 'Phone or tablet with the EMON app.', 'On site, the installer scans the QR code on each module. EMON finds the module with its factory results and links it to its string and position.', 'No serials are typed. The installed layout and the warranty registration are created from the scans.', 'Installed position, string assignment and warranty registration, added to the same record.', '']
+    ];
+    const pad = (x) => (x < 10 ? '0' + x : '' + x);
+    const cur = this.state.mStage || 0;
+    const mStages = S.map((s, i) => ({ no: pad(i + 1), name: s[0], emon: !!s[4], on: i === cur ? 'true' : 'false', line: i === cur ? '#CDD62B' : '#E3E3E3', pick: () => { if (this.state.mStage !== i) this.setState({ mStage: i }); } }));
+    const a = S[cur];
+    const ms = { no: pad(cur + 1), name: a[0], machine: a[1], proc: a[2], test: a[3], dataLabel: a[4] ? 'Saved to EMON' : 'Kept in the factory record', dot: a[4] ? '#CDD62B' : '#BBBBBB', data: a[4] || 'Process data stays in the production record for this module and can be retrieved for quality investigation.', hasTbc: !!a[5], tbc: a[5] };
+    return { mStages, ms };
+  }
+  renderVals() {
+    const A = window.EM_GENERATE_A, B = window.EM_GENERATE_B;
+    const d = A && B ? { phases: A.phases.concat(B.phases), records: B.records } : null;
+    const mv = this.machineVals();
+    if (!d) return { ...mv, phases: [], records: [], total: '', phaseCount: '' };
+    let n = 0;
+    const pad = (x) => (x < 10 ? '0' + x : '' + x);
+    const phases = d.phases.map(([title, intro, steps, flag], i) => { if (flag === 'nonum') return { no: pad(i + 1), title, intro, steps: steps.map(([op, ctl]) => ({ no: '', op, ctl })), range: title.indexOf('test') >= 0 ? 'Sample tests' : 'Differences' }; const first = n + 1; const st = steps.map(([op, ctl]) => ({ no: pad(++n), op, ctl })); return { no: pad(i + 1), title, intro, steps: st, range: 'Steps ' + pad(first) + '–' + pad(n) }; });
+    return { ...mv, phases, records: d.records.map(([k, v]) => ({ k, v })), total: n, phaseCount: d.phases.length };
+  }
+}
+
+class Component extends _EmBase { renderVals() { const b = super.renderVals ? super.renderVals() : {}; return Object.assign({}, b, { heroItems: HERO_ITEMS }); } }
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<style>
+  a { text-decoration:none; }
+  @keyframes wnFade { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
+  .wn-link:hover { color:#4F4F4E !important; }
+  .wn-brand:hover .wn-code, .wn-brand:hover .wn-sub { color:var(--bc) !important; }
+  .wn-panelscroll { scrollbar-width:thin; }
+  @media (prefers-reduced-motion: reduce) { .wn-panel { animation:none !important; } }
+</style>
+</helmet>
+<div style="position:relative;z-index:100;background:#FFFFFF;font-family:var(--font-web);">
+  <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);height:56px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:32px;border-top:1px solid #EEEEEE;">
+
+    <a href="WEBSHOP - SITE - Home - EN.dc.html" style="flex:none;font-size:14px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#252525;">Webshop</a>
+
+    <nav aria-label="Webshop" style="display:flex;align-items:center;gap:clamp(4px,1vw,20px);flex:1 1 auto;min-width:0;justify-content:flex-start;padding:0;box-sizing:border-box;">
+      <sc-for list="{{ items }}" as="l" hint-placeholder-count="4">
+        <sc-if value="{{ l.caret }}" hint-placeholder-val="{{ false }}"><button type="button" class="wn-link" aria-expanded="{{ l.expanded }}" onClick="{{ l.onClick }}" style="background:none;border:none;font-family:inherit;padding:14px clamp(3px,0.5vw,8px);font-size:14px;font-weight:{{ l.weight }};letter-spacing:0;text-transform:none;color:{{ l.color }};cursor:pointer;display:inline-flex;align-items:center;gap:6px;">{{ l.label }}<sc-if value="{{ l.caret }}" hint-placeholder-val="{{ false }}"><span style="font-size:8px;color:#898989;">&#9662;</span></sc-if></button></sc-if><sc-if value="{{ l.notCaret }}" hint-placeholder-val="{{ true }}"><a class="wn-link" href="{{ l.href }}" style="padding:14px clamp(3px,0.5vw,8px);font-size:14px;font-weight:{{ l.weight }};letter-spacing:0;text-transform:none;color:{{ l.color }};cursor:pointer;display:inline-flex;align-items:center;gap:6px;">{{ l.label }}<sc-if value="{{ l.caret }}" hint-placeholder-val="{{ false }}"><span style="font-size:8px;color:#898989;">&#9662;</span></sc-if></a></sc-if>
+      </sc-for>
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:24px;flex:none;">
+      <a href="STROHM.ENERGY - SITE - Login - EN.dc.html" class="wn-link" style="font-size:15px;font-weight:300;color:#5F5E5E;min-height:44px;display:inline-flex;align-items:center;">Login</a>
+      <a href="STROHM.ENERGY - SITE - Register - EN.dc.html" class="wn-link" style="font-size:15px;font-weight:300;color:#4F4F4E;min-height:44px;display:inline-flex;align-items:center;gap:8px;"><svg width="7" height="12" viewBox="0 0 7 12" aria-hidden="true" style="flex:none;"><polyline points="1,1 6,6 1,11" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg>Register</a>
+    </div>
+  </div>
+
+  <sc-if value="{{ productsOpen }}" hint-placeholder-val="{{ false }}">
+    <div class="wn-panel" style="position:absolute;top:100%;left:0;right:0;background:#FFFFFF;border-bottom:1px solid #D4D4D4;box-shadow:none;animation:wnFade 0.12s ease;">
+      <div class="wn-panelscroll" style="max-height:76vh;overflow-y:auto;">
+        <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:26px var(--web-side) 34px;box-sizing:border-box;">
+
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:6px;">By category</div>
+          <sc-for list="{{ productCats }}" as="cat" hint-placeholder-count="9">
+            <div style="padding:20px 0;border-top:1px solid #D9D9D9;display:flex;flex-wrap:wrap;gap:36px;align-items:start;">
+              <div style="flex:1 1 240px;min-width:0;">
+                <a href="{{ cat.href }}" style="font-size:14px;font-weight:500;letter-spacing:0.01em;color:#4F4F4E;">{{ cat.title }}</a>
+                <p style="margin:6px 0 0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;max-width:760px;">{{ cat.explain }}</p>
+              </div>
+              <div data-cols="4" style="flex:999 1 min(100%,400px);min-width:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px 22px;--cg:22px;">
+                <sc-for list="{{ cat.brands }}" as="b" hint-placeholder-count="3">
+                  <a class="wn-brand" href="{{ b.href }}" style="display:flex;flex-direction:column;gap:2px;--bc:{{ b.colour }};">
+                    <span class="wn-code" style="font-size:15px;font-weight:500;letter-spacing:0.02em;color:#4F4F4E;">{{ b.code }}</span>
+                    <span class="wn-sub" style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">{{ b.subtitle }}</span>
+                  </a>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin:28px 0 14px;">Manage, calculate &amp; connect</div>
+          <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px;--cg:22px;">
+            <sc-for list="{{ platforms }}" as="p" hint-placeholder-count="7">
+              <div>
+                <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#C0C0BD;margin-bottom:8px;">{{ p.group }}</div>
+                <a class="wn-brand" href="{{ p.href }}" style="display:flex;flex-direction:column;gap:2px;--bc:{{ p.colour }};pointer-events:{{ p.pe }};opacity:{{ p.op }};">
+                  <span class="wn-code" style="font-size:15px;font-weight:500;color:#4F4F4E;">{{ p.code }}</span>
+                  <span class="wn-sub" style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">{{ p.subtitle }}</span>
+                </a>
+                <p style="margin:6px 0 0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#898989;max-width:760px;">{{ p.explain }}</p>
+              </div>
+            </sc-for>
+          </div>
+
+          <div data-cols="3" style="margin-top:30px;border-top:1px solid #D9D9D9;padding-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;--cg:32px;">
+            <sc-for list="{{ supportCols }}" as="s" hint-placeholder-count="3">
+              <div>
+                <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:12px;">{{ s.heading }}</div>
+                <div style="display:flex;flex-direction:column;gap:9px;">
+                  <sc-for list="{{ s.links }}" as="ln" hint-placeholder-count="4">
+                    <a class="wn-link" href="{{ ln.href }}" style="font-size:13px;font-weight:300;color:{{ ln.color }};pointer-events:{{ ln.pe }};">{{ ln.label }}</a>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+        </div>
+      </div>
+      <div onClick="{{ closeMenu }}" style="position:fixed;inset:0;top:0;z-index:-1;background:transparent;"></div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const P = {
+  ANDO:"#CDD62B", PROP:"#516B83", MOEBIUS:"#F1931B", FLUXX:"#FDC706", NENDO:"#1B8B9A", FEU:"#DA5E70",
+  OGO:"#00A0E3", XOOM:"#8EB15F", AIRO:"#0083BB", GLOW:"#E7D13D", CHILL:"#6BC0B0", SYNQ:"#5F7773",
+  OZZY:"#8BCF3F", MOX:"#D8392C", TOGU:"#C48723", DODO:"#C9A832", SHELTR:"#5B788F", MUKI:"#E5B73B", WURK:"#9E3D2E",
+  EMON:"#21AE8F", KALK:"#C4B1C8", TRIBE:"#689AB2", PUSH:"#5F5E5E", PACT:"#5F5E5E", KERN:"#5F5E5E", DEPOT:"#5F5E5E",
+};
+const WSHOP = ["AIRO","ANDO","CHILL","DODO","FEU","FLUXX","GLOW","MOEBIUS","MOX","MUKI","NENDO","OGO","OZZY","PROP","SHELTR","SYNQ","TOGU","WURK","XOOM"];
+const SHOP_EN = ["CHILL","FLUXX","MUKI","OGO","OZZY","PROP","XOOM"];
+const href = (c) => SHOP_EN.includes(c) ? (c + " - WEBSHOP - Shop - EN.dc.html") : WSHOP.includes(c) ? (c + " - WEBSHOP - Shop - EN.dc.html") : (c + " - PRODUCT - Overview - EN.dc.html");
+const b = (code, subtitle) => ({ code, subtitle, colour: P[code] || "#5F5E5E", href: href(code) });
+
+const PRODUCT_CATS = [
+  { title:"Generated Energy", explain:"Produce renewable electricity from solar and wind.", brands:[b("ANDO","Solar generation"), b("PROP","Wind generation")] },
+  { title:"Convert Energy", explain:"Convert generated power into usable electricity.", brands:[b("MOEBIUS","Power conversion")] },
+  { title:"Store Energy", explain:"Store electricity and make it available when needed.", brands:[b("FLUXX","Energy storage"), b("SHELTR","Inverter RoofShelter")] },
+  { title:"Use Energy", explain:"Use electricity for heating, cooling, mobility, lighting and comfort.", brands:[b("NENDO","Thermal systems"), b("FEU","Radiant heating"), b("OGO","Water systems"), b("XOOM","EV charging"), b("AIRO","Airflow systems"), b("GLOW","Solar lighting")]},
+  { title:"Measure & Control", explain:"Measure energy flows and control connected loads.", brands:[b("SYNQ","Energy metering"), b("OZZY","Energy switching")] },
+  { title:"Build and Connect", explain:"Mount and connect the physical energy system.", brands:[b("MOX","Structural mounting"), b("CHILL","Energy-integrated infrastructure"), b("TOGU","Electrical connectivity")] },
+  { title:"Protect the System", explain:"Protect equipment, installations and assets.", brands:[b("DODO","Bird protection"), b("SHELTR","Asset protection")] },
+  { title:"Complete Systems", explain:"Preconfigured product combinations designed to work together.", brands:[b("MUKI","Energy sets, defined")] },
+  { title:"Tools", explain:"Tools for installation, testing, commissioning and field work.", brands:[b("WURK","Installation equipment")] },
+];
+const PLATFORMS = [
+  { group:"Manage & Optimise", code:"EMON", subtitle:"Energy management", explain:"Monitor, control and improve the complete energy system.", href:"EMON - SYSTEM - System - EN.dc.html" },
+  { group:"Group Purchasing", code:"PACT", subtitle:"Group purchasing", explain:"Combine partner demand and coordinate volume purchasing.", href:null },
+  { group:"Calculate & Configure", code:"KALK", subtitle:"Energy calculation", explain:"Size products, compare options and prepare proposals.", href:"KALK - SYSTEM - Overview - EN.dc.html" },
+  { group:"Installer Operations", code:"KERN", subtitle:"Operational control", explain:"Manage the workflow of an installation company.", href:null },
+  { group:"Connect Partners", code:"TRIBE", subtitle:"Distributed energy systems", explain:"Connect installers, distributors and technical partners.", href:"STROHM.ENERGY - SITE - Find an Installer - EN.dc.html" },
+  { group:"Partner Stockholding", code:"DEPOT", subtitle:"Supply infrastructure", explain:"Hold STRØHM.ENERGY goods locally through approved partners.", href:"DEPOT - SYSTEM - Overview - EN.dc.html" },
+  { group:"Communicate", code:"PUSH", subtitle:"Installer growth", explain:"Send project, system and service communication.", href:null },
+];
+const SUPPORT_COLS = [
+  { heading:"Getting Started", links:[["Why the Webshop","WEBSHOP - SITE - Home - EN.dc.html#why"],["Ordering Guide","WEBSHOP - SITE - How It Works - EN.dc.html"],["Registration & Approval","STROHM.ENERGY - SITE - Register - EN.dc.html"],["Webshop FAQ",null]] },
+  { heading:"Help Center", links:[["Knowledge Center","WEBSHOP - SITE - How It Works - EN.dc.html"],["Warranty & RMA","Portal v2.dc.html"],["Shipping & Logistics","WEBSHOP - SITE - How It Works - EN.dc.html#routes"]] },
+  { heading:"Contact Support", links:[["Contact Support","WEBSHOP - SITE - How It Works - EN.dc.html#contact"],["Book a session","WEBSHOP - SITE - How It Works - EN.dc.html#contact"],["Live chat",null]] },
+];
+const TOP = [
+  { key:"products", label:"Products", caret:true },
+  { key:"catalogue", label:"Systems", href:"EMON - SYSTEM - System - EN.dc.html" },
+  { key:"leads", label:"Leads", href:"STROHM.ENERGY - SITE - Find an Installer - EN.dc.html" },
+  { key:"support", label:"Support", href:"WEBSHOP - SITE - How It Works - EN.dc.html" },
+];
+
+class Component extends DCLogic {
+  state = { open: null };
+  toggle(k){ this.setState((s)=>({ open: s.open===k ? null : k })); }
+  renderVals(){
+    const active = this.props.active || "";
+    const open = this.state.open;
+    return {
+      items: TOP.filter((t)=>t.key==="leads"||t.key==="support").map((t)=>({
+        label: t.label, href: t.href, caret: !!t.caret, notCaret: !t.caret, expanded: open===t.key ? "true" : "false",
+        weight: (active===t.key || open===t.key) ? 500 : 300,
+        color: (active===t.key || open===t.key) ? "#4F4F4E" : "#5F5E5E",
+        onClick: t.caret ? ((e)=>{ if(e&&e.preventDefault)e.preventDefault(); this.toggle(t.key); }) : null,
+      })),
+      productsOpen: open==="products",
+      closeMenu: ()=>this.setState({ open:null }),
+      productCats: PRODUCT_CATS.map((c)=>({ title:c.title, explain:c.explain, brands:c.brands, href:"WEBSHOP - SITE - Catalogue - EN.dc.html" })),
+      platforms: PLATFORMS.map((p)=>({ ...p, href: p.href || undefined, pe: p.href ? "auto" : "none", op: p.href ? "1" : "0.6", colour: P[p.code] || "#5F5E5E" })),
+      supportCols: SUPPORT_COLS.map((s)=>({ heading:s.heading, links:s.links.map((l)=>({ label:l[0], href:l[1] || undefined, color: l[1] ? "#5F5E5E" : "#898989", pe: l[1] ? "auto" : "none" })) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

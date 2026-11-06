@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="./moebius-configurator-data.js"></script>
+<style>:root{--web-side:clamp(20px,5.8vw,84px);}body{margin:0;background:#F7F7F5;font-family:var(--font-web);}a{color:#4F4F4E;}a:hover{color:#F76801;}.leaflet-container{background:#E3E3E3;font-family:var(--font-web);}</style>
+<style data-q4-reflow>/* Q4 grid reflow (DEPTH-897, user 26 Oct 2026). Desktop above 1024px unchanged.
+   data-cols="N": equal 2–6 column grids reflow by available width, cards at least 240px, never more than N columns.
+   data-stack: mixed-width grids stack to one column below 720px. Charts (7+ columns) and label/value rows are not marked. */
+@media (max-width:1024px){
+ [data-cols="2"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 1 * var(--cg,0px)) / 2 - 1px))),1fr)) !important}
+ [data-cols="3"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 2 * var(--cg,0px)) / 3 - 1px))),1fr)) !important}
+ [data-cols="4"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 3 * var(--cg,0px)) / 4 - 1px))),1fr)) !important}
+ [data-cols="5"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 4 * var(--cg,0px)) / 5 - 1px))),1fr)) !important}
+ [data-cols="6"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 5 * var(--cg,0px)) / 6 - 1px))),1fr)) !important}
+ [data-cols]>[style*="grid-column:span"],[data-cols]>[style*="grid-column: span"]{grid-column:1/-1 !important}
+}
+@media (max-width:720px){
+ [data-stack]{grid-template-columns:minmax(0,1fr) !important}
+ [data-stack]>*{grid-column:auto !important;grid-row:auto !important}
+}</style>
+</helmet>
+<div data-screen-label="KALK Roof scan" style="position:relative;display:flex;flex-direction:column;min-height:100vh;">
+  <dc-import name="NavBar" active="systems" hint-size="100%,80px"></dc-import>
+  <div style="position:relative;width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:24px auto 48px;height:clamp(600px,calc(100vh - 160px),820px);border-radius:24px;overflow:hidden;box-sizing:border-box;">
+    <div ref="{{ mapRef }}" style="position:absolute;inset:0;"></div>
+    <div style="position:absolute;left:16px;top:16px;z-index:500;display:flex;gap:8px;">
+      <button onClick="{{ useEsri }}" style="min-height:40px;padding:0 16px;border:0;border-radius:8px;background:{{ esriBg }};color:{{ esriFg }};font-family:var(--font-web);font-size:14px;cursor:pointer;">Satellite</button>
+      <sc-if value="{{ isNL }}" hint-placeholder-val="{{ false }}"><button onClick="{{ usePdok }}" style="min-height:40px;padding:0 16px;border:0;border-radius:8px;background:{{ pdokBg }};color:{{ pdokFg }};font-family:var(--font-web);font-size:14px;cursor:pointer;">Aerial photo NL 25 cm</button></sc-if>
+    </div>
+    <div style="position:absolute;right:16px;top:16px;bottom:16px;z-index:500;width:min(420px,calc(100% - 32px));display:flex;flex-direction:column;justify-content:flex-end;pointer-events:none;">
+      <div style="pointer-events:auto;background:#FFFFFF;border-radius:12px;padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;max-height:100%;overflow:auto;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:15px;color:#252525;">{{ brand }} by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:20px;width:auto;display:block;filter:brightness(0);"></div>
+          <sc-if value="{{ showProgress }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:#5F5E5E;">
+              <div style="width:64px;height:4px;border-radius:2px;background:#E3E3E3;overflow:hidden;"><div style="height:4px;width:{{ progressPct }};background:{{ accent }};"></div></div>
+              <span>{{ progressLabel }}</span>
+            </div>
+          </sc-if>
+        </div>
+
+        <sc-if value="{{ isStart }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <h1 style="margin:0;font-size:36px;font-weight:200;line-height:1.1;letter-spacing:-0.5px;color:#252525;text-wrap:balance;">Free roof scan (flat roof)</h1>
+            <p style="margin:0;font-size:16px;font-weight:300;line-height:1.5;color:#5F5E5E;text-wrap:pretty;">Find your roof on the map, draw its outline and choose your panel. KALK shows how many {{ brand }} panels and how many Wp fit. The financial calculation follows by email.</p>
+            <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+              <div style="background:#F4F4F4;border-radius:8px;padding:12px;font-size:14px;color:#252525;">01 Draw your flat roof</div>
+              <div style="background:#F4F4F4;border-radius:8px;padding:12px;font-size:14px;color:#252525;">02 Your panel</div>
+              <div style="background:#F4F4F4;border-radius:8px;padding:12px;font-size:14px;color:#252525;">03 Flat roof covering</div>
+              <div style="background:#F4F4F4;border-radius:8px;padding:12px;font-size:14px;color:#252525;">04 Panels and Wp that fit</div>
+            </div>
+            <sc-if value="{{ flatOnly }}" hint-placeholder-val="{{ false }}"><p style="margin:0;background:#F4F4F4;border-radius:8px;padding:12px 16px;font-size:14px;line-height:1.5;color:#252525;">LINA is made for flat roofs only. The scan covers the flat roof types: bitumen, EPDM, gravel, concrete slabs and green roofs.</p></sc-if>
+            <div style="font-size:14px;color:#252525;">Your country</div>
+            <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;--cg:8px;">
+              <sc-for list="{{ countries }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.pick }}" style="min-height:44px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.fg }};font-family:var(--font-web);font-size:14px;cursor:pointer;">{{ o.label }}</button></sc-for>
+            </div>
+            <p style="margin:0;font-size:12px;font-weight:300;color:#5F5E5E;">Available for Belgium, the Netherlands and the United Kingdom.</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isAddress }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Find your building</h2>
+            <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:#5F5E5E;">Enter the address, then check that the pin sits on your roof.</p>
+            <input value="{{ query }}" onChange="{{ onQuery }}" placeholder="Street, number, town" style="min-height:48px;padding:0 16px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:16px;color:#252525;outline:none;" style-focus="border-color:{{ accent }};">
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <sc-for list="{{ results }}" as="r" hint-placeholder-count="0">
+                <button onClick="{{ r.pick }}" style="text-align:left;min-height:44px;padding:8px 12px;border:0;border-radius:8px;background:#F4F4F4;font-family:var(--font-web);font-size:14px;color:#252525;cursor:pointer;" style-hover="background:#E3E3E3;">{{ r.label }}</button>
+              </sc-for>
+            </div>
+            <sc-if value="{{ outside }}" hint-placeholder-val="{{ false }}"><p style="margin:0;background:#FFEB9E;border-radius:8px;padding:12px 16px;font-size:14px;color:#252525;">The roof scan is available for Belgium, the Netherlands and the United Kingdom. Choose an address in {{ countryName }}.</p></sc-if>
+            <sc-if value="{{ hasPicked }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:14px;color:#252525;">{{ pickedLabel }}</p></sc-if>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isOutline }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Draw the outline of your roof</h2>
+            <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:#5F5E5E;">Click each corner of the roof on the map. At least three corners. Leave out parts you do not want to use.</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;background:#F4F4F4;border-radius:8px;padding:12px 16px;font-size:14px;color:#252525;"><span>Corners</span><span><b>{{ pointCount }}</b></span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;background:#F4F4F4;border-radius:8px;padding:12px 16px;font-size:14px;color:#252525;"><span>Outline area</span><span><b>{{ areaTxt }}</b> m²</span></div>
+            <div style="display:flex;gap:16px;">
+              <button onClick="{{ undoPoint }}" style="padding:0;min-height:44px;border:0;background:none;border-bottom:1px solid #4F4F4E;font-family:var(--font-web);font-size:14px;color:#4F4F4E;cursor:pointer;">Undo last corner</button>
+              <button onClick="{{ clearPoints }}" style="padding:0;min-height:44px;border:0;background:none;border-bottom:1px solid #4F4F4E;font-family:var(--font-web);font-size:14px;color:#4F4F4E;cursor:pointer;">Clear outline</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isPanel }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Choose your panel</h2>
+            <sc-for list="{{ panels }}" as="o" hint-placeholder-count="2">
+              <button onClick="{{ o.pick }}" style="display:flex;flex-direction:column;gap:4px;text-align:left;padding:16px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);color:#252525;cursor:pointer;">
+                <span style="font-size:16px;"><b>{{ o.label }}</b></span>
+                <span style="font-size:14px;font-weight:300;">{{ o.model }} · {{ o.wp }} Wp · {{ o.size }}</span>
+              </button>
+            </sc-for>
+            <p style="margin:0;font-size:12px;font-weight:300;color:#5F5E5E;">Model names, Wp and sizes TO CONFIRM from the data sheets.</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isShape }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Roof shape, tilt and direction</h2>
+            <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+              <sc-for list="{{ shapes }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.pick }}" style="min-height:48px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.fg }};font-family:var(--font-web);font-size:14px;cursor:pointer;">{{ o.label }}</button></sc-for>
+            </div>
+            <p style="margin:0;font-size:14px;font-weight:300;color:#5F5E5E;">{{ shapeInfo }}</p>
+            <sc-if value="{{ pitched }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;gap:16px;">
+                <div style="font-size:14px;color:#252525;">Tilt</div>
+                <div data-cols="6" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;--cg:8px;">
+                  <sc-for list="{{ tilts }}" as="o" hint-placeholder-count="6"><button onClick="{{ o.pick }}" style="min-height:44px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.fg }};font-family:var(--font-web);font-size:14px;cursor:pointer;">{{ o.label }}</button></sc-for>
+                </div>
+                <div style="font-size:14px;color:#252525;">The panel side faces</div>
+                <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;--cg:8px;">
+                  <sc-for list="{{ dirs }}" as="o" hint-placeholder-count="8"><button onClick="{{ o.pick }}" style="min-height:44px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.fg }};font-family:var(--font-web);font-size:14px;cursor:pointer;">{{ o.label }}</button></sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isCover }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Roof covering and floors</h2>
+            <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+              <sc-for list="{{ covers }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.pick }}" style="min-height:48px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.fg }};font-family:var(--font-web);font-size:14px;cursor:pointer;">{{ o.label }}</button></sc-for>
+            </div>
+            <div style="font-size:14px;color:#252525;">Floors</div>
+            <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;--cg:8px;">
+              <sc-for list="{{ floorOpts }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.pick }}" style="min-height:44px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.fg }};font-family:var(--font-web);font-size:14px;cursor:pointer;">{{ o.label }}</button></sc-for>
+            </div>
+            <p style="margin:0;font-size:14px;font-weight:300;color:#5F5E5E;">The covering decides the mounting system. Floors decide cable length and scaffolding.</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isUse }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <h2 style="margin:0;font-size:20px;font-weight:300;color:#252525;">For the financial calculation</h2>
+            <div style="font-size:14px;color:#252525;">Average monthly electricity bill</div>
+            <div style="display:flex;align-items:center;border:1px solid #BBBBBB;border-radius:8px;overflow:hidden;">
+              <span style="padding:0 16px;font-size:16px;color:#5F5E5E;">{{ cur }}</span>
+              <input type="number" value="{{ bill }}" onChange="{{ onBill }}" style="flex:1;min-height:48px;border:0;font-family:var(--font-web);font-size:16px;color:#252525;outline:none;">
+            </div>
+            <div style="font-size:14px;color:#252525;">When do you use most electricity</div>
+            <input type="range" min="0" max="100" value="{{ dayShare }}" onChange="{{ onDay }}" style="width:100%;accent-color:{{ accent }};">
+            <div style="display:flex;justify-content:space-between;font-size:14px;color:#5F5E5E;"><span>Daytime</span><span>{{ dayLabel }}</span><span>Evening and night</span></div>
+            <button onClick="{{ toggleBattery }}" style="display:flex;justify-content:space-between;align-items:center;min-height:48px;padding:0 16px;border:0;border-radius:8px;background:#F4F4F4;font-family:var(--font-web);font-size:14px;color:#252525;cursor:pointer;"><span>Add a FLUXX battery</span><b>{{ batteryLabel }}</b></button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Your {{ brand }} system</h2>
+            <div style="background:#F4F4F4;border-radius:8px;padding:8px;display:flex;justify-content:center;">{{ sketch }}</div>
+            <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+              <sc-for list="{{ figures }}" as="f" hint-placeholder-count="4">
+                <div style="background:#F4F4F4;border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:4px;">
+                  <span style="font-size:12px;color:#5F5E5E;">{{ f.label }}</span>
+                  <span style="font-size:20px;color:#252525;"><b>{{ f.value }}</b> <span style="font-weight:300;">{{ f.unit }}</span></span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <sc-for list="{{ split }}" as="s" hint-placeholder-count="3">
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <div style="display:flex;justify-content:space-between;font-size:14px;color:#252525;"><span>{{ s.label }}</span><span><b>{{ s.pct }}</b> · {{ s.kwh }} kWh</span></div>
+                  <div style="height:8px;border-radius:4px;background:#E3E3E3;overflow:hidden;"><div style="height:8px;width:{{ s.pct }};background:{{ s.color }};"></div></div>
+                </div>
+              </sc-for>
+            </div>
+                        <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="font-size:14px;color:#252525;">MOEBIUS inverters that match {{ kwpTxt }} kWp</div>
+              <sc-for list="{{ invs }}" as="i" hint-placeholder-count="3">
+                <div style="display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:8px;background:#F4F4F4;font-size:14px;color:#252525;"><span><b>{{ i.name }}</b> · {{ i.type }} · {{ i.phase }}</span><span>{{ i.range }}</span></div>
+              </sc-for>
+            </div>
+            <a href="KALK - Inverter MOEBIUS - EN.dc.html" onClick="{{ savePv }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-radius:8px;background:#FB8C00;color:#252525;font-size:15px;text-decoration:none;" style-hover="background:#252525;color:#FFFFFF;"><span>And now you can calculate your inverter</span><span style="display:flex;align-items:center;gap:6px;">MOEBIUS by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:16px;width:auto;display:block;filter:brightness(0);"> &#8250;</span></a>
+            <sc-if value="{{ limited }}" hint-placeholder-val="{{ false }}"><p style="margin:0;background:#FFEB9E;border-radius:8px;padding:12px 16px;font-size:14px;color:#252525;">Your roof is smaller than your use asks for. KALK placed every panel that fits.</p></sc-if>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isSavings }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">What you save</h2>
+            <div style="background:{{ accent }};border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:4px;color:#252525;">
+              <span style="font-size:14px;">New monthly bill</span>
+              <span style="font-size:44px;"><b>{{ cur }} {{ newBill }}</b></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;background:#F4F4F4;border-radius:8px;padding:16px;font-size:14px;color:#252525;"><span>Current monthly bill</span><span>{{ cur }} {{ billTxt }}</span></div>
+            <div style="display:flex;justify-content:space-between;background:#F4F4F4;border-radius:8px;padding:16px;font-size:14px;color:#252525;"><span>Saving over 25 years</span><span><b>{{ cur }} {{ save25 }}</b></span></div>
+            <p style="margin:0;font-size:12px;font-weight:300;line-height:1.5;color:#5F5E5E;">{{ assume }}</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Financial calculation by email</h2>
+            <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:#5F5E5E;">Savings and payback are sent as a PDF report to your email. Your local distributor sends the price. A TRIBE installer near you checks the scan on site.</p>
+            <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+              <input placeholder="First name" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+              <input placeholder="Last name" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+              <input placeholder="Email" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+              <input placeholder="Phone" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+            </div>
+            <label style="display:flex;gap:12px;align-items:flex-start;font-size:13px;line-height:1.5;color:#252525;"><input type="checkbox" checked="{{ consent }}" onChange="{{ toggleConsent }}" style="margin-top:3px;accent-color:{{ accent }};"><span>I agree that STRØHM.ENERGY uses these details to send my roof scan and passes them to a local distributor for the price. Required. <a href="#">Privacy policy</a></span></label>
+            <label style="display:flex;gap:12px;align-items:flex-start;font-size:13px;line-height:1.5;color:#252525;"><input type="checkbox" style="margin-top:3px;accent-color:{{ accent }};"><span>Send me news about STRØHM.ENERGY products. Optional.</span></label>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Sent</h2>
+            <p style="margin:0;font-size:16px;font-weight:300;line-height:1.5;color:#5F5E5E;">Your roof scan and the financial calculation are on their way as a PDF. A TRIBE installer will contact you to plan a site visit.</p>
+            <a href="{{ backHref }}" style="font-size:14px;color:#4F4F4E;">Back to {{ brand }} &#8250;</a>
+          </div>
+        </sc-if>
+
+        <div style="display:flex;justify-content:space-between;gap:12px;">
+          <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ back }}" style="min-height:48px;padding:0 20px;border:0;border-radius:8px;background:#F4F4F4;font-family:var(--font-web);font-size:16px;color:#252525;cursor:pointer;">&#8249; Back</button>
+          </sc-if>
+          <sc-if value="{{ showNext }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ next }}" disabled="{{ nextDisabled }}" style="margin-left:auto;min-height:48px;padding:0 24px;border:0;border-radius:8px;background:{{ nextBg }};font-family:var(--font-web);font-size:16px;color:#252525;cursor:pointer;">{{ nextLabel }} &#8250;</button>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  B() { return "LINA"; }
+  A() { return this.B() === "LINA" ? "#B5C64A" : "#CDDB65"; }
+  state = { panel: "black", country: "BE", outside: false, step: 0, base: "esri", query: "", results: [], picked: null, pts: [], shape: "gable", tilt: 30, dir: "S", cover: "tiles", floors: 2, bill: 120, day: 40, battery: false, consent: false };
+  mapRef = React.createRef();
+  componentDidMount() { if (this.B() === "LINA") this.setState({ shape: "flat", cover: "membrane" }); this._wait = setInterval(() => { if (window.L && this.mapRef.current && !this.map) { clearInterval(this._wait); this.initMap(); } }, 100); }
+  componentWillUnmount() { clearInterval(this._wait); if (this._ro) this._ro.disconnect(); if (this.map) this.map.remove(); }
+  initMap() {
+    const L = window.L;
+    this.map = L.map(this.mapRef.current, { zoomControl: false, maxZoom: 21 }).setView([50.85, 4.35], 8);
+    L.control.zoom({ position: "bottomleft" }).addTo(this.map);
+    this.layers = {
+      esri: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", { maxNativeZoom: 19, maxZoom: 21, attribution: "Imagery Esri" }),
+      pdok: L.tileLayer("https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/Actueel_ortho25/EPSG:3857/{z}/{x}/{y}.jpeg", { maxNativeZoom: 19, maxZoom: 21, attribution: "Luchtfoto PDOK" })
+    };
+    this.layers.esri.addTo(this.map);
+    this.draw = L.layerGroup().addTo(this.map);
+    [0, 300, 1000].forEach((ms) => setTimeout(() => this.map && this.map.invalidateSize(), ms));
+    if (window.ResizeObserver) { this._ro = new ResizeObserver(() => this.map && this.map.invalidateSize()); this._ro.observe(this.mapRef.current); }
+    this.map.on("click", (e) => { if (this.state.step === 2) this.setState((s) => ({ pts: s.pts.concat([[e.latlng.lat, e.latlng.lng]]) }), () => this.redraw()); });
+  }
+  setBase(k) { if (!this.map) return; this.layers.esri.addTo(this.map); if (k === "pdok") this.layers.pdok.addTo(this.map); else this.map.removeLayer(this.layers.pdok); this.setState({ base: k }); } /* DEPTH-1315: Esri always underneath, PDOK only on top for NL */
+  redraw() {
+    const L = window.L; if (!this.draw) return; this.draw.clearLayers();
+    const p = this.state.pts, done = this.state.step >= 3;
+    if (this.state.picked && p.length === 0) L.circleMarker(this.state.picked, { radius: 8, color: "#FFFFFF", weight: 2, fillColor: "#F76801", fillOpacity: 1 }).addTo(this.draw);
+    if (p.length > 1) (p.length > 2 ? L.polygon(p, { color: "#FFFFFF", weight: 2, fillColor: done ? "#CDD62B" : "#F76801", fillOpacity: done ? 0.55 : 0.2 }) : L.polyline(p, { color: "#FFFFFF", weight: 2 })).addTo(this.draw);
+    if (!done) p.forEach((q) => L.circleMarker(q, { radius: 6, color: "#FFFFFF", weight: 2, fillColor: "#F76801", fillOpacity: 1 }).addTo(this.draw));
+  }
+  onQuery(v) {
+    this.setState({ query: v }); clearTimeout(this._q);
+    if (v.trim().length < 3) { this.setState({ results: [] }); return; }
+    this._q = setTimeout(() => {
+      fetch("https://nominatim.openstreetmap.org/search?format=json&addressdetails=0&limit=5&countrycodes=" + this.C().cc + "&q=" + encodeURIComponent(v))
+        .then((r) => r.json()).then((list) => this.setState({ outside: !(list || []).length && v.trim().length > 5, results: (list || []).map((x) => ({ label: x.display_name, lat: +x.lat, lon: +x.lon })) })).catch(() => this.setState({ results: [] }));
+    }, 400);
+  }
+  pick(r) { this.setState({ picked: [r.lat, r.lon], pickedLabel: r.label, results: [], query: r.label.split(",").slice(0, 3).join(",") }, () => { if (this.map) this.map.setView([r.lat, r.lon], 20); this.redraw(); }); }
+  P() { const L = { black: { label: "Full black", model: "ANDO model TO CONFIRM", wp: 430, size: "1,72 × 1,13 m", m2: 1.95 }, flex: { label: "Flexible", model: "ANDO model TO CONFIRM", wp: 400, size: "1,76 × 1,05 m", m2: 1.85 }, lina: { label: "LINA vertical bifacial", model: "LINA model TO CONFIRM", wp: 430, size: "1,13 m wide", m2: 1.95 } }; return this.B() === "LINA" ? L.lina : L[this.state.panel]; }
+  C() { return { BE: { name: "Belgium", cc: "be", cur: "€", imp: 0.35, exp: 0.05, yld: 950, view: [50.6, 4.6, 8] }, NL: { name: "the Netherlands", cc: "nl", cur: "€", imp: 0.30, exp: 0.05, yld: 930, view: [52.2, 5.3, 8] }, UK: { name: "the United Kingdom", cc: "gb", cur: "£", imp: 0.25, exp: 0.15, yld: 880, view: [52.8, -1.6, 6] } }[this.state.country]; }
+  metres() {
+    const p = this.state.pts; if (p.length < 3) return [];
+    const lat0 = p.reduce((a, q) => a + q[0], 0) / p.length, k = Math.cos(lat0 * Math.PI / 180) * 111320;
+    const lon0 = p.reduce((a, q) => a + q[1], 0) / p.length;
+    return p.map((q) => [(q[1] - lon0) * k, (q[0] - lat0) * 110540]);
+  }
+  area() { const m = this.metres(); let a = 0; for (let i = 0; i < m.length; i++) { const j = (i + 1) % m.length; a += m[i][0] * m[j][1] - m[j][0] * m[i][1]; } return Math.abs(a) / 2; }
+  calc() {
+    const s = this.state, flat = s.shape === "flat", A = this.area();
+    const tiltF = flat ? 1 : 1 / Math.cos(s.tilt * Math.PI / 180);
+    const share = { flat: 0.55, mono: 0.75, gable: 0.38, hipped: 0.3 }[s.shape];
+    const fit = Math.max(0, Math.floor(A * 0.85 / ((0.30 + 0.05) * 1.13))); /* LINA: rows 30 cm apart (user), panel 1,13 m wide and 5 cm deep, 15 % edge zone: TO CONFIRM */
+    const dirF = { S: 1, SE: 0.95, SW: 0.95, E: 0.85, W: 0.85, NE: 0.72, NW: 0.72, N: 0.62 }[flat ? "S" : s.dir];
+    const tiltLoss = flat ? 0.9 : 1 - Math.abs(s.tilt - 35) * 0.003;
+    const c = this.C(), perPanel = this.P().wp / 1000 * c.yld * 0.8;
+    const use = Math.max(500, (+s.bill || 0) * 12 / c.imp);
+    const need = Math.ceil(use / Math.max(1, perPanel));
+    const n = Math.min(fit, need), prod = n * perPanel;
+    const dayF = 0.2 + 0.45 * (1 - s.day / 100);
+    let self = Math.min(prod, use) * dayF, store = 0;
+    if (s.battery) store = Math.min(prod - self, use - self) * 0.7;
+    const exp = Math.max(0, prod - self - store);
+    const yearSave = (self + store) * c.imp + exp * c.exp;
+    let save25 = 0; for (let y = 0; y < 25; y++) save25 += yearSave * Math.pow(0.995, y);
+    return { A, n, fit, P: this.P(), fitKwp: fit * this.P().wp / 1000, kwp: n * this.P().wp / 1000, prod, self, store, exp, limited: fit < need && n > 0, newBill: Math.max(0, (+s.bill || 0) - yearSave / 12), save25 };
+  }
+  sketch() {
+    const m = this.metres(); if (!m.length) return null;
+    const s = this.state, h = s.floors * 3, roofH = s.shape === "flat" ? 0.3 : 3 * Math.tan(s.tilt * Math.PI / 180) + 0.3;
+    const c = Math.cos(Math.PI / 6), sn = Math.sin(Math.PI / 6);
+    const iso = (x, y, z) => [(x - y) * c, (x + y) * sn - z];
+    const all = []; m.forEach((q) => { all.push(iso(q[0], q[1], 0)); all.push(iso(q[0], q[1], h + roofH)); });
+    const xs = all.map((q) => q[0]), ys = all.map((q) => q[1]), minX = Math.min(...xs), minY = Math.min(...ys);
+    const sc = 300 / Math.max(1, Math.max(Math.max(...xs) - minX, (Math.max(...ys) - minY) * 1.6));
+    const P = (x, y, z) => { const q = iso(x, y, z); return ((q[0] - minX) * sc + 10).toFixed(1) + "," + ((q[1] - minY) * sc + 10).toFixed(1); };
+    const e = React.createElement, kids = [];
+    m.forEach((q, i) => { const r = m[(i + 1) % m.length]; kids.push(e("polygon", { key: "w" + i, points: [P(q[0], q[1], 0), P(r[0], r[1], 0), P(r[0], r[1], h), P(q[0], q[1], h)].join(" "), fill: "#BBBBBB", stroke: "#FFFFFF", strokeWidth: 1 })); });
+    kids.push(e("polygon", { key: "roof", points: m.map((q) => P(q[0], q[1], h + roofH)).join(" "), fill: "#CDD62B", stroke: "#4F4F4E", strokeWidth: 1 }));
+    const H = Math.max(...ys.map((y) => (y - minY) * sc)) + 20;
+    return e("svg", { width: 320, height: Math.min(260, H), viewBox: "0 0 320 " + Math.min(260, H), "aria-label": "Sketch of the drawn roof" }, kids);
+  }
+  renderVals() {
+    const s = this.state, steps = 8, fmt = (v, d) => Number(v || 0).toLocaleString("nl-BE", { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 });
+    const opt = (list, key, set) => list.map(([v, l]) => ({ label: l, bg: s[key] === v ? this.A() : "#F4F4F4", fg: s[key] === v ? "#252525" : "#252525", pick: () => this.setState({ [key]: v }, set) }));
+    const r = s.step >= 6 ? this.calc() : null, A = this.area();
+    const can = [true, !!s.picked, s.pts.length >= 3, true, true, true, true, s.consent, false][s.step];
+    const label = ["Start the roof scan", "Next", "Next", "Next", "Next", "See what fits", "Financial calculation by email", "Send", ""][s.step];
+    const tot = r ? Math.max(1, r.prod) : 1;
+    return {
+      mapRef: this.mapRef,
+      kwpTxt: r ? fmt(r.fitKwp, 1) : "", invs: r ? ((window.MOEBIUS_CONFIG_DATA || {}).inverters || []).filter((i) => i.status === "Available" && i.range && i.range.length === 2 && r.fitKwp / 1.25 <= i.range[1] && r.fitKwp / 0.9 >= i.range[0]).slice(0, 5).map((i) => ({ name: i.name, type: i.type, phase: i.phase === "3P" ? "3-phase" : "1-phase", range: i.rangeLabel })) : [],
+      savePv: () => { try { localStorage.setItem("kalk-pv", JSON.stringify({ brand: this.B(), panel: r ? r.P.label : "", wp: r ? r.P.wp : 0, n: r ? r.fit : 0, kwp: r ? r.fitKwp : 0, pin: s.picked, country: s.country })); } catch (e) {} }, panels: (this.B() === "LINA" ? ["lina"] : ["black", "flex"]).map((v) => { const Lb = { black: { label: "Full black", model: "ANDO model TO CONFIRM", wp: 430, size: "1,72 × 1,13 m", m2: 1.95 }, flex: { label: "Flexible", model: "ANDO model TO CONFIRM", wp: 400, size: "1,76 × 1,05 m", m2: 1.85 }, lina: { label: "LINA vertical bifacial", model: "LINA model TO CONFIRM", wp: 430, size: "1,13 m wide", m2: 1.95 } }[v]; const on = this.B() === "LINA" || s.panel === v; return { label: Lb.label, model: Lb.model, wp: Lb.wp, size: Lb.size, bg: on ? this.A() : "#F4F4F4", pick: () => this.setState({ panel: v }) }; }), isNL: s.country === "NL", brand: this.B(), accent: this.A(), flatOnly: this.B() === "LINA" && s.step === 0, backHref: this.B() + " - PRODUCT - Overview - EN.dc.html",
+      countries: [["BE", "Belgium"], ["NL", "Netherlands"], ["UK", "United Kingdom"]].map(([v, l]) => ({ label: l, bg: s.country === v ? this.A() : "#F4F4F4", fg: "#252525", pick: () => this.setState({ country: v, results: [], outside: false, picked: null, pts: [] }, () => { this.setBase(v === "NL" ? "pdok" : "esri"); const w = this.C().view; if (this.map) this.map.setView([w[0], w[1]], w[2]); this.redraw(); }) })),
+      cur: this.C().cur, countryName: this.C().name, outside: s.outside && s.step === 1,
+      assume: "Estimate for orientation only. Assumptions TO CONFIRM for " + this.C().name + ": LINA panel 430 Wp, 1,13 m wide, rows 30 cm apart, 15 % edge zone, vertical yield 80 % of optimum, " + this.C().cur + " " + this.C().imp.toFixed(2).replace(".", ",") + "/kWh import, " + this.C().cur + " " + this.C().exp.toFixed(2).replace(".", ",") + "/kWh export, " + this.C().yld + " kWh/kWp facing south, 0,5 % loss per year.",
+      useEsri: () => this.setBase("esri"), usePdok: () => this.setBase("pdok"),
+      esriBg: s.base === "esri" ? "#252525" : "#FFFFFF", esriFg: s.base === "esri" ? "#FFFFFF" : "#252525",
+      pdokBg: s.base === "pdok" ? "#252525" : "#FFFFFF", pdokFg: s.base === "pdok" ? "#FFFFFF" : "#252525",
+      isStart: s.step === 0, isAddress: s.step === 1, isOutline: s.step === 2, isPanel: s.step === 3, isShape: s.step === 4, isCover: s.step === 5, isResult: s.step === 6, isUse: s.step === 7, isContact: s.step === 7, isSavings: false, isDone: s.step === 8,
+      showProgress: s.step > 0 && s.step < 8, progressPct: Math.round(s.step / (steps - 1) * 100) + "%", progressLabel: s.step + " of " + (steps - 1),
+      query: s.query, onQuery: (ev) => this.onQuery(ev.target.value), results: s.results.map((x) => ({ label: x.label, pick: () => this.pick(x) })),
+      hasPicked: !!s.picked && !s.results.length, pickedLabel: s.pickedLabel || "",
+      pointCount: s.pts.length, areaTxt: fmt(A, 0),
+      undoPoint: () => this.setState((st) => ({ pts: st.pts.slice(0, -1) }), () => this.redraw()), clearPoints: () => this.setState({ pts: [] }, () => this.redraw()),
+      shapes: opt(this.B() === "LINA" ? [["flat", "Flat roof"]] : [["gable", "Gable"], ["hipped", "Hipped"], ["mono", "Single slope"], ["flat", "Flat"]], "shape"),
+      shapeInfo: { gable: "Two slopes meeting at a ridge. KALK uses the side you choose below.", hipped: "Slopes on all sides. KALK uses the side you choose below.", mono: "One slope over the whole roof.", flat: this.B() === "LINA" ? "LINA stands vertical in rows on the flat roof, 30 cm between rows." : "Panels on a tilted frame, facing south or east-west." }[s.shape],
+      pitched: s.shape !== "flat",
+      tilts: opt([[5, "5°"], [15, "15°"], [25, "25°"], [30, "30°"], [35, "35°"], [45, "45°"]], "tilt"),
+      dirs: opt([["N", "N"], ["NE", "NE"], ["E", "E"], ["SE", "SE"], ["S", "S"], ["SW", "SW"], ["W", "W"], ["NW", "NW"]], "dir"),
+      covers: opt(s.shape === "flat" ? [["membrane", "Bitumen or EPDM"], ["gravel", "Gravel"], ["slabs", "Concrete slabs"], ["green", "Green roof"]] : [["tiles", "Clay or concrete tiles"], ["slate", "Slate"], ["metal", "Metal sheet"], ["sandwich", "Sandwich panel"]], "cover"),
+      floorOpts: opt([[1, "1"], [2, "2"], [3, "3"], [4, "4+"]], "floors"),
+      bill: s.bill, onBill: (ev) => this.setState({ bill: ev.target.value }), dayShare: s.day, onDay: (ev) => this.setState({ day: +ev.target.value }),
+      dayLabel: s.day < 40 ? "Mostly daytime" : s.day > 60 ? "Mostly evening" : "Mixed",
+      toggleBattery: () => this.setState({ battery: !s.battery }), batteryLabel: s.battery ? "Yes" : "No",
+      sketch: s.step === 6 ? this.sketch() : null,
+      figures: r ? [{ label: "Panels that fit", value: fmt(r.fit), unit: "" }, { label: "Total power", value: fmt(r.fitKwp * 1000, 0), unit: "Wp" }, { label: "Panel", value: r.P.label, unit: "" }, { label: "Outline area", value: fmt(r.A, 0), unit: "m²" }] : [],
+      split: false && r ? [{ label: "Used directly", pct: Math.round(r.self / tot * 100) + "%", kwh: fmt(r.self), color: this.A() }, { label: "Stored in FLUXX", pct: Math.round(r.store / tot * 100) + "%", kwh: fmt(r.store), color: "#FECDC0" }, { label: "Sent to the grid", pct: Math.round(r.exp / tot * 100) + "%", kwh: fmt(r.exp), color: "#BBBBBB" }] : [],
+      limited: false,
+      newBill: r ? fmt(r.newBill, 2) : "", billTxt: fmt(s.bill, 2), save25: r ? fmt(r.save25, 0) : "",
+      consent: s.consent, toggleConsent: () => this.setState({ consent: !s.consent }),
+      canBack: s.step > 0 && s.step < 8, back: () => this.setState({ step: s.step - 1 }, () => this.redraw()),
+      showNext: s.step < 8, nextLabel: label, nextDisabled: !can, nextBg: can ? this.A() : "#E3E3E3",
+      next: () => { if (!can) return; this.setState({ step: s.step + 1 }, () => this.redraw()); }
+    };
+  }
+}
+</script>
+</body>
+</html>

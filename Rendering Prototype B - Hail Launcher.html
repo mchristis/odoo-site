@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototype B · Hail impact · orthographic 3D</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<style>
+body{margin:0;background:#FFFFFF;font-family:var(--font-web);color:#252525;}
+a{color:#4F4F4E;} a:hover{color:#252525;}
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.184.0/build/three.module.js",
+    "three/addons/controls/OrbitControls.js": "https://unpkg.com/three@0.184.0/examples/jsm/controls/OrbitControls.js",
+    "three/addons/exporters/OBJExporter.js": "https://unpkg.com/three@0.184.0/examples/jsm/exporters/OBJExporter.js",
+    "three/addons/exporters/GLTFExporter.js": "https://unpkg.com/three@0.184.0/examples/jsm/exporters/GLTFExporter.js"
+  },
+  "integrity": {
+    "https://unpkg.com/three@0.184.0/build/three.module.js": "sha384-8FCZ1eVO6it4+pbec2aDtnTrwjWXZLJRC+MAGCIPDgsYnUrl/E0A2YlF8ioMKI/J",
+    "https://unpkg.com/three@0.184.0/build/three.core.js": "sha384-dw2ooPewaEIrAgl6oFDBmmBWCE9oW9LxRGcfwZ0hLvEprzo202wXl7vCYHRlSnOT",
+    "https://unpkg.com/three@0.184.0/examples/jsm/controls/OrbitControls.js": "sha384-4rziNxOBZKQ69i+w+f89KJ55TCYquwchVbByQwmaOeIOXdOU2PLDn3kOfXHwIJC9",
+    "https://unpkg.com/three@0.184.0/examples/jsm/exporters/OBJExporter.js": "sha384-nbwtoZENJD3Vq+ACK0CuGQdPMuDWHkamC2KJD70EV5nfg6jQjfppKOea07YJN+N3",
+    "https://unpkg.com/three@0.184.0/examples/jsm/exporters/GLTFExporter.js": "sha384-VofkvpG6HERhFCYbsUOHeNXBCqID2nfqkQqnVzE1jc/oPcz+qJ13ADdXH08hE+cQ"
+  }
+}
+</script>
+</head>
+<body>
+<section style="max-width:1312px;margin:0 auto;padding:48px 24px;box-sizing:border-box;display:flex;flex-direction:column;gap:24px;">
+  <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #D9D9D9;padding-top:24px;">
+    <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Prototype B · Orthographic 3D · Testing</span>
+    <h1 style="margin:0;font-size:clamp(32px,3.2vw,48px);font-weight:200;line-height:1.1;letter-spacing:-1px;">Hail impact</h1>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:stretch;">
+    <div style="flex:1 1 300px;max-width:400px;min-width:0;background:#F4F4F4;border-radius:12px;padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;">
+      <span style="align-self:flex-start;border:1px solid #BBBBBB;border-radius:8px;padding:2px 10px;font-size:13px;font-weight:300;color:#4F4F4E;">B · In our lab · Samples</span>
+      <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Test B9</span>
+      <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Hail impact</h3>
+      <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);text-wrap:pretty;">Ice balls are fired at defined points on the module, one impact per point. The operator stays at a protected control position.</p>
+      <div style="display:flex;flex-direction:column;gap:2px;border-top:1px solid #DDDDDD;padding-top:12px;"><span style="font-size:var(--web-small-size);font-weight:400;">Machine</span><span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;">Hail launcher with ice balls of defined size and speed.</span></div>
+      <div style="display:flex;flex-direction:column;gap:2px;border-top:1px solid #DDDDDD;padding-top:12px;"><span style="font-size:var(--web-small-size);font-weight:400;">Impact point</span><span id="pt" style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;">1 of 11</span></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button id="play" type="button" style="height:44px;padding:0 20px;border:1px solid #BBBBBB;border-radius:8px;background:transparent;font:inherit;font-size:15px;font-weight:300;color:#4F4F4E;cursor:pointer;">Pause</button>
+        <button id="reset" type="button" style="height:44px;padding:0 20px;border:1px solid #BBBBBB;border-radius:8px;background:transparent;font:inherit;font-size:15px;font-weight:300;color:#4F4F4E;cursor:pointer;">Reset view</button>
+      </div>
+      <span style="font-size:13px;font-weight:300;color:#5F5E5E;">Drag to turn. Scroll to zoom.</span>
+    </div>
+    <div id="stage" style="flex:3 1 520px;min-width:0;min-height:460px;background:#FAFAFA;border-radius:24px;overflow:hidden;position:relative;"></div>
+  </div>
+  <p style="margin:0;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;">three.js r184 core only (React Three Fiber renders the same scene graph). Orthographic camera at the FactoryWalk isometric angle, same face tones, soft neutral lighting. Impact layout and speeds are illustrative, not ANDO test values.</p>
+</section>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+const el = document.getElementById('stage');
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(2, devicePixelRatio));
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+el.appendChild(renderer.domElement);
+renderer.domElement.style.display = 'block';
+const scene = new THREE.Scene();
+const cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 100);
+const HOME = new THREE.Vector3(6, 6 * Math.tan(Math.PI / 6) * Math.SQRT2, 6);
+cam.position.copy(HOME).add(new THREE.Vector3(0.7, 0.9, 0.5)); cam.zoom = 1;
+const controls = new OrbitControls(cam, renderer.domElement);
+controls.target.set(0.7, 0.9, 0.5); controls.enableDamping = true; controls.enablePan = false;
+controls.minPolarAngle = 0.5; controls.maxPolarAngle = 1.35; controls.minZoom = 0.7; controls.maxZoom = 2.5;
+scene.add(new THREE.HemisphereLight(0xffffff, 0xdcdcdc, 1.6));
+const key = new THREE.DirectionalLight(0xffffff, 1.6); key.position.set(4, 8, 3); key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048); Object.assign(key.shadow.camera, { left: -5, right: 5, top: 5, bottom: -5 }); key.shadow.radius = 6; key.shadow.bias = -0.0004;
+scene.add(key);
+const M = (name, color, rough, metal) => { const m = new THREE.MeshStandardMaterial({ color, roughness: rough, metalness: metal || 0 }); m.name = name; return m; };
+const white = M('white', 0xffffff, 0.7), grey = M('grey', 0xd9d9d9, 0.6), dark = M('dark', 0x6e6e6e, 0.5), steel = M('stainless', 0xe6e6e6, 0.45, 0), glass = M('module', 0x9c9c9c, 0.35, 0), accent = M('accent', 0xcdd62b, 0.4), ice = M('ice', 0xffffff, 0.15);
+const group = new THREE.Group(); scene.add(group);
+const box = (name, w, h, d, mat, x, y, z) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat); m.name = name; m.position.set(x, y, z); m.castShadow = m.receiveShadow = true; group.add(m); return m; };
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(30, 30), new THREE.ShadowMaterial({ opacity: 0.08 })); floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
+// test bed with module in aluminium frame
+box('bed', 2.4, 0.5, 1.4, white, 0, 0.25, 0);
+box('frame', 2.0, 0.06, 1.2, steel, 0, 0.53, 0);
+const mod = box('module', 1.76, 0.03, 1.12, glass, 0, 0.57, 0);
+for (let i = 1; i < 6; i++) box('cellline', 0.004, 0.002, 1.1, grey, -0.88 + i * 0.293, 0.587, 0);
+// gantry
+[-1.25, 1.25].forEach((x, i) => { box('post' + i + 'a', 0.08, 2.0, 0.08, white, x, 1.0, -0.75); box('post' + i + 'b', 0.08, 2.0, 0.08, white, x, 1.0, 0.75); box('rail' + i, 0.1, 0.08, 1.6, steel, x, 2.0, 0); });
+const bridge = new THREE.Group(); group.add(bridge);
+const bm = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.1, 0.14), steel); bm.name = 'bridge'; bm.castShadow = true; bm.position.y = 2.06; bridge.add(bm);
+const carriage = new THREE.Group(); bridge.add(carriage);
+const car = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.18, 0.26), white); car.name = 'carriage'; car.position.y = 2.06; car.castShadow = true; carriage.add(car);
+const barrel = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 0.9, 32), steel); barrel.name = 'barrel'; barrel.position.y = 1.52; barrel.castShadow = true; carriage.add(barrel);
+const muzzle = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.065, 0.06, 32), dark); muzzle.name = 'muzzle'; muzzle.position.y = 1.06; carriage.add(muzzle);
+const hose = new THREE.Mesh(new THREE.TorusGeometry(0.25, 0.015, 12, 48, Math.PI), dark); hose.name = 'gas line'; hose.position.set(0.25, 2.15, 0); hose.rotation.z = 0; carriage.add(hose);
+const ball = new THREE.Mesh(new THREE.SphereGeometry(0.04, 32, 16), ice); ball.name = 'ice ball'; ball.castShadow = true; ball.visible = false; carriage.add(ball);
+const spot = new THREE.Mesh(new THREE.CircleGeometry(0.025, 32), accent); spot.name = 'laser spot'; spot.rotation.x = -Math.PI / 2; spot.position.y = 0.588; group.add(spot);
+// operator console behind a screen
+box('console', 0.7, 0.9, 0.45, white, 2.3, 0.45, 1.1);
+box('panel', 0.5, 0.3, 0.04, grey, 2.3, 1.05, 0.9).rotation.x = -0.4;
+box('estop', 0.07, 0.03, 0.07, accent, 2.48, 0.92, 1.0);
+box('screen', 0.04, 1.6, 1.0, M('guard', 0xffffff, 0.1, 0), 1.75, 0.8, 1.1).material.transparent = true;
+group.getObjectByName('screen').material.opacity = 0.35;
+// operator (restrained, simple volumes)
+const op = new THREE.Group(); op.position.set(2.75, 0, 1.2); group.add(op);
+const part = (n, g, m, x, y, z) => { const o = new THREE.Mesh(g, m); o.name = n; o.position.set(x, y, z); o.castShadow = true; op.add(o); return o; };
+part('legs', new THREE.BoxGeometry(0.22, 0.8, 0.16), dark, 0, 0.4, 0);
+part('coat', new THREE.CylinderGeometry(0.15, 0.14, 0.7, 24), white, 0, 1.15, 0);
+part('head', new THREE.SphereGeometry(0.1, 24, 16), M('skin', 0xdddddd, 0.8), 0, 1.62, 0);
+part('cap', new THREE.SphereGeometry(0.105, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), white, 0, 1.64, 0);
+// 11 impact points (illustrative layout)
+const pts = [[-0.7,-0.4],[0,-0.4],[0.7,-0.4],[-0.7,0.4],[0,0.4],[0.7,0.4],[-0.35,0],[0.35,0],[-0.84,0],[0.84,0],[0,0]];
+const marks = pts.map(([x, z], i) => { const m = new THREE.Mesh(new THREE.RingGeometry(0.03, 0.04, 32), M('mark', 0x4f4f4e, 0.6)); m.name = 'impact ' + (i + 1); m.rotation.x = -Math.PI / 2; m.position.set(x, 0.589, z); m.visible = false; group.add(m); return m; });
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let play = !reduce, t = 0, k = 0, last = performance.now();
+const ptEl = document.getElementById('pt');
+document.getElementById('play').onclick = (e) => { play = !play; e.target.textContent = play ? 'Pause' : 'Play'; };
+if (!play) document.getElementById('play').textContent = 'Play';
+document.getElementById('reset').onclick = () => { cam.position.copy(HOME).add(new THREE.Vector3(0.7, 0.9, 0.5)); cam.zoom = 1; cam.updateProjectionMatrix(); controls.target.set(0.7, 0.9, 0.5); };
+const from = new THREE.Vector2(), to = new THREE.Vector2();
+const size = () => { const w = el.clientWidth, h = el.clientHeight, a = w / h, v = 2.7; cam.left = -v * a; cam.right = v * a; cam.top = v; cam.bottom = -v; cam.updateProjectionMatrix(); renderer.setSize(w, h); };
+new ResizeObserver(size).observe(el); size();
+const ease = (x) => x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+function frame(now) {
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  if (play) t += dt / 2.4;
+  if (t >= 1) { t = 0; marks[k].visible = true; k = (k + 1) % pts.length; if (k === 0) marks.forEach((m) => (m.visible = false)); }
+  const a = pts[(k - 1 + pts.length) % pts.length], b = pts[k];
+  from.set(k ? a[0] : 0, k ? a[1] : 0); to.set(b[0], b[1]);
+  const mv = ease(Math.min(1, t / 0.55)), x = from.x + (to.x - from.x) * mv, z = from.y + (to.y - from.y) * mv;
+  bridge.position.z = z; carriage.position.x = x; spot.position.set(x, 0.588, z);
+  const f = (t - 0.7) / 0.12; ball.visible = f > 0 && f < 1; ball.position.y = 1.0 - Math.max(0, Math.min(1, f)) * 0.42;
+  mod.position.y = 0.57 - (f > 0.95 && f < 1.3 ? 0.004 : 0);
+  ptEl.textContent = (k + 1) + ' of ' + pts.length;
+  controls.update(); renderer.render(scene, cam); requestAnimationFrame(frame);
+}
+const edgeMat = new THREE.LineBasicMaterial({ color: 0xbdbdbd }); edgeMat.name = 'edges';
+scene.traverse((o) => { if (o.isMesh && o.geometry.type === 'BoxGeometry') { const l = new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry), edgeMat); l.name = o.name + ' edges'; o.add(l); } });
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

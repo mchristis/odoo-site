@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<script src="./content-data.js"></script>
+<style> body { margin:0; background:#FFFFFF; } a { color:#1E1E1E; } a:hover { color:#5F5E5E; } </style>
+</helmet>
+<div style="font-family:var(--font-web);color:#4F4F4E;min-height:100vh;">
+  <dc-import name="NavBar" active="company" hint-size="100%,80px"></dc-import>
+  <sc-if value="{{ found }}" hint-placeholder-val="{{ true }}">
+    <div style="max-width:900px;margin:0 auto;padding:56px 40px 0;">
+      <div style="font-size:12px;font-weight:300;color:#898989;margin-bottom:24px;"><a href="{{ archiveHref }}" style="color:#898989;">{{ heading }}</a> &#8250; <span style="color:#5F5E5E;">{{ topic }}</span></div>
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ accent }};margin-bottom:14px;">{{ topic }} &middot; {{ type }}</div>
+      <h1 style="margin:0 0 16px;font-size:var(--web-h1-size);line-height:var(--web-h1-lh);font-weight:100;letter-spacing:-0.01em;">{{ title }}</h1>
+      <div style="font-size:var(--web-min-size);font-weight:300;color:#898989;margin-bottom:32px;line-height:var(--web-min-lh);">{{ brandLabel }} &middot; {{ date }}</div>
+      <div style="aspect-ratio:16/9;margin-bottom:40px;">
+        <image-slot id="{{ imgSlotId }}" shape="rounded" radius="12" placeholder="{{ imageDir }}"></image-slot>
+      </div>
+      <p style="margin:0 0 24px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#4F4F4E;">{{ summary }}</p>
+      <div style="padding:16px 24px;background:#F5F5F5;margin-bottom:40px;border-radius:12px;">
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;font-style:italic;color:#5F5E5E;line-height:var(--web-small-lh);">Full editorial content for this article is not yet written — this page establishes the reusable article template. Real technical copy, diagrams and specifications will replace this placeholder.</p>
+      </div>
+      <div style="display:flex;gap:12px;margin-bottom:64px;">
+        <a href="{{ archiveHref }}" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius,8px);text-decoration:none;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Back to {{ heading }}</a>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ notFound }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:700px;margin:0 auto;padding:120px 40px;text-align:center;">
+      <div style="font-size:20px;font-weight:400;margin-bottom:12px;">Article not found.</div>
+      <p style="margin:0 0 24px;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">This article link may be out of date.</p>
+      <a href="STROHM.ENERGY - CONTENT - Knowledge - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius,8px);text-decoration:none;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Browse Knowledge and Methods</a>
+    </div>
+  </sc-if>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { item: null, ready: false };
+
+  componentDidMount() {
+    this.load();
+    window.addEventListener("hashchange", this.load = this.load.bind(this));
+  }
+  componentWillUnmount() { window.removeEventListener("hashchange", this.load); }
+
+  load() {
+    const id = (typeof window !== "undefined" ? window.location.hash.slice(1) : "");
+    if (window.STROHM_CONTENT && window.STROHM_CONTENT.items) {
+      const item = window.STROHM_CONTENT.items.find((it) => it.id === id) || null;
+      this.setState({ item, ready: true });
+    } else {
+      setTimeout(() => this.load(), 60);
+    }
+  }
+
+  renderVals() {
+    const it = this.state.item;
+    const C = window.STROHM_CONTENT;
+    if (!this.state.ready || !it) {
+      return { found: false, notFound: this.state.ready };
+    }
+    const isCompany = it.brand === "STROHM";
+    return {
+      found: true, notFound: false,
+      heading: isCompany ? "Knowledge and Methods" : (C ? C.brandLabel(it.brand) : it.brand) + " knowledge",
+      archiveHref: C ? C.archiveHref(isCompany ? "strohm" : it.brand, "knowledge") : "#",
+      topic: it.topic, type: it.type, title: it.title, summary: it.summary,
+      brandLabel: isCompany ? "STROHM" : (C ? C.brandLabel(it.brand) : it.brand),
+      date: it.date, imageDir: it.imageDir, imgSlotId: "article-" + it.id,
+      accent: C ? C.brandAccent(it.brand) : "#5F5E5E",
+    };
+  }
+}
+</script>
+</body>
+</html>

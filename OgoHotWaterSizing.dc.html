@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="font-family:var(--font-web);color:#4F4F4E;">
+  <div style="background:#F5F5F5;padding:28px;margin-bottom:24px;display:flex;flex-direction:column;gap:20px;border-radius:12px;">
+    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Quick compare</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;text-transform:uppercase;">ENTER YOUR OWN PRICES</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;">
+      <sc-for list="{{ quick }}" as="f" hint-placeholder-count="3">
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">{{ f.label }}
+          <input type="number" step="any" min="0" value="{{ f.value }}" onChange="{{ f.onChange }}" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:52px;padding:0 14px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;color:#4F4F4E;box-sizing:border-box;width:100%;"></input>
+        </label>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;">
+      <sc-for list="{{ quickRes }}" as="r" hint-placeholder-count="2">
+        <div style="background:#FFFFFF;padding:20px;display:flex;flex-direction:column;gap:6px;">
+          <span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ r.k }}</span>
+          <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Today <span style="font-weight:700;">{{ r.today }}</span> / year · with OGO + EMON + PV <span style="font-weight:700;">{{ r.ogo }}</span> / year</span>
+          <span style="font-size:32px;line-height:1.1;color:{{ r.fg }};"><span style="font-weight:700;">{{ r.less }}</span> <span style="font-weight:300;">{{ r.word }}</span></span>
+          <span style="font-size:14px;font-weight:700;color:{{ r.fg }};">{{ r.pct }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">The detailed inputs below refine the result: water use, boiler efficiency, COP, solar and low-price hours.</div>
+    <sc-if value="{{ leadClosed }}" hint-placeholder-val="{{ true }}">
+      <button type="button" onClick="{{ openLead }}" style="align-self:flex-start;font-family:inherit;font-size:var(--cta-font);height:var(--cta-height);padding:0 var(--cta-pad-x);border:none;border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;cursor:pointer;" style-hover="background:#3A7086;">Get my result as PDF</button>
+    </sc-if>
+    <sc-if value="{{ leadOpen }}" hint-placeholder-val="{{ false }}">
+      <form onSubmit="{{ onLead }}" style="background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:14px;max-width:560px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Where should we send it?</div>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Email address<input type="email" required="required" autoComplete="email" value="{{ leadEmail }}" onChange="{{ onLeadEmail }}" style="font-family:inherit;font-size:var(--web-input-size);height:48px;padding:0 14px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;color:#4F4F4E;box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">WhatsApp number<input type="tel" required="required" autoComplete="tel" placeholder="+31 6 12345678" value="{{ leadWa }}" onChange="{{ onLeadWa }}" style="font-family:inherit;font-size:var(--web-input-size);height:48px;padding:0 14px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;color:#4F4F4E;box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input></label>
+        <label style="display:flex;gap:10px;align-items:flex-start;font-size:var(--web-label-size);font-weight:var(--web-label-weight);line-height:1.5;cursor:pointer;"><input type="checkbox" checked="{{ leadConsent }}" onChange="{{ onLeadConsent }}" style="margin-top:3px;"></input><span>Yes, OGO and STRØHM.ENERGY may send me product news and offers by email and WhatsApp. I can unsubscribe at any time.</span></label>
+        <button type="submit" style="font-family:inherit;font-size:var(--cta-font);height:var(--cta-height);border:none;border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;cursor:pointer;padding:0 var(--cta-pad-x);" style-hover="background:#3A7086;">Download PDF</button>
+        <sc-if value="{{ leadMsg }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ leadMsg }}</div></sc-if>
+        <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#8A8A88;">Your email and number are needed to send the result. Marketing only with the box ticked. See the <a href="STROHM.ENERGY - SITE - Privacy - EN.dc.html" style="text-decoration:underline;">Privacy Policy</a>.</div>
+        <div style="font-size:var(--web-min-size);font-weight:300;color:#B07818;line-height:var(--web-min-lh);">PROTOTYPE: details are stored in this browser only, nothing is sent yet.</div>
+      </form>
+    </sc-if>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;">
+    <div style="flex:3 1 460px;min-width:0;background:#F5F5F5;padding:28px;display:flex;flex-direction:column;gap:16px;border-radius:12px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Household</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;">
+        <sc-for list="{{ fields }}" as="f" hint-placeholder-count="12">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">{{ f.label }}
+            <sc-if value="{{ f.isNum }}" hint-placeholder-val="{{ true }}"><input type="number" step="any" min="0" value="{{ f.value }}" onChange="{{ f.onChange }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;color:#4F4F4E;box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input></sc-if>
+            <sc-if value="{{ f.isSel }}" hint-placeholder-val="{{ false }}"><select value="{{ f.value }}" onChange="{{ f.onChange }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 8px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;color:#4F4F4E;font-weight:var(--web-input-weight);"><sc-for list="{{ f.options }}" as="o" hint-placeholder-count="2"><option value="{{ o.v }}">{{ o.l }}</option></sc-for></select></sc-if>
+          </label>
+        </sc-for>
+      </div>
+      <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#B07818;">EXAMPLE values: water use, temperatures, prices, solar yield, COP 3,5 and the EMON shares are starting values, not guaranteed results. Enter your own. Tank sizes follow the OGO range (80, 200, 300, 500 L).</div>
+    </div>
+    <div style="flex:2 1 300px;min-width:0;display:flex;flex-direction:column;gap:12px;">
+      <div style="background:#F5F5F5;padding:28px;display:flex;flex-direction:column;gap:10px;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Sizing</div>
+        <sc-for list="{{ sizing }}" as="r" hint-placeholder-count="5">
+          <div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid #DDDDDD;padding-top:8px;"><span style="font-size:13px;font-weight:{{ r.w }};">{{ r.k }}</span><span style="font-size:var(--web-small-size);text-align:right;line-height:var(--web-small-lh);"><span style="font-weight:700;">{{ r.v }}</span> <span style="font-weight:300;">{{ r.u }}</span></span></div>
+        </sc-for>
+      </div>
+      <div style="background:#F5F5F5;padding:28px;display:flex;flex-direction:column;gap:10px;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Cost per year</div>
+        <sc-for list="{{ cost }}" as="r" hint-placeholder-count="5">
+          <div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid #DDDDDD;padding-top:8px;"><span style="font-size:13px;font-weight:{{ r.w }};">{{ r.k }}</span><span style="font-size:var(--web-small-size);text-align:right;line-height:var(--web-small-lh);"><span style="font-weight:700;">{{ r.v }}</span> <span style="font-weight:300;">{{ r.u }}</span></span></div>
+        </sc-for>
+      </div>
+      <div style="background:#F5F5F5;padding:28px;display:flex;flex-direction:column;gap:10px;border-radius:12px;">
+        <div style="display:flex;justify-content:space-between;gap:12px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Four scenarios</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;text-transform:uppercase;">EXAMPLE</span></div>
+        <sc-for list="{{ scen }}" as="r" hint-placeholder-count="4">
+          <div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid #DDDDDD;padding-top:8px;"><span style="display:flex;flex-direction:column;"><span style="font-size:13px;font-weight:{{ r.w }};">{{ r.k }}</span><span style="font-size:var(--web-min-size);font-weight:300;color:#8A8A88;line-height:var(--web-min-lh);">{{ r.sub }}</span></span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);"><span style="font-weight:700;">{{ r.v }}</span> <span style="font-weight:300;">/ year</span></span></div>
+        </sc-for>
+        <div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid #1E1E1E;padding-top:8px;"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Estimated saving</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);"><span style="font-weight:700;">{{ saving }}</span> <span style="font-weight:300;">/ year</span></span></div>
+        <div style="display:flex;justify-content:space-between;gap:12px;"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Over {{ years }} years</span><span style="font-size:15px;font-weight:700;">{{ savingYears }}</span></div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-top:12px;">Saving per year compared with</div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);">
+          <sc-for list="{{ vsHead }}" as="c" hint-placeholder-count="3"><div style="padding:6px 8px 6px 0;font-size:11px;font-weight:700;color:#5F5E5E;border-bottom:1px solid #D4D4D4;">{{ c }}</div></sc-for>
+          <sc-for list="{{ vsCells }}" as="c" hint-placeholder-count="12"><div style="padding:8px 8px 8px 0;font-size:12px;font-weight:{{ c.w }};color:{{ c.fg }};border-bottom:1px solid #E4E2E0;">{{ c.v }}</div></sc-for>
+        </div>
+        <div style="font-size:var(--web-min-size);font-weight:300;margin-top:6px;line-height:var(--web-min-lh);">OGO electricity source with EMON + PV</div>
+        <div style="display:flex;height:28px;gap:2px;">
+          <sc-for list="{{ split }}" as="p" hint-placeholder-count="3"><div style="flex:0 1 {{ p.w }};box-sizing:border-box;min-width:0;background:{{ p.bg }};color:{{ p.fg }};font-size:var(--web-tag-size);display:flex;align-items:center;padding:0 6px;overflow:hidden;white-space:nowrap;border-radius:8px;font-weight:var(--web-tag-weight);">{{ p.pct }}</div></sc-for>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:11px;font-weight:300;color:#5F5E5E;"><sc-for list="{{ split }}" as="p" hint-placeholder-count="3"><span style="display:flex;gap:6px;align-items:center;"><span style="width:10px;height:10px;background:{{ p.bg }};border:1px solid #D4D4D4;"></span>{{ p.t }}</span></sc-for></div>
+        <details style="border-top:1px solid #DDDDDD;padding-top:8px;"><summary style="font-size:var(--web-body-size);cursor:pointer;font-weight:500;">Show assumptions</summary>
+          <sc-for list="{{ assumptions }}" as="a" hint-placeholder-count="10"><div style="display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid #E4E2E0;font-size:12px;"><span style="font-weight:300;">{{ a.k }}</span><span style="font-weight:700;text-align:right;">{{ a.v }}</span></div></sc-for>
+        </details>
+      </div>
+      <a href="OGO - SUPPORT - Talk to an Expert - EN.dc.html" style="display:flex;align-items:center;justify-content:center;height:var(--cta-height);border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);padding:0 var(--cta-pad-x);" style-hover="background:#3A7086;color:#FFFFFF;">Ask an OGO specialist</a>
+    </div>
+  </div>
+  <details style="border-top:1px solid #D4D4D4;padding-top:12px;margin-top:24px;">
+    <summary style="font-size:var(--web-body-size);font-weight:500;cursor:pointer;">How it is calculated</summary>
+    <div style="margin-top:10px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:900px;">Showers and baths are counted as water at 40 °C and converted to hot water at the tank temperature. Kitchen and basin use is counted at tank temperature. Heating energy = litres × 4,186 kJ/(kg·K) × (tank temperature − cold water temperature) ÷ 3600, plus the standing loss of the tank. Tank size = daily hot water × 1,25, rounded up to the next standard size. Heating power = the energy to reheat a full tank in the chosen recovery time. PV-direct share = the part of the daily need that the solar surplus can cover, capped at 80 %. A heat pump water heater divides the electricity use by its COP. Surplus solar is valued at the feed-in price it would otherwise earn.</div>
+  </details>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:800}}">
+const TANKS = [80, 200, 300, 500]; // OGO range (product list 2026-09-27)
+const POWERS = [1, 1.5, 2, 3, 4.5, 6];
+const F = [
+  ["persons", "People in the household", 3], ["showers", "Showers per person per day", 1], ["minutes", "Minutes per shower", 7], ["flow", "Shower flow (l/min)", 8],
+  ["baths", "Baths per week", 1], ["kitchen", "Kitchen and basin, per person (l/day at tank temp.)", 10], ["cold", "Cold water temperature (°C)", 10], ["tank", "Tank temperature (°C)", 55],
+  ["recovery", "Reheat a full tank within (h)", 6], ["pv", "Solar array (kWp)", 4], ["surplus", "Solar surplus per kWp per day (kWh)", 1.2], ["price", "Electricity price (€/kWh)", 0.30],
+  ["feed", "Feed-in price (€/kWh)", 0.04], ["cop", "OGO seasonal COP (example)", 3.5],
+  ["current", "Current system", "electric", [["electric", "Electric resistance boiler"], ["gas", "Gas boiler"]]], ["gasPrice", "Gas price (€/kWh)", 0.12], ["gasEff", "Gas boiler", "0.90", [["0.75", "Older gas boiler (75 %)"], ["0.85", "Standard gas boiler (85 %)"], ["0.90", "Modern condensing boiler (90 %)"]]],
+  ["lowShare", "EMON: share in low-price hours (%)", 50], ["lowPrice", "EMON: low-price average (€/kWh)", 0.18], ["pvShare", "EMON + PV: share from direct solar (%)", 30], ["pvValue", "Value of solar used (€/kWh, forgone export)", 0.08], ["years", "Calculation period (years)", 10], ["demand", "Annual hot water heat demand (kWh/year, 0 = from household)", 2500],
+];
+const eur = (n) => "€ " + Math.round(n).toLocaleString("de-DE");
+const nl = (n, d = 0) => n.toLocaleString("de-DE", { minimumFractionDigits: d, maximumFractionDigits: d });
+class Component extends DCLogic {
+  state = { v: {}, leadOpen: false, leadEmail: "", leadWa: "", leadConsent: false, leadMsg: "" };
+  lead(ev) {
+    ev.preventDefault();
+    const { leadEmail: em, leadWa: wa, leadConsent: ok } = this.state;
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { this.setState({ leadMsg: "That email address looks slightly imaginary." }); return; }
+    if (wa.replace(/[^0-9]/g, "").length < 8) { this.setState({ leadMsg: "The WhatsApp number seems a few digits short." }); return; }
+    const v = this.renderVals();
+    try { const L = JSON.parse(localStorage.getItem("ogo-calculator-leads") || "[]"); L.push({ email: em, whatsapp: wa, marketingConsent: ok, at: new Date().toISOString(), result: v.quickRes.map(r => ({ vs: r.k, today: r.today, ogo: r.ogo, less: r.less, pct: r.pct })), assumptions: v.assumptions }); localStorage.setItem("ogo-calculator-leads", JSON.stringify(L)); } catch (e) {}
+    const w = window.open("", "_blank"); if (!w) { this.setState({ leadMsg: "The PDF window was blocked. Allow pop-ups and try again." }); return; }
+    const row = (a, b) => '<tr><td style="padding:8px 0;border-bottom:1px solid #DDD;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);">' + a + '</td><td style="padding:8px 0;border-bottom:1px solid #DDD;font-weight:300;text-align:right;font-size:var(--web-small-size);line-height:var(--web-small-lh);">' + b + '</td></tr>';
+    w.document.write('<html><head><title>OGO savings</title></head><body style="font-family:var(--font-web);color:#4F4F4E;padding:40px;max-width:680px"><div style="font-size:11px;font-weight:700;letter-spacing:.1em">OGO · STRØHM.ENERGY</div><h1 style="font-size:var(--web-h1-size);margin:8px 0 24px;font-weight:100;line-height:var(--web-h1-lh);">Your hot water savings</h1>'
+      + v.quickRes.map(r => '<h2 style="font-size:15px;margin:20px 0 6px">' + r.k + '</h2><table style="width:100%;border-collapse:collapse;font-size:14px">' + row("Today", r.today + " / year") + row("With OGO + EMON + PV", r.ogo + " / year") + row(r.word === "less per year" ? "You pay less" : "You pay more", r.less + " / year (" + r.pct + ")") + '</table>').join("")
+      + '<h2 style="font-size:15px;margin:24px 0 6px">Four scenarios</h2><table style="width:100%;border-collapse:collapse;font-size:14px">' + v.scen.map(s => row(s.k + " (" + s.sub + ")", s.v + " / year")).join("") + '</table>'
+      + '<h2 style="font-size:15px;margin:24px 0 6px">Assumptions</h2><table style="width:100%;border-collapse:collapse;font-size:13px">' + v.assumptions.map(a => row(a.k, a.v)).join("") + '</table>'
+      + '<p style="font-size:var(--web-min-size);font-weight:300;margin-top:24px;line-height:var(--web-min-lh);">Estimate based on the values entered. Not a guaranteed saving. Prepared for ' + em + '.</p></body></html>');
+    w.document.close(); w.focus(); w.print();
+    this.setState({ leadMsg: "Done. Your savings have been neatly filed.", leadOpen: false });
+  }
+  renderVals() {
+    const s = this.state;
+    const fields = F.map(([k, label, d, opts]) => ({ label, value: s.v[k] ?? d, isNum: !opts, isSel: !!opts, options: (opts || []).map(([v, l]) => ({ v, l })), onChange: (e) => { const val = e.target.value; this.setState(st => ({ v: { ...st.v, [k]: val } })); } }));
+    const g = (k) => { const f = F.find(x => x[0] === k); const n = +String(s.v[k] ?? f[2]).replace(",", "."); return isFinite(n) ? n : 0; };
+    const dT = Math.max(1, g("tank") - g("cold"));
+    const mix = Math.min(1, Math.max(0, (40 - g("cold")) / dT));
+    const at40 = g("persons") * g("showers") * g("minutes") * g("flow") + g("baths") * 150 / 7;
+    const litres = at40 * mix + g("persons") * g("kitchen");
+    const tank = TANKS.find(t => t >= litres * 1.25) || TANKS[TANKS.length - 1];
+    const loss = 0.4 + tank * 0.006;
+    const eDay = litres * 4.186 * dT / 3600 + loss;
+    const eTank = tank * 4.186 * dT / 3600;
+    const need = eTank / Math.max(0.5, g("recovery"));
+    const power = POWERS.find(p => p >= need) || POWERS[POWERS.length - 1];
+    const share = Math.min(0.8, eDay > 0 ? (g("pv") * g("surplus")) / eDay : 0);
+    const eYear = eDay * 365;
+    const grid = eYear * g("price");
+    const withPv = eYear * (1 - share) * g("price") + eYear * share * g("feed");
+    const cop = Math.max(1, g("cop"));
+    const hp = eYear / cop * g("price");
+    const hpPv = eYear / cop * ((1 - Math.min(0.8, share * cop)) * g("price") + Math.min(0.8, share * cop) * g("feed"));
+    const Q = g("demand") > 0 ? g("demand") : eYear, e = eur;
+    const cur = s.v.current ?? "electric";
+    const current = cur === "gas" ? Q / Math.max(0.3, g("gasEff")) * g("gasPrice") : Q * g("price");
+    const ogoKwh = Q / cop;
+    const ogo = ogoKwh * g("price");
+    const low = Math.min(100, Math.max(0, g("lowShare"))) / 100, pvs = Math.min(100 - low * 100, Math.max(0, g("pvShare"))) / 100;
+    const ogoEmon = ogoKwh * (low * g("lowPrice") + (1 - low) * g("price"));
+    const ogoEmonPv = ogoKwh * (pvs * g("pvValue") + low * g("lowPrice") + Math.max(0, 1 - low - pvs) * g("price"));
+    const best = Math.min(ogo, ogoEmon, ogoEmonPv);
+    const split = [["Direct solar", pvs, "#E0E0DC", "#4F4F4E"], ["Low-price hours", low, "#8A8A88", "#FFFFFF"], ["Normal grid", Math.max(0, 1 - low - pvs), "#4F4F4E", "#FFFFFF"]];
+    return {
+      scen: [
+        { k: "Your current system", sub: cur === "gas" ? "Gas boiler" : "Electric boiler", v: e(current), w: 300 },
+        { k: "OGO", sub: "Heat pump, average price", v: e(ogo), w: 300 },
+        { k: "OGO + EMON", sub: "Low-price hours", v: e(ogoEmon), w: 300 },
+        { k: "OGO + EMON + PV", sub: "Solar and low-price hours", v: e(ogoEmonPv), w: 700 },
+      ],
+      vsHead: ["", "vs electric boiler", "vs gas boiler"],
+      vsCells: (() => { const el = Q * g("price"), gas = Q / Math.max(0.3, g("gasEff")) * g("gasPrice"); const rows = [["Electric boiler / gas boiler", el, gas, true], ["OGO", ogo], ["OGO + EMON", ogoEmon], ["OGO + EMON + PV", ogoEmonPv]];
+        return rows.flatMap(([k, a, b, base]) => base ? [{ v: "Cost today", w: 300, fg: "#5F5E5E" }, { v: e(a) + " / year", w: 700, fg: "#4F4F4E" }, { v: e(b) + " / year", w: 700, fg: "#4F4F4E" }]
+          : [{ v: k, w: 700, fg: "#4F4F4E" }, { v: "saves " + e(el - a), w: 300, fg: el - a >= 0 ? "#4F4F4E" : "#B07818" }, { v: (gas - a >= 0 ? "saves " : "costs ") + e(Math.abs(gas - a)) + (gas - a >= 0 ? "" : " more"), w: 300, fg: gas - a >= 0 ? "#4F4F4E" : "#B07818" }]); })(),
+      quick: [["demand", "Heat demand (kWh/year, 0 = from household)"], ["price", "Your electricity price (€/kWh)"], ["gasPrice", "Your gas price (€/kWh)"]].map(([k, label]) => ({ label, value: s.v[k] ?? F.find(x => x[0] === k)[2], onChange: (ev) => { const val = ev.target.value; this.setState(st => ({ v: { ...st.v, [k]: val } })); } })),
+      quickRes: (() => { const el = Q * g("price"), gas = Q / Math.max(0.3, g("gasEff")) * g("gasPrice"); return [["Compared with an electric boiler", el], ["Compared with a gas boiler", gas]].map(([k, base]) => { const d = base - ogoEmonPv; return { k, today: e(base), ogo: e(ogoEmonPv), less: e(Math.abs(d)), word: d >= 0 ? "less per year" : "more per year", pct: base > 0 ? (d >= 0 ? nl(d / base * 100) + " % less" : nl(-d / base * 100) + " % more") : "", fg: d >= 0 ? "#4F4F4E" : "#B07818" }; }); })(),
+      leadOpen: s.leadOpen, leadClosed: !s.leadOpen, leadEmail: s.leadEmail, leadWa: s.leadWa, leadConsent: s.leadConsent, leadMsg: s.leadMsg,
+      openLead: () => this.setState({ leadOpen: true, leadMsg: "" }), onLead: (ev) => this.lead(ev),
+      onLeadEmail: (ev) => this.setState({ leadEmail: ev.target.value }), onLeadWa: (ev) => this.setState({ leadWa: ev.target.value }), onLeadConsent: (ev) => this.setState({ leadConsent: ev.target.checked }),
+      saving: e(current - ogoEmonPv), savingYears: e((current - ogoEmonPv) * g("years")), years: String(g("years")),
+      split: split.map(([t, p, bg, fg]) => ({ t, pct: Math.round(p * 100) + " %", w: (p * 100).toFixed(1) + "%", bg, fg })),
+      assumptions: [["Hot water heat demand", nl(Q) + " kWh thermal/year" + (g("demand") > 0 ? " (entered)" : " (from household)")], ["Electricity price", "€ " + nl(g("price"), 2) + "/kWh"], ["Gas price", "€ " + nl(g("gasPrice"), 2) + "/kWh"], ["Gas boiler efficiency", nl(g("gasEff") * 100) + " %"], ["OGO seasonal COP", nl(cop, 1) + " (example)"], ["OGO electricity", nl(ogoKwh) + " kWh/year"], ["Low-price share", nl(low * 100) + " % at € " + nl(g("lowPrice"), 2)], ["PV share", nl(pvs * 100) + " % valued at € " + nl(g("pvValue"), 2)], ["Period", nl(g("years")) + " years, 0 % price inflation"], ["Purchase, installation, maintenance", "Not included"]].map(([k, v]) => ({ k, v })),
+      fields,
+      sizing: [
+        { k: "Hot water per day", v: nl(litres), u: "l at " + nl(g("tank")) + " °C", w: 300 },
+        { k: "Energy per day", v: nl(eDay, 1), u: "kWh", w: 300 },
+        { k: "Recommended tank", v: String(tank), u: "l", w: 700 },
+        { k: "Recommended OGO", v: g("pv") > 0 ? (tank === 80 ? "OG-AIO-HPB-MPPT-80L or OG-WTB-80L" : "OG-AIO-HPB-MPPT-" + tank + "L") : "OG-AIO-HPB-" + tank + "L", u: "", w: 700 },
+        { k: "Heating power", v: nl(power, 1), u: "kW", w: 700 },
+        { k: "Share from own solar (RAY)", v: nl(share * 100), u: "%", w: 700 },
+      ],
+      cost: [
+        { k: "Electric, from the grid only", v: eur(grid), u: "/ year", w: 300 },
+        { k: "Electric with RAY PV-direct", v: eur(withPv), u: "/ year", w: 300 },
+        { k: "Saving with RAY", v: eur(grid - withPv), u: "/ year", w: 700 },
+        { k: "Heat pump water heater", v: eur(hp), u: "/ year", w: 300 },
+        { k: "Heat pump water heater with solar", v: eur(hpPv), u: "/ year", w: 700 },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

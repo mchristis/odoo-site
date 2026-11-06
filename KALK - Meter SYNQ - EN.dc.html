@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<style>:root{--web-side:clamp(20px,5.8vw,84px);}body{margin:0;background:#F7F7F5;font-family:var(--font-web);}a{color:#4F4F4E;}a:hover{color:#252525;}</style>
+<style data-q4-reflow>/* Q4 grid reflow (DEPTH-897, user 26 Oct 2026). Desktop above 1024px unchanged.
+   data-cols="N": equal 2–6 column grids reflow by available width, cards at least 240px, never more than N columns.
+   data-stack: mixed-width grids stack to one column below 720px. Charts (7+ columns) and label/value rows are not marked. */
+@media (max-width:1024px){
+ [data-cols="2"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 1 * var(--cg,0px)) / 2 - 1px))),1fr)) !important}
+ [data-cols="3"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 2 * var(--cg,0px)) / 3 - 1px))),1fr)) !important}
+ [data-cols="4"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 3 * var(--cg,0px)) / 4 - 1px))),1fr)) !important}
+ [data-cols="5"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 4 * var(--cg,0px)) / 5 - 1px))),1fr)) !important}
+ [data-cols="6"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 5 * var(--cg,0px)) / 6 - 1px))),1fr)) !important}
+ [data-cols]>[style*="grid-column:span"],[data-cols]>[style*="grid-column: span"]{grid-column:1/-1 !important}
+}
+@media (max-width:720px){
+ [data-stack]{grid-template-columns:minmax(0,1fr) !important}
+ [data-stack]>*{grid-column:auto !important;grid-row:auto !important}
+}</style>
+</helmet>
+<div data-screen-label="KALK Meter SYNQ" style="display:flex;flex-direction:column;min-height:100vh;">
+  <dc-import name="NavBar" active="systems" hint-size="100%,80px"></dc-import>
+  <div style="width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:24px auto 48px;min-height:clamp(600px,calc(100vh - 160px),820px);border-radius:24px;overflow:hidden;background:#FFFFFF;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));box-sizing:border-box;">
+    <div style="background:#F4F4F4;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;box-sizing:border-box;">
+      <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#5F5E5E;">Your fuse box</div>
+      <div style="width:100%;display:flex;justify-content:center;">{{ visual }}</div>
+    </div>
+    <div style="padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:16px;box-sizing:border-box;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:15px;color:#252525;">SYNQ by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:20px;width:auto;display:block;filter:brightness(0);"></div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:#5F5E5E;"><div style="width:64px;height:4px;border-radius:2px;background:#E3E3E3;overflow:hidden;"><div style="height:4px;width:{{ progressPct }};background:#598F94;"></div></div><span>{{ progressLabel }}</span></div>
+      </div>
+
+      <sc-if value="{{ isMeter }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <h1 style="margin:0;font-size:32px;font-weight:200;line-height:1.1;color:#252525;">Find your meter</h1>
+          <p style="margin:0;font-size:15px;font-weight:300;line-height:1.5;color:#5F5E5E;">Tell KALK which meter you have and what you want to measure. KALK puts together the SYNQ set and shows where it goes in your fuse box. Your local distributor sends the price.</p>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;color:#252525;">Country<select value="{{ country }}" onChange="{{ onCountry }}" style="min-height:44px;padding:0 10px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:15px;"><option>Belgium</option><option>Netherlands</option><option>United Kingdom</option><option>Germany</option><option>France</option><option>Other in Europe</option></select></label>
+          <div style="font-size:14px;color:#252525;">Your electricity meter</div>
+          <sc-for list="{{ meterOpts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.pick }}" style="display:flex;flex-direction:column;gap:2px;text-align:left;padding:12px 14px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);color:#252525;cursor:pointer;"><b style="font-size:15px;">{{ o.label }}</b><span style="font-size:13px;font-weight:300;">{{ o.sub }}</span></button></sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isPhase }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Connection and photo</h2>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+            <sc-for list="{{ phaseOpts }}" as="o" hint-placeholder-count="2"><button onClick="{{ o.pick }}" style="min-height:56px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:14px;color:#252525;cursor:pointer;"><b>{{ o.label }}</b><br>{{ o.sub }}</button></sc-for>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:8px;padding:14px 16px;border:1px dashed #BBBBBB;border-radius:8px;font-size:14px;color:#252525;cursor:pointer;">
+            <span><b>Upload a photo of your meter and fuse box</b></span>
+            <span style="font-weight:300;color:#5F5E5E;">Our installer checks the meter type, the free space on the DIN rail and the main switch. Reading the photo automatically is TO CONFIRM.</span>
+            <input type="file" accept="image/*" onChange="{{ onPhoto }}" style="font-family:var(--font-web);font-size:13px;">
+          </label>
+          <sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}"><img src="{{ photoUrl }}" alt="Meter and fuse box photo" style="width:100%;max-height:180px;object-fit:contain;border-radius:8px;background:#F4F4F4;"></sc-if>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isWhat }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">What do you want to measure</h2>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+            <sc-for list="{{ whatOpts }}" as="o" hint-placeholder-count="5"><button onClick="{{ o.pick }}" style="min-height:48px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:14px;color:#252525;cursor:pointer;">{{ o.label }}</button></sc-for>
+          </div>
+          <label style="display:flex;align-items:center;gap:12px;background:#F4F4F4;border-radius:8px;padding:10px 12px;font-size:14px;color:#252525;"><span style="flex:1;">Single appliances to measure with a smart plug</span><input type="number" min="0" value="{{ plugs }}" onChange="{{ onPlugs }}" style="width:70px;min-height:36px;padding:0 8px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);"></label>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Your SYNQ set</h2>
+          <sc-for list="{{ items }}" as="i" hint-placeholder-count="3">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;border-radius:8px;background:{{ i.bg }};font-size:14px;color:#252525;"><span><b>{{ i.qty }} × {{ i.name }}</b><br><span style="font-weight:300;">{{ i.why }}</span></span></div>
+          </sc-for>
+          <p style="margin:0;font-size:13px;line-height:1.5;color:#252525;">{{ sparkyLine }}</p>
+          <p style="margin:0;font-size:12px;font-weight:300;line-height:1.5;color:#5F5E5E;">Indicative set, not a detailed design. SYNQ product names and the fit in your fuse box TO CONFIRM by the installer. Smart plugs come from OZZY.</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Price from your local distributor</h2>
+          <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:#5F5E5E;">The SYNQ set and the fuse-box drawing are sent as a PDF. Your local distributor sends the price. A TRIBE installer checks the fuse box on site.</p>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+            <input placeholder="First name" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+            <input placeholder="Last name" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+            <input placeholder="Email" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+            <input placeholder="Phone" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+          </div>
+          <label style="display:flex;gap:12px;align-items:flex-start;font-size:13px;line-height:1.5;color:#252525;"><input type="checkbox" checked="{{ consent }}" onChange="{{ toggleConsent }}" style="margin-top:3px;accent-color:#598F94;"><span>I agree that STRØHM.ENERGY uses these details to send my SYNQ set and passes them to a local distributor for the price. Required. <a href="#">Privacy policy</a></span></label>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Sent</h2>
+          <p style="margin:0;font-size:16px;font-weight:300;line-height:1.5;color:#5F5E5E;">Your SYNQ set is on its way as a PDF. Your local distributor sends the price. A TRIBE installer will contact you.</p>
+          <a href="SYNQ - PRODUCT - Overview - EN.dc.html" style="font-size:14px;">Back to SYNQ &#8250;</a>
+        </div>
+      </sc-if>
+
+      <div style="margin-top:auto;display:flex;justify-content:space-between;gap:12px;">
+        <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}"><button onClick="{{ back }}" style="min-height:48px;padding:0 20px;border:0;border-radius:8px;background:#F4F4F4;font-family:var(--font-web);font-size:16px;color:#252525;cursor:pointer;">&#8249; Back</button></sc-if>
+        <sc-if value="{{ showNext }}" hint-placeholder-val="{{ true }}"><button onClick="{{ next }}" disabled="{{ nextDisabled }}" style="margin-left:auto;min-height:48px;padding:0 24px;border:0;border-radius:8px;background:{{ nextBg }};font-family:var(--font-web);font-size:16px;color:#252525;cursor:pointer;">{{ nextLabel }} &#8250;</button></sc-if>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const WHAT = [["house", "Whole house"], ["solar", "Solar panels"], ["battery", "Battery"], ["heatpump", "Heat pump"], ["ev", "EV charger"]];
+class Component extends DCLogic {
+  state = { step: 0, country: "Belgium", meter: "p1", phase: "1P", photo: "", what: { house: true }, plugs: 0, consent: false };
+  set() {
+    const s = this.state, ph = s.phase === "3P" ? "3-phase" : "1-phase", it = [];
+    if (s.what.house) it.push(s.meter === "p1" ? { name: "SYNQ P1 meter reader", qty: 1, why: "Reads your digital meter through the P1 port", k: "p1" } : { name: "SYNQ DIN-rail meter " + ph, qty: 1, why: "Measures the whole house after the main switch", k: "din" });
+    const circ = ["solar", "battery", "heatpump", "ev"].filter((k) => s.what[k]);
+    if (circ.length) it.push({ name: "SYNQ CT clamp set " + ph, qty: circ.length, why: "One per circuit: " + circ.map((k) => WHAT.find((w) => w[0] === k)[1].toLowerCase()).join(", "), k: "ct" });
+    if (+s.plugs > 0) it.push({ name: "OZZY smart plug", qty: +s.plugs, why: "Measures single appliances at the socket", k: "plug" });
+    if (it.length > 1 || circ.length) it.push({ name: "SYNQ hub", qty: 1, why: "Brings all measurements together for EMON", k: "hub" });
+    return it;
+  }
+  visual(items) {
+    const e = React.createElement, k = [], has = (x) => items.some((i) => i.k === x), ctN = (items.find((i) => i.k === "ct") || {}).qty || 0, line = { stroke: "#252525", strokeWidth: 1, fill: "none" }, hi = "#598F94";
+    k.push(e("rect", Object.assign({ key: "box", x: 70, y: 40, width: 320, height: 300, rx: 10 }, line)));
+    [100, 190, 280].forEach((y, r) => { k.push(e("line", { key: "rail" + r, x1: 85, y1: y + 30, x2: 375, y2: y + 30, stroke: "#252525", strokeWidth: 0.6 }));
+      for (let i = 0; i < 12; i++) { const x = 92 + i * 23, sp = r === 0 && i < 2 ? (has("din") ? "din" : null) : r === 0 && i === 11 && has("hub") ? "hub" : null;
+        k.push(e("rect", { key: "b" + r + i, x, y, width: 18, height: 50, rx: 2, fill: sp ? hi : "none", stroke: "#252525", strokeWidth: 0.8 }));
+        if (!sp) k.push(e("rect", { key: "t" + r + i, x: x + 6, y: y + 18, width: 6, height: 12, rx: 1, fill: "none", stroke: "#252525", strokeWidth: 0.6 })); } });
+    const lab = (x, y, t) => k.push(e("text", { key: "l" + k.length, x, y, fontSize: 11, fill: "#252525", fontFamily: "inherit", letterSpacing: 1 }, t));
+    lab(78, 30, "FUSE BOX"); if (has("din")) lab(92, 96, "DIN meter"); if (has("hub")) lab(310, 96, "Hub");
+    for (let i = 0; i < ctN; i++) { const x = 115 + i * 70; k.push(e("line", { key: "cab" + i, x1: x, y1: 340, x2: x, y2: 400, stroke: "#252525", strokeWidth: 1 })); k.push(e("ellipse", { key: "ct" + i, cx: x, cy: 362, rx: 10, ry: 6, fill: "none", stroke: hi, strokeWidth: 2.5 })); }
+    if (ctN) lab(115, 418, "CT clamps on the circuits");
+    k.push(e("rect", Object.assign({ key: "meter", x: 410, y: 60, width: 40, height: 70, rx: 6 }, line))); lab(404, 150, "Meter");
+    if (has("p1")) { k.push(e("rect", { key: "p1", x: 420, y: 110, width: 20, height: 14, rx: 3, fill: hi })); lab(404, 166, "P1 reader"); }
+    if (has("plug")) { k.push(e("rect", Object.assign({ key: "pl", x: 410, y: 260, width: 34, height: 34, rx: 8 }, line))); k.push(e("circle", { key: "pc", cx: 427, cy: 277, r: 6, fill: hi })); lab(398, 312, "Smart plugs"); }
+    return e("svg", { width: "100%", viewBox: "0 0 470 430", style: { maxWidth: 470 }, "aria-label": "Line drawing of the fuse box with the SYNQ set" }, k);
+  }
+  renderVals() {
+    const s = this.state, pick = (on) => (on ? "#598F94" : "#F4F4F4"), items = this.set(), can = [true, true, items.length > 0, true, s.consent, false][s.step];
+    return {
+      visual: this.visual(s.step >= 1 ? items : []), progressPct: Math.round(Math.min(s.step, 5) / 5 * 100) + "%", progressLabel: Math.min(s.step + 1, 6) + " of 6",
+      isMeter: s.step === 0, isPhase: s.step === 1, isWhat: s.step === 2, isResult: s.step === 3, isContact: s.step === 4, isDone: s.step === 5,
+      country: s.country, onCountry: (e) => this.setState({ country: e.target.value }),
+      meterOpts: [["p1", "Digital meter with P1 port", "Most new meters in Belgium and the Netherlands"], ["old", "Older or analogue meter", "No data port"], ["none", "No own meter / not sure", "The installer checks it"]].map(([v, l, sub]) => ({ label: l, sub, bg: pick(s.meter === v), pick: () => this.setState({ meter: v }) })),
+      phaseOpts: [["1P", "Single phase", "230 V"], ["3P", "Three phase", "400 V"]].map(([v, l, sub]) => ({ label: l, sub, bg: pick(s.phase === v), pick: () => this.setState({ phase: v }) })),
+      onPhoto: (e) => { const f = e.target.files && e.target.files[0]; if (f) this.setState({ photo: URL.createObjectURL(f) }); }, hasPhoto: !!s.photo, photoUrl: s.photo,
+      whatOpts: WHAT.map(([v, l]) => ({ label: l, bg: pick(!!s.what[v]), pick: () => this.setState({ what: Object.assign({}, s.what, { [v]: !s.what[v] }) }) })),
+      plugs: s.plugs, onPlugs: (e) => this.setState({ plugs: Math.max(0, +e.target.value || 0) }),
+      sparkyLine: items.some((i) => i.k === "din" || i.k === "ct" || i.k === "hub") ? "The DIN-rail meter, CT clamps and hub are installed in the fuse box by a qualified electrician." : "The P1 reader and smart plugs are plug-in: no electrician needed.",
+      items: items.map((i) => ({ name: i.name, qty: i.qty, why: i.why, bg: i.k === "plug" ? "#F4F4F4" : "#E3EDEE" })),
+      consent: s.consent, toggleConsent: () => this.setState({ consent: !s.consent }),
+      canBack: s.step > 0 && s.step < 5, back: () => this.setState({ step: s.step - 1 }),
+      showNext: s.step < 5, nextLabel: ["Next", "Next", "See your set", "Price from your local distributor", "Send", ""][s.step], nextDisabled: !can, nextBg: can ? "#598F94" : "#E3E3E3",
+      next: () => { if (can) this.setState({ step: s.step + 1 }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

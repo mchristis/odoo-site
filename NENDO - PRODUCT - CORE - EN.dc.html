@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>NENDO CORE | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:#3f857f; }
+  select:focus, input:focus { outline:none; border-color:var(--color-brand-nendo); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="NendoNav" active="core" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="NENDO" rgb="27,139,154" title="Heat the room. Not the complete house." intro="CORE is an indoor monoblock heat pump for fast, room-by-room heating and cooling." slot="core-hero" shot="Drop a CORE unit in an occupied room — product visible, no lifestyle scene" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">NENDO CORE &#183; <span style="color:var(--color-text-primary);">Indoor monoblock heat pump</span></div>
+    <p style="margin:0 0 12px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:700px;">It is typically installed in two to four hours, without a traditional outdoor compressor unit or field-installed refrigerant pipework. With the RAY solar plug-in, a standard CORE uses dedicated photovoltaic energy directly.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:24px 0 48px;">
+      <a href="#calculator" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;white-space:nowrap;background:var(--color-brand-nendo);color:#FFFFFF;border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Calculate your savings</a>
+      <a href="#emon" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;white-space:nowrap;background:#F4F5F4;color:var(--color-text-primary);border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">See how EMON works</a>
+      <!-- DEPTH-1264: catalogue removed (no product catalogues) -->
+    </div>
+    
+  </section>
+
+  <!-- WHY DEMAND -->
+  <section id="how" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">How CORE works</div>
+      <h2 style="margin:0 0 16px;max-width:700px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One sealed unit on the inside wall. <span style="color:#8E8E8E;">Two openings to the outside.</span></h2>
+      <p style="margin:0 0 12px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">CORE is a monoblock: compressor, both heat exchangers and the refrigerant circuit sit in one indoor unit. There is no outdoor unit and no refrigerant piping on site. Two openings through the outside wall let the unit draw in outdoor air and return it.</p>
+      <p style="margin:0 0 32px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;max-width:760px;text-transform:uppercase;">DRAFT</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start;">
+        <div style="display:flex;flex-direction:column;border-top:1px solid var(--color-text-primary);">
+          <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 12px;border-bottom:1px solid var(--color-divider);"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Heating</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Heat is taken from the outdoor air drawn through the wall, raised in temperature by the compressor and released into the room.</span></div>
+          <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 12px;border-bottom:1px solid var(--color-divider);background:var(--color-card-nendo);"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Cooling</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">The cycle reverses. Heat is taken from the room and carried out with the exhaust air.</span></div>
+          <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 12px;border-bottom:1px solid var(--color-divider);"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Dehumidification and fan</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Removes moisture from the room air, or circulates air only.</span></div>
+          <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 12px;border-bottom:1px solid var(--color-divider);background:var(--color-card-nendo);"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">DC inverter</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">The compressor runs at variable speed and matches the output to the room, instead of switching on and off.</span></div>
+          <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 12px;border-bottom:1px solid var(--color-divider);"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Refrigerant</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">R290 (propane), a natural refrigerant, factory-sealed inside the unit.</span></div>
+          <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 12px;border-bottom:1px solid var(--color-divider);background:var(--color-card-nendo);"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Wall openings</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Two core-drilled openings, closed on the facade with grilles. <span style="color:#B07818;">[TO CONFIRM: opening diameter and wall thickness range]</span></span></div>
+          <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 12px;border-bottom:1px solid var(--color-divider);"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Control</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Wi-Fi app per unit, and EMON for solar, battery and tariff control (see below).</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:var(--color-card-nendo);"><image-slot id="core-how-diagram" src="assets/nendo/nendo-core-how-diagram-01.png" shape="rounded" radius="12" placeholder="CORE_HOW_DIAGRAM_01 · section through the wall: indoor unit, two wall openings, outdoor air in and out, heating and cooling flow arrows · 4:3"></image-slot></div>
+          <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);">Values per model (capacity, efficiency class, sound level, dimensions) are in the catalogue.</div>
+        </div>
+      </div>
+      <div style="margin-top:48px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Where CORE fits</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));border-top:1px solid var(--color-text-primary);">
+          <div style="padding:16px 16px 16px 0;border-bottom:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);"><div style="font-weight:700;color:var(--color-text-primary);margin-bottom:4px;">No room for an outdoor unit</div>Balconies, narrow facades, shared buildings.</div>
+          <div style="padding:16px 16px 16px 0;border-bottom:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);"><div style="font-weight:700;color:var(--color-text-primary);margin-bottom:4px;">Facade restrictions</div>Where outdoor units are not allowed or not wanted on the wall.</div>
+          <div style="padding:16px 16px 16px 0;border-bottom:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);"><div style="font-weight:700;color:var(--color-text-primary);margin-bottom:4px;">High-rise</div>No outdoor installation at height.</div>
+          <div style="padding:16px 16px 16px 0;border-bottom:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);"><div style="font-weight:700;color:var(--color-text-primary);margin-bottom:4px;">Modular and mobile buildings</div>Containers, site offices, mobile homes.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Why demand is growing</div>
+      <h2 style="margin:0 0 16px;max-width:700px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Heating is moving <span style="color:#8E8E8E;">from fuel to electricity.</span></h2>
+      <p style="margin:0 0 32px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A traditional boiler burns gas or mazout whenever heat is required. CORE turns heating from a fixed fuel expense into a controllable energy load &#8212; it can draw from whichever source costs least at that moment.</p>
+      <div data-cols="5" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ sources }}" as="s" hint-placeholder-count="5">
+          <div style="padding:22px 18px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">{{ s.name }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ s.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOM BY ROOM -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;--cg:48px;">
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Heat only where heat is needed</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Room-by-room comfort, <span style="color:#8E8E8E;">not the whole building.</span></h2>
+        <p style="margin:0 0 16px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A central boiler circulates heat through a large part of the building even when one room is occupied. Each CORE unit conditions its own room or open zone. Several units across a building are coordinated by EMON as one modular system.</p>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Every room gets its own temperature, schedule, comfort priority, solar priority and grid-use limit. An unused room stays cooler while occupied rooms get the comfort they need. This zoning is often where the largest practical saving occurs.</p>
+      </div>
+      <div style="background:#F4F4F4;border-radius:12px;">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--color-divider);font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-primary);background:#F4F5F4;">One building, several zones</div>
+        <sc-for list="{{ zones }}" as="z" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:14px 20px;border-bottom:1px solid var(--color-surface-card);align-items:center;">
+            <div>
+              <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ z.room }}</div>
+              <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);">{{ z.mode }}</div>
+            </div>
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:var(--color-text-primary);line-height:var(--web-h3-lh);">{{ z.temp }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Installed without an outdoor unit</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Heating and cooling, <span style="color:#8E8E8E;">typically installed in two to four hours.</span></h2>
+      <p style="margin:0 0 28px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">CORE is an indoor monoblock: the complete refrigerant circuit is sealed inside the appliance. There is no separate outdoor compressor and no refrigerant pipework to install between indoor and outdoor equipment. Only the air inlet, air outlet and external grilles are visible outside.</p>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ installSteps }}" as="s" hint-placeholder-count="7">
+          <div style="padding:20px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);margin-bottom:8px;letter-spacing:var(--web-eyebrow-ls);">{{ s.num }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ s.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:14px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Actual installation time depends on wall material, access, electrical supply and condensate route.</p>
+    </div>
+  </section>
+
+  <!-- EXPLAINER (NENDO MONO brief, DEPTH-30) -->
+  <section id="no-outdoor-unit" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+<div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">No outdoor unit</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Heating and cooling. <span style="color:#8E8E8E;">Nothing outside.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;align-items:start;">
+        <div><p style="margin:0 0 20px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A conventional split system requires an indoor unit plus an outdoor condenser. NENDO CORE contains the refrigeration circuit indoors. The façade is left with only two discreet ventilation grilles instead of a large outdoor fan unit, brackets, interconnecting refrigerant lines and external cabling.</p><p style="margin:0 0 0px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:720px;">Use NENDO CORE where an external condenser is restricted, unwanted or impractical: apartments, renovations, hotels, offices, architecturally sensitive façades, modular buildings, compact homes and rooms where mounting an outdoor unit at height is undesirable.</p></div>
+        <div><div style="aspect-ratio:16/10;background:var(--color-card-nendo);border-radius:12px;overflow:hidden;"><image-slot id="core-no-outdoor-unit" shape="rounded" radius="12" placeholder="NENDO_CORE_V03 · same façade: split condenser on the left, two CORE grilles on the right · 16:10 · prompt V03 in the NENDO MONO brief"></image-slot></div><div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);margin-top:8px;line-height:var(--web-min-lh);">No outdoor condenser. No long refrigerant line. One compact indoor unit.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="range" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+<div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">The range</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One standard CORE. <span style="color:#8E8E8E;">Solar as a plug-in.</span></h2>
+      <p style="margin:0 0 20px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Every CORE is the same standard unit. To run it on solar, add the RAY solar plug-in: PV modules then connect through the plug-in to the unit.</p>
+      <div style="overflow-x:auto;border-top:1px solid var(--color-text-primary);"><table style="width:100%;min-width:560px;border-collapse:collapse;font-size:var(--web-small-size);"><thead><tr><th style="text-align:left;padding:10px 12px 10px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);">Product</th><th style="text-align:left;padding:10px 12px 10px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);">Positioning</th><th style="text-align:left;padding:10px 12px 10px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);">Key difference</th><th style="text-align:left;padding:10px 12px 10px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);">Grid connection</th></tr></thead><tbody><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:700;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">NENDO CORE 9</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Indoor all-in-one heating and cooling</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">R290 · 1-phase · 9,000 BTU</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Grid, or solar with the plug-in</td></tr><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:700;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">NENDO CORE 12</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Indoor all-in-one heating and cooling</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">R290 · 1-phase · 12,000 BTU</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Grid, or solar with the plug-in</td></tr><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">RAY solar plug-in</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Add-on for any standard CORE</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">MPPT · PV direct to the unit</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">PV first, grid for the balance</td></tr></tbody></table></div>
+      <p style="margin:14px 0 0;font-size:var(--web-min-size);font-weight:300;color:#B07818;max-width:760px;line-height:var(--web-min-lh);">[TO CONFIRM: model mapping. The OEM brochure lists 8,000 / 10,000 / 12,000 BTU; the NENDO range uses 9,000 / 12,000 BTU. Capacities follow the final NENDO datasheet.]</p>
+    </div>
+  </section>
+
+  <!-- CORE SOLAR ARCHITECTURES -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">CORE with RAY</div>
+      <h2 style="margin:0 0 12px;max-width:600px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Heat and cool directly <span style="color:#8E8E8E;">from sunlight.</span></h2>
+      <p style="margin:0 0 28px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The RAY solar plug-in adds an MPPT input for a dedicated photovoltaic connection to a standard CORE. The appliance has no internal battery &#8212; solar is used when available; grid, a FLUXX battery or a MOEBIUS system provides energy at other times. Three system architectures are possible.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ architectures }}" as="a" hint-placeholder-count="3">
+          <div style="padding:24px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:10px;line-height:var(--web-h3-lh);">{{ a.name }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ a.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMON MODES -->
+  <section id="solar-cooling" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+<div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Solar-powered cooling</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Add solar. <span style="color:#8E8E8E;">Let the sun cover the cooling load.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;align-items:start;">
+        <div><p style="margin:0 0 20px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">On sunny days, the same solar production that creates the cooling demand can help power the cooling system. With sufficient PV output, grid import for cooling can become very small during those hours. The exact share depends on irradiance, panel size, orientation, compressor demand and system losses.</p><p style="margin:0 0 0px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:720px;">With the solar plug-in, PV modules connect to a standard CORE. Solar supplies part or all of the instantaneous compressor demand before the grid is used.</p></div>
+        <div><div style="aspect-ratio:16/10;background:var(--color-card-nendo);border-radius:12px;overflow:hidden;"><image-slot id="core-v05-sun-cooling" shape="rounded" radius="12" placeholder="NENDO_CORE_V05 · 24-hour solar curve with cooling demand rising at midday, below: PV → solar plug-in → CORE → cooled room · 16:10 · prompt V05"></image-slot></div><div style="height:16px;"></div><div style="aspect-ratio:16/10;background:var(--color-card-nendo);border-radius:12px;overflow:hidden;"><image-slot id="core-v04-pv-direct" shape="rounded" radius="12" placeholder="NENDO_CORE_V04 · PV → solar plug-in → standard CORE → compressor → room, grid as secondary source · 16:10 · prompt V04"></image-slot></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solar-heating" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+<div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Heating with PV support</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Use PV directly when <span style="color:#8E8E8E;">it is available.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;align-items:start;">
+        <div><p style="margin:0 0 20px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">In heating mode, direct solar generation can also reduce grid electricity use whenever PV is available. The benefit is typically more variable than for cooling because the highest heating demand often occurs during periods with lower solar production.</p><div style="overflow-x:auto;border-top:1px solid var(--color-text-primary);"><table style="width:100%;min-width:560px;border-collapse:collapse;font-size:var(--web-small-size);"><thead><tr><th style="text-align:left;padding:10px 12px 10px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);">Season</th><th style="text-align:left;padding:10px 12px 10px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);">Solar contribution</th><th style="text-align:left;padding:10px 12px 10px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);">Grid</th></tr></thead><tbody><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Summer cooling</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Often large while the sun produces</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Balance, and after sunset</td></tr><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Spring and autumn heating</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Part of the daytime demand</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Balance, mornings and evenings</td></tr><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Winter heating</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Small and variable</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Most of the demand</td></tr></tbody></table></div></div>
+        <div><div style="aspect-ratio:16/10;background:var(--color-card-nendo);border-radius:12px;overflow:hidden;"><image-slot id="core-v06-pv-heating" shape="rounded" radius="12" placeholder="NENDO_CORE_V06 · seasonal view: PV contribution first, grid balance second, no full winter autonomy · 16:10 · prompt V06"></image-slot></div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="applications" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+<div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Applications</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Where CORE <span style="color:#8E8E8E;">is installed.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;"><div><div style="aspect-ratio:3/2;background:var(--color-card-nendo);border-radius:12px;overflow:hidden;"><image-slot id="core-v09-app-1" shape="rounded" radius="12" placeholder="NENDO_CORE_V09 · Renovated apartment · 3:2 · prompt V09"></image-slot></div><div style="font-size:var(--web-small-size);font-weight:300;margin-top:10px;">Renovated apartment</div></div><div><div style="aspect-ratio:3/2;background:var(--color-card-nendo);border-radius:12px;overflow:hidden;"><image-slot id="core-v09-app-2" shape="rounded" radius="12" placeholder="NENDO_CORE_V09 · Hotel room · 3:2 · prompt V09"></image-slot></div><div style="font-size:var(--web-small-size);font-weight:300;margin-top:10px;">Hotel room</div></div><div><div style="aspect-ratio:3/2;background:var(--color-card-nendo);border-radius:12px;overflow:hidden;"><image-slot id="core-v09-app-3" shape="rounded" radius="12" placeholder="NENDO_CORE_V09 · Small office · 3:2 · prompt V09"></image-slot></div><div style="font-size:var(--web-small-size);font-weight:300;margin-top:10px;">Small office</div></div><div><div style="aspect-ratio:3/2;background:var(--color-card-nendo);border-radius:12px;overflow:hidden;"><image-slot id="core-v09-app-4" shape="rounded" radius="12" placeholder="NENDO_CORE_V09 · Protected façade · 3:2 · prompt V09"></image-slot></div><div style="font-size:var(--web-small-size);font-weight:300;margin-top:10px;">Protected façade</div></div><div><div style="aspect-ratio:3/2;background:var(--color-card-nendo);border-radius:12px;overflow:hidden;"><image-slot id="core-v09-app-5" shape="rounded" radius="12" placeholder="NENDO_CORE_V09 · Modular or container home · 3:2 · prompt V09"></image-slot></div><div style="font-size:var(--web-small-size);font-weight:300;margin-top:10px;">Modular or container home</div></div><div><div style="aspect-ratio:3/2;background:var(--color-card-nendo);border-radius:12px;overflow:hidden;"><image-slot id="core-v09-app-6" shape="rounded" radius="12" placeholder="NENDO_CORE_V09 · Compact residential room · 3:2 · prompt V09"></image-slot></div><div style="font-size:var(--web-small-size);font-weight:300;margin-top:10px;">Compact residential room</div></div></div>
+    </div>
+  </section>
+
+  <section id="technical-data" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+<div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Technical data</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Confirmed <span style="color:#8E8E8E;">values only.</span></h2>
+      <p style="margin:0 0 20px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Values below come from the OEM material. Everything else follows the final NENDO datasheet.</p>
+      <div style="overflow-x:auto;border-top:1px solid var(--color-text-primary);"><table style="width:100%;min-width:560px;border-collapse:collapse;font-size:var(--web-small-size);"><thead><tr><th style="text-align:left;padding:10px 12px 10px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);">Item</th><th style="text-align:left;padding:10px 12px 10px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);">Value</th><th style="text-align:left;padding:10px 12px 10px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);">Status</th></tr></thead><tbody><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Functions</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Cooling, heating, dehumidification, fan</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">OEM material</td></tr><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Refrigerant</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">R290 natural refrigerant</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">OEM material</td></tr><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Compressor</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">DC inverter (inverter versions)</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">OEM material</td></tr><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Supply</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">230 V / 50 Hz, 1-phase</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">OEM material</td></tr><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Sound pressure, silent mode</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">39 dB(A)</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">OEM material</td></tr><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Body size</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">approx. 1000 × 585 × 205 mm</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">OEM material</td></tr><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Cooling and heating capacity</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);"><span style="color:#B07818;">[TO CONFIRM]</span></td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Final NENDO datasheet</td></tr><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Input power</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);"><span style="color:#B07818;">[TO CONFIRM]</span></td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Final NENDO datasheet</td></tr><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">COP / EER</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);"><span style="color:#B07818;">[TO CONFIRM]</span></td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Final NENDO datasheet</td></tr><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Wall opening diameter</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);"><span style="color:#B07818;">[TO CONFIRM]</span></td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Installation manual</td></tr><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Solar plug-in MPPT input</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);"><span style="color:#B07818;">[TO CONFIRM]</span> PV voltage and current range</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Final NENDO datasheet</td></tr><tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Regulatory declarations</td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);"><span style="color:#B07818;">[TO CONFIRM]</span></td><td style="padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-weight:300;color:var(--color-text-primary);vertical-align:top;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Final NENDO datasheet</td></tr></tbody></table></div>
+    </div>
+  </section>
+
+  <section id="emon" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">EMON energy management</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">You choose the comfort. <span style="color:#8E8E8E;">EMON manages the energy behind it.</span></h2>
+      <p style="margin:0 0 28px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">EMON combines information from CORE units, ANDO solar, MOEBIUS inverters, FLUXX batteries, SYNQ meters, the grid, dynamic prices, room temperatures and weather &#8212; then decides when each unit heats, cools, reduces output or waits. Four selectable energy modes set the priority.</p>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:28px;--cg:16px;">
+        <sc-for list="{{ modes }}" as="m" hint-placeholder-count="4">
+          <div style="padding:24px;border-top:3px solid var(--color-brand-nendo);background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:10px;line-height:var(--web-h3-lh);">{{ m.name }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ m.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;--cg:24px;">
+        <div style="padding:18px 24px;background:#F4F5F4;border-radius:12px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">Preheating and precooling</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);max-width:760px;">Before electricity becomes expensive, EMON can gently shift room temperature within a comfort range you approve, then reduce demand during the expensive period. Not overheating &#8212; working inside your limits.</p>
+        </div>
+        <div style="padding:18px 24px;background:#F4F5F4;border-radius:12px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">Battery-aware operation</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);max-width:760px;">With FLUXX and MOEBIUS, EMON considers battery state of charge and can reserve energy for night-time heating or a grid outage &#8212; prioritising the living room and one bedroom while reducing lower-priority spaces.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section id="calculator" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Savings calculator</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Calculate what CORE could change <span style="color:#8E8E8E;">in your building.</span></h2>
+      <p style="margin:0 0 32px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Compare your present gas or mazout heating cost with a NENDO CORE system. Results are indicative estimates across conservative, expected and favourable scenarios &#8212; not a guaranteed saving.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:start;">
+        <!-- INPUTS -->
+        <div style="flex:1 1 360px;min-width:0;padding:24px;background:#F4F4F4;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:18px;">Your building</div>
+
+          <div style="margin-bottom:16px;">
+            <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Country</label>
+            <select onChange="{{ onCountry }}" style="width:100%;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+              <sc-for list="{{ countryOptions }}" as="o" hint-placeholder-count="5"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+            </select>
+          </div>
+          <div style="margin-bottom:16px;">
+            <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Existing heating</label>
+            <select onChange="{{ onFuel }}" style="width:100%;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+              <sc-for list="{{ fuelOptions }}" as="o" hint-placeholder-count="2"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+            </select>
+          </div>
+          <div style="margin-bottom:16px;">
+            <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">NENDO model</label>
+            <select onChange="{{ onModel }}" style="width:100%;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+              <sc-for list="{{ modelOptions }}" as="o" hint-placeholder-count="3"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+            </select>
+          </div>
+          <div style="margin-bottom:16px;">
+            <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Coverage</label>
+            <select onChange="{{ onMode }}" style="width:100%;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+              <sc-for list="{{ modeOptions }}" as="o" hint-placeholder-count="3"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+            </select>
+          </div>
+          <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-bottom:16px;--cg:12px;">
+            <div>
+              <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Area per zone (m&#178;)</label>
+              <input type="number" value="{{ area }}" onInput="{{ onArea }}" style="width:100%;box-sizing:border-box;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);font-weight:var(--web-input-weight);border-radius:8px;">
+            </div>
+            <div>
+              <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Number of zones</label>
+              <input type="number" value="{{ rooms }}" onInput="{{ onRooms }}" style="width:100%;box-sizing:border-box;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);font-weight:var(--web-input-weight);border-radius:8px;">
+            </div>
+          </div>
+          <div style="margin-bottom:16px;">
+            <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Insulation</label>
+            <select onChange="{{ onInsulation }}" style="width:100%;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+              <sc-for list="{{ insulationOptions }}" as="o" hint-placeholder-count="4"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+            </select>
+          </div>
+          <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-bottom:16px;--cg:12px;">
+            <div>
+              <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Heating h/day</label>
+              <input type="number" value="{{ hours }}" onInput="{{ onHours }}" style="width:100%;box-sizing:border-box;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);font-weight:var(--web-input-weight);border-radius:8px;">
+            </div>
+            <div>
+              <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Heating days/yr</label>
+              <input type="number" value="{{ days }}" onInput="{{ onDays }}" style="width:100%;box-sizing:border-box;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);font-weight:var(--web-input-weight);border-radius:8px;">
+            </div>
+          </div>
+          <sc-if value="{{ isSolar }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-bottom:16px;">
+              <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Dedicated PV (kWp) &#183; with RAY</label>
+              <input type="number" value="{{ pv }}" onInput="{{ onPv }}" style="width:100%;box-sizing:border-box;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);font-weight:var(--web-input-weight);border-radius:8px;">
+            </div>
+          </sc-if>
+          <div>
+            <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Installed cost (&#8364;, optional)</label>
+            <input type="number" value="{{ cost }}" onInput="{{ onCost }}" placeholder="for payback" style="width:100%;box-sizing:border-box;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);font-weight:var(--web-input-weight);border-radius:8px;">
+          </div>
+        </div>
+
+        <!-- RESULTS -->
+        <div style="flex:999 1 min(100%,400px);min-width:0;">
+          <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-bottom:16px;--cg:16px;">
+            <div style="padding:24px;background:#F4F4F4;border-radius:12px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:8px;">Present heating cost/yr</div>
+              <div style="font-size:32px;font-weight:700;">&#8364;<span>{{ r.existing }}</span></div>
+              <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);margin-top:4px;line-height:var(--web-min-lh);">{{ r.fuelLabel }} at {{ r.fuelPrice }}</div>
+            </div>
+            <div style="border:1px solid var(--color-brand-nendo);padding:24px;background:#F1F5F4;border-radius:12px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#3f857f;margin-bottom:8px;">CORE optimised cost/yr &#183; expected</div>
+              <div style="font-size:32px;font-weight:700;color:#3f857f;">&#8364;<span>{{ r.optimised }}</span></div>
+              <div style="font-size:var(--web-min-size);font-weight:300;color:#5B6b69;margin-top:4px;line-height:var(--web-min-lh);">Solar + dynamic tariff + EMON</div>
+            </div>
+          </div>
+
+          <div style="border:1px solid var(--color-divider);margin-bottom:16px;border-radius:12px;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;padding:16px 20px;border-bottom:1px solid var(--color-divider);background:#F4F5F4;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Scenario</div>
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);text-align:right;">Annual cost</div>
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);text-align:right;min-width:120px;">Saving vs now</div>
+            </div>
+            <sc-for list="{{ r.scenarios }}" as="s" hint-placeholder-count="3">
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;padding:16px 20px;border-bottom:1px solid var(--color-surface-card);align-items:center;">
+                <div>
+                  <div style="font-size:var(--web-small-size);font-weight:300;">{{ s.name }}</div>
+                  <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);">SCOP {{ s.scop }}</div>
+                </div>
+                <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);text-align:right;line-height:var(--web-h3-lh);">&#8364;{{ s.cost }}</div>
+                <div style="text-align:right;min-width:120px;">
+                  <span style="font-size:16px;font-weight:700;color:#3f857f;">&#8364;{{ s.saving }}</span>
+                  <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);"> &#183; {{ s.pct }}%</span>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:16px;gap:12px;--cg:12px;">
+            <sc-for list="{{ r.breakdown }}" as="b" hint-placeholder-count="4">
+              <div style="padding:16px 18px;background:#F4F4F4;border-radius:12px;">
+                <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);margin-bottom:4px;line-height:var(--web-min-lh);">{{ b.label }}</div>
+                <div style="font-size:16px;font-weight:700;">{{ b.value }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding:18px 24px;background:#F4F4F4;border-radius:12px;">
+            <div>
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:4px;">Simple payback</div>
+              <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ r.payback }}</div>
+            </div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);max-width:420px;line-height:var(--web-min-lh);">{{ r.installNote }}</div>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin:20px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:900px;line-height:var(--web-min-lh);">Indicative calculation, not a guaranteed saving. Uses representative country energy prices and PV yield, planning-level climate profiles and preliminary supplier COP data. Final performance depends on the building, installation, climate, tariff, user behaviour and certified product-performance data. The production version uses address-level hourly weather, live day-ahead prices and certified CORE performance curves.</p>
+    </div>
+  </section>
+
+  <!-- TRANSITION -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">From gas or mazout to flexible electric heating</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">A staged transition, <span style="color:#8E8E8E;">not an immediate full replacement.</span></h2>
+      <p style="margin:0 0 28px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">CORE does not have to replace the existing boiler on day one. It can reduce the hours the boiler runs. During spring, autumn and milder winter periods, CORE heats occupied rooms electrically; the boiler stays available for domestic hot water, very cold weather or rooms without a CORE unit.</p>
+      <div data-cols="5" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ transition }}" as="t" hint-placeholder-count="5">
+          <div style="padding:22px 18px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);margin-bottom:8px;letter-spacing:var(--web-eyebrow-ls);">{{ t.step }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ t.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="EpcInfo" brand="NENDO" product="CORE" hint-size="100%,420px"></dc-import>
+  <dc-import name="ContentSections" brand="NENDO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="NENDO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="NENDO" accent="var(--color-brand-nendo)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+// Country presets from NENDO_CORE_Savings_Calculator (Country Presets sheet)
+const COUNTRIES = {
+  be: { label: "Belgium", elec: 0.3499, gas: 0.0898, oil: 1.0195, pvYield: 950 },
+  nl: { label: "Netherlands", elec: 0.2558, gas: 0.1719, oil: 1.2299, pvYield: 950 },
+  de: { label: "Germany", elec: 0.3869, gas: 0.1223, oil: 1.1634, pvYield: 1000 },
+  fr: { label: "France", elec: 0.2561, gas: 0.1436, oil: 1.4206, pvYield: 1150 },
+  eu: { label: "EU average", elec: 0.2896, gas: 0.1228, oil: 1.2299, pvYield: 1050 },
+};
+// Model data (Model Data sheet): COP ref 3.6; SOLAR variants carry MPPT
+const MODELS = {
+  core9: { label: "CORE 9", cop: 3.6, solar: false },
+  solar9: { label: "CORE 9 + RAY", cop: 3.6, solar: true },
+  solar12: { label: "CORE 12 + RAY", cop: 3.6, solar: true },
+};
+// Useful heat intensity kWh/m2/y by insulation (Model Data sheet J/K)
+const INSULATION = { excellent: { label: "Excellent", k: 45 }, good: { label: "Good", k: 70 }, average: { label: "Average", k: 100 }, poor: { label: "Poor", k: 140 } };
+// Coverage of zone demand supplied by CORE, by mode
+const MODES = {
+  one: { label: "One room", coverage: 0.769 },
+  multi: { label: "Multiple rooms", coverage: 0.82 },
+  supp: { label: "Whole-house supplement", coverage: 0.45 },
+};
+// Scenario parameters calibrated to reproduce the spreadsheet's expected case
+const SCEN = [
+  { key: "cons", name: "Conservative", scop: 3.0, gridFactor: 0.86, solarOverlap: 0.12 },
+  { key: "exp", name: "Expected", scop: 3.6057, gridFactor: 0.7425, solarOverlap: 0.1746 },
+  { key: "fav", name: "Favourable", scop: 4.0, gridFactor: 0.62, solarOverlap: 0.24 },
+];
+const BOILER_EFF = { gas: 0.90, oil: 0.85 };
+const OIL_KWH_PER_L = 10;
+
+class Component extends DCLogic {
+  state = { country: "be", fuel: "gas", model: "solar9", mode: "one", area: 30, rooms: 1, insulation: "average", hours: 10, days: 180, pv: 1.2, cost: 0 };
+
+  num(v, d) { const n = parseFloat(v); return isNaN(n) ? d : n; }
+
+  compute() {
+    const st = this.state;
+    const C = COUNTRIES[st.country], M = MODELS[st.model], INS = INSULATION[st.insulation], MODE = MODES[st.mode];
+    const area = Math.max(1, this.num(st.area, 30));
+    const rooms = Math.max(1, this.num(st.rooms, 1));
+    const hours = Math.max(1, this.num(st.hours, 10));
+    const days = Math.max(1, this.num(st.days, 180));
+    const pv = M.solar ? Math.max(0, this.num(st.pv, 0)) : 0;
+    const usage = Math.min(1.15, Math.max(0.3, (hours * days) / 2585));
+    const qUseful = area * rooms * INS.k * usage;              // baseline useful heat (kWh/yr)
+    const heatByCore = qUseful * MODE.coverage;
+    const fuelPrice = st.fuel === "gas" ? C.gas : C.oil;
+    const boilerEff = BOILER_EFF[st.fuel];
+    // existing full-baseline heating cost
+    let existing;
+    if (st.fuel === "gas") existing = (qUseful / boilerEff) * fuelPrice;
+    else existing = ((qUseful / boilerEff) / OIL_KWH_PER_L) * fuelPrice;
+    const pvAnnual = pv * C.pvYield;
+
+    const scenarios = SCEN.map(s => {
+      const coreElec = heatByCore / s.scop;
+      const solarUsed = M.solar ? Math.min(coreElec, pvAnnual * s.solarOverlap) : 0;
+      const gridElec = Math.max(0, coreElec - solarUsed);
+      const optimised = gridElec * C.elec * s.gridFactor;
+      const saving = existing - optimised;
+      const pct = existing > 0 ? (saving / existing) * 100 : 0;
+      return { key: s.key, name: s.name, scop: s.scop.toFixed(1), coreElec, solarUsed, gridElec,
+        cost: Math.round(optimised), saving: Math.round(saving), pct: Math.round(pct) };
+    });
+    return { C, M, INS, existing, qUseful, heatByCore, fuelPrice, scenarios, expected: scenarios[1], pvAnnual };
+  }
+
+  fmtEUR(n) { return Math.round(n).toLocaleString("en-US"); }
+
+  renderVals() {
+    const st = this.state;
+    const cx = this.compute();
+    const cost = this.num(st.cost, 0);
+    const annualSaving = cx.expected.saving;
+    let payback = "Enter installed cost";
+    if (cost > 0 && annualSaving > 0) payback = (cost / annualSaving).toFixed(1) + " years";
+    else if (cost > 0) payback = "No saving in this case";
+
+    const set = (k) => (e) => this.setState({ [k]: e.target.value });
+
+    return {
+      sources: [
+        { name: "Direct solar", desc: "PV energy used the moment it is generated." },
+        { name: "Low-cost grid", desc: "Cheaper dynamic-tariff or night-time hours." },
+        { name: "FLUXX battery", desc: "Stored solar or low-price grid energy." },
+        { name: "Off-grid", desc: "Supplied through a MOEBIUS inverter." },
+        { name: "Normal grid", desc: "When no lower-cost source is available." },
+      ],
+      zones: [
+        { room: "Living room", mode: "Occupied · comfort", temp: "21 °C" },
+        { room: "Home office", mode: "Working hours only", temp: "20 °C" },
+        { room: "Bedroom", mode: "Preheated before evening", temp: "18 °C" },
+        { room: "Spare room", mode: "Background / unused", temp: "15 °C" },
+      ],
+      installSteps: [
+        { num: "01", label: "Position the unit on an external wall" },
+        { num: "02", label: "Create the intake and exhaust openings" },
+        { num: "03", label: "Install the condensate drain" },
+        { num: "04", label: "Mount the appliance" },
+        { num: "05", label: "Connect the electrical supply" },
+        { num: "06", label: "Commission and test" },
+        { num: "07", label: "Install the external wall grilles" },
+      ],
+      architectures: [
+        { name: "Direct solar", desc: "Dedicated solar modules connect through RAY to a standard CORE. With enough sunlight, it heats or cools without using grid electricity." },
+        { name: "Solar with grid support", desc: "Solar is used first. When generation falls below demand, the grid automatically supplies the remaining energy." },
+        { name: "Solar, battery & off-grid", desc: "CORE can run from a FLUXX battery through a MOEBIUS hybrid or off-grid inverter — heating and cooling from local solar and storage." },
+      ],
+      modes: [
+        { name: "Comfort", desc: "Maintains the selected room temperature. Solar is used first; grid or battery supplies the rest automatically." },
+        { name: "Solar First", desc: "Operates mainly when solar energy is available. Output can reduce as generation falls, per your settings." },
+        { name: "Cheapest Energy", desc: "Combines solar, battery and dynamic prices. Can preheat or precool during lower-cost periods within comfort limits." },
+        { name: "Grid Avoidance", desc: "Restricts grid use. Runs primarily from direct solar, stored battery energy or an off-grid MOEBIUS system." },
+      ],
+      transition: [
+        { step: "Step 1", label: "Install one CORE in the most-used room." },
+        { step: "Step 2", label: "Use solar and low-price electricity to cut gas or mazout use." },
+        { step: "Step 3", label: "Add more CORE units to other important rooms." },
+        { step: "Step 4", label: "Add FLUXX storage and MOEBIUS power management." },
+        { step: "Step 5", label: "Reduce boiler operation further toward a mostly-electric building." },
+      ],
+
+      // calculator bindings
+      countryOptions: Object.keys(COUNTRIES).map(k => ({ value: k, label: COUNTRIES[k].label, selected: k === st.country })),
+      fuelOptions: [{ value: "gas", label: "Natural gas" }, { value: "oil", label: "Heating oil (mazout)" }].map(o => ({ ...o, selected: o.value === st.fuel })),
+      modelOptions: Object.keys(MODELS).map(k => ({ value: k, label: MODELS[k].label, selected: k === st.model })),
+      modeOptions: Object.keys(MODES).map(k => ({ value: k, label: MODES[k].label, selected: k === st.mode })),
+      insulationOptions: Object.keys(INSULATION).map(k => ({ value: k, label: INSULATION[k].label + " (" + INSULATION[k].k + " kWh/m\u00B2)", selected: k === st.insulation })),
+      isSolar: cx.M.solar,
+      area: st.area, rooms: st.rooms, hours: st.hours, days: st.days, pv: st.pv, cost: st.cost,
+      onCountry: set("country"), onFuel: set("fuel"), onModel: set("model"), onMode: set("mode"),
+      onInsulation: set("insulation"), onArea: set("area"), onRooms: set("rooms"),
+      onHours: set("hours"), onDays: set("days"), onPv: set("pv"), onCost: set("cost"),
+
+      r: {
+        existing: this.fmtEUR(cx.existing),
+        optimised: this.fmtEUR(cx.expected.cost),
+        fuelLabel: st.fuel === "gas" ? "Natural gas" : "Heating oil",
+        fuelPrice: st.fuel === "gas" ? cx.fuelPrice.toFixed(4).replace(".", ",") + " €/kWh" : cx.fuelPrice.toFixed(2).replace(".", ",") + " €/L",
+        scenarios: cx.scenarios.map(s => ({ name: s.name, scop: s.scop, cost: this.fmtEUR(s.cost), saving: this.fmtEUR(s.saving), pct: s.pct })),
+        breakdown: [
+          { label: "Baseline heat demand", value: this.fmtEUR(cx.qUseful) + " kWh" },
+          { label: "Heat supplied by CORE", value: this.fmtEUR(cx.heatByCore) + " kWh" },
+          { label: "CORE electricity (exp.)", value: this.fmtEUR(cx.expected.coreElec) + " kWh" },
+          { label: "Direct solar used (exp.)", value: this.fmtEUR(cx.expected.solarUsed) + " kWh" },
+        ],
+        payback,
+        installNote: "Typically 2–4 hours per unit; site conditions may extend this.",
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

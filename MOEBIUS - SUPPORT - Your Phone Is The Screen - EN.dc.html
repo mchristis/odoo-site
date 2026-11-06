@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>MOEBIUS Your Phone Is The Screen | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoebiusNav" active="connected" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="MOEBIUS" rgb="241,147,27" eyebrow="Your phone is the screen" title="No screen to become obsolete. No buttons to break." intro="From years of installing and servicing inverters, we learned that buttons and small displays often age faster than the power electronics behind them." slot="moebius-your-phone-is-the-screen-hero" shot="MOEBIUS · Your Phone Is The Screen · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:660px;">Exposed to heat, moisture and dust, they become a common failure point — while the inverter is still fully capable. MOEBIUS removes both.</p>
+    <div style="border-radius:12px;padding:12px 20px;background:var(--color-card-moebius);display:inline-block;">
+      <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">The interface can age. The inverter should not.</div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div data-stack="1" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start;">
+      <div>
+        <p style="margin:0 0 18px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">A traditional inverter screen is small, rarely used and fixed to the technology available when the inverter was built. MOEBIUS replaces it with a digital interface that evolves. Tap the inverter through NFC and EMON opens the interface for that exact unit — in a screen you already know, in your language.</p>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">When your phone becomes outdated, you replace the phone — not the inverter. By removing mechanical controls and integrated displays, MOEBIUS eliminates two common failure points from the product architecture.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;">
+        <sc-for list="{{ advantages }}" as="a" hint-placeholder-count="6">
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);padding:12px 0;border-top:1px solid var(--color-divider);line-height:var(--web-small-lh);">{{ a }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:24px;">One interface, two views</div>
+      <div data-cols="2" style="display:grid;gap:12px;grid-template-columns:1fr 1fr;--cg:12px;">
+        <div style="border-radius:12px;background:#F4F4F4;padding:28px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:8px;">Tap for the essentials</div>
+          <div style="font-size:var(--web-body-size);font-weight:300;margin-bottom:16px;">Homeowner view</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);margin-bottom:16px;">Without a full EMON subscription, the owner can access the essential information to understand and support the inverter: is it operating correctly, how much is it producing, are there warnings, where are the warranty and documents.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            <sc-for list="{{ owner }}" as="o" hint-placeholder-count="6"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:5px 10px;border-radius:8px;background:var(--color-card-moebius);color:var(--color-text-primary);">{{ o }}</span></sc-for>
+          </div>
+        </div>
+        <div style="border-radius:12px;background:#F4F4F4;padding:28px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:8px;">Go deeper with EMON</div>
+          <div style="font-size:var(--web-body-size);font-weight:300;margin-bottom:16px;">Installer view</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);margin-bottom:16px;">The same inverter presents installer-level detail based on access rights — more than any built-in screen could display, without adding fragile controls to the enclosure.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            <sc-for list="{{ installer }}" as="i" hint-placeholder-count="8"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:5px 10px;border-radius:8px;background:var(--color-card-moebius);color:var(--color-text-primary);">{{ i }}</span></sc-for>
+          </div>
+        </div>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);max-width:760px;line-height:var(--web-small-lh);">Simple for the owner. Complete for the installer.</p>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="MOEBIUS - PRODUCT - Overview - EN.dc.html#connected" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:var(--color-card-moebius);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">NFC &amp; QR<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <a href="MOEBIUS - PRODUCT - Overview - EN.dc.html#connected" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:var(--color-card-moebius);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">EMON monitoring<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <a href="MOEBIUS - PRODUCT - Overview - EN.dc.html#connected" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:var(--color-card-moebius);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Connected fast<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="ContentSections" brand="MOEBIUS" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOEBIUS" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MOEBIUS" accent="var(--color-brand-moebius)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      advantages: [
+        "No screen that fades, cracks or becomes outdated",
+        "No complex button combinations or tiny fault codes",
+        "No need to stand next to the inverter to understand it",
+        "Multilingual information and better accessibility",
+        "New functions can be added later through software",
+        "The interface adapts to homeowners and installers",
+      ],
+      owner: ["Operating status", "Solar production", "Grid import / export", "Battery status", "Savings & costs", "Warranty", "Support"],
+      installer: ["Live DC & AC values", "MPPT performance", "String assignments", "Grid voltage & frequency", "Error history", "Firmware version", "Commissioning status", "Export-control settings", "Communication status", "Protection events"],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>body{margin:0;background:#FFFFFF;font-family:var(--font-web);color:#5F5E5E}a{color:#4F4F4E;text-decoration:none}a:hover{color:#F76801}</style>
+</helmet>
+<div style="display:flex;flex-wrap:wrap;gap:24px;font-family:var(--font-web);">
+  <div onMouseLeave="{{ gridLeave }}" style="flex:1 1 520px;min-width:0;box-sizing:border-box;background:#F4F4F4;border-radius:12px;padding:clamp(16px,3.5vw,48px);display:flex;flex-direction:column;gap:20px;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Products</div>
+    <div data-cols="5" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(4px,1.2vw,16px);--cg:clamp(4px,1.2vw,16px);">
+    <sc-for list="{{ flat }}" as="t" hint-placeholder-count="25">
+      <button type="button" onMouseEnter="{{ t.enter }}" onFocus="{{ t.focus }}" onClick="{{ t.click }}" aria-pressed="{{ t.pressed }}" aria-label="{{ t.aria }}" style="font:inherit;background:transparent;border:0;cursor:pointer;padding:10px 0;min-height:96px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;min-width:0;" style-focus="outline:1px solid #4F4F4E;outline-offset:2px;">
+        <span style="position:relative;display:block;height:clamp(26px,2.8vw,36px);width:clamp(26px,2.8vw,36px);transform:scale({{ t.scale }});transform-origin:center top;transition:transform 180ms ease;"><img src="{{ t.logo }}" alt="" style="display:block;height:100%;width:100%;object-fit:contain;visibility:{{ t.colVis }};"><span style="position:absolute;inset:0;background:#A3A3A3;visibility:{{ t.monoVis }};-webkit-mask:url('{{ t.logo }}') center / contain no-repeat;mask:url('{{ t.logo }}') center / contain no-repeat;"></span></span>
+        <span style="display:flex;flex-direction:column;align-items:center;gap:3px;margin-top:{{ t.labelGap }};opacity:{{ t.labelOp }};transition:opacity 180ms ease,margin-top 180ms ease;text-align:center;">
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);line-height:1;color:#4F4F4E;text-transform:uppercase;">{{ t.name }}</span>
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);line-height:1.2;text-transform:uppercase;color:#5F5E5E;">{{ t.sub }}</span>
+        </span>
+      </button>
+    </sc-for>
+    </div>
+    <div style="border-top:1px solid #D9D9D9;"></div>
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Systems</div>
+    <div data-cols="5" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(4px,1.2vw,16px);--cg:clamp(4px,1.2vw,16px);">
+    <sc-for list="{{ sys }}" as="t" hint-placeholder-count="7">
+      <button type="button" onMouseEnter="{{ t.enter }}" onFocus="{{ t.focus }}" onClick="{{ t.click }}" aria-pressed="{{ t.pressed }}" aria-label="{{ t.aria }}" style="font:inherit;background:transparent;border:0;cursor:pointer;padding:10px 0;min-height:96px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;min-width:0;" style-focus="outline:1px solid #4F4F4E;outline-offset:2px;">
+        <span style="position:relative;display:block;height:clamp(26px,2.8vw,36px);width:clamp(26px,2.8vw,36px);transform:scale({{ t.scale }});transform-origin:center top;transition:transform 180ms ease;"><img src="{{ t.logo }}" alt="" style="display:block;height:100%;width:100%;object-fit:contain;visibility:{{ t.colVis }};"><span style="position:absolute;inset:0;background:#A3A3A3;visibility:{{ t.monoVis }};-webkit-mask:url('{{ t.logo }}') center / contain no-repeat;mask:url('{{ t.logo }}') center / contain no-repeat;"></span></span>
+        <span style="display:flex;flex-direction:column;align-items:center;gap:3px;margin-top:{{ t.labelGap }};opacity:{{ t.labelOp }};transition:opacity 180ms ease,margin-top 180ms ease;text-align:center;">
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);line-height:1;color:#4F4F4E;text-transform:uppercase;">{{ t.name }}</span>
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);line-height:1.2;text-transform:uppercase;color:#5F5E5E;">{{ t.sub }}</span>
+        </span>
+      </button>
+    </sc-for>
+    </div>
+  </div>
+  <aside aria-live="polite" onMouseEnter="{{ panelEnter }}" style="flex:1 1 320px;min-width:0;min-height:520px;box-sizing:border-box;padding:32px 28px 16px;border-radius:12px;background:#F7F7F5;display:flex;flex-direction:column;justify-content:space-between;gap:24px;">
+    <sc-if value="{{ idle }}" hint-placeholder-val="{{ true }}">
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
+        <span style="font-size:32px;font-weight:100;line-height:1.1;color:#5F5E5E;">D</span>
+        <span style="font-size:32px;font-weight:100;line-height:1.1;color:#5F5E5E;">A</span>
+        <span style="font-size:32px;font-weight:100;line-height:1.1;color:#5F5E5E;">T</span>
+        <span style="font-size:32px;font-weight:100;line-height:1.1;color:#5F5E5E;">A</span>
+      </div>
+    </sc-if>
+    <sc-if value="{{ hasActive }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:20px;min-width:0;">
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="font-size:clamp(28px,3vw,44px);font-weight:100;letter-spacing:0.15em;line-height:1.05;text-transform:uppercase;color:#4F4F4E;overflow-wrap:anywhere;">{{ a.name }}</div>
+          <div style="font-size:var(--web-body-size);font-weight:300;color:#4F4F4E;line-height:var(--web-body-lh);">{{ a.sub }}</div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">{{ a.group }}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#252525;">Where do you live?</div>
+          <div role="group" aria-label="Where do you live" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:0 12px;"><button type="button" onClick="{{ rg_eu }}" aria-pressed="{{ rgOn_eu }}" style="cursor:pointer;background:none;border:0;border-top:2px solid {{ rgL_eu }};padding:8px 0 4px;font:inherit;font-size:14px;font-weight:300;color:#252525;text-align:left;min-height:44px;transition:border-color 200ms ease;" style-focus="outline:1px solid #4F4F4E;outline-offset:2px;">European Union</button><button type="button" onClick="{{ rg_uk }}" aria-pressed="{{ rgOn_uk }}" style="cursor:pointer;background:none;border:0;border-top:2px solid {{ rgL_uk }};padding:8px 0 4px;font:inherit;font-size:14px;font-weight:300;color:#252525;text-align:left;min-height:44px;transition:border-color 200ms ease;" style-focus="outline:1px solid #4F4F4E;outline-offset:2px;">United Kingdom</button><button type="button" onClick="{{ rg_apac }}" aria-pressed="{{ rgOn_apac }}" style="cursor:pointer;background:none;border:0;border-top:2px solid {{ rgL_apac }};padding:8px 0 4px;font:inherit;font-size:14px;font-weight:300;color:#252525;text-align:left;min-height:44px;transition:border-color 200ms ease;" style-focus="outline:1px solid #4F4F4E;outline-offset:2px;">Asia-Pacific</button><button type="button" onClick="{{ rg_latam }}" aria-pressed="{{ rgOn_latam }}" style="cursor:pointer;background:none;border:0;border-top:2px solid {{ rgL_latam }};padding:8px 0 4px;font:inherit;font-size:14px;font-weight:300;color:#252525;text-align:left;min-height:44px;transition:border-color 200ms ease;" style-focus="outline:1px solid #4F4F4E;outline-offset:2px;">Latin America</button><button type="button" onClick="{{ rg_africa }}" aria-pressed="{{ rgOn_africa }}" style="cursor:pointer;background:none;border:0;border-top:2px solid {{ rgL_africa }};padding:8px 0 4px;font:inherit;font-size:14px;font-weight:300;color:#252525;text-align:left;min-height:44px;transition:border-color 200ms ease;" style-focus="outline:1px solid #4F4F4E;outline-offset:2px;">Africa</button><button type="button" onClick="{{ rg_me }}" aria-pressed="{{ rgOn_me }}" style="cursor:pointer;background:none;border:0;border-top:2px solid {{ rgL_me }};padding:8px 0 4px;font:inherit;font-size:14px;font-weight:300;color:#252525;text-align:left;min-height:44px;transition:border-color 200ms ease;" style-focus="outline:1px solid #4F4F4E;outline-offset:2px;">Middle East</button></div>
+        </div>
+        <sc-if value="{{ noRegion }}" hint-placeholder-val="{{ true }}"><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">Choose where you live to see where this data is stored.</p></sc-if>
+        <sc-if value="{{ hasRegion }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #252525;padding-top:12px;">
+          <p style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;text-wrap:pretty;">{{ answer }}</p>
+          <a href="#data-regions" onClick="{{ toMap }}" style="align-self:flex-start;font-size:14px;font-weight:300;color:#252525;border-bottom:1px solid #BBBBBB;text-decoration:none;" style-hover="color:#F76801;border-bottom-color:#F76801;">See it on the data map</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#252525;">What is stored</div>
+          <div style="display:flex;flex-direction:column;">
+            <div style="font-size:14px;font-weight:400;color:#252525;padding-bottom:4px;">{{ a.wLabel }}</div>
+            <sc-for list="{{ a.warranty }}" as="r" hint-placeholder-count="4"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;padding:5px 0;border-top:1px solid #E3E3E3;">{{ r }}</div></sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;">
+            <div style="font-size:14px;font-weight:400;color:#252525;padding:6px 0 4px;">{{ a.opLabel }}</div>
+            <sc-for list="{{ a.op }}" as="r" hint-placeholder-count="5"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;padding:5px 0;border-top:1px solid #E3E3E3;">{{ r }}</div></sc-for>
+          </div>
+          <sc-if value="{{ a.hasNote }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">{{ a.note }}</p></sc-if>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#252525;padding-bottom:6px;">Who can see it</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;padding:5px 0;border-top:1px solid #E3E3E3;">The owner</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;padding:5px 0;border-top:1px solid #E3E3E3;">The installer, with the owner’s permission</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;padding:5px 0;border-top:1px solid #E3E3E3;">STRØHM.ENERGY support, for defined purposes</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;padding:5px 0;border-top:1px solid #E3E3E3;">The grid operator, only where the law requires it</div>
+        </div>
+        </div></sc-if>
+        </div>
+      </div>
+    </sc-if>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+      <span style="font-size:12px;font-weight:300;color:#5F5E5E;">{{ hint }}</span>
+      <button type="button" onClick="{{ unpin }}" aria-label="Back to all products" style="font:inherit;background:transparent;border:0;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;gap:6px;transform:rotate({{ rot }});transition:transform 220ms ease;" style-focus="outline:1px solid #4F4F4E;outline-offset:2px;">
+        <span style="display:block;width:1px;height:28px;background:#5F5E5E;"></span>
+        <span style="display:block;width:1px;height:28px;background:#5F5E5E;"></span>
+        <span style="display:block;width:1px;height:28px;background:#5F5E5E;"></span>
+      </button>
+    </div>
+  </aside>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:720}}">
+const PD_LOGO = (n) => 'assets/logos/' + n + '-symbol.' + (['AGRIX', 'TERRIX', 'PARX', 'PONTIX', 'TECTIX', 'LINA'].indexOf(n) >= 0 ? 'png' : 'svg');
+const PD_SUB = { ANDO: 'Solar generation', LINA: 'Vertical flat-roof solar', PROP: 'Wind generation', MOEBIUS: 'Power conversion', FLUXX: 'Energy storage', SYNQ: 'Energy metering', OZZY: 'Energy switching', NENDO: 'Thermal systems', FEU: 'Radiant heating', OGO: 'Water systems', XOOM: 'EV charging', AIRO: 'Airflow systems', GLOW: 'Solar lighting', MOX: 'Architectural PV', AGRIX: 'Agri-PV structures', TERRIX: 'Utility PV mounting', PONTIX: 'Floating PV mounting', TECTIX: 'Roof PV mounting', PARX: 'Solar parking', CHILL: 'Energy-integrated infrastructure', TOGU: 'Electrical connectivity', DODO: 'Bird protection', SHELTR: 'Asset protection', MUKI: 'Energy sets, defined', WURK: 'Installation equipment' };
+const PD_SYS_SUB = { EMON: 'Energy management', KALK: 'Energy calculation', TRIBE: 'Distributed energy systems', KERN: 'Operational control', PUSH: 'Installer growth', PACT: 'Group purchasing', DEPOT: 'Supply infrastructure' };
+const PD_SYS = [
+  { name: 'EMON', local: true, account: ['Owner name, email and address', 'Installer linked to the site, with the owner’s permission', 'Site location (address)', 'App login and access history'], op: ['List of connected devices and their serial numbers', 'Energy data from connected devices (production, storage, consumption)', 'Settings, schedules and owner rules', 'Commands sent and their result (audit log)', 'Tariff and price data used for optimisation', 'Weather forecast for the site'] },
+  { name: 'KALK', account: ['User name, email and company', 'Customer details entered by the installer, with the customer’s consent'], op: ['Project address or roof location', 'Roof and site measurements, layout drawings', 'Energy consumption figures entered by the user', 'Calculation inputs and results (yield, savings, sizing)', 'Selected products and quotations', 'Uploaded photos and documents'] },
+  { name: 'TRIBE', account: ['Participant name, email and address', 'Participation agreements and consent'], op: ['Site location of each participating system', 'Shared energy data (production, storage, consumption per site)', 'Energy shared or traded between participants (kWh)', 'Settlement and allocation records', 'Commands sent and their result (audit log)'] },
+  { name: 'KERN', account: ['Installer company and employee accounts', 'Customer name, contact details and site address'], op: ['Projects, tasks and planning', 'Installation and commissioning records', 'Photos and documents per project', 'Stock, orders and deliveries', 'Time and work logs', 'Invoices and payment status'] },
+  { name: 'PUSH', account: ['Lead contact details: name, email, phone and address', 'Consent to be contacted, with date', 'Installer accounts and service areas'], op: ['Lead request: product interest and project details', 'Installer the lead is assigned to', 'Lead status and follow-up history', 'Campaign and source of the lead'] },
+  { name: 'PACT', account: ['Participant name, email and company', 'Delivery addresses'], op: ['Purchase commitments and quantities', 'Contracts and agreed prices', 'Payment and invoice status'] },
+  { name: 'DEPOT', account: ['Customer and installer accounts', 'Delivery and pickup addresses'], op: ['Orders, shipments and tracking', 'Stock per warehouse', 'Serial numbers of shipped products', 'Proof of delivery (signature, photo)', 'Returns and claims'] }
+];
+const PD_REG = { eu: 'in Germany (European Union)', uk: 'in the United Kingdom', apac: 'in Singapore (Asia-Pacific)', latam: 'in São Paulo, Brazil (Latin America)', africa: 'in Germany, through European infrastructure', me: 'in a Middle East location that is still to be determined' };
+const PD_NOLOCAL = ['MOX', 'AGRIX', 'TERRIX', 'PONTIX', 'TECTIX', 'PARX', 'CHILL', 'TOGU', 'DODO', 'WURK'];
+const W_STD = ['Owner name, email and address', 'Installer and installation date', 'Site location (address)', 'Serial number and product type'];
+const W_STRUCT = ['Owner name, email and address', 'Installer and installation date', 'Site location (address)', 'Serial or batch number and product type'];
+const PD_GROUPS = [
+  { title: 'Generate energy', brands: ['ANDO', 'LINA', 'PROP'], warranty: W_STD, opLabel: 'For operation', op: ['Energy production (kWh)', 'Power output over time', 'Device status and alarms', 'Firmware version', 'Wind speed or irradiance'], note: 'Production is measured by the inverter, not by the product itself.' },
+  { title: 'Convert energy', brands: ['MOEBIUS'], warranty: W_STD, opLabel: 'For operation', op: ['Energy production and feed-in (kWh)', 'Power, voltage and current over time', 'Grid frequency and grid events', 'Device status, alarms and error codes', 'Firmware version and update history', 'Settings and grid-code profile', 'Commands received and their result'] },
+  { title: 'Store energy', brands: ['FLUXX'], warranty: W_STD, opLabel: 'For operation', op: ['State of charge (%)', 'Energy charged and discharged (kWh)', 'Battery health and cycle count', 'Cell temperature and voltage', 'Device status, alarms and error codes', 'Firmware version and update history', 'Charge and discharge settings', 'Commands received and their result'] },
+  { title: 'Measure and control', brands: ['SYNQ', 'OZZY'], warranty: W_STD, opLabel: 'For operation', op: ['Electricity consumption per circuit or appliance (kWh)', 'Grid import and export (kWh)', 'Power over time (load profile)', 'Switching state (on/off) and schedules', 'Device status and alarms', 'Firmware version and update history', 'Commands received and their result', 'Meter readings for billing, where the meter is certified (MID)'] },
+  { title: 'Use energy', brands: ['NENDO', 'FEU', 'OGO', 'XOOM', 'AIRO', 'GLOW'], warranty: W_STD, opLabel: 'For operation', op: ['Energy use (kWh)', 'Operating mode and schedules', 'Temperatures and set points', ['Charging sessions (time, kWh), without vehicle identity', ['XOOM']], ['Indoor air values (CO₂, humidity)', ['AIRO']], 'Device status, alarms and error codes', 'Firmware version and update history', 'Commands received and their result'] },
+  { title: 'Build and connect', brands: ['MOX', 'AGRIX', 'TERRIX', 'PONTIX', 'TECTIX', 'PARX', 'CHILL', 'TOGU'], warranty: W_STRUCT, opLabel: 'For installation and maintenance', op: ['NFC or QR tag ID', 'Installation photos', 'Project documents (drawings, structural calculations)', 'Inspection and maintenance records'] },
+  { title: 'Protect the system', brands: ['DODO', 'SHELTR'], warranty: W_STRUCT, opLabel: 'For installation and maintenance', op: ['NFC or QR tag ID', 'Installation photos', 'Inspection and maintenance records', ['Enclosure temperature or ventilation status, where fitted', ['SHELTR']]] },
+  { title: 'Complete systems', brands: ['MUKI'], warranty: W_STD, opLabel: 'For operation', op: ['The combined data of the products in the set, such as the inverter, battery and meter'] },
+  { title: 'Tools', brands: ['WURK'], warranty: ['Owner name, email and address', 'Purchase date and buyer (installer company)', 'Serial number and product type'], opLabel: 'For maintenance', op: ['Calibration and inspection dates (test instruments, safety equipment)', 'Test results stored on the instrument, where it has memory'] }
+];
+class Component extends DCLogic {
+  state = { hover: null, pinned: null, region: null };
+  componentDidMount() { this._rs = (e) => { const k = e && e.detail; if (k && k !== this.state.region && PD_REG[k]) this.setState({ region: k }); }; window.addEventListener('strohm:region-set', this._rs); }
+  btn(n, sub, on, pinned) {
+    return { name: n, sub: sub, logo: PD_LOGO(n), aria: n + ', ' + sub + ': show stored data', scale: on ? 1.3 : 1, colVis: on ? 'visible' : 'hidden', monoVis: on ? 'hidden' : 'visible', labelOp: on ? 1 : 0, labelGap: on ? '12px' : '0px', pressed: pinned === n ? 'true' : 'false',
+      enter: () => { clearTimeout(this.t); if (this.state.pinned) return; this.t = setTimeout(() => this.setState({ hover: n }), 80); },
+      focus: () => { if (!this.state.pinned) this.setState({ hover: n }); },
+      click: () => { clearTimeout(this.t); this.setState((s) => (s.pinned === n ? { pinned: null, hover: n } : { pinned: n, hover: n })); } };
+  }
+  componentWillUnmount() { clearTimeout(this.t); window.removeEventListener('strohm:region-set', this._rs); }
+  renderVals() {
+    const { hover, pinned } = this.state, cur = pinned || hover;
+    let active = null;
+    const flat = [];
+    PD_GROUPS.forEach((g) => g.brands.forEach((n) => {
+      const on = cur === n;
+      if (on) active = { local: PD_NOLOCAL.indexOf(n) < 0, wLabel: 'For warranty', name: n, sub: PD_SUB[n] || '', group: g.title, warranty: g.warranty, opLabel: g.opLabel, op: g.op.filter((x) => !Array.isArray(x) || x[1].indexOf(n) >= 0).map((x) => (Array.isArray(x) ? x[0] : x)), note: g.note || '', hasNote: !!g.note };
+      flat.push(this.btn(n, PD_SUB[n] || '', on, pinned)); return;
+      flat.push({
+        name: n, sub: PD_SUB[n] || '', logo: PD_LOGO(n), aria: n + ', ' + (PD_SUB[n] || '') + ': show stored data',
+        scale: on ? 1.3 : 1, colVis: on ? 'visible' : 'hidden', monoVis: on ? 'hidden' : 'visible',
+        labelOp: on ? 1 : 0, labelGap: on ? '12px' : '0px', pressed: pinned === n ? 'true' : 'false',
+        enter: () => { clearTimeout(this.t); if (this.state.pinned) return; this.t = setTimeout(() => this.setState({ hover: n }), 80); },
+        focus: () => { if (!this.state.pinned) this.setState({ hover: n }); },
+        click: () => { clearTimeout(this.t); this.setState((s) => (s.pinned === n ? { pinned: null, hover: n } : { pinned: n, hover: n })); }
+      });
+    }));
+    const sys = PD_SYS.map((x) => { const on = cur === x.name; if (on) active = { local: !!x.local, wLabel: 'For the account', name: x.name, sub: PD_SYS_SUB[x.name], group: 'System', warranty: x.account, opLabel: 'For operation', op: x.op, note: '', hasNote: false }; return this.btn(x.name, PD_SYS_SUB[x.name], on, pinned); });
+    const rg = this.state.region, rv = {};
+    Object.keys(PD_REG).forEach((k) => { rv['rg_' + k] = () => { this.setState({ region: k }); try { window.dispatchEvent(new CustomEvent('strohm:region-pick', { detail: k })); } catch (e) {} }; rv['rgOn_' + k] = rg === k ? 'true' : 'false'; rv['rgL_' + k] = rg === k ? '#F76801' : '#E3E3E3'; });
+    const answer = active && rg ? 'Your ' + active.name + ' data is stored ' + PD_REG[rg] + (active.local ? ' and on the EMON controller at your site.' : '.') : '';
+    return {
+      ...rv, answer, hasRegion: !!rg, noRegion: !rg,
+      sys, flat, a: active || { warranty: [], op: [], local: true, wLabel: '' }, hasActive: !!active, idle: !active,
+      hint: pinned ? 'Selected. Tap the lines to go back.' : 'Hover or tap a symbol to see what it stores.',
+      rot: pinned ? '90deg' : '0deg',
+      gridLeave: () => { clearTimeout(this.t); },
+      panelEnter: () => { clearTimeout(this.t); },
+      unpin: () => this.setState({ pinned: null, hover: null }),
+      toMap: (e) => { const el = document.getElementById('data-regions'); if (!el) return; if (e && e.preventDefault) e.preventDefault(); window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 156, behavior: 'smooth' }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

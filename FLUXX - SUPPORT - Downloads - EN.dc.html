@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>FLUXX Downloads | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="FluxxNav" active="support" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="FLUXX" rgb="253,199,6" title="Documents per product." intro="Datasheets, manuals and declarations for every FLUXX product." slot="fluxx-downloads-hero" shot="FLUXX · Downloads · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section data-screen-label="01 Hero" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 48px;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;display:flex;gap:6px;flex-wrap:wrap;"><a href="FLUXX - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">FLUXX</a><span>&#8250;</span><span style="color:var(--color-text-primary);">DOWNLOADS</span></div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+      <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;background:var(--color-brand-fluxx);"></span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Downloads</span></div>
+      <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;border:1px solid #DDDDDD;border-radius:8px;padding:2px 6px;">Draft</span>
+    </div>
+    <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:720px;">Files are added as they are released.</p>
+  </section>
+
+  <section data-screen-label="02 Filter" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 24px;box-sizing:border-box;">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+        <button onClick="{{ t.pick }}" style="{{ t.style }}">{{ t.label }}</button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="documents" data-screen-label="03 Documents" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 72px;box-sizing:border-box;">
+    <div style="display:flex;flex-direction:column;border-top:1px solid var(--color-text-primary);">
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:16px;padding:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);"><span>Product</span><span>Datasheet</span><span>Manual</span><span>Declarations</span></div>
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="10">
+        <div style="{{ r.rowStyle }}">
+          <span style="display:flex;flex-direction:column;gap:2px;"><span style="font-weight:400;color:var(--color-text-primary);">{{ r.name }}</span><span style="font-size:var(--web-min-size);color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ r.seg }}</span></span>
+          <span style="color:#5F5E5E;">TO CONFIRM</span><span style="color:#5F5E5E;">TO CONFIRM</span><span style="color:#5F5E5E;">TO CONFIRM</span>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);max-width:760px;line-height:var(--web-min-lh);">Product definitions are internal documents and are not published here.</p>
+  </section>
+
+  <section data-screen-label="04 Next" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 16px;box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;">
+      <a href="FLUXX - SUPPORT - Installation - EN.dc.html" style="background:var(--color-card-fluxx);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;" style-hover="background:var(--color-surface-card-mid);"><span style="font-size:16px;font-weight:400;">Installation &#8250;</span><span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Mounting and connection per format.</span></a>
+      <a href="FLUXX - SUPPORT - Commissioning - EN.dc.html" style="background:var(--color-card-fluxx);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;" style-hover="background:var(--color-surface-card-mid);"><span style="font-size:16px;font-weight:400;">Commissioning &#8250;</span><span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Six steps in the EMON installer app.</span></a>
+      <a href="FLUXX - SUPPORT - Talk to an Expert - EN.dc.html" style="background:var(--color-card-fluxx);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;" style-hover="background:var(--color-surface-card-mid);"><span style="font-size:16px;font-weight:400;">Missing a document? &#8250;</span><span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Ask a specialist.</span></a>
+    </div>
+  </section>
+
+  <div style="height:56px;"></div>
+  <dc-import name="ContentSections" brand="FLUXX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="FLUXX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="FLUXX" accent="var(--color-brand-fluxx)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const P = [
+  ["BOWI 2,0 / 5,0 / 10,0 / 16,0 kWh", "residential"], ["BOWI STACK 2.5 / 5", "residential"], ["KUBUZ 2.5 ESS", "residential"],
+  ["POUF 2.5 AIO", "residential"], ["DIVAN 5.1 AIO", "residential"], ["BENCH 10.2 AIO", "residential"],
+  ["TRIFFID", "residential"], ["STAQ LV / HV", "residential"], ["BLOQ LV", "residential"], ["LINEA", "residential"],
+  ["Portable power stations", "residential"],
+  ["KYUZ", "commercial"], ["SILO", "commercial"],
+  ["KOFR", "utility"], ["FLUXX-5016-20HQ", "utility"],
+  ["MOEBIUS inverters (ALVIX · LUNOX · SYRA)", "all"],
+];
+const LAB = { all: "All", residential: "Residential", commercial: "Commercial", utility: "Utility" };
+class Component extends DCLogic {
+  state = { seg: "all" };
+  renderVals() {
+    const seg = this.state.seg;
+    const tabs = Object.keys(LAB).map((k) => ({ label: LAB[k], pick: () => this.setState({ seg: k }), style: { cursor: "pointer", fontFamily: "inherit", height: "44px", padding: "0 20px", fontSize: "14px", borderRadius: "8px", border: k === seg ? "1px solid var(--color-text-primary)" : "1px solid var(--color-divider)", background: k === seg ? "#252525" : "#FFFFFF", color: k === seg ? "#FFFFFF" : "#4F4F4E" } }));
+    const list = P.filter(([, s]) => seg === "all" || s === seg || s === "all");
+    const rows = list.map(([name, s], j) => ({ name, seg: s === "all" ? "All segments" : LAB[s], rowStyle: { display: "grid", gridTemplateColumns: "minmax(0,1.4fr) repeat(3,minmax(0,1fr))", gap: "16px", padding: "14px 12px", borderTop: "1px solid var(--color-divider)", borderBottom: j === list.length - 1 ? "1px solid var(--color-divider)" : "none", background: j % 2 ? "#E3E3E3" : "#FFFFFF", fontSize: "14px", fontWeight: 300, alignItems: "center" } }));
+    return { tabs, rows };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>FEU Responsibility | STRØHM.ENERGY</title>
+<meta name="robots" content="noindex">
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="FeuNav" active="responsibility" hint-size="100%,49px"></dc-import>
+  <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:16px var(--web-side);box-sizing:border-box;font-size:12px;font-weight:700;letter-spacing:0.08em;color:#B07818;border-bottom:1px solid var(--color-divider);">DRAFT. Temporary text written without an FEU source. Standards are named as applicable, not as held. Replace before publishing.</div>
+  <dc-import name="BrandResponsibility" brand="FEU" unit="heating panel" intro="{{ intro }}" durability="{{ durability }}" materials="{{ materials }}" certs="{{ certs }}" packaging="{{ packaging }}" eol="{{ eol }}" hint-size="100%,2400px"></dc-import>
+  <dc-import name="ContentSections" brand="FEU" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="FEU" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="FEU" accent="var(--color-brand-feu)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const TC = (w) => `[TO CONFIRM: ${w}]`;
+    return {
+      intro: "Tested electrical safety, declared efficiency, restricted substances and a documented end-of-life route. Every claim on this page is linked to a document.",
+      durability: [
+        { test: "Safety of room heaters", standard: "EN 60335-2-30 (applicable)", result: TC("result per model") },
+        { test: "Safety of flexible sheet heating elements", standard: "EN 60335-2-96 (applicable, where used)", result: TC("result per model") },
+        { test: "Ecodesign of local space heaters", standard: "Regulation (EU) 2015/1188 (applicable)", result: TC("control functions and efficiency per model") },
+        { test: "Surface temperature and ingress protection", standard: TC("IP class per model, for bathroom and outdoor use"), result: TC("result per model") },
+      ],
+      materials: [
+        { label: "Surfaces", headline: "Panel materials and finishes.", value: TC("glass, metal, mirror and coating materials per family"), dir: "FEU_RESPONSIBILITY_MATERIALS_SURFACE_01 · panel edge and surface detail · 16:10 · placeholder (P2)" },
+        { label: "Declarations", headline: "Substances declared, not assumed.", value: "REACH and RoHS declarations per model. " + TC("which declarations exist"), dir: "FEU_RESPONSIBILITY_MATERIALS_DECLARATION_01 · declaration document preview · 16:10 · placeholder (P2)" },
+      ],
+      certs: [
+        { code: "CE", label: "CE marking under the applicable directives " + TC("per model") },
+        { code: "ISO 9001", label: "Quality management " + TC("held for FEU production") },
+        { code: "ISO 14001", label: "Environmental management " + TC("held for FEU production") },
+      ],
+      packaging: TC("packaging materials and pallet take-back"),
+      eol: ["Panel in use", "Disconnected by an installer or the owner", "Separate collection under the WEEE Directive 2012/19/EU", "Approved treatment and material recovery", "Recycling record", "Closed ownership record"],
+    };
+  }
+}
+</script>
+</body>
+</html>

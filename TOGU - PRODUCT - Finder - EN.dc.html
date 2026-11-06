@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>TOGU Finder | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="ToguNav" active="range" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="TOGU" rgb="196,135,35" eyebrow="TOGU product finder" title="Know exactly what you are ordering." intro="Pick a category, then a product." slot="togu-finder-hero" shot="TOGU · Finder · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 8px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:700px;">Every item explains what it is, what it looks like, its key specifications, and why the TOGU version is the better choice &#8212; so you can check and specify faster.</p>
+  </section>
+
+  <!-- CATEGORY TABS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:24px;display:flex;flex-wrap:wrap;gap:8px;">
+      <sc-for list="{{ catTabs }}" as="c" hint-placeholder-count="4">
+        <button onClick="{{ c.onClick }}" style="cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;padding:12px 20px;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.color }};border-radius:8px;">{{ c.label }} <span style="color:{{ c.countColor }};">{{ c.count }}</span></button>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- BODY: list + detail -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:start;">
+
+      <!-- product list -->
+      <div style="flex:1 1 300px;min-width:0;background:#F4F4F4;border-radius:12px;">
+        <div style="padding:14px 18px;border-bottom:1px solid var(--color-divider);font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-primary);background:var(--color-card-togu);">{{ catLabel }}</div>
+        <sc-for list="{{ productList }}" as="p" hint-placeholder-count="6">
+          <button onClick="{{ p.onClick }}" style="cursor:pointer;font-family:inherit;text-align:left;width:100%;display:block;padding:14px 18px;border:none;border-bottom:1px solid var(--color-surface-card);border-left:3px solid {{ p.accent }};background:{{ p.bg }};">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ p.name }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);margin-top:2px;line-height:var(--web-min-lh);">{{ p.tag }}</div>
+          </button>
+        </sc-for>
+      </div>
+
+      <!-- detail -->
+      <div style="flex:999 1 min(100%,400px);min-width:0;background:#F4F4F4;border-radius:12px;">
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) 320px;">
+          <div style="padding:32px;border-right:1px solid var(--color-divider);">
+            <div style="margin-bottom:10px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">{{ d.family }}</div>
+            <h2 style="margin:0 0 12px;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ d.name }}</h2>
+            <p style="margin:0 0 24px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ d.what }}</p>
+
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">Key specifications</div>
+            <div style="border-top:1px solid var(--color-divider);margin-bottom:28px;">
+              <sc-for list="{{ d.specs }}" as="s" hint-placeholder-count="5">
+                <div data-stack="1" style="display:grid;grid-template-columns:180px minmax(0,1fr);gap:16px;padding:11px 0;border-bottom:1px solid var(--color-surface-card);">
+                  <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ s.k }}</span>
+                  <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ s.v }}</span>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="background:var(--color-card-togu);padding:18px 22px;border-radius:8px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:10px;">Why TOGU &#183; vs the commodity alternative</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <sc-for list="{{ d.usp }}" as="u" hint-placeholder-count="3">
+                  <div style="display:flex;gap:10px;">
+                    <span style="color:var(--color-text-primary);font-size:12px;flex:none;">&#10003;</span>
+                    <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ u }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+
+          <!-- visual + at a glance -->
+          <div style="padding:32px;background:#FAFAF9;border-radius:8px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">What it looks like</div>
+            <div style="aspect-ratio:1/1;margin-bottom:12px;">
+              <image-slot id="{{ d.slotId }}" shape="rounded" radius="8" placeholder="{{ d.look }}"></image-slot>
+            </div>
+            <p style="margin:0 0 24px;font-size:var(--web-min-size);font-weight:300;color:#8A8A89;line-height:var(--web-min-lh);max-width:760px;">{{ d.look }}</p>
+
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:10px;">Where it is used</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <sc-for list="{{ d.uses }}" as="u" hint-placeholder-count="4">
+                <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:6px 10px;background:var(--color-card-togu);border:1px solid var(--color-divider);color:var(--color-text-primary);border-radius:8px;">{{ u }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p style="margin:20px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:900px;line-height:var(--web-min-lh);">Specifications are indicative and confirmed per article code on the product datasheet. Comparative statements describe TOGU&#8217;s engineered range against typical unbranded commodity equivalents, not any named competitor.</p>
+  </section>
+
+  <div style="height:96px;"></div>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <a href="TOGU - PRODUCT - Overview - EN.dc.html#project" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;border-top:1px solid var(--color-text-primary);border-bottom:1px solid var(--color-divider);padding:28px 0;color:var(--color-text-primary);" style-hover="color:var(--color-text-primary);">
+      <span style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Project request</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Send your site data and files to our engineers.</span></span>
+      <span style="font-size:var(--web-small-size);font-weight:300;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Start a project &#8250;</span>
+    </a>
+  </section>
+  <dc-import name="ContentSections" brand="TOGU" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="TOGU" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="TOGU" accent="var(--color-brand-togu)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const CATS = [
+  { key: "cable", label: "Cable" },
+  { key: "acc", label: "Cable accessories" },
+  { key: "din", label: "DIN rail products" },
+  { key: "tube", label: "Tubes, trunking & tray" },
+];
+
+const PRODUCTS = {
+  cable: [
+    { id: "dcdca", name: "DC-DCA solar cable", family: "GROUND / DC solar cable", tag: "H1Z2Z2-K · Dca",
+      what: "The workhorse PV string and array cable: a flexible, double-insulated single core for the DC side of a solar system, carrying up to 1,5 kV DC outdoors for the life of the installation. Dca is the reaction-to-fire class common for standard building routes.",
+      specs: [ { k: "Type", v: "H1Z2Z2-K (PV1-F class)" }, { k: "Voltage", v: "1,5 kV DC" }, { k: "Conductor", v: "Tinned Class 5 copper" }, { k: "Insulation", v: "Cross-linked, halogen-free (XLPO)" }, { k: "Fire class", v: "Dca (CPR)" }, { k: "Cross-sections", v: "4 / 6 / 10 mm²" }, { k: "Colour", v: "Black or red, metre-marked" } ],
+      usp: [ "Tinned copper resists corrosion in humid and coastal air, where bare copper commodity cable dulls and adds resistance.", "Continuous factory spark-testing catches insulation faults that cheap cable ships with.", "Permanent metre marking, batch and CPR class printed on the sheath — traceable years later." ],
+      look: "A single black or red round cable, ~6-7 mm diameter, matt sheath with white printed markings along its length; shown coiled or on a returnable drum.",
+      uses: ["PV strings", "Array wiring", "Module-to-inverter", "Rooftop DC"], slotId: "togu-p-dcdca" },
+    { id: "dccca", name: "DC-CCA solar cable", family: "DC solar cable", tag: "H1Z2Z2-K · Cca",
+      what: "The higher fire-performance version of the solar cable. Same electrical construction as DC-DCA, but a Cca reaction-to-fire class for escape routes, public buildings and higher-risk occupancies where the specification or authority demands it.",
+      specs: [ { k: "Type", v: "H1Z2Z2-K, Cca-classified" }, { k: "Voltage", v: "1,5 kV DC" }, { k: "Conductor", v: "Tinned Class 5 copper" }, { k: "Fire class", v: "Cca-s1,d1,a1 (CPR)" }, { k: "Cross-sections", v: "4 / 6 / 10 mm²" }, { k: "Data status", v: "Confirm class per article code" } ],
+      usp: [ "Lower fire contribution and reduced smoke than Dca — specifiable where a building fire strategy requires it.", "Same connector and tooling ecosystem as DC-DCA, so no change to installation practice.", "Country cable selector recommends Dca vs Cca per project so you order the correct class first time." ],
+      look: "Visually near-identical to DC-DCA — a round single-core cable — distinguished by the printed Cca class marking on the sheath.",
+      uses: ["Escape routes", "Public buildings", "Hospitals & schools", "High-risk sites"], slotId: "togu-p-dccca" },
+    { id: "ground", name: "Grounding cable & kit", family: "GROUND", tag: "Earthing / bonding",
+      what: "Green-yellow earthing conductor plus the components that make a real grounding system: earth rods, clamps, bars, terminals and bonding straps. Earthing is a safety function, not an afterthought.",
+      specs: [ { k: "Conductor", v: "Copper, green-yellow" }, { k: "Cross-sections", v: "6 / 10 / 16 mm²" }, { k: "System parts", v: "Rods, clamps, bars, bonding" }, { k: "Corrosion", v: "Tinned / stainless options" } ],
+      usp: [ "Sold as a coordinated grounding system, not just a cable off the reel — nothing missing on site.", "Correct copper cross-section and corrosion-resistant clamps for a connection that lasts decades.", "Sizing guidance included so the conductor matches the fault current, not guesswork." ],
+      look: "Green-and-yellow striped cable alongside metal earth rods, clamps and a bonding bar; industrial, clearly safety-coded.",
+      uses: ["Array earthing", "Equipotential bonding", "Distribution boards", "Lightning bonding"], slotId: "togu-p-ground" },
+    { id: "accable", name: "AC / battery / comms cable", family: "Cable", tag: "System wiring",
+      what: "The rest of the wiring an energy installation needs: AC supply cable to the inverter and loads, high-current battery cable, and communication cable for metering and control — specified to match the Strohm.energy products they connect.",
+      specs: [ { k: "AC cable", v: "Sized to inverter output" }, { k: "Battery cable", v: "Flexible, high-current" }, { k: "Comms", v: "Shielded data / RS485" }, { k: "Fire class", v: "Cca / Dca per route" } ],
+      usp: [ "Cross-sections and lengths matched to the MOEBIUS / FLUXX products on the same order.", "Shielded communication cable keeps SYNQ and EMON data clean next to power cable.", "One supplier for AC, DC, battery and comms — consistent quality and marking across the job." ],
+      look: "A small family of cables in different colours and diameters — heavier black battery cable, standard AC cable, thin shielded comms cable — bundled together.",
+      uses: ["Inverter AC", "Battery DC", "Metering", "Control & data"], slotId: "togu-p-accable" },
+  ],
+  acc: [
+    { id: "mc4", name: "MC4-compatible connectors", family: "TOGU CONNECT", tag: "PV connectors",
+      what: "The plug-and-socket connector that joins solar cables and modules. A weatherproof, locking DC connector rated for the full string voltage — the single most common failure point in a badly built array, and the one worth getting right.",
+      specs: [ { k: "Rating", v: "1,5 kV DC, 30-45 A" }, { k: "Contact", v: "Silver-plated copper" }, { k: "Sealing", v: "IP68 mated" }, { k: "Locking", v: "Tool-release, finger-safe" }, { k: "Cable range", v: "4 / 6 / 10 mm²" } ],
+      usp: [ "Matched crimp contact, seal and housing from one source — mixing brands is the classic cause of hot, failing joints.", "Correct crimp tooling and torque published, so field assembly is repeatable.", "Factory-assembled harness option removes site crimping error entirely." ],
+      look: "Small black cylindrical male/female connector pair with a ribbed grip and a locking collar; the icon of every solar install.",
+      uses: ["Module links", "String ends", "Extensions", "Inverter input"], slotId: "togu-p-mc4" },
+    { id: "lugs", name: "Lugs, ferrules & terminals", family: "Consumables / CONNECT", tag: "Terminations",
+      what: "The metal ends that turn a bare stranded conductor into a safe, gas-tight termination: ring and pin lugs, bootlace ferrules and cable-end sleeves. Small, cheap, and forgotten on every third quotation.",
+      specs: [ { k: "Ferrules", v: "0,5–35 mm², colour-coded" }, { k: "Lugs", v: "Ring, pin, fork" }, { k: "Material", v: "Tinned copper" }, { k: "Insulation", v: "Insulated / bare" } ],
+      usp: [ "Colour-coded by cross-section so the right size is obvious in the van and on the board.", "Tinned copper and correct barrel dimensions give a gas-tight crimp that will not loosen.", "Available inside the bundle helper so they are never the thing that stops the job." ],
+      look: "A tray of tiny colour-coded metal sleeves and ring terminals — reds, blues, greys — sorted by size.",
+      uses: ["Terminal blocks", "Isolators", "Earth bars", "Control wiring"], slotId: "togu-p-lugs" },
+    { id: "glands", name: "Cable glands & entries", family: "TOGU ENTRY", tag: "Sealed entry",
+      what: "The fitting that takes a cable through the wall of an enclosure while keeping the seal, strain relief and, where needed, the fire or EMC rating intact. The difference between an IP-rated box and a box with a hole in it.",
+      specs: [ { k: "Sizes", v: "M12–M40" }, { k: "Sealing", v: "IP66 / IP68" }, { k: "Types", v: "Standard, multi-entry, fire, EMC" }, { k: "Material", v: "Polyamide / brass / stainless" } ],
+      usp: [ "Fire and EMC glands available in the same range, not sourced separately at the last minute.", "Multi-entry membranes seal several cables through one neat opening.", "Correct thread and seal for TOGU enclosures — a guaranteed fit, not a gamble." ],
+      look: "Black or metallic threaded fittings with a dome nut and rubber seal, sized from small to fist-sized, some with multi-hole rubber inserts.",
+      uses: ["Enclosure entry", "Outdoor boxes", "EMC screening", "Fire barriers"], slotId: "togu-p-glands" },
+    { id: "fix", name: "Cable ties, clips & fixings", family: "TOGU FIX", tag: "Support & tidy",
+      what: "Everything that holds the installation in place and tidy: UV-stable and stainless cable ties, edge clips, roof clips, stand-offs and cleats. On a rooftop these are exposed for decades — the wrong tie fails first.",
+      specs: [ { k: "Ties", v: "Standard, UV-black, stainless" }, { k: "Clips", v: "Roof, edge, tray" }, { k: "Stand-offs", v: "Spacer, cleat" }, { k: "Rating", v: "UV & temperature stable" } ],
+      usp: [ "UV-stabilised and stainless options survive the roof; generic indoor ties go brittle and snap in a few summers.", "Colour and size range keeps the DC / AC / earth colour code consistent.", "Bundled by project so the fixings arrive with the cable, not after it." ],
+      look: "Coils and packs of black and stainless-steel cable ties with assorted clips and spacer blocks — humble but everywhere.",
+      uses: ["Rooftop routes", "Tray & conduit", "Cable bundling", "Module frames"], slotId: "togu-p-fix" },
+    { id: "label", name: "Labels & identification", family: "TOGU LABEL", tag: "Identify",
+      what: "Cable, circuit, warning and QR labels — laser-printed and heat-shrink — that make an installation readable and compliant. The record that lets the next engineer understand the board without a multimeter.",
+      specs: [ { k: "Types", v: "Cable, circuit, warning, QR" }, { k: "Print", v: "Laser, heat-shrink" }, { k: "Durability", v: "UV & abrasion resistant" }, { k: "Link", v: "QR to Digital Product Passport" } ],
+      usp: [ "QR labels link the physical cable to its datasheet, batch and installation record.", "Durable print survives sunlight and handling where cheap adhesive labels curl and fade.", "Consistent symbol and warning set across the whole Strohm.energy ecosystem." ],
+      look: "Sheets and rolls of white and yellow labels, some printed with QR codes, plus clear heat-shrink cable markers.",
+      uses: ["Circuit ID", "DC warnings", "Cable numbering", "Commissioning"], slotId: "togu-p-label" },
+  ],
+  din: [
+    { id: "enclosure", name: "DIN rail enclosure", family: "Distribution boxes", tag: "Protection box",
+      what: "The enclosure almost every installation needs — solar, battery, heat-pump, EV or metering protection — designed as part of the same product family as MOEBIUS and FLUXX, so the electrical room looks coordinated rather than assembled from unrelated boxes.",
+      specs: [ { k: "Mounting", v: "Surface / flush" }, { k: "Environment", v: "Indoor / outdoor" }, { k: "IP rating", v: "IP54 / IP65 / IP66" }, { k: "Door", v: "Transparent / solid, lockable" }, { k: "ID", v: "Integrated QR" } ],
+      usp: [ "Manufactured at scale as a coordinated family — hidden fasteners, clean entries, consistent finish.", "Accepts standard DIN components, so no lock-in on breakers or meters.", "Empty or factory-prepared as a DC/battery/heat-pump/EV assembly with a functional check." ],
+      look: "A clean matt-finish modular enclosure with a transparent or solid hinged door and a DIN rail inside; architectural, not industrial-anonymous.",
+      uses: ["Solar DC protection", "Battery protection", "EV / heat-pump", "Metering"], slotId: "togu-p-enclosure" },
+    { id: "rail", name: "DIN rail & mounting", family: "TOGU MOUNT", tag: "35 mm rail",
+      what: "The 35 mm rail almost every electrical component clips onto, plus the plates, supports and back panels around it. Overlooked until it is the thing missing from the box.",
+      specs: [ { k: "Standard", v: "35 mm top-hat (EN 60715)" }, { k: "Material", v: "Galvanised / stainless / aluminium" }, { k: "Supply", v: "Lengths or cut-to-size" }, { k: "Accessories", v: "End stops, plates, supports" } ],
+      usp: [ "Cut-to-length and pre-kitted so the rail is right first time.", "Corrosion-appropriate material per environment, not one generic steel for everything.", "Matched end stops and terminal supports in the same order." ],
+      look: "A silver metal rail with a top-hat cross-section and regular slots, with small end-stop clips fitted at each end.",
+      uses: ["Breakers & RCDs", "Meters", "Terminals", "Relays & PSUs"], slotId: "togu-p-rail" },
+    { id: "terminal", name: "Terminal blocks", family: "TOGU TERMINAL", tag: "Connections",
+      what: "The clamps that connect conductors inside the board: feed-through, earth, neutral, fuse and disconnect terminals in screw or spring styles. Where a tidy board is won or lost.",
+      specs: [ { k: "Types", v: "Feed-through, earth, fuse, disconnect" }, { k: "Connection", v: "Screw / spring-cage" }, { k: "Range", v: "2,5–35 mm²" }, { k: "Earth", v: "Rail-bonding earth blocks" } ],
+      usp: [ "Spring-cage options stay tight under vibration where screw terminals loosen over time.", "Colour and marker system keeps the board legible for the next engineer.", "Coordinated with TOGU rail and enclosures for a clean, dense layout." ],
+      look: "Rows of small grey, blue and green-yellow plastic blocks clipped along a DIN rail, wires entering each one.",
+      uses: ["Distribution boards", "Control panels", "Earth / neutral bars", "Metering"], slotId: "togu-p-terminal" },
+    { id: "switch", name: "Isolators & protection", family: "TOGU SWITCH / PROTECT", tag: "Safety devices",
+      what: "The switching and protection that belongs on the rail: DC and AC isolators, battery disconnects, fuse holders, DC/AC fuses and surge-protection devices. The devices that make the installation safe to work on and resilient to surges.",
+      specs: [ { k: "Isolators", v: "DC 1,5 kV / AC, lockable" }, { k: "Disconnect", v: "Battery, load-break" }, { k: "Protection", v: "DC/AC fuses, SPD Type 1/2" }, { k: "Mounting", v: "DIN rail" } ],
+      usp: [ "DC-rated isolators and fuses matched to real PV string voltage, not borderline AC parts.", "SPD coordination guidance so surge protection actually protects the inverter.", "Lockable isolation for safe service, integrated in the same board family." ],
+      look: "Modular grey rail-mounted switches with red/black handles, fuse carriers and a surge-protection module with status windows.",
+      uses: ["DC isolation", "Battery disconnect", "String fusing", "Surge protection"], slotId: "togu-p-switch" },
+  ],
+  tube: [
+    { id: "trunking", name: "PVC cable trunking", family: "PVC trunking", tag: "Surface routing",
+      what: "The clip-lidded plastic channel that carries cables along a wall in a clean, accessible, professional-looking run — the standard finish for a utility room, inverter wall or renovation.",
+      specs: [ { k: "Sizes", v: "16×16 to 100×60 mm" }, { k: "Cover", v: "Clip / snap / screw" }, { k: "Options", v: "Halogen-free, UV" }, { k: "Accessories", v: "Corners, tees, end caps" } ],
+      usp: [ "Full accessory range (internal/external corners, tees, end caps) for a finished look, not cut-and-hope.", "Halogen-free and UV versions for technical rooms and exposed runs.", "Consistent colour and proportion across the range for a tidy wall." ],
+      look: "Rectangular white plastic channel with a snap-on lid running along a wall, with neat moulded corner and tee pieces.",
+      uses: ["Utility rooms", "Inverter walls", "Renovation", "Offices"], slotId: "togu-p-trunking" },
+    { id: "conduit", name: "PVC conduit (rigid & flexible)", family: "PVC conduits", tag: "Concealed protection",
+      what: "The round tube that protects cables inside walls, floors and ceilings and lets them be replaced without opening the structure. Rigid where it is fixed, corrugated flexible where it must route around obstacles.",
+      specs: [ { k: "Diameters", v: "16 / 20 / 25 / 32 mm" }, { k: "Types", v: "Rigid, flexible, heavy-duty" }, { k: "Options", v: "UV, halogen-free" }, { k: "Accessories", v: "Bends, boxes, couplers" } ],
+      usp: [ "A conduit costs little during construction but saves thousands in future rewiring — designed in, not bolted on.", "Impact and UV grades for concrete, outdoor and buried routes.", "Matched junction boxes, bends and couplers so runs go together cleanly." ],
+      look: "Rigid grey round tube and orange/black corrugated flexible tube, with grey junction boxes and bend fittings.",
+      uses: ["In-wall", "In-slab", "Ceilings", "Protected outdoor"], slotId: "togu-p-conduit" },
+    { id: "mesh", name: "Wire-mesh cable tray", family: "Wire mesh cable trays", tag: "Ventilated tray",
+      what: "The lightweight welded-wire basket installers reach for in technical rooms, battery rooms and data spaces: fast to cut and branch on site, and open for ventilation and inspection.",
+      specs: [ { k: "Widths", v: "50–400 mm" }, { k: "Finish", v: "Electro-zinc / hot-dip / stainless" }, { k: "Cutting", v: "On-site with bolt cutter" }, { k: "Support", v: "Wall, ceiling, floor stands" } ],
+      usp: [ "Cut and branch anywhere on site — no waiting for special fittings.", "Open construction cools cables and lets you inspect the run at a glance.", "Correct finish for the environment, from indoor zinc to coastal stainless." ],
+      look: "A silver welded-wire basket-style tray full of cables, supported off a wall — light, open and gridded.",
+      uses: ["Technical rooms", "Battery / data rooms", "Commercial", "Server spaces"], slotId: "togu-p-mesh" },
+    { id: "metal", name: "Metal cable tray", family: "Metal cable trays", tag: "Heavy-duty tray",
+      what: "The load-bearing steel or aluminium tray for long, heavy or exposed runs — perforated, ladder, solid-bottom or covered — including the covered rooftop systems used on flat-roof PV.",
+      specs: [ { k: "Types", v: "Perforated, ladder, solid, covered" }, { k: "Material", v: "HDG steel, aluminium, stainless" }, { k: "Cover", v: "Ventilated / solid, for rooftop" }, { k: "Support", v: "Non-penetrating roof feet" } ],
+      usp: [ "Covered rooftop system with non-penetrating supports keeps PV cable above water and out of the sun.", "Full bend, tee, riser and divider schedule for a real engineered route, not improvisation.", "Rooftop-tray selector recommends cover, material and support spacing per project." ],
+      look: "A galvanised-steel tray — perforated base with turned-up sides, some sections with a clip-on cover — carrying cable across a flat roof on rubber feet.",
+      uses: ["Flat-roof PV", "Factories", "Long runs", "Warehouses"], slotId: "togu-p-metal" },
+  ],
+};
+
+class Component extends DCLogic {
+  state = { cat: "cable", pid: "dcdca" };
+
+  renderVals() {
+    const st = this.state;
+    const cat = PRODUCTS[st.cat] ? st.cat : "cable";
+    const list = PRODUCTS[cat];
+    const d = list.find(p => p.id === st.pid) || list[0];
+    const catLabel = (CATS.find(c => c.key === cat) || CATS[0]).label;
+
+    return {
+      catTabs: CATS.map(c => ({ label: c.label, count: PRODUCTS[c.key].length,
+        onClick: () => this.setState({ cat: c.key, pid: PRODUCTS[c.key][0].id }),
+        bg: cat === c.key ? "#4F4F4E" : "#FFFFFF", color: cat === c.key ? "#FFFFFF" : "#5F5E5E",
+        border: cat === c.key ? "#1E1E1E" : "#D4D4D4", countColor: cat === c.key ? "#8FB0CE" : "#C9CCCB" })),
+      catLabel,
+      productList: list.map(p => ({ name: p.name, tag: p.tag, onClick: () => this.setState({ pid: p.id }),
+        bg: p.id === d.id ? "#F4F6F9" : "#FFFFFF", accent: p.id === d.id ? "#4E6E8E" : "transparent" })),
+      d,
+    };
+  }
+}
+</script>
+</body>
+</html>

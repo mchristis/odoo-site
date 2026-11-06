@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>ANDO Ownership and Support | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4F4F4E; text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+  <dc-import name="NavBar" active="products" hint-size="100%,65px"></dc-import>
+  <dc-import name="AndoNav" active="ownership" hint-size="100%,57px"></dc-import>
+
+  <!-- 6.1 HERO -->
+  <dc-import name="PageHero" brand="ANDO" rgb="205,214,43" eyebrow="Ownership &amp; warranty" title="A structured record. Not a paper promise." intro="Ownership is confirmed by a documented, panel-level record — installer scan, owner photograph and an EMON ownership file that stays with the installation." slot="ando-own-hero" shot="ANDO_OWNERSHIP_HERO_BANNER_EMON-RECORD_01 · installed ANDO array with installer or owner using EMON, registration record in restrained interface overlay · no handshake/insurance stock · 21:9 / 4:5 mobile · text area left · still · placeholder (P1)" hint-size="100%,625px"></dc-import>
+
+  <!-- 6.2 WARRANTY OVERVIEW -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start;--cg:48px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:12px;">Warranty overview</div>
+        <h2 style="margin:0 0 20px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Performance and conditional extended <span style="color:#8E8E8E;">product warranty.</span></h2>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <sc-for list="{{ warranty }}" as="w" hint-placeholder-count="3">
+            <div style="border-top:1px solid var(--color-divider);padding-top:14px;">
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:var(--color-text-primary);margin-bottom:4px;line-height:var(--web-h3-lh);">{{ w.title }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ w.desc }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+        <div style="aspect-ratio:4/3;background:var(--color-card-ando);"><image-slot id="ando-own-warranty-chart" shape="rect" placeholder="ANDO_OWNERSHIP_WARRANTY_CHART_EXPECTED-VS-MEASURED_01 · clean chart comparing expected output, measured output and warranty threshold over 30 years · dummy values, clearly labelled · 4:3 · still · placeholder (P1)"></image-slot></div>
+        <div style="padding:16px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Expected output, measured output and warranty threshold. Illustration only.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6.3 COMMISSION. REGISTER. CONFIRM. -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:12px;">Commission. Register. Confirm.</div>
+      <h2 style="margin:0 0 28px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Three steps <span style="color:#8E8E8E;">to a confirmed ownership record.</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:16px;--cg:16px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+          <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+            <div style="aspect-ratio:4/3;background:var(--color-card-ando);"><image-slot id="{{ s.slotId }}" shape="rect" placeholder="{{ s.dir }}"></image-slot></div>
+            <div style="padding:16px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-grey-70);margin-bottom:6px;letter-spacing:var(--web-eyebrow-ls);">{{ s.n }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:4px;line-height:var(--web-small-lh);">{{ s.title }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ s.desc }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background:var(--color-card-ando);border-radius:12px;padding:20px 24px;">
+        <div style="font-size:14px;font-weight:700;color:var(--color-text-primary);margin-bottom:8px;">The installer scan alone does not activate the extended warranty.</div>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">The owner photograph completes the ownership record, confirms the installed configuration and extends the warranty once accepted. Upload it within 60 days of commissioning. It must show the whole installation, readable labels and visible cabling.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6.4 OWNERSHIP DOCUMENT -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;--cg:48px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:12px;">Ownership document</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One document. <span style="color:#8E8E8E;">Everything confirmed.</span></h2>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <sc-for list="{{ docFields }}" as="d" hint-placeholder-count="9">
+            <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#4F4F4E;background:var(--color-card-ando);border-radius:12px;padding:6px 12px;">{{ d }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+        <div style="aspect-ratio:3/4;background:var(--color-card-ando);"><image-slot id="ando-own-document" shape="rect" placeholder="ANDO_OWNERSHIP_DOCUMENT_PDF-PREVIEW_01 · realistic PDF preview: owner/installation identity, product family + models, panel serials, positions, install photos, flash-test records, installer, warranty status, monitoring link · no realistic personal data · 3:4 · still · placeholder (P1)"></image-slot></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6.5 SHARING -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;--cg:48px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:12px;">Sharing</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Owners choose what <span style="color:#8E8E8E;">stays private.</span></h2>
+        <p style="margin:0 0 12px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">Owners can choose to share their installation as a public reference. Sharing is separate from the private ownership record.</p>
+      </div>
+      <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+        <div style="aspect-ratio:16/10;background:var(--color-card-ando);"><image-slot id="ando-own-sharing" shape="rect" placeholder="ANDO_OWNERSHIP_SHARING_INTERFACE_PERMISSION_01 · permission-control interface, clear distinction between private ownership record and public reference permission · restrained UI · 16:10 · still · placeholder (P2)"></image-slot></div>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:64px;"></div>
+  <dc-import name="AndoSections" show="warranty" hint-size="100%,1200px"></dc-import>
+  <dc-import name="WarrantyPhoto" brand="ANDO" accent="var(--color-brand-ando)" slot-id="ando-warranty-photo-upload" hint-size="100%,480px"></dc-import>
+  <div style="height:64px;"></div>
+  <div style="height:32px;"></div>
+  <!-- DEPTH-1254: warranty, records and service articles (moved out of Knowledge, user decision 2) -->
+  <section id="records-articles" data-screen-label="Warranty, records and service" style="scroll-margin-top:156px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:24px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <h2 style="margin:0;font-size:var(--web-eyebrow-size);font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#898989;">Warranty, records and service</h2>
+      <p style="margin:0;max-width:720px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;">Articles for ANDO owners. Texts in preparation.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:8px;">
+      <div style="background:#F4F4F4;border-radius:8px;padding:16px;font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Product warranty versus performance warranty</div>
+      <div style="background:#F4F4F4;border-radius:8px;padding:16px;font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">What a performance-warranty curve means</div>
+      <div style="background:#F4F4F4;border-radius:8px;padding:16px;font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">How QR and NFC identify a module</div>
+      <div style="background:#F4F4F4;border-radius:8px;padding:16px;font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">What is stored in a module passport?</div>
+      <div style="background:#F4F4F4;border-radius:8px;padding:16px;font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Filing a warranty claim</div>
+      <div style="background:#F4F4F4;border-radius:8px;padding:16px;font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Replacing a single module in a string</div>
+      <div style="background:#F4F4F4;border-radius:8px;padding:16px;font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Matching a replacement module</div>
+      <div style="background:#F4F4F4;border-radius:8px;padding:16px;font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Recycling an end-of-life module</div>
+      <div style="background:#F4F4F4;border-radius:8px;padding:16px;font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Transferring records on sale of a building</div>
+      <div style="background:#F4F4F4;border-radius:8px;padding:16px;font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Mounting position and the warranty</div>
+      <div style="background:#F4F4F4;border-radius:8px;padding:16px;font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Support when the installer is not reachable</div>
+    </div>
+  </section>
+  <dc-import name="ContentSections" brand="ANDO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="ANDO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="ANDO" accent="var(--color-brand-ando)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:960}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      warranty: [
+        { title:"Performance warranty", desc:"Guaranteed minimum output over the warranty term. The term and output threshold depend on the model and on residential, commercial or utility use." },
+        { title:"Conditional extended product warranty", desc:"Extended product cover, activated once the owner photograph is accepted. The extension depends on the model and use." },
+        { title:"Warranty eligibility status", desc:"Live status in EMON — complete, incomplete or under review." },
+      ],
+      steps: [
+        { n:"01", title:"Certified installer scans every panel", desc:"Panel-level QR/NFC scan records serials and positions.", slotId:"ando-own-step-1", dir:"ANDO_OWNERSHIP_REGISTRATION_PHOTO_QR-SCAN_01 · certified installer scanning a panel, correct roof safety, smartphone interface visible not oversized · 4:3 · still · placeholder (P1)" },
+        { n:"02", title:"Owner uploads the overview photograph", desc:"One clear overview photo confirms the installed configuration.", slotId:"ando-own-step-2", dir:"ANDO_OWNERSHIP_REGISTRATION_PHOTO_OWNER-UPLOAD_01 · owner uploading a clear overview photograph of the installed array · 4:3 · still · placeholder (P1)" },
+        { n:"03", title:"EMON creates the confirmed record", desc:"Ownership file assembled and status set to confirmed.", slotId:"ando-own-step-3", dir:"ANDO_OWNERSHIP_REGISTRATION_PHOTO_EMON-RECORD_01 · final PDF or digital ownership record on screen, status progression visible · 4:3 · still · placeholder (P1)" },
+      ],
+      docFields: ["Owner & installation identity","Product family & models","Panel serial numbers","Panel positions","Installation photographs","Flash-test records","Installer details","Warranty status","Monitoring link"],
+    };
+  }
+}
+</script>
+</body>
+</html>

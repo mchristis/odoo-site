@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>SYNQ Shop | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+:root{
+  --black:var(--color-text-primary);--dgrey:#4f4f4e;--mgrey:var(--color-text-primary);--lgrey:#c8c7c3;
+  --line:#e5e5e5;--line2:#d9d9d9;--bg:var(--color-surface-card);--chip:var(--color-surface-card);--xchip:var(--color-bg-canvas);
+  --brand:#5F7773;--accent:#5F7773;--ok:#4c8f2a;--info:#1f5fa8;--warn:#b26a00;--err:#b23b3b;--idle:var(--color-text-primary);--prov:#b26a00;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--font-web);background:var(--bg);color:var(--dgrey);font-size:var(--web-small-size);line-height:1.45;-webkit-font-smoothing:antialiased;font-weight:400}
+.wrap{max-width:1100px;margin:0 auto;padding:30px 26px 90px}
+.masthead{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--black);padding-bottom:13px;gap:20px;flex-wrap:wrap}
+.brand{font-size:var(--web-small-size);letter-spacing:.28em;font-weight:700}
+.brand small{display:block;letter-spacing:.16em;font-weight:400;color:var(--mgrey);margin-top:4px;font-size:var(--web-min-size)}
+.cat{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);color:var(--mgrey);text-transform:uppercase;font-weight:var(--web-eyebrow-weight)}
+.login{display:flex;border:1px solid var(--line2)}
+.login button{font-family:inherit;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;background:#fff;border:none;padding:8px 14px;cursor:pointer;color:var(--mgrey);font-weight:var(--web-eyebrow-weight)}
+.login button.active{background:var(--black);color:#fff}
+.lead{color:var(--mgrey);font-size:var(--web-min-size);margin:13px 0 24px;max-width:820px}
+
+.grid{display:grid;grid-template-columns:264px 1fr;gap:36px;align-items:start}
+aside{position:sticky;top:20px;max-height:calc(100vh - 40px);overflow-y:auto;padding-right:4px}
+.side-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px}
+.side-top .t{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--mgrey);font-weight:var(--web-eyebrow-weight)}
+.clearall{font-size:var(--web-min-size);color:var(--mgrey);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:0}
+.clearall:hover{color:var(--black)} .clearall[disabled]{opacity:.35;cursor:default;text-decoration:none}
+
+.sec{border-top:1px solid var(--line)}
+.sec:first-of-type{border-top:2px solid var(--black)}
+.sec>button{width:100%;display:flex;justify-content:space-between;align-items:center;background:none;border:none;cursor:pointer;padding:15px 0 13px;font-family:inherit;text-align:left}
+.sec .lbl{font-size:var(--web-min-size);font-weight:700;letter-spacing:.01em;display:flex;align-items:center;gap:9px}
+.kick{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);color:var(--lgrey);font-weight:var(--web-eyebrow-weight);text-transform:uppercase}
+.pm{width:12px;height:12px;position:relative;flex:0 0 auto}
+.pm::before,.pm::after{content:"";position:absolute;background:var(--dgrey)}
+.pm::before{left:0;right:0;top:5.5px;height:1.5px}
+.pm::after{top:0;bottom:0;left:5.5px;width:1.5px}
+.sec:not(.collapsed) .pm::after{opacity:0}
+.body{padding:0 0 16px}
+.sec.collapsed .body{display:none}
+
+.opt{display:flex;align-items:center;gap:11px;padding:6px 0;cursor:pointer;user-select:none}
+.box{width:15px;height:15px;border:1.5px solid var(--line2);background:#fff;flex:0 0 auto;position:relative}
+.opt:hover .box{border-color:var(--dgrey)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt input:checked + .box{background:var(--black);border-color:var(--black)}
+.opt input:checked + .box::after{content:"";position:absolute;left:4px;top:0.5px;width:4px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.opt .nm{font-size:var(--web-small-size)}
+.opt .cnt{font-size:var(--web-min-size);color:var(--lgrey);margin-left:auto;font-variant-numeric:tabular-nums}
+.opt input:focus-visible + .box{outline:2px solid var(--info);outline-offset:2px}
+.mark{width:8px;height:8px;flex:0 0 auto;display:inline-block}
+.mark.ok{background:var(--ok)}.mark.info{background:var(--info)}.mark.warn{background:var(--warn)}.mark.idle{background:var(--idle)}
+
+.nest{margin:2px 0 8px 26px;border-left:1px solid var(--line);padding-left:12px}
+.nest .opt{padding:4px 0}
+.nest .nm{font-size:var(--web-min-size);color:var(--dgrey)}
+.subcap{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--lgrey);font-weight:var(--web-eyebrow-weight);margin:8px 0 2px}
+.twist{background:none;border:none;cursor:pointer;font-size:var(--web-eyebrow-size);color:var(--mgrey);padding:0 0 0 26px;font-family:inherit;letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;text-decoration:underline;text-underline-offset:2px;font-weight:var(--web-eyebrow-weight)}
+.twist:hover{color:var(--black)}
+
+
+.mark.err{background:var(--err)}
+.c-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:2px}
+.dls{display:flex;gap:18px;flex-shrink:0}
+.qbreak{grid-column:1/-1;display:flex;gap:26px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:10px;margin-top:2px}
+.qcell .k{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--lgrey);font-weight:var(--web-eyebrow-weight)}
+.qcell .v{font-size:var(--web-small-size);font-weight:700;font-variant-numeric:tabular-nums}
+.qcell.a .v{color:var(--info)}.qcell.r .v{color:var(--err)}.qcell.f .v{color:var(--ok)}
+.whprice{grid-column:1/-1}
+.whrow{display:grid;grid-template-columns:1fr auto auto;gap:8px 20px;font-size:var(--web-min-size);padding:6px 0;border-top:1px solid var(--line);align-items:baseline}
+.whrow .wn{font-weight:400}.whrow .wp{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.whrow .ws{font-size:var(--web-min-size);color:var(--mgrey);text-align:right}
+.whrow.best .wp{color:var(--ok)}
+.ordernow{grid-column:1/-1;margin-top:12px;width:100%;background:var(--warn);color:#fff;border:none;border-radius:6px;padding:11px;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;cursor:pointer;font-family:inherit;font-weight:var(--web-eyebrow-weight)}
+.ordernow:hover{background:#9a5b00}
+
+.ostatus{grid-column:1/-1;font-size:var(--web-min-size);color:var(--mgrey);margin-top:12px;border-top:1px solid var(--line);padding-top:11px;line-height:1.5}
+.ostatus b{font-weight:700}
+.s-ok{color:var(--ok)}.s-warn{color:var(--warn)}.s-err{color:var(--err)}.s-info{color:var(--info)}
+.obtn{display:inline-block;margin-top:2px;padding:9px 22px;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;cursor:pointer;font-family:inherit;border-radius:6px;border:1px solid var(--black);background:#fff;color:var(--black);font-weight:var(--web-eyebrow-weight)}
+.obtn.go{background:var(--brand);color:#fff;border-color:var(--brand)}
+.obtn.go:hover{background:#4a5e5a}
+.obtn.quote:hover,.obtn.consol:hover,.obtn.approval:hover{background:var(--xchip)}
+.obtn.consol{border-color:var(--info);color:var(--info)}
+.obtn.approval{border-color:var(--warn);color:var(--warn)}
+.obtn.block{cursor:not-allowed;background:var(--chip);color:var(--err);border-color:var(--err)}
+.obtn.minval{cursor:not-allowed;background:var(--chip);color:var(--mgrey);border-color:var(--line2)}
+
+/* v12 gallery */
+.gallery{width:118px}
+.gview{width:118px;height:140px;background:var(--chip);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer}
+.gview .ph{display:flex;flex-direction:column;gap:4px;padding:6px}
+.gview .phlab{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--mgrey);font-weight:var(--web-eyebrow-weight)}
+.gview .phnote{font-size:8px;color:var(--lgrey);letter-spacing:.04em}
+.gtabs{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:1px}
+.gtab{font-family:inherit;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;background:var(--xchip);border:1px solid var(--line);padding:5px 2px;cursor:pointer;color:var(--mgrey);font-weight:var(--web-eyebrow-weight)}
+.gtab.active{background:var(--black);color:#fff;border-color:var(--black)}
+/* v12 order block + slider */
+.orderblock{grid-column:1/-1;margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.qctl{margin-bottom:10px}
+.qlbl{font-size:var(--web-min-size);color:var(--mgrey);margin-bottom:6px}
+.qlbl .qnow{font-weight:700;color:var(--black)}
+.qhint{font-size:var(--web-min-size);color:var(--lgrey)}
+.qslider{width:100%;accent-color:var(--accent);height:3px}
+.oread{font-size:var(--web-min-size);color:var(--mgrey);margin-bottom:9px;line-height:1.5}
+.oread b{font-weight:700}
+/* v12 warranty add-on */
+.wopt{display:flex;align-items:center;gap:9px;font-size:var(--web-min-size);padding:5px 0;cursor:pointer}
+.wopt input{accent-color:var(--dgrey)}
+.wopt .wx{margin-left:auto;font-size:var(--web-min-size);color:var(--dgrey)}
+.warr-total{margin-top:8px;font-size:var(--web-min-size);border-top:1px solid var(--line);padding-top:8px}
+.warr-total b{font-weight:700}
+/* v12 product info accordion + tabs */
+.pinfo-acc{margin-top:16px;border:1px solid var(--line2)}
+.pinfo-acc>summary{list-style:none;background:var(--xchip);padding:13px 14px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.pinfo-acc>summary::-webkit-details-marker{display:none}
+.pinfo-acc>summary .caret{width:9px;height:9px;border-right:1.5px solid var(--dgrey);border-bottom:1.5px solid var(--dgrey);transform:rotate(45deg);margin-top:-3px}
+.pinfo-acc[open]>summary .caret{transform:rotate(225deg);margin-top:2px}
+.pitabs{display:flex;border-bottom:1px solid var(--line)}
+.pitab{font-family:inherit;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;padding:11px 14px;cursor:pointer;color:var(--mgrey);font-weight:var(--web-eyebrow-weight)}
+.pitab.active{color:var(--black);border-bottom-color:var(--accent)}
+.pipanel{padding:16px 14px}
+.pipanel.hide{display:none}
+.warranty{margin-top:14px;border:1px solid var(--line);padding:12px 14px}
+.warranty .wl{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--lgrey);font-weight:var(--web-eyebrow-weight);margin-bottom:6px}
+.warranty .wt{display:flex;justify-content:space-between;font-size:var(--web-min-size);padding:4px 0;border-top:1px solid var(--line)}
+.warranty .wt:first-of-type{border-top:none}.warranty .wt b{font-weight:700;font-variant-numeric:tabular-nums}
+.warranty .note{font-size:var(--web-min-size);color:var(--mgrey);margin-top:8px;line-height:1.5}
+.pilabel{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--mgrey);font-weight:var(--web-eyebrow-weight);margin:22px 0 8px}
+.pinfo{border:1px solid var(--line2)}
+.pi-sec{border-top:1px solid var(--line)}.pinfo>.pi-sec:first-child{border-top:none}
+.pi-sec summary{list-style:none;background:var(--xchip);padding:13px 14px;font-size:var(--web-small-size);font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.pi-sec summary::-webkit-details-marker{display:none}
+.pi-sec summary .caret{width:9px;height:9px;border-right:1.5px solid var(--dgrey);border-bottom:1.5px solid var(--dgrey);transform:rotate(45deg);margin-top:-3px}
+.pi-sec[open] summary .caret{transform:rotate(225deg);margin-top:2px}
+.pi-body{padding:16px 14px}
+.desc{font-size:var(--web-min-size);color:var(--dgrey);line-height:1.65;max-width:74ch;margin:0}
+.spectable{display:grid;grid-template-columns:1fr 1fr;gap:0 44px}
+.specr{display:grid;grid-template-columns:1fr auto;gap:14px;padding:8px 4px;font-size:var(--web-min-size);border-bottom:1px solid var(--line)}
+.specr .sk{color:var(--mgrey)}.specr .sv{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.specr .pend{color:var(--lgrey);font-weight:400}
+.dllist{display:flex;flex-direction:column}
+.dlx{display:flex;align-items:center;gap:13px;padding:12px 4px;border-bottom:1px solid var(--line);font-size:var(--web-min-size);color:var(--dgrey);text-decoration:none}
+.dlx:last-child{border-bottom:none}.dlx:hover{color:var(--black)}
+.dlx .arr{margin-left:auto;width:8px;height:8px;border-right:1.5px solid var(--lgrey);border-top:1.5px solid var(--lgrey);transform:rotate(45deg)}
+@media(max-width:920px){.spectable{grid-template-columns:1fr}}
+.provtag{display:inline-block;margin-left:6px;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--prov);border:1px solid var(--prov);padding:1px 5px;font-weight:var(--web-eyebrow-weight)}
+
+/* capacity box + slider */
+#capfilter{margin-bottom:2px}
+.sldr{padding:2px 0}
+.sbox{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.sbox .snum{width:70px;border:1px solid var(--line2);background:#fff;padding:6px 8px;font-family:inherit;font-size:var(--web-min-size);color:var(--dgrey)}
+.sbox .snum:focus{outline:1px solid var(--accent);border-color:var(--accent)}
+.sbox .dash{font-size:var(--web-min-size);color:var(--mgrey)}
+.sbox .u{font-size:var(--web-min-size);color:var(--mgrey)}
+.rangewrap{position:relative;height:22px;margin-bottom:4px}
+.rangewrap .track{position:absolute;left:0;right:0;top:10px;height:2px;background:var(--line2)}
+.rangewrap .fill{position:absolute;top:10px;height:2px;background:var(--accent)}
+.rangewrap input[type=range]{position:absolute;left:0;top:3px;width:100%;height:16px;margin:0;background:none;pointer-events:none;-webkit-appearance:none;appearance:none}
+.rangewrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;pointer-events:auto;height:15px;width:15px;border-radius:50%;background:#fff;border:2px solid var(--accent);cursor:pointer}
+.rangewrap input[type=range]::-moz-range-thumb{pointer-events:auto;height:13px;width:13px;border-radius:50%;background:#fff;border:2px solid var(--accent);cursor:pointer}
+/* warranty dropdown */
+.wsel-l{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--lgrey);font-weight:var(--web-eyebrow-weight);margin-bottom:6px}
+.warr-sel{width:100%;font-family:inherit;font-size:var(--web-min-size);padding:8px 10px;border:1px solid var(--line2);background:#fff;color:var(--dgrey)}
+/* EPR line */
+.eprline{font-size:var(--web-min-size);color:var(--mgrey);border-top:1px solid var(--line);padding-top:9px;margin-top:2px;margin-bottom:2px}
+
+.vtiers{grid-column:1/-1;border-top:1px solid var(--line);padding-top:11px;margin-top:12px}
+.vt-h{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--lgrey);font-weight:var(--web-eyebrow-weight);margin-bottom:6px}
+.vt-row{display:flex;justify-content:space-between;font-size:var(--web-min-size);padding:5px 0;border-top:1px solid var(--line)}
+.vt-row:first-of-type{border-top:none}
+.vt-q{color:var(--mgrey)}.vt-p{font-weight:700;font-variant-numeric:tabular-nums}
+.res-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--black);padding-bottom:8px}
+.res-head .count{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--mgrey);font-weight:var(--web-eyebrow-weight)}
+.res-head .count b{color:var(--black)}
+.sort{font-size:var(--web-min-size);border:1px solid var(--line2);background:#fff;padding:7px 10px;font-family:inherit}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--black);color:#fff;font-size:var(--web-min-size);padding:6px 9px}
+.chip b{font-weight:400;opacity:.55}
+.chip button{background:none;border:none;color:#fff;cursor:pointer;font-size:var(--web-small-size);line-height:1;padding:0;opacity:.8}
+.chip button:hover{opacity:1}
+
+.cards{margin-top:18px;border-top:1px solid var(--line)}
+.card{display:grid;grid-template-columns:118px 1fr;gap:22px;padding:22px 4px;border-bottom:1px solid var(--line);align-items:start;position:relative}
+.thumb{width:96px;height:118px;background:var(--chip);border:1px solid var(--line);position:relative}
+.thumb .u{position:absolute;inset:16px;background:#1d1d1d}
+.thumb .u::after{content:"";position:absolute;left:22%;top:20%;width:32%;height:24%;background:#2f2f2f}
+.thumb.cab .u{inset:8px 24px}
+.thumb.micro .u{inset:40px 16px}.thumb.micro .u::after{display:none}
+.c-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:2px}
+.c-head h3{margin:0;font-size:var(--web-body-size);font-weight:700;letter-spacing:-.01em}
+.artcode{font-size:var(--web-body-size);font-weight:400;color:var(--mgrey);letter-spacing:.01em;font-variant-numeric:tabular-nums;margin-left:8px}
+.pricenote{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--prov);margin:2px 0 16px;font-weight:var(--web-eyebrow-weight)}
+.wloc{display:grid;grid-template-columns:1fr auto auto;gap:6px 18px;grid-column:1/-1;border-top:1px solid var(--line);padding-top:9px;margin-top:2px}
+.wloc .wn{font-size:var(--web-min-size)}
+.wloc .wq{font-size:var(--web-min-size);font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.wloc .wd{font-size:var(--web-min-size);color:var(--mgrey);text-align:right}
+.wloc .wh{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--lgrey);font-weight:var(--web-eyebrow-weight)}
+.pay{grid-column:1/-1;font-size:var(--web-min-size);color:var(--dgrey)}
+.pay b{font-weight:700}.pay .ex{color:var(--prov);font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;font-weight:var(--web-eyebrow-weight)}
+.c-sub{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--mgrey);margin-bottom:12px;font-weight:var(--web-eyebrow-weight)}
+.specrow{display:flex;flex-wrap:wrap;gap:22px 26px;margin-bottom:11px}
+.spec .k{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--lgrey);font-weight:var(--web-eyebrow-weight)}
+.spec .v{font-size:var(--web-small-size);font-weight:700;font-variant-numeric:tabular-nums}
+.dlrow{margin-bottom:14px}
+.dl{display:inline-flex;align-items:center;gap:7px;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--dgrey);text-decoration:none;border-bottom:1px solid var(--line2);padding-bottom:2px;font-weight:var(--web-eyebrow-weight)}
+.dl:hover{color:var(--black);border-color:var(--black)}
+.dl .ic{width:12px;height:12px;display:inline-block;position:relative}
+.dl .ic::before{content:"";position:absolute;left:5px;top:0;width:1.4px;height:8px;background:currentColor}
+.dl .ic::after{content:"";position:absolute;left:2.5px;top:5px;width:6px;height:6px;border-left:1.4px solid currentColor;border-bottom:1.4px solid currentColor;transform:rotate(-45deg)}
+
+/* route stack */
+.routes{border-top:1px solid var(--line)}
+.route{border-bottom:1px solid var(--line)}
+.route[open]{background:var(--xchip)}
+.route summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:14px minmax(96px,1fr) auto auto auto auto 16px;gap:13px;align-items:center;padding:10px 8px;font-size:var(--web-min-size)}
+.route summary::-webkit-details-marker{display:none}
+.route .rname{font-weight:700}
+.route .reta{font-size:var(--web-min-size);color:var(--mgrey)}
+.route .reta{font-size:var(--web-min-size);color:var(--mgrey);white-space:nowrap}
+.route .rmoq{font-size:var(--web-min-size);color:var(--mgrey);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.route .rqty{font-size:var(--web-min-size);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.route .rprice{font-size:var(--web-min-size);font-weight:700;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.route .rqty b{font-weight:700}
+.route .caret{width:9px;height:9px;border-right:1.5px solid var(--dgrey);border-bottom:1.5px solid var(--dgrey);transform:rotate(45deg);justify-self:center;margin-top:-3px}
+.route[open] .caret{transform:rotate(225deg);margin-top:2px}
+.route.empty summary{opacity:.5}
+.route.empty .rname{font-weight:400}
+.rdetail{padding:2px 8px 16px 38px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px 22px}
+.rd .k{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--lgrey);font-weight:var(--web-eyebrow-weight)}
+.rd .v{font-size:var(--web-small-size);font-weight:700;font-variant-numeric:tabular-nums}
+.rd .v.res{color:var(--warn)}
+.rd .v.prov::after{content:" provisional";font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--prov);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase}
+.rlogic{grid-column:1/-1;font-size:var(--web-min-size);color:var(--mgrey);line-height:1.6;border-top:1px solid var(--line);padding-top:10px}
+.gatebar{border:1px solid var(--black);background:#fff;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;padding:11px 12px;cursor:pointer;font-family:inherit;width:100%;text-align:left;margin-top:2px;font-weight:var(--web-eyebrow-weight)}
+.gatebar:hover{background:var(--black);color:#fff}
+.code{font-size:9px;color:var(--lgrey);margin-top:14px;font-variant-numeric:tabular-nums}
+.empty-res{padding:46px 4px;color:var(--mgrey);border-bottom:1px solid var(--line)}
+.empty-res b{color:var(--black)}
+.foot{margin-top:28px;font-size:var(--web-min-size);color:var(--lgrey);line-height:1.75}
+.foot b{color:var(--mgrey)} .foot .am{color:var(--prov)}
+
+@media(max-width:920px){
+  .grid{grid-template-columns:1fr}aside{position:static;max-height:none}
+  .route summary{grid-template-columns:14px 1fr auto auto 16px;gap:9px}.route .reta,.route .rmoq{display:none}
+  .rdetail{padding-left:20px}
+}
+
+/* ROLLOUT_DECOR css */
+.stockbar{display:flex;height:6px;width:100%;background:#e5e5e5;margin:8px 0 3px;overflow:hidden;grid-column:1/-1}
+.stockbar span{height:100%;display:block}
+.sb-w0{background:#4f4f4e}.sb-w1{background:var(--color-text-primary)}.sb-w2{background:#c8c7c3}
+.sb-res{background:#b23b3b}.sb-free{background:#4c8f2a}
+.sblegend{font-size:var(--web-min-size,12px);font-weight:300;color:var(--color-text-primary);margin-bottom:4px;grid-column:1/-1}
+.sblegend .lg{display:inline-block;width:8px;height:8px;margin-right:3px}
+.lg0{background:#4f4f4e}.lg1{background:var(--color-text-primary)}.lg2{background:#c8c7c3}.lgr{background:#b23b3b}.lgf{background:#4c8f2a}
+.cutoffline{display:flex;gap:10px;align-items:baseline;border-top:1px solid #e5e5e5;margin-top:8px;padding-top:8px;font-size:var(--web-min-size);grid-column:1/-1}
+.ck-k{color:var(--color-text-primary)}.ck-t{font-variant-numeric:tabular-nums;font-weight:700}
+.ck-t.soon{color:#b26a00}
+.ck-s{margin-left:auto;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;font-weight:var(--web-eyebrow-weight)}
+.ck-s.ok{color:#4c8f2a}.ck-s.warn{color:#b26a00}
+.holdline{font-size:var(--web-min-size);color:var(--color-text-primary);border-top:1px solid #ececec;margin-top:7px;padding-top:7px;grid-column:1/-1}
+
+/* ws brand-switcher bar (injected) */
+.wsbar{position:sticky;top:0;z-index:50;background:var(--color-text-primary);color:#fff;font-family:var(--font-web)}
+.wsbar-in{max-width:1100px;margin:0 auto;padding:0 26px;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.wsbar-logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:var(--web-min-size);letter-spacing:.22em;font-weight:700}
+.wsbar-logo span{font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:var(--color-grey-70);font-size:var(--web-eyebrow-size);text-transform:uppercase}
+.wsbar-menu{position:relative}
+.wsbar-menu>summary{list-style:none;cursor:pointer;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #3a3a38;border-radius:6px;font-weight:var(--web-eyebrow-weight)}
+.wsbar-menu>summary::-webkit-details-marker{display:none}
+.wsbar-menu[open]>summary{background:#2a2a28}
+.wsbar-drop{position:absolute;right:0;top:calc(100% + 8px);width:600px;max-width:82vw;background:#fff;color:var(--color-text-primary);border:1px solid #d9d9d9;border-radius:16px;box-shadow:none;padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:0 22px;z-index:60}
+.wsbar-grp{grid-column:1/-1;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);font-weight:var(--web-eyebrow-weight);margin:14px 0 4px;border-top:1px solid #D9D9D9;padding-top:11px}
+.wsbar-grp.first{margin-top:0;border-top:none;padding-top:0}
+.wsbar-a{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:7px 8px;text-decoration:none;color:var(--color-text-primary);border-radius:5px}
+.wsbar-a:hover{background:var(--color-surface-card)}
+.wsbar-a b{font-weight:700;font-size:var(--web-small-size);letter-spacing:.02em}
+.wsbar-a em{font-size:var(--web-min-size);color:var(--color-text-primary);text-align:right;font-style:normal}
+@media(max-width:720px){.wsbar-drop{grid-template-columns:1fr;width:300px}.wsbar-in{padding:0 16px}}
+
+#foot{display:none}</style>
+</helmet>
+<dc-import name="WebshopBar" hint-size="100%,52px"></dc-import>
+<div class="wrap">
+  <div class="masthead">
+    <div class="brand">SYNQ<small>STRØHM.ENERGY</small></div>
+    <div class="cat">Meters &amp; monitoring / Catalogue</div>
+    <div class="login" role="group" aria-label="Login state">
+      <button id="btnAnon" class="active">Anonymous</button>
+      <button id="btnAuth">Logged in</button>
+    </div>
+  </div>
+  <p class="lead">Metering and monitoring catalogue. Warranty is not orderable.</p>
+
+  <div class="grid">
+    <aside>
+      <div class="side-top"><span class="t">Filters</span><button class="clearall" id="clearAll" disabled>Clear all</button></div>
+      <div id="filters"></div>
+    </aside>
+    <section>
+      <div class="res-head">
+        <div class="count"><b id="rcount">0</b> products</div>
+        <select class="sort" id="sort" aria-label="Sort">
+          <option value="power-asc">Power, low to high</option>
+          <option value="power-desc">Power, high to low</option>
+          <option value="speed" id="speedOpt" disabled>Availability, fastest first (log in)</option>
+          <option value="price" id="priceOpt" disabled>Price, low to high (log in)</option>
+        </select>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div class="cards" id="cards"></div>
+      <p class="foot" id="foot"></p>
+    </section>
+  </div>
+</div>
+
+<dc-import name="Footer" show-ebook="{{ false }}" hint-size="100%,400px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1200,"height":880}}'>
+class Component extends DCLogic {
+  componentDidMount(){
+    if(this._booted) return; this._booted = true;
+
+const PRODUCTS=[{"art":"SY-SMK-1P-2CH-CT1-100A-V1","series":"CINCH","cat":"Smart Meter, CT","phase":"1P","conn":"CT-based","ctA":100,"ctb":"≤ 100 A","mid":null,"conx":["Wi-Fi","RS485"],"app":"Residential / Light Commercial","base":90,"prov":false,"rt":{"EU":{"q":37,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":90,"sh":null,"locs":[{"w":"Madrid ES","q":8},{"w":"Rotterdam NL","q":11},{"w":"Hamburg DE","q":18}]},"Floating":{"q":300,"r":50,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":88,"sh":"FL 2026 00","date":"20 Aug 2026"},"Factory":{"q":0,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":89,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":93,"sh":null}}},{"art":"SY-SMK-1P-2CH-CT1-250A-V1","series":"CINCH","cat":"Smart Meter, CT","phase":"1P","conn":"CT-based","ctA":250,"ctb":"250 A","mid":null,"conx":["Wi-Fi","RS485"],"app":"Residential / Light Commercial","base":90,"prov":false,"rt":{"EU":{"q":89,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":90,"sh":null,"locs":[{"w":"Milan IT","q":34},{"w":"Madrid ES","q":27},{"w":"Poznan PL","q":28}]},"Floating":{"q":150,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":88,"sh":"FL 2026 04","date":"07 Aug 2026"},"Factory":{"q":0,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":89,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":93,"sh":null}}},{"art":"SY-SMK-1P-2CH-CT1-600A-V1","series":"CINCH","cat":"Smart Meter, CT","phase":"1P","conn":"CT-based","ctA":600,"ctb":"600 A","mid":null,"conx":["Wi-Fi","RS485"],"app":"Residential / Light Commercial","base":90,"prov":false,"rt":{"EU":{"q":73,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":90,"sh":null,"locs":[{"w":"Rotterdam NL","q":3},{"w":"Hamburg DE","q":38},{"w":"Milan IT","q":32}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":88,"sh":null,"date":null},"Factory":{"q":600,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":89,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":93,"sh":null}}},{"art":"SY-SMK-3P-3CH-CT3-100A-V1","series":"CINCH","cat":"Smart Meter, CT","phase":"3P","conn":"CT-based","ctA":100,"ctb":"≤ 100 A","mid":null,"conx":["Wi-Fi","RS485"],"app":"Residential / Light Commercial","base":90,"prov":false,"rt":{"EU":{"q":50,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":90,"sh":null,"locs":[{"w":"Poznan PL","q":2},{"w":"Madrid ES","q":22},{"w":"Rotterdam NL","q":26}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":88,"sh":null,"date":null},"Factory":{"q":400,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":89,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":93,"sh":null}}},{"art":"SY-SMK-3P-3CH-CT3-250A-V1","series":"CINCH","cat":"Smart Meter, CT","phase":"3P","conn":"CT-based","ctA":250,"ctb":"250 A","mid":null,"conx":["Wi-Fi","RS485"],"app":"Residential / Light Commercial","base":90,"prov":false,"rt":{"EU":{"q":45,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":90,"sh":null,"locs":[{"w":"Rotterdam NL","q":10},{"w":"Milan IT","q":23},{"w":"Poznan PL","q":12}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":88,"sh":null,"date":null},"Factory":{"q":200,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":89,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":93,"sh":null}}},{"art":"SY-SMK-3P-3CH-CT3-600A-V1","series":"CINCH","cat":"Smart Meter, CT","phase":"3P","conn":"CT-based","ctA":600,"ctb":"600 A","mid":null,"conx":["Wi-Fi","RS485"],"app":"Residential / Light Commercial","base":90,"prov":false,"rt":{"EU":{"q":41,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":90,"sh":null,"locs":[{"w":"Rotterdam NL","q":15},{"w":"Hamburg DE","q":23},{"w":"Poznan PL","q":3}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":88,"sh":null,"date":null},"Factory":{"q":0,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":89,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":93,"sh":null}}},{"art":"SY-SMK-3P-3CH-CT3-1000A-V1","series":"CINCH","cat":"Smart Meter, CT","phase":"3P","conn":"CT-based","ctA":1000,"ctb":"1000 A","mid":null,"conx":["Wi-Fi","RS485"],"app":"Industrial / Commercial","base":90,"prov":false,"rt":{"EU":{"q":89,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":90,"sh":null,"locs":[{"w":"Madrid ES","q":21},{"w":"Poznan PL","q":34},{"w":"Rotterdam NL","q":34}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":88,"sh":null,"date":null},"Factory":{"q":0,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":89,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":93,"sh":null}}},{"art":"SY-SMK-3P-3CH-CT3-3000A-V1","series":"CINCH","cat":"Smart Meter, CT","phase":"3P","conn":"CT-based","ctA":3000,"ctb":"≥ 3000 A","mid":null,"conx":["Wi-Fi","RS485"],"app":"Industrial / Commercial","base":90,"prov":false,"rt":{"EU":{"q":81,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":90,"sh":null,"locs":[{"w":"Hamburg DE","q":26},{"w":"Poznan PL","q":18},{"w":"Milan IT","q":37}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":88,"sh":null,"date":null},"Factory":{"q":200,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":89,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":93,"sh":null}}},{"art":"SY-SM-1P-DIR-100A-NONMID-V1","series":"TALLY","cat":"Smart Meter, Direct","phase":"1P","conn":"Direct","ctA":100,"ctb":"≤ 100 A","mid":"Non-MID","conx":["Wi-Fi","RS485"],"app":"Residential / Light Commercial","base":60,"prov":false,"rt":{"EU":{"q":74,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":60,"sh":null,"locs":[{"w":"Madrid ES","q":1},{"w":"Rotterdam NL","q":39},{"w":"Poznan PL","q":34}]},"Floating":{"q":100,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":59,"sh":"FL 2026 13","date":"26 Aug 2026"},"Factory":{"q":0,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":59,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":62,"sh":null}}},{"art":"SY-SM-1P-DIR-100A-MID-V1","series":"TALLY","cat":"Smart Meter, Direct","phase":"1P","conn":"Direct","ctA":100,"ctb":"≤ 100 A","mid":"MID","conx":["Wi-Fi","RS485"],"app":"Residential / Light Commercial","base":60,"prov":false,"rt":{"EU":{"q":96,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":60,"sh":null,"locs":[{"w":"Milan IT","q":35},{"w":"Poznan PL","q":38},{"w":"Madrid ES","q":23}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":59,"sh":null,"date":null},"Factory":{"q":0,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":59,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":62,"sh":null}}},{"art":"SY-SM-3P-DIR-100A-NONMID-V1","series":"TALLY","cat":"Smart Meter, Direct","phase":"3P","conn":"Direct","ctA":100,"ctb":"≤ 100 A","mid":"Non-MID","conx":["Wi-Fi","RS485"],"app":"Residential / Light Commercial","base":60,"prov":false,"rt":{"EU":{"q":45,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":60,"sh":null,"locs":[{"w":"Milan IT","q":6},{"w":"Hamburg DE","q":8},{"w":"Madrid ES","q":31}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":59,"sh":null,"date":null},"Factory":{"q":600,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":59,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":62,"sh":null}}},{"art":"SY-SM-3P-DIR-100A-MID-V1","series":"TALLY","cat":"Smart Meter, Direct","phase":"3P","conn":"Direct","ctA":100,"ctb":"≤ 100 A","mid":"MID","conx":["Wi-Fi","RS485"],"app":"Residential / Light Commercial","base":60,"prov":false,"rt":{"EU":{"q":83,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":60,"sh":null,"locs":[{"w":"Rotterdam NL","q":21},{"w":"Hamburg DE","q":22},{"w":"Poznan PL","q":40}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":59,"sh":null,"date":null},"Factory":{"q":400,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":59,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":62,"sh":null}}},{"art":"SY-CT-100A-V1","series":"HALO","cat":"CT Clamp","phase":null,"conn":"CT-based","ctA":100,"ctb":"≤ 100 A","mid":null,"conx":["Unspecified"],"app":"Residential / Light Commercial","base":25,"prov":false,"rt":{"EU":{"q":36,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":25,"sh":null,"locs":[{"w":"Milan IT","q":10},{"w":"Poznan PL","q":8},{"w":"Hamburg DE","q":18}]},"Floating":{"q":250,"r":50,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":24,"sh":"FL 2026 03","date":"22 Aug 2026"},"Factory":{"q":0,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":25,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":26,"sh":null}}},{"art":"SY-CT-250A-V1","series":"HALO","cat":"CT Clamp","phase":null,"conn":"CT-based","ctA":250,"ctb":"250 A","mid":null,"conx":["Unspecified"],"app":"Residential / Light Commercial","base":25,"prov":false,"rt":{"EU":{"q":65,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":25,"sh":null,"locs":[{"w":"Poznan PL","q":26},{"w":"Hamburg DE","q":3},{"w":"Madrid ES","q":36}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":24,"sh":null,"date":null},"Factory":{"q":0,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":25,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":26,"sh":null}}},{"art":"SY-CT-600A-V1","series":"HALO","cat":"CT Clamp","phase":null,"conn":"CT-based","ctA":600,"ctb":"600 A","mid":null,"conx":["Unspecified"],"app":"Residential / Light Commercial","base":25,"prov":false,"rt":{"EU":{"q":35,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":25,"sh":null,"locs":[{"w":"Rotterdam NL","q":3},{"w":"Poznan PL","q":14},{"w":"Hamburg DE","q":18}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":24,"sh":null,"date":null},"Factory":{"q":400,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":25,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":26,"sh":null}}},{"art":"SY-CT-1000A-V1","series":"HALO","cat":"CT Clamp","phase":null,"conn":"CT-based","ctA":1000,"ctb":"1000 A","mid":null,"conx":["Unspecified"],"app":"Industrial / Commercial","base":25,"prov":false,"rt":{"EU":{"q":63,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":25,"sh":null,"locs":[{"w":"Poznan PL","q":18},{"w":"Rotterdam NL","q":33},{"w":"Madrid ES","q":12}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":24,"sh":null,"date":null},"Factory":{"q":400,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":25,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":26,"sh":null}}},{"art":"SY-CT-3000A-V1","series":"HALO","cat":"CT Clamp","phase":null,"conn":"CT-based","ctA":3000,"ctb":"≥ 3000 A","mid":null,"conx":["Unspecified"],"app":"Industrial / Commercial","base":25,"prov":false,"rt":{"EU":{"q":42,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":25,"sh":null,"locs":[{"w":"Poznan PL","q":20},{"w":"Madrid ES","q":1},{"w":"Hamburg DE","q":21}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":24,"sh":null,"date":null},"Factory":{"q":600,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":25,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":26,"sh":null}}},{"art":"SY-EH-ESS-1P-12KW-V1","series":"NEXUS","cat":"Energy Management Hub","phase":"1P","conn":null,"ctA":null,"ctb":null,"mid":null,"conx":["Unspecified"],"app":"Residential / Light Commercial","base":150,"prov":true,"rt":{"EU":{"q":65,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":150,"sh":null,"locs":[{"w":"Milan IT","q":16},{"w":"Madrid ES","q":31},{"w":"Poznan PL","q":18}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":147,"sh":null,"date":null},"Factory":{"q":200,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":148,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":154,"sh":null}}},{"art":"SY-EH-ESS-3P-30KW-V1","series":"NEXUS","cat":"Energy Management Hub","phase":"3P","conn":null,"ctA":null,"ctb":null,"mid":null,"conx":["Unspecified"],"app":"Industrial / Commercial","base":150,"prov":true,"rt":{"EU":{"q":58,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":150,"sh":null,"locs":[{"w":"Hamburg DE","q":21},{"w":"Madrid ES","q":7},{"w":"Milan IT","q":30}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":147,"sh":null,"date":null},"Factory":{"q":600,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":148,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":154,"sh":null}}},{"art":"SY-EH-PRO-1P-12KW-V1","series":"NEXUS","cat":"Energy Management Hub","phase":"1P","conn":null,"ctA":null,"ctb":null,"mid":null,"conx":["Unspecified"],"app":"Residential / Light Commercial","base":150,"prov":true,"rt":{"EU":{"q":70,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":150,"sh":null,"locs":[{"w":"Poznan PL","q":22},{"w":"Milan IT","q":14},{"w":"Rotterdam NL","q":34}]},"Floating":{"q":100,"r":50,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":147,"sh":"FL 2026 23","date":"12 Aug 2026"},"Factory":{"q":0,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":148,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":154,"sh":null}}},{"art":"SY-EH-PRO-1P-22KW-V1","series":"NEXUS","cat":"Energy Management Hub","phase":"1P","conn":null,"ctA":null,"ctb":null,"mid":null,"conx":["Unspecified"],"app":"Residential / Light Commercial","base":150,"prov":true,"rt":{"EU":{"q":68,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":150,"sh":null,"locs":[{"w":"Rotterdam NL","q":13},{"w":"Milan IT","q":33},{"w":"Hamburg DE","q":22}]},"Floating":{"q":250,"r":50,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":147,"sh":"FL 2026 12","date":"10 Aug 2026"},"Factory":{"q":600,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":148,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":154,"sh":null}}},{"art":"SY-EH-PRO-3P-30KW-V1","series":"NEXUS","cat":"Energy Management Hub","phase":"3P","conn":null,"ctA":null,"ctb":null,"mid":null,"conx":["Unspecified"],"app":"Industrial / Commercial","base":150,"prov":true,"rt":{"EU":{"q":69,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":150,"sh":null,"locs":[{"w":"Madrid ES","q":35},{"w":"Poznan PL","q":12},{"w":"Rotterdam NL","q":22}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":147,"sh":null,"date":null},"Factory":{"q":0,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":148,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":154,"sh":null}}},{"art":"SY-EH-PRO-1P-22KW-100A-V1","series":"NEXUS","cat":"Energy Management Hub","phase":"1P","conn":null,"ctA":100,"ctb":"≤ 100 A","mid":null,"conx":["Unspecified"],"app":"Residential / Light Commercial","base":150,"prov":true,"rt":{"EU":{"q":73,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":150,"sh":null,"locs":[{"w":"Hamburg DE","q":23},{"w":"Rotterdam NL","q":17},{"w":"Madrid ES","q":33}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":147,"sh":null,"date":null},"Factory":{"q":0,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":148,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":154,"sh":null}}},{"art":"SY-EH-MAX-1P-22KW-V1","series":"NEXUS","cat":"Energy Management Hub","phase":"1P","conn":null,"ctA":null,"ctb":null,"mid":null,"conx":["Unspecified"],"app":"Residential / Light Commercial","base":150,"prov":true,"rt":{"EU":{"q":56,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":150,"sh":null,"locs":[{"w":"Madrid ES","q":12},{"w":"Poznan PL","q":40},{"w":"Hamburg DE","q":4}]},"Floating":{"q":200,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":147,"sh":"FL 2026 21","date":"28 Aug 2026"},"Factory":{"q":600,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":148,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":154,"sh":null}}},{"art":"SY-EH-MAX-3P-50KW-V1","series":"NEXUS","cat":"Energy Management Hub","phase":"3P","conn":null,"ctA":null,"ctb":null,"mid":null,"conx":["Unspecified"],"app":"Industrial / Commercial","base":150,"prov":true,"rt":{"EU":{"q":68,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":150,"sh":null,"locs":[{"w":"Hamburg DE","q":20},{"w":"Poznan PL","q":40},{"w":"Milan IT","q":8}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":147,"sh":null,"date":null},"Factory":{"q":400,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":148,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":154,"sh":null}}},{"art":"SY-DLOG-WM-1DEV-V1","series":"LEDGER 1","cat":"Data Logger (1 device)","phase":null,"conn":null,"ctA":null,"ctb":null,"mid":null,"conx":["Wi-Fi","Wired","RS485"],"app":"Residential / Light Commercial","base":80,"prov":false,"rt":{"EU":{"q":77,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":80,"sh":null,"locs":[{"w":"Hamburg DE","q":30},{"w":"Rotterdam NL","q":31},{"w":"Milan IT","q":16}]},"Floating":{"q":250,"r":50,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":78,"sh":"FL 2026 14","date":"25 Aug 2026"},"Factory":{"q":0,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":79,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":82,"sh":null}}},{"art":"SY-DLOG-WM-24DEV-V1","series":"LEDGER 24","cat":"Data Logger (up to 24 devices)","phase":null,"conn":null,"ctA":null,"ctb":null,"mid":null,"conx":["Wi-Fi","Wired","RS485"],"app":"Residential / Commercial","base":80,"prov":true,"rt":{"EU":{"q":77,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":80,"sh":null,"locs":[{"w":"Hamburg DE","q":30},{"w":"Rotterdam NL","q":31},{"w":"Milan IT","q":16}]},"Floating":{"q":250,"r":50,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":78,"sh":"FL 2026 14","date":"25 Aug 2026"},"Factory":{"q":0,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":79,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":82,"sh":null}}},{"art":"SY-PROBE-OPT-V1","series":"IRIS","cat":"Metering Sensor","phase":null,"conn":null,"ctA":null,"ctb":null,"mid":null,"conx":["TIC / Linky"],"app":"Residential / Light Commercial","base":70,"prov":true,"rt":{"EU":{"q":83,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":70,"sh":null,"locs":[{"w":"Madrid ES","q":35},{"w":"Hamburg DE","q":27},{"w":"Poznan PL","q":21}]},"Floating":{"q":0,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":69,"sh":null,"date":null},"Factory":{"q":0,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":69,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":72,"sh":null}}},{"art":"SY-TIC-V1","series":"LINQ","cat":"TIC Reader","phase":null,"conn":null,"ctA":null,"ctb":null,"mid":null,"conx":["TIC / Linky","RS485"],"app":"Residential / Light Commercial","base":40,"prov":false,"rt":{"EU":{"q":77,"r":0,"eta":"< 1 week","w":"In EU warehouse, ships now","moq":"1 unit","moqs":"1 unit","pr":40,"sh":null,"locs":[{"w":"Madrid ES","q":17},{"w":"Poznan PL","q":37},{"w":"Rotterdam NL","q":23}]},"Floating":{"q":300,"r":0,"eta":"< 6 weeks","w":"In transit, ETA by named shipment","moq":"1 carton (50 pcs)","moqs":"50 pcs","pr":39,"sh":"FL 2026 20","date":"14 Aug 2026"},"Factory":{"q":600,"r":0,"eta":"< 8 weeks","w":"Ex-factory warehouse","moq":"1 pallet (200 pcs)","moqs":"200 pcs","pr":40,"sh":null},"MTO":{"q":null,"r":0,"eta":"< 10 weeks","w":"Made to order at factory","moq":"40 ft container (1000 pcs)","moqs":"1000 pcs","pr":41,"sh":null}}}];
+const TIERS=[1, 50, 200, 1000];
+const TIERMULT=[1.0, 0.92, 0.85, 0.78];
+/* MOEBIUS inverter filter v7. Floating split (available/reserved/free), per-warehouse pricing
+   with cheapest on line, order-now per route, warranty extension, public product-info block. */
+
+const RDEF={
+ EU:      {label:"EU stock",           order:0,mark:"ok"},
+ Floating:{label:"Floating stock",     order:1,mark:"info"},
+ Factory: {label:"Factory stock",      order:2,mark:"warn"},
+ MTO:     {label:"Manufacturing order",order:3,mark:"idle"},
+};
+const ORDER=["EU","Floating","Factory","MTO"];
+const PAY={EU:"100%",Floating:"100%",Factory:"30 / 70 %",MTO:"30 / 70 %"};
+const PAYEX={EU:false,Floating:false,Factory:true,MTO:true};
+const ETALINE={EU:"< 1 week",Factory:"< 8 weeks",MTO:"< 10 weeks"};
+const LOGIC={
+ EU:"Ships from EU warehouse. Daily 12:00 dispatch cut-off. 30 minute payment reservation; cart does not reserve; first completed payment wins.",
+ Floating:"In transit under a named shipment. ETA confirmed before payment. Reserved by others reduces the free-to-order count. 30 minute payment reservation.",
+ Factory:"Ex-factory warehouse. Order by the shipment join date to enter the run. Reserved by others reduces the free-to-order count. 30 minute payment reservation.",
+ MTO:"Made to order. 30 percent deposit confirms the production slot, balance before dispatch. No 30 minute timer on this route.",
+};
+const ORIGIN={n:"Amsterdam",la:52.37,lo:4.90};
+const WCO={"Rotterdam NL":{la:51.92,lo:4.48},"Hamburg DE":{la:53.55,lo:9.99},"Madrid ES":{la:40.42,lo:-3.70},"Poznan PL":{la:52.41,lo:16.93},"Milan IT":{la:45.46,lo:9.19}};
+const WSUR={"< 50 km":0,"50 to 100 km":0.02,"100 to 250 km":0.04,"250 to 500 km":0.07,"> 500 km":0.11};
+function haversine(a,b){const R=6371,d=x=>x*Math.PI/180;const dla=d(b.la-a.la),dlo=d(b.lo-a.lo);const q=Math.sin(dla/2)**2+Math.cos(d(a.la))*Math.cos(d(b.la))*Math.sin(dlo/2)**2;return 2*R*Math.asin(Math.sqrt(q));}
+function distBand(km){return km<50?"< 50 km":km<100?"50 to 100 km":km<250?"100 to 250 km":km<500?"250 to 500 km":"> 500 km";}
+const whDist=n=>distBand(haversine(ORIGIN,WCO[n]));
+const whPrice=(base,n)=>Math.round(base*(1+WSUR[whDist(n)])/10)*10;
+const TODAY=new Date(2026,6,4);
+
+const BANDS=["\u2264 3 kVA","3 to 6 kVA","6 to 15 kVA","15 to 50 kVA","50 to 125 kVA","> 125 kVA","Unspecified"];
+const CATS=["Micro Inverter","String Inverter","Hybrid Inverter"];
+const APPS=["Residential","Commercial / C&I","Utility / Project"];
+const HYBRID="Hybrid Inverter";
+const eur=n=>"\u20AC "+n.toLocaleString("en-GB");
+
+const CHECKS=[
+ {key:"cat",label:"Category",kick:"Technical",get:p=>[p.cat],order:["Smart Meter, CT","Smart Meter, Direct","Energy Management Hub","CT Clamp","Data Logger","Metering Interface","Metering Sensor","TIC Reader"],nested:true},
+ {key:"series",label:"Series",kick:"Technical",get:p=>[p.series],hidden:true},
+ {key:"conn",label:"Connection",kick:"Technical",get:p=>p.conn?[p.conn]:[],order:["CT-based","Direct"]},
+ {key:"ctb",label:"CT current",kick:"Technical",get:p=>p.ctb?[p.ctb]:[],order:["\u2264 100 A","250 A","600 A","1000 A","\u2265 3000 A"]},
+ {key:"phase",label:"Phase",kick:"Technical",get:p=>p.phase?[p.phase]:[],order:["1P","3P"]},
+ {key:"mid",label:"MID certified",kick:"Technical",get:p=>p.mid?[p.mid]:[],order:["MID","Non-MID"]},
+ {key:"conx",label:"Connectivity",kick:"Technical",get:p=>p.conx||[],order:["Wi-Fi","Wired","RS485","TIC / Linky"]},
+ {key:"app",label:"Application",kick:"Technical",get:p=>[p.app],order:["Residential / Light Commercial","Industrial / Commercial"]},
+ {key:"av",label:"Availability",kick:"Commercial",get:p=>ORDER.filter(r=>hasStock(p,r)).map(r=>RDEF[r].label),order:ORDER.map(r=>RDEF[r].label),mark:true,authOnly:true},
+];
+const MARKBY={};ORDER.forEach(r=>MARKBY[RDEF[r].label]=RDEF[r].mark);
+const hasStock=(p,r)=> r==="MTO" ? true : (p.rt[r].q>0);
+
+const state={checks:{},auth:false,openCats:new Set()};
+CHECKS.forEach(c=>state.checks[c.key]=new Set());
+
+
+function matches(p,except){for(const c of CHECKS){if(c.key===except)continue;const s=state.checks[c.key];if(!s.size)continue;if(!c.get(p).some(v=>s.has(v)))return false;}return true;}
+const passAll=p=>matches(p,"__none__");
+function countFor(key,value){const c=CHECKS.find(x=>x.key===key);return PRODUCTS.filter(p=>matches(p,key)&&c.get(p).includes(value)).length;}
+const seriesMinK=s=>Math.min(...PRODUCTS.filter(p=>p.s===s).map(p=>p.k||1e9));
+
+/* SIDEBAR (unchanged from v6) */
+function shell(label,kick){const sec=document.createElement("div");sec.className="sec";const btn=document.createElement("button");btn.innerHTML=`<span class="lbl">${label}<span class="kick">${kick}</span></span><span class="pm"></span>`;btn.onclick=()=>sec.classList.toggle("collapsed");sec.appendChild(btn);const body=document.createElement("div");body.className="body";sec.appendChild(body);return {sec,body};}
+function optRow(key,v,n,extra){const row=document.createElement("label");row.className="opt";row.innerHTML=`<input type="checkbox" ${state.checks[key].has(v)?"checked":""} style="accent-color:var(--color-brand-synq, #4F4F4E);width:20px;height:20px;"><span class="box"></span>${extra||""}<span class="nm">${v}</span><span class="cnt">${n}</span>`;row.querySelector("input").onchange=e=>{e.target.checked?state.checks[key].add(v):state.checks[key].delete(v);if(key==="c"&&v===HYBRID&&!e.target.checked){state.checks.m.clear();state.checks.v.clear();}update();};return row;}
+function subGroup(nest,key,title){const c=CHECKS.find(x=>x.key===key);const cap=document.createElement("div");cap.className="subcap";cap.textContent=title;nest.appendChild(cap);c.order.forEach(v=>{const n=countFor(key,v);if(n===0&&!state.checks[key].has(v))return;nest.appendChild(optRow(key,v,n));});}
+function nestSeries(body,cat){
+ const series=[...new Set(PRODUCTS.filter(p=>p.cat===cat).map(p=>p.series))].sort();
+ if(!series.length)return;
+ const anySel=series.some(x=>state.checks.series.has(x));
+ const open=state.openCats.has(cat)||anySel;
+ const tw=document.createElement("button");tw.className="twist";tw.textContent=(open?"Hide":"Show")+" "+series.length+" series";
+ tw.onclick=()=>{open?state.openCats.delete(cat):state.openCats.add(cat);renderFilters();};
+ body.appendChild(tw);
+ if(open){const nest=document.createElement("div");nest.className="nest";
+   series.forEach(x=>{const n=countFor("series",x);if(n===0&&!state.checks.series.has(x))return;nest.appendChild(optRow("series",x,n));});
+   body.appendChild(nest);}
+}
+function checkSec(c){const{sec,body}=shell(c.label,c.kick);let vals=[...new Set(PRODUCTS.flatMap(p=>c.get(p)))];if(c.order)vals.sort((a,b)=>c.order.indexOf(a)-c.order.indexOf(b));vals.forEach(v=>{const n=countFor(c.key,v);if(n===0&&!state.checks[c.key].has(v))return;const mk=c.mark?`<span class="mark ${MARKBY[v]}"></span>`:"";body.appendChild(optRow(c.key,v,n,mk));if(c.nested)nestSeries(body,v);});return sec;}
+function renderFilters(){const root=document.getElementById("filters");root.innerHTML="";const vis=c=>!c.hidden&&(!c.authOnly||state.auth);CHECKS.filter(c=>vis(c)&&c.kick==="Technical").forEach(c=>root.appendChild(checkSec(c)));CHECKS.filter(c=>vis(c)&&c.kick==="Commercial").forEach(c=>root.appendChild(checkSec(c)));}
+function renderChips(){
+ const box=document.getElementById("chips");box.innerHTML="";
+ CHECKS.forEach(c=>state.checks[c.key].forEach(v=>{const el=document.createElement("span");el.className="chip";el.innerHTML=`<b>${c.label}</b> ${v} <button aria-label="Remove">&times;</button>`;el.querySelector("button").onclick=()=>{state.checks[c.key].delete(v);update();};box.appendChild(el);}));
+ document.getElementById("clearAll").disabled=box.children.length===0;
+}
+function renderSort(){const so=document.getElementById("sort");const cur=so.value;let opts=[["power-asc","Power, low to high"],["power-desc","Power, high to low"]];if(state.auth){opts.push(["speed","Availability, fastest first"]);opts.push(["price","Price, low to high"]);}so.innerHTML=opts.map(([v,l])=>`<option value="${v}">${l}</option>`).join("");so.value=opts.some(o=>o[0]===cur)?cur:"power-asc";}
+const bestRoute=p=>{for(const r of ORDER)if(hasStock(p,r))return RDEF[r].order;return 3;};
+const euLinePrice=p=>{const l=p.rt.EU.locs;if(l&&l.length)return Math.min(...l.map(x=>whPrice(p.rt.EU.pr,x.w)));return p.rt.EU.pr;};
+const minPrice=p=>Math.min(...ORDER.map(r=>r==="EU"?euLinePrice(p):p.rt[r].pr).filter(x=>x!=null));
+
+/* factual description from real attributes */
+function genDesc(p){
+ let s=`The SYNQ ${p.series} is a ${p.cat.toLowerCase()}`;
+ if(p.phase)s+=`, ${p.phase==="1P"?"single-phase":"three-phase"}`;
+ if(p.conn)s+=`, ${p.conn.toLowerCase()} connection`;
+ if(p.ctA)s+=`, ${p.ctA} A rating`;
+ s+=`. Connectivity: ${(p.conx||["unspecified"]).join(", ")}.`;
+ if(p.mid)s+=` ${p.mid==="MID"?"MID certified for billing.":"Not MID certified, monitoring only."}`;
+ s+=` Application ${p.app.toLowerCase()}.`;
+ return s;
+}
+const PEND=`<span class="pend">datasheet pending</span>`;
+function specTable(p){
+ const rows=[
+  ["Brand","SYNQ"],["Series",p.series],["Category",p.cat],["Connection",p.conn||"n.a."],
+  ["Phase",p.phase||"n.a."],["CT current",p.ctA?p.ctA+" A":"n.a."],["MID certified",p.mid||PEND],
+  ["Connectivity",(p.conx||["—"]).join(", ")],["Application",p.app],
+  ["Accuracy class",PEND],["Measurement protocol",PEND],["Sampling rate",PEND],["Dimensions",PEND],
+  ["Mounting",PEND],["Operating range",PEND],["Enclosure rating",PEND],["Communication port",PEND],["Firmware update",PEND],["Warranty term",PEND],
+ ];
+ return `<div class="spectable">${rows.map(r=>`<div class="specr"><span class="sk">${r[0]}</span><span class="sv">${r[1]}</span></div>`).join("")}</div>`;
+}
+const DOWNLOADS=["Installation guide","Warranty statement","Cycle life report","Commissioning checklist"];
+function downloads(p){
+ return `<div class="dllist">${DOWNLOADS.map(d=>`<a class="dlx" href="#download"><span class="dl-ic ic"></span>${d} \u2014 MOEBIUS ${p.s}<span class="arr"></span></a>`).join("").replace(/\u2014/g,'&middot;')}</div>`;
+}
+function productInfo(p){
+ return `<details class="pinfo-acc"><summary>Product information<span class="caret"></span></summary>
+   <div class="pi-inner">
+     <div class="pitabs"><button class="pitab active" data-pt="desc">Description</button><button class="pitab" data-pt="spec">Specifications</button><button class="pitab" data-pt="dl">Downloads</button></div>
+     <div class="pipanel" data-pt="desc"><p class="desc">${genDesc(p)}</p></div>
+     <div class="pipanel hide" data-pt="spec">${specTable(p)}</div>
+     <div class="pipanel hide" data-pt="dl">${downloads(p)}</div>
+   </div></details>`;
+}
+
+/* CARD */
+function thumbCls(p){return p.t==="Wall / floor"?"cab":(p.t==="Module-level"?"micro":"");}
+const FLOOR={EU:1000,Floating:4000,Factory:8000,MTO:15000};
+const FIXED=400;
+const STAT={
+ allowed:{lab:"Allowed",btn:"Order now",cls:"go",mark:"ok"},
+ minval:{lab:"Minimum order value required",btn:"Minimum order value {floor}",cls:"minval",mark:"warn"},
+ consol:{lab:"Eligible for consolidation",btn:"Add to weekly consolidation",cls:"consol",mark:"info"},
+ approval:{lab:"Management approval required",btn:"Request approval",cls:"approval",mark:"warn"},
+ blocked:{lab:"Blocked, order too small",btn:"Blocked",cls:"block",mark:"err"},
+};
+function moqNum(d){const m=String(d.moq).match(/([\d,]+)\s*(pcs|unit)/i);return m?parseInt(m[1].replace(/,/g,'')):(d.q||1);}
+function orderStatus(p,r){
+ const d=p.rt[r];const unit=r==="EU"?euLinePrice(p):d.pr;const n=moqNum(d);const val=n*(unit||0);
+ let key,burden=null;
+ if(r==="EU")key=val<FLOOR.EU?"minval":"allowed";
+ else{ if(val<FLOOR[r])key="consol"; else{burden=FIXED/val;key=burden>0.15?"blocked":burden>0.10?"approval":"allowed";} }
+ return {key,val,n,burden};
+}
+const VIEWS=[["main","Main"],["360","360"],["app","Application"],["install","Installation"]];
+function gallery(p){
+ return `<div class="gallery">
+   <div class="gview ${thumbCls(p)}" data-active="main"><div class="ph"><span class="phlab">Main image</span><span class="phnote">placeholder</span></div></div>
+   <div class="gtabs">${VIEWS.map((v,i)=>`<button class="gtab ${i===0?"active":""}" data-view="${v[0]}">${v[1]}</button>`).join("")}</div>
+ </div>`;
+}
+function calcStatus(q,base,fixed,floor,isEU){
+ const unit=base+(fixed>0?fixed/q:0);const total=q*unit;const burden=fixed>0?fixed/total:0;
+ let key;
+ if(isEU)key=total<floor?"minval":"allowed";
+ else{ if(total<floor)key="consol"; else key=burden>0.15?"blocked":burden>0.10?"approval":"allowed"; }
+ return {unit,total,burden,key};
+}
+function orderBlock(p,r){
+ const base=r==="EU"?euLinePrice(p):p.rt[r].pr;
+ const tiers=TIERS.map((q,i)=>({q,price:Math.round(base*TIERMULT[i])}));
+ const rows=tiers.map(tt=>`<div class="vt-row"><span class="vt-q">${tt.q===1?"Per unit":"Per "+tt.q}</span><span class="vt-p">${eur(tt.price)}</span></div>`).join("");
+ const stock=hasStock(p,r);
+ return `<div class="orderblock"><div class="vtiers"><div class="vt-h">Volume price</div>${rows}</div><button class="obtn go"${stock?"":" disabled"}>Order now</button></div>`;
+}
+function routePanel(p,r){
+ const d=p.rt[r];const def=RDEF[r];const stock=hasStock(p,r);const empty=!stock&&r!=="MTO";
+ const lineP = r==="EU"?euLinePrice(p):d.pr;
+ const etaTxt = r==="Floating" ? (d.date?"ETA "+d.date:"< 6 weeks") : (ETALINE[r]||d.eta);
+ const qty = r==="MTO" ? "Made to order" : (d.q>0?`<b>${d.q} pcs</b> available`:"No stock");
+ const priceCell = lineP!=null?`<span class="rprice">${eur(lineP)}</span>`:`<span class="rprice">\u2014</span>`;
+ // detail
+ let rows="";
+ if(r==="EU"&&d.locs&&d.locs.length){
+   const cheapest=Math.min(...d.locs.map(l=>whPrice(d.pr,l.w)));
+   rows+=`<div class="whprice">`;
+   d.locs.forEach(l=>{const pr=whPrice(d.pr,l.w);const best=pr===cheapest;
+     rows+=`<div class="whrow ${best?'best':''}"><span class="wn">${l.w} &middot; ${l.q} pcs &middot; ${whDist(l.w)}</span><span class="wp">${eur(pr)}</span><span class="ws">${best?'nearest, cheapest':'shipment surcharge included'}</span></div>`;});
+   rows+=`</div>`;
+ } else if(r==="Floating"){
+   const free=Math.max(0,(d.q||0)-(d.r||0));
+   const dObj=d.date?new Date(d.date):null;
+   const days=dObj?Math.round((dObj-TODAY)/86400000):null;
+   rows+=`<div class="rd" style="grid-column:1/-1"><div class="k">Where</div><div class="v" style="font-weight:400">In transit${d.date?`, ETA by ${d.date}${days?`, within ${days} days`:""}`:""}</div></div>`;
+   rows+=`<div class="qbreak">
+     <div class="qcell a"><div class="k">Available</div><div class="v">${d.q} pcs</div></div>
+     <div class="qcell r"><div class="k">Reserved by others</div><div class="v">${d.r} pcs</div></div>
+     <div class="qcell f"><div class="k">Free to order</div><div class="v">${free} pcs</div></div></div>`;
+   if(d.sh)rows+=`<div class="rd"><div class="k">Named shipment</div><div class="v">SHIP ${d.sh}</div></div>`;
+   rows+=`<div class="rd"><div class="k">Minimum order</div><div class="v">${d.moq}</div></div>`;
+ } else {
+   const base=[["Where",d.w],r!=="MTO"&&d.q>0?["Available",`${d.q} pcs`]:null,d.r>0?["Reserved by others",`<span class="v" style="color:var(--err)">${d.r} pcs</span>`,true]:null,["Minimum order",d.moq]].filter(Boolean);
+   rows+=base.map(x=>`<div class="rd"><div class="k">${x[0]}</div>${x[2]?x[1]:`<div class="v">${x[1]}</div>`}</div>`).join("");
+ }
+ const payRow=`<div class="pay">Payment terms: <b>${PAY[r]}</b>${PAYEX[r]?` <span class="ex">example</span>`:""}</div>`;
+ const order=orderBlock(p,r);
+ return `<details class="route ${empty?"empty":""}">
+   <summary><span class="mark ${def.mark}"></span><span class="rname">${def.label}</span><span class="reta">${etaTxt}</span><span class="rmoq">MOQ ${d.moqs}</span><span class="rqty">${qty}</span>${priceCell}<span class="caret"></span></summary>
+   <div class="rdetail">${rows}${payRow}<div class="rlogic">${LOGIC[r]}</div>${order}</div>
+ </details>`;
+}
+function warranty(p){
+ const base=euLinePrice(p);const w10=Math.round(base*0.08/10)*10,w15=Math.round(base*0.14/10)*10;
+ return `<div class="warranty"><div class="wsel-l">Warranty add-on</div>
+   <select class="warr-sel"><option value="0">No extension, included</option><option value="${w10}">Extend to 10 years, + ${eur(w10)}</option><option value="${w15}">Extend to 15 years, + ${eur(w15)}</option></select>
+   <div class="warr-total">Add-on selected: <b>${eur(0)}</b></div>
+   <div class="note">Added at order like an extra, no separate step. Warranty PDF by serial number on registration. Amounts placeholder.</div></div>`;
+}
+function renderCards(){
+ let list=PRODUCTS.filter(passAll);
+ const s=document.getElementById("sort").value;
+ list.sort((x,y)=>s==="power-desc"?(y.k||0)-(x.k||0):s==="speed"?bestRoute(x)-bestRoute(y)||(x.k||0)-(y.k||0):s==="price"?minPrice(x)-minPrice(y):(x.k||0)-(y.k||0));
+ document.getElementById("rcount").textContent=list.length;
+ const root=document.getElementById("cards");
+ if(!list.length){root.innerHTML=`<div class="empty-res"><b>No inverters match.</b> Loosen a filter.</div>`;return;}
+ root.innerHTML=list.map(p=>{
+   const commercial = state.auth
+     ? `<div class="pricenote">Prices are placeholders, no price data loaded</div><div class="routes">${ORDER.map(r=>routePanel(p,r)).join("")}</div>`
+     : `<button class="gatebar">Log in to see availability and price</button>`;
+   return `<article class="card">
+     ${gallery(p)}
+     <div class="c-body">
+       <div class="c-head"><h3>SYNQ ${p.series}<span class="artcode">${p.art}</span></h3>
+         <div class="dls"><a class="dl" href="#datasheet"><span class="ic"></span>Datasheet</a><a class="dl" href="#catalogue"><span class="ic"></span>Catalogue</a></div></div>
+       <div class="c-sub">${p.cat} &middot; ${p.app}${p.prov?` <span class="provtag">Provisional</span>`:""}</div>
+       <div class="specrow">
+         <div class="spec"><div class="k">Connection</div><div class="v">${p.conn||"—"}</div></div>
+         <div class="spec"><div class="k">Phase</div><div class="v">${p.phase||"—"}</div></div>
+         <div class="spec"><div class="k">CT current</div><div class="v">${p.ctA?p.ctA+" A":"—"}</div></div>
+         <div class="spec"><div class="k">MID</div><div class="v">${p.mid||"—"}</div></div>
+       </div>
+       <div class="eprline">WEEE and packaging contribution applies per delivery country, shown at checkout.</div>
+       ${commercial}
+       ${productInfo(p)}
+     </div>
+   </article>`;
+ }).join("");
+}
+
+function renderFoot(){
+ document.getElementById("foot").innerHTML=
+  `<b>Facets:</b> Category (device type, series nested), Connection, CT current, Phase, MID certified, Connectivity, Application. CT current and MID are partial, only where the product carries them. Availability appears only when logged in.<br>`+
+  `<b>No burden engine:</b> SYNQ items are cheap and carton-shipped, so the MOEBIUS status engine was dropped. Each route shows volume-discount tiers instead: more units, lower unit price.<br>`+
+  `<span class="am">Warranty is not orderable on metering. Prices placeholder (25 to 150 euro base). Tiers, stock, distance, dated ETA provisional.</span>`;
+}
+
+function update(){renderFilters();renderChips();renderCards();}
+document.getElementById("clearAll").onclick=()=>{CHECKS.forEach(c=>state.checks[c.key].clear());update();};
+document.getElementById("sort").onchange=renderCards;
+document.getElementById("btnAnon").onclick=()=>{state.auth=false;setAuth();};
+document.getElementById("btnAuth").onclick=()=>{state.auth=true;setAuth();};
+function setAuth(){document.getElementById("btnAnon").classList.toggle("active",!state.auth);document.getElementById("btnAuth").classList.toggle("active",state.auth);if(!state.auth)state.checks.av.clear();renderSort();update();}
+renderSort();renderFilters();renderChips();renderCards();renderFoot();
+
+const cardsEl=document.getElementById("cards");
+cardsEl.addEventListener("input",e=>{
+ const s=e.target;if(!s.classList||!s.classList.contains("qslider"))return;
+ const q=+s.value,base=+s.dataset.base,fixed=+s.dataset.fixed,floor=+s.dataset.floor,isEU=s.dataset.eu==="1";
+ const c=calcStatus(q,base,fixed,floor,isEU),S=STAT[c.key],w=s.closest(".orderblock");
+ w.querySelector(".qnow").textContent=q+" pcs";
+ const bt=fixed>0?" \u00B7 burden "+(c.burden*100).toFixed(0)+"%":"";
+ w.querySelector(".oread").innerHTML=q+" pcs \u00B7 "+eur(Math.round(c.unit))+"/pc \u00B7 total "+eur(Math.round(c.total))+bt+" \u00B7 <b class=\"s-"+S.mark+"\">"+S.lab+"</b>";
+ const b=w.querySelector(".obtn");b.className="obtn "+S.cls;b.textContent=S.btn.replace("{floor}",eur(floor));b.disabled=(c.key==="blocked"||c.key==="minval");
+});
+
+cardsEl.addEventListener("click",e=>{
+ const pt=e.target.closest&&e.target.closest(".pitab");
+ if(pt){const w=pt.closest(".pi-inner"),to=pt.dataset.pt;w.querySelectorAll(".pitab").forEach(b=>b.classList.toggle("active",b===pt));w.querySelectorAll(".pipanel").forEach(pl=>pl.classList.toggle("hide",pl.dataset.pt!==to));return;}
+ const tab=e.target.closest&&e.target.closest(".gtab");const view=e.target.closest&&e.target.closest(".gview");
+ let g,to;
+ if(tab){g=tab.closest(".gallery");to=tab.dataset.view;}
+ else if(view){g=view.closest(".gallery");to=view.dataset.active==="main"?"360":view.dataset.active;}
+ else return;
+ if(!g)return;
+ g.querySelectorAll(".gtab").forEach(b=>b.classList.toggle("active",b.dataset.view===to));
+ const gv=g.querySelector(".gview");gv.dataset.active=to;
+ const L={main:["Main image","placeholder"],"360":["360 viewer","drag to rotate, placeholder, no frames loaded"],app:["Application image","placeholder"],install:["Installation example","placeholder"]};
+ gv.querySelector(".phlab").textContent=L[to][0];gv.querySelector(".phnote").textContent=L[to][1];
+});
+
+
+
+
+/* ---- next script block ---- */
+
+/* ROLLOUT_DECOR v2 positional */
+(function(){
+var KEYS=["EU","Floating","Factory","MTO"];
+var HOLD={EU:"Reservation hold, payment within 24 h or the hold lapses.",Floating:"Reservation hold, payment within 12 h or the hold lapses.",Factory:"Reservation hold, payment within 48 h or the hold lapses."};
+function cetNow(){var t=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Amsterdam",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date());var a=t.split(":");return(+a[0])*60+(+a[1]);}
+function cutoffHTML(){var n=cetNow(),c=14*60;if(n<c){var r=c-n;var soon=r<60?" soon":"";return '<span class="ck-k">Order before 14:00 CET</span><span class="ck-t'+soon+'">'+Math.floor(r/60)+' h '+String(r%60).padStart(2,"0")+' min left</span><span class="ck-s ok">Ships today</span>';}return '<span class="ck-k">Cutoff 14:00 CET passed</span><span class="ck-s warn">Ships next business day</span>';}
+function routeKey(d){var p=d.parentElement;if(!p)return"MTO";var all=Array.prototype.filter.call(p.children,function(x){return x.matches&&x.matches("details.route");});return KEYS[all.indexOf(d)]||"MTO";}
+function pcs(t){var m=(t||"").match(/(\d[\d\s.,]*)\s*pcs/);return m?parseInt(m[1].replace(/[^\d]/g,""),10):null;}
+function euPairs(d){var out=[];d.querySelectorAll(".rdgrid .rd").forEach(function(r){var k=r.querySelector(".k"),v=r.querySelector(".v");var q=pcs(v&&v.textContent);if(k&&q!=null)out.push([k.textContent.trim(),q]);});if(out.length)return out;d.querySelectorAll(".whprice .whrow .wn").forEach(function(w){var q=pcs(w.textContent);var name=w.textContent.split("\u00b7")[0].trim();if(q!=null)out.push([name,q]);});return out;}
+function flNums(d){var a=null,r=null,f=null;d.querySelectorAll(".qbreak .qcell").forEach(function(c){var k=(c.querySelector(".k")||{}).textContent||"";var q=pcs((c.querySelector(".v")||{}).textContent);if(/available/i.test(k))a=q;else if(/reserved/i.test(k))r=q;else if(/free/i.test(k))f=q;});return[a,r,f];}
+function bar(segs,legend){var tot=segs.reduce(function(s,x){return s+x[1];},0)||1;var b='<div class="stockbar">'+segs.map(function(x){return '<span class="'+x[0]+'" style="width:'+(x[1]/tot*100).toFixed(1)+'%"></span>';}).join("")+'</div>';return b+'<div class="sblegend">'+legend+'</div>';}
+function decorate(){
+ document.querySelectorAll("details.route").forEach(function(d){
+  var key=routeKey(d);
+  if(!d.dataset.dec){
+   if(!d.querySelector(".stockbar")){
+    if(key==="EU"){var pr=euPairs(d);if(pr.length){var segs=pr.map(function(p,i){return["sb-w"+(i%3),p[1]];});var leg=pr.map(function(p,i){return '<span class="lg lg'+(i%3)+'"></span>'+p[0]+' '+p[1];}).join(" &nbsp; ")+" pcs";var host=d.querySelector(".rdgrid,.whprice");if(host)host.insertAdjacentHTML("afterend",bar(segs,leg));}}
+    if(key==="Floating"){var n=flNums(d);if(n[0]&&n[1]!=null&&n[2]!=null){var host2=d.querySelector(".qbreak");if(host2)host2.insertAdjacentHTML("afterend",bar([["sb-res",n[1]],["sb-free",n[2]]],'<span class="lg lgr"></span>Reserved '+n[1]+' &nbsp; <span class="lg lgf"></span>Free to order '+n[2]+' pcs'));}}
+   }
+   if(key==="EU"&&!d.querySelector(".cutoffline")&&euPairs(d).length)d.insertAdjacentHTML("beforeend",'<div class="cutoffline">'+cutoffHTML()+'</div>');
+   if(HOLD[key]&&!d.querySelector(".holdline"))d.insertAdjacentHTML("beforeend",'<div class="holdline">'+HOLD[key]+'</div>');
+   d.dataset.dec="1";
+  }
+  if(key==="EU"&&!d.dataset.op){d.open=true;d.dataset.op="1";}
+ });
+}
+var host=document.getElementById("cards")||document.body;
+new MutationObserver(decorate).observe(host,{childList:true,subtree:true});
+decorate();
+setInterval(function(){document.querySelectorAll(".cutoffline").forEach(function(e){e.innerHTML=cutoffHTML();});decorate();},30000);
+})();
+
+  }
+}
+</script>
+</body>
+</html>

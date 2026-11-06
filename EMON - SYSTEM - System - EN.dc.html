@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet data-dc-atomics>
+<title>EMON System | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#5F5E5E; }
+  a:hover { color:#21AE8F; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;">
+
+  <dc-import name="NavBar" active="systems" hint-size="100%,80px"></dc-import>
+  <dc-import name="EmonNav" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="EMON" rgb="33,174,143" eyebrow="System · EMON" title="Energy Intelligence Platform" intro="The app that connects every STRØHM.ENERGY product." slot="emon-hero" shot="Drop an EMON app screen" hint-size="100%,625px"></dc-import><section data-screen-label="EMON — Hero">
+    <div data-cols="2" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side);box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center;--cg:56px;">
+      <div>
+        <p style="margin:0 0 36px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;max-width:440px;">Monitoring, control and dynamic pricing, in one place.</p>
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#demo" style="text-decoration:none;min-height:var(--cta-height,56px);padding:0 28px;display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);border-radius:8px;">Book a demo</a>
+      </div>
+      
+    </div>
+  </section>
+
+  <section data-screen-label="EMON — What it does" style="background:#FFFFFF;border-top:1px solid #D4D4D4;border-bottom:1px solid #D4D4D4;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+      <h2 style="margin:0 0 48px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">What <span style="color:#8E8E8E;">it does</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;--cg:32px;">
+        <sc-for list="{{ capabilities }}" as="cap" hint-placeholder-count="3">
+          <div>
+            <div style="font-size:var(--web-h3-size);font-weight:300;color:#5F5E5E;margin-bottom:12px;line-height:var(--web-h3-lh);">{{ cap.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ cap.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="EMON — How it works">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+      <h2 style="margin:0 0 48px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">How <span style="color:#8E8E8E;">it works</span></h2>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;--cg:24px;">
+        <sc-for list="{{ steps }}" as="step" hint-placeholder-count="4">
+          <div style="border-top:2px solid #5F5E5E;padding-top:16px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#898989;margin-bottom:10px;letter-spacing:var(--web-eyebrow-ls);">{{ step.n }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;margin-bottom:8px;line-height:var(--web-small-lh);">{{ step.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ step.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="EMON — Features" style="background:#F5F5F5;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+      <h2 style="margin:0 0 40px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Features</h2>
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;--cg:12px;">
+        <div style="background:#FFFFFF;padding:16px 20px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.06em;text-transform:uppercase;color:#898989;border-radius:12px;">Feature</div>
+        <div style="background:#FFFFFF;padding:16px 20px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.06em;text-transform:uppercase;color:#898989;border-radius:12px;">Available to</div>
+        <sc-for list="{{ features }}" as="f" hint-placeholder-count="6">
+          <div style="background:#FFFFFF;padding:18px 20px;font-size:14px;font-weight:300;color:#5F5E5E;border-radius:12px;">{{ f.name }}</div>
+          <div style="background:#FFFFFF;padding:18px 20px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#5F5E5E;border-radius:12px;">{{ f.role }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="EMON — Integration">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+      <h2 style="margin:0 0 32px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Integration</h2>
+      <p style="margin:0 0 40px;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">EMON connects natively to every hardware brand in the STRØHM.ENERGY ecosystem.</p>
+      <div data-cols="6" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ integrations }}" as="i" hint-placeholder-count="6">
+          <div style="background:#F5F5F5;border-radius:12px;padding:16px;display:flex;align-items:center;gap:8px;">
+            <span style="width:8px;height:8px;border-radius:50%;background:{{ i.color }};"></span>
+            <span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ i.name }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="EMON — Access and Demo" id="demo" style="background:#5F5E5E;">
+    <div data-cols="2" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center;--cg:56px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8BCF3F;margin-bottom:16px;">Access</div>
+        <h3 style="margin:0 0 16px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#FFFFFF;">Free for consumers. Partner access for installers.</h3>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;color:#D9DADA;max-width:440px;line-height:var(--web-small-lh);">EMON ships free with every connected STRØHM.ENERGY product. Installer and developer accounts unlock TRIBE and KERN integration.</p>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;">
+        <span style="text-decoration:none;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:flex;align-items:center;white-space:nowrap;background:#FFFFFF;color:#5F5E5E;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Book a demo</span>
+        <span style="text-decoration:none;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:flex;align-items:center;white-space:nowrap;border:1px solid #5F5E5E;color:#D9DADA;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Download overview PDF</span>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="EMON — Case studies" style="background:#FFFFFF;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+      <h2 style="margin:0 0 32px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Case studies</h2>
+      <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;--cg:24px;">
+        <sc-for list="{{ cases }}" as="c" hint-placeholder-count="2">
+          <a href="{{ c.href }}" style="text-decoration:none;display:block;background:#F5F5F5;border-radius:12px;padding:28px;">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;margin-bottom:10px;line-height:var(--web-small-lh);">{{ c.quote }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ c.result }}</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SupportModule" kind="system" accent="#21AE8F" hint-size="100%,520px"></dc-import>
+
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      capabilities: [
+        { title: "Monitor", desc: "Live generation, consumption and storage across every connected device." },
+        { title: "Control", desc: "Set schedules, reserve thresholds and priority loads from one screen." },
+        { title: "Optimise", desc: "Dynamic pricing shifts consumption to the cheapest and cleanest hours." },
+      ],
+      steps: [
+        { n: "01", title: "Connect", desc: "Pair EMON with any installed STRØHM.ENERGY product over Wi-Fi mesh." },
+        { n: "02", title: "Configure", desc: "Set reserve bands, priorities and tariff data once." },
+        { n: "03", title: "Monitor", desc: "Live data streams from every connected device." },
+        { n: "04", title: "Optimise", desc: "EMON shifts load automatically to the lowest-cost hours." },
+      ],
+      features: [
+        { name: "Live consumption view", role: "Installer, Consumer" },
+        { name: "Dynamic pricing engine", role: "Consumer" },
+        { name: "Multi-site dashboard", role: "Installer" },
+        { name: "Battery reserve scheduling", role: "Consumer" },
+        { name: "TRIBE community sharing", role: "Installer, Developer" },
+        { name: "KERN warranty lookup", role: "Installer" },
+      ],
+      integrations: [
+        { name: "ANDO", color: "#CDD62B" }, { name: "FLUXX", color: "#FDC706" }, { name: "MOEBIUS", color: "#F1931B" },
+        { name: "SYNQ", color: "#5F7773" }, { name: "NENDO", color: "#1B8B9A" }, { name: "OZZY", color: "#8BCF3F" },
+      ],
+      cases: [
+        { quote: "\u201cGrid import dropped by a third within the first billing cycle.\u201d", result: "42 households · Rotterdam energy community", href: "STROHM.ENERGY - PROJECT - Case Study - EN.dc.html" },
+        { quote: "\u201cOne dashboard for every site we manage.\u201d", result: "Installer partner · 60 residential sites", href: "STROHM.ENERGY - PROJECT - Case Study - EN.dc.html" },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

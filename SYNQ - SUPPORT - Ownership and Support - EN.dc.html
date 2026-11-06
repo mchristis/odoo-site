@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>SYNQ Ownership and Support | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="SynqNav" active="ownership" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="SYNQ" rgb="89,143,148" title="Measurements become decisions." intro="Without accurate measurement, EMON cannot optimise anything." slot="synq-ownership-and-support-hero" shot="SYNQ · Ownership and Support · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;"><a href="SYNQ - PRODUCT - Overview - EN.dc.html" style="color:var(--color-text-primary);">SYNQ</a> · Ownership and support</div>
+    <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#898989;max-width:680px;">SYNQ gives EMON the data, and EMON turns it into decisions for the owner and the installer.</p>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">In EMON</div>
+      <h2 style="margin:0 0 24px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">From measurement <span style="font-weight:300;">to decision.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:0 32px;">
+        <sc-for list="{{ functions }}" as="f" hint-placeholder-count="9">
+          <div style="padding:13px 0;border-top:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ f }}</div>
+        </sc-for>
+      </div>
+      <a href="EMON - SYSTEM - Overview - EN.dc.html" style="display:inline-block;margin-top:24px;font-size:var(--web-link-size);font-weight:var(--web-link-weight);">About EMON<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="background:var(--color-card-synq);border-radius:12px;padding:32px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">One ecosystem</div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px 28px;align-items:baseline;">
+        <sc-for list="{{ chain }}" as="c" hint-placeholder-count="5">
+          <div><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ c.brand }}</span> <span style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">{{ c.role }}</span></div>
+        </sc-for>
+      </div>
+      <p style="margin:20px 0 0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;max-width:680px;">NEXUS extends SYNQ from measurement into active energy management and control.</p>
+      <a href="SYNQ - PRODUCT - NEXUS - EN.dc.html" style="display:inline-block;margin-top:12px;font-size:var(--web-link-size);font-weight:var(--web-link-weight);">NEXUS energy hub<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:40px;">
+      <div>
+        <h2 style="margin:0 0 10px;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">When the internet <span style="color:#8E8E8E;">is down</span></h2>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;max-width:760px;">Measurement, communication and automation run on site. Remote access, tariff updates and cloud services pause and resume automatically.</p>
+        <a href="SYNQ - PRODUCT - Products - EN.dc.html#local-first" style="display:inline-block;margin-top:12px;font-size:var(--web-link-size);font-weight:var(--web-link-weight);">Local first<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      </div>
+      <div>
+        <h2 style="margin:0 0 10px;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Service from <span style="color:#8E8E8E;">the record</span></h2>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;max-width:760px;">Every service visit starts from the digital installation record: circuits, CT locations, phases and ratings, stored against the serial number.</p>
+        <a href="SYNQ - SUPPORT - Install and Commission - EN.dc.html#record" style="display:inline-block;margin-top:12px;font-size:var(--web-link-size);font-weight:var(--web-link-weight);">Installation record<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="WarrantyPhoto" brand="SYNQ" accent="#9FB5B1" slot-id="synq-warranty-photo-upload" hint-size="100%,480px"></dc-import>
+
+  <div style="height:88px;"></div>
+  <dc-import name="AndoPattern" brand="SYNQ" items="privacy" hint-size="100%,600px"></dc-import>
+
+  <div style="height:32px;"></div>
+  <dc-import name="ContentSections" brand="SYNQ" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="SYNQ" photo-slot-id="synq-ownership-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="SYNQ" accent="var(--color-brand-synq)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      functions: ["Dynamic tariffs", "Battery optimisation", "Peak shaving", "Load balancing", "Energy reports", "Carbon reporting", "AI optimisation", "Fault prediction", "Automatic documentation"],
+      chain: [
+        { brand: "ANDO", role: "generates" },
+        { brand: "MOEBIUS", role: "converts" },
+        { brand: "FLUXX", role: "stores" },
+        { brand: "SYNQ", role: "measures" },
+        { brand: "EMON", role: "understands" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

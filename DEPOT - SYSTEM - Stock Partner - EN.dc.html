@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>DEPOT Stock Partner | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { text-decoration:none; color:#1E1E1E; }
+  a:hover { color:#5F5E5E; }
+</style>
+<script src="image-slot.js"></script>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;font-weight:300;">
+
+  <dc-import name="NavBar" active="systems" hint-size="100%,80px"></dc-import>
+  <dc-import name="WebshopNav" active="why" hint-size="100%,57px"></dc-import>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:24px var(--web-side) 0;box-sizing:border-box;"><div style="background:#F4F4F4;border-radius:12px;padding:16px 20px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#4F4F4E;"><span style="font-weight:700;">Superseded by DEPOT chapter</span><a href="DEPOT - SYSTEM - Overview - EN.dc.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Go to DEPOT Overview</a></div></section>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="DEPOT" rgb="118,144,201" eyebrow="Stock Partner programme" title="Buy in volume. Hold locally. Earn on every installer order." intro="Approved Stock Partners purchase STRØHM.ENERGY factory stock in higher quantities at our lowest available partner price." slot="depot-stock-partner-hero" shot="DEPOT · Stock Partner · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="background:#1E1E1E;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <p style="margin:22px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#898989;max-width:70ch;">When an installer needs a smaller quantity from European stock, STRØHM.ENERGY buys the required units back at a pre-agreed higher price. You are paid before you release the goods, and you ship directly to the installer.</p>
+      <p style="margin:16px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#898989;max-width:70ch;">STRØHM.ENERGY manages the installer sale, pricing, allocation, invoicing, payment collection, documentation and communication. You provide secure local storage, accurate stock reporting and fast dispatch, giving installers low-MOQ European stock without you building a sales and admin operation.</p>
+      <a href="#apply" style="display:inline-flex;align-items:center;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);margin-top:32px;background:#FFFFFF;color:#4F4F4E;font-size:var(--cta-font,16px);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Apply as Stock Partner</a>
+    </div>
+  </section>
+
+  <!-- EXPLAINER VIDEO -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side);box-sizing:border-box;border-bottom:1px solid #D4D4D4;">
+    <div style="position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#1E1E1E;">
+      <image-slot id="stock-explainer-video" shape="rounded" radius="20" placeholder="Drop the Stock Partner explainer video poster / MP4 — 'How the Stock Partner programme works' (16:9)"></image-slot>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+        <div style="width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;">
+          <div style="width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:20px solid #1E1E1E;margin-left:5px;"></div>
+        </div>
+      </div>
+      <div style="position:absolute;left:24px;bottom:24px;pointer-events:none;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:6px;">Video</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;color:#FFFFFF;line-height:var(--web-h3-lh);">How the Stock Partner programme works</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUR-CARD SUMMARY -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side);box-sizing:border-box;border-bottom:1px solid #D4D4D4;">
+    <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;--cg:16px;">
+      <sc-for list="{{ summary }}" as="c" hint-placeholder-count="4">
+        <div style="background:#F5F5F5;border:1px solid #D4D4D4;border-radius:12px;padding:24px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:12px;">{{ c.n }}</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;color:#4F4F4E;margin-bottom:8px;line-height:var(--web-h3-lh);">{{ c.t }}</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">{{ c.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side);box-sizing:border-box;border-bottom:1px solid #D4D4D4;">
+    <div style="max-width:60ch;margin-bottom:32px;">
+      <div style="margin-bottom:14px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">The mechanism</div>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">How the <span style="color:#8E8E8E;">system works</span></h2>
+    </div>
+    <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;--cg:12px;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="6">
+        <div style="background:#F4F4F4;padding:28px;border-radius:12px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#898989;margin-bottom:10px;line-height:var(--web-h3-lh);">{{ s.n }}</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;color:#4F4F4E;margin-bottom:8px;line-height:var(--web-h3-lh);">{{ s.t }}</div>
+          <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ s.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- WAREHOUSE PHOTOS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side);box-sizing:border-box;border-bottom:1px solid #D4D4D4;">
+    <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:16px;">
+      <div style="aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:#F5F5F5;">
+        <image-slot id="stock-warehouse" shape="rounded" radius="20" placeholder="Photo — partner warehouse holding STRØHM.ENERGY stock (racking, pallets, EU facility)"></image-slot>
+      </div>
+      <div style="display:grid;grid-rows:1fr 1fr;gap:16px;">
+        <div style="border-radius:12px;overflow:hidden;background:#F5F5F5;">
+          <image-slot id="stock-dispatch" shape="rounded" radius="20" placeholder="Photo — order picking / dispatch to installer"></image-slot>
+        </div>
+        <div style="border-radius:12px;overflow:hidden;background:#F5F5F5;">
+          <image-slot id="stock-scanning" shape="rounded" radius="20" placeholder="Photo — serial / barcode scanning &amp; stock reporting"></image-slot>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DUAL USE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side);box-sizing:border-box;border-bottom:1px solid #D4D4D4;">
+    <div data-stack="1" style="background:#F5F5F5;border-radius:12px;padding:36px;display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:40px;align-items:center;">
+      <div>
+        <div style="margin-bottom:14px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Two ways to use your stock</div>
+        <h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Install it yourself, <span style="color:#8E8E8E;">or distribute it</span></h2>
+      </div>
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;--cg:16px;">
+        <div style="background:#FFFFFF;border-radius:16px;padding:22px;">
+          <div style="font-size:var(--web-body-size);font-weight:300;color:#4F4F4E;margin-bottom:8px;">For your own installs</div>
+          <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Draw from the same local stock for your own projects at your volume purchase price. No separate order, no waiting on central delivery.</p>
+        </div>
+        <div style="background:#FFFFFF;border-radius:16px;padding:22px;">
+          <div style="font-size:16px;font-weight:400;color:#4F4F4E;margin-bottom:8px;">For distribution</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">Release allocated units to installer orders routed by STRØHM.ENERGY and earn the agreed margin. One warehouse serves both your install business and your distribution income.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMERCIAL MODEL -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side);box-sizing:border-box;border-bottom:1px solid #D4D4D4;">
+    <div style="max-width:60ch;margin-bottom:32px;">
+      <div style="margin-bottom:14px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">The commercial model</div>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">A defined margin on <span style="color:#8E8E8E;">every unit</span></h2>
+      <p style="margin:14px 0 0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">You buy high-MOQ at the lowest volume price. Installers order low-MOQ from your stock. The difference between your purchase price and STRØHM.ENERGY's repurchase price is your margin: agreed in advance, never negotiated per installer.</p>
+    </div>
+    <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:24px;--cg:16px;">
+      <sc-for list="{{ model }}" as="m" hint-placeholder-count="3">
+        <div style="background:#F5F5F5;border-radius:12px;padding:24px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;margin-bottom:6px;line-height:var(--web-h3-lh);">{{ m.t }}</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">{{ m.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background:#F5F5F5;border:1px solid #D4D4D4;border-radius:12px;padding:24px;">
+      <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:10px;line-height:var(--web-small-lh);">Margin can vary by</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <sc-for list="{{ marginFactors }}" as="f" hint-placeholder-count="6">
+          <span style="font-size:var(--web-tag-size);color:#5F5E5E;border:1px solid #D4D4D4;border-radius:12px;padding:6px 12px;font-weight:var(--web-tag-weight);">{{ f }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO PROVIDES WHAT -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side);box-sizing:border-box;border-bottom:1px solid #D4D4D4;">
+    <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;--cg:16px;">
+      <div style="background:#F5F5F5;border-radius:12px;padding:28px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;margin-bottom:16px;line-height:var(--web-h3-lh);">What the Stock Partner provides</div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ partnerProvides }}" as="i" hint-placeholder-count="6">
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;padding:10px 0;border-top:1px solid #E0E0E0;">{{ i }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:28px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;margin-bottom:16px;line-height:var(--web-h3-lh);">What STRØHM.ENERGY provides</div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ strohmProvides }}" as="i" hint-placeholder-count="6">
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;padding:10px 0;border-top:1px solid #E0E0E0;">{{ i }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY BECOME -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side);box-sizing:border-box;border-bottom:1px solid #D4D4D4;">
+    <div style="max-width:60ch;margin-bottom:32px;">
+      <div style="margin-bottom:14px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Why become a Stock Partner</div>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Earn without building a <span style="color:#8E8E8E;">sales department</span></h2>
+    </div>
+    <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+      <sc-for list="{{ why }}" as="w" hint-placeholder-count="5">
+        <div style="background:#F5F5F5;border:1px solid #D4D4D4;border-radius:12px;padding:24px;">
+          <div style="font-size:17px;font-weight:400;color:#4F4F4E;margin-bottom:8px;">{{ w.t }}</div>
+          <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ w.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- TECHNICAL REQUIREMENTS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side);box-sizing:border-box;border-bottom:1px solid #D4D4D4;">
+    <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:48px;align-items:start;">
+      <div>
+        <div style="margin-bottom:14px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Requirements</div>
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Technical &amp; <span style="color:#8E8E8E;">operational requirements</span></h2>
+        <p style="margin:16px 0 0;max-width:48ch;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Participation requires a professional ERP or warehouse-management system with accurate, real-time stock records, and a tested API connection to the STRØHM.ENERGY ERP for:</p>
+      </div>
+      <div>
+      <div style="aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#F5F5F5;margin-bottom:16px;">
+        <image-slot id="stock-erp" shape="rounded" radius="20" placeholder="Screenshot — ERP / API stock integration dashboard (real-time stock, orders, serials)"></image-slot>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:28px;">
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 18px;--cg:18px;">
+          <sc-for list="{{ apiScope }}" as="a" hint-placeholder-count="6">
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ a }}</div>
+          </sc-for>
+        </div>
+        <p style="margin:18px 0 0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">The API connection must be tested and approved before any stock is activated for installer orders.</p>
+      </div>
+      </div>
+    </div>
+    <div data-stack="1" style="background:#1E1E1E;border-radius:12px;padding:28px;color:#FFFFFF;margin-top:16px;display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr);gap:32px;align-items:start;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:10px;display:flex;flex-wrap:wrap;gap:12px;"><span>Why an API</span><span style="color:#B07818;">To confirm</span></div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Real-time stock, so buyers order with confidence</div>
+      </div>
+      <div>
+        <p style="margin:0 0 14px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;max-width:760px;">The API keeps your live stock in sync with the STRØHM.ENERGY webshop and ERP. When an installer checks availability, they see what is actually on your shelf, not a delayed estimate, so orders can be confirmed without manual back-and-forth.</p>
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 20px;--cg:20px;">
+          <sc-for list="{{ apiWhy }}" as="w" hint-placeholder-count="4">
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#D8D8D8;padding-left:14px;position:relative;"><span style="position:absolute;left:0;top:0.6em;width:6px;height:1px;background:#6E6E6C;"></span>{{ w }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVALUATION + RISK -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side);box-sizing:border-box;border-bottom:1px solid #D4D4D4;">
+    <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;--cg:16px;">
+      <div style="background:#F5F5F5;border-radius:12px;padding:28px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;margin-bottom:8px;line-height:var(--web-h3-lh);">Evaluation &amp; acceptance</div>
+        <p style="margin:0 0 14px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">Submitting an application does not guarantee acceptance. Before appointment, STRØHM.ENERGY evaluates:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+          <sc-for list="{{ evalCriteria }}" as="e" hint-placeholder-count="6">
+            <span style="font-size:var(--web-tag-size);color:#5F5E5E;border:1px solid #D4D4D4;border-radius:12px;padding:6px 12px;background:#FFFFFF;font-weight:var(--web-tag-weight);">{{ e }}</span>
+          </sc-for>
+        </div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:8px;line-height:var(--web-small-lh);">A partner becomes active only after</div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ activation }}" as="a" hint-placeholder-count="5">
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;padding:8px 0;border-top:1px solid #E0E0E0;">{{ a }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#1E1E1E;border-radius:12px;padding:28px;color:#FFFFFF;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Stock &amp; risk conditions</div>
+        <p style="margin:0 0 14px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;max-width:760px;">You own the purchased inventory until STRØHM.ENERGY issues and pays a confirmed repurchase order. STRØHM.ENERGY does not guarantee all stock is repurchased within a fixed period unless stated in the agreement.</p>
+        <p style="margin:0 0 14px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;max-width:760px;">The main commercial risk: capital is committed to inventory before installer demand is confirmed. Stock levels should be based on realistic regional demand, not optimistic forecasts. Every programme defines:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <sc-for list="{{ riskTerms }}" as="r" hint-placeholder-count="6">
+            <span style="font-size:var(--web-tag-size);color:#D8D8D8;border:1px solid #333331;border-radius:12px;padding:6px 12px;font-weight:var(--web-tag-weight);">{{ r }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    <div style="background:#F5F5F5;border:1px solid #D4D4D4;border-radius:12px;padding:24px;margin-top:16px;">
+      <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:6px;line-height:var(--web-small-lh);">Selective regional access</div>
+      <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">The programme is selective. STRØHM.ENERGY may appoint a limited number of partners per country, region, product family or application, based on warehouse capability, financial capacity, logistics performance, market coverage and expected demand. Territorial appointment does not create exclusivity unless stated in the signed agreement.</p>
+    </div>
+  </section>
+
+  <!-- APPLY -->
+  <section id="apply" style="background:#FFFFFF;border-bottom:1px solid #D4D4D4;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side);box-sizing:border-box;text-align:center;">
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Apply as <span style="color:#8E8E8E;">Stock Partner</span></h2>
+      <p style="margin:16px auto 0;max-width:60ch;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Application runs through the same account flow. Choose "Distributor / stock partner" as your goal. We then request the warehouse, ERP/API and financial details, evaluate, and activate after a successful test order.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:28px;">
+        <a href="STROHM.ENERGY - SITE - Register - EN.dc.html?goal=distributor" style="height:var(--cta-height);padding:0 var(--cta-pad-x);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);letter-spacing:0.04em;border-radius:var(--cta-radius);">Start the application</a>
+        <a href="WEBSHOP - SITE - Home - EN.dc.html" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:#F5F5F5;border:1px solid #D4D4D4;color:#4F4F4E;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">Back to the webshop</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Footer" show-ebook="{{ false }}" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:960}}">
+const SUMMARY = [
+  { n: "01", t: "Buy at volume price", d: "Purchase approved STRØHM.ENERGY products in higher quantities at a lower factory price." },
+  { n: "02", t: "Hold EU stock", d: "Keep traceable inventory locally available for rapid installer delivery." },
+  { n: "03", t: "Earn on repurchase", d: "STRØHM.ENERGY buys allocated units back from you at a pre-agreed higher price." },
+  { n: "04", t: "Integrated & approved", d: "An ERP system and API connection are required. Activation follows technical and operational evaluation." },
+];
+const STEPS = [
+  { n: "1", t: "Purchase at factory price", d: "Buy an agreed minimum quantity directly from STRØHM.ENERGY at a low, volume-based price. Quantity, mix, terms and delivery agreed before purchase." },
+  { n: "2", t: "Hold stock inside the EU", d: "Products stay at your approved warehouse: stored correctly, insured where required, and visible in the STRØHM.ENERGY inventory system." },
+  { n: "3", t: "STRØHM.ENERGY generates orders", d: "Installers order smaller quantities via the webshop, ERP or sales network. STRØHM.ENERGY auto-selects the partner by availability, location, speed, region and rotation." },
+  { n: "4", t: "STRØHM.ENERGY buys units back", d: "For each allocated order, STRØHM.ENERGY repurchases the units from you at the agreed higher price, a defined gross margin on every unit." },
+  { n: "5", t: "Payment before shipment", d: "STRØHM.ENERGY pays you before goods are released. No credit to the installer, no waiting. Then you pack and ship per STRØHM.ENERGY instructions." },
+  { n: "6", t: "STRØHM.ENERGY handles admin", d: "Installer ordering, invoicing, credit control, repurchase orders, allocation, serial registration, documentation, returns and communication." },
+];
+const MODEL = [
+  { t: "High-MOQ purchase", d: "You buy larger quantities at the lowest applicable volume price." },
+  { t: "Low-MOQ installer supply", d: "Installers order single units, cartons, pallets or project quantities from EU stock." },
+  { t: "Agreed margin", d: "The gap between your purchase price and STRØHM.ENERGY's repurchase price, fixed in advance." },
+];
+const MARGIN_FACTORS = ["Product family", "Purchased volume", "Storage period", "Region", "Required handling", "Delivery service level"];
+const PARTNER_PROVIDES = ["Agreed stock investment", "Suitable, secure warehouse space", "Correct storage conditions", "Stock-count accuracy", "Serial-number traceability", "Fast order preparation", "Packing to STRØHM.ENERGY standards", "Dispatch within the agreed service level", "Immediate reporting of damage or shortages"];
+const STROHM_PROVIDES = ["Factory-volume pricing", "Installer demand and order routing", "Pre-agreed repurchase pricing", "Payment before shipment", "Central order administration", "Installer invoicing and collection", "Product documentation & warranty registration", "ERP and stock integration", "Regional commercial support", "Stock-rotation visibility", "Clear return and claims procedures"];
+const WHY = [
+  { t: "Earn without a sales team", d: "STRØHM.ENERGY brings the installer orders and handles the commercial administration." },
+  { t: "Paid before dispatch", d: "You receive payment before releasing each allocated order." },
+  { t: "Serve your local market", d: "Local stock shortens delivery times and enables small quantities." },
+  { t: "A defined unit margin", d: "Purchase price and repurchase conditions are agreed before you invest." },
+  { t: "One system", d: "Orders, stock, serials, invoices, payments and dispatch through the STRØHM.ENERGY ERP." },
+];
+const API_SCOPE = ["Product & SKU sync", "Available-stock reporting", "Reserved-stock updates", "Purchase & repurchase orders", "Serial & batch tracking", "Shipment status & tracking", "Returns & stock corrections", "Invoice & payment status"];
+const API_WHY = ["No overselling or manual stock checks", "Instant confirmation and payment for buyers", "Automatic reservation the moment an order lands", "Faster dispatch: the order is already validated"];
+const EVAL_CRITERIA = ["Financial capacity", "Warehouse quality & security", "ERP & API capability", "Inventory accuracy", "Dispatch speed", "Geographic coverage", "Product-handling experience", "Administration & staffing", "Insurance & compliance", "Service-level ability"];
+const ACTIVATION = ["The evaluation is completed", "The partner agreement is signed", "ERP and API integration is approved", "Initial stock is verified", "A test order is completed successfully"];
+const RISK_TERMS = ["Approved product list", "Initial MOQ", "Maximum local stock level", "Target stock rotation", "Repurchase price", "Programme duration", "Product-change protection", "Slow-moving-stock procedure", "Damaged-stock responsibility", "Returns & warranty process", "Termination conditions"];
+class Component extends DCLogic {
+  renderVals() {
+    return { summary: SUMMARY, steps: STEPS, model: MODEL, marginFactors: MARGIN_FACTORS, partnerProvides: PARTNER_PROVIDES, strohmProvides: STROHM_PROVIDES, why: WHY, apiScope: API_SCOPE, apiWhy: API_WHY, evalCriteria: EVAL_CRITERIA, activation: ACTIVATION, riskTerms: RISK_TERMS };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>MOEBIUS Operating Boundaries and Firmware | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { text-decoration:none; color:var(--color-text-primary); }
+  .mr-link:hover { color:var(--color-text-primary) !important; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoebiusNav" active="responsibility" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="MOEBIUS" rgb="241,147,27" eyebrow="What the inverter must get right" title="An inverter carries responsibility a datasheet cannot show." intro="Grid compliance, electrical safety, cybersecurity, software integrity, serviceability and data ownership were spread across product, support and knowledge pages." slot="mr-hero" shot="IMG-MOEBIUS-RESPONSIBILITY-01 · 21:9 · inverter in a real electrical context with grid connection and labelling visible · V3-R3 restrained · awaiting upload" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;"><a href="MOEBIUS - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">MOEBIUS</a> &#8250; <span style="color:var(--color-text-primary);">RESPONSIBILITY</span></div>
+    <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:780px;">They belong together, because they define whether the hardware can be trusted over its whole life.</p>
+    
+  </section>
+
+
+  <!-- SIX DOMAINS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:24px;">Six responsibilities</div>
+      <div data-cols="3" style="display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr));--cg:12px;">
+        <sc-for list="{{ domains }}" as="d" hint-placeholder-count="6">
+          <div style="border-radius:12px;background:#F4F4F4;padding:28px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:10px;">{{ d.tag }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:300;color:var(--color-text-primary);margin-bottom:10px;line-height:var(--web-h3-lh);">{{ d.title }}</div>
+            <p style="margin:0 0 14px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ d.desc }}</p>
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <sc-for list="{{ d.points }}" as="p" hint-placeholder-count="3">
+                <div style="font-size:12px;font-weight:300;color:var(--color-text-primary);line-height:1.45;display:flex;gap:8px;"><span style="color:var(--color-grey-70);">&#8212;</span>{{ p }}</div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID PROFILE CALLOUT -->
+  <!-- DEPTH-1112: backup lives on PRODUCT Backup and UPS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 32px;">
+      <a href="MOEBIUS - PRODUCT - Backup and UPS - EN.dc.html" style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;" style-hover="color:#4F4F4E;">Backup and UPS<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <details style="width:100%;">
+        <summary style="cursor:pointer;min-height:44px;display:inline-flex;align-items:center;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;text-decoration:underline;text-underline-offset:3px;">Read more</summary>
+        <div style="margin:0 calc(-1 * var(--web-side));"><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="background:#F4F4F4;border-radius:12px;padding:32px 36px;">
+        <div style="margin-bottom:10px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Boundaries, stated plainly</div>
+        <h2 style="margin:0 0 10px;max-width:760px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Backup is not the same as <span style="color:#8E8E8E;">normal grid operation.</span></h2>
+        <p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Backup and off-grid behaviour follow different rules to grid-connected operation. Capability depends on the model, battery and configuration, and is confirmed at commissioning — not assumed from a general claim. Supported-device and battery compatibility are limited to approved combinations.</p>
+      </div>
+    </div>
+  </section></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- SERVICEABILITY -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start;--cg:48px;">
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Serviceability &amp; software</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Firmware that is recorded, <span style="color:#8E8E8E;">not silently changed.</span></h2>
+        <p style="margin:0 0 20px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Automatic firmware keeps the fleet current, but every change is versioned against the commissioned record so an installer or owner can see what runs and when it changed. Serviceability is designed in — parts, access and diagnostics are part of the product, not an afterthought.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ softwarePoints }}" as="s" hint-placeholder-count="4">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);display:flex;gap:10px;"><span style="color:var(--color-text-primary);">&#8226;</span>{{ s }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="aspect-ratio:4/3;border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+        <image-slot id="mr-software" shape="rect" placeholder="IMG-MOEBIUS-SOFTWARE-01 · 4:3 · firmware version history against a commissioned record in EMON · V3-R3 · awaiting upload"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:64px;"></div>
+
+
+  <div style="height:32px;"></div>
+  <dc-import name="ContentSections" brand="MOEBIUS" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOEBIUS" photo-slot-id="moebius-responsibility-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MOEBIUS" accent="var(--color-brand-moebius)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:960}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      domains: [
+        { tag: "Grid", title: "Grid compliance", desc: "The inverter meets the applicable grid code for the connection, and the profile is selected and recorded at commissioning.", points: ["Country and operator grid profiles", "Selected at commissioning, not defaulted", "Certificates held beside the model"] },
+        { tag: "Safety", title: "Electrical safety", desc: "Protection functions, isolation and fault behaviour follow the applicable standards for each configuration.", points: ["Isolation and fault response", "Backup output behaviour defined", "Installer verification at commissioning"] },
+        { tag: "Security", title: "Cybersecurity", desc: "Secure by design — identity, communication and updates are protected across the connected system.", points: ["Authenticated device identity", "Protected communication", "Signed firmware updates"] },
+        { tag: "Software", title: "Software integrity", desc: "Automatic firmware keeps the fleet current, with every change versioned against the record.", points: ["Automatic firmware", "Versioned against the record", "Visible to installer and owner"] },
+        { tag: "Service", title: "Serviceability", desc: "Designed to be diagnosed, maintained and repaired from the commissioned record.", points: ["Diagnostics from the record", "Defined service access", "Parts and revision history"] },
+        { tag: "Data", title: "Data responsibility", desc: "Ownership and access to project and production data are defined, not assumed.", points: ["Clear data ownership", "Defined access roles", "Portable project record"] },
+      ],
+      softwarePoints: [
+        "Automatic firmware across the range",
+        "Each version recorded against the commissioned file",
+        "Installer and owner can see what runs and when it changed",
+        "Serviceability designed into the product",
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

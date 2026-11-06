@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>NENDO Visual Prompts | STRØHM.ENERGY</title>
+<script src="./doc-page.js"></script>
+<style> doc-page:not(:defined){visibility:hidden} body { margin:0; } a { color:var(--color-text-primary); } a:hover { color:var(--color-text-primary); } </style>
+</helmet>
+<doc-page size="a4" margin="18mm">
+<div style="font-family:var(--font-web);color:var(--color-text-primary);font-size:10pt;line-height:1.5;">
+  <div style="font-size:8pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-text-primary);">STRØHM.ENERGY · NENDO · Internal document</div>
+  <h1 style="margin:8px 0 6px;font-size:24pt;font-weight:700;letter-spacing:-0.01em;">Visual prompts</h1>
+  <div style="font-size:10pt;font-weight:300;color:var(--color-text-primary);margin-bottom:20px;">Version 2 · 26 September 2026 · 24 images across 6 NENDO pages</div>
+
+  <h2 style="margin:20px 0 8px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">1. Style base for all product photos</h2>
+  <p style="margin:0 0 8px;font-weight:300;">Reference: <b>nendo-outdoor-unit-01.jpg</b> (Products hero). Every photo prompt below starts with this base.</p>
+  <div style="background:var(--color-surface-card);padding:10px 12px;font-family:Menlo,Consolas,monospace;font-size:8.5pt;line-height:1.5;break-inside:avoid;">Architectural product photograph, matte white enclosure with rounded edges and black vertical fins, small lowercase "nendo" wordmark, board-formed concrete wall with round tie holes, polished grey concrete floor, soft diffused daylight from the left, neutral greyscale palette, no people, no text other than the product wordmark, straight verticals, 50 mm lens, photorealistic, high detail</div>
+  <p style="margin:8px 0 0;font-weight:300;"><b>Avoid in every photo:</b> saturated colour, lens flare, lifestyle props, people, logos other than nendo, visible cables unless stated, CGI gloss, fake reflections.</p>
+
+  <h2 style="margin:20px 0 8px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">2. Rules for all app screens</h2>
+  <p style="margin:0;font-weight:300;">Helvetica, greyscale only, radius frame and membrane-style buttons per the device rendering standard, simple line icons with consistent stroke width, realistic data (no round demo values like 50% or €100). Functional colour only where stated (orange for attention, green, orange and red status dots in the installer portal). File naming: NENDO_EMON_AppScreen_[Name]_v1.png. Format 9:16 phone, 4:3 for the installer portal tablet view.</p>
+
+  <h2 style="margin:24px 0 8px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">3. Products page</h2>
+
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>01 · NENDO_PRODUCTS_HERO_01</b><span style="font-weight:300;color:var(--color-text-primary);">16:9 · DONE (uploaded)</span></div>
+    <div style="font-weight:300;color:var(--color-text-primary);">Products page, hero. File: assets/nendo/nendo-outdoor-unit-01.jpg. No prompt needed.</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>02 · NENDO_PRODUCTS_CASCADE_01</b><span style="font-weight:300;color:var(--color-text-primary);">4:3 · DONE (uploaded)</span></div>
+    <div style="font-weight:300;color:var(--color-text-primary);">Products page, System types. File: assets/nendo/nendo-cascade-installed-01.png. No prompt needed.</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>03 · NENDO_PRODUCTS_CORE_01</b><span style="font-weight:300;color:var(--color-text-primary);">16:10</span></div>
+    <div style="font-weight:300;color:var(--color-text-primary);margin-bottom:6px;">Products page, CORE family. Indoor all-in-one unit.</div>
+    <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.5pt;">[Style base] + indoor all-in-one heat pump mounted against an exterior wall in a calm utility room, same white enclosure language, two round wall grilles visible behind the unit, plastered white wall, oak floor edge in frame, unit fills 40% of frame, eye-level</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>04 · NENDO_PRODUCTS_AERO_01</b><span style="font-weight:300;color:var(--color-text-primary);">16:10</span></div>
+    <div style="font-weight:300;color:var(--color-text-primary);margin-bottom:6px;">Products page, AERO family. Outdoor unit in context (the hero shows it in the studio).</div>
+    <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.5pt;">[Style base] + the same outdoor unit installed on a flat gravel roof beside a low parapet, overcast sky, one condensate line to a drain, three-quarter view from the left, unit fills 35% of frame</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>05 · NENDO_PRODUCTS_EMON-APP_01</b><span style="font-weight:300;color:var(--color-text-primary);">1:1</span></div>
+    <div style="font-weight:300;color:var(--color-text-primary);margin-bottom:6px;">Products page, RAY section. Use app screen 13 (Home) on a phone.</div>
+    <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.5pt;">Phone lying flat on a concrete surface, top-down, screen showing the NENDO_EMON_AppScreen_Home_v1 design, soft daylight, greyscale, no hand</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>06 · NENDO_DYNAMIC-TARIFF_DIAGRAM_01</b><span style="font-weight:300;color:var(--color-text-primary);">16:10 · diagram</span></div>
+    <div style="font-weight:300;color:var(--color-text-primary);margin-bottom:6px;">Products page, Dynamic tariffs section. Build as a vector diagram, not generated.</div>
+    <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.5pt;">24-hour horizontal axis 00:00 to 24:00. Grey hourly price bars. Light grey area for solar production 08:00 to 18:00. Black blocks where the heat pump runs: low-price night hours and solar hours. Dark grey line for room temperature staying inside a light grey comfort band 20,5 to 22 °C. Helvetica labels, 1 px strokes, no colour.</div>
+  </div>
+
+  <h2 style="margin:24px 0 8px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">4. Overview page</h2>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>07 · NENDO_OVERVIEW_HERO_RANGE_01</b><span style="font-weight:300;color:var(--color-text-primary);">3:1</span></div>
+    <div style="font-weight:300;color:var(--color-text-primary);margin-bottom:6px;">Overview hero (slot nendo-hero-range). The two families, with the extras smaller.</div>
+    <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.5pt;">[Style base] + wide panorama, left to right: CORE indoor unit, AERO outdoor unit, then smaller FLOW hydraulic module, RAY controller box and VESSEL cylindrical white hot-water tank, all on the same concrete floor, even spacing, identical white and black design language, front view</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>08 · NENDO_OVERVIEW_SYSTEM_DIAGRAM_01</b><span style="font-weight:300;color:var(--color-text-primary);">4:3 · diagram</span></div>
+    <div style="font-weight:300;color:var(--color-text-primary);margin-bottom:6px;">Overview, EMON section (slot nendo-system-diagram). Vector diagram.</div>
+    <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.5pt;">House section in thin line drawing. Outside: AERO outdoor unit and roof PV. Inside: FLOW hydraulics, VESSEL hot-water tank, underfloor heating loop, radiators first floor, home battery, EV charger, meter at the grid connection. RAY link from PV to heat pump. EMON as a central node with thin lines to every device. Labels in Helvetica, greyscale, 1 px strokes.</div>
+  </div>
+
+  <h2 style="margin:24px 0 8px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">5. CORE page</h2>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>09 · NENDO_CORE_HERO_01</b><span style="font-weight:300;color:var(--color-text-primary);">16:9</span></div>
+    <div style="font-weight:300;color:var(--color-text-primary);margin-bottom:6px;">CORE hero (slot core-hero). Product visible, no lifestyle scene.</div>
+    <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.5pt;">[Style base] + CORE indoor unit on the inside of an exterior wall in a furnished but empty living space, low sideboard edge in frame, plaster wall, afternoon light, unit centred, straight-on view</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>10 · CORE_HOW_DIAGRAM_01</b><span style="font-weight:300;color:var(--color-text-primary);">4:3 · diagram</span></div>
+    <div style="font-weight:300;color:var(--color-text-primary);margin-bottom:6px;">CORE, How it works. Vector diagram.</div>
+    <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.5pt;">Section through the exterior wall: indoor unit on the inside, two round wall openings, arrows for outdoor air in and out, arrows for heating flow and cooling flow to the room. Wall hatch in light grey, arrows in black, labels in Helvetica. Opening diameter labelled [TO CONFIRM].</div>
+  </div>
+
+  <h2 style="margin:24px 0 8px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">6. Responsibility page</h2>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>11 · NENDO_RESPONSIBILITY_MATERIALS_REFRIGERANT_01</b><span style="font-weight:300;color:var(--color-text-primary);">16:10</span></div>
+    <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.5pt;margin-top:6px;">[Style base] + macro detail of the rating plate on the side of the outdoor unit, refrigerant type and charge fields visible but text blurred, shallow depth of field</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>12 · NENDO_RESPONSIBILITY_MATERIALS_DECLARATION_01</b><span style="font-weight:300;color:var(--color-text-primary);">16:10</span></div>
+    <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.5pt;margin-top:6px;">Printed A4 declaration of conformity lying on a concrete surface beside the corner of the outdoor unit, text unreadable, soft daylight, greyscale, top-down at 30°</div>
+  </div>
+
+  <h2 style="margin:24px 0 8px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">7. EMON Functions page: app screens</h2>
+  <p style="margin:0 0 8px;font-weight:300;">Eight screens cover all twelve functions (plan from the EMON Function explainers, section 15). Build them as UI designs; generated images will not get text and data right. Page order: 13, 14, 16, 18, 19, then 20 in the installer section. Screens 15 and 17 go on the detail pages.</p>
+
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>13 · NENDO_EMON_AppScreen_Home_v1</b><span style="font-weight:300;color:var(--color-text-primary);">9:16 · Homeowner controls</span></div>
+    <div style="font-weight:300;margin-top:4px;">Large room temperature with plus and minus buttons, zone tabs at the top, status line with explanation below. Cards: Hot water, Energy today, Plan. Settings: Comfort band, Preference (three-position selector), Surplus priorities, Household access. Frost protection card: shield line icon, status Standby or Active (orange when active).</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>14 · NENDO_EMON_AppScreen_TodaysPlan_v1</b><span style="font-weight:300;color:var(--color-text-primary);">9:16 · AI layer, pre-heating, dynamic tariff</span></div>
+    <div style="font-weight:300;margin-top:4px;">24-hour timeline with price bars (grey), solar forecast (light grey area), planned heat pump blocks (black) and battery state (dark grey line). Top card: "Plan saves €x today vs. unmanaged" only when measured baseline exists. Bottom: comfort band per zone. Label each stored-heat period, for example "Storing heat before 17:00 price peak". Cheapest hours in black, current hour marked.</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>15 · NENDO_EMON_AppScreen_Schedule_v1</b><span style="font-weight:300;color:var(--color-text-primary);">9:16 · Heating scheduling</span></div>
+    <div style="font-weight:300;margin-top:4px;">Weekly grid per zone, comfort blocks in dark grey with the target temperature label. Below, a toggle "Show EMON plan" overlays the planned NENDO operation as black bars. Override buttons: Boost 1 h, Hold until next block, Away mode.</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>16 · NENDO_EMON_AppScreen_SolarToHeat_v1</b><span style="font-weight:300;color:var(--color-text-primary);">9:16 · Solar-surplus heating</span></div>
+    <div style="font-weight:300;margin-top:4px;">Live energy flow diagram (PV, house, NENDO, battery, grid) with line icons and flow values in kW. Below, a daily bar chart: solar production (light grey), used by NENDO (black), exported (mid grey). Settings: surplus priority order (drag to reorder: Hot water, Buffer, Floor, Battery, EV).</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>17 · NENDO_EMON_AppScreen_Storage_v1</b><span style="font-weight:300;color:var(--color-text-primary);">9:16 · Battery-aware operation</span></div>
+    <div style="font-weight:300;margin-top:4px;">Two gauges side by side, battery state of charge (%) and thermal storage (buffer and DHW temperature vs. limits). Below, a 24-hour plan: battery charge and discharge (dark grey bars above and below zero), heat pump runtime (black), grid import (mid grey line). Setting: backup reserve (%).</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>18 · NENDO_EMON_AppScreen_HotWater_v1</b><span style="font-weight:300;color:var(--color-text-primary);">9:16 · DHW scheduling, Legionella prevention</span></div>
+    <div style="font-weight:300;margin-top:4px;">Tank icon with current temperature and estimated showers available. Timeline showing learned usage peaks (light grey) and planned heating runs (black). Buttons: Boost now, Holiday mode. Setting: minimum temperature. "Hot water hygiene" line: last cycle date, status Completed (no colour) or Rescheduled (orange), next planned cycle.</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>19 · NENDO_EMON_AppScreen_EnergyEfficiency_v1</b><span style="font-weight:300;color:var(--color-text-primary);">9:16 · Consumption and COP monitoring</span></div>
+    <div style="font-weight:300;margin-top:4px;">Segmented control Live / Day / Month / Year. Month view: stacked bar per day, heating (black), hot water (dark grey), other house loads (light grey). Right column: total kWh, total cost in euro, share from own solar (%), monthly peak (kW) with timestamp. Efficiency part: large "COP today" with label Measured or Estimated; scatter of daily COP against outdoor temperature, actual points black, expected curve mid grey; tabs Heating / Hot water / Total.</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>20 · NENDO_EMON_AppScreen_InstallerPortal_v1</b><span style="font-weight:300;color:var(--color-text-primary);">4:3 tablet · Installer diagnostics, frost log</span></div>
+    <div style="font-weight:300;margin-top:4px;">Fleet list with status dot (green, orange, red), address, NENDO model, last alert. Installation detail: live schematic of the hydraulic circuit with values at each sensor point, tabs for History, Faults, Efficiency, Settings, Log. Frost protection log: date, time, outdoor temperature, duration. Phone variant for on-site use: live values and fault codes only.</div>
+  </div>
+
+  <h2 style="margin:24px 0 8px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">8. Extras (FLOW, RAY, VESSEL)</h2>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>21 · NENDO_PRODUCTS_RAY_01</b><span style="font-weight:300;color:var(--color-text-primary);">16:10 · new, optional</span></div>
+    <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.5pt;margin-top:6px;">[Style base] + compact white RAY controller box on a concrete wall, one DC cable from above labelled PV, one cable to the heat pump, clean cable routing, front view</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>22 · NENDO_PRODUCTS_VESSEL_01</b><span style="font-weight:300;color:var(--color-text-primary);">16:10 · new, optional</span></div>
+    <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.5pt;margin-top:6px;">[Style base] + white cylindrical sanitary hot-water tank, about 1,8 m high, beside the FLOW hydraulic module in a utility room, insulated copper pipes, front view</div>
+  </div>
+
+  <h2 style="margin:24px 0 8px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">9. AERO: air-to-water connection</h2>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>23 · NENDO_AERO_CONNECTION_DIAGRAM_01</b><span style="font-weight:300;color:var(--color-text-primary);">16:10 · diagram</span></div>
+    <div style="font-weight:300;color:var(--color-text-primary);margin-bottom:6px;">Products page, AERO section (slot nendo-aero-connection). Shows that AERO is air-to-water, not split: only water enters the house.</div>
+    <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.5pt;">Clean technical section drawing, white background, thin black 1 px lines, light grey fills, Helvetica labels, greyscale only. Left: AERO outdoor unit standing outside next to the exterior wall, label "Refrigerant circuit inside the unit" with a dashed outline around the unit. Two insulated water pipes (flow and return) pass through the wall. Inside: FLOW hydraulic module on the wall. From FLOW, one pipe pair to two radiators on the first floor, one pair to an underfloor heating loop on the ground floor, one pair to the VESSEL hot-water tank; from VESSEL a hot-water line to a shower and a kitchen tap. Small labels: "Water only", "Heating", "Sanitary hot water". No refrigerant lines indoors. No colour, no people.</div>
+  </div>
+  <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:10px 0;">
+    <div style="display:flex;justify-content:space-between;gap:12px;"><b>24 · NENDO_AERO_INSTALLED_01</b><span style="font-weight:300;color:var(--color-text-primary);">16:10 · photo</span></div>
+    <div style="font-weight:300;color:var(--color-text-primary);margin-bottom:6px;">Optional photo for the same section.</div>
+    <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.5pt;">[Style base] + AERO outdoor unit on a low plinth against a brick facade of a house, two insulated water pipes leaving the back of the unit into the wall through one neat sleeve, no refrigerant lines, overcast daylight, three-quarter view</div>
+  </div>
+  <p style="margin:20px 0 0;font-size:8.5pt;font-weight:300;color:var(--color-text-primary);">Screen descriptions 13 to 20 are taken from NENDO × EMON Function explainers v1, sections 2 to 15. Product dimensions, opening sizes and data values are not confirmed; use realistic but non-final values.</p>
+</div>
+</doc-page>
+</x-dc>
+</body>
+</html>

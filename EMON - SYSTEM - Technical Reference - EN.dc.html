@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>EMON Technical reference | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./emon-techref-data.js"></script>
+<style> body { margin:0; background:#FFFFFF; } a { color:#4F4F4E; text-decoration:none; } a:hover { color:#1E1E1E; } html { scroll-behavior:smooth; } summary::-webkit-details-marker { display:none; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#252525;">
+  <dc-import name="NavBar" active="systems" hint-size="100%,80px"></dc-import>
+  <dc-import name="EmonNav" active="security" hint-size="100%,57px"></dc-import>
+
+  <header data-screen-label="EMON Technical reference" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:24px;">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">
+      <nav aria-label="Breadcrumb" style="display:flex;gap:8px;flex-wrap:wrap;"><a href="EMON - SYSTEM - Overview - EN.dc.html" style="color:#5F5E5E;">EMON</a><span aria-hidden="true">›</span><a href="EMON - SYSTEM - Security Explained - EN.dc.html" style="color:#5F5E5E;">Security explained</a><span aria-hidden="true">›</span><span aria-current="page" style="color:#252525;">Technical reference</span></nav>
+      <a href="#evidence" style="color:#252525;">Evidence register ↗</a>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px;">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#252525;">Energy management / Security</div>
+        <h1 style="margin:0;font-size:var(--web-h1-size);font-weight:var(--web-h1-weight);line-height:var(--web-h1-lh);letter-spacing:-1px;color:#252525;">Technical reference</h1>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;text-align:right;"><span>EMON explainer / 02</span><span>Edition 02 / 27.10.2026 · For EPCs &amp; installers</span></div>
+    </div>
+
+    <div style="background:#F4F4F4;border-radius:12px;padding:16px 20px;display:flex;flex-direction:column;gap:16px;">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;">
+          <span style="background:#4F4F4E;color:#FFFFFF;border-radius:8px;padding:6px 10px;font-size:var(--web-min-size);font-weight:400;">Proposed EMON design</span>
+          <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#252525;">Interactive engineering model. EMON capabilities shown here require implementation and testing.</span>
+        </div>
+        <button type="button" onClick="{{ toggleLegend }}" aria-expanded="{{ legendOpenStr }}" style="min-height:44px;padding:0;border:none;background:none;cursor:pointer;font-family:inherit;font-size:var(--web-small-size);font-weight:300;color:#252525;">How to read this ↗</button>
+      </div>
+      <sc-if value="{{ legendOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#FFFFFF;border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;"><span>STROHM.ENERGY / EMON · Documentation checked 27 October 2026. Model and firmware scope matter.</span><a href="#sources" style="color:#252525;">Sources &amp; limitations ↗</a></div>
+          <div style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Evidence legend</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Read the status first.</span></div>
+          <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+            <div style="border:1px solid #DDDDDD;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:8px;"><span style="align-self:flex-start;background:#F4F4F4;border-radius:8px;padding:4px 10px;font-size:var(--web-min-size);font-weight:400;">Documented</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">An independent primary source supports the general principle or risk. This does not verify an EMON implementation.</span></div>
+            <div style="border:1px solid #DDDDDD;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:8px;"><span style="align-self:flex-start;background:#4F4F4E;color:#FFFFFF;border-radius:8px;padding:4px 10px;font-size:var(--web-min-size);font-weight:400;">Proposed</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">An EMON design requirement or illustrative outcome. No deployed EMON system, packet capture, firmware build or test report was provided.</span></div>
+            <div style="border:1px solid #DDDDDD;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:8px;"><span style="align-self:flex-start;border:1px solid #4F4F4E;border-radius:8px;padding:3px 9px;font-size:var(--web-min-size);font-weight:400;">Unverified</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">The evidence needed to establish the claim has not been supplied. Absence of evidence is not evidence of absence.</span></div>
+          </div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#252525;text-wrap:pretty;">“Kill switch” can refer to a legitimate grid stop, an abused remote command, malicious firmware or a dependency failure. This explainer treats these as separate paths.</p>
+        </div>
+      </sc-if>
+    </div>
+
+    <nav aria-label="Chapters" data-cols="6" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;--cg:8px;">
+      <a href="#architecture" style="background:#F4F4F4;border-radius:12px;padding:16px;min-height:44px;display:flex;flex-direction:column;gap:4px;color:#252525;" style-hover="background:#E3E3E3;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">01</span><span style="font-size:var(--web-small-size);font-weight:400;">Architecture</span></a>
+      <a href="#authority" style="background:#F4F4F4;border-radius:12px;padding:16px;min-height:44px;display:flex;flex-direction:column;gap:4px;color:#252525;" style-hover="background:#E3E3E3;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">02</span><span style="font-size:var(--web-small-size);font-weight:400;">Control &amp; relays</span></a>
+      <a href="#resilience" style="background:#F4F4F4;border-radius:12px;padding:16px;min-height:44px;display:flex;flex-direction:column;gap:4px;color:#252525;" style-hover="background:#E3E3E3;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">03</span><span style="font-size:var(--web-small-size);font-weight:400;">Resilience lab</span></a>
+      <a href="#patterns" style="background:#F4F4F4;border-radius:12px;padding:16px;min-height:44px;display:flex;flex-direction:column;gap:4px;color:#252525;" style-hover="background:#E3E3E3;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">04</span><span style="font-size:var(--web-small-size);font-weight:400;">Architecture patterns</span></a>
+      <a href="#privacy" style="background:#F4F4F4;border-radius:12px;padding:16px;min-height:44px;display:flex;flex-direction:column;gap:4px;color:#252525;" style-hover="background:#E3E3E3;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">05</span><span style="font-size:var(--web-small-size);font-weight:400;">Data &amp; GDPR</span></a>
+      <a href="#evidence" style="background:#F4F4F4;border-radius:12px;padding:16px;min-height:44px;display:flex;flex-direction:column;gap:4px;color:#252525;" style-hover="background:#E3E3E3;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">06</span><span style="font-size:var(--web-small-size);font-weight:400;">Evidence &amp; checks</span></a>
+    </nav>
+  </header>
+
+  <section id="architecture" data-screen-label="01 Architecture" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;scroll-margin-top:140px;">
+    <div style="border-top:1px solid #DDDDDD;padding-top:40px;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:820px;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">01 / System boundaries</span>
+        <h2 style="margin:0;font-size:var(--web-h2-size);font-weight:var(--web-h2-weight);line-height:var(--web-h2-lh);">Security architecture</h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Follow a measurement, a command or an update. Select a path, then a component to see where information travels and where decisions would be made.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;">
+        <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Explore the system</h3>
+        <p style="margin:0;max-width:520px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">Select a layer. Click a component to inspect its role, authority and evidence gap.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px;">
+        <div role="group" aria-label="Flow layer" style="display:flex;flex-wrap:wrap;gap:4px;background:#F4F4F4;border-radius:12px;padding:4px;">
+          <sc-for list="{{ layers }}" as="o" hint-placeholder-count="4">
+            <button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.pressed }}" style="min-height:44px;padding:0 16px;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-size:var(--web-small-size);font-weight:400;background:{{ o.bg }};color:{{ o.fg }};">{{ o.t }}</button>
+          </sc-for>
+        </div>
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Functional model / not a wiring diagram</span>
+      </div>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);gap:24px;align-items:start;">
+        <div style="background:#FAFAFA;border-radius:12px;overflow-x:auto;" tabindex="0" aria-label="Interactive system map; scroll horizontally on small screens">
+          <div style="position:relative;width:100%;min-width:630px;aspect-ratio:830/530;overflow:hidden;">
+            <div style="position:absolute;left:2%;top:25%;width:64%;height:71%;border:1px solid #CCCCCC;background:#F4F4F4;border-radius:12px;box-sizing:border-box;"><span style="position:absolute;top:12px;left:14px;font-size:9px;letter-spacing:0.08em;color:#5F5E5E;">ON SITE / LOCAL NETWORK</span></div>
+            <div style="position:absolute;left:71%;top:25%;width:27%;height:71%;border:1px solid #CCCCCC;background:#FFFFFF;border-radius:12px;box-sizing:border-box;"><span style="position:absolute;top:12px;left:14px;font-size:9px;letter-spacing:0.08em;color:#5F5E5E;">EXTERNAL SERVICES</span></div>
+            <div style="position:absolute;inset:0;pointer-events:none;z-index:1;">{{ svg }}</div>
+            <sc-for list="{{ nodes }}" as="n" hint-placeholder-count="8">
+              <button type="button" onClick="{{ n.pick }}" aria-pressed="{{ n.pressed }}" style="position:absolute;z-index:2;left:{{ n.left }};top:{{ n.top }};width:{{ n.w }};height:{{ n.h }};box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:6px;padding:10px 12px;border:1px solid {{ n.border }};border-radius:8px;background:{{ n.bg }};cursor:pointer;font-family:inherit;text-align:left;color:#252525;">
+                <span style="font-size:9px;letter-spacing:0.08em;color:#5F5E5E;">{{ n.code }}</span>
+                <span style="font-size:12px;font-weight:400;line-height:1.2;">{{ n.label }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        <aside aria-live="polite" style="background:#F4F4F4;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px;">
+          <span style="align-self:flex-start;background:#4F4F4E;color:#FFFFFF;border-radius:8px;padding:4px 10px;font-size:var(--web-min-size);font-weight:400;">Proposed</span>
+          <h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ insp.title }}</h4>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#252525;text-wrap:pretty;">{{ insp.text }}</p>
+          <div style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Data held or passed</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ insp.data }}</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Control boundary</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ insp.control }}</span></div>
+          <div style="background:#FFFFFF;border-radius:8px;padding:12px 16px;display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-small-size);font-weight:500;">Evidence to request</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ insp.proof }}</span></div>
+        </aside>
+      </div>
+      <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#252525;max-width:900px;text-wrap:pretty;">{{ flowText }}</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;border-top:1px solid #DDDDDD;padding-top:12px;"><span>Dashed: telemetry · Solid: commands or power · Dotted: updates</span><span>All EMON paths shown are proposed.</span></div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <article style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">01 / Information</span><h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Seeing is not switching.</h4><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#252525;">Monitoring makes measurements available. Control needs a separate, explicitly authorised path. An outbound connection can still carry incoming commands.</p></article>
+        <article style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">02 / Dependencies</span><h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Local needs proof.</h4><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#252525;">Local execution still depends on working hardware, trusted firmware, valid credentials, metering and power. Cloud independence must be tested across restarts and outages.</p></article>
+        <article style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">03 / Limits</span><h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">No absolute guarantee.</h4><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#252525;">Segregating control reduces specific risks. It cannot establish the absence of every hidden mechanism or remove compulsory grid protection.</p></article>
+      </div>
+      <div style="border:1px solid #DDDDDD;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;">
+        <h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Why Europe is asking.</h4>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#252525;max-width:900px;">The Dutch RDI found cybersecurity shortcomings in its 2023 inverter sample. This supports careful assessment of remote access and updates, not conclusions based on a vendor’s country of origin. <a href="#source-S04" style="color:#252525;border-bottom:1px solid #4F4F4E;">S04 ↗</a> <a href="#source-S05" style="color:#252525;border-bottom:1px solid #4F4F4E;">S05 ↗</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="authority" data-screen-label="02 Control and relays" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;scroll-margin-top:140px;">
+    <div style="border-top:1px solid #DDDDDD;padding-top:40px;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:820px;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">02 / Authority &amp; hardware</span>
+        <h2 style="margin:0;font-size:var(--web-h2-size);font-weight:var(--web-h2-weight);line-height:var(--web-h2-lh);">Control &amp; relays</h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A software setpoint, a relay contact and a safety trip do different jobs. Explore who may request a change and which local limits must remain authoritative.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;">
+        <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Who can request what?</h3>
+        <p style="margin:0;max-width:520px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">Proposed role model. Actual permissions and device enforcement need an acceptance test.</p>
+      </div>
+      <div role="group" aria-label="Actor" style="align-self:flex-start;display:flex;flex-wrap:wrap;gap:4px;background:#F4F4F4;border-radius:12px;padding:4px;">
+        <sc-for list="{{ roleTabs }}" as="o" hint-placeholder-count="4">
+          <button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.pressed }}" style="min-height:44px;padding:0 16px;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-size:var(--web-small-size);font-weight:400;background:{{ o.bg }};color:{{ o.fg }};">{{ o.t }}</button>
+        </sc-for>
+      </div>
+      <div aria-live="polite" style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;flex-direction:column;gap:8px;max-width:820px;"><h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ role.title }}</h4><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ role.text }}</p></div>
+        <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;--cg:16px;">
+          <div style="background:#FFFFFF;border-radius:8px;padding:16px 20px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Scoped authority</span><ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:6px;"><sc-for list="{{ role.yes }}" as="x" hint-placeholder-count="3"><li style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ x }}</li></sc-for></ul></div>
+          <div style="background:#FFFFFF;border-radius:8px;padding:16px 20px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Outside that authority</span><ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:6px;"><sc-for list="{{ role.no }}" as="x" hint-placeholder-count="3"><li style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ x }}</li></sc-for></ul></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;padding-top:24px;">
+        <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Two physical functions</h3>
+        <p style="margin:0;max-width:520px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">A load-control relay is not an emergency isolator or a certified grid protection device.</p>
+      </div>
+      <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;--cg:16px;">
+        <article style="border:1px solid #DDDDDD;border-radius:12px;padding:24px;display:flex;flex-direction:column;align-items:stretch;gap:8px;">
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:16px;">A / Routine energy control · Proposed</span>
+          <div style="background:#F4F4F4;border-radius:8px;padding:12px 16px;font-size:var(--web-small-size);font-weight:300;">Authorised schedule or request</div>
+          <div aria-hidden="true" style="text-align:center;color:#5F5E5E;">↓</div>
+          <div style="border:1px dashed #898989;border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Local policy boundary</span><div style="background:#F4F4F4;border-radius:8px;padding:12px 16px;font-size:var(--web-small-size);font-weight:300;">Freshness<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg> limits<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg> permission</div></div>
+          <div aria-hidden="true" style="text-align:center;color:#5F5E5E;">↓</div>
+          <div style="background:#F4F4F4;border-radius:8px;padding:12px 16px;font-size:var(--web-small-size);font-weight:300;">Local output<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg> rated relay / contactor</div>
+          <div aria-hidden="true" style="text-align:center;color:#5F5E5E;">↓</div>
+          <div style="background:#F4F4F4;border-radius:8px;padding:12px 16px;font-size:var(--web-small-size);font-weight:300;">EV charger, heat pump or selected load</div>
+          <p style="margin:8px 0 0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">Define contact state on reboot and power loss for each circuit. “Always stays on” is not a universal safe state. Verify feedback and minimum switching intervals.</p>
+        </article>
+        <article style="border:1px solid #DDDDDD;border-radius:12px;padding:24px;display:flex;flex-direction:column;align-items:stretch;gap:8px;">
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:16px;">B / Independent protection · Requirement</span>
+          <div style="background:#F4F4F4;border-radius:8px;padding:12px 16px;font-size:var(--web-small-size);font-weight:300;">Grid fault, BMS limit or safety input</div>
+          <div aria-hidden="true" style="text-align:center;color:#5F5E5E;">↓</div>
+          <div style="border:1px dashed #898989;border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Device / certified protection boundary</span><div style="background:#F4F4F4;border-radius:8px;padding:12px 16px;font-size:var(--web-small-size);font-weight:300;">Inverter protection / BMS / safety circuit</div></div>
+          <div aria-hidden="true" style="text-align:center;color:#5F5E5E;">↓</div>
+          <div style="background:#F4F4F4;border-radius:8px;padding:12px 16px;font-size:var(--web-small-size);font-weight:300;">Limit, trip or disconnect as designed</div>
+          <div aria-hidden="true" style="text-align:center;color:#5F5E5E;">↓</div>
+          <div style="background:#F4F4F4;border-radius:8px;padding:12px 16px;font-size:var(--web-small-size);font-weight:300;">Cloud availability is not the authority</div>
+          <p style="margin:8px 0 0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">Proposed separation must be confirmed by the actual single-line diagram, protection study and device design. An ordinary smart relay cannot substitute for rated isolation.</p>
+        </article>
+      </div>
+
+      <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Update trust / Proposed EMON process</span><h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Updates change authority.</h3></div>
+        <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;--cg:8px;">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+            <button type="button" onClick="{{ s.pick }}" aria-pressed="{{ s.pressed }}" style="min-height:44px;padding:16px;border:none;border-radius:8px;cursor:pointer;font-family:inherit;text-align:left;display:flex;flex-direction:column;gap:6px;background:{{ s.bg }};color:{{ s.fg }};">
+              <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);">{{ s.n }}</span>
+              <span style="font-size:var(--web-small-size);font-weight:500;">{{ s.t }}</span>
+              <span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);">{{ s.small }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div aria-live="polite" style="background:#FFFFFF;border-radius:8px;padding:16px 20px;display:flex;flex-direction:column;gap:6px;"><h4 style="margin:0;font-size:var(--web-small-size);font-weight:500;">{{ stepH }}</h4><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#252525;">{{ stepP }}</p></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;border-top:1px solid #DDDDDD;">
+        <details style="border-bottom:1px solid #DDDDDD;">
+          <summary style="cursor:pointer;list-style:none;min-height:44px;padding:16px 0;font-size:var(--web-body-size);font-weight:400;">Does disabling remote configuration close every control path?</summary>
+          <p style="margin:0 0 20px;max-width:900px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#252525;">No. Monitoring, remote configuration, flexibility services, local APIs, support access and software updates can use different permissions and connections. For a deployed EMON system, inventory each interface and test which remain reachable after a function is disabled. General inverter security guidance supports examining interfaces, access and updates separately. <a href="#source-S05" style="color:#252525;border-bottom:1px solid #4F4F4E;">S05 ↗</a></p>
+        </details>
+        <details style="border-bottom:1px solid #DDDDDD;">
+          <summary style="cursor:pointer;list-style:none;min-height:44px;padding:16px 0;font-size:var(--web-body-size);font-weight:400;">What happens to commands when the cloud reconnects?</summary>
+          <p style="margin:0 0 20px;max-width:900px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#252525;">Proposed EMON rule: queue telemetry with timestamps, but discard expired control requests. Reconcile device state before accepting a new setpoint. Do not replay a stale relay command or old trading schedule. The command lifetime and clock-loss behaviour still need specification and testing.</p>
+        </details>
+        <details style="border-bottom:1px solid #DDDDDD;">
+          <summary style="cursor:pointer;list-style:none;min-height:44px;padding:16px 0;font-size:var(--web-body-size);font-weight:400;">Can a local controller remove the inverter manufacturer’s authority?</summary>
+          <p style="margin:0 0 20px;max-width:900px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#252525;">Not by itself. The inverter may retain an independent OEM connection, update route or service interface. Those routes require inventory, configuration review and testing. Compromised device firmware may also undermine a controller’s assumptions.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="resilience" data-screen-label="03 Resilience lab" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;scroll-margin-top:140px;">
+    <div style="border-top:1px solid #DDDDDD;padding-top:40px;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:820px;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">03 / Failure scenarios</span>
+        <h2 style="margin:0;font-size:var(--web-h2-size);font-weight:var(--web-h2-weight);line-height:var(--web-h2-lh);">Resilience lab</h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Interrupt one dependency at a time. Explore the intended EMON response, the capabilities that would be lost and the tests needed to establish continuity.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;">
+        <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Test a dependency</h3>
+        <p style="margin:0;max-width:520px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">Illustrative outcomes for the proposed architecture. No hardware is connected to this explainer.</p>
+      </div>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:24px;align-items:start;">
+        <div role="group" aria-label="Failure scenario" style="display:flex;flex-direction:column;gap:4px;background:#F4F4F4;border-radius:12px;padding:4px;">
+          <sc-for list="{{ scenTabs }}" as="o" hint-placeholder-count="6">
+            <button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.pressed }}" style="min-height:48px;padding:0 16px;border:none;border-radius:8px;cursor:pointer;font-family:inherit;text-align:left;display:flex;align-items:center;gap:12px;font-size:var(--web-small-size);font-weight:400;background:{{ o.bg }};color:{{ o.fg }};"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);">{{ o.n }}</span>{{ o.t }}</button>
+          </sc-for>
+        </div>
+        <div aria-live="polite" style="border:1px solid #DDDDDD;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px;">
+          <span style="align-self:flex-start;background:#4F4F4E;color:#FFFFFF;border-radius:8px;padding:4px 10px;font-size:var(--web-min-size);font-weight:400;">Proposed</span>
+          <h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ scen.title }}</h4>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ scen.text }}</p>
+          <sc-if value="{{ showLocal }}" hint-placeholder-val="{{ true }}">
+            <label style="display:flex;align-items:center;gap:12px;min-height:44px;cursor:pointer;font-size:var(--web-small-size);font-weight:300;"><input type="checkbox" checked="{{ local }}" onChange="{{ toggleLocal }}" style="width:18px;height:18px;margin:0;accent-color:#4F4F4E;flex:none;"><span>Assume local rules and cloud-independent access are implemented</span></label>
+          </sc-if>
+          <sc-if value="{{ showRule }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0;background:#F4F4F4;border-radius:8px;padding:12px 16px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Without that implementation, local scheduling cannot be assumed to continue. Device-native operation depends on its own configuration.</p>
+          </sc-if>
+          <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;--cg:8px;">
+            <sc-for list="{{ statusRows }}" as="r" hint-placeholder-count="6">
+              <div style="border-radius:8px;padding:12px 16px;display:flex;flex-direction:column;gap:4px;background:{{ r.bg }};border:1px solid {{ r.border }};"><span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">{{ r.t }}</span><span style="font-size:var(--web-small-size);font-weight:500;">{{ r.v }}</span></div>
+            </sc-for>
+          </div>
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Acceptance test</span>
+          <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:6px;"><sc-for list="{{ scen.tests }}" as="x" hint-placeholder-count="4"><li style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ x }}</li></sc-for></ul>
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Residual risk</span>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ scen.risk }}</p>
+        </div>
+      </div>
+      <div style="border:1px solid #DDDDDD;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;">
+        <h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Use a testable claim.</h4>
+        <p style="margin:0;max-width:900px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Proposed wording: “Basic local functions are intended to continue without EMON cloud connectivity, within device, safety and grid constraints.” Publish this as a capability only after product-specific tests pass. “No kill switch” is not established by this design model.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="patterns" data-screen-label="04 Architecture patterns" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;scroll-margin-top:140px;">
+    <div style="border-top:1px solid #DDDDDD;padding-top:40px;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:820px;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">04 / Control location</span>
+        <h2 style="margin:0;font-size:var(--web-h2-size);font-weight:var(--web-h2-weight);line-height:var(--web-h2-lh);">Architecture patterns</h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Explore where routine decisions can run: in a cloud service, in a local controller, or across both. These are illustrative patterns. The EMON direction remains a proposed design.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;">
+        <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Where decisions run</h3>
+        <p style="margin:0;max-width:520px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">Select a pattern to trace its dependencies. Real installations can combine different patterns for different functions.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px;">
+        <div role="group" aria-label="Architecture pattern" style="display:flex;flex-wrap:wrap;gap:4px;background:#F4F4F4;border-radius:12px;padding:4px;">
+          <sc-for list="{{ patTabs }}" as="o" hint-placeholder-count="3">
+            <button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.pressed }}" style="min-height:44px;padding:0 16px;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-size:var(--web-small-size);font-weight:400;background:{{ o.bg }};color:{{ o.fg }};">{{ o.t }}</button>
+          </sc-for>
+        </div>
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Illustrative models / no product classification</span>
+      </div>
+      <div aria-live="polite" style="border:1px solid #DDDDDD;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:24px;">
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr) 24px minmax(0,1fr);gap:8px;align-items:center;">
+          <div style="background:#F4F4F4;border:1px solid #DDDDDD;border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:8px;min-height:140px;box-sizing:border-box;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">01 / Equipment</span><h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Devices &amp; loads</h4><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">Inverter, BMS, metering and switching outputs</p></div>
+          <span aria-hidden="true" style="text-align:center;color:#5F5E5E;">↔</span>
+          <div style="border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:8px;min-height:140px;box-sizing:border-box;background:{{ patB2.bg }};border:1px solid {{ patB2.border }};"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">02 / On site</span><h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ pat.gateway }}</h4><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ patB2.p }}</p></div>
+          <span aria-hidden="true" style="text-align:center;color:#5F5E5E;">↔</span>
+          <div style="border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:8px;min-height:140px;box-sizing:border-box;background:{{ patB3.bg }};border:1px solid {{ patB3.border }};"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">03 / Remote</span><h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ pat.cloud }}</h4><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ patB3.p }}</p></div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px 16px;border-top:1px solid #DDDDDD;padding-top:16px;">
+          <span style="flex:none;border-radius:8px;padding:4px 10px;font-size:var(--web-min-size);font-weight:400;background:{{ patBadge.bg }};color:{{ patBadge.fg }};">{{ patBadge.t }}</span>
+          <p style="margin:0;flex:1 1 320px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ pat.text }}</p>
+        </div>
+        <div style="overflow-x:auto;border:1px solid #DDDDDD;border-radius:8px;">
+          <table style="width:100%;min-width:560px;border-collapse:collapse;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">
+            <thead><tr style="background:#F4F4F4;"><th scope="col" style="text-align:left;font-weight:400;padding:12px 16px;width:20%;">Function</th><th scope="col" style="text-align:left;font-weight:400;padding:12px 16px;">{{ patCol }}</th><th scope="col" style="text-align:left;font-weight:400;padding:12px 16px;">Evidence to request</th></tr></thead>
+            <tbody><sc-for list="{{ patRows }}" as="r" hint-placeholder-count="4"><tr style="border-top:1px solid #DDDDDD;vertical-align:top;"><td style="padding:12px 16px;font-weight:400;">{{ r.f }}</td><td style="padding:12px 16px;">{{ r.p }}</td><td style="padding:12px 16px;color:#5F5E5E;">{{ r.e }}</td></tr></sc-for></tbody>
+          </table>
+        </div>
+      </div>
+      <p style="margin:0;max-width:900px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">Location alone does not establish security. Credentials, firmware, device interfaces, protection functions and recovery procedures still require assessment. These models do not describe or rate any manufacturer. <a href="#source-S05" style="color:#252525;border-bottom:1px solid #4F4F4E;">S05 ↗</a></p>
+      <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;--cg:16px;">
+        <article style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Remote commands</span><h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">A request needs limits.</h4><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Proposed EMON rule: record who requested the action, which device it targets, the allowed range and the expiry time. Check the device response locally. Monitoring permission alone should not grant switching authority.</p></article>
+        <article style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Protection</span><h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Safety retains priority.</h4><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Proposed EMON requirement: optimisation cannot override battery constraints, mandatory grid protection or the approved circuit protection design. Establish that separation in the actual hardware and software.</p></article>
+      </div>
+      <div style="border:1px solid #DDDDDD;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;">
+        <h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">What EMON must prove</h4>
+        <p style="margin:0;max-width:900px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">The intended local-plus-cloud architecture needs evidence across normal operation, lost communications, reboot, software update and service withdrawal. The resilience lab turns those conditions into explicit acceptance tests. <a href="#resilience" style="color:#252525;border-bottom:1px solid #4F4F4E;">Explore the tests ↗</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy" data-screen-label="05 Data and GDPR" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;scroll-margin-top:140px;">
+    <div style="border-top:1px solid #DDDDDD;padding-top:40px;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:820px;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">05 / Data responsibility</span>
+        <h2 style="margin:0;font-size:var(--web-h2-size);font-weight:var(--web-h2-weight);line-height:var(--web-h2-lh);">Data &amp; GDPR</h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Hosting answers where records are stored. Access, legal roles, retention and international transfers answer different questions. All need explicit evidence.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;">
+        <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Three different questions</h3>
+        <p style="margin:0;max-width:520px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">Click a boundary to see the evidence needed. The EMON hosting plan is not a compliance certificate.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;--cg:8px;">
+          <sc-for list="{{ privTabs }}" as="o" hint-placeholder-count="3">
+            <button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.pressed }}" style="min-height:44px;padding:20px;border:none;border-radius:12px;cursor:pointer;font-family:inherit;text-align:left;display:flex;flex-direction:column;gap:8px;background:{{ o.bg }};color:{{ o.fg }};">
+              <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);">{{ o.n }}</span>
+              <span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ o.t }}</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ o.p }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div aria-live="polite" style="border:1px solid #DDDDDD;border-radius:12px;padding:20px 24px;display:flex;flex-direction:column;gap:8px;">
+          <h4 style="margin:0;font-size:var(--web-small-size);font-weight:500;">{{ priv.title }}</h4>
+          <p style="margin:0;max-width:900px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ priv.text }} <sc-for list="{{ priv.refs }}" as="r" hint-placeholder-count="0"><a href="#source-{{ r }}" style="color:#252525;border-bottom:1px solid #4F4F4E;margin-right:6px;">{{ r }} ↗</a></sc-for></p>
+        </div>
+      </div>
+      <div style="overflow-x:auto;border:1px solid #DDDDDD;border-radius:12px;">
+        <table style="width:100%;min-width:640px;border-collapse:collapse;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">
+          <thead><tr style="background:#F4F4F4;"><th scope="col" style="text-align:left;font-weight:400;padding:12px 16px;width:22%;">Question</th><th scope="col" style="text-align:left;font-weight:400;padding:12px 16px;">Factual principle</th><th scope="col" style="text-align:left;font-weight:400;padding:12px 16px;">Proposed EMON evidence</th></tr></thead>
+          <tbody><sc-for list="{{ gdprRows }}" as="r" hint-placeholder-count="4"><tr style="border-top:1px solid #DDDDDD;vertical-align:top;"><td style="padding:12px 16px;font-weight:400;">{{ r.q }}</td><td style="padding:12px 16px;">{{ r.f }} <sc-for list="{{ r.refs }}" as="x" hint-placeholder-count="0"><a href="#source-{{ x }}" style="color:#252525;border-bottom:1px solid #4F4F4E;margin-right:6px;">{{ x }} ↗</a></sc-for></td><td style="padding:12px 16px;color:#5F5E5E;">{{ r.e }}</td></tr></sc-for></tbody>
+        </table>
+      </div>
+      <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;--cg:16px;">
+        <article style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Legal basis</span><h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Consent is not universal.</h4><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Identify the applicable legal basis for each processing purpose. An optional flexibility service and required service processing can have different grounds. <a href="#source-S01" style="color:#252525;border-bottom:1px solid #4F4F4E;">S01 ↗</a></p></article>
+        <article style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Processor terms</span><h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Follow the chain.</h4><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Document instructions, subprocessors, security measures and transfer arrangements across EMON, hosting and support providers. <a href="#source-S03" style="color:#252525;border-bottom:1px solid #4F4F4E;">S03 ↗</a></p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="evidence" data-screen-label="06 Evidence and checks" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 96px;box-sizing:border-box;scroll-margin-top:140px;">
+    <div style="border-top:1px solid #DDDDDD;padding-top:40px;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:820px;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">06 / Evidence &amp; acceptance</span>
+        <h2 style="margin:0;font-size:var(--web-h2-size);font-weight:var(--web-h2-weight);line-height:var(--web-h2-lh);">Evidence &amp; checks</h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Trace the documented claims to primary sources and record the evidence an EPC should request before accepting a deployed EMON installation.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;">
+        <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Commissioning evidence</h3>
+        <p style="margin:0;max-width:520px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">Use this as a review aid. A tick records your review; it does not certify EMON or the installation.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;"><span style="font-size:var(--web-body-size);font-weight:500;">{{ checkCount }}</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Local session only / no certification</span></div>
+        <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+          <sc-for list="{{ checks }}" as="c" hint-placeholder-count="10">
+            <label style="display:flex;align-items:flex-start;gap:12px;padding:16px;border-radius:12px;cursor:pointer;background:{{ c.bg }};border:1px solid {{ c.border }};"><input type="checkbox" checked="{{ c.on }}" onChange="{{ c.toggle }}" style="width:18px;height:18px;margin:2px 0 0;accent-color:#4F4F4E;flex:none;"><span style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-small-size);font-weight:500;">{{ c.t }}</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ c.d }}</span></span></label>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;">
+          <button type="button" onClick="{{ exportChecks }}" style="min-height:48px;padding:0 24px;border:none;border-radius:8px;background:#4F4F4E;color:#FFFFFF;cursor:pointer;font-family:inherit;font-size:var(--cta-font);font-weight:400;" style-hover="background:#252525;">Export review notes ↗</button>
+          <button type="button" onClick="{{ resetChecks }}" style="min-height:44px;padding:0;border:none;background:none;cursor:pointer;font-family:inherit;font-size:var(--web-small-size);font-weight:300;color:#252525;border-bottom:1px solid #4F4F4E;">Reset checklist</button>
+          <p aria-live="polite" style="margin:0;font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">Exports a dated text file. No server storage.</p>
+        </div>
+      </div>
+      <div style="border:1px solid #DDDDDD;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;">
+        <h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Evidence boundary</h4>
+        <p style="margin:0;max-width:900px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">The EMON diagrams and scenarios are proposed engineering requirements. No live EMON deployment, source code, device firmware, hosting contract, security audit or commissioning report was supplied. The independent sources below explain general security risks and data protection duties. They do not validate an EMON implementation.</p>
+      </div>
+      <div id="sources" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;scroll-margin-top:140px;">
+        <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Primary sources</h3>
+        <p style="margin:0;max-width:520px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">Reviewed 27 October 2026. Check the original source for its date, scope and legal or technical status.</p>
+      </div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ sources }}" as="s" hint-placeholder-count="6">
+          <article id="source-{{ s.id }}" style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;scroll-margin-top:140px;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">{{ s.id }} / {{ s.org }}</span>
+            <h4 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ s.title }}</h4>
+            <p style="margin:0;flex:1;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ s.desc }}</p>
+            <a href="{{ s.url }}" target="_blank" rel="noopener noreferrer" style="align-self:flex-start;display:flex;align-items:center;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#252525;">Open primary source ↗</a>
+          </article>
+        </sc-for>
+      </div>
+      <a href="EMON - SYSTEM - Security Explained - EN.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#252525;" style-hover="color:#4F4F4E;"><svg aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg>EMON Security explained</a>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const ETR_KEY = "emon-techref-checks";
+const NODE_POS = { controller: ["38%","55%","24%","18%"], meter: ["6%","36%","20%","14%"], inverter: ["6%","57%","20%","14%"], relay: ["6%","78%","20%","14%"], cloud: ["74%","36%","21%","14%"], owner: ["74%","57%","21%","14%"], grid: ["74%","78%","21%","14%"], update: ["38%","4%","24%","14%"] };
+const PATHS = {
+  data: { lines: [["M216 228 H270 V322 H315","data"],["M216 339 H315","data"],["M415 292 V228 H614","data"],["M701 265 V302","data"]], labels: [[294,215,"Measurements"],[470,216,"Selected telemetry"]] },
+  control: { lines: [["M701 302 V265"],["M614 240 H556 V339 H515"],["M701 413 H556 V356 H515"],["M315 339 H216"],["M315 356 H270 V451 H216"]], labels: [[467,227,"Bounded request"],[284,391,"Local outputs"]] },
+  updates: { lines: [["M415 95 V292","update"],["M315 62 H284 V340 H216","update"],["M515 62 H700 V191","update"]], labels: [[430,158,"Verify + authorise"],[95,89,"Separate device update path"]] },
+  power: { lines: [["M48 342 H15 V516 H802 V488"],["M133 377 V413"]], labels: [[280,504,"Physical supply / conceptual only"]] }
+};
+const LAYERS = [["data","Data flow"],["control","Control"],["updates","Updates"],["power","Power"]];
+const ROLE_TABS = [["owner","Owner"],["installer","Installer / EPC"],["emon","EMON operations"],["aggregator","Grid / aggregator"]];
+const STATUS_LABELS = ["Energy scheduling","Remote access","Telemetry history","Tariff optimisation","Grid / BMS protection","Relay behaviour"];
+const PRIV_N = ["WHERE","WHO","HOW LONG"];
+const sel = (on) => ({ bg: on ? "#4F4F4E" : "transparent", fg: on ? "#FFFFFF" : "#252525", pressed: on ? "true" : "false" });
+const txt = (x) => (x && typeof x === "object") ? x.text : (x || "");
+const refs = (x) => (x && typeof x === "object" && x.refs) ? x.refs : [];
+
+class Component extends DCLogic {
+  state = { ready: false, layer: "data", node: "controller", role: "owner", step: 0, scenario: "internet", local: true, privacy: "storage", pattern: "hybrid", checks: [], legendOpen: false };
+  componentDidMount() {
+    let checks = [];
+    try { checks = JSON.parse(sessionStorage.getItem(ETR_KEY) || "[]"); } catch (e) {}
+    const go = () => { if (window.EMON_TECHREF) this.setState({ ready: true, checks }); else this._t = setTimeout(go, 50); };
+    go();
+  }
+  componentWillUnmount() { clearTimeout(this._t); }
+  saveChecks(checks) { try { sessionStorage.setItem(ETR_KEY, JSON.stringify(checks)); } catch (e) {} this.setState({ checks }); }
+  buildSvg(layer) {
+    const h = React.createElement, L = PATHS[layer];
+    return h("svg", { viewBox: "0 0 830 530", "aria-hidden": "true", style: { position: "absolute", inset: 0, width: "100%", height: "100%" } },
+      h("defs", null, h("marker", { id: "etr-arrow", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 5, markerHeight: 5, orient: "auto-start-reverse" }, h("path", { d: "M 1 1 L 9 5 L 1 9", fill: "none", stroke: "#4F4F4E", strokeWidth: 1.3 }))),
+      ...L.lines.map(([d, c], i) => h("path", { key: "l" + i, d, fill: "none", stroke: "#4F4F4E", strokeWidth: 1.4, strokeDasharray: c === "data" ? "7 5" : c === "update" ? "3 5" : undefined, markerEnd: "url(#etr-arrow)" })),
+      ...L.labels.map(([x, y, t], i) => h("text", { key: "t" + i, x, y, style: { font: "10px 'Helvetica Neue', Helvetica, Arial, sans-serif", fill: "#5F5E5E" } }, t)));
+  }
+  exportChecks(D) {
+    const st = this.state;
+    const body = "EMON SECURITY REVIEW\nDate: " + new Date().toISOString().slice(0, 10) + "\nExplainer edition: 02 / 27 October 2026\n\nA checklist is not certification. EMON design remains proposed.\n\n" +
+      D.checks.map(([t, d], i) => (st.checks.includes(i) ? "[REVIEWED]" : "[OPEN]") + " " + t + "\n" + d).join("\n\n") +
+      "\n\nPRIMARY SOURCES\n" + D.sources.map((s) => s[0] + " " + s[1] + " / " + s[2] + "\n" + s[4]).join("\n\n");
+    const url = URL.createObjectURL(new Blob([body], { type: "text/plain" }));
+    const a = document.createElement("a"); a.href = url; a.download = "EMON-security-review.txt"; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+  renderVals() {
+    const D = window.EMON_TECHREF, st = this.state;
+    const base = { legendOpen: st.legendOpen, legendOpenStr: st.legendOpen ? "true" : "false", toggleLegend: () => this.setState((s) => ({ legendOpen: !s.legendOpen })) };
+    if (!st.ready || !D) return Object.assign(base, { layers: [], nodes: [], svg: null, insp: {}, flowText: "", roleTabs: [], role: { yes: [], no: [] }, steps: [], stepH: "", stepP: "", scenTabs: [], scen: { tests: [] }, showLocal: false, showRule: false, local: true, statusRows: [], patTabs: [], pat: {}, patB2: {}, patB3: {}, patBadge: {}, patCol: "", patRows: [], privTabs: [], priv: { refs: [] }, gdprRows: [], checks: [], checkCount: "", sources: [] });
+
+    const layers = LAYERS.map(([id, t]) => Object.assign({ t, pick: () => this.setState({ layer: id }) }, sel(st.layer === id)));
+    const nodes = Object.keys(D.nodes).map((id) => {
+      const n = D.nodes[id], p = NODE_POS[id], on = st.node === id;
+      return { code: n.code.split(" / ")[0], label: id === "inverter" ? "Inverter + battery" : id === "controller" ? "Local controller" : id === "update" ? "Firmware release" : n.title,
+        left: p[0], top: p[1], w: p[2], h: p[3], bg: on ? "var(--color-emon-10)" : "#FFFFFF", border: on ? "var(--color-brand-emon)" : "#AAAAAA", pressed: on ? "true" : "false", pick: () => this.setState({ node: id }) };
+    });
+    const insp = D.nodes[st.node];
+
+    const r = D.roles[st.role];
+    const roleTabs = ROLE_TABS.map(([id, t]) => Object.assign({ t, pick: () => this.setState({ role: id }) }, sel(st.role === id)));
+    const steps = D.stepLabels.map((t, i) => { const on = st.step === i; return { n: "0" + (i + 1), t, small: D.stepSmall[i], bg: on ? "#4F4F4E" : "#FFFFFF", fg: on ? "#FFFFFF" : "#252525", pressed: on ? "true" : "false", pick: () => this.setState({ step: i }) }; });
+    const sd = D.updateSteps[st.step] || { h: "", p: "" };
+
+    const scenIds = Object.keys(D.scenarios), s = D.scenarios[st.scenario];
+    const scenTabs = scenIds.map((id, i) => Object.assign({ n: "0" + (i + 1), t: D.scenarios[id].label, pick: () => this.setState({ scenario: id }) }, sel(st.scenario === id)));
+    const showLocal = st.scenario === "internet" || st.scenario === "cloud";
+    const statuses = s.states.slice(); if (!st.local && showLocal) statuses[0] = "Cloud dependency blocks";
+    const statusRows = STATUS_LABELS.map((t, i) => { const lim = i === 1 || i === 3; return { t, v: statuses[i], bg: lim ? "#FFFFFF" : "#F4F4F4", border: lim ? "#DDDDDD" : "#F4F4F4" }; });
+
+    const m = D.patternModels[st.pattern];
+    const patTabs = Object.keys(D.patternModels).map((id) => Object.assign({ t: D.patternModels[id].label, pick: () => this.setState({ pattern: id }) }, sel(st.pattern === id)));
+    const b2on = m.active === "local" || m.active === "both", b3on = m.active === "cloud" || m.active === "both";
+    const hy = st.pattern === "hybrid";
+
+    const privIds = Object.keys(D.privacyItems), pv = D.privacyItems[st.privacy];
+    const privTabs = privIds.map((id, i) => { const p = D.privacyItems[id], on = st.privacy === id; return { n: "0" + (i + 1) + " / " + PRIV_N[i], t: p[0], p: p[1], bg: on ? "#4F4F4E" : "#F4F4F4", fg: on ? "#FFFFFF" : "#252525", pressed: on ? "true" : "false", pick: () => this.setState({ privacy: id }) }; });
+
+    const checks = D.checks.map(([t, d], i) => { const on = st.checks.includes(i); return { t, d, on, bg: on ? "#F4F4F4" : "#FFFFFF", border: on ? "#F4F4F4" : "#DDDDDD",
+      toggle: () => this.saveChecks(on ? st.checks.filter((x) => x !== i) : [...new Set([...st.checks, i])]) }; });
+
+    return Object.assign(base, {
+      layers, nodes, svg: this.buildSvg(st.layer), insp, flowText: D.flowText[st.layer],
+      roleTabs, role: { title: r[0], text: r[1], yes: r[2], no: r[3] }, steps, stepH: sd.h, stepP: sd.p,
+      scenTabs, scen: s, showLocal, showRule: showLocal && !st.local, local: st.local, toggleLocal: () => this.setState((x) => ({ local: !x.local })), statusRows,
+      patTabs, pat: m, patB2: { bg: b2on ? "var(--color-emon-10)" : "#F4F4F4", border: b2on ? "var(--color-brand-emon)" : "#DDDDDD", p: m.active === "cloud" ? "Forwards allowed requests" : "Local scheduling authority" },
+      patB3: { bg: b3on ? "var(--color-emon-10)" : "#F4F4F4", border: b3on ? "var(--color-brand-emon)" : "#DDDDDD", p: m.active === "local" ? "No scheduling role in this model" : "Remote service dependency" },
+      patBadge: { t: hy ? "Proposed EMON direction" : "Illustrative pattern", bg: hy ? "#4F4F4E" : "#F4F4F4", fg: hy ? "#FFFFFF" : "#252525" },
+      patCol: m.label + " pattern", patRows: m.rows.map(([f, p, e]) => ({ f, p, e })),
+      privTabs, priv: { title: pv[0], text: txt(pv[2]), refs: refs(pv[2]) },
+      gdprRows: D.gdprRows.map((g) => ({ q: g.q, f: txt(g.f), refs: refs(g.f), e: g.e })),
+      checks, checkCount: st.checks.length + " / " + D.checks.length + " reviewed",
+      exportChecks: () => this.exportChecks(D), resetChecks: () => this.saveChecks([]),
+      sources: D.sources.map(([id, org, title, desc, url]) => ({ id, org, title, desc, url }))
+    });
+  }
+}
+</script>
+</body>
+</html>

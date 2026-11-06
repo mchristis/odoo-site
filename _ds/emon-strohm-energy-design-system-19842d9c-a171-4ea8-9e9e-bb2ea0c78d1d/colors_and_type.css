@@ -1,0 +1,664 @@
+/*
+ * EMON / STROHM.ENERGY Design System
+ * colors_and_type.css — CSS Custom Properties
+ * Version 1.0 | April 2026
+ *
+ * Font note: Source Han Sans KR (app) is substituted with Noto Sans KR
+ * from Google Fonts (visually near-identical). Request original font files
+ * from the design team or Adobe Fonts for production use.
+ * Web font: Helvetica Neue is a system font — no import needed.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+/* ============================================================
+   BASE TOKENS — NEUTRAL PALETTE
+   ============================================================ */
+:root {
+  /* Pure backgrounds */
+  --color-bg-screen:        #FFFFFF;   /* All app screen backgrounds */
+  --color-bg-canvas:        #F7F7F5;   /* Web canvas / global fallback */
+
+  /* Text */
+  --color-text-primary:     #4F4F4E;   /* Primary text (DS update 16 Oct 2026, was #5B5B5B) */
+  --color-text-secondary:   #898989;   /* Sub-descriptions, secondary labels */
+  --color-text-muted:       #AEAEAE;   /* Reserve labels, low-emphasis */
+  --color-text-on-dark:     #D9DADA;   /* Button labels on dark fill */
+
+  /* Grey scale */
+  --color-grey-10:          #EBEBEB;   /* 10% black — lightest tint */
+  --color-grey-20:          #DDDDDD;   /* 20% black — dividers */
+  --color-grey-40:          #BBBBBB;   /* 40% black — input stroke default */
+  --color-grey-50:          #D9DADA;   /* 50% black — button text on dark */
+  --color-grey-60:          #898989;   /* 60% black — secondary text */
+  --color-grey-70:          #727271;   /* 70% black — heavy label */
+  --color-grey-80:          #4F4F4E;   /* 80% — primary text (DS update 16 Oct 2026) */
+
+  /* Dividers */
+  --color-divider:          #DDDDDD;   /* All structural divider lines */
+
+  /* ============================================================
+     SURFACE COLOURS
+     ============================================================ */
+  --color-surface-card:     #F4F4F4;   /* Primary card background */
+  --color-surface-card-mid: #E3E3E3;   /* Stats row / darker card */
+  --color-surface-secondary:#EBECEC;   /* Secondary button, passive sections */
+  --color-surface-cta:      #5B5B5B;   /* Primary CTA button fill */
+  --color-surface-warning:  #FFEB9E;   /* Grid balancing reserve band */
+  --color-surface-info:     #CCEDF0;   /* System notice / info banners */
+
+  /* ============================================================
+     SEMANTIC COLOURS
+     ============================================================ */
+  --color-semantic-success: #4CAF50;   /* Completion, connected states */
+  --color-semantic-warning: #FB8C00;   /* Low SoC, alerts */
+  --color-semantic-error:   #D8392C;   /* Delete, destructive actions */
+  --color-semantic-info:    #EBF5FF;   /* Info banners, tooltips */
+  --color-semantic-pressed: #DC4040;   /* Pressed / active interactive state */
+
+  /* ============================================================
+     PRODUCT BRAND COLOURS (primary)
+     Note: Several hex values need re-export from Figma.
+     ============================================================ */
+  --color-brand-emon:       #21AE8F;   /* EMON (logo guideline hex, 16 Oct 2026) */
+  --color-brand-ando:       #CDD62B;   /* ANDO (DS update 16 Oct 2026, stop 100) */
+  --color-brand-fluxx:      #FDC706;   /* FLUXX (DS update 16 Oct 2026, stop 100) */
+  --color-brand-moebius:    #F1931B;   /* MOEBIUS (DS update 16 Oct 2026, stop 100) */
+  --color-brand-mox:        #D8392C;   /* MOX (DS update 16 Oct 2026, stop 100) */
+  --color-brand-synq:       #598F94;   /* SYNQ (DS update 16 Oct 2026, stop 100) */
+  --color-brand-nendo:      #1B8B9A;   /* NENDO (DS update 16 Oct 2026, stop 100) */
+  --color-brand-ozzy:       #8BCF3F;   /* OZZY (DS update 16 Oct 2026, stop 100) */
+  --color-brand-feu:        #ED704C;   /* FEU (DS update 16 Oct 2026, stop 100) */
+  --color-brand-glow:       #FCDE15;   /* GLOW (DS update 16 Oct 2026, stop 100) */
+  --color-brand-prop:       #527A83;   /* PROP (DS update 16 Oct 2026, stop 100) */
+  --color-brand-airo:       #0083BB;   /* AIRO (DS update 16 Oct 2026, stop 100) */
+  --color-brand-togu:       #C48723;   /* TOGU (DS update 16 Oct 2026, stop 100) */
+  --color-brand-ogo:        #00A0E3;   /* OGO (DS update 16 Oct 2026, stop 100) */
+  --color-brand-xoom:       #8EB15F;   /* XOOM (DS update 16 Oct 2026, stop 100) */
+  --color-brand-chill:      #6BC0B0;   /* CHILL (DS update 16 Oct 2026, stop 100) */
+  --color-brand-tribe:      #689AB2;   /* TRIBE (DS update 16 Oct 2026, stop 100) */
+  --color-brand-kern:       #1DABC1;   /* KERN (logo guideline) · TO CONFIRM: not in the 16 Oct sheet */
+  --color-brand-push:       #3EAB57;   /* PUSH: sampled from the logo image, guideline hex #D6990E is a duplicate of PACT, TO CONFIRM · TO CONFIRM: not in the 16 Oct sheet */
+  --color-brand-pact:       #D6990E;   /* PACT (logo guideline) · TO CONFIRM: not in the 16 Oct sheet */
+  --color-brand-depot:      #7690C9;   /* DEPOT (logo guideline) · TO CONFIRM: not in the 16 Oct sheet */
+  --color-brand-sheltr:     #5B6592;   /* SHELTR (DS update 16 Oct 2026, stop 100) */
+  --color-brand-muki:       #DF550C;   /* MUKI (DS update 16 Oct 2026, stop 100) */
+  --color-brand-dodo:       #E5B73B;   /* DODO (DS update 16 Oct 2026, stop 100) */
+  --color-brand-wurk:       #9E3D2E;   /* WURK (DS update 16 Oct 2026, stop 100) */
+
+  /* ============================================================
+     TYPOGRAPHY — APP (Source Han Sans KR / Noto Sans KR)
+     ============================================================ */
+  --font-app:               'Noto Sans KR', 'Source Han Sans KR', sans-serif;
+  --font-web:               'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --font-weight-light:      300;
+  --font-weight-normal:     400;
+  --font-weight-bold:       700;
+
+  /* App type scale */
+  --type-hero-size:         94px;
+  --type-hero-weight:       700;
+  --type-hero-color:        var(--color-text-primary);
+
+  --type-section-size:      18px;
+  --type-section-lh:        22px;
+  --type-section-weight:    700;
+
+  --type-title-size:        16px;
+  --type-title-lh:          20px;
+
+  --type-body-size:         20px;
+  --type-body-lh:           30px;
+  --type-body-weight:       300;
+
+  --type-data-size:         24px;
+  --type-data-lh:           30px;
+
+  --type-sublabel-size:     16px;
+  --type-sublabel-lh:       20px;
+  --type-sublabel-weight:   300;
+
+  --type-muted-size:        14px;
+  --type-muted-lh:          20px;
+  --type-muted-weight:      300;
+  --type-muted-color:       var(--color-text-secondary);
+
+  --type-reserve-size:      14px;
+  --type-reserve-weight:    300;
+  --type-reserve-color:     var(--color-text-muted);
+
+  --type-btn-primary-size:  16px;
+  --type-btn-primary-color: var(--color-text-on-dark);
+
+  --type-btn-secondary-size:16px;
+  --type-btn-secondary-color: var(--color-text-secondary);
+
+  /* ============================================================
+     SPACING SYSTEM (8px base unit)
+     ============================================================ */
+  --grid-base:              8px;
+  --space-1:                8px;    /* Icon padding, minimum spacing */
+  --space-2:                16px;   /* Element internal padding */
+  --space-3:                24px;   /* Section internal padding */
+  --space-4:                32px;   /* Between card groups */
+  --space-5:                40px;   /* Top/bottom bar height */
+  --space-6:                48px;   /* Button height, input field height */
+  --space-content-pad:      20px;   /* Card inner padding (fixed spec) */
+  --space-btn-gap:          12px;   /* Vertical gap between stacked buttons */
+
+  /* ============================================================
+     COMPONENT TOKENS
+     ============================================================ */
+  /* Cards */
+  --radius-card:            12px;
+  --radius-card-inner:      8px;
+  --radius-btn:             8px;
+  --radius-input:           8px;
+  --radius-modal:           12px;
+
+  /* Buttons */
+  --btn-width:              212px;
+  --btn-height:             48px;
+  --btn-modal-width:        142px;
+
+  /* Inputs */
+  --input-height:           48px;
+  --input-stroke-default:   1px solid var(--color-grey-40);
+  --input-stroke-focus:     1px solid var(--color-surface-cta);
+
+  /* Dividers */
+  --border-divider:         1px solid var(--color-divider);
+
+  /* App canvas */
+  --canvas-w:               393px;
+  --canvas-h:               852px;
+  --topbar-h:               40px;
+  --bottombar-h:            40px;
+  --gutter:                 20px;
+  --content-w:              353px;
+}
+
+/* ============================================================
+   SEMANTIC ELEMENT STYLES
+   ============================================================ */
+
+/* App typography helpers */
+.emon-hero {
+  font-family: var(--font-app);
+  font-size: var(--type-hero-size);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+
+.emon-h1 {
+  font-family: var(--font-app);
+  font-size: var(--type-section-size);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--type-section-lh);
+}
+
+.emon-screen-title .bold-word {
+  font-family: var(--font-app);
+  font-size: var(--type-title-size);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+.emon-screen-title .light-word {
+  font-family: var(--font-app);
+  font-size: var(--type-title-size);
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-primary);
+}
+
+.emon-body {
+  font-family: var(--font-app);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-primary);
+  line-height: var(--type-body-lh);
+}
+
+.emon-data {
+  font-family: var(--font-app);
+  font-size: var(--type-data-size);
+  line-height: var(--type-data-lh);
+  color: var(--color-text-primary);
+}
+.emon-data .value { font-weight: var(--font-weight-bold); }
+.emon-data .unit  { font-weight: var(--font-weight-light); }
+
+.emon-muted {
+  font-family: var(--font-app);
+  font-size: var(--type-muted-size);
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-secondary);
+  line-height: var(--type-muted-lh);
+}
+
+.emon-reserve-label {
+  font-family: var(--font-app);
+  font-size: var(--type-reserve-size);
+  font-weight: var(--font-weight-light);
+  color: var(--color-text-muted);
+}
+
+/* Buttons */
+.emon-btn-primary {
+  width: var(--btn-width);
+  height: var(--btn-height);
+  background: var(--color-surface-cta);
+  color: var(--color-text-on-dark);
+  font-family: var(--font-app);
+  font-size: var(--type-btn-primary-size);
+  font-weight: var(--font-weight-normal);
+  border-radius: var(--radius-btn);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.emon-btn-primary:hover { background: var(--color-grey-70); }
+
+.emon-btn-secondary {
+  width: var(--btn-width);
+  height: var(--btn-height);
+  background: var(--color-surface-secondary);
+  color: var(--color-text-secondary);
+  font-family: var(--font-app);
+  font-size: var(--type-btn-secondary-size);
+  font-weight: var(--font-weight-normal);
+  border-radius: var(--radius-btn);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emon-btn-destructive {
+  width: var(--btn-width);
+  height: var(--btn-height);
+  background: var(--color-semantic-error);
+  color: #FFFFFF;
+  font-family: var(--font-app);
+  font-size: 16px;
+  font-weight: var(--font-weight-normal);
+  border-radius: var(--radius-btn);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cards */
+.emon-card {
+  background: var(--color-surface-card);
+  border-radius: var(--radius-card);
+  padding: var(--space-content-pad);
+}
+
+.emon-card-mid {
+  background: var(--color-surface-card-mid);
+  border-radius: var(--radius-card);
+  padding: var(--space-content-pad);
+}
+
+.emon-card-info {
+  background: var(--color-surface-info);
+  border-radius: var(--radius-card);
+  padding: var(--space-content-pad);
+}
+
+/* Input field */
+.emon-input {
+  height: var(--input-height);
+  border-radius: var(--radius-input);
+  border: var(--input-stroke-default);
+  background: var(--color-bg-screen);
+  font-family: var(--font-app);
+  font-size: 16px;
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-primary);
+  padding: 0 16px;
+}
+.emon-input:focus {
+  outline: none;
+  border: var(--input-stroke-focus);
+}
+
+/* Divider */
+.emon-divider {
+  height: 1px;
+  background: var(--color-divider);
+  border: none;
+  margin: 0;
+}
+
+/* Top bar */
+.emon-topbar {
+  height: var(--topbar-h);
+  background: var(--color-bg-screen);
+  border-bottom: var(--border-divider);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--gutter);
+}
+
+/* Bottom bar */
+.emon-bottombar {
+  height: var(--bottombar-h);
+  background: var(--color-bg-screen);
+  border-top: var(--border-divider);
+}
+
+/* Web typography helpers */
+.strohm-nav {
+  font-family: var(--font-web);
+  font-size: 14pt;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.strohm-hero {
+  font-family: var(--font-web);
+  font-size: 45pt;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.strohm-product-title {
+  font-family: var(--font-web);
+  font-size: 72pt;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.strohm-body {
+  font-family: var(--font-web);
+  font-size: 12pt;
+  font-weight: 300;
+}
+
+/* ============================================================
+   DS UPDATE 16 OCT 2026 (uploads/DESIGN SYSTEM _ * _oct16)
+   ============================================================ */
+:root {
+  /* EMON ramp: DERIVED (base mixed with white at 10–100%, same method as the 16 Oct sheet) */
+  --color-emon-10: #E9F7F4;
+  --color-emon-20: #D3EFE9;
+  --color-emon-30: #BCE7DD;
+  --color-emon-40: #A6DFD2;
+  --color-emon-50: #90D7C7;
+  --color-emon-60: #7ACEBC;
+  --color-emon-80: #4DBEA5;
+  --color-emon-100: #21AE8F;
+  --color-brand-strohm:     #F76801;   /* STROHM primary (fills, dots, hover only) */
+  --color-brand-kalk:       #C4B1C8;
+  --color-brand-lina:       #B5C64A;   /* kept by user decision 18 Oct 2026 (brand sheet LINA6 lists #A3BE3B, not used) */
+  --color-brand-agrix:      #6B8E4E; /* AGRIX official palette (user, 18 Oct 2026): AGRIX Green #6B8E4E logo symbol · Deep Olive #4F6345 secondary · Sage Mist #E3EADC light backgrounds · Charcoal #292929 typography · White #FFFFFF */
+  --color-brand-terrix:     #6B755F;
+  --color-brand-pontix:     #06768A;
+  --color-brand-tectix:     #4A5B73;
+  --color-brand-parx:       #7A9337; /* PARX Green, from uploads/PARX_Brand_Guidelines.txt (18 Oct 2026). Deep Moss #556627, Stone Mist #ECEFE8, Charcoal #292929 */
+  --color-ando-10: #FAFBEA;
+  --color-ando-20: #F5F7D5;
+  --color-ando-30: #F0F3BF;
+  --color-ando-40: #EBEFAA;
+  --color-ando-50: #E6EA95;
+  --color-ando-60: #E1E680;
+  --color-ando-80: #D7DE55;
+  --color-ando-100: #CDD62B;
+  --color-moebius-10: #FEF4E8;
+  --color-moebius-20: #FCE9D1;
+  --color-moebius-30: #FBDFBB;
+  --color-moebius-40: #F9D4A4;
+  --color-moebius-50: #F8C98D;
+  --color-moebius-60: #F7BE76;
+  --color-moebius-80: #F4A949;
+  --color-moebius-100: #F1931B;
+  --color-synq-10: #EFF4F5;
+  --color-synq-20: #DEE9EA;
+  --color-synq-30: #CEDEDF;
+  --color-synq-40: #BDD2D4;
+  --color-synq-50: #ACC7CA;
+  --color-synq-60: #9BBCBF;
+  --color-synq-80: #7AA5A9;
+  --color-synq-100: #598F94;
+  --color-mox-10: #FBEBEA;
+  --color-mox-20: #F7D7D5;
+  --color-mox-30: #F3C4C0;
+  --color-mox-40: #EFB0AB;
+  --color-mox-50: #EC9C96;
+  --color-mox-60: #E88880;
+  --color-mox-80: #E06156;
+  --color-mox-100: #D8392C;
+  --color-ogo-10: #E6F6FC;
+  --color-ogo-20: #CCECF9;
+  --color-ogo-30: #B2E2F7;
+  --color-ogo-40: #99D9F4;
+  --color-ogo-50: #80D0F1;
+  --color-ogo-60: #66C6EE;
+  --color-ogo-80: #33B3E9;
+  --color-ogo-100: #00A0E3;
+  --color-chill-10: #F0F9F7;
+  --color-chill-20: #E1F2EF;
+  --color-chill-30: #D3ECE7;
+  --color-chill-40: #C4E6DF;
+  --color-chill-50: #B5E0D8;
+  --color-chill-60: #A6D9D0;
+  --color-chill-80: #89CDC0;
+  --color-chill-100: #6BC0B0;
+  --color-glow-10: #FFFCE8;
+  --color-glow-20: #FEF8D0;
+  --color-glow-30: #FFF6B9;
+  --color-glow-40: #FEF2A1;
+  --color-glow-50: #FEEF8A;
+  --color-glow-60: #FDEB73;
+  --color-glow-80: #FDE544;
+  --color-glow-100: #FCDE15;
+  --color-airo-10: #E6F3F8;
+  --color-airo-20: #CCE6F1;
+  --color-airo-30: #B2DAEB;
+  --color-airo-40: #99CDE4;
+  --color-airo-50: #80C1DD;
+  --color-airo-60: #66B5D6;
+  --color-airo-80: #339CC9;
+  --color-airo-100: #0083BB;
+  --color-muki-10: #FCEEE7;
+  --color-muki-20: #F9DDCE;
+  --color-muki-30: #F6CCB7;
+  --color-muki-40: #F2BB9E;
+  --color-muki-50: #EFAA86;
+  --color-muki-60: #EC996D;
+  --color-muki-80: #E5773D;
+  --color-muki-100: #DF550C;
+  --color-dodo-10: #FDF8EC;
+  --color-dodo-20: #FAF1D8;
+  --color-dodo-30: #F8EAC5;
+  --color-dodo-40: #F5E2B1;
+  --color-dodo-50: #F2DB9D;
+  --color-dodo-60: #EFD489;
+  --color-dodo-80: #EAC562;
+  --color-dodo-100: #E5B73B;
+  --color-kalk-10: #F9F7FA;
+  --color-kalk-20: #F3EFF4;
+  --color-kalk-30: #EDE8EE;
+  --color-kalk-40: #E7E0E9;
+  --color-kalk-50: #E2D8E4;
+  --color-kalk-60: #DCD0DE;
+  --color-kalk-80: #D0C1D3;
+  --color-kalk-100: #C4B1C8;
+  --color-fluxx-10: #FFF9E6;
+  --color-fluxx-20: #FFF4CD;
+  --color-fluxx-30: #FEEEB4;
+  --color-fluxx-40: #FEE99B;
+  --color-fluxx-50: #FEE382;
+  --color-fluxx-60: #FEDD6A;
+  --color-fluxx-80: #FDD238;
+  --color-fluxx-100: #FDC706;
+  --color-ozzy-10: #F3FAEC;
+  --color-ozzy-20: #E8F5D9;
+  --color-ozzy-30: #DCF1C5;
+  --color-ozzy-40: #D1ECB2;
+  --color-ozzy-50: #C5E79F;
+  --color-ozzy-60: #B9E28C;
+  --color-ozzy-80: #A2D965;
+  --color-ozzy-100: #8BCF3F;
+  --color-nendo-10: #E8F3F5;
+  --color-nendo-20: #D1E8EB;
+  --color-nendo-30: #BBDCE1;
+  --color-nendo-40: #A4D1D7;
+  --color-nendo-50: #8DC5CC;
+  --color-nendo-60: #76B9C2;
+  --color-nendo-80: #49A2AE;
+  --color-nendo-100: #1B8B9A;
+  --color-togu-10: #F9F3E9;
+  --color-togu-20: #F3E7D3;
+  --color-togu-30: #EDDBBD;
+  --color-togu-40: #E7CFA7;
+  --color-togu-50: #E2C391;
+  --color-togu-60: #DCB77B;
+  --color-togu-80: #D09F4F;
+  --color-togu-100: #C48723;
+  --color-xoom-10: #F4F7EF;
+  --color-xoom-20: #E8EFDF;
+  --color-xoom-30: #DDE8CF;
+  --color-xoom-40: #D2E0BF;
+  --color-xoom-50: #C6D8AF;
+  --color-xoom-60: #BBD09F;
+  --color-xoom-80: #A5C17F;
+  --color-xoom-100: #8EB15F;
+  --color-feu-10: #FEF1EE;
+  --color-feu-20: #FBE2DB;
+  --color-feu-30: #FAD5CA;
+  --color-feu-40: #F8C6B7;
+  --color-feu-50: #F6B8A6;
+  --color-feu-60: #F4A994;
+  --color-feu-80: #F18D70;
+  --color-feu-100: #ED704C;
+  --color-prop-10: #EEF0F3;
+  --color-prop-20: #DCE4E6;
+  --color-prop-30: #CCD8DA;
+  --color-prop-40: #BACACD;
+  --color-prop-50: #A9BDC1;
+  --color-prop-60: #97AFB5;
+  --color-prop-80: #75959C;
+  --color-prop-100: #527A83;
+  --color-sheltr-10: #EFF0F5;
+  --color-sheltr-20: #DEE0E9;
+  --color-sheltr-30: #CED1DF;
+  --color-sheltr-40: #BDC1D3;
+  --color-sheltr-50: #ADB2C9;
+  --color-sheltr-60: #9DA3BE;
+  --color-sheltr-80: #7C84A8;
+  --color-sheltr-100: #5B6592;
+  --color-wurk-10: #F5ECEA;
+  --color-wurk-20: #ECD8D5;
+  --color-wurk-30: #E2C5C0;
+  --color-wurk-40: #D8B1AB;
+  --color-wurk-50: #CE9E96;
+  --color-wurk-60: #C58B82;
+  --color-wurk-80: #B16458;
+  --color-wurk-100: #9E3D2E;
+  --color-tribe-10: #F0F5F7;
+  --color-tribe-20: #E1EBF0;
+  --color-tribe-30: #D2E1E8;
+  --color-tribe-40: #C3D7E0;
+  --color-tribe-50: #B4CCD8;
+  --color-tribe-60: #A4C2D1;
+  --color-tribe-80: #86AEC1;
+  --color-tribe-100: #689AB2;
+  --color-strohm-10: #FFF0E6;
+  --color-strohm-20: #FDE1CC;
+  --color-strohm-30: #FDD2B3;
+  --color-strohm-40: #FCC399;
+  --color-strohm-50: #FBB480;
+  --color-strohm-60: #FAA467;
+  --color-strohm-80: #F98634;
+  --color-strohm-100: #F76801;
+  --color-card-strohm: #F3F2F1;
+  --color-card-ando: #F3F2F1;
+  --color-card-emon: #F4F7F2;
+  --color-card-synq: #EAF0F1;
+  --color-card-moebius: #F3F0ED;
+  --color-card-fluxx: #F1EFE9;
+  --color-card-ozzy: #F1F4ED;
+  --color-card-xoom: #F2F4F0;
+  --color-card-nendo: #F0F3F4;
+  --color-card-ogo: #F1F2F2;
+  --color-card-feu: #EFECEC;
+  --color-card-chill: #ECEFEE;
+  --color-card-mox: #EDE9E9;
+  --color-card-pontix: #E9F2F3;
+  --color-card-terrix: #E9E9E7;
+  --color-card-tectix: #EDEFF2;
+  --color-card-parx: #F4F4F4;
+  --color-card-togu: #E8E7E4;
+  --color-card-glow: #ECEBE6;
+  --color-card-prop: #EAEDEE;
+  --color-card-airo: #E7EBEC;
+  --color-card-dodo: #EEEDEC;
+  --color-card-muki: #ECE9E7;
+  --color-card-wurk: #ECE9E9;
+  /* Text on white: #B2B3B3 only on dark backgrounds or for non-text (lines, disabled). On white use #898989. */
+  --color-text-light:       #B2B3B3;
+  --color-text-light-on-white: #898989;
+  --color-text-inverse:     #FFFFFF;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 36px;
+  --space-10: 40px;
+  --space-11: 44px;
+  --space-12: 48px;
+  --space-13: 52px;
+  --space-14: 56px;
+  --space-15: 60px;
+  --space-16: 64px;
+  --space-17: 68px;
+  --space-18: 72px;
+  --space-19: 76px;
+  --space-20: 80px;
+  --space-21: 84px;
+  --space-22: 88px;
+  --space-23: 92px;
+  --space-24: 96px;
+  --space-25: 100px;
+  --space-26: 104px;
+  --space-27: 108px;
+  --space-28: 112px;
+  --space-29: 116px;
+  --space-30: 120px;
+  /* Web type, desktop (Helvetica Neue). Weights: Ultra Light 200, Thin 100, Light 300, Medium 500 */
+  --web-hero-size: 56px;  --web-hero-lh: 60px;  --web-hero-weight: 200;   /* CAPS */
+  --web-h1-size: 48px;    --web-h1-lh: 56px;    --web-h1-weight: 100;
+  --web-sub-size: 24px;   --web-sub-lh: 32px;   --web-sub-weight: 100;
+  --web-body-size: 16px;  --web-body-lh: 20px;  --web-body-weight: 100;
+  --web-body-hl-weight: 500;
+  --web-min-size: 12px;   --web-min-lh: 12px;   --web-min-weight: 100;
+  /* Cards and CTA, desktop */
+  --radius-card: 24px;  --card-padding: 24px;
+  --cta-height: 56px; --cta-font: 16px; --cta-radius: 8px; --cta-pad-y: 16px; --cta-pad-x: 32px; --cta-gap: 8px;
+}
+@media (max-width: 1279px) {
+  :root { --web-hero-size: 48px; --web-hero-lh: 48px; --web-h1-size: 24px; --web-h1-lh: 32px; --web-sub-size: 24px; --web-sub-lh: 24px; --web-sub-weight: 300;
+    --radius-card: 20px; --card-padding: 20px; --cta-height: 52px; --cta-pad-y: 14px; --cta-pad-x: 28px; }
+}
+@media (max-width: 767px) {
+  :root { --web-hero-size: 32px; --web-hero-lh: 32px; --web-h1-size: 24px; --web-h1-lh: 24px; --web-sub-size: 16px; --web-sub-lh: 20px; --web-sub-weight: 300;
+    --web-body-size: 12px; --web-body-lh: 16px;
+    --radius-card: 16px; --card-padding: 16px; --cta-height: 48px; --cta-font: 12px; --cta-pad-y: 12px; --cta-pad-x: 24px; }
+}

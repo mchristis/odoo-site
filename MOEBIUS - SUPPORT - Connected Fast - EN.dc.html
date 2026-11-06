@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>MOEBIUS Connected Fast | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoebiusNav" active="connected" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="MOEBIUS" rgb="241,147,27" eyebrow="Connected fast" title="Connected before the installer has found the manual." intro="MOEBIUS removes codes, dongles, separate gateways and unnecessary setup steps." slot="moebius-connected-fast-hero" shot="MOEBIUS · Connected Fast · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:640px;">Five standard features turn a sealed box into a visible, monitored system in only a few minutes.</p>
+    <div style="border-radius:12px;padding:12px 20px;background:var(--color-card-moebius);display:inline-block;">
+      <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Tap. Scan. Connected.</div>
+      <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">From sealed box to visible system in only a few minutes.</div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:24px;">Five standard MOEBIUS features</div>
+      <div data-cols="5" style="display:grid;gap:12px;grid-template-columns:repeat(5,minmax(0,1fr));--cg:12px;">
+        <sc-for list="{{ features }}" as="f" hint-placeholder-count="5">
+          <div style="border-radius:12px;background:#F4F4F4;padding:24px 20px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);margin-bottom:12px;letter-spacing:var(--web-eyebrow-ls);">{{ f.n }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:10px;line-height:var(--web-small-lh);">{{ f.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ f.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">QR activation completes in under 30 seconds. Complete connection — from power-up to live status in EMON — takes only a few minutes. These are separate claims.</p>
+    </div>
+  </section>
+
+  <!-- WI-FI MESH -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Integrated Wi-Fi Mesh</div>
+      <h2 style="margin:0 0 20px;max-width:560px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Every MOEBIUS inverter creates a network, <span style="color:#8E8E8E;">not just a connection.</span></h2>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:start;">
+        <div>
+          <p style="margin:0 0 18px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Most inverters connect individually to a router. When the signal is weak, the connection becomes unreliable. MOEBIUS creates a wireless communication network across the installation — compatible devices detect one another and relay data through the strongest route.</p>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">As more compatible devices are added, the network extends with them. The homeowner never configures it; the devices organise communication between themselves. <strong style="font-weight:400;">Wi-Fi Mesh is built into the inverter — SYNQ is the separate hardware range that measures energy and feeds data to EMON.</strong></p>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ meshBenefits }}" as="m" hint-placeholder-count="7">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);padding:12px 0;border-top:1px solid var(--color-divider);line-height:var(--web-small-lh);">{{ m }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMISSIONING FLOW -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Commissioning in only a few minutes</div>
+      <h2 style="margin:0 0 32px;max-width:560px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The inverter introduces itself <span style="color:#8E8E8E;">to EMON.</span></h2>
+      <div data-cols="3" style="display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:24px;--cg:12px;">
+        <div style="border-radius:12px;background:#F4F4F4;padding:28px;">
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:12px;line-height:var(--web-small-lh);">NFC</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;line-height:var(--web-small-lh);">Identifies the physical inverter</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Tap the inverter and open the digital record connected to that exact unit.</div>
+        </div>
+        <div style="border-radius:12px;background:#F4F4F4;padding:28px;">
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:12px;line-height:var(--web-small-lh);">Wi-Fi Mesh</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;line-height:var(--web-small-lh);">Connects the inverter</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">The inverter detects the wireless network and communicates with EMON and compatible devices.</div>
+        </div>
+        <div style="border-radius:12px;background:#F4F4F4;padding:28px;">
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:12px;line-height:var(--web-small-lh);">EMON</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;line-height:var(--web-small-lh);">Organises the system</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">EMON recognises article code, serial number, rated power, firmware and warranty automatically.</div>
+        </div>
+      </div>
+      <p style="margin:0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);max-width:760px;line-height:var(--web-small-lh);">The installer only adds the site-specific information — inverter location, panel layout, MPPT allocation, string configuration, battery, meter position and grid settings. No manual product search. No repeated serial-number entry.</p>
+    </div>
+  </section>
+
+  <!-- TECH LINKS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:24px;">Go deeper</div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ techLinks }}" as="t" hint-placeholder-count="6">
+          <a href="{{ t.href }}" style="text-decoration:none;background:#F4F4F4;border-radius:12px;padding:24px;display:block;">
+            <div style="font-size:var(--web-body-size);font-weight:300;color:var(--color-text-primary);margin-bottom:8px;">{{ t.title }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ t.desc }}</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="ContentSections" brand="MOEBIUS" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOEBIUS" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MOEBIUS" accent="var(--color-brand-moebius)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      features: [
+        { n: "01", title: "QR activation", desc: "Scan the product and begin activation through EMON — in under 30 seconds." },
+        { n: "02", title: "Touchless NFC", desc: "Tap to identify the inverter and open its digital record — even while unpowered." },
+        { n: "03", title: "Automatic device recognition", desc: "Compatible STRØHM.ENERGY devices find each other without entering serial numbers or codes." },
+        { n: "04", title: "Integrated Wi-Fi Mesh", desc: "Devices connect without a separate gateway and reroute when a link becomes weak." },
+        { n: "05", title: "Smart status indicators", desc: "The physical LED system gives immediate feedback during commissioning and diagnosis." },
+      ],
+      meshBenefits: [
+        "Better coverage throughout the building",
+        "More reliable communication",
+        "Less dependence on router position",
+        "Faster automatic device discovery",
+        "Easier expansion of the energy system",
+        "Fewer separate gateways and repeaters",
+        "Automatic rerouting when a connection weakens",
+      ],
+      techLinks: [
+        { title: "NFC & QR", desc: "The permanent digital identity of every inverter.", href: "MOEBIUS - PRODUCT - Overview - EN.dc.html#connected" },
+        { title: "Your phone is the screen", desc: "No fixed display, no buttons — your phone is the interface.", href: "MOEBIUS - PRODUCT - Overview - EN.dc.html#connected" },
+        { title: "EMON monitoring", desc: "Included with every inverter. The screen is optional.", href: "MOEBIUS - PRODUCT - Overview - EN.dc.html#connected" },
+        { title: "Grid intelligence", desc: "Follows the grid within certified operating limits.", href: "MOEBIUS - PRODUCT - Overview - EN.dc.html#connected" },
+        { title: "Smart load control", desc: "Coordinate flexible loads around solar and tariffs.", href: "MOEBIUS - PRODUCT - Overview - EN.dc.html#connected" },
+        { title: "Cybersecurity & data", desc: "EU-hosted, GDPR architecture, secure updates.", href: "MOEBIUS - PRODUCT - Responsibility - EN.dc.html#t=dataeu" },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

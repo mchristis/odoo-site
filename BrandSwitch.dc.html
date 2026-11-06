@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  .bsw .bsw-code { transition: color 140ms ease-out; }
+  .bsw:hover .bsw-code, .bsw:focus-visible .bsw-code { color: var(--c) !important; }
+  .bsw:focus { outline: none; }
+  .bsw:focus-visible { outline: 2px solid #3A3A3A; outline-offset: 4px; }
+</style>
+</helmet>
+<span style="display:inline-flex;align-items:center;">
+  <button type="button" class="bsw" onClick="{{ toggle }}" aria-expanded="{{ expanded }}" aria-label="Switch brand" style="--c:{{ accent }};flex:none;cursor:pointer;background:none;border:0;padding:0;display:inline-flex;align-items:center;gap:10px;font-family:var(--font-web);">
+    <span class="bsw-code" style="font-size:15px;font-weight:700;letter-spacing:0.02em;color:var(--color-text-primary);">{{ code }}</span>
+    <svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="#6E6E6E" stroke-width="1.3" style="flex:none;align-self:center;transition:transform .2s ease;transform:rotate({{ rot }});"><path d="M1 3.5 5 7.5 9 3.5"></path></svg>
+    <span style="font-size:var(--web-min-size);font-weight:300;color:#6E6E6E;line-height:var(--web-min-lh);">· {{ category }}</span>
+  </button>
+  <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+    <div data-brandswitch-panel="1" style="position:fixed;left:0;right:0;top:{{ top }}px;z-index:60;background:#FFFFFF;border-bottom:1px solid var(--color-divider);max-height:calc(100vh - 140px);overflow-y:auto;">
+      <dc-import name="ProductsPanel" kind="products" current="{{ code }}" mobile="{{ isMobile }}" hint-size="100%,380px"></dc-import>
+    </div>
+  </sc-if>
+</span>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;code&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;MOEBIUS&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;category&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const CAT = { MOEBIUS: "Inverters", MOX: "Architectural PV", SYNQ: "Smart metering", OZZY: "Energy switching", DODO: "Bird protection", AGRIX: "Agri-PV structures", TERRIX: "Utility PV mounting", PONTIX: "Floating PV mounting", TECTIX: "Roof PV mounting", PARX: "Solar parking", SHELTR: "Asset protection", MUKI: "Energy sets", WURK: "Installation equipment", EMON: "Energy management", FLUXX: "Energy storage", NENDO: "Thermal systems" };
+const DSC = { ANDO:"#CDD62B", FLUXX:"#FDC706", MOEBIUS:"#F1931B", MOX:"#D8392C", SYNQ:"#598F94", NENDO:"#1B8B9A", OZZY:"#8BCF3F", FEU:"#ED704C", GLOW:"#FCDE15", PROP:"#527A83", TOGU:"#C48723", OGO:"#00A0E3", XOOM:"#8EB15F", CHILL:"#6BC0B0", DODO:"#E5B73B", AIRO:"#0083BB", SHELTR:"#5B6592", MUKI:"#DF550C", WURK:"#9E3D2E", EMON:"#21AE8F", LINA:"#B5C64A", AGRIX:"#6B8E4E", TERRIX:"#6B755F", PONTIX:"#06768A", TECTIX:"#4A5B73", PARX:"#7A9337" };
+class Component extends DCLogic {
+  state = { open: false, top: 64 };
+  componentDidMount() {
+    this._key = (e) => { if (e.key === "Escape" && this.state.open) this.setState({ open: false }); };
+    this._down = (e) => { if (this.state.open && !(e.target.closest && (e.target.closest("[data-brandswitch-panel]") || e.target.closest("button[aria-label='Switch brand']")))) this.setState({ open: false }); };
+    document.addEventListener("keydown", this._key);
+    document.addEventListener("mousedown", this._down);
+  }
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this._key);
+    document.removeEventListener("mousedown", this._down);
+  }
+  renderVals() {
+    const st = this.state, code = String(this.props.code || "").toUpperCase();
+    return {
+      open: st.open, top: st.top, code,
+      category: this.props.category || CAT[code] || "",
+      accent: DSC[code] ? "var(--color-brand-" + code.toLowerCase() + ", " + DSC[code] + ")" : "#4F4F4E",
+      expanded: st.open ? "true" : "false", rot: st.open ? "180deg" : "0deg",
+      isMobile: typeof window !== "undefined" && window.innerWidth <= 1023,
+      toggle: (e) => {
+        if (st.open) { this.setState({ open: false }); return; }
+        let el = e.currentTarget, bar = null;
+        while (el && el.parentElement) { el = el.parentElement; const p = getComputedStyle(el).position; if (p === "sticky" || p === "fixed" || (p === "relative" && el.offsetWidth >= 600)) { bar = el; break; } }
+        const top = bar ? bar.getBoundingClientRect().bottom : e.currentTarget.getBoundingClientRect().bottom + 12;
+        this.setState({ open: true, top });
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

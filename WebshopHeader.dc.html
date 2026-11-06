@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="nav-data.js"></script>
+<script src="webshop-data.js"></script>
+<script src="./eu-numbers.js"></script>
+<script src="./ando-shop-data.js"></script>
+</helmet>
+<div id="ws-root" data-screen-label="Webshop header" style="font-family:var(--font-web);">
+  <div style="height:81px;">
+    <div style="position:fixed;top:0;left:0;right:0;z-index:1000;background:#FFFFFF;">
+      <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;height:80px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 var(--web-side);">
+        <a href="{{ homeHref }}" aria-label="STRØHM.ENERGY Webshop home" style="text-decoration:none;display:flex;align-items:center;flex:none;margin-right:clamp(16px,3vw,56px);" style-focus="outline:2px solid #222222;outline-offset:4px;">
+          <img id="ws-strohm-logo" src="assets/logos/STROHM-ENERGY-stacked-screen.svg" alt="STRØHM.ENERGY" style="height:clamp(48px,4.84vw,70px);width:auto;display:block;flex-shrink:0;">
+        </a>
+
+        <sc-if value="{{ r1Desktop }}" hint-placeholder-val="{{ true }}">
+          <nav aria-label="Webshop" style="display:flex;align-items:center;gap:clamp(12px,1.8vw,36px);flex:1 1 auto;min-width:0;justify-content:center;">
+            <a id="ws-nav-first" href="{{ homeHref }}" aria-current="page" style="text-decoration:none;padding:6px 0 4px;font-size:16px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;color:#4F4F4E;" style-hover="color:#222222;" style-focus="outline:2px solid #222222;outline-offset:4px;">Webshop</a>
+            <a href="{{ catHref }}" style="text-decoration:none;padding:6px 0 4px;font-size:16px;font-weight:300;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;color:#666666;" style-hover="color:#222222;" style-focus="outline:2px solid #222222;outline-offset:4px;">Catalogue</a>
+          </nav>
+          <div style="display:flex;align-items:center;gap:clamp(14px,1.6vw,24px);flex:none;">
+            <button id="ws-search-btn" type="button" aria-label="Search" aria-expanded="{{ searchOpenStr }}" aria-controls="ws-search-panel" onClick="{{ toggleSearch }}" style="background:none;border:none;cursor:pointer;padding:0;width:32px;height:44px;display:flex;align-items:center;justify-content:center;color:#4A4A4A;" style-hover="color:#222222;" style-focus="outline:2px solid #222222;outline-offset:4px;"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.35"><circle cx="8" cy="8" r="6"></circle><line x1="12.5" y1="12.5" x2="17" y2="17"></line></svg></button>
+            <sc-if value="{{ notAuth }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ loginHref }}" style="text-decoration:none;font-size:16px;font-weight:300;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;color:#666666;" style-hover="color:#222222;" style-focus="outline:2px solid #222222;outline-offset:4px;">Log in</a>
+              <a href="{{ registerHref }}" style="text-decoration:none;font-size:16px;font-weight:300;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;color:#666666;" style-hover="color:#222222;" style-focus="outline:2px solid #222222;outline-offset:4px;">Register</a>
+            </sc-if>
+            <sc-if value="{{ auth }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ accountHref }}" style="text-decoration:none;font-size:16px;font-weight:300;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;color:#666666;" style-hover="color:#222222;" style-focus="outline:2px solid #222222;outline-offset:4px;">Account</a>
+              <div id="ws-order" style="position:relative;">
+                <button id="ws-order-btn" type="button" onClick="{{ toggleOrder }}" aria-expanded="{{ orderOpenStr }}" aria-controls="ws-order-panel" style="background:none;border:none;cursor:pointer;padding:6px 0 4px;font-family:inherit;font-size:16px;font-weight:300;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;color:#666666;display:inline-flex;align-items:center;gap:8px;" style-hover="color:#222222;" style-focus="outline:2px solid #222222;outline-offset:4px;"><span>Order ({{ orderCount }})</span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1" style="flex:none;transition:transform .2s ease;transform:rotate({{ orderRot }});"><polyline points="2.5,4.5 6,8 9.5,4.5"></polyline></svg></button>
+                <sc-if value="{{ orderOpen }}" hint-placeholder-val="{{ false }}">
+                  <div id="ws-order-panel" role="region" aria-label="Order" style="position:absolute;right:0;top:calc(100% + 20px);width:380px;max-width:calc(100vw - 32px);background:#FFFFFF;border:1px solid #D9D9D9;border-radius:0 0 12px 12px;padding:16px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;color:#4F4F4E;">
+                    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6E6E6E;">Order</span><span style="font-size:var(--web-min-size);font-weight:300;color:#666666;">Demonstration</span></div>
+                    <sc-if value="{{ orderEmpty }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-nav-size);font-weight:300;color:#666666;">No order lines yet. Add a supply option on a product page.</span></sc-if>
+                    <sc-for list="{{ orderLines }}" as="l" hint-placeholder-count="0">
+                      <a href="{{ l.href }}" style="display:flex;flex-direction:column;gap:4px;min-height:40px;padding:8px 0;border-bottom:1px solid #DDDDDD;text-decoration:none;color:#4F4F4E;" style-hover="color:#222222;" style-focus="outline:2px solid #222222;outline-offset:4px;">
+                        <span style="display:flex;justify-content:space-between;gap:12px;font-size:var(--web-nav-size);font-weight:300;"><span>{{ l.product }}</span><span style="font-weight:700;">{{ l.total }}</span></span>
+                        <span style="font-size:var(--web-min-size);font-weight:300;color:#666666;">{{ l.route }} · {{ l.qty }} · {{ l.unit }}</span>
+                      </a>
+                    </sc-for>
+                    <sc-if value="{{ hasLines }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex;justify-content:space-between;gap:12px;font-size:var(--web-nav-size);"><span style="font-weight:300;">Order total</span><span style="font-weight:700;">{{ orderTotal }}</span></div>
+                      <button type="button" onClick="{{ placeOrder }}" style="min-height:44px;border:none;border-radius:8px;background:#4F4F4E;color:#FFFFFF;cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;" style-hover="background:#5F5E5E;" style-focus="outline:2px solid #222222;outline-offset:4px;">Review order</button>
+                      <sc-if value="{{ placed }}" hint-placeholder-val="{{ false }}"><p role="status" style="margin:0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#4F4F4E;">{{ placedText }}</p></sc-if>
+                    </sc-if>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-if>
+            <a href="{{ siteHref }}" style="text-decoration:none;font-size:16px;font-weight:300;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;color:#666666;" style-hover="color:#222222;" style-focus="outline:2px solid #222222;outline-offset:4px;"><span>{{ siteLabel }} &#8599;</span></a>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ r1Mobile }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;align-items:center;gap:16px;flex:none;">
+            <a href="{{ accountTarget }}" style="text-decoration:none;font-size:16px;font-weight:300;letter-spacing:0.06em;text-transform:uppercase;color:#666666;min-height:44px;display:flex;align-items:center;white-space:nowrap;" style-focus="outline:2px solid #222222;outline-offset:4px;">{{ accountLabel }}</a>
+            <button id="ws-search-btn-m" type="button" aria-label="Search" aria-expanded="{{ searchOpenStr }}" aria-controls="ws-search-panel" onClick="{{ toggleSearch }}" style="background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center;width:32px;height:44px;color:#4A4A4A;" style-focus="outline:2px solid #222222;outline-offset:4px;"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.35"><circle cx="8" cy="8" r="6"></circle><line x1="12.5" y1="12.5" x2="17" y2="17"></line></svg></button>
+            <button id="ws-menu-btn" type="button" aria-label="{{ menuLabel }}" aria-expanded="{{ menuOpenStr }}" aria-controls="ws-menu" onClick="{{ toggleMenu }}" style="background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center;width:44px;height:44px;color:#3A3A3A;" style-focus="outline:2px solid #222222;outline-offset:4px;">
+              <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="3" y1="6" x2="17" y2="6"></line><line x1="3" y1="10" x2="17" y2="10"></line><line x1="3" y1="14" x2="17" y2="14"></line></svg></sc-if>
+              <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="4" y1="4" x2="16" y2="16"></line><line x1="16" y1="4" x2="4" y2="16"></line></svg></sc-if>
+            </button>
+          </div>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
+        <div id="ws-search-panel" style="position:absolute;top:100%;left:0;right:0;background:#FFFFFF;border-bottom:1px solid #DDDDDD;max-height:80vh;overflow-y:auto;">
+          <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:20px var(--web-side) 24px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+            <input id="ws-search-input" type="search" role="combobox" aria-label="Search the webshop" aria-expanded="{{ hasQueryStr }}" aria-controls="ws-search-results" placeholder="Search brand, product or SKU" value="{{ searchQ }}" onChange="{{ onSearch }}" onKeyDown="{{ onSearchKey }}" style="width:100%;max-width:640px;height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;font-family:inherit;font-size:var(--web-input-size);font-weight:300;color:#222222;box-sizing:border-box;" style-focus="outline:2px solid #222222;outline-offset:2px;">
+            <sc-if value="{{ hasQuery }}" hint-placeholder-val="{{ false }}">
+              <div id="ws-search-results" role="listbox" aria-label="Search results" style="max-width:640px;display:flex;flex-direction:column;">
+                <sc-for list="{{ results }}" as="r" hint-placeholder-count="0">
+                  <a href="{{ r.href }}" role="option" aria-selected="{{ r.sel }}" onMouseEnter="{{ r.hover }}" style="display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;padding:6px 12px;border-bottom:1px solid #DDDDDD;text-decoration:none;color:#4F4F4E;background:{{ r.bg }};" style-hover="color:#222222;" style-focus="outline:2px solid #222222;outline-offset:2px;">
+                    <span style="display:flex;flex-direction:column;gap:2px;min-width:0;"><span style="font-size:var(--web-nav-size);font-weight:400;">{{ r.label }}</span><span style="font-size:var(--web-min-size);font-weight:300;color:#666666;overflow-wrap:anywhere;">{{ r.sub }}</span></span>
+                    <span style="font-size:var(--web-min-size);font-weight:300;color:#666666;white-space:nowrap;">{{ r.kind }}</span>
+                  </a>
+                </sc-for>
+                <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}"><span style="padding:10px 12px;font-size:var(--web-nav-size);font-weight:300;color:#666666;">No match. Try a brand, series or SKU.</span></sc-if>
+              </div>
+            </sc-if>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:#666666;">Pilot: product search covers ANDO; other shops by brand name.</span>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+        <div id="ws-menu" style="position:absolute;top:100%;left:0;right:0;height:calc(100vh - 88px);overflow-y:auto;background:#FFFFFF;border-top:1px solid #DDDDDD;">
+          <div style="padding:8px clamp(16px,3vw,40px) 40px;">
+            <a href="{{ homeHref }}" style="display:flex;align-items:center;min-height:56px;padding:0 4px;border-bottom:1px solid #DDDDDD;text-decoration:none;font-size:13px;font-weight:300;letter-spacing:0.08em;text-transform:uppercase;color:#6E6E6E;" style-focus="outline:2px solid #222222;outline-offset:2px;">Webshop home</a>
+            <a href="{{ catHref }}" style="display:flex;align-items:center;min-height:56px;padding:0 4px;border-bottom:1px solid #DDDDDD;text-decoration:none;font-size:13px;font-weight:300;letter-spacing:0.08em;text-transform:uppercase;color:#6E6E6E;" style-focus="outline:2px solid #222222;outline-offset:2px;">Catalogue</a>
+            <div style="border-bottom:1px solid #DDDDDD;">
+              <button type="button" aria-expanded="{{ mBrandStr }}" aria-controls="ws-m-brand" onClick="{{ toggleMBrand }}" style="cursor:pointer;width:100%;min-height:56px;background:none;border:none;padding:0 4px;display:flex;align-items:center;justify-content:space-between;font-family:inherit;font-size:13px;font-weight:300;letter-spacing:0.08em;text-transform:uppercase;color:#6E6E6E;text-align:left;" style-focus="outline:2px solid #222222;outline-offset:2px;"><span>Shop by brand</span><svg width="12" height="12" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.2" style="flex:none;transition:transform .2s ease;transform:rotate({{ mBrandRot }});"><polyline points="2,3.5 5,6.5 8,3.5"></polyline></svg></button>
+              <sc-if value="{{ mBrand }}" hint-placeholder-val="{{ false }}">
+                <div id="ws-m-brand" role="region" aria-label="Shop by brand" style="padding:0 0 16px;display:flex;flex-direction:column;gap:12px;">
+                  <input id="ws-m-brand-search" type="search" aria-label="Search brands" placeholder="Search brands or categories" value="{{ brandQ }}" onChange="{{ onBrandQ }}" style="width:100%;height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;font-family:inherit;font-size:var(--web-input-size);font-weight:300;color:#222222;box-sizing:border-box;" style-focus="outline:2px solid #222222;outline-offset:2px;">
+                  <sc-if value="{{ brandEmpty }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-nav-size);font-weight:300;color:#666666;">No brand found.</span></sc-if>
+                  <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+                    <div style="display:flex;flex-direction:column;gap:4px;">
+                      <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6E6E6E;margin:8px 0 4px;">{{ g.title }}</span>
+                      <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="0">
+                        <a href="{{ it.href }}" aria-current="{{ it.current }}" style="display:flex;flex-direction:column;gap:4px;min-height:44px;justify-content:center;padding:6px 4px;text-decoration:none;color:#4F4F4E;" style-focus="outline:2px solid #222222;outline-offset:2px;">
+                          <img src="{{ it.logo }}" alt="{{ it.name }}" style="height:26px;width:auto;max-width:160px;display:block;object-fit:contain;object-position:left center;">
+                          <span style="font-size:var(--web-min-size);font-weight:{{ it.w }};color:#666666;">{{ it.sub }}{{ it.noteSep }}{{ it.note }}</span>
+                        </a>
+                      </sc-for>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+            <sc-if value="{{ notAuth }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ loginHref }}" style="display:flex;align-items:center;min-height:56px;padding:0 4px;border-bottom:1px solid #DDDDDD;text-decoration:none;font-size:13px;font-weight:300;letter-spacing:0.08em;text-transform:uppercase;color:#6E6E6E;" style-focus="outline:2px solid #222222;outline-offset:2px;">Log in</a>
+              <a href="{{ registerHref }}" style="display:flex;align-items:center;min-height:56px;padding:0 4px;border-bottom:1px solid #DDDDDD;text-decoration:none;font-size:13px;font-weight:300;letter-spacing:0.08em;text-transform:uppercase;color:#6E6E6E;" style-focus="outline:2px solid #222222;outline-offset:2px;">Register</a>
+            </sc-if>
+            <sc-if value="{{ auth }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ accountHref }}" style="display:flex;align-items:center;min-height:56px;padding:0 4px;border-bottom:1px solid #DDDDDD;text-decoration:none;font-size:13px;font-weight:300;letter-spacing:0.08em;text-transform:uppercase;color:#6E6E6E;" style-focus="outline:2px solid #222222;outline-offset:2px;">Account</a>
+              <div style="border-bottom:1px solid #DDDDDD;">
+                <button type="button" aria-expanded="{{ mOrderStr }}" aria-controls="ws-m-order" onClick="{{ toggleMOrder }}" style="cursor:pointer;width:100%;min-height:56px;background:none;border:none;padding:0 4px;display:flex;align-items:center;justify-content:space-between;font-family:inherit;font-size:13px;font-weight:300;letter-spacing:0.08em;text-transform:uppercase;color:#6E6E6E;text-align:left;" style-focus="outline:2px solid #222222;outline-offset:2px;"><span>Order ({{ orderCount }})</span><svg width="12" height="12" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.2" style="flex:none;transition:transform .2s ease;transform:rotate({{ mOrderRot }});"><polyline points="2,3.5 5,6.5 8,3.5"></polyline></svg></button>
+                <sc-if value="{{ mOrder }}" hint-placeholder-val="{{ false }}">
+                  <div id="ws-m-order" role="region" aria-label="Order" style="padding:0 4px 16px;display:flex;flex-direction:column;gap:8px;">
+                    <span style="font-size:var(--web-min-size);font-weight:300;color:#666666;">Demonstration</span>
+                    <sc-if value="{{ orderEmpty }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-nav-size);font-weight:300;color:#666666;">No order lines yet.</span></sc-if>
+                    <sc-for list="{{ orderLines }}" as="l" hint-placeholder-count="0">
+                      <a href="{{ l.href }}" style="display:flex;justify-content:space-between;gap:12px;min-height:44px;align-items:center;border-bottom:1px solid #DDDDDD;text-decoration:none;color:#4F4F4E;font-size:var(--web-nav-size);font-weight:300;"><span>{{ l.product }} · {{ l.qty }}</span><span style="font-weight:700;">{{ l.total }}</span></a>
+                    </sc-for>
+                    <sc-if value="{{ hasLines }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-nav-size);font-weight:300;">Order total <b style="font-weight:700;">{{ orderTotal }}</b></span></sc-if>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-if>
+            <a href="{{ siteHref }}" style="display:flex;align-items:center;min-height:56px;padding:0 4px;text-decoration:none;font-size:13px;font-weight:300;letter-spacing:0.08em;text-transform:uppercase;color:#6E6E6E;" style-focus="outline:2px solid #222222;outline-offset:2px;"><span>{{ siteLabel }} &#8599;</span></a>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <div style="height:57px;">
+    <div style="position:{{ r2Pos }};top:{{ r2Top }};left:0;right:0;z-index:900;background:#FFFFFF;">
+      <div id="ws-r2-inner" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;height:56px;box-sizing:border-box;display:flex;align-items:center;gap:{{ r2gap }};padding:0 var(--web-side);">
+        <button id="ws-brand-btn" type="button" aria-label="{{ brandBtnAria }}" aria-expanded="{{ brandOpenStr }}" aria-controls="ws-brand-panel" onClick="{{ toggleBrand }}" style="flex:none;min-width:{{ brandMin }};box-sizing:border-box;cursor:pointer;background:none;border:none;padding:0;display:flex;align-items:center;gap:10px;font-family:inherit;white-space:nowrap;min-height:44px;" style-focus="outline:2px solid #222222;outline-offset:4px;">
+          <span style="flex:none;display:flex;align-items:center;height:52px;"><img src="{{ brandLogo }}" alt="{{ brandName }}" style="display:block;max-height:52px;width:auto;height:auto;max-width:{{ logoMaxW }};object-fit:contain;object-position:left center;"></span>
+          <svg aria-hidden="true" width="18" height="9" viewBox="0 0 22 11" fill="none" stroke="var(--color-brand-ando,#CDD62B)" stroke-width="1.2" style="flex:none;transition:transform .2s ease;transform:rotate({{ brandRot }});"><polyline points="1.5,1.5 11,9.5 20.5,1.5"></polyline></svg>
+          <sc-if value="{{ showBrandLabel }}" hint-placeholder-val="{{ true }}"><span style="font-size:var(--web-nav-size);font-weight:300;color:#666666;line-height:var(--web-small-lh);">Shop by brand</span></sc-if>
+        </button>
+        <sc-if value="{{ r2Wide }}" hint-placeholder-val="{{ true }}">
+          <nav aria-label="{{ pagesAria }}" style="flex:1 1 auto;min-width:0;display:flex;align-items:center;gap:32px;height:56px;">
+            <sc-for list="{{ pages }}" as="p" hint-placeholder-count="5">
+              <a href="{{ p.href }}" aria-current="{{ p.current }}" style="flex:none;text-decoration:none;font-size:var(--web-nav-size);font-weight:{{ p.w }};color:{{ p.color }};white-space:nowrap;min-height:44px;display:flex;align-items:center;" style-hover="color:#222222;" style-focus="outline:2px solid #222222;outline-offset:4px;">{{ p.label }}</a>
+            </sc-for>
+          </nav>
+        </sc-if>
+        <sc-if value="{{ r2Compact }}" hint-placeholder-val="{{ false }}"><div style="flex:1 1 auto;"></div></sc-if>
+        <a href="{{ brandSite }}" style="flex:0 1 auto;min-width:0;overflow:hidden;margin-left:auto;text-decoration:none;display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 4px;font-size:var(--web-nav-size);font-weight:300;color:#4F4F4E;white-space:nowrap;" style-hover="color:#222222;" style-focus="outline:2px solid #222222;outline-offset:4px;"><svg aria-hidden="true" width="9" height="18" viewBox="0 0 11 22" fill="none" stroke="var(--color-brand-ando,#CDD62B)" stroke-width="1.2" style="flex:none;"><polyline points="1.5,1.5 9.5,11 1.5,20.5"></polyline></svg><span style="overflow:hidden;text-overflow:ellipsis;">{{ brandSiteLabel }} &#8599;</span></a>
+        <sc-if value="{{ r2Compact }}" hint-placeholder-val="{{ false }}">
+          <button id="ws-pages-btn" type="button" aria-label="{{ pagesBtnAria }}" aria-expanded="{{ pagesOpenStr }}" aria-controls="ws-pages" onClick="{{ togglePages }}" style="flex:none;cursor:pointer;background:none;border:none;padding:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#666666;" style-focus="outline:2px solid #222222;outline-offset:4px;"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1"><line x1="3" y1="6" x2="19" y2="6"></line><line x1="3" y1="11" x2="19" y2="11"></line><line x1="3" y1="16" x2="19" y2="16"></line></svg></button>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{ brandOpen }}" hint-placeholder-val="{{ false }}">
+        <div id="ws-brand-panel" role="region" aria-label="Shop by brand" style="position:absolute;top:100%;left:0;right:0;background:#FFFFFF;border-bottom:1px solid #D9D9D9;max-height:calc(100vh - 140px);overflow-y:auto;">
+          <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:28px var(--web-side) 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:22px;">
+            <input id="ws-brand-search" type="search" aria-label="Search brands" placeholder="Search brands or categories" value="{{ brandQ }}" onChange="{{ onBrandQ }}" style="width:100%;max-width:480px;height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;font-family:inherit;font-size:var(--web-input-size);font-weight:300;color:#222222;box-sizing:border-box;" style-focus="outline:2px solid #222222;outline-offset:2px;">
+            <sc-if value="{{ brandEmpty }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-nav-size);font-weight:300;color:#666666;">No brand found.</span></sc-if>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:26px 32px;">
+              <sc-for list="{{ groups }}" as="g" hint-placeholder-count="5">
+                <div style="min-width:0;">
+                  <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6E6E6E;margin-bottom:14px;">{{ g.title }}</div>
+                  <div style="display:flex;flex-direction:column;gap:12px;">
+                    <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="0">
+                      <a href="{{ it.href }}" aria-current="{{ it.current }}" style="display:flex;flex-direction:column;gap:6px;text-decoration:none;color:#4F4F4E;min-height:44px;justify-content:center;" style-hover="color:#222222;" style-focus="outline:2px solid #222222;outline-offset:4px;">
+                        <img src="{{ it.logo }}" alt="{{ it.name }}" style="height:26px;width:auto;max-width:180px;display:block;object-fit:contain;object-position:left center;">
+                        <span style="font-size:var(--web-min-size);font-weight:{{ it.w }};line-height:var(--web-min-lh);color:#666666;">{{ it.sub }}{{ it.noteSep }}{{ it.note }}</span>
+                      </a>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ pagesOpen }}" hint-placeholder-val="{{ false }}">
+        <div id="ws-pages" role="region" aria-label="{{ pagesAria }}" style="position:absolute;top:100%;left:0;right:0;background:#FFFFFF;border-bottom:1px solid #D9D9D9;max-height:calc(100vh - 140px);overflow-y:auto;padding:8px 16px 16px;box-sizing:border-box;">
+          <sc-for list="{{ pages }}" as="p" hint-placeholder-count="5">
+            <a href="{{ p.href }}" aria-current="{{ p.current }}" style="text-decoration:none;display:flex;align-items:center;min-height:44px;padding-left:16px;font-size:var(--web-nav-size);font-weight:{{ p.w }};color:{{ p.color }};" style-focus="outline:2px solid #222222;outline-offset:2px;">{{ p.label }}</a>
+          </sc-for>
+          <a href="{{ brandSite }}" style="text-decoration:none;display:flex;align-items:center;min-height:44px;padding-left:16px;font-size:var(--web-nav-size);font-weight:300;color:#666666;" style-focus="outline:2px solid #222222;outline-offset:2px;"><span>{{ brandSiteLabel }} &#8599;</span></a>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:520},&quot;brand&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;ANDO&quot;],&quot;default&quot;:&quot;ANDO&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;all&quot;,&quot;AALTO&quot;,&quot;MIES&quot;,&quot;FOSTER&quot;,&quot;NOUVEL&quot;],&quot;default&quot;:&quot;all&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const R1_MOBILE_MAX = 1023, R2_COMPACT = 1100, R2_PIN_MIN = 768, NAV_H = 81;
+class Component extends DCLogic {
+  state = { ready: false, auth: false, tick: 0, w: typeof window !== "undefined" ? window.innerWidth : 1280, bw: 0, searchOpen: false, searchQ: "", idx: 0, brandOpen: false, brandQ: "", orderOpen: false, placed: false, menuOpen: false, mBrand: false, mOrder: false, pagesOpen: false };
+  focusId(id) { setTimeout(() => { const el = document.getElementById(id); if (el) el.focus(); }, 30); }
+  closeAll(extra) { return Object.assign({ searchOpen: false, brandOpen: false, orderOpen: false, menuOpen: false, pagesOpen: false }, extra || {}); }
+  componentDidMount() {
+    const ok = () => window.STROHM_NAV && window.STROHM_WEBSHOP && window.ANDO_SHOP;
+    const go = () => this.setState({ ready: true, auth: window.ANDO_SHOP.getAuth() });
+    if (ok()) go(); else this._t = setInterval(() => { if (ok()) { clearInterval(this._t); go(); } }, 60);
+    this._resize = () => { const w = window.innerWidth; if (w !== this.state.w) this.setState(this.closeAll({ w })); };
+    window.addEventListener("resize", this._resize);
+    this._change = () => this.setState((s) => ({ auth: window.ANDO_SHOP ? window.ANDO_SHOP.getAuth() : false, tick: s.tick + 1, placed: false }));
+    window.addEventListener("ando-shop-change", this._change); window.addEventListener("storage", this._change);
+    this._down = (e) => { const s = this.state; if (!(s.searchOpen || s.brandOpen || s.orderOpen || s.menuOpen || s.pagesOpen)) return;
+      const t = e.target; if (!(t.closest && t.closest("#ws-root"))) this.setState(this.closeAll()); };
+    document.addEventListener("mousedown", this._down);
+    this._key = (e) => { if (e.key !== "Escape") return; const s = this.state;
+      const back = s.searchOpen ? (s.w <= R1_MOBILE_MAX ? "ws-search-btn-m" : "ws-search-btn") : s.brandOpen ? "ws-brand-btn" : s.orderOpen ? "ws-order-btn" : s.menuOpen ? "ws-menu-btn" : s.pagesOpen ? "ws-pages-btn" : null;
+      if (back) { this.setState(this.closeAll()); this.focusId(back); } };
+    document.addEventListener("keydown", this._key);
+  }
+  componentWillUnmount() {
+    clearInterval(this._t); window.removeEventListener("resize", this._resize);
+    window.removeEventListener("ando-shop-change", this._change); window.removeEventListener("storage", this._change);
+    document.removeEventListener("mousedown", this._down); document.removeEventListener("keydown", this._key);
+  }
+  renderVals() {
+    const st = this.state, N = window.STROHM_NAV, W = window.STROHM_WEBSHOP, D = window.ANDO_SHOP;
+    const code = this.props.brand || "ANDO", active = this.props.active || "all";
+    const r1Mobile = st.w <= R1_MOBILE_MAX, r2Compact = st.w < R2_COMPACT, pinned = st.w >= R2_PIN_MIN;
+    const catalogue = D ? D.CATALOGUE : "ANDO - WEBSHOP - Shop - EN.dc.html";
+    const base = { homeHref: "WEBSHOP - SITE - Home - EN.dc.html", catHref: "WEBSHOP - SITE - Catalogue - EN.dc.html", loginHref: "STROHM.ENERGY - SITE - Login - EN.dc.html",
+      registerHref: "STROHM.ENERGY - SITE - Register - EN.dc.html", accountHref: "STROHM.ENERGY - SITE - Account - EN.dc.html", siteHref: "STROHM.ENERGY - SITE - Homepage - EN.dc.html",
+      siteLabel: "STRØHM.ENERGY website", r1Desktop: !r1Mobile, r1Mobile, r2Wide: !r2Compact, r2Compact, r2gap: "clamp(12px,2.5vw,32px)",
+      r2Pos: pinned ? "fixed" : "relative", r2Top: pinned ? NAV_H + "px" : "0px", brandMin: st.w < R2_PIN_MIN ? "0px" : (st.w >= 1280 && !r2Compact ? "360px" : "190px"),
+      logoMaxW: st.w < R2_PIN_MIN ? "120px" : "190px", showBrandLabel: st.w >= 1280,
+      auth: st.auth, notAuth: !st.auth, brandLogo: "assets/logos/" + code + "-logo.svg", brandName: code, brandBtnAria: "Shop by brand. Current shop: " + code,
+      brandSite: "ANDO - PRODUCT - Overview - EN.dc.html", brandSiteLabel: code + " on the main website", pagesAria: code + " shop pages", pagesBtnAria: code + " shop pages",
+      accountTarget: st.auth ? "STROHM.ENERGY - SITE - Account - EN.dc.html" : "STROHM.ENERGY - SITE - Login - EN.dc.html", accountLabel: st.auth ? "Account" : "Log in",
+      menuOpen: st.menuOpen, menuClosed: !st.menuOpen, menuOpenStr: st.menuOpen ? "true" : "false", menuLabel: st.menuOpen ? "Close menu" : "Open menu",
+      toggleMenu: () => this.setState(this.closeAll({ menuOpen: !st.menuOpen })),
+      searchOpen: st.searchOpen, searchOpenStr: st.searchOpen ? "true" : "false",
+      toggleSearch: () => { const o = !st.searchOpen; this.setState(this.closeAll({ searchOpen: o })); if (o) this.focusId("ws-search-input"); },
+      orderOpen: st.orderOpen, orderOpenStr: st.orderOpen ? "true" : "false", orderRot: st.orderOpen ? "180deg" : "0deg",
+      toggleOrder: () => this.setState(this.closeAll({ orderOpen: !st.orderOpen, placed: false })),
+      brandOpen: st.brandOpen, brandOpenStr: st.brandOpen ? "true" : "false", brandRot: st.brandOpen ? "180deg" : "0deg",
+      toggleBrand: () => { const o = !st.brandOpen; this.setState(this.closeAll({ brandOpen: o })); if (o) this.focusId("ws-brand-search"); },
+      pagesOpen: st.pagesOpen && r2Compact, pagesOpenStr: st.pagesOpen ? "true" : "false", togglePages: () => this.setState(this.closeAll({ pagesOpen: !st.pagesOpen })),
+      mBrand: st.mBrand, mBrandStr: st.mBrand ? "true" : "false", mBrandRot: st.mBrand ? "180deg" : "0deg", toggleMBrand: () => { const o = !st.mBrand; this.setState({ mBrand: o }); if (o) this.focusId("ws-m-brand-search"); },
+      mOrder: st.mOrder, mOrderStr: st.mOrder ? "true" : "false", mOrderRot: st.mOrder ? "180deg" : "0deg", toggleMOrder: () => this.setState({ mOrder: !st.mOrder }),
+      brandQ: st.brandQ, onBrandQ: (e) => this.setState({ brandQ: e.target.value }), searchQ: st.searchQ,
+      onSearch: (e) => this.setState({ searchQ: e.target.value, idx: 0 }), orderCount: "0", placed: st.placed, placeOrder: () => this.setState({ placed: true }) };
+    if (!st.ready || !N || !W || !D) return Object.assign(base, { pages: [], groups: [], results: [], orderLines: [], hasQuery: false, hasQueryStr: "false" });
+    const pageDefs = [["all", "All modules", catalogue]].concat(D.SERIES.map((s) => [s, s, catalogue + "?series=" + s]));
+    const brandText = "color-mix(in oklch, var(--color-brand-" + code.toLowerCase() + ", #4F4F4E) 55%, #000)";
+    const pages = pageDefs.map(([k, l, h]) => { const on = k === active; return { label: l, href: h, current: on ? "page" : "false", w: on ? 500 : 300, color: on ? brandText : "#666666" }; });
+    /* Pilot overrides (NV-Q6): ANDO opens the review catalogue; OGO has no water shop yet. */
+    const OVERRIDE = { ANDO: catalogue, OGO: null }, NOSHOP_HREF = { OGO: "OGO - PRODUCT - Overview - EN.dc.html" };
+    const shopOf = (c) => (Object.prototype.hasOwnProperty.call(OVERRIDE, c) ? OVERRIDE[c] : W.SHOPS[c] || null);
+    const bq = st.brandQ.trim().toLowerCase(), all = [];
+    const groups = N.menu("products").groups.map((g) => {
+      const items = g.items.concat(W.EXTRA[g.title] || []).map((x) => { const c = x.name || x.code, shop = shopOf(c), cur = c === code;
+        const note = cur ? "Current shop" : shop ? "" : "No shop yet \u2197";
+        const it = { name: c, logo: W.LOGOS[c] || "", sub: x.subtitle, href: shop || NOSHOP_HREF[c] || x.href || N.HREF[c] || base.siteHref, shop: !!shop,
+          note, noteSep: note ? " \u00b7 " : "", current: cur ? "page" : "false", w: cur ? 500 : 300 };
+        all.push(it); return it; })
+        .filter((it) => !bq || it.name.toLowerCase().includes(bq) || (it.sub || "").toLowerCase().includes(bq) || g.title.toLowerCase().includes(bq));
+      return { title: g.title, items };
+    }).filter((g) => g.items.length);
+    const q = st.searchQ.trim().toLowerCase();
+    let results = [];
+    if (q) {
+      const br = all.filter((it) => it.name.toLowerCase().includes(q) || (it.sub || "").toLowerCase().includes(q)).slice(0, 5)
+        .map((it) => ({ label: it.name, sub: it.shop ? it.sub : it.sub + " \u00b7 No shop yet \u2197", kind: it.shop ? "Brand shop" : "Brand website", href: it.href }));
+      const pr = D.PRODUCTS.filter((p) => (D.title(p) + " " + p.art + " " + p.series).toLowerCase().includes(q)).slice(0, 6)
+        .map((p) => ({ label: D.title(p), sub: p.art, kind: "ANDO product", href: D.productHref(p) }));
+      results = br.concat(pr);
+    }
+    const idx = Math.min(st.idx, Math.max(0, results.length - 1));
+    results = results.map((r, i) => Object.assign(r, { sel: i === idx ? "true" : "false", bg: i === idx ? "#F4F4F4" : "#FFFFFF", hover: () => this.setState({ idx: i }) }));
+    const rows = st.auth ? D.orderRows() : [];
+    const orderLines = rows.map((l) => ({ product: l.product, route: l.route, qty: l.q + " pcs", unit: D.eur(l.unit) + "/pc", total: D.eur(l.total), href: l.href }));
+    const grand = rows.reduce((a, l) => a + l.total, 0), n = rows.length;
+    return Object.assign(base, {
+      brandLogo: "assets/logos/" + code + "-logo.svg", pages, groups, brandEmpty: groups.length === 0,
+      hasQuery: !!q, hasQueryStr: q ? "true" : "false", results, noResults: !!q && results.length === 0,
+      onSearchKey: (e) => {
+        if (e.key === "ArrowDown") { e.preventDefault(); this.setState((s) => ({ idx: Math.min(s.idx + 1, results.length - 1) })); }
+        else if (e.key === "ArrowUp") { e.preventDefault(); this.setState((s) => ({ idx: Math.max(s.idx - 1, 0) })); }
+        else if (e.key === "Enter" && results[idx]) { e.preventDefault(); location.href = results[idx].href; }
+      },
+      orderCount: String(n), orderLines, hasLines: n > 0, orderEmpty: n === 0, orderTotal: D.eur(grand),
+      placedText: "Demonstration only. Nothing was ordered. In the live shop this opens checkout for " + n + (n === 1 ? " line" : " lines") + ", total " + D.eur(grand) + ".",
+    });
+  }
+}
+</script>
+</body>
+</html>

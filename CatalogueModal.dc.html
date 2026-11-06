@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<style>
+  ::placeholder { color:#6F6F6D; opacity:1; }
+  input:disabled, select:disabled, textarea:disabled { color:#C8C7C3; }
+  @keyframes cmFade { from { opacity:0; } to { opacity:1; } }
+  @keyframes cmRise { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);">
+  <button onClick="{{ onOpen }}" style="cursor:pointer;font-family:inherit;font-size:var(--cta-font);font-weight:var(--web-btn-weight);letter-spacing:0.04em;padding:0 22px;height:44px;display:inline-flex;align-items:center;white-space:nowrap;border:none;background:{{ btnBg }};color:{{ btnColor }};border-radius:8px;">{{ ctaLabel }}</button>
+
+  <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ onClose }}" style="position:fixed;inset:0;z-index:1000;background:rgba(20,20,20,0.45);backdrop-filter:blur(3px);display:flex;align-items:flex-start;justify-content:center;padding:48px 20px;overflow-y:auto;animation:cmFade 0.15s ease;">
+      <div onClick="{{ stop }}" style="width:100%;max-width:680px;background:#FFFFFF;border-radius:8px;overflow:hidden;animation:cmRise 0.2s ease;">
+
+        <!-- header -->
+        <div style="padding:28px 32px;border-bottom:1px solid #DDDDDD;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;">
+          <div>
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ accentText }};margin-bottom:8px;">{{ brand }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#4F4F4E;">{{ modalHeading }}</div>
+            <sc-if value="{{ preselectLabel }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:10px;display:inline-flex;align-items:center;gap:8px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:6px 12px;background:#F4F5F4;color:#898989;border-radius:6px;">Selected: {{ preselectLabel }}</div>
+            </sc-if>
+          </div>
+          <button onClick="{{ onClose }}" style="cursor:pointer;border:none;background:none;font-size:22px;line-height:1;color:#AEAEAE;flex:none;">&times;</button>
+        </div>
+
+        <!-- progress -->
+        <sc-if value="{{ showSteps }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:20px 32px 0;display:flex;align-items:center;gap:8px;">
+            <sc-for list="{{ stepDots }}" as="d" hint-placeholder-count="4">
+              <div style="flex:1;height:4px;border-radius:2px;background:{{ d.bg }};"></div>
+            </sc-for>
+          </div>
+          <div style="padding:8px 32px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#AEAEAE;">Step {{ stepNum }} of {{ stepTotal }} · {{ stepTitle }}</div>
+        </sc-if>
+
+        <!-- body -->
+        <div style="padding:24px 32px 8px;min-height:220px;">
+          <sc-if value="{{ isChoiceStep }}" hint-placeholder-val="{{ true }}">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:16px;line-height:var(--web-small-lh);">{{ question }}</div>
+            <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;--cg:10px;">
+              <sc-for list="{{ options }}" as="o" hint-placeholder-count="6">
+                <button onClick="{{ o.onClick }}" style="cursor:pointer;text-align:left;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;line-height:1.35;padding:14px 16px;border:1px solid {{ o.border }};background:{{ o.bg }};color:{{ o.color }};border-radius:8px;">{{ o.label }}</button>
+              </sc-for>
+            </div>
+            <sc-if value="{{ multiHint }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:12px;font-size:var(--web-min-size);font-weight:300;color:#AEAEAE;line-height:var(--web-min-lh);">Select all that apply, then continue.</div>
+            </sc-if>
+          </sc-if>
+
+          <sc-if value="{{ isContactStep }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:16px;line-height:var(--web-small-lh);">Your details</div>
+            <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;--cg:12px;">
+              <sc-for list="{{ fields }}" as="f" hint-placeholder-count="6">
+                <div style="grid-column:{{ f.span }};">
+                  <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#898989;margin-bottom:5px;">{{ f.label }}</label>
+                  <input type="text" placeholder="{{ f.ph }}" style="width:100%;box-sizing:border-box;padding:11px 13px;border:1px solid #DDDDDD;border-radius:6px;font-size:var(--web-input-size);font-family:inherit;color:#4F4F4E;font-weight:var(--web-input-weight);" />
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px;">
+              <sc-for list="{{ consents }}" as="c" hint-placeholder-count="3">
+                <label style="display:flex;gap:10px;align-items:flex-start;">
+                  <input type="checkbox" style="margin-top:3px;flex:none;" />
+                  <span style="font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">{{ c }}</span>
+                </label>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+            <div style="text-align:center;padding:16px 0 8px;">
+              <div style="width:48px;height:48px;border-radius:50%;background:{{ accent }};color:{{ ctaText }};display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 16px;">&#10003;</div>
+              <div style="font-size:var(--web-h3-size);font-weight:300;color:#4F4F4E;margin-bottom:8px;line-height:var(--web-h3-lh);">{{ successHeading }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);max-width:420px;margin:0 auto 20px;">We have also sent a copy to your email, so you can find it again later.</div>
+              <div style="display:flex;flex-direction:column;gap:8px;max-width:360px;margin:0 auto;">
+                <span style="text-decoration:none;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:13px;background:{{ accent }};color:{{ ctaText }};border-radius:8px;" data-placeholder-link="true">Download the catalogue (PDF)</span>
+                <span style="text-decoration:none;font-size:var(--web-small-size);font-weight:300;padding:13px;border:1px solid #DDDDDD;color:#4F4F4E;border-radius:8px;line-height:var(--web-small-lh);" data-placeholder-link="true">{{ secondaryCta }}</span>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+
+        <!-- footer nav -->
+        <sc-if value="{{ showFooter }}" hint-placeholder-val="{{ true }}">
+          <div style="padding:16px 32px 28px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+            <button onClick="{{ onBack }}" style="cursor:pointer;font-family:inherit;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);border:1px solid #DDDDDD;background:#F4F4F4;color:{{ backColor }};border-radius:var(--cta-radius,8px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Back</button>
+            <button style-hover="background:#F4F4F4;color:#4F4F4E;" onClick="{{ onNext }}" style="border:1px solid #4F4F4E;box-sizing:border-box;cursor:pointer;font-family:inherit;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:transparent;color:#4F4F4E;border-radius:var(--cta-radius,8px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">{{ nextLabel }}</button>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 400, &quot;height&quot;: 60}, &quot;brand&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;ANDO&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;ANDO&quot;, &quot;MOEBIUS&quot;, &quot;SYNQ&quot;, &quot;OZZY&quot;, &quot;NENDO&quot;, &quot;TOGU&quot;]}, &quot;ctaLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;heading&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;preselect&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;successHeading&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;}}">
+const BRANDS = {
+  ANDO: { accent: "#CDD62B", accentText: "#6b7a2a", ctaText: "#4F4F4E", catalogue: "Download the ANDO catalogue",
+    userTypes: ["Solar installer / EPC", "Distributor / wholesaler", "Project developer", "Architect / specifier", "Commercial building owner", "Homeowner / end user"],
+    products: ["AALTO residential bifacial", "MIES residential & commercial", "FOSTER commercial & utility", "NOUVEL lightweight flexible", "Complete ANDO range"],
+    docs: ["Product catalogue", "Datasheets", "Certificates & declarations", "Installation & handling", "Warranty information", "Commercial project support"],
+    proCta: "Request project support", userCta: "Find a qualified installer" },
+  MOEBIUS: { accent: "#F1931B", accentText: "#c46e00", ctaText: "#4F4F4E", catalogue: "Download the MOEBIUS inverter catalogue",
+    userTypes: ["Solar / battery installer", "EPC contractor", "Distributor / wholesaler", "System integrator", "Engineer / consultant", "Homeowner / end user", "OEM / strategic partner"],
+    products: ["PIXIE microinverters", "Residential string", "Three-phase string", "Commercial string", "Hybrid inverters", "LV battery inverters", "HV battery inverters", "Complete MOEBIUS range"],
+    docs: ["Product catalogue", "Datasheets", "Installation manuals", "Wiring & system diagrams", "Grid-code certificates", "Battery compatibility", "EMON integration", "Warranty information"],
+    proCta: "Request inverter-selection support", userCta: "Contact a qualified installer" },
+  SYNQ: { accent: "#5F7773", accentText: "#4a5c59", ctaText: "#FFFFFF", catalogue: "Download the SYNQ catalogue",
+    userTypes: ["Electrical / solar installer", "Energy-management integrator", "Distributor / wholesaler", "Utility / energy service", "Building-energy manager", "OEM partner", "Homeowner / end user"],
+    products: ["PIP metering interface", "CINCH CT DIN meter", "TALLY direct DIN meter", "HALO CT clamps", "NEXUS energy hub", "LEDGER data logger", "IRIS sensor", "LINQ TIC / Linky", "Complete SYNQ range"],
+    docs: ["Product catalogue", "Datasheets", "Wiring diagrams", "Protocol documentation", "Installation manuals", "EMON compatibility", "OEM / integration docs"],
+    proCta: "Request integration support", userCta: "Find a qualified installer" },
+  OZZY: { accent: "#8BCF3F", accentText: "#5a8a2a", ctaText: "#4F4F4E", catalogue: "Download the OZZY smart-control catalogue",
+    userTypes: ["Homeowner / end user", "Electrical installer", "Smart-home integrator", "Distributor / retailer", "Energy-management partner", "OEM partner"],
+    products: ["NUBO indoor smart plug", "RUGO outdoor IP44 plug", "FLIP inline smart switch", "OCTO USB power strip", "Complete OZZY range"],
+    docs: ["Catalogue", "Datasheets", "Installation instructions", "App & EMON information", "API / OEM integration", "Distribution enquiry"],
+    proCta: "Request integration support", userCta: "Find a qualified installer" },
+  NENDO: { accent: "#5F7773", accentText: "#3f857f", ctaText: "#FFFFFF", catalogue: "Download the NENDO heat-pump catalogue",
+    userTypes: ["HVAC installer", "Distributor / wholesaler", "Engineer / consultant", "Architect / specifier", "Property developer", "Building owner", "Homeowner / end user"],
+    products: ["CORE indoor all-in-one", "AERO split outdoor units", "FLOW control & distribution", "RAY PV water heating", "VESSEL storage tanks", "Complete NENDO range"],
+    docs: ["Catalogue", "Datasheets", "Hydraulic diagrams", "Installation manuals", "Performance data", "Acoustic information", "Certification documents", "System-selection support"],
+    proCta: "Request system-design support", userCta: "Find a qualified installer" },
+  TOGU: { accent: "#4E6E8E", accentText: "#3c5872", ctaText: "#FFFFFF", catalogue: "Download the TOGU installation-materials catalogue",
+    userTypes: ["Solar installer", "Electrical contractor", "EPC contractor", "Distributor / wholesaler", "Cable-management specialist", "Procurement company", "Engineering consultant"],
+    products: ["GROUND grounding systems", "DC solar cables (Dca / Cca)", "Distribution boxes", "Wire-mesh cable trays", "Metal cable trays", "PVC conduits", "PVC trunking", "Installation consumables", "Complete TOGU range"],
+    docs: ["Catalogue", "Technical datasheets", "Declarations & certification", "Packaging information", "Project bill-of-material support", "Distributor quotation"],
+    proCta: "Request project support", userCta: "Request a distributor quotation" },
+};
+
+class Component extends DCLogic {
+  state = { open: false, step: 0, userType: null, product: null, doc: null };
+
+  cfg() { const b = BRANDS[this.props.brand]; if (b) return b; const code = String(this.props.brand || "").toUpperCase(); return { ...BRANDS.ANDO, products: ["Complete " + code + " range"], catalogue: "Download the " + code + " catalogue" }; }
+
+  renderVals() {
+    const c = this.cfg();
+    const preselect = this.props.preselect || "";
+    const heading = this.props.heading || (preselect ? "Download " + preselect + " information" : c.catalogue);
+    const steps = [
+      { title: "About you", q: "What best describes you?", opts: c.userTypes, key: "userType" },
+      { title: "Product interest", q: "Which products are relevant?", opts: c.products, key: "product", multi: true, hide: !!preselect },
+      { title: "Information", q: "What information do you need?", opts: c.docs, key: "doc", multi: true },
+    ].filter(s => !s.hide);
+    const total = steps.length + 1; // + contact
+    const step = this.state.step;
+    const isSuccess = step >= total + 1;
+    const isContact = step === total - 0 && !isSuccess ? false : false;
+    const onContact = step === steps.length && !isSuccess;
+    const curStep = step < steps.length ? steps[step] : null;
+
+    const set = (obj) => this.setState(obj);
+    const options = curStep ? curStep.opts.map(o => {
+      const sel = this.state[curStep.key] === o;
+      return { label: o, onClick: () => set({ [curStep.key]: o }),
+        bg: sel ? c.accent : "#FFFFFF", color: sel ? c.ctaText : "#4F4F4E", border: sel ? c.accent : "#DDDDDD" };
+    }) : [];
+
+    return {
+      accent: c.accent, accentText: c.accentText, ctaText: c.ctaText, btnBg: this.props.btnBg || c.accent, btnColor: this.props.btnColor || c.ctaText,
+      brand: this.props.brand || "ANDO",
+      ctaLabel: this.props.ctaLabel || heading,
+      modalHeading: heading,
+      preselectLabel: preselect,
+      open: this.state.open,
+      onOpen: () => set({ open: true, step: 0 }),
+      onClose: () => set({ open: false }),
+      stop: (e) => { e.stopPropagation(); },
+      showSteps: !isSuccess,
+      stepDots: steps.concat([{}]).map((_, i) => ({ bg: i <= step ? c.accent : "#DDDDDD" })),
+      stepNum: Math.min(step + 1, total), stepTotal: total,
+      stepTitle: onContact ? "Your details" : (curStep ? curStep.title : "Your details"),
+      isChoiceStep: !!curStep,
+      isContactStep: onContact,
+      isSuccess,
+      question: curStep ? curStep.q : "",
+      options,
+      multiHint: curStep ? !!curStep.multi : false,
+      fields: [
+        { label: "First name", ph: "First name", span: "auto" },
+        { label: "Last name", ph: "Last name", span: "auto" },
+        { label: "Email address", ph: "name@example.com", span: "1 / -1" },
+        { label: "Telephone", ph: "Optional for catalogue", span: "auto" },
+        { label: "Country", ph: "Country", span: "auto" },
+        { label: "Company (if professional)", ph: "Company name", span: "1 / -1" },
+      ],
+      consents: [
+        "Send me the requested catalogue and documents.",
+        "Optional: send me product and technical updates.",
+        "I accept the privacy policy.",
+      ],
+      showFooter: !isSuccess,
+      backColor: step === 0 ? "#C9CCCB" : "#898989",
+      onBack: () => set({ step: Math.max(0, step - 1) }),
+      onNext: () => set({ step: step + 1 }),
+      nextLabel: onContact ? "Download catalogue" : "Continue",
+      successHeading: this.props.successHeading || ("Your " + (this.props.brand || "ANDO") + " information is ready."),
+      secondaryCta: (this.state.userType && this.state.userType.toLowerCase().includes("home")) ? c.userCta : c.proCta,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

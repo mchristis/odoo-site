@@ -1,0 +1,155 @@
+ LINA | Webshop content | STROHM.ENERGY 
+ STROHM.ENERGY / ENGLISH WEBSHOP COPY
+## LINA Vertical solar for flat roofs.
+ Original product content · 24 September 2026
+ Editorial status This is proposed LINA copy based on the intended product concept. Product-specific features and supply commitments require confirmation against the final LINA specification. The final section records the outstanding data separately from customer-facing copy.
+ 01 / PRODUCT LISTING
+## LINA vertical solar system
+ Bifacial solar panels and integrated mounting for flat roofs and green roofs. A low vertical arrangement that brings energy generation, roof access and installation planning into one system.
+ View system
+ 02 / PRODUCT PAGE INTRODUCTION
+## Solar panels and mounting. Designed together.
+ LINA combines vertically positioned solar panels with an integrated support structure for rooftop installations. Its modular layout allows the solar array to be planned around the building, including roof edges, skylights, ventilation equipment, drainage and maintenance routes.
+ For conventional flat roofs and vegetated roofs, LINA offers a different way to arrange solar generation: low rows of upright panels, with the spaces between them treated as part of the roof design.
+ Choose your roof application and submit your project details to establish the appropriate configuration, quantity and delivery scope.
+ Primary action: Request a project quotation Secondary action: View technical information
+ 03 / SYSTEM OVERVIEW
+## One coordinated rooftop system
+ Feature What it means for your project 
+ Vertical bifacial modules Both faces can contribute to electricity generation. Orientation, surrounding shade and reflected light influence the result. 
+ Integrated mounting concept Panel positioning and structural support are considered together, with matching components for the selected configuration. 
+ Modular array layout The number and arrangement of units can be adapted to the usable roof area and the electrical design. 
+ Roof-specific support selection Support height and roof contact details are selected for the roof construction and its use. 
+ Planned access Clear routes to drains, roof equipment and inspection points are incorporated in the layout. 
+ 04 / APPLICATIONS
+## Configure LINA around your roof
+## Conventional flat roofs
+ For buildings with membrane or other suitable flat roof constructions. The assessment considers roof condition, insulation, allowable loading and the compatibility of materials in contact with the roof surface. The support arrangement must protect the roof while transferring loads correctly.
+## Green roofs
+ For projects combining solar generation with rooftop vegetation. Panel clearance, plant height, substrate depth and access for vegetation maintenance are considered together. The solar layout should preserve access to drainage and allow the planted roof to be maintained throughout its life.
+## Gravel roofs and sites requiring additional clearance
+ Gravel, vegetation and local snow conditions can affect the required height beneath the panels. These applications need a specific review of the support configuration, surface condition and structural design.
+ Suitability depends on the building and the approved system configuration. Roof type alone does not establish compatibility.
+ 05 / ENERGY GENERATION
+## Consider when your roof produces electricity
+ A vertical bifacial array can produce a different daily generation profile from a conventional tilted array. With panel faces directed east and west, generation can be distributed towards the morning and afternoon. The actual profile depends on location, season, orientation and shading.
+ That makes the hourly generation pattern an important part of the design. For a building with daytime activity, compare expected production with actual demand before deciding the array size or whether storage is useful.
+## Reflected light is part of the calculation
+ Bifacial panels can use light reaching either side, including light reflected from the roof and surrounding surfaces. Roof reflectivity, panel clearance and row spacing all influence this contribution. A light roof, a planted roof and a dark roof should not be assigned the same assumed yield.
+ Annual output should be estimated for the actual site and proposed layout. There is no universal percentage gain that applies to every roof.
+ 06 / ROOF DESIGN
+## The roof remains part of the system
+## Weight and local pressure
+ Assess both the overall load on the building and the pressure beneath individual supports. Average kilograms per square metre do not describe the complete structural requirement. Roof insulation, support contact areas and any additional restraint or ballast also matter.
+## Wind and exposed locations
+ Building height, roof geometry, surrounding terrain and the position of the array affect wind loading. Any claim that a project needs no ballast or mechanical attachment must follow the assessment for that building.
+## Drainage and maintenance access
+ Keep drainage outlets, inspection points and equipment access clear. The layout should account for the tasks that will still be necessary after the solar installation is complete.
+## Existing roof condition
+ For a retrofit, assess the remaining service life of the roof before installation. Where refurbishment is approaching, coordinate roof works and solar installation as one project.
+ 07 / SCOPE OF SUPPLY
+## Know exactly what your quotation covers
+ The quotation should identify the selected units, mounting configuration and accessories by quantity. A rooftop solar unit is one part of the complete electrical installation.
+ Component or service Scope to establish before ordering 
+ Solar units Model, rated power and total quantity. 
+ Mounting components Supports, row components, joining pieces and roof protection for the selected layout. 
+ Electrical accessories Supplied unit wiring, connection hardware, extension cables and bonding components. 
+ Inverter and protection Selected and priced separately unless expressly included in the package. 
+ Battery and energy management Optional system components, subject to a compatible electrical design. 
+ Project services Survey, engineering, lifting, installation, commissioning and connection work, as expressly listed. 
+ Delivery Destination, freight, unloading responsibilities and agreed delivery conditions. 
+ Use the itemised quotation as the basis for comparing packages and confirming the order.
+ 08 / ELECTRICAL INTEGRATION
+## Match the array to the electrical system
+ The inverter must be selected for the final module specification and string arrangement. Compatibility depends on voltage, current, operating conditions and the inverter input limits, not simply on the total installed wattage.
+ The electrical design needs to account for cold conditions, operating temperatures, bifacial current contribution and differences in shade or orientation across the roof. Cable routes, protective equipment and bonding arrangements must be coordinated with the installation.
+ A battery is optional. Its value depends on when the building uses electricity and how much solar production is available for storage. Battery and energy management compatibility must be established at system level.
+ 09 / PROJECT PROCESS
+## From roof information to an agreed system
+ Stage Information and outcome 
+ 1. Describe the roof Provide the address, roof dimensions, building height, roof construction and current photographs. 
+ 2. Establish the constraints Identify structural limits, roof condition, obstacles, access routes and drainage locations. 
+ 3. Develop the configuration Determine the unit arrangement, support configuration, installed capacity and electrical requirements. 
+ 4. Confirm the scope Agree the component list, price, delivery arrangements, installation responsibilities and documentation. 
+ 5. Install and commission Use qualified professionals and the approved product instructions. Record the completed installation and commissioning results. 
+ Assembly of the rooftop units and commissioning of the electrical system are separate tasks. A simplified mechanical assembly does not remove the need for professional electrical work.
+ 10 / DELIVERY AND CARE
+## Plan delivery before installation
+ Confirm site access, unloading equipment, storage space and the method of moving the equipment onto the roof. Pallet dimensions and weights must be checked against the actual order. Do not assume that a roof can support concentrated pallet loads because it can support the distributed solar array.
+## Routine inspection
+ Include the solar system in the building maintenance plan. Inspect panels, supports and visible cabling, keep roof drains accessible and check for vegetation or debris affecting the array.
+## Cleaning and vegetation management
+ A vertical arrangement does not eliminate the need for maintenance. Cleaning requirements depend on local conditions. Follow the product instructions and maintain vegetation so that it does not obstruct the panels, electrical components or required access routes.
+## Warranty and documentation
+ Review the warranty for the exact supplied model before ordering. Product coverage, module performance coverage, mounting components and installation workmanship may have different terms and responsible parties.
+ 11 / FREQUENTLY ASKED QUESTIONS
+## Before you choose LINA
+## Is this only a mounting structure?
+ The LINA concept brings the solar panels and their supporting structure together. The quotation defines the complete supplied unit and any separate accessories.
+## Can LINA be installed on an existing green roof?
+ A retrofit may be possible following assessment of the roof structure, vegetation, drainage and access. Existing greenery does not by itself confirm suitability.
+## Does the system need ballast or roof penetrations?
+ This must be established for the selected product and building. Wind conditions, roof characteristics and the approved layout determine the required restraint.
+## How many units will fit on my roof?
+ The usable array area is smaller than the total roof area. Roof edges, equipment, walkways, drainage and shade all affect the unit count. Use a dimensioned layout rather than dividing the roof area by a unit footprint.
+## Will vertical panels produce more energy?
+ That depends on the comparison and the site. Compare annual energy per installed kilowatt, energy per usable square metre and the time of production. A better result on one measure does not automatically mean a better result on all three.
+## Will snow or dirt affect output?
+ Vertical positioning changes how deposits accumulate, but snow, dirt and shading can still affect generation. Snow on the roof can also reduce clearance around the array.
+## Can I use my existing inverter?
+ Possibly, following a compatibility check using the final LINA electrical data and the existing inverter specification. Additional capacity and a suitable input arrangement must be available.
+## Can I install it myself?
+ Rooftop installation and electrical work need appropriate skills and equipment. Use qualified professionals and follow the applicable installation requirements.
+## Is a battery included?
+ Only if it is expressly listed in the quotation. Storage is selected separately according to the complete system design and the building’s energy use.
+## What information is needed for a quotation?
+ Start with the installation address, approximate roof dimensions, roof type, building height and photographs. Structural information, drawings and electricity consumption data help establish a more detailed proposal.
+ 12 / QUOTATION SECTION
+## Start with your roof.
+ Tell us where the building is, how the roof is constructed and what you want the installation to achieve. Include roof drawings or photographs where available.
+ Request a LINA quotation
+ Enquiry field Customer prompt 
+ Project location Country, postcode and installation address 
+ Roof application Conventional flat roof / Green roof / Gravel roof / Other 
+ Building Approximate roof area and building height 
+ Project type Existing building / New construction / Roof refurbishment 
+ Energy system Existing solar, inverter or battery equipment, if any 
+ Requested scope Equipment supply / Supply and project support / Installation enquiry 
+ Timing Preferred delivery or installation period 
+ Attachments Roof plan, photographs and available structural information 
+ 13 / SEARCH AND CATALOGUE TEXT
+## Search metadata
+ Field Copy 
+ Page title LINA Vertical Solar System | STROHM.ENERGY 
+ Meta description Explore LINA vertical solar for flat roofs and green roofs. Integrated panels and mounting, with roof-specific planning and project quotations. 
+ Suggested category Solar systems / Vertical rooftop solar 
+ Suggested URL /shop/lina-vertical-solar 
+ Image description LINA vertical solar units arranged on a flat roof 
+ Use the image description only for an actual LINA image. Identify third-party reference images by their actual source.
+ EDITORIAL APPENDIX / NOT CUSTOMER COPY
+## Product data and commercial fields to complete
+ [Certain] The supplied files describe Over Easy products. They do not establish that the same hardware, certification or commercial terms apply to LINA. Keep the proposed feature copy above subject to final product approval.
+ Webshop field Required LINA entry 
+ Model and SKU Confirmed product identifier and variant codes 
+ Module construction Cell technology, bifaciality, glass construction and module count per unit 
+ Rated power Wp per complete unit at STC, with tolerance 
+ Electrical values Vmp, Imp, Voc, Isc, voltage limit and temperature coefficients 
+ Dimensions and clearance Complete unit dimensions and clearance for each support variant 
+ Weight and loads Unit mass, defined installed area load, support loads and contact areas 
+ Roof compatibility Approved roof types, slopes, protection materials and installation limits 
+ Documentation Current datasheet, manual, certificates and declarations for the exact model 
+ Packaging Units per pallet, packed dimensions, net and gross weights 
+ Price € per unit or package, tax treatment and transport charges 
+ Order conditions Minimum quantity, stock status, lead time and payment terms 
+ Warranty Terms and duration by component; responsible warranty provider 
+ Package contents Confirmed bill of materials, exclusions and selectable accessories 
+## Source distinctions retained during writing
+ [Certain] Overeasy-2(1).pdf identifies the xM-3 QUATTRO-256S as a 256 Wp product, while the transport and grounding documents refer to earlier 200 W models. The two string onboarding files contain the same extracted text. Older packing quantities, voltage values and installation details must not be combined with the newer datasheet.
+ [Certain] The newer datasheet lists 256 Wp, 32.96 V at maximum power, 7.74 A at maximum power, 39 V open circuit, 8.04 A short circuit, approximately 28.4 kg and 27 units per pallet. These are reference-manufacturer figures, not approved LINA specifications.
+ [Certain] The listed 32.96 V and 7.74 A multiply to approximately 255.11 W. The nominal 256 W rating and rounded electrical values should be confirmed in a controlled datasheet. The stated 2.31 m² coverage differs from the approximately 2.353 m² rectangle calculated from 1580 × 1489 mm; the coverage convention needs clarification. The point-load line also pairs kilogram and newton values that do not correspond directly. Resolve these details before republishing numerical data.
+## Commercial recommendation
+ [Likely] A project quotation is the appropriate initial purchase action while the LINA SKU, approved configuration, price and delivery terms remain open. Once those fields are confirmed, a configured item can be offered for checkout with a clear package scope.
+## Claims deliberately excluded
+ Universal ballast-free installation, universal roof compatibility, guaranteed yield improvements, fixed installation-speed multipliers, maintenance-free operation, snow-free operation, fire-risk elimination, fixed payback periods and unconfirmed warranties. The source material does not establish these claims for LINA.
+## Files reviewed
+ Over Easy solar(1).pdf; Overeasy-1(1).pdf; Overeasy-2(1).pdf; Overeasy-3(1).pdf; Overeasy-5(1).pdf; Overeasy-6(1).pdf; Overeasy-7(1).pdf; Overeasy-8(1).pdf.

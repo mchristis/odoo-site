@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<style>
+  .lang-btn:focus-visible, .lang-opt:focus-visible { outline:2px solid #F1931B; outline-offset:2px; }
+  .lang-opt:hover { background:#F4F4F4 !important; }
+</style>
+</helmet>
+<div style="position:relative;font-family:var(--font-web);" onMouseLeave="{{ onClose }}">
+  <button class="lang-btn" onClick="{{ onToggle }}" aria-haspopup="listbox" aria-expanded="{{ expanded }}" aria-label="Select language" style="display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;padding:6px 4px;font-family:inherit;font-size:var(--web-tag-size);letter-spacing:0.04em;color:#4F4F4E;font-weight:var(--web-tag-weight);">
+    <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1"><circle cx="9" cy="9" r="7"></circle><line x1="2" y1="9" x2="16" y2="9"></line><path d="M9 2 C5.5 5, 5.5 13, 9 16 C12.5 13, 12.5 5, 9 2 Z"></path></svg>
+    <span style="font-weight:400;">{{ activeCode }}</span>
+    <span style="font-size:9px;color:#898989;">&#9662;</span>
+  </button>
+
+  <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+    <div role="listbox" aria-label="Languages" style="position:absolute;top:calc(100% + 8px);right:0;z-index:200;background:#F4F4F4;border:1px solid #DDDDDD;border-radius:8px;width:216px;padding:6px;box-shadow:none;">
+      <sc-for list="{{ languages }}" as="l" hint-placeholder-count="15">
+        <button class="lang-opt" role="option" aria-selected="{{ l.active }}" onClick="{{ l.onClick }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;background:{{ l.bg }};border:none;cursor:pointer;padding:9px 10px;border-radius:6px;font-family:inherit;text-align:left;">
+          <span style="display:flex;flex-direction:column;gap:1px;">
+            <span style="font-size:var(--web-nav-size);font-weight:{{ l.weight }};color:{{ l.color }};">{{ l.native }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:#AEAEAE;letter-spacing:0.04em;line-height:var(--web-min-lh);">{{ l.code }}</span>
+          </span>
+          <span style="font-size:var(--web-min-size);font-weight:400;color:{{ l.tagColor }};white-space:nowrap;line-height:var(--web-min-lh);">{{ l.tag }}</span>
+        </button>
+      </sc-for>
+      <sc-if value="{{ showNotice }}" hint-placeholder-val="{{ false }}">
+        <div style="margin:6px 4px 2px;padding:9px 10px;background:#F4F4F4;border-radius:6px;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#898989;">{{ noticeText }}</div>
+      </sc-if>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:260,&quot;height&quot;:420}}">
+const LANGS = [
+  { native: "English", code: "en_GB", short: "EN", active: true },
+  { native: "Deutsch", code: "de_DE", short: "DE" },
+  { native: "Français", code: "fr_FR", short: "FR" },
+  { native: "Nederlands", code: "nl_NL", short: "NL" },
+  { native: "Español", code: "es_ES", short: "ES" },
+  { native: "Italiano", code: "it_IT", short: "IT" },
+  { native: "Polski", code: "pl_PL", short: "PL" },
+  { native: "Português", code: "pt_PT", short: "PT" },
+  { native: "Română", code: "ro_RO", short: "RO" },
+  { native: "Čeština", code: "cs_CZ", short: "CS" },
+  { native: "Slovenčina", code: "sk_SK", short: "SK" },
+  { native: "Magyar", code: "hu_HU", short: "HU" },
+  { native: "Svenska", code: "sv_SE", short: "SV" },
+  { native: "Dansk", code: "da_DK", short: "DA" },
+  { native: "Norsk", code: "nb_NO", short: "NB" },
+];
+
+class Component extends DCLogic {
+  state = { open: false, notice: null };
+
+  renderVals() {
+    const st = this.state;
+    return {
+      activeCode: "EN",
+      open: st.open,
+      expanded: st.open ? "true" : "false",
+      onToggle: () => this.setState({ open: !st.open, notice: null }),
+      onClose: () => this.setState({ open: false, notice: null }),
+      languages: LANGS.map((l) => ({
+        native: l.native,
+        code: l.code,
+        active: l.active ? "true" : "false",
+        weight: l.active ? 500 : 300,
+        color: l.active ? "#4F4F4E" : "#898989",
+        bg: l.active ? "#F4F4F4" : "transparent",
+        tag: l.active ? "Active" : "Soon",
+        tagColor: l.active ? "#F1931B" : "#AEAEAE",
+        onClick: () => {
+          if (l.active) { this.setState({ notice: null }); return; }
+          this.setState({ notice: l.native });
+        },
+      })),
+      showNotice: !!st.notice,
+      noticeText: st.notice ? st.notice + " will be available soon." : "",
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>DODO Installation | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="DodoNav" active="install" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="DODO" rgb="229,183,59" title="One continuous method around the array." intro="QUILL arrives with four adhesive zones applied." slot="dodo-install-faster-hero" shot="DODO · Install Faster · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:20px;">DODO &#183; <span style="color:var(--color-text-primary);">Installation</span></div>
+    <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">The installer measures, cuts, positions, presses, adds one Aqua clip and secures the cables. No preparation of multiple panel-specific clips is required for each strip.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0 0 44px;">
+      <a href="#method" style="font-size:var(--cta-font,16px);padding:0 24px;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--radius-btn);font-weight:700;">Watch the installation method</a>
+      <a href="#become" style="font-size:var(--web-link-size);padding:0 6px;height:46px;display:inline-flex;align-items:center;color:var(--color-text-primary);font-weight:var(--web-link-weight);">Become approved<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+    <div id="method" style="aspect-ratio:16/9;">
+      <dc-import name="MediaPlaceholder" code="VID-DODO-INSTALL-METHOD-01" kind="VID" ratio="16 : 9" env="Roof, safe access" people="Installer with fall protection" priority="P1 &#183; launch" direction="The master installation film. On-screen: ONE EDGE. THREE FUNCTIONS." hint-size="100%,100%"></dc-import>
+    </div>
+  </section>
+
+  <!-- TEN-STEP METHOD -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">The ten-step method</div>
+      <h2 style="margin:0 0 32px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">From carton <span style="color:#8E8E8E;">to warranty record.</span></h2>
+      <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;--cg:48px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="10">
+          <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:16px 0;border-bottom:1px solid var(--color-surface-card);align-items:baseline;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-grey-70);letter-spacing:var(--web-eyebrow-ls);">{{ s.n }}</span>
+            <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ s.t }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW VS RETROFIT -->
+  <section style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">New installations and retrofits</div>
+      <h2 style="margin:0 0 32px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Same method, <span style="color:#8E8E8E;">two starting points.</span></h2>
+      <div class="emon-card"  style="background:var(--color-card-dodo);overflow-x:auto;">
+        <div style="min-width:640px;">
+          <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1.4fr);background:var(--color-card-dodo);border-bottom:1px solid var(--color-divider);">
+            <div style="padding:14px 20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Workflow</div>
+            <div style="padding:14px 20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">New solar installation</div>
+            <div style="padding:14px 20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Retrofit</div>
+          </div>
+          <sc-for list="{{ compare }}" as="row" hint-placeholder-count="4">
+            <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1.4fr);border-bottom:1px solid var(--color-surface-card);align-items:start;">
+              <div style="padding:16px 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ row.k }}</div>
+              <div style="padding:16px 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ row.newv }}</div>
+              <div style="padding:16px 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ row.retro }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DODO RIG -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div data-stack="1" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:48px;align-items:center;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">DODO RIG</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Tools at the front, <span style="color:#8E8E8E;">hands free.</span></h2>
+        <p style="margin:0 0 22px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">The RIG keeps the press tool, shear, tape, ruler, marker, gloves, cable ties and Aqua clips at the installer&#8217;s front. It is designed to reduce repeated movement between the roof edge and a loose tool box.</p>
+        <a href="DODO - PRODUCT - RIG - EN.dc.html" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">View the DODO RIG<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      </div>
+      <div style="aspect-ratio:3/2;">
+        <dc-import name="MediaPlaceholder" code="IMG-DODO-RIG-01" kind="IMG" ratio="3 : 2" env="Roof, safe access" people="Installer wearing the bag" priority="P2" direction="Installer wearing the front-mounted bag with tools visibly organised." hint-size="100%,100%"></dc-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- BECOME APPROVED -->
+  <section id="become" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Approved installer</div>
+      <h2 style="margin:0 0 12px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Become <span style="color:#8E8E8E;">DODO approved.</span></h2>
+      <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:800px;">Installer approval requires verified business and VAT information, personal identity, short product training, confirmation of the method and one approved first installation in EMON.</p>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:start;">
+        <div style="aspect-ratio:16/10;">
+          <dc-import name="MediaPlaceholder" code="UI-DODO-TRAINING-01" kind="UI" ratio="16 : 10" env="EMON learning module" direction="Five short modules, knowledge check, first-project review and approved status badge. On-screen: BECOME DODO APPROVED." hint-size="100%,100%"></dc-import>
+        </div>
+        <div class="emon-card"  style="">
+          <sc-for list="{{ approval }}" as="a" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;padding:16px 20px;border-bottom:1px solid var(--color-surface-card);align-items:baseline;">
+              <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-grey-70);letter-spacing:var(--web-eyebrow-ls);">{{ a.n }}</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ a.t }}</span>
+            </div>
+          </sc-for>
+          <div style="padding:20px;">
+            <a href="DODO - SUPPORT - Installers - EN.dc.html" style="font-size:var(--cta-font,16px);padding:0 22px;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--radius-btn);font-weight:700;">Start training</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 96px;box-sizing:border-box;">
+    <div style="background:var(--color-surface-secondary);border-radius:12px;padding:56px;color:var(--color-text-primary);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;">
+      <div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One repeatable method. <span style="color:#8E8E8E;">One record.</span></h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);color:var(--color-text-primary);max-width:560px;line-height:var(--web-body-lh);">Bird protection, cable guidance, drainage, commissioning and warranty in a single visit.</p>
+      </div>
+      <a href="DODO - PRODUCT - Products - EN.dc.html" style="font-size:var(--cta-font,16px);padding:0 26px;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--radius-btn);font-weight:700;white-space:nowrap;">Explore the QUILL range</a>
+    </div>
+  </section>
+
+  <dc-import name="ContentSections" brand="DODO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="DODO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="DODO" accent="var(--color-brand-dodo)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      steps: [
+        { n: "01", t: "Inspect the roof and confirm there is no active nest, eggs or dependent young." },
+        { n: "02", t: "Measure the panel-to-roof gap and confirm QUILL 90, 130 or 210." },
+        { n: "03", t: "Plan the protected perimeter, corners, roof hooks, rails and cable passages." },
+        { n: "04", t: "Clean older or dirty aluminium surfaces with the supplied alcohol wipe and let them dry." },
+        { n: "05", t: "Use the moulded measurement guidance and white marker to define cuts." },
+        { n: "06", t: "Cut with the DODO pruning shear and connect adjoining strip ends." },
+        { n: "07", t: "Position QUILL and press each of the four adhesive zones for 10 seconds." },
+        { n: "08", t: "Fit one Aqua clip to provide drainage support and secondary mechanical retention." },
+        { n: "09", t: "Secure compatible cables through the integrated eyes with UV-resistant ties." },
+        { n: "10", t: "Upload the five photographs and complete the project in EMON." },
+      ],
+      compare: [
+        { k: "Timing", newv: "Fitted while panel edges and cables are already accessible.", retro: "Completed after address, access and active-nest review." },
+        { k: "Cleaning", newv: "Inspect new frame; clean only where contamination is present.", retro: "Clean aged, greasy or dirty contact areas." },
+        { k: "Access", newv: "Uses the solar installer\u2019s existing roof-access plan.", retro: "Scaffolding or lifting equipment may require a separate quote." },
+        { k: "Commissioning", newv: "DODO record can be completed with the solar project.", retro: "Creates a standalone DODO warranty record linked to the existing array." },
+      ],
+      approval: [
+        { n: "01", t: "Verified business and VAT information." },
+        { n: "02", t: "Personal identity of the installer." },
+        { n: "03", t: "Short product training in EMON." },
+        { n: "04", t: "Confirmation of the DODO installation method." },
+        { n: "05", t: "One approved first installation submitted in EMON." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

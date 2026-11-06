@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>MOEBIUS Knowledge | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  input:focus { outline:none; border-color:var(--color-brand-moebius); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoebiusNav" active="knowledge" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="MOEBIUS" rgb="241,147,27" eyebrow="Knowledge base" title="Solar, storage and grid, explained." intro="Reference articles from fundamentals to service." slot="moebius-knowledge-hero" shot="MOEBIUS · Knowledge · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 24px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:680px;">Filter by topic or search to find the answer you need.</p>
+    <input type="text" oninput="{{ onSearch }}" value="{{ query }}" placeholder="Search articles — e.g. MPPT, backup, zero export, G99" style="width:100%;max-width:560px;box-sizing:border-box;height:48px;padding:0 16px;border:1px solid var(--color-divider);font-size:var(--web-input-size);font-family:inherit;border-radius:8px;font-weight:var(--web-input-weight);">
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+      <sc-for list="{{ groupTabs }}" as="g" hint-placeholder-count="7">
+        <button onClick="{{ g.onClick }}" style="cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;letter-spacing:0.03em;padding:10px 16px;border-radius:8px;border:1px solid {{ g.border }};background:{{ g.bg }};color:{{ g.color }};">{{ g.label }} <span style="color:{{ g.countColor }};">{{ g.count }}</span></button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:40px;">
+        <sc-for list="{{ groups }}" as="grp" hint-placeholder-count="6">
+          <div>
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;border-top:1px solid var(--color-divider);padding-top:20px;">{{ grp.title }} <span style="color:var(--color-grey-70);">&#183; {{ grp.count }}</span></div>
+            <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;--cg:10px;">
+              <sc-for list="{{ grp.articles }}" as="a" hint-placeholder-count="9">
+                <span style="background:#F4F4F4;border-radius:12px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;text-decoration:none;" data-placeholder-link="true">
+                  <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ a }}</span>
+                  <span style="font-size:11px;color:#8E8E8E;flex:none;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+                </span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#F4F4F4;border-radius:12px;padding:48px;text-align:center;">
+        <div style="font-size:var(--web-small-size);font-weight:400;margin-bottom:6px;line-height:var(--web-small-lh);">No articles match &#8220;{{ query }}&#8221;.</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Try a broader term, or clear the search to browse every topic.</div>
+      </div>
+    </sc-if>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <p style="border-top:1px solid var(--color-divider);padding-top:20px;margin:0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Reference material for installers and specifiers. Product-specific limits, certification and configuration are always confirmed per model on the datasheet and at commissioning.</p>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const GROUPS = [
+  { key: "fundamentals", title: "Solar & inverter fundamentals", articles: [
+    "What does a solar inverter do?", "What is an MPPT?", "How is a solar string designed?", "What is open-circuit voltage?", "What is short-circuit current?", "Why does temperature affect string voltage?", "What is DC oversizing?", "What is inverter clipping?", "What is conversion efficiency?", "Why annual yield beats peak efficiency", "What is phase balancing?", "What is reactive power?" ] },
+  { key: "hybrid", title: "Hybrid & battery systems", articles: [
+    "What is a hybrid inverter?", "AC-coupled versus DC-coupled storage", "CAN versus RS485", "What does a battery BMS do?", "What is state of charge?", "What is state of health?", "What is battery reserve?", "How much battery capacity is required?", "What is black start?", "What is peak shaving?", "Why batteries require communication approval" ] },
+  { key: "backup", title: "Backup & off-grid", articles: [
+    "Why solar stops during a grid outage", "Backup versus UPS", "How to select critical loads", "How to calculate backup autonomy", "Starting current and motor loads", "Generator sizing for hybrid systems", "Single-phase versus three-phase backup", "Earthing during backup operation", "Neutral switching", "Off-grid load management" ] },
+  { key: "dynamic", title: "Dynamic energy", articles: [
+    "What is a dynamic electricity tariff?", "How hourly prices affect battery operation", "Charging when prices are negative", "Solar forecasting", "Load shifting", "EV charging optimisation", "Heat-pump optimisation", "Why the cheapest hour is not always best", "Battery degradation versus tariff savings", "Export compensation versus self-consumption" ] },
+  { key: "install", title: "Installation & safety", articles: [
+    "How to size AC cables", "How to size DC cables", "Selecting DC isolators", "Selecting AC protection", "Surge protection for solar systems", "Earthing and bonding", "RCD selection", "Arc-fault protection", "Inverter installation clearances", "Why direct sunlight affects output", "IP ratings explained", "Commissioning checklist", "Common installation errors" ] },
+  { key: "grid", title: "Grid connection", articles: [
+    "What is anti-islanding?", "What is zero export?", "How CT clamps work", "G98 and G99 explained", "C10/11 explained", "EN 50549 explained", "VDE-AR-N 4105 explained", "Grid profiles and country settings", "Export limits", "DSO approval", "Power-quality requirements" ] },
+  { key: "service", title: "Service & lifecycle", articles: [
+    "Why firmware matters", "How remote diagnostics work", "What is stored in a commissioning report?", "How QR and NFC support servicing", "Warranty activation", "Replacing an inverter", "Expanding a battery system", "Changing the installer", "Transferring system ownership", "Maintaining installation records" ] },
+];
+
+class Component extends DCLogic {
+  state = { group: "all", query: "" };
+
+  renderVals() {
+    const st = this.state;
+    const q = st.query.trim().toLowerCase();
+    const total = GROUPS.reduce((n, g) => n + g.articles.length, 0);
+
+    const filterArticles = (arr) => q ? arr.filter(a => a.toLowerCase().includes(q)) : arr;
+    const active = GROUPS.filter(g => st.group === "all" || g.key === st.group)
+      .map(g => ({ title: g.title, articles: filterArticles(g.articles) }))
+      .filter(g => g.articles.length > 0)
+      .map(g => ({ title: g.title, count: g.articles.length, articles: g.articles }));
+
+    const tabs = [{ key: "all", label: "All topics", count: total }]
+      .concat(GROUPS.map(g => ({ key: g.key, label: g.title, count: g.articles.length })));
+
+    return {
+      query: st.query,
+      onSearch: (e) => this.setState({ query: e.target.value }),
+      groupTabs: tabs.map(t => ({ label: t.label, count: t.count, onClick: () => this.setState({ group: t.key }),
+        bg: st.group === t.key ? "#4F4F4E" : "#FFFFFF", color: st.group === t.key ? "#FFFFFF" : "#5F5E5E",
+        border: st.group === t.key ? "#4F4F4E" : "#E3E3E3", countColor: st.group === t.key ? "#5F5E5E" : "#E3E3E3" })),
+      groups: active,
+      hasResults: active.length > 0,
+      noResults: active.length === 0,
+    };
+  }
+}
+</script>
+</body>
+</html>

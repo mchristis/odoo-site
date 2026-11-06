@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="nav-data.js"></script>
+<script src="webshop-data.js"></script>
+<title>Webshop catalogue | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:#4F4F4E; text-decoration:none; } a:hover { color:#4F4F4E; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+  <dc-import name="WebshopBar" hint-size="100%,52px"></dc-import>
+  <section style="max-width:1100px;margin:0 auto;padding:56px 28px 0;box-sizing:border-box;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid #4F4F4E;padding-bottom:16px;">
+      <div style="font-size:var(--web-small-size);letter-spacing:0.28em;font-weight:300;line-height:var(--web-small-lh);">STRØHM.ENERGY<span style="display:block;letter-spacing:0.16em;font-weight:400;font-size:var(--web-min-size);margin-top:4px;line-height:var(--web-min-lh);">B2B WEBSHOP</span></div>
+      <div style="font-size:var(--web-eyebrow-size);text-transform:uppercase;letter-spacing:var(--web-eyebrow-ls);font-weight:var(--web-eyebrow-weight);">Product catalogue</div>
+    </div>
+    <p style="margin:24px 0 0;font-size:var(--web-body-size);font-weight:300;line-height:1.6;max-width:720px;">All STRØHM.ENERGY product lines. Pick a line to see products, stock and prices.</p>
+  </section>
+  <section style="max-width:1100px;margin:0 auto;padding:24px 28px 120px;box-sizing:border-box;">
+    <dc-import name="CatalogueGrid" hint-size="100%,1200px"></dc-import>
+  </section>
+  <dc-import name="Footer" show-ebook="{{ false }}" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    if (!window.STROHM_NAV || !window.STROHM_WEBSHOP) this._t = setInterval(() => { if (window.STROHM_NAV && window.STROHM_WEBSHOP) { clearInterval(this._t); this.forceUpdate(); } }, 100);
+  }
+  componentWillUnmount() { clearInterval(this._t); }
+  renderVals() {
+    const N = window.STROHM_NAV, W = window.STROHM_WEBSHOP;
+    if (!N || !W) return { groups: [] };
+    const groups = N.menu("products").groups.map((g) => ({
+      title: g.title,
+      items: g.items.concat(W.EXTRA[g.title] || []).map((x) => {
+        const code = x.name || x.code, shop = W.SHOPS[code];
+        return { name: code, logo: W.LOGOS[code] || "", subtitle: x.subtitle, colour: N.COLOUR[code] || "#4F4F4E",
+          href: shop || N.HREF[code] || "#", cta: shop ? "Open shop" : "Shop in preparation", ctaColor: shop ? "#4F4F4E" : "#898989",
+          aria: shop ? code + " shop" : code + ", shop in preparation, brand page" };
+      }),
+    }));
+    return { groups };
+  }
+}
+</script>
+</body>
+</html>

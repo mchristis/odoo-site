@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<style> body { margin:0; } </style>
+</helmet>
+<div style="display:grid;grid-template-columns:22px repeat(9,1fr);gap:4px;font-family:var(--font-web);">
+  <div></div>
+  <sc-for list="{{ cols }}" as="c" hint-placeholder-count="9">
+    <div style="text-align:center;font-size:9px;font-weight:400;color:#9A9A98;">{{ c }}</div>
+  </sc-for>
+  <sc-for list="{{ rows }}" as="r" hint-placeholder-count="4">
+    <div style="display:contents">
+      <div style="display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:400;color:#9A9A98;">{{ r.label }}</div>
+      <sc-for list="{{ r.cells }}" as="cell" hint-placeholder-count="9">
+        <div style="aspect-ratio:1/1;border:1.5px {{ cell.style }} {{ cell.border }};background:{{ cell.bg }};display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border-radius:12px;">
+          <span style="position:absolute;top:2px;left:3px;font-size:var(--web-eyebrow-size);color:#B0AEA9;font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);">{{ cell.n }}</span>
+          <sc-if value="{{ cell.qr }}" hint-placeholder-val="{{ true }}">
+            <span style="font-size:6px;letter-spacing:1px;color:#3C3C3B;line-height:1;">&#9638;&#9638;&#9638;<br/>&#9638;&#9638;&#9638;</span>
+            <span style="font-size:6px;color:#B0AEA9;margin-top:2px;">ANDO</span>
+          </sc-if>
+          <sc-if value="{{ cell.obstacle }}" hint-placeholder-val="{{ false }}">
+            <span style="font-size:7px;color:#C9C6C0;">obstacle</span>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:700,&quot;height&quot;:340}}">
+class Component extends DCLogic {
+  renderVals() {
+    const rowLabels = ["A","B","C","D"];
+    const highlights = { "12":"#3E6FB0","13":"#3E6FB0","28":"#C08A2E","29":"#C08A2E" };
+    const obstacle = "14";
+    let n = 0;
+    const rows = rowLabels.map((label) => {
+      const cells = [];
+      for (let c = 0; c < 9; c++) {
+        n++;
+        const key = String(n);
+        const isObs = key === obstacle;
+        const hl = highlights[key];
+        cells.push({
+          n: key,
+          qr: !isObs,
+          obstacle: isObs,
+          bg: isObs ? "#F0EEEA" : "#FFFFFF",
+          border: isObs ? "#D8D5CE" : (hl || "#D8D5CE"),
+          style: (isObs) ? "solid" : (hl ? "dashed" : "solid"),
+        });
+      }
+      return { label, cells };
+    });
+    return { cols: [1,2,3,4,5,6,7,8,9], rows };
+  }
+}
+</script>
+</body>
+</html>

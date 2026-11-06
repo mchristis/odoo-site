@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WHO map · Product experts by brand · STROHM.ENERGY</title>
+<script src="nav-data.js"></script>
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; background:#fff; color:#4F4F4E; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; }
+  .wrap { padding:4px 0 8px; }
+  svg { display:block; width:100%; height:auto; overflow:visible; }
+  .cv { fill:none; stroke:#D0D0D0; stroke-width:.9; } .cv.dim { stroke:#EDEDED; } .cv.act { stroke:#111; stroke-width:1.8; }
+  .b text { font-size:16px; font-weight:700; letter-spacing:.06em; fill:#888; cursor:pointer; } .b.act text { fill:#111; } .b.dim text { fill:#C4C4C4; }
+  .b:focus-visible, .p:focus-visible { outline:2px solid #111; outline-offset:2px; }
+  .b .dot, .p .dot { fill:#fff; stroke:#BBB; stroke-width:1.2; } .b.act .dot, .p.act .dot { fill:#111; stroke:#111; }
+  .p text.nm { font-size:14px; font-weight:500; fill:#4F4F4E; cursor:pointer; } .p text.rl { font-size:12px; font-weight:300; fill:#8A8A89; cursor:pointer; letter-spacing:.02em; }
+  .p.act text.nm { fill:#111; font-weight:700; } .p.dim text { fill:#C4C4C4; }
+  .cap { font-size:11px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; fill:#8A8A89; }
+  #card { margin-top:20px; border:1px solid #D0D0D0; padding:18px 20px; display:grid; grid-template-columns:minmax(220px,1fr) minmax(0,2fr); gap:24px; }
+  #card.on { border-color:#111; }
+  #card .t { font-size:22px; font-weight:300; color:#111; margin-bottom:4px; } #card .r { font-size:14px; font-weight:500; color:#4F4F4E; margin-bottom:8px; }
+  #card p { margin:0 0 10px; font-size:14px; font-weight:300; line-height:1.6; } #card .l { font-size:11px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:#8A8A89; margin-bottom:4px; }
+  .amber { font-size:12px; font-weight:300; letter-spacing:.04em; color:#B07818; }
+  button.go { all:unset; cursor:pointer; box-sizing:border-box; display:inline-flex; align-items:center; height:36px; padding:0 16px; background:#111; color:#fff; font-size:11px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; margin-right:8px; } button.go:focus-visible { outline:2px solid #111; outline-offset:2px; }
+  a.go { display:inline-flex; align-items:center; height:36px; padding:0 16px; background:#111; color:#fff; font-size:11px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; margin-right:8px; }
+  a.go.alt { background:#fff; color:#111; border:1px solid #111; }
+  .sel { margin:0 0 12px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; } .sel label { font-size:11px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:#6E6E6E; }
+  .sel select { font:inherit; font-size:14px; height:38px; padding:0 10px; border:1px solid #D0D0D0; border-radius:0; background:#fff; min-width:220px; }
+  @media (max-width:700px) { #card { grid-template-columns:1fr; } .b text { font-size:19px; } .p text.nm { font-size:16px; } .p text.rl { font-size:14px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="sel"><label for="pick">Brand or person</label><select id="pick" aria-label="Select a brand or a person"></select></div>
+  <svg id="map" viewBox="0 0 1000 780" role="group" aria-label="Map linking STROHM.ENERGY product brands to their product experts"></svg>
+  <div id="card" role="status" aria-live="polite"><div><div class="l">Product experts by brand</div><p>Select a brand or a person to see the link.</p></div><div></div></div>
+</div>
+<script>
+(function(){
+  var P = [
+    {id:'ando', name:'Thomas Vermeulen', role:'Senior Photovoltaic Manufacturing & Reliability Engineer', brands:['ANDO'], note:'Residential and commercial module expertise'},
+    {id:'agrix', name:'Dr. Klaus Reinhardt', role:'Senior Agrivoltaics & Agricultural Engineering Specialist', brands:['AGRIX']},
+    {id:'lina', name:'Piotr Zieli\u0144ski', role:'Vertical PV & Flat-Roof Mounting Systems Engineer', brands:['LINA']},
+    {id:'prop', name:'Viktoria Stoyanova', role:'Wind Turbine Testing & Rotor Development Specialist', brands:['PROP']},
+    {id:'moebius', name:'Arjun Menon', role:'Power Conversion & Embedded Control Engineer', brands:['MOEBIUS']},
+    {id:'fluxx', name:'Bram de Vries', role:'Battery Systems & BMS Reliability Engineer (residential)', brands:['FLUXX']},
+    {id:'fluxx-bess', name:'Dr. Markus Feldmann', role:'Senior Battery Energy Storage & Grid Integration Engineer (commercial and utility)', brands:['FLUXX']},
+    {id:'nendo', name:'Mihai Ionescu', role:'Senior Heat Pump, HVAC & Hot Water Specialist', brands:['NENDO','OGO']},
+    {id:'xoom', name:'Lukas Schneider', role:'Senior EV Charging & Grid Integration Technician', brands:['XOOM']},
+    {id:'feu', name:'Kateryna Hrytsenko', role:'Radiant Heating & Building Physics Specialist', brands:['FEU']},
+    {id:'airo', name:'Andrei Popescu', role:'Ventilation & Indoor Air Quality Commissioning Specialist', brands:['AIRO']},
+    {id:'glow', name:'Milica Petrovi\u0107', role:'Solar Lighting & Architectural Illumination Specialist', brands:['GLOW']},
+    {id:'chill', name:'El\u012Bna Ozoli\u0146a', role:'Architectural Product & Energy-Integrated Infrastructure Designer', brands:['CHILL']},
+    {id:'synq', name:'Ananya Rao', role:'Smart Metering & Embedded Instrumentation Engineer', brands:['SYNQ']},
+    {id:'ozzy', name:'Meera Kulkarni', role:'Smart Switching & Embedded Controls Engineer', brands:['OZZY']},
+    {id:'togu', name:'Mei-Ling Lin', role:'Senior Cable, Connector & Electrical Interconnection Specialist', brands:['TOGU']},
+    {id:'mox', name:'Hendrik Van Aelst', role:'Senior Structural, Mounting & Equipment Protection Engineer', brands:['MOX','SHELTR']},
+    {id:'dodo', name:'Charlotte Whitmore', role:'Product Safety & Protective Systems Specialist', brands:['DODO']},
+    {id:'wurk', name:'Marek Kov\u00E1\u010D', role:'Access Equipment & Installation Safety Specialist', brands:['WURK']},
+    {id:'muki', name:'Filip De Smet', role:'Senior Electrical Systems Integration & Preconfiguration Engineer', brands:['MUKI']}
+  ];
+  var BR = ['ANDO','AGRIX','LINA','PROP','MOEBIUS','FLUXX','NENDO','OGO','XOOM','FEU','AIRO','GLOW','CHILL','SYNQ','OZZY','TOGU','MOX','SHELTR','DODO','WURK','MUKI'];
+  var COL = (window.STROHM_NAV && window.STROHM_NAV.COLOUR) || {};
+  var NS = 'http://www.w3.org/2000/svg', svg = document.getElementById('map'), RH = 34, TOP = 40;
+  function el(n, a, p){ var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); (p || svg).appendChild(e); return e; }
+  var by = {}; BR.forEach(function(b, i){ by[b] = TOP + i * RH; });
+  var prev = -1e9;
+  P.forEach(function(p){ var d = p.brands.reduce(function(s, b){ return s + by[b]; }, 0) / p.brands.length; p.y = Math.max(d, prev + RH); prev = p.y; });
+  var H = Math.max(by[BR[BR.length-1]], prev) + 30; svg.setAttribute('viewBox', '0 0 1000 ' + Math.ceil(H));
+  var cap1 = el('text', {x:262, y:18, 'text-anchor':'end', 'class':'cap'}); cap1.textContent = 'Product brands';
+  var cap2 = el('text', {x:738, y:18, 'class':'cap'}); cap2.textContent = 'Product experts';
+  var curves = [], bn = {}, pn = {}, sel = null, hov = null;
+  P.forEach(function(p){ p.brands.forEach(function(b){ var y1 = by[b], y2 = p.y;
+    var c = el('path', {d:'M268,'+y1+' C500,'+y1+' 500,'+y2+' 732,'+y2, 'class':'cv'}); curves.push({el:c, b:b, p:p.id}); }); });
+  BR.forEach(function(b){
+    var g = el('g', {'class':'b', tabindex:0, role:'button', 'aria-label': b + ', expert: ' + P.filter(function(p){ return p.brands.indexOf(b) >= 0; }).map(function(p){ return p.name; }).join(', ')});
+    var t = el('text', {x:250, y:by[b]+5, 'text-anchor':'end'}, g); t.textContent = b;
+    el('circle', {cx:262, cy:by[b], r:4.5, 'class':'dot'}, g);
+    g.addEventListener('mouseenter', function(){ hov = {t:'b', k:b}; paint(); }); g.addEventListener('mouseleave', function(){ hov = null; paint(); });
+    g.addEventListener('click', function(){ choose('b', b); }); g.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); choose('b', b); } });
+    bn[b] = {g:g, t:t};
+  });
+  P.forEach(function(p){
+    var g = el('g', {'class':'p', tabindex:0, role:'button', 'aria-label': p.name + ', ' + p.role});
+    el('circle', {cx:738, cy:p.y, r:4.5, 'class':'dot'}, g);
+    var n = el('text', {x:752, y:p.y-1, 'class':'nm'}, g); n.textContent = p.name;
+    var r = el('text', {x:752, y:p.y+11, 'class':'rl'}, g); r.textContent = p.role.length > 58 ? p.role.slice(0, 56).replace(/\s+\S*$/, '') + '\u2026' : p.role;
+    g.addEventListener('mouseenter', function(){ hov = {t:'p', k:p.id}; paint(); }); g.addEventListener('mouseleave', function(){ hov = null; paint(); });
+    g.addEventListener('click', function(){ choose('p', p.id); }); g.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); choose('p', p.id); } });
+    pn[p.id] = g;
+  });
+  var pick = document.getElementById('pick'), o0 = document.createElement('option'); o0.value = ''; o0.textContent = 'Select'; pick.appendChild(o0);
+  [['Product brands', BR.map(function(b){ return ['b:'+b, b]; })], ['Product experts', P.map(function(p){ return ['p:'+p.id, p.name]; })]].forEach(function(gr){
+    var og = document.createElement('optgroup'); og.label = gr[0]; gr[1].forEach(function(x){ var o = document.createElement('option'); o.value = x[0]; o.textContent = x[1]; og.appendChild(o); }); pick.appendChild(og); });
+  pick.addEventListener('change', function(){ if (!pick.value) { sel = null; paint(); return; } var s = pick.value.split(':'); choose(s[0], s.slice(1).join(':')); });
+  function active(){ return hov || sel; }
+  function relBrands(a){ if (!a) return null; if (a.t === 'b') return [a.k]; var p = P.filter(function(x){ return x.id === a.k; })[0]; return p.brands; }
+  function relPeople(a){ if (!a) return null; if (a.t === 'p') return [a.k]; return P.filter(function(p){ return p.brands.indexOf(a.k) >= 0; }).map(function(p){ return p.id; }); }
+  function paint(){
+    var a = active(), rb = relBrands(a), rp = relPeople(a);
+    curves.forEach(function(c){ var on = a && rb.indexOf(c.b) >= 0 && rp.indexOf(c.p) >= 0; c.el.setAttribute('class', 'cv' + (a ? (on ? ' act' : ' dim') : '')); });
+    BR.forEach(function(b){ var on = a && rb.indexOf(b) >= 0; bn[b].g.setAttribute('class', 'b' + (a ? (on ? ' act' : ' dim') : '')); bn[b].t.style.fill = on && COL[b] ? COL[b] : ''; });
+    P.forEach(function(p){ var on = a && rp.indexOf(p.id) >= 0; pn[p.id].setAttribute('class', 'p' + (a ? (on ? ' act' : ' dim') : '')); });
+    card();
+  }
+  function link(href, label, alt){ return '<a class="go' + (alt ? ' alt' : '') + '" target="_top" href="' + href + '">' + label + '</a>'; }
+  function pickBtn(p, b, label){ return '<button type="button" class="go" data-pick="' + b + '" data-pid="' + p.id + '">' + label + '</button>'; }
+  document.addEventListener('click', function(e){ var t = e.target.closest && e.target.closest('[data-pick]'); if (t) { try { parent.postMessage({ expPick: t.dataset.pick, pid: t.dataset.pid }, '*'); } catch (x) {} } });
+  function card(){
+    var a = active(), c = document.getElementById('card');
+    if (!a) { c.className = ''; c.innerHTML = '<div><div class="l">Product experts by brand</div><p>Select a brand or a person to see the link.</p></div><div></div>'; return; }
+    c.className = 'on';
+    if (a.t === 'p') {
+      var p = P.filter(function(x){ return x.id === a.k; })[0];
+      c.innerHTML = '<div><div class="t">' + p.name + '</div><div class="r">' + p.role + '</div></div><div><div class="l">Brands</div><p>' + p.brands.join(', ') + '</p><div>' + pickBtn(p, a.k === p.id ? p.brands[0] : a.k, 'Contact expert') + p.brands.map(function(b){ return link(b + ' - PRODUCT - Overview - EN.dc.html', b, true); }).join('') + '</div></div>';
+    } else {
+      var ps = P.filter(function(x){ return x.brands.indexOf(a.k) >= 0; });
+      c.innerHTML = '<div><div class="t">' + a.k + '</div><div class="r">Product expert' + (ps.length > 1 ? 's' : '') + '</div></div><div>' + ps.map(function(p){ return '<p><b>' + p.name + '</b><br>' + p.role + '</p>'; }).join('') + '<div>' + ps.map(function(p){ return pickBtn(p, a.k, 'Contact ' + p.name.replace(/^Dr\.\s+/, '').split(' ')[0]); }).join('') + link(a.k + ' - PRODUCT - Overview - EN.dc.html', a.k + ' page', true) + '</div></div>';
+    }
+  }
+  function choose(t, k){ if (sel && sel.t === t && sel.k === k) sel = null; else sel = {t:t, k:k}; pick.value = sel ? t + ':' + k : ''; paint(); }
+  function post(){ try { parent.postMessage({ whoHeight: Math.ceil(document.body.getBoundingClientRect().height) }, '*'); } catch (e) {} }
+  window.addEventListener('load', post); window.addEventListener('resize', post); if (window.ResizeObserver) new ResizeObserver(post).observe(document.body); setTimeout(post, 800);
+  paint();
+})();
+</script>
+</body>
+</html>

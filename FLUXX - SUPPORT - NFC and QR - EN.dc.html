@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>FLUXX NFC and QR | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="FluxxNav" active="installation" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="FLUXX" rgb="253,199,6" eyebrow="FLUXX · NFC and QR" title="No screen needed." intro="Unique QR and passive NFC on every module. Readable before power-up. Wi-Fi Mesh connects every module automatically." slot="fluxx-nfc-and-qr-hero" shot="FLUXX · NFC and QR · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:640px;">Every module identifies itself. Tap the battery with an NFC-enabled phone to read its details, state of charge included. Scan the QR code to commission the battery from one scan. Wi-Fi Mesh finds every module on its own, with no gateway to set up.</p>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:24px;">What NFC and QR do</div>
+      <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;--cg:48px;">
+        <div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:16px;line-height:var(--web-small-lh);">NFC &#8212; tap to read</div>
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ nfc }}" as="n" hint-placeholder-count="4">
+              <div style="display:flex;gap:10px;padding:11px 0;border-top:1px solid var(--color-divider);">
+                <span style="color:var(--color-text-primary);font-size:12px;flex:none;">&#10003;</span>
+                <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ n }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:16px;line-height:var(--web-small-lh);">QR &#8212; scan to commission</div>
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ qr }}" as="q" hint-placeholder-count="4">
+              <div style="display:flex;gap:10px;padding:11px 0;border-top:1px solid var(--color-divider);">
+                <span style="color:var(--color-text-primary);font-size:12px;flex:none;">&#10003;</span>
+                <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ q }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;--cg:48px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Before power-up</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Readable, even <span style="color:#8E8E8E;">before power-up.</span></h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">The tag is passive and every module has its own.</p>
+      </div>
+      <div style="aspect-ratio:4/3;">
+        <image-slot id="fluxx-nfc-photo" shape="rounded" radius="12" placeholder="Drop a phone-tapping-battery photo"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="FLUXX - SUPPORT - Commissioning - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:var(--color-card-fluxx, #F1EFE9);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Commissioning<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a><a href="FLUXX - PRODUCT - FLUXX with EMON - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:var(--color-card-fluxx, #F1EFE9);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">FLUXX with EMON<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="ScanSweep" brand="FLUXX" hint-size="100%,420px"></dc-import>
+  <dc-import name="ContentSections" brand="FLUXX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="FLUXX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="FLUXX" accent="var(--color-brand-fluxx)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      nfc: ["Battery details", "State of charge", "Unique identity of every module", "Passive: no power needed to read"],
+      qr: ["Identifies the battery module", "Starts commissioning in the EMON installer app", "Commission the battery from one scan", "Links the record to the battery", "Wi-Fi Mesh: the module joins the system automatically, no gateway"],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Store energy | Engineering and Manufacturing | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./nav-data.js"></script>
+<script src="./em-stages-data.js"></script>
+<script src="./em-data-store.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4F4F4E; text-decoration:none; }
+  a:hover { color:#F76801; }
+  summary::-webkit-details-marker { display:none; }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+  <dc-import name="NavBar" active="company" hint-size="100%,89px"></dc-import>
+  <dc-import name="CompanyNav" active="how" hint-size="100%,57px"></dc-import>
+  <dc-import name="BrandHero2" brand="STORE" rgb="247,104,1" dark="#4F4F4E" title="How a FLUXX battery is made." intro="Cells and electronics are inspected, matched, assembled into modules, integrated into the battery enclosure, configured and tested." items="{{ heroItems }}" hint-size="100%,760px"></dc-import><section data-screen-label="E&M Store — Intro" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:flex;flex-wrap:wrap;gap:12px 32px;align-self:flex-start;"><a href="FLUXX - PRODUCT - Overview - EN.dc.html#manufacturing" style="font-size:14px;font-weight:300;color:#5F5E5E;border-bottom:1px solid #BBBBBB;padding-bottom:2px;" style-hover="color:#F76801;border-bottom-color:#F76801;">← FLUXX</a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - EN.dc.html" style="font-size:14px;font-weight:300;color:#5F5E5E;border-bottom:1px solid #BBBBBB;padding-bottom:2px;" style-hover="color:#F76801;border-bottom-color:#F76801;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg>Engineering and manufacturing</a></div>
+  </section>
+  <div style="height:72px;"></div>
+  <dc-import name="FactoryWalk" set="fluxx" accent="#FDC706" three="fluxx" hint-size="100%,900px"></dc-import>
+  
+  <section data-screen-label="E&M Store — Back to FLUXX" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;"><a href="FLUXX - PRODUCT - Overview - EN.dc.html#manufacturing" style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;" style-hover="color:#F76801;border-bottom-color:#F76801;">Back to FLUXX &#8250;</a></section>
+  <section data-screen-label="E&M Store — Next" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:120px var(--web-side) 120px;box-sizing:border-box;"><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - EN.dc.html#em-chooser" style="text-decoration:none;border-top:1px solid #4F4F4E;padding-top:24px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;transition:border-color 180ms ease;" style-hover="border-top-color:#F76801;"><span style="font-size:var(--web-min-size);letter-spacing:0.08em;color:#5F5E5E;line-height:var(--web-min-lh);">Back</span><span style="font-size:clamp(28px,3vw,40px);font-weight:200;color:#252525;">All products<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></a></section>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const HERO_ITEMS = [{"label":"Engineering","heading":"From cell to site.","sentence":"Choose a stage to see the machine, what is done there and how it is tested.","href":"em-store-machines","media":{"type":"slot","slot":"strohm-energy-how-engineering-and-manufacturing-store-hero","alt":"STORE engineering and manufacturing hero picture 1"}},{"label":"Manufacturing","heading":"Production sequence.","sentence":"Every production step, grouped by phase.","href":"em-store-sequence","media":{"type":"slot","slot":"strohm-energy-how-engineering-and-manufacturing-store-hero-2","alt":"STORE engineering and manufacturing hero picture 2"}},{"label":"Quality","heading":"Records kept for every battery.","sentence":"They make each battery auditable and let a field fault be traced back to its origin.","href":"em-store-records","media":{"type":"slot","slot":"strohm-energy-how-engineering-and-manufacturing-store-hero-3","alt":"STORE engineering and manufacturing hero picture 3"}}];
+
+class _EmBase extends DCLogic {
+  state = { ready: !!window.EM_STORE };
+  componentDidMount() { if (!this.state.ready) { this._i = setInterval(() => { if (window.EM_STORE) { clearInterval(this._i); this.setState({ ready: true }); } }, 100); } }
+  componentWillUnmount() { clearInterval(this._i); }
+  machineVals() {
+    const P = (window.EM_STAGES || {})['store'];
+    if (!P) return { mStages: [], ms: { no: '', name: '', machine: '', proc: '', test: '', dataLabel: '', dot: '#BBBBBB', data: '', hasTbc: false, tbc: '' } };
+    const S = P.stages;
+    const pad = (x) => (x < 10 ? '0' + x : '' + x);
+    const cur = Math.min(this.state.mStage || 0, S.length - 1);
+    const mStages = S.map((s, i) => ({ no: pad(i + 1), name: s[0], emon: !!s[4], on: i === cur ? 'true' : 'false', line: i === cur ? '#F76801' : '#E3E3E3', pick: () => { if (this.state.mStage !== i) this.setState({ mStage: i }); } }));
+    const a = S[cur];
+    return { mStages, ms: { no: pad(cur + 1), name: a[0], machine: a[1], proc: a[2], test: a[3], dataLabel: a[4] ? 'Saved to EMON' : 'Kept in the factory record', dot: a[4] ? '#F76801' : '#BBBBBB', data: a[4] || 'Process data stays in the production record for this ' + P.unit + ' and can be retrieved for quality investigation.', hasTbc: !!a[5], tbc: a[5] } };
+  }
+  renderVals() { return { ...this.baseVals(), ...this.machineVals() }; }
+  baseVals() {
+    const d = window.EM_STORE;
+    if (!d) return { phases: [], records: [], total: '', phaseCount: '' };
+    let n = 0;
+    const pad = (x) => (x < 10 ? '0' + x : '' + x);
+    const phases = d.phases.map(([title, intro, steps], i) => { const first = n + 1; const st = steps.map(([op, ctl]) => ({ no: pad(++n), op, ctl })); return { no: pad(i + 1), title, intro, steps: st, range: 'Steps ' + pad(first) + '–' + pad(n) }; });
+    return { phases, records: d.records.map(([k, v]) => ({ k, v })), total: n, phaseCount: d.phases.length };
+  }
+}
+
+class Component extends _EmBase { renderVals() { const b = super.renderVals ? super.renderVals() : {}; return Object.assign({}, b, { heroItems: HERO_ITEMS }); } }
+</script>
+</body>
+</html>

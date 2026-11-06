@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>DODO Products | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="DodoNav" active="products" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="DODO" rgb="229,183,59" title="One edge system. Three heights for every roof." intro="DODO QUILL closes the open edge beneath solar panels, guides DC and earthing cables and helps water move beyond the aluminium frame." slot="dodo-products-hero" shot="DODO · Products · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:20px;">DODO &#183; <span style="color:var(--color-text-primary);">The QUILL range</span></div>
+    <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Choose the model by the gap between the panel and the roof.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0 0 44px;">
+      <a href="DODO - PRODUCT - Calculator - EN.dc.html" style="font-size:var(--cta-font,16px);padding:0 24px;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--radius-btn);font-weight:700;">Calculate what I need</a>
+      <a href="#compare" style="font-size:var(--web-link-size);padding:0 6px;height:46px;display:inline-flex;align-items:center;color:var(--color-text-primary);font-weight:var(--web-link-weight);">Compare all models<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </section>
+
+  <!-- MODELS -->
+  <section id="height" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:24px;">Choose by roof gap</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px;">
+        <sc-for list="{{ models }}" as="m" hint-placeholder-count="3">
+          <div class="emon-card"  style="display:flex;flex-direction:column;">
+            <div style="aspect-ratio:4/3;background:var(--color-card-dodo);border-radius:12px;overflow:hidden;"><image-slot id="{{ m.slot }}" shape="rounded" radius="12" placeholder="{{ m.ph }}"></image-slot></div>
+            <div style="padding:28px;display:flex;flex-direction:column;flex:1;">
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:4px;line-height:var(--web-h3-lh);">{{ m.name }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:16px;line-height:var(--web-small-lh);">{{ m.gap }}</div>
+              <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);flex:1;max-width:760px;">{{ m.desc }}</p>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <sc-for list="{{ m.specs }}" as="s" hint-placeholder-count="3">
+                  <div style="display:flex;justify-content:space-between;gap:12px;font-size:var(--web-small-size);border-top:1px solid var(--color-surface-card);padding-top:8px;line-height:var(--web-small-lh);"><span style="font-weight:300;color:var(--color-text-primary);">{{ s.k }}</span><span style="font-weight:700;">{{ s.v }}</span></div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHOOSE BY ROOF -->
+  <section id="roof" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:24px;">Choose by roof type</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;">
+        <sc-for list="{{ roofs }}" as="r" hint-placeholder-count="4">
+          <div class="emon-card"  style="padding:22px;min-height:130px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">{{ r.t }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);margin-bottom:10px;">{{ r.d }}</div>
+            <div style="font-size:12px;font-weight:700;color:var(--color-text-primary);">{{ r.model }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE TABLE -->
+  <section id="compare" style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Compare QUILL models</div>
+      <h2 style="margin:0 0 32px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Height, gap <span style="color:#8E8E8E;">and carton.</span></h2>
+      <div class="emon-card"  style="background:var(--color-card-dodo);overflow:hidden;">
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);background:#3D3D3B;color:#FFFFFF;">
+          <div style="padding:16px 20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Specification</div>
+          <div style="padding:16px 20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">QUILL 90</div>
+          <div style="padding:16px 20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">QUILL 130</div>
+          <div style="padding:16px 20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">QUILL 210</div>
+        </div>
+        <sc-for list="{{ compareRows }}" as="row" hint-placeholder-count="6">
+          <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);border-top:1px solid var(--color-surface-card);">
+            <div style="padding:14px 20px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);">{{ row.k }}</div>
+            <div style="padding:14px 20px;font-size:var(--web-small-size);font-weight:300;">{{ row.a }}</div>
+            <div style="padding:14px 20px;font-size:var(--web-small-size);font-weight:300;">{{ row.b }}</div>
+            <div style="padding:14px 20px;font-size:var(--web-small-size);font-weight:300;">{{ row.c }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTON -->
+  <section id="carton" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:center;">
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">One carton</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Everything for the edge, <span style="color:#8E8E8E;">in one box.</span></h2>
+        <p style="margin:0 0 20px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Each carton covers 22,5&#160;m of protected edge and includes the matching Aqua clips, cleaning wipes and cable ties, so the installer arrives with a complete edge kit.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ carton }}" as="c" hint-placeholder-count="4">
+            <div style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--color-text-primary);font-size:11px;">&#9679;</span><span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ c }}</span></div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="aspect-ratio:4/3;background:var(--color-card-dodo);border-radius:12px;overflow:hidden;"><image-slot id="dodo-products-carton" shape="rounded" radius="12" placeholder="DODO carton — 50 strips, 50 Aqua clips, 50 alcohol pads, 100 cable ties"></image-slot></div>
+    </div>
+  </section>
+
+  <!-- INSTALLED ON REAL ROOFS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:8px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Installed on real roofs</div>
+      <h2 style="margin:0 0 24px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The QUILL edge <span style="color:#8E8E8E;">in place.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;">
+        <sc-for list="{{ installedShots }}" as="s" hint-placeholder-count="3">
+          <div style="aspect-ratio:4/3;background:var(--color-card-dodo);border-radius:12px;overflow:hidden;"><image-slot id="{{ s.id }}" shape="rounded" radius="12" placeholder="{{ s.ph }}"></image-slot></div>
+        </sc-for>
+      </div>
+      <p style="margin:14px 0 0;font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);max-width:760px;line-height:var(--web-min-lh);">More installation photos are being added as approved installers complete projects.</p>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 96px;box-sizing:border-box;">
+    <div style="background:var(--color-surface-secondary);border-radius:12px;padding:56px;color:var(--color-text-primary);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;">
+      <div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Not sure <span style="color:#8E8E8E;">which model?</span></h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Tell us the panel gap and array size. The calculator recommends the right QUILL and the number of strips.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-end;">
+        <a href="DODO - PRODUCT - Calculator - EN.dc.html" style="font-size:var(--cta-font,16px);padding:0 26px;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--radius-btn);font-weight:700;white-space:nowrap;">Calculate what I need</a>
+        <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">Free with every completed installation: a bird feeder or birdhouse, your choice.</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 96px;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:24px;">Install and documents</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;">
+        <a class="emon-card" href="DODO - SUPPORT - Install Faster - EN.dc.html" style="padding:24px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:16px;font-weight:700;">Install</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Ten-step method, cutting, Aqua fitting and cable guidance.</span></a>
+        <a class="emon-card" href="DODO - SUPPORT - Commissioning - EN.dc.html" style="padding:24px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:16px;font-weight:700;">Commission</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">EMON scan, photo checklist and warranty activation.</span></a>
+        <a class="emon-card" href="DODO - SUPPORT - Ownership and Support - EN.dc.html" style="padding:24px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:16px;font-weight:700;">Documents</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Datasheets, declarations, warranty and material information.</span></a>
+      </div>
+    </div>
+  </section>
+  <dc-import name="ContentSections" brand="DODO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="DODO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="DODO" accent="var(--color-brand-dodo)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      models: [
+        { name:"QUILL 90", gap:"45\u201380 mm gap", slot:"dodo-quill-90", ph:"QUILL 90 — low-mount roof edge", desc:"For low-mounted arrays on in-roof and low-profile systems where the panel sits close to the roof surface.", specs:[{k:"Gap range",v:"45\u201380 mm"},{k:"Best for",v:"In-roof, low mount"},{k:"Strip length",v:"450 mm"}] },
+        { name:"QUILL 130", gap:"80\u2013115 mm gap", slot:"dodo-quill-130", ph:"QUILL 130 — tile & slate roofs", desc:"The most common model for pitched tile and slate roofs with standard on-roof mounting rails.", specs:[{k:"Gap range",v:"80\u2013115 mm"},{k:"Best for",v:"Tile & slate"},{k:"Strip length",v:"450 mm"}] },
+        { name:"QUILL 210", gap:"115\u2013190 mm gap", slot:"dodo-quill-210", ph:"QUILL 210 — high-mount & flat roofs", desc:"For high-mounted arrays, elevated frames and flat-roof ballast systems with a large panel-to-roof gap.", specs:[{k:"Gap range",v:"115\u2013190 mm"},{k:"Best for",v:"High / flat mount"},{k:"Strip length",v:"450 mm"}] },
+      ],
+      roofs: [
+        { t:"Tile", d:"Standard pitched tile with on-roof rails.", model:"QUILL 130" },
+        { t:"Slate", d:"Natural or fibre slate, on-roof mounting.", model:"QUILL 130" },
+        { t:"In-roof / low profile", d:"Integrated or low-mounted arrays.", model:"QUILL 90" },
+        { t:"Flat / elevated", d:"Ballasted or elevated frames.", model:"QUILL 210" },
+      ],
+      compareRows: [
+        { k:"Panel-to-roof gap", a:"45\u201380 mm", b:"80\u2013115 mm", c:"115\u2013190 mm" },
+        { k:"Typical roof", a:"In-roof, low mount", b:"Tile & slate", c:"High / flat mount" },
+        { k:"Strip length", a:"450 mm", b:"450 mm", c:"450 mm" },
+        { k:"Strips per carton", a:"50", b:"50", c:"50" },
+        { k:"Aqua clips included", a:"50", b:"50", c:"50" },
+        { k:"Edge covered per carton", a:"22,5 m", b:"22,5 m", c:"22,5 m" },
+        { k:"Registered warranty", a:"15 years", b:"15 years", c:"15 years" },
+      ],
+      installedShots: [
+        { id:"dodo-products-installed-1", ph:"DODO QUILL fitted along a tiled roof array" },
+        { id:"dodo-products-installed-2", ph:"Slate roof with the protected panel edge" },
+        { id:"dodo-products-installed-3", ph:"Flat / elevated array with QUILL 210 in place" },
+      ],
+      carton: [
+        "50 QUILL strips (22,5 m of protected edge)",
+        "50 matching Aqua drainage clips",
+        "50 alcohol cleaning wipes",
+        "100 UV-resistant black cable ties",
+        "Installation instructions and QR record card",
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

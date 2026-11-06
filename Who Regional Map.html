@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WHO · Tangram map</title>
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<script src="./regional-map-data.js"></script>
+<script src="./field-sales-data.js"></script>
+<script src="./who-content.js"></script>
+<script src="./who-data.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: #FFFFFF; overflow: hidden; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  #wrap { position: relative; width: 100%; }
+  svg { display: block; width: 100%; overflow: hidden; }
+  .layer { transition: opacity 340ms ease, transform 560ms cubic-bezier(.22,1,.36,1); transform-origin: 0 0; }
+  .drift { transition: transform 160ms linear; }
+  .t { transform-box: fill-box; transform-origin: center; transition: transform 560ms cubic-bezier(.34,1.45,.64,1), opacity 260ms ease; cursor: pointer; }
+  .t.pre { transform: scale(0) rotate(-90deg); opacity: 0; }
+  .t.x { cursor: default; }
+  .t.hv { stroke: #4F4F4E; stroke-width: 1px; stroke-dasharray: none; }
+  .pin { transform-box: fill-box; transform-origin: center; transition: opacity 420ms ease, transform 520ms cubic-bezier(.34,1.45,.64,1); }
+  #tip { position: absolute; left: 0; top: 0; pointer-events: none; background: #4F4F4E; color: #FFFFFF; font-size:12px; line-height: 1.45; padding: 6px 8px; opacity: 0; transition: opacity 120ms; white-space: nowrap; letter-spacing: 0.01em; }
+  #tip b { font-weight: 700; }
+  #load { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size:11px; letter-spacing:.1em; text-transform: uppercase; color: #6E6E6E; ;font-weight:500}
+  @media (prefers-reduced-motion: reduce) { .t, .layer, .pin, .drift { transition: opacity 200ms ease !important; } .t.pre { transform: none; } }
+</style>
+</head>
+<body>
+<div id="wrap"><svg id="svg" role="img" aria-label="Tangram world map of STRØHM.ENERGY contact coverage"></svg><div id="tip"></div><div id="load">Loading map</div></div>
+<script>
+(function () {
+  var L = window.WHO_LAB, db = L.build();
+  var NUM = {}; Object.keys(L.C0).forEach(function (k) { if (L.C0[k][0]) NUM[L.C0[k][0]] = k; });
+  var wrap = document.getElementById('wrap'), tip = document.getElementById('tip');
+  var svg = d3.select('#svg');
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var feats = [], byCode = {}, W = 0, view = null, S = { role: 'local', region: null, sub: null, code: null, unit: null, lang: null, hi: null };
+  var world = null, region = null, pin = null, lastPin = '';
+  var post = function (m) { try { parent.postMessage(m, '*'); } catch (e) {} };
+
+  function hsh(a, b, c) { var x = (a * 73856093) ^ (b * 19349663) ^ (c * 83492791); x = Math.imul(x ^ (x >>> 13), 1274126177); return ((x ^ (x >>> 16)) >>> 0) / 4294967296; }
+  function codeOf(f) { var n = +f.id; if (NUM[n]) return NUM[n]; var nm = f.properties && f.properties.name; if (nm === 'Kosovo') return 'XK'; return 'N-' + (f.id || nm); }
+  function regionOf(code, f) {
+    if (db.C[code]) return db.C[code].region;
+    var c = d3.geoCentroid(f), lon = c[0], lat = c[1];
+    if (lon < -25) return 'americas'; if (lat < -10 && lon > 110) return 'oceania';
+    if (lon > 34 && lon < 64 && lat > 11 && lat < 43) return 'middleeast';
+    if (lat < 36 && lon > -20 && lon < 52) return 'africa'; if (lat >= 36 && lon < 45) return 'europe'; return 'asia';
+  }
+  function look(code) {
+    var cov = L.coverage(db, code, S.role === 'webshop' ? 'webshop' : 'local');
+    var sub = cov.sub && db.subs[cov.sub];
+    return { state: cov.state, tint: sub ? sub.tint : '#8A8A88', sub: sub };
+  }
+  function peopleFor(sub) { if (!sub) return []; var ids = (S.role === 'webshop' ? sub.webshop : sub.local) || []; return ids.map(function (i) { return db.P[i]; }).filter(Boolean); }
+
+  function shape(t) {
+    var g = Math.max(0.5, t.s * 0.07), x = t.x + g, y = t.y + g, s = t.s - 2 * g, r = hsh(t.x | 0, t.y | 0, t.k + 7), o = Math.floor(hsh(t.y | 0, t.x | 0, t.k + 3) * 4), k;
+    var c = [[x, y], [x + s, y], [x + s, y + s], [x, y + s]], rr = s / 2;
+    if (t.micro) k = 1; else if (t.n === 1) k = r < 0.5 ? 0 : (r < 0.8 ? 1 : 3); else k = Math.floor(r * 5);
+    var f = function (v) { return Math.round(v * 10) / 10; };
+    if (k === 0) return 'M' + f(x) + ' ' + f(y) + 'h' + f(s) + 'v' + f(s) + 'h' + f(-s) + 'Z';
+    if (k === 1) return 'M' + f(x) + ' ' + f(y + rr) + 'a' + f(rr) + ' ' + f(rr) + ' 0 1 0 ' + f(s) + ' 0a' + f(rr) + ' ' + f(rr) + ' 0 1 0 ' + f(-s) + ' 0Z';
+    if (k === 2) { var p = c[o], a = c[(o + 1) % 4], b = c[(o + 3) % 4]; return 'M' + f(p[0]) + ' ' + f(p[1]) + 'L' + f(a[0]) + ' ' + f(a[1]) + 'A' + f(s) + ' ' + f(s) + ' 0 0 1 ' + f(b[0]) + ' ' + f(b[1]) + 'Z'; }
+    if (k === 3) { var a3 = c[o], b3 = c[(o + 1) % 4], d3p = c[(o + 2) % 4]; return 'M' + f(a3[0]) + ' ' + f(a3[1]) + 'L' + f(b3[0]) + ' ' + f(b3[1]) + 'L' + f(d3p[0]) + ' ' + f(d3p[1]) + 'Z'; }
+    var a4 = c[o], b4 = c[(o + 1) % 4]; return 'M' + f(a4[0]) + ' ' + f(a4[1]) + 'A' + f(rr) + ' ' + f(rr) + ' 0 0 0 ' + f(b4[0]) + ' ' + f(b4[1]) + 'Z';
+  }
+
+  function mosaic(proj, w, h, cell, rid) {
+    var cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+    var ctx = cv.getContext('2d', { willReadFrequently: true }), path = d3.geoPath(proj, ctx);
+    feats.forEach(function (f, i) { var k = i + 1; ctx.fillStyle = 'rgb(' + (k & 255) + ',' + ((k >> 8) & 255) + ',200)'; ctx.beginPath(); path(f); ctx.fill(); });
+    var data = ctx.getImageData(0, 0, w, h).data, cols = Math.floor(w / cell), rows = Math.floor(h / cell);
+    var grid = new Int32Array(cols * rows).fill(-1), used = new Uint8Array(cols * rows), tiles = [], seen = {};
+    for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) {
+      var px = Math.floor(c * cell + cell / 2), py = Math.floor(r * cell + cell / 2), o = (py * w + px) * 4;
+      if (data[o + 3] === 255 && data[o + 2] === 200) { var k = data[o] + (data[o + 1] << 8); if (k >= 1 && k <= feats.length) grid[r * cols + c] = k - 1; }
+    }
+    function block(c0, r0, n) {
+      var v = grid[r0 * cols + c0]; if (v < 0) return -1;
+      for (var rr = r0; rr < r0 + n; rr++) for (var cc = c0; cc < c0 + n; cc++) { var i = rr * cols + cc; if (used[i] || grid[i] !== v) return -1; }
+      return v;
+    }
+    [4, 2, 1].forEach(function (n) {
+      for (var r2 = 0; r2 + n <= rows; r2 += n) for (var c2 = 0; c2 + n <= cols; c2 += n) {
+        var v = block(c2, r2, n); if (v < 0) continue;
+        for (var rr = r2; rr < r2 + n; rr++) for (var cc = c2; cc < c2 + n; cc++) used[rr * cols + cc] = 1;
+        var f = feats[v]; seen[f.code] = 1;
+        tiles.push({ code: f.code, region: f.region, k: v, x: c2 * cell, y: r2 * cell, s: n * cell, n: n });
+      }
+    });
+    feats.forEach(function (f, i) {
+      if (seen[f.code]) return; var pt = centroidXY(f.code, proj); if (!pt || !(pt[0] > 0 && pt[0] < w && pt[1] > 0 && pt[1] < h)) return;
+      tiles.push({ code: f.code, region: f.region, k: i, x: pt[0] - cell / 2, y: pt[1] - cell / 2, s: cell, n: 1 });
+    });
+    Object.keys(L.MICRO).forEach(function (code, i) {
+      var pt = proj(L.MICRO[code]); if (!pt || !(pt[0] > 0 && pt[0] < w && pt[1] > 0 && pt[1] < h)) return;
+      var s = Math.max(cell * 0.8, 5);
+      tiles.push({ code: code, region: db.C[code].region, k: 900 + i, x: pt[0] - s / 2, y: pt[1] - s / 2, s: s, n: 1, micro: true });
+    });
+    tiles.forEach(function (t) { t.inView = !rid || t.region === rid; });
+    return tiles;
+  }
+
+  function centroidXY(code, proj) {
+    if (L.MICRO[code]) return proj(L.MICRO[code]);
+    var f = byCode[code]; if (!f) return null; var g = f.geometry;
+    if (g.type === 'MultiPolygon') { var best = null, ba = -1; g.coordinates.forEach(function (c) { var poly = { type: 'Polygon', coordinates: c }, a = d3.geoArea(poly); if (a > ba) { ba = a; best = poly; } }); g = best; }
+    var p = d3.geoPath(proj).centroid(g); return (isFinite(p[0]) && isFinite(p[1])) ? p : null;
+  }
+
+  function makeLayer(m) {
+    var g = svg.append('g').attr('class', 'layer'), dg = [0, 1, 2].map(function () { return g.append('g').attr('class', 'drift'); });
+    var list = m.tiles.map(function (t) {
+      var el = dg[Math.floor(hsh(t.k, 11, 5) * 3)].append('path').attr('d', shape(t)).attr('class', 't pre').attr('data-c', t.code).node();
+      el.__t = t; return { el: el, t: t };
+    });
+    var layer = { g: g.node(), dg: dg.map(function (d) { return d.node(); }), list: list, m: m };
+    paint(layer);
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      list.forEach(function (it) { if (!reduced) it.el.style.transitionDelay = Math.round(it.t.x / W * 420 + hsh(it.t.k, it.t.x | 0, 2) * 160) + 'ms'; it.el.classList.remove('pre'); });
+      setTimeout(function () { list.forEach(function (it) { it.el.style.transitionDelay = ''; }); }, 1300);
+    }); });
+    return layer;
+  }
+
+  function paint(layer) {
+    if (!layer) return;
+    var hi = S.hi && S.hi.length ? S.hi : null;
+    layer.list.forEach(function (it) {
+      var t = it.t, el = it.el, lk = look(t.code), fill = '#FFFFFF', stroke = 'none', sw = 0, dash = null, op = 1;
+      if (!t.inView) fill = '#EFEFED';
+      else if (lk.state === 'excluded') fill = '#E6E6E6';
+      else if (lk.state === 'solid') fill = lk.tint;
+      else if (lk.state === 'outlined') { stroke = lk.tint; sw = 1.2; }
+      else { stroke = lk.tint === L.T.sand ? '#A89A7E' : lk.tint; sw = 1; dash = '1.2 2.2'; }
+      if (S.code && t.code === S.code) { fill = '#3F3F3F'; stroke = 'none'; sw = 0; dash = null; }
+      if (S.terr) { var ns = lk.state === 'excluded' || (S.hubOf && S.hubOf[t.code] === 'Not served'); var inT = !ns && (S.terr.all ? t.inView : S.terr.codes.indexOf(t.code) >= 0); fill = ns ? '#E6E6E6' : inT ? (t.code === S.terr.hub ? '#3F3F3F' : S.terr.color) : (t.inView ? '#EFEFED' : '#F4F4F4'); stroke = 'none'; sw = 0; dash = null; }
+      if (t.inView && lk.state !== 'excluded') {
+        if (S.terr) op = 1;
+        else if (hi) op = hi.indexOf(t.code) >= 0 ? 1 : 0.22;
+        else if (S.lang) { var ppl = peopleFor(lk.sub); op = ppl.some(function (p) { return (p.lang || []).some(function (l) { return l.toLowerCase().indexOf(S.lang.toLowerCase()) === 0; }); }) ? 1 : 0.2; }
+        else if (S.sub) op = (lk.sub && lk.sub.id === S.sub) ? 1 : 0.42;
+      }
+      el.setAttribute('fill', fill); el.setAttribute('stroke', stroke); el.setAttribute('stroke-width', sw);
+      if (dash) el.setAttribute('stroke-dasharray', dash); else el.removeAttribute('stroke-dasharray');
+      el.style.opacity = op;
+      el.classList.toggle('x', lk.state === 'excluded' || !t.inView && false);
+    });
+  }
+
+  function current() { return region || world; }
+
+  function worldModel() {
+    var h = Math.round(W * 0.44);
+    var proj = d3.geoNaturalEarth1().fitExtent([[2, 2], [W - 2, h - 2]], { type: 'FeatureCollection', features: feats });
+    return { h: h, proj: proj, tiles: mosaic(proj, W, h, Math.max(4.5, W / 96), null) };
+  }
+  function boxGeo(R) { var a = R.box[0], b = R.box[1]; return { type: 'MultiPoint', coordinates: [a, b, [a[0], b[1]], [b[0], a[1]], [(a[0] + b[0]) / 2, a[1]], [(a[0] + b[0]) / 2, b[1]]] }; }
+  function regionModel(id) {
+    var R = L.REGIONS.filter(function (r) { return r.id === id; })[0], box = boxGeo(R);
+    var tmp = d3.geoMercator().fitWidth(W - 4, box), b = d3.geoPath(tmp).bounds(box), asp = (b[1][1] - b[0][1]) / (b[1][0] - b[0][0]);
+    var h = Math.round(Math.min(Math.max(W * asp, W * 0.55), W * 1.1));
+    var proj = d3.geoMercator().fitExtent([[2, 2], [W - 2, h - 2]], box);
+    return { h: h, proj: proj, tiles: mosaic(proj, W, h, Math.max(5, W / 70), id), box: box };
+  }
+  function setH(h) { svg.attr('viewBox', '0 0 ' + W + ' ' + h).attr('height', h); post({ labMapH: h }); if (typeof drawGrid === 'function' && world) setTimeout(drawGrid, 0); }
+
+  function goRegion(id) {
+    var prev = view; view = id;
+    var m = regionModel(id);
+    if (!prev) {
+      var b = d3.geoPath(world.m.proj).bounds(m.box), k = Math.min(W / (b[1][0] - b[0][0]), m.h / (b[1][1] - b[0][1]));
+      world.list.forEach(function (it) { if (it.t.region !== id) it.el.style.opacity = 0.12; });
+      setH(m.h);
+      world.g.style.transform = 'translate(' + (-b[0][0] * k) + 'px,' + (-b[0][1] * k) + 'px) scale(' + k + ')';
+      setTimeout(function () { if (view !== id) return; world.g.style.opacity = 0; if (region) region.g.remove(); region = makeLayer(m); updatePin(); }, reduced ? 0 : 520);
+    } else {
+      var old = region; if (old) old.g.style.opacity = 0;
+      setTimeout(function () { if (old) old.g.remove(); if (view !== id) return; setH(m.h); region = makeLayer(m); updatePin(); }, reduced ? 0 : 220);
+    }
+  }
+  function goWorld() {
+    view = null; var old = region; region = null;
+    if (old) { old.g.style.opacity = 0; setTimeout(function () { old.g.remove(); }, 360); }
+    setH(world.m.h); world.g.style.opacity = 1; world.g.style.transform = 'none'; paint(world); updatePin();
+  }
+
+  function updatePin() {
+    var lay = current(); if (!lay) return;
+    if (pin) { pin.remove(); pin = null; }
+    var pts = { sel: null, keys: [] };
+    if (S.code) {
+      var p = centroidXY(S.code, lay.m.proj);
+      if (p) {
+        pts.sel = p;
+        var key = (view || 'w') + S.code;
+        pin = svg.append('g').attr('class', 'pin').attr('pointer-events', 'none').node();
+        d3.select(pin).append('circle').attr('cx', p[0]).attr('cy', p[1]).attr('r', 9).attr('fill', 'none').attr('stroke', '#4F4F4E').attr('stroke-width', 1);
+        d3.select(pin).append('circle').attr('cx', p[0]).attr('cy', p[1]).attr('r', 3.5).attr('fill', '#4F4F4E').attr('stroke', '#FFFFFF').attr('stroke-width', 1.5);
+        if (key !== lastPin && !reduced) { pin.style.opacity = 0; pin.style.transform = 'scale(.3)'; requestAnimationFrame(function () { requestAnimationFrame(function () { if (pin) { pin.style.opacity = 1; pin.style.transform = 'scale(1)'; } }); }); }
+        lastPin = key;
+      }
+    }
+    var sub = S.sub && db.subs[S.sub];
+    if (sub) (sub.key || []).forEach(function (c) { if (c === S.code) return; var q = centroidXY(c, lay.m.proj); if (q) pts.keys.push(q); });
+    post({ labPos: pts });
+  }
+
+  function onMove(e) {
+    var el = e.target.closest && e.target.closest('path.t');
+    svg.selectAll('path.hv').classed('hv', false);
+    if (!el) { tip.style.opacity = 0; return; }
+    var t = el.__t, lk = look(t.code), nm = (db.C[t.code] && db.C[t.code].name) || (byCode[t.code] && byCode[t.code].properties.name) || t.code;
+    var lines = ['<b>' + nm + '</b>'];
+    if (lk.state === 'excluded') lines.push('Not served');
+    else {
+      if (lk.sub) lines.push(lk.sub.label);
+      lines.push(lk.state === 'solid' ? 'Dedicated contact' : lk.state === 'outlined' ? 'Covered from ' + (lk.sub && lk.sub.contact ? lk.sub.contact.base : 'the sub-region') : 'Served via International Sales');
+      var ppl = peopleFor(lk.sub); if (ppl.length && lk.state !== 'dotted') lines.push(ppl.map(function (p) { return p.initials; }).join(' · '));
+      if (L.EXCLUDED_NOTE[t.code]) lines.push(L.EXCLUDED_NOTE[t.code]);
+      svg.selectAll('path.t[data-c="' + t.code + '"]').classed('hv', true);
+    }
+    if (S.hubOf) { lines = ['<b>' + nm + '</b>', S.hubOf[t.code] || 'Hong Kong office · worldwide sales']; svg.selectAll('path.t[data-c="' + t.code + '"]').classed('hv', true); }
+    tip.innerHTML = lines.join('<br>');
+    var r = wrap.getBoundingClientRect(), x = e.clientX - r.left + 12, y = e.clientY - r.top + 12;
+    tip.style.opacity = 1;
+    var tw = tip.offsetWidth, th = tip.offsetHeight;
+    if (x + tw > r.width - 4) x = e.clientX - r.left - tw - 12; if (y + th > r.height - 4) y = e.clientY - r.top - th - 12;
+    tip.style.transform = 'translate(' + Math.max(2, x) + 'px,' + Math.max(2, y) + 'px)';
+  }
+  svg.on('mousemove', onMove).on('mouseleave', function () { tip.style.opacity = 0; svg.selectAll('path.hv').classed('hv', false); });
+  svg.on('click', function (e) {
+    var el = e.target.closest && e.target.closest('path.t'); if (!el) return;
+    var t = el.__t; if (look(t.code).state === 'excluded') return;
+    post({ labPick: { code: t.code, region: t.region, name: (db.C[t.code] && db.C[t.code].name) || (byCode[t.code] && byCode[t.code].properties.name) || t.code } });
+  });
+
+  function drift(p) {
+    if (reduced) return; var lay = current(); if (!lay) return;
+    [-3, 2.5, 4.5].forEach(function (k, i) { if (lay.dg[i]) lay.dg[i].style.transform = 'translate(' + (p * k * 0.4) + 'px,' + (p * k) + 'px)'; });
+  }
+
+  function rebuild() {
+    W = Math.round(wrap.clientWidth); if (!W) return;
+    svg.selectAll('*').remove(); world = null; region = null; pin = null;
+    var m = worldModel(); world = makeLayer(m);
+    if (view) { var v = view; view = null; world.g.style.opacity = 0; var rm = regionModel(v); view = v; setH(rm.h); region = makeLayer(rm); }
+    else setH(m.h);
+    drawGrid();
+    updatePin();
+  }
+  function drawGrid() { svg.selectAll('g.bgrid').remove(); var h = +svg.attr('height') || W * 0.5, step = Math.max(40, Math.round(W / 16)), g = svg.append('g').attr('class', 'bgrid').attr('pointer-events', 'none').attr('stroke', '#E6E6E6').attr('stroke-width', 0.75); for (var x = 0; x <= W; x += step) g.append('line').attr('x1', x).attr('x2', x).attr('y1', 0).attr('y2', h); for (var y = 0; y <= h; y += step) g.append('line').attr('y1', y).attr('y2', y).attr('x1', 0).attr('x2', W); }
+
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.labSet) {
+      var n = d.labSet, rc = (n.region || null) !== (S.region || null);
+      S = Object.assign({}, S, n);
+      if (!world) return;
+      if (rc) { if (S.region) goRegion(S.region); else goWorld(); }
+      else { paint(current()); updatePin(); }
+    }
+    if (typeof d.labScroll === 'number') drift(d.labScroll);
+  });
+
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json').then(function (r) { return r.json(); }).then(function (topo) {
+    feats = topojson.feature(topo, topo.objects.countries).features.filter(function (f) { return f.id !== '010' && f.properties.name !== 'Antarctica'; });
+    feats.forEach(function (f) { f.code = codeOf(f); f.region = regionOf(f.code, f); byCode[f.code] = f; });
+    document.getElementById('load').remove();
+    var lw = 0, rt = null;
+    /* DEPTH-633: the iframe loads while hidden (width 0); ResizeObserver does not fire when it is shown, so also poll and listen to resize */
+    function check(delay) { clearTimeout(rt); rt = setTimeout(function () { var w = Math.round(wrap.clientWidth); if (w && (Math.abs(w - lw) > 24 || !world)) { lw = w; view = S.region || null; rebuild(); } }, delay); }
+    new ResizeObserver(function () { check(lw ? 220 : 0); }).observe(wrap);
+    window.addEventListener('resize', function () { check(lw ? 220 : 0); });
+    setInterval(function () { var w = Math.round(wrap.clientWidth); if (w && (!world || Math.abs(w - lw) > 24)) check(0); }, 400);
+    post({ labReady: true });
+  }).catch(function () { document.getElementById('load').textContent = 'Map could not load'; post({ labMapH: 120 }); });
+  post({ labMapH: 240 });
+})();
+</script>
+</body>
+</html>

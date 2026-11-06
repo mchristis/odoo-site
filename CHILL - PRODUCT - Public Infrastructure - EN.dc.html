@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>CHILL Public Infrastructure | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>body { margin:0; }</style>
+</helmet>
+<dc-import name="StructureCategory"
+  brand="CHILL"
+  category="Public and movement infrastructure"
+  eyebrow="CHILL · Public and movement infrastructure"
+  heading="Covered routes that generate power."
+  intro="Arcades, canopies, bus shelters and noise barriers for places where people arrive, wait and move. Designed for public use, vandal resistance and long maintenance intervals."
+  body="Public structures carry requirements that private structures do not: free passage, accessibility, lighting, resistance to vandalism, municipal approvals and maintenance by third parties. The PV roof must never compromise the primary function of shelter and safe movement. CHILL public structures are designed around circulation beneath the roof, with drainage that does not discharge onto routes and electrical equipment placed out of public reach."
+  hero-slot-id="mox-public-hero"
+  hero-placeholder="BNR-CHILL-PUBLIC-01 · 21:9 · V3-R3 context: a covered public route or shelter with blurred pedestrians, product 5–15% · awaiting upload"
+  products-heading="Four public structures."
+  products="{{ products }}"
+  guidance-heading="Route, movement or waiting?"
+  guidance="{{ guidance }}"
+  engineering="{{ engineering }}"
+  hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const S = "#898989";
+    return {
+      products: [
+        { name: "ARCADE", status: "In preparation", statusColor: "#898989", href: "CHILL - PRODUCT - ARCADE - EN.dc.html", tagline: "Building-attached PV colonnade", desc: "Linear PV roof along a building edge, covering walkways and entrances with a repeating column rhythm." },
+        { name: "CANOPY", status: "View page", statusColor: "#4F4F4E", href: "CHILL - PRODUCT - CANOPY - EN.dc.html", tagline: "Freestanding PV route cover", desc: "Entrance, walkway, cycleway and shared-path canopies. Continuous PV roof over pedestrian and cycle routes." },
+        { name: "BUS Shelter", status: "In preparation", statusColor: "#898989", href: "CHILL - PRODUCT - BUS Shelter - EN.dc.html", tagline: "PV passenger shelter", desc: "Bus shelter with PV roof powering lighting, displays and real-time information. Three models." },
+        { name: "NOISE Barrier", status: "In preparation", statusColor: "#898989", href: "CHILL - PRODUCT - NOISE Barrier - EN.dc.html", tagline: "Solar noise barrier", desc: "Solar panels integrated into roadside or railway sound barriers." },
+      ],
+      guidance: [
+        { name: "ARCADE vs CANOPY", when: "ARCADE creates a longer connected covered route; CANOPY is designed around movement beneath a single structure." },
+        { name: "BUS Shelter", when: "Choose for passenger waiting and boarding &#8212; different accessibility, seating and information needs from a pedestrian canopy." },
+        { name: "Not a bikeport", when: "Where bicycles are the primary use, see PUBLIC Bikeport in Carports &amp; parking &#8212; the user behaviour and layout differ." },
+      ],
+      engineering: [
+        { title: "Passenger flow", desc: "Access, circulation and accessibility are designed before structure and equipment." },
+        { title: "Accessibility", desc: "Clearances, seating and boarding requirements are project- and country-specific." },
+        { title: "Wind & snow loading", desc: "Exposure and span drive the structural design; confirmed per project." },
+        { title: "Lighting & security", desc: "Prepared positions for lighting, cameras and information, avoiding hidden corners." },
+        { title: "Drainage", desc: "Water directed away from waiting areas, seating and electrical equipment." },
+        { title: "Durability", desc: "Public-space contact, cleaning and replaceable components designed in." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

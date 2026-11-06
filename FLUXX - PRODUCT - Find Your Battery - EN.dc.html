@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<script src="./eu-numbers.js"></script>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>Find Your FLUXX Battery | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } input,textarea { font-family:inherit; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="FluxxNav" active="finder" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="FLUXX" rgb="253,199,6" eyebrow="FLUXX · Find your battery" title="Find your battery" slot="fluxx-find-your-battery-hero" shot="FLUXX · Find your battery · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import>
+<section style="max-width:calc(760px + 2 * var(--web-side));margin:0 auto;padding:48px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;"><a href="FLUXX - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">FLUXX</a> &#8250; <span style="color:var(--color-text-primary);">FIND YOUR BATTERY</span></div>
+
+    <sc-if value="{{ showProgress }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;gap:6px;margin-bottom:32px;">
+        <sc-for list="{{ progressDots }}" as="d" hint-placeholder-count="4">
+          <div style="height:4px;flex:1;border-radius:8px;background:{{ d.color }};"></div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isQuestion }}" hint-placeholder-val="{{ true }}">
+      <h2 style="margin:0 0 28px;font-size:var(--web-h1-size);line-height:var(--web-h1-lh);font-weight:100;letter-spacing:-0.01em;">{{ question.text }}</h2>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px;">
+        <sc-for list="{{ question.options }}" as="o" hint-placeholder-count="5">
+          <button onClick="{{ o.onPick }}" style="cursor:pointer;font-family:inherit;text-align:left;padding:4px var(--cta-pad-x,32px);border-radius:var(--cta-radius,8px);border:1px solid var(--color-divider);background:#FFFFFF;color:var(--color-text-primary);font-size:var(--cta-font,16px);font-weight:400;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;" style-hover="background:var(--color-surface-card);">{{ o.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:12px;">
+        <sc-if value="{{ canGoBack }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ onBack }}" style="cursor:pointer;font-family:inherit;height:var(--cta-height);padding:0 var(--cta-pad-x);background:none;border:1px solid var(--color-divider);border-radius:var(--cta-radius);color:var(--color-text-primary);font-size:var(--cta-font);"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg>Back</button>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isResults }}" hint-placeholder-val="{{ false }}">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">{{ result.confidence }}</div>
+      <h1 style="margin:0 0 12px;font-size:var(--web-h1-size);line-height:var(--web-h1-lh);font-weight:100;letter-spacing:-0.01em;">{{ result.headline }}</h1>
+      <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);">{{ result.why }}</p>
+
+      <div style="border:1px solid var(--color-divider);border-radius:12px;padding:24px;margin-bottom:20px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">Confirmed</div>
+        <div style="font-size:var(--web-small-size);color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ result.confirmed }}</div>
+      </div>
+      <div style="border:1px solid var(--color-divider);border-radius:12px;padding:24px;margin-bottom:20px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">Still to confirm</div>
+        <div style="font-size:var(--web-small-size);color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ result.toConfirm }}</div>
+      </div>
+      <div style="border:1px solid var(--color-divider);border-radius:12px;padding:24px;margin-bottom:20px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">Additional equipment needed</div>
+        <div style="font-size:var(--web-small-size);color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ result.additional }}</div>
+      </div>
+      <div style="border:1px solid var(--color-divider);border-radius:12px;padding:24px;margin-bottom:32px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">A relevant alternative</div>
+        <div style="font-size:var(--web-small-size);color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ result.alternative }}</div>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;">
+        <a href="{{ result.compareHref }}" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:var(--color-card-fluxx);color:var(--color-text-primary);border-radius:var(--cta-radius,8px);font-size:var(--cta-font,16px);font-weight:400;justify-content:center;box-sizing:border-box;">Compare</a>
+        <a href="{{ result.rangeHref }}" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:var(--color-card-fluxx);color:var(--color-text-primary);border-radius:var(--cta-radius,8px);font-size:var(--cta-font,16px);font-weight:400;justify-content:center;box-sizing:border-box;">View specifications</a>
+        <button onClick="{{ onRestart }}" style="cursor:pointer;font-family:inherit;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);background:var(--color-card-fluxx);color:var(--color-text-primary);border-radius:var(--cta-radius,8px);font-size:var(--cta-font,16px);border:none;font-weight:400;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Start over</button>
+      </div>
+
+      <div style="border-top:1px solid var(--color-divider);padding-top:28px;margin-bottom:56px;">
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Want advice or <span style="color:#8E8E8E;">a quotation?</span></h2>
+        <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Your answers are kept below. Contact details are optional unless you submit this to a specialist.</p>
+        <div style="background:var(--color-card-fluxx);border-radius:12px;padding:20px;margin-bottom:20px;font-size:var(--web-tag-size);color:var(--color-text-primary);line-height:1.8;font-weight:var(--web-tag-weight);">{{ result.answerSummary }}</div>
+        <sc-if value="{{ enquirySent }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:var(--web-small-size);font-weight:300;">Sent. A specialist will follow up.</div>
+        </sc-if>
+        <sc-if value="{{ enquiryNotSent }}" hint-placeholder-val="{{ true }}">
+          <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-bottom:16px;--cg:12px;">
+            <input value="{{ contact.name }}" onInput="{{ contact.onName }}" placeholder="Name (optional)" style="height:44px;padding:0 14px;border:1px solid var(--color-grey-40);border-radius:8px;font-size:var(--web-input-size);font-weight:var(--web-input-weight);" />
+            <input value="{{ contact.email }}" onInput="{{ contact.onEmail }}" placeholder="Email (optional)" style="height:44px;padding:0 14px;border:1px solid var(--color-grey-40);border-radius:8px;font-size:var(--web-input-size);font-weight:var(--web-input-weight);" />
+          </div>
+          <button style-hover="background:#5F5E5E;color:#F4F4F4;" onClick="{{ onSubmitEnquiry }}" style="cursor:pointer;font-family:inherit;height:var(--cta-height);padding:0 var(--cta-pad-x);background:#4F4F4E;color:#F4F4F4;border:none;border-radius:var(--cta-radius);font-size:var(--cta-font);">Send to a specialist</button>
+        </sc-if>
+      </div>
+    </sc-if>
+  </section>
+
+  <section id="configurator" data-screen-label="System Configurator" style="max-width:760px;margin:0 auto;padding:24px 40px 24px;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;display:flex;flex-direction:column;gap:24px;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">FLUXX <span style="color:#8E8E8E;">System Configurator</span></h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Build a system in four steps. Uses the FLUXX catalogue data. Pairings that aren't documented are marked TO CONFIRM.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">1 · Format</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <sc-for list="{{ cfg.formats }}" as="o" hint-placeholder-count="5">
+            <button onClick="{{ o.pick }}" style="{{ o.style }}">{{ o.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <sc-if value="{{ cfg.hasFormat }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">2 · Product and capacity</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <sc-for list="{{ cfg.products }}" as="o" hint-placeholder-count="4">
+              <button onClick="{{ o.pick }}" style="{{ o.style }}">{{ o.label }}</button>
+            </sc-for>
+          </div>
+          <sc-if value="{{ cfg.isStack }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px;">
+              <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Modules</span>
+              <button onClick="{{ cfg.dec }}" style="cursor:pointer;font-family:inherit;width:44px;height:var(--cta-height);border:1px solid var(--color-divider);background:#FFFFFF;border-radius:var(--cta-radius);font-size:var(--cta-font);padding:0 var(--cta-pad-x);">−</button>
+              <span style="font-size:var(--web-h3-size);font-weight:400;min-width:24px;text-align:center;">{{ cfg.count }}</span>
+              <button onClick="{{ cfg.inc }}" style="cursor:pointer;font-family:inherit;width:44px;height:var(--cta-height);border:1px solid var(--color-divider);background:#FFFFFF;border-radius:var(--cta-radius);font-size:var(--cta-font);padding:0 var(--cta-pad-x);">+</button>
+              <span style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">[TO CONFIRM: maximum modules per stack]</span>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+      <sc-if value="{{ cfg.needsInv }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">3 · Inverter</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ cfg.invNote }}</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <sc-for list="{{ cfg.inverters }}" as="o" hint-placeholder-count="4">
+              <button onClick="{{ o.pick }}" style="{{ o.style }}">{{ o.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ cfg.showParts }}" hint-placeholder-val="{{ false }}">
+        <div style="background:var(--color-card-fluxx);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">4 · Parts list</div>
+          <div style="font-size:var(--web-sub-size);"><strong style="font-weight:400;">{{ cfg.totalCap }}</strong> <span style="font-weight:300;">kWh</span> <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ cfg.totalPower }}</span></div>
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ cfg.parts }}" as="p" hint-placeholder-count="3">
+              <div style="display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:12px;padding:10px 0;border-top:1px solid var(--color-divider);font-size:var(--web-small-size);line-height:var(--web-small-lh);"><strong style="font-weight:400;">{{ p.qty }}×</strong><span style="font-weight:300;color:var(--color-text-primary);">{{ p.name }}</span><span style="{{ p.flagStyle }}">{{ p.flag }}</span></div>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="FLUXX - WEBSHOP - Shop - EN.dc.html" style="height:var(--cta-height);padding:0 var(--cta-pad-x);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);border-radius:var(--cta-radius);" style-hover="background:#5F5E5E;color:#F4F4F4;">View in the shop</a>
+            <button onClick="{{ cfg.reset }}" style="cursor:pointer;font-family:inherit;height:var(--cta-height);padding:0 var(--cta-pad-x);background:#FFFFFF;border:1px solid var(--color-divider);color:var(--color-text-primary);font-size:var(--cta-font);border-radius:var(--cta-radius);">Start over</button>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section id="sizing" data-screen-label="Battery Sizing" style="max-width:760px;margin:0 auto;padding:24px 40px 56px;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;display:flex;flex-direction:column;gap:20px;">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Battery sizing</h2>
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;border:1px solid #DDDDDD;border-radius:8px;padding:2px 6px;">Sample formula</span>
+      </div>
+      <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A first estimate. Enter what the home uses and the size of the solar system.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px;">
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);">Daily use (kWh)<input value="{{ sizing.use }}" onInput="{{ sizing.onUse }}" inputmode="decimal" style="height:44px;padding:0 14px;border:1px solid var(--color-grey-40);border-radius:8px;font-size:var(--web-input-size);font-weight:var(--web-input-weight);color:var(--color-text-primary);" /></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);">Solar size (kWp)<input value="{{ sizing.pv }}" onInput="{{ sizing.onPv }}" inputmode="decimal" style="height:44px;padding:0 14px;border:1px solid var(--color-grey-40);border-radius:8px;font-size:var(--web-input-size);font-weight:var(--web-input-weight);color:var(--color-text-primary);" /></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);">Evening and night use (%)<input value="{{ sizing.night }}" onInput="{{ sizing.onNight }}" inputmode="decimal" style="height:44px;padding:0 14px;border:1px solid var(--color-grey-40);border-radius:8px;font-size:var(--web-input-size);font-weight:var(--web-input-weight);color:var(--color-text-primary);" /></label>
+      </div>
+      <div style="background:var(--color-card-fluxx);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Suggested capacity</div>
+        <div style="font-size:var(--web-sub-size);"><strong style="font-weight:400;">{{ sizing.range }}</strong> <span style="font-weight:300;">kWh</span></div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ sizing.note }}</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Closest FLUXX sizes: <strong style="font-weight:400;color:var(--color-text-primary);">{{ sizing.sizes }}</strong></div>
+      </div>
+      <div style="font-size:12px;font-weight:300;color:var(--color-text-primary);line-height:1.7;border-left:0;padding:0;">
+        <div style="font-weight:400;margin-bottom:4px;">How this is calculated <span style="color:#5F5E5E;">[SAMPLE: to be confirmed]</span></div>
+        <div>Night need = daily use × evening and night share.</div>
+        <div>Solar surplus = solar size × 2,7 kWh per kWp per day <span style="color:#5F5E5E;">(SAMPLE yearly average)</span> − daytime use.</div>
+        <div>Suggested = the lower of the two, shown as a range from 80% to 120%.</div>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:32px;"></div>
+  <dc-import name="ContentSections" brand="FLUXX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="FLUXX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="FLUXX" accent="var(--color-brand-fluxx)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const IDK = "I don't know";
+
+const FLOW = {
+  application: {
+    text: "What are you looking to power?",
+    options: ["Portable or temporary power", "Home", "Business or commercial property", "Industrial or larger energy project", "Expansion of an existing FLUXX system"],
+    next: (a) => a === "Expansion of an existing FLUXX system" ? "existingModel" : a === "Portable or temporary power" ? "portableDuration" : a === "Home" ? "homeSolar" : "bizCapacity",
+  },
+  // Portable branch
+  portableDuration: { text: "How long do you need it to run?", options: ["A few hours", "A full day", "Multiple days", IDK], next: () => "portableCapacity" },
+  portableCapacity: { text: "Roughly how much capacity do you think you need?", options: ["Small (around 2.5 kWh)", "Medium (around 5 kWh)", "Large (10 kWh or more)", IDK], next: () => "results" },
+  // Home branch
+  homeSolar: { text: "Do you have solar installed, or planning to?", options: ["Existing solar installation", "Planning solar", "No solar", IDK], next: () => "homeObjective" },
+  homeObjective: { text: "What's the main objective?", options: ["Solar self-consumption", "Backup power", "Peak reduction", "Not sure yet"], next: () => "homeInverter" },
+  homeInverter: { text: "Do you want the inverter included, or do you already have one to keep?", options: ["Include everything (all-in-one)", "Battery only \u2014 I have an inverter", IDK], next: () => "homeCapacity" },
+  homeCapacity: { text: "Roughly how much capacity do you think you need?", options: ["Small (up to 5 kWh)", "Medium (5\u201316 kWh)", "Large (16 kWh or more)", IDK], next: () => "results" },
+  // Business branch
+  bizCapacity: { text: "Roughly how much total capacity do you need?", options: ["Up to 50 kWh", "50\u2013150 kWh", "More than 150 kWh", IDK], next: (a, ans) => ans.application === "Industrial or larger energy project" ? "results" : "bizCoupling" },
+  bizCoupling: { text: "Do you need this DC-coupled with solar, or AC-coupled / standalone?", options: ["DC-coupled with solar", "AC-coupled / standalone", IDK], next: () => "results" },
+  // Expansion branch
+  existingModel: { text: "What's your existing FLUXX model or family?", options: ["BOWI", "TRIFFID", "BLOQ", "STAQ", "LINEA", "KYUZ", "Something else", IDK], next: () => "results" },
+};
+
+function recommend(ans) {
+  const app = ans.application;
+  if (app === "Portable or temporary power") {
+    const cap = ans.portableCapacity;
+    const name = cap && cap.startsWith("Small") ? "PICO or BOLT" : cap && cap.startsWith("Medium") ? "NODE or TORQ" : cap && cap.startsWith("Large") ? "DOCK or WORK" : "PICO through WORK";
+    return {
+      confidence: "Potential match", headline: name,
+      why: "Based on a portable/temporary use case" + (cap && cap !== IDK ? " and the capacity range you selected" : ", though capacity wasn't specified") + ".",
+      confirmed: "Capacity: PICO/BOLT 2.56 kWh, NODE/TORQ 5.12 kWh, DOCK/WORK 10.24 kWh.",
+      toConfirm: "Output power rating is not published for this group \u2014 confirm with a specialist if you have specific appliance startup loads.",
+      additional: "None documented \u2014 these are self-contained.",
+      alternative: "If you'll use it repeatedly at a fixed location, a plug-and-play system (POUF, OTTO) draws on solar instead of needing to be recharged.",
+    };
+  }
+  if (app === "Home") {
+    const wantsBatteryOnly = ans.homeInverter === "Battery only \u2014 I have an inverter";
+    const cap = ans.homeCapacity;
+    if (wantsBatteryOnly) {
+      return {
+        confidence: "Compatibility confirmed", headline: "BLOQ or STAQ (battery only)",
+        why: "You already have an inverter, so a battery-only product avoids paying for one you don't need.",
+        confirmed: "BLOQ: fixed 5.12\u201332.12 kWh. STAQ: stackable 2.56/5.12 kWh modules.",
+        toConfirm: "Compatibility with your specific existing inverter is not inferred from voltage alone \u2014 this needs a documented pairing check.",
+        additional: "STAQ needs its BMS + foot + cover + frame kit. Neither BLOQ nor STAQ includes an inverter.",
+        alternative: "If your existing inverter isn't a confirmed FLUXX pairing, an all-in-one (BOWI, TRIFFID) avoids the compatibility question entirely.",
+      };
+    }
+    const size = cap && cap.startsWith("Small") ? "POUF, OTTO or KUBUZ" : cap && cap.startsWith("Medium") ? "BOWI" : cap && cap.startsWith("Large") ? "BOWI PRO or TRIFFID" : "one of the plug-and-play or monobloc all-in-one families";
+    return {
+      confidence: "Potential match", headline: size,
+      why: "Based on wanting an all-in-one system" + (cap && cap !== IDK ? " at the capacity you selected" : "") + ".",
+      confirmed: "POUF 2,56 kWh, OTTO 5,12 kWh, DIVAN 5,12 kWh, BENCH 10,24 kWh, BOWI 2,0 / 5,0 / 10,0 / 16,0 kWh, BOWI PRO 16,08 / 32,16 kWh, TRIFFID 1,28 to 32,12 kWh (7 variants).",
+      toConfirm: "Backup capability during a grid outage is not confirmed for every model \u2014 check the specific product if that matters to you.",
+      additional: "None beyond the unit itself for all-in-one families.",
+      alternative: "TRIFFID's flex on-grid range covers the widest span of power/capacity combinations if your requirement sits between the fixed sizes above.",
+    };
+  }
+  const cap = ans.bizCapacity;
+  const dc = ans.bizCoupling === "DC-coupled with solar";
+  if (app === "Industrial or larger energy project" || (cap && cap.includes("150"))) {
+    return {
+      confidence: "Requires engineering review", headline: "KOFR or SILO (commercial enclosure)",
+      why: "This capacity range needs a project-level technical assessment rather than a direct recommendation.",
+      confirmed: "KOFR: container, 30/50/80 kVA, 128 kWh (+128 kWh extension). SILO: cabinet, 144\u2013241 kWh.",
+      toConfirm: "Site electrical design, PCS/transformer requirements and layout are not resolved by this questionnaire.",
+      additional: "Varies by project \u2014 confirmed in the engineering review.",
+      alternative: "KYUZ's modular commercial platform may fit better if the site can be served by a stack of smaller modules instead of one enclosure.",
+    };
+  }
+  return {
+    confidence: "Potential match", headline: dc ? "KYUZ (DC-coupled commercial modular)" : "KYUZ inverter/power module (AC-coupled) or a KOFR container",
+    why: "Based on a commercial capacity range" + (ans.bizCoupling && ans.bizCoupling !== IDK ? " and your coupling preference" : "") + ".",
+    confirmed: "KYUZ: 12.06 kWh battery modules, power modules 50\u2013125 kVA each, in parallel up to MW scale.",
+    toConfirm: "Exact module count for your target capacity isn't calculated here \u2014 confirm with a specialist.",
+    additional: "KYUZ needs its BMS + foot and cover + foot modules alongside the battery and inverter modules.",
+    alternative: "KOFR packages inverter and battery into one container if you'd rather not assemble a modular stack on site.",
+  };
+}
+
+class Component extends DCLogic {
+  cfgVals() {
+    const f = (x) => String(x).replace(".", ",");
+    const fc = (x) => (x % 1 ? String(x) : x.toFixed(1)).replace(".", ",");
+    const P = (name, cap, kva, o = {}) => ({ name, cap, kva, ...o });
+    const DATA = {
+      "Plug and Play": [P("BOWI", 2.0, "1,5 / 2,5"), P("BOWI", 5.0, "2,5 / 3,6"), P("BOWI", 10.0, "3,6 / 5,0"), P("BOWI", 16.0, "3,6 / 5,0"), P("KUBUZ 2.5 ESS", 2.56, 2.5), P("TURA battery", 2.56, null, { stack: true, unit: "TURA unit 2,5 kVA" })],
+      "Monobloc": [P("POUF 2.5 AIO", 2.56, 2.5), P("OTTO", 5.12, 2.5), P("DIVAN 5.1 AIO", 5.12, 2.5), P("BENCH 10.2 AIO", 10.24, 2.5), P("BOWI PRO", 16.08, 3.6), P("BOWI PRO", 32.16, 4.6), P("TRIFFID", 1.28, 0.8), P("TRIFFID", 4.01, 2.5), P("TRIFFID", 5.12, 5.0), P("TRIFFID", 8.04, 4.0), P("TRIFFID", 16.07, 6.0), P("TRIFFID", 16.07, 11.0), P("TRIFFID", 32.12, 11.0), P("BLOQ LV", 5.12, null, { inv: "LV" }), P("BLOQ LV", 10.24, null, { inv: "LV" }), P("BLOQ LV", 16.08, null, { inv: "LV" }), P("BLOQ LV", 32.12, null, { inv: "LV" })],
+      "Stackable": [P("BOWI STACK 2.5", 2.56, null, { stack: true, unit: "BOWI STACK top inverter (rating TO CONFIRM)", kit: "BOWI STACK floor base tray" }), P("BOWI STACK 5", 5.12, null, { stack: true, unit: "BOWI STACK top inverter (rating TO CONFIRM)", kit: "BOWI STACK floor base tray" }), P("STAQ LV", 2.56, null, { stack: true, inv: "LV", kit: "STAQ BMS kit LV" }), P("STAQ LV", 5.12, null, { stack: true, inv: "LV", kit: "STAQ BMS kit LV" }), P("STAQ HV", 2.56, null, { stack: true, inv: "HV", kit: "STAQ BMS kit HV" }), P("STAQ HV", 5.12, null, { stack: true, inv: "HV", kit: "STAQ BMS kit HV" }), P("LINEA battery", 5.12, null, { stack: true, inv: "LINEA" }), P("KYUZ", 12.06, null, { stack: true, inv: "KYUZ", kits: ["KYUZ BMS module", "KYUZ cover kit"] })],
+      "Cabinet": [P("SILO", 144, null, { opt: "SILO shelter" }), P("SILO", 176, null, { opt: "SILO shelter" }), P("SILO", 208, null, { opt: "SILO shelter" }), P("SILO", 241, null, { opt: "SILO shelter" })],
+      "Container": [P("FLUXX-5016-20HQ", 5016, 2500), P("KOFR", 128, 30, { opt: "KOFR extension 128 kWh" }), P("KOFR", 128, 50, { opt: "KOFR extension 128 kWh" }), P("KOFR", 128, 80, { opt: "KOFR extension 128 kWh" })],
+    };
+    const I = (name, kva, doc) => ({ name, kva, doc });
+    const INV = {
+      LINEA: [3.0, 3.6, 4.0, 4.6, 5.0, 6.0].map((k) => I("LINEA 1-phase", k, true)).concat([5.0, 6.0, 8.0, 10.0, 12.0].map((k) => I("LINEA 3-phase", k, true))),
+      KYUZ: [50, 60, 80, 100, 110, 125].map((k) => I("KYUZ inverter", k, true)),
+      LV: [3.6, 5.0, 6.0].map((k) => I("MOEBIUS ALVIX Modular LV", k, false)),
+      HV: [3.0, 3.6, 3.68, 4.6, 5.0, 6.0].map((k) => I("MOEBIUS LUNOX Modular HV", k, false)).concat([8, 10, 15, 20, 25].map((k) => I("MOEBIUS SYRA Modular HV", k, false))),
+    };
+    const c = this.state.cfg || {};
+    const set = (patch) => this.setState((s) => ({ cfg: { ...(s.cfg || {}), ...patch } }));
+    const btn = (on) => ({ cursor: "pointer", fontFamily: "inherit", minHeight: "44px", padding: "0 16px", fontSize: "14px", borderRadius: "8px", border: on ? "1px solid var(--color-text-primary)" : "1px solid var(--color-divider)", background: on ? "#252525" : "#FFFFFF", color: on ? "#FFFFFF" : "#4F4F4E" });
+    const formats = Object.keys(DATA).map((k) => ({ label: k, style: btn(c.format === k), pick: () => set({ format: k, prod: null, inv: null, count: 1 }) }));
+    const list = c.format ? DATA[c.format] : [];
+    const products = list.map((p, j) => ({ label: p.name + " · " + fc(p.cap) + " kWh" + (p.kva ? " · " + f(p.kva) + " kVA" : ""), style: btn(c.prod === j), pick: () => set({ prod: j, inv: null, count: c.count || 1 }) }));
+    const prod = c.prod != null ? list[c.prod] : null;
+    const count = prod && prod.stack ? (c.count || 1) : 1;
+    const invList = prod && prod.inv ? INV[prod.inv] : [];
+    const inverters = invList.map((v, j) => ({ label: v.name + " · " + f(v.kva) + " kVA" + (v.doc ? "" : " · TO CONFIRM"), style: btn(c.inv === j), pick: () => set({ inv: j }) }));
+    const invNote = prod && prod.inv ? (prod.inv === "LINEA" || prod.inv === "KYUZ" ? "Same-series inverter." : "Voltage class matches (" + prod.inv + "). A matching voltage alone does not confirm compatibility: pairing TO CONFIRM.") : "";
+    const inv = c.inv != null ? invList[c.inv] : null;
+    const needsInv = !!(prod && prod.inv);
+    const showParts = !!prod && (!needsInv || !!inv);
+    const parts = [];
+    if (prod) {
+      parts.push({ qty: count, name: prod.name + " " + fc(prod.cap) + " kWh" + (prod.kva ? " · " + f(prod.kva) + " kVA" : ""), flag: "" });
+      if (prod.unit) parts.push({ qty: 1, name: prod.unit, flag: "" });
+      if (prod.kit) parts.push({ qty: 1, name: prod.kit, flag: "Per stack" });
+      (prod.kits || []).forEach((k) => parts.push({ qty: 1, name: k, flag: "Quantity TO CONFIRM" }));
+      if (inv) parts.push({ qty: 1, name: inv.name + " " + f(inv.kva) + " kVA", flag: inv.doc ? "" : "Pairing TO CONFIRM" });
+      if (prod.opt) parts.push({ qty: "0\u20131", name: prod.opt, flag: "Optional" });
+    }
+    const partsOut = parts.map((p) => ({ ...p, flagStyle: { fontSize: "12px", fontWeight: 300, color: /TO CONFIRM/.test(p.flag) ? "#5F5E5E" : "#5F5E5E" } }));
+    const kva = inv ? inv.kva : prod && prod.kva ? prod.kva : prod && prod.unit ? 2.5 : null;
+    return {
+      formats, hasFormat: !!c.format, products, isStack: !!(prod && prod.stack), count,
+      inc: () => set({ count: count + 1 }), dec: () => set({ count: Math.max(1, count - 1) }),
+      needsInv, inverters, invNote, showParts, parts: partsOut,
+      totalCap: prod ? (Math.round(prod.cap * count * 100) / 100).toFixed(2).replace(".", ",") : "",
+      totalPower: kva ? "· " + f(kva) + " kVA" : "",
+      reset: () => this.setState({ cfg: {} }),
+    };
+  }
+  state = { step: "application", history: [], answers: {}, contact: { name: "", email: "" }, enquirySent: false, sz: { use: "10", pv: "5", night: "60" } };
+
+  sizingVals() {
+    const n = (v) => { const x = parseFloat(String(v).replace(",", ".")); return isFinite(x) && x >= 0 ? x : 0; };
+    const f = (x) => x.toFixed(1).replace(".", ",");
+    const sz = this.state.sz;
+    const use = n(sz.use), pv = n(sz.pv), share = Math.min(100, n(sz.night)) / 100;
+    const nightNeed = use * share;
+    const surplus = Math.max(0, pv * 2.7 - use * (1 - share));
+    const base = Math.min(nightNeed, surplus);
+    const SIZES = [2.56, 5.12, 10.24, 16.08, 32.16];
+    let range = "–", note = "Enter daily use and solar size.", sizes = "–";
+    if (use > 0 && pv > 0) {
+      const lo = base * 0.8, hi = base * 1.2;
+      range = base > 0 ? f(lo) + " to " + f(hi) : "0";
+      note = surplus < nightNeed ? "Limited by solar surplus: the panels don't produce enough extra to cover the whole night." : "Limited by night use: a larger battery would rarely be filled or emptied.";
+      const pick = SIZES.filter((s) => s >= lo && s <= hi);
+      const near = pick.length ? pick : [SIZES.reduce((a, b) => Math.abs(b - base) < Math.abs(a - base) ? b : a)];
+      sizes = near.map((s) => s.toFixed(2).replace(".", ",") + " kWh").join(", ");
+    }
+    const set = (k) => (e) => { const v = e.target.value; this.setState((s) => ({ sz: { ...s.sz, [k]: v } })); };
+    return { use: sz.use, pv: sz.pv, night: sz.night, onUse: set("use"), onPv: set("pv"), onNight: set("night"), range, note, sizes };
+  }
+
+  pick(label) {
+    const step = this.state.step;
+    const q = FLOW[step];
+    const answers = { ...this.state.answers, [step]: label };
+    const next = q.next(label, answers);
+    this.setState((s) => ({ step: next, history: [...s.history, step], answers }));
+  }
+  back() {
+    this.setState((s) => {
+      const h = s.history.slice();
+      const prev = h.pop();
+      return { step: prev, history: h };
+    });
+  }
+  restart() { this.setState({ step: "application", history: [], answers: {}, enquirySent: false }); }
+
+  renderVals() {
+    const st = this.state;
+    const isResults = st.step === "results";
+    const q = !isResults ? FLOW[st.step] : null;
+    const depth = st.history.length;
+    const totalGuess = 5;
+    const dots = Array.from({ length: totalGuess }, (_, i) => ({ color: i < depth ? "#4F4F4E" : i === depth ? "var(--color-brand-fluxx)" : "#E3E3E3" }));
+
+    let result = null;
+    if (isResults) {
+      const r = recommend(st.answers);
+      const summary = Object.entries(st.answers).map(([k, v]) => `${k}: ${v}`).join(" \u00b7 ");
+      result = { ...r, compareHref: "FLUXX - PRODUCT - Compare - EN.dc.html", rangeHref: "FLUXX - PRODUCT - Products - EN.dc.html", answerSummary: summary || "No answers recorded." };
+    }
+
+    return {
+      showProgress: !isResults,
+      progressDots: dots,
+      isQuestion: !isResults,
+      isResults,
+      question: q ? { text: q.text, options: q.options.map((o) => ({ label: o, onPick: () => this.pick(o) })) } : { text: "", options: [] },
+      canGoBack: depth > 0,
+      onBack: () => this.back(),
+      result: result || {},
+      onRestart: () => this.restart(),
+      contact: {
+        name: st.contact.name, email: st.contact.email,
+        onName: (e) => this.setState((s) => ({ contact: { ...s.contact, name: e.target.value } })),
+        onEmail: (e) => this.setState((s) => ({ contact: { ...s.contact, email: e.target.value } })),
+      },
+      enquirySent: st.enquirySent,
+      enquiryNotSent: !st.enquirySent,
+      onSubmitEnquiry: () => this.setState({ enquirySent: true }),
+      sizing: this.sizingVals(),
+      cfg: this.cfgVals(),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>WURK Overview | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style> @media (max-width:720px){ .hero-card{width:calc(100% - 40px) !important;margin-top:20px !important;min-height:calc((100vw - 40px) * 1.25) !important;align-items:flex-end !important;} .hero-card-panel{width:100% !important;align-self:auto !important;padding:28px 20px !important;} } 
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  .wk-route:hover { border-color:var(--color-brand-wurk) !important; }
+  .wk-route:hover .wk-route-t { color:var(--color-text-primary); }
+  .wk-fam:hover { border-color:var(--color-brand-wurk) !important; }
+  .wk-fam:hover .wk-fam-t { color:var(--color-text-primary); }
+  .wk-util:hover { border-color:var(--color-brand-wurk) !important; }
+  .wk-util:hover .wk-util-t { color:var(--color-text-primary); }
+  .wk-app:hover { background:#FAFAF8 !important; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);--wk-gap:{{ wkGap }};--wk-hero:{{ wkHero }};">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="WurkNav" active="overview" hint-size="100%,57px"></dc-import>
+  <!-- 01. HERO -->
+  <dc-import name="BrandHero2" brand="WURK" rgb="158,61,46" dark="#5E2219" title="WURK. Equipment built for energy work." intro="Professional tools, access systems, safety equipment and handling solutions for solar, battery, electrical and energy-system installers." items="{{ brandSix }}" hint-size="100%,760px"></dc-import>
+  <!-- DEPTH-1261: shared range block (ANDO layout); former block archived in _ARCHIVE/DEPTH-1261 range block/ -->
+  <dc-import name="RangeBlock" hide-tool="1" brand="WURK" hint-size="100%,900px"></dc-import>
+  <!-- KALK CHECK (DEPTH-1354) -->
+  <section id="kalk-check" data-screen-label="KALK check" data-stack="1" style="position:relative;width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:72px auto 0;min-height:max(380px,calc(min(100vw - 2 * var(--web-side),1312px) / 3.2));border-radius:24px;overflow:hidden;background:#4F4F4E;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);box-sizing:border-box;">
+    
+    <div style="grid-column:span 1;background:#FFFFFF;padding:clamp(24px,2.6vw,36px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:12px;">
+      <div style="display:flex;align-items:center;gap:8px;font-size:15px;color:#252525;">WURK by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:20px;width:auto;display:block;filter:brightness(0);"></div>
+      <h2 style="margin:0;font-size:clamp(28px,2.6vw,38px);font-weight:200;line-height:1.1;letter-spacing:-0.5px;color:#252525;text-wrap:balance;">Build your crew kit</h2>
+      
+      <p style="margin:0;font-size:15px;font-weight:300;line-height:1.45;color:#5F5E5E;text-wrap:pretty;">Tell KALK what your crew installs. KALK puts together the WURK tools. Your local distributor sends the price.</p>
+      <a href="KALK - Crew kit WURK - EN.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:8px;background:#9E3D2E;color:#252525;font-size:16px;text-decoration:none;" style-hover="background:#252525;color:#FFFFFF;">Start the crew kit check &#8250;</a>
+      <a href="KERN - SYSTEM - Overview - EN.dc.html" style="align-self:flex-start;font-size:14px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #BBBBBB;padding-bottom:2px;" style-hover="color:#252525;border-bottom-color:#252525;">Professional project team? Deliver with KERN &#8250;</a>
+      
+    </div>
+    <div style="grid-column:span 1;position:relative;min-height:240px;"><div style="position:absolute;inset:0;background:#FFFFFF;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;border-left:1px solid #E3E3E3;"><img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="" style="width:40%;max-width:220px;filter:brightness(0);opacity:0.12;"></div></div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Start with the work you need to complete</div>
+    <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:820px;">WURK is organised around the task, the site and the risk. Choose a route and the website narrows the equipment, documentation and support you need.</p>
+    <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;--cg:20px;">
+      <sc-for list="{{ routes }}" as="r" hint-placeholder-count="3">
+        <a class="wk-route" href="{{ r.href }}" style="border-top:3px solid var(--color-brand-wurk);padding:32px 28px;display:flex;flex-direction:column;gap:14px;min-height:220px;background:#F4F4F4;border-radius:12px;">
+          <div class="wk-route-t" style="font-size:19px;font-weight:700;letter-spacing:-0.01em;line-height:1.2;">{{ r.title }}</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);flex:1;max-width:760px;">{{ r.body }}</p>
+          <span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">{{ r.cta }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+  
+  <!-- WHO IT IS FOR (DEPTH-1329) -->
+  <dc-import name="AudienceTiles" brand="WURK" rgb="158,61,46" hint-size="100%,640px"></dc-import>
+  <!-- DEPTH-1265: BRAND with EMON block under the range -->
+  <dc-import name="EmonBlock" brand="WURK" hint-size="100%,860px"></dc-import>
+  <dc-import name="PlanningOperation" brand="WURK" hint-size="100%,760px"></dc-import>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:var(--wk-gap,96px) var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">WURK kits</div>
+      <h2 style="margin:0 0 12px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One crew. <span style="color:#8E8E8E;">One coherent equipment system.</span></h2>
+      <p style="margin:0 0 32px;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">WURK kits combine products around a professional task. They remain configurable because connector types, system voltages, roof conditions and project risks differ.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ kits }}" as="k" hint-placeholder-count="7">
+          <a class="wk-util" href="WURK - PRODUCT - Kits - EN.dc.html" style="padding:24px;display:flex;flex-direction:column;gap:10px;min-height:150px;justify-content:space-between;background:#F4F4F4;border-radius:12px;">
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;">
+                <span class="wk-util-t" style="font-size:15px;font-weight:700;letter-spacing:0.01em;">{{ k.name }}</span>
+                <sc-if value="{{ k.chip }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);background:#FBF3CC;padding:3px 7px;white-space:nowrap;border-radius:8px;">{{ k.chip }}</span></sc-if>
+              </div>
+              <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ k.desc }}</p>
+            </div>
+            <span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">Configure<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+          </a>
+        </sc-for>
+        <div style="border:1px solid var(--color-brand-wurk);background:#FBF9EF;padding:24px;display:flex;flex-direction:column;gap:12px;justify-content:center;border-radius:12px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Not sure where to start?</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">The kit builder requests country, application, crew size and task before recommending a configuration.</p>
+          <a href="WURK - PRODUCT - Kits - EN.dc.html" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">Build a WURK kit<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+        </div>
+      </div>
+      <p style="margin:20px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:820px;line-height:var(--web-min-lh);">A fixed roof-safety kit is never shown as universally suitable. WURK requests roof type, access method, anchor strategy, users, rescue approach and country before recommending a fall-protection configuration.</p>
+    </div>
+  </section>
+  <section style="background:var(--color-bg-canvas);margin-top:var(--wk-gap,96px);">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:center;">
+        <div>
+          <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">WURK selector</div>
+          <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Tell us about the work. <span style="color:#8E8E8E;">Not the product name.</span></h2>
+          <p style="margin:0 0 24px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The WURK selector starts with the installation task and removes unsuitable options before showing equipment &#8212; by height, load, voltage, connector, surface and country.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            
+            <a href="WURK - PRODUCT - Selector - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-card-wurk);border:1px solid var(--color-divider);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Upload a project list</a>
+          </div>
+        </div>
+        <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;--cg:12px;">
+          <sc-for list="{{ selectorInputs }}" as="i" hint-placeholder-count="8">
+            <div style="background:#F4F4F4;padding:14px 16px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:var(--color-text-primary);border-radius:12px;">{{ i }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <dc-import name="AndoPattern" brand="WURK" items="facts,responsibility" hint-size="100%,600px"></dc-import>
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;"><p style="margin:0 0 16px;max-width:760px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#4F4F4E;"></p><div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0;"><a href="WURK - PRODUCT - Kits - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;white-space:nowrap;background:#FFFFFF;color:#4F4F4E;border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Build a crew kit</a><a href="WURK - PRODUCT - Products - EN.dc.html" style="font-size:var(--web-link-size);padding:0 6px;height:44px;display:inline-flex;align-items:center;color:#4F4F4E;text-decoration:underline;font-weight:var(--web-link-weight);">View all products<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a></div></section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;">
+
+    <p style="margin:0 0 36px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;border-left:2px solid var(--color-brand-wurk);padding-left:16px;">Every released WURK product is supported by model-specific instructions, applicable conformity documents, spare-part information and QR-linked lifecycle records.</p>
+    
+    </section>
+  <!-- 02. PROFESSIONAL ROUTES -->
+  
+  <!-- MORE CHAPTERS behind Read more (DEPTH-1329) -->
+  <details data-screen-label="More about WURK" style="margin:0;padding:0;"><summary style="list-style:none;cursor:pointer;max-width:calc(1312px + 2 * var(--web-side));margin:48px auto 0;padding:0 var(--web-side);box-sizing:border-box;min-height:44px;display:flex;align-items:center;font-family:var(--font-web);font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;"><span style="border-bottom:1px solid #4F4F4E;padding-bottom:2px;">Read more about WURK (6)</span></summary>
+  <!-- 03. THE PROBLEM -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:var(--wk-gap,96px) var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <h2 style="margin:0 0 16px;max-width:760px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Energy installers do not need <span style="color:#8E8E8E;">more generic tools.</span></h2>
+      <p style="margin:0 0 8px;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">They need the correct tools for the work they repeat every day.</p>
+      <p style="margin:0 0 40px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:820px;">A connector tool must match the connector and cable. A tester must match the system voltage and measurement category. A battery trolley must match the product weight, dimensions, stairs and route through the building. Access equipment must match the height, duration, surface and load. WURK brings these decisions into one professional equipment system.</p>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ proofBlocks }}" as="p" hint-placeholder-count="4">
+          <div style="background:#F4F4F4;padding:26px 24px;display:flex;flex-direction:column;gap:10px;border-radius:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ p.t }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ p.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <!-- 04. PRODUCT FAMILIES -->
+  <!-- 05. COMPLETE WORKFLOW -->
+  <section style="background:var(--color-text-primary);margin-top:var(--wk-gap,96px);color:#FFFFFF;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">The complete workflow</div>
+      <h2 style="margin:0 0 40px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#FFFFFF;text-wrap:balance;">From the van <span style="color:#B2B3B3;">to the final test.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;">
+        <sc-for list="{{ workflow }}" as="w" hint-placeholder-count="7">
+          <div style="background:var(--color-text-primary);padding:24px 18px;display:flex;flex-direction:column;gap:10px;min-height:190px;border-radius:12px;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);letter-spacing:var(--web-eyebrow-ls);">{{ w.n }}</span>
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#FFFFFF;">{{ w.t }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#9A9A98;">{{ w.d }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:28px;">
+        <a href="WURK - PRODUCT - Kits - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-wurk);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Build my WURK workflow</a>
+      </div>
+    </div>
+  </section>
+  <!-- 06. SAFETY RELEASE PRINCIPLE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:var(--wk-gap,96px) var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start;--cg:48px;">
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">The WURK release standard</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Safety equipment is not <span style="color:#8E8E8E;">a colourway.</span></h2>
+        <p style="margin:0 0 16px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A harness, mobile tower, lifting trolley or powered access platform cannot be treated like a generic accessory.</p>
+        <p style="margin:0 0 16px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">WURK safety-critical products only move from development to public sale when the applicable technical file, conformity evidence, user instructions, product marking, traceability, inspection process and service responsibility are complete.</p>
+        <p style="margin:0 0 24px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">Where national rules, training or project engineering affect the selection, the website says so before a product can be ordered.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="WURK - SUPPORT - Ownership and Support - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">View the release standard</a>
+          <a href="WURK - PRODUCT - Selector - EN.dc.html" style="font-size:var(--web-link-size);padding:0 20px;height:44px;display:inline-flex;align-items:center;color:var(--color-text-primary);font-weight:var(--web-link-weight);">Request project spec<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+        </div>
+      </div>
+      <div style="border:1px solid var(--color-divider);background:#FBFBFA;border-radius:12px;overflow:hidden;">
+        <div style="padding:18px 24px;border-bottom:1px solid var(--color-divider);background:#FFFFFF;display:flex;align-items:center;gap:10px;">
+          <span style="width:9px;height:9px;background:var(--color-brand-wurk);"></span>
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Technical file checklist</span>
+        </div>
+        <sc-for list="{{ releaseChecklist }}" as="c" hint-placeholder-count="7">
+          <div style="display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;padding:13px 24px;border-bottom:1px solid var(--color-surface-card);align-items:baseline;">
+            <span style="font-size:var(--web-small-size);color:var(--color-text-primary);line-height:var(--web-small-lh);">&#10003;</span>
+            <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ c }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <!-- 07. QR LIFECYCLE -->
+  <section style="background:var(--color-bg-canvas);margin-top:var(--wk-gap,96px);">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center;">
+        <div>
+          <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">WURK product record</div>
+          <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Scan the product, <span style="color:#8E8E8E;">not a filing cabinet.</span></h2>
+          <p style="margin:0 0 16px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Each released WURK product carries a model-specific QR code. Higher-value equipment may also use NFC. A WURK case can carry one main QR code that opens the complete kit list, so the crew can check tools, leads, dies and accessories are present before leaving the warehouse or site.</p>
+          <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="WURK - SUPPORT - Inspection - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">See how inspection works</a>
+        </div>
+        <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;--cg:12px;">
+          <sc-for list="{{ recordItems }}" as="r" hint-placeholder-count="10">
+            <div style="background:#F4F4F4;padding:14px 18px;font-size:12px;font-weight:300;color:var(--color-text-primary);display:flex;gap:8px;align-items:baseline;border-radius:12px;"><span style="color:var(--color-text-primary);font-size:9px;">&#9679;</span>{{ r }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 08. KITS -->
+  
+  <!-- 09. APPLICATIONS (interactive chooser) -->
+  
+  <!-- 10. SELECTOR -->
+  
+  <!-- 11. TRAINING -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:var(--wk-gap,96px) var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">WURK training</div>
+      <h2 style="margin:0 0 12px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Equipment is only part <span style="color:#8E8E8E;">of the method.</span></h2>
+      <p style="margin:0 0 32px;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">WURK training connects product use, inspection and installation workflow.</p>
+      <div data-cols="5" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ training }}" as="t" hint-placeholder-count="10">
+          <div style="background:#F4F4F4;padding:18px 16px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);line-height:1.4;color:var(--color-text-primary);min-height:70px;display:flex;align-items:flex-start;border-radius:12px;">{{ t }}</div>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:820px;line-height:var(--web-min-lh);">Training content does not replace legally required competence, employer instruction, rescue planning or country-specific certification.</p>
+    </div>
+  </section>
+  <!-- 12. REFERENCES -->
+  
+  <!-- 13. KNOWLEDGE -->
+  
+  <!-- 14. SUPPORT -->
+  
+  <!-- FINAL CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:var(--wk-gap,96px) var(--web-side) 96px;box-sizing:border-box;">
+    <div style="background:var(--color-brand-wurk);padding:64px 56px;border-radius:12px;">
+      <div style="margin-bottom:20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">One case. One crew. The correct tools.</div>
+      <h2 style="margin:0 0 16px;max-width:760px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Get the right equipment <span style="color:#8E8E8E;">to site before the team arrives.</span></h2>
+      <p style="margin:0 0 32px;max-width:640px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Start with the task. WURK narrows the equipment, documentation and support to match the work, the site and the risk.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;">
+        
+        <a href="WURK - PRODUCT - Kits - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:transparent;border:1px solid var(--color-text-primary);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Build a crew kit</a>
+      </div>
+    </div>
+  </section>
+  </details>
+  <!-- ENGINEERING AND MANUFACTURING LINK (DEPTH-77) -->
+  
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:var(--wk-gap,96px) var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Choose by application</div>
+      <h2 style="margin:0 0 32px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Made for the systems <span style="color:#8E8E8E;">energy installers build.</span></h2>
+      <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:start;">
+        <div style="flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:1px;background:var(--color-divider);border-radius:12px;">
+          <sc-for list="{{ applications }}" as="a" hint-placeholder-count="6">
+            <button class="wk-app" onClick="{{ a.onClick }}" style="text-align:left;cursor:pointer;font-family:inherit;border:none;padding:16px 20px;background:{{ a.bg }};font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ a.color }};border-radius:8px;">{{ a.label }}</button>
+          </sc-for>
+        </div>
+        <div style="flex:999 1 min(100%,400px);min-width:0;padding:32px;min-height:280px;background:#F4F4F4;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">{{ activeApp.label }}</div>
+          <p style="margin:0 0 24px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:640px;">{{ activeApp.body }}</p>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:12px;">Typical WURK families</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;">
+            <sc-for list="{{ activeApp.families }}" as="fam" hint-placeholder-count="4">
+              <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.04em;color:var(--color-text-primary);border:1px solid var(--color-divider);padding:6px 12px;border-radius:8px;">{{ fam }}</span>
+            </sc-for>
+          </div>
+          <a href="WURK - PRODUCT - Selector - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-wurk);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Select by application</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- MANUFACTURING (DEPTH-1230) -->
+  <section id="manufacturing" data-screen-label="Manufacturing" style="scroll-margin-top:156px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:40px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px 72px;align-items:center;">
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Manufacturing</h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">WURK equipment follows product-specific routes, from precision metalworking and moulding to electronics, textile assembly and structural fabrication. Tools and instruments are verified for their declared tasks; safety, access and handling products are released with their technical evidence and inspection procedures. Identified products are assembled into compatible crew kits and supported through service and retirement.</p>
+        <a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - WURK - EN.dc.html#em-wurk-machines" style="align-self:flex-start;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;" style-hover="color:#F76801;border-bottom-color:#F76801;">Explore the manufacturing process &#8250;</a>
+      </div>
+      <div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="wurk-manufacturing-photo" shape="rounded" radius="12" placeholder="WURK manufacturing photo, 4:3: production line or test station"></image-slot></div>
+    </div>
+    <details style="border-top:1px solid #DDDDDD;padding-top:16px;">
+      <summary style="cursor:pointer;list-style:none;display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;">Read more</summary>
+      <div style="display:flex;flex-direction:column;gap:16px;padding-top:24px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Production · 12 stages</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px;">
+        <a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - WURK - EN.dc.html#em-wurk-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-wurk,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">01</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">CRIMP</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - WURK - EN.dc.html#em-wurk-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-wurk,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">02</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">PREP</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - WURK - EN.dc.html#em-wurk-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-wurk,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">03</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Torque tools</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - WURK - EN.dc.html#em-wurk-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-wurk,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">04</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">GAUGE</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - WURK - EN.dc.html#em-wurk-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-wurk,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">05</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">PROBE</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - WURK - EN.dc.html#em-wurk-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-wurk,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">06</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">HOLD</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - WURK - EN.dc.html#em-wurk-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-wurk,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">07</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">RAIL</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - WURK - EN.dc.html#em-wurk-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-wurk,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">08</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">RISE</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - WURK - EN.dc.html#em-wurk-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-wurk,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">09</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">HAUL</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - WURK - EN.dc.html#em-wurk-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-wurk,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">10</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Crew kit</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - WURK - EN.dc.html#em-wurk-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-wurk,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">11</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Packing</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - WURK - EN.dc.html#em-wurk-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-wurk,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">12</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">From factory to site</span></a></div>
+      </div>
+    </details>
+    <div data-editor-only="" style="display:flex;flex-direction:column;gap:8px;border:1px dashed #BBBBBB;border-radius:12px;padding:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Earlier titles · editor only</div>
+      <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">01 Product definition · 02 CRIMP tools and dies · 03 PREP and torque tools · 04 GAUGE and PROBE · 05 HOLD fall protection · 06 RAIL, RISE and HAUL · 07 Crew kits and packing</p>
+    </div>
+  </section>
+  
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:var(--wk-gap,96px) var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:32px;">
+        <div>
+          <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">References</div>
+          <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Proven in real <span style="color:#8E8E8E;">installation work.</span></h2>
+        </div>
+        <a href="WURK - SUPPORT - Ownership and Support - EN.dc.html" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);white-space:nowrap;">View WURK projects<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      </div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;--cg:20px;">
+        <sc-for list="{{ references }}" as="r" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;background:#F4F4F4;border-radius:12px;">
+            <div style="aspect-ratio:16/10;background:var(--color-card-wurk);border-radius:8px;overflow:hidden;">
+              <image-slot id="{{ r.slot }}" shape="rounded" radius="8" placeholder="{{ r.ph }}"></image-slot>
+            </div>
+            <div style="padding:22px 20px;display:flex;flex-direction:column;gap:10px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ r.place }} &#8212; {{ r.type }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;line-height:1.3;">{{ r.title }}</div>
+              <div style="display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;font-weight:300;color:var(--color-text-primary);">
+                <span><span style="font-weight:700;color:var(--color-text-primary);">{{ r.crew }}</span> installers</span>
+                <span><span style="font-weight:700;color:var(--color-text-primary);">{{ r.metric }}</span> {{ r.metricLabel }}</span>
+              </div>
+              <p style="margin:0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);max-width:760px;">{{ r.wurk }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">References use verified project photography and measured results only. No fabricated time-saving percentages.</p>
+    </div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:var(--wk-gap,96px) var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:32px;">
+        <div>
+          <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">WURK Knowledge</div>
+          <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Practical knowledge <span style="color:#8E8E8E;">for installation teams.</span></h2>
+        </div>
+        <a href="WURK - CONTENT - Knowledge - EN.dc.html" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);white-space:nowrap;">Open WURK Knowledge<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      </div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ knowledge }}" as="k" hint-placeholder-count="8">
+          <a class="wk-util" href="WURK - CONTENT - Knowledge - EN.dc.html" style="padding:22px 20px;display:flex;flex-direction:column;gap:8px;min-height:130px;background:#F4F4F4;border-radius:12px;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);">{{ k.cat }}</span>
+            <span class="wk-util-t" style="font-size:var(--web-small-size);font-weight:300;line-height:1.35;">{{ k.title }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <dc-import name="ContentSections" brand="WURK" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="WURK" hint-size="100%,420px"></dc-import>
+  
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:var(--wk-gap,96px) var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">WURK Support</div>
+      <h2 style="margin:0 0 32px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The product remains supported after <span style="color:#8E8E8E;">the first job.</span></h2>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ support }}" as="s" hint-placeholder-count="8">
+          <a class="wk-util" href="WURK - SUPPORT - Ownership and Support - EN.dc.html" style="padding:24px 20px;display:flex;flex-direction:column;gap:8px;min-height:120px;justify-content:space-between;background:#F4F4F4;border-radius:12px;">
+            <div>
+              <div class="wk-util-t" style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;margin-bottom:6px;">{{ s.t }}</div>
+              <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);">{{ s.d }}</div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <dc-import name="SupportModule" kind="product" brand="WURK" accent="var(--color-brand-wurk)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900},&quot;rhythm&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;airy&quot;,&quot;standard&quot;,&quot;compact&quot;],&quot;default&quot;:&quot;standard&quot;,&quot;tsType&quot;:&quot;'airy' | 'standard' | 'compact'&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;heroScale&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;full&quot;,&quot;half&quot;,&quot;band&quot;],&quot;default&quot;:&quot;full&quot;,&quot;tsType&quot;:&quot;'full' | 'half' | 'band'&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;heroMotion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;slideshow&quot;,&quot;still&quot;],&quot;default&quot;:&quot;slideshow&quot;,&quot;tsType&quot;:&quot;'slideshow' | 'still'&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+const APPLICATIONS = [
+  { label: "Residential solar", body: "Cable preparation, connector assembly, roof access, testing and final documentation for domestic PV installations.", families: ["CRIMP", "PREP", "PROBE", "RISE"] },
+  { label: "Commercial rooftops", body: "Crew kits, mobile towers, edge protection, test equipment and project-specific access planning for larger flat and pitched roofs.", families: ["RAIL", "RISE", "PROBE", "GAUGE"] },
+  { label: "Battery storage", body: "Controlled handling, positioning, torque and electrical verification for residential and commercial storage systems.", families: ["HAUL", "PREP", "PROBE"] },
+  { label: "EV charging", body: "Layout, drilling and electrical test equipment for single-phase and three-phase charge-point installations.", families: ["GAUGE", "PROBE", "PREP"] },
+  { label: "Heat pumps & ventilation", body: "Measurement, access, handling and commissioning equipment for indoor and outdoor systems.", families: ["GAUGE", "HAUL", "RISE", "PROBE"] },
+  { label: "Industrial energy projects", body: "Project-selected access, lifting, measurement and safety equipment with documented handover.", families: ["RISE", "HAUL", "RAIL", "HOLD"] },
+];
+
+class Component extends DCLogic {
+  state = { frame: 0,  app: 0 };
+  componentDidMount() {
+    if (!(window.omelette && window.omelette.writeFile)) document.querySelectorAll('[data-editor-only]').forEach((el) => { el.style.display = 'none'; }); this._heroTimer = setInterval(() => { if ((this.props.heroMotion || "slideshow") === "slideshow") this.setState(s => ({ frame: (s.frame + 1) % 6 })); }, 3200); }
+  componentWillUnmount() { if (this._heroTimer) clearInterval(this._heroTimer); }
+  heroVals() { const fr = this.state.frame || 0, hv = {}; for (let i = 0; i < 6; i++) { hv["op" + i] = i === fr ? 1 : 0; hv["pe" + i] = i === fr ? "auto" : "none"; } hv.heroDots = [0, 1, 2, 3, 4, 5].map(i => ({ w: i === fr ? "22px" : "10px", bg: i === fr ? "#9E3D2E" : "rgba(255,255,255,0.4)" })); return hv; }
+  renderVals() {
+    const gap = { airy: "136px", standard: "96px", compact: "56px" }[this.props.rhythm || "standard"] || "96px";
+    const hero = { full: "max(640px,78vh)", half: "max(480px,52vh)", band: "360px" }[this.props.heroScale || "full"] || "max(640px,78vh)";
+    return { brandSix: [{"label":"Range","heading":"Eight families. One workflow.","sentence":"Eight equipment families. One installation workflow.","media":{"type":"slot","slot":"wurk-hero","alt":"WURK · Range · drop a photo or video"}},{"label":"Installation","heading":"Start with the work.","sentence":"Choose by task, not by catalogue page.","media":{"type":"slot","slot":"wurk-hero-2","alt":"WURK · Installation · drop a photo or video"}},{"label":"QR record","heading":"Scan the product.","sentence":"Scan the product, not a filing cabinet.","media":{"type":"slot","slot":"wurk-hero-3","alt":"WURK · QR record · drop a photo or video"}},{"label":"Correct tools","heading":"Not more generic tools.","sentence":"Energy installers do not need more generic tools.","media":{"type":"slot","slot":"wurk-hero-4","alt":"WURK · Correct tools · drop a photo or video"}},{"label":"Release standard","heading":"Safety equipment is not a colourway.","sentence":"The WURK release standard.","media":{"type":"slot","slot":"wurk-hero-5","alt":"WURK · Release standard · drop a photo or video"}},{"label":"Crew kit","heading":"One crew. One coherent system.","sentence":"Build a crew kit.","media":{"type":"slot","slot":"wurk-hero-6","alt":"WURK · Crew kit · drop a photo or video"}}], ...this.heroVals(), ...this._rv(), wkGap: gap, wkHero: hero };
+  }
+  _rv() {
+    const st = this.state;
+    return {
+      routes: [
+        { title: "Equip an installation team", body: "Select tools and kits for residential, commercial or industrial energy installation crews.", cta: "Build a crew setup", href: "WURK - PRODUCT - Kits - EN.dc.html" },
+        { title: "Specify equipment for a project", body: "Define working height, access, roof conditions, equipment loads and project duration.", cta: "Start project selection", href: "WURK - PRODUCT - Selector - EN.dc.html" },
+        { title: "Manage inspection and calibration", body: "Find manuals, certificates, inspection records, calibration dates and replacement parts by scanning the product.", cta: "Open inspection support", href: "WURK - SUPPORT - Inspection - EN.dc.html" },
+      ],
+      proofBlocks: [
+        { t: "Selected by task", d: "Products are grouped by the work being completed, not by factory catalogue." },
+        { t: "Documented before release", d: "Safety, instructions, technical evidence and product traceability are release requirements." },
+        { t: "Supported after purchase", d: "Manuals, parts, inspection, calibration and service remain connected to the exact model." },
+        { t: "Built for energy systems", d: "The range is shaped around solar, storage, EV charging, electrical systems, heat pumps and ventilation." },
+      ],
+      families: [
+        { code: "CRIMP", name: "Connector assembly", use: "Controlled crimping tools, dies, spanners and installer cases for approved connector and cable combinations.", href: "WURK - PRODUCT - Products - EN.dc.html#crimp", slot: "wk-fam-crimp", ph: "Ratchet crimper and die set on a workbench" },
+        { code: "PREP", name: "Cable preparation & torque", use: "Cable cutters, adjustable strippers and torque tools for controlled preparation and final tightening.", href: "WURK - PRODUCT - Products - EN.dc.html#prep", slot: "wk-fam-prep", ph: "PV cable stripper and torque tool" },
+        { code: "GAUGE", name: "Layout & measurement", use: "Tape measures, laser distance meters and professional levels for repeatable site layout.", href: "WURK - PRODUCT - Products - EN.dc.html#gauge", slot: "wk-fam-gauge", ph: "Laser distance meter on a rooftop" },
+        { code: "PROBE", name: "Electrical testing", use: "Meters and testers selected for PV DC, AC, three-phase, insulation and final commissioning checks.", href: "WURK - PRODUCT - Products - EN.dc.html#probe", slot: "wk-fam-probe", ph: "Clamp meter at an inverter / distribution board" },
+        { code: "HOLD", name: "Personal fall protection", use: "Harness, lanyard, lifeline and anchor systems specified as compatible safety systems.", href: "WURK - PRODUCT - Products - EN.dc.html#hold", chip: "Project supply", slot: "wk-fam-hold", ph: "Installer harness kit laid out" },
+        { code: "RAIL", name: "Collective edge protection", use: "Temporary, modular edge-protection systems for flat-roof work areas and access routes.", href: "WURK - PRODUCT - Products - EN.dc.html#rail", chip: "Project supply", slot: "wk-fam-rail", ph: "Freestanding flat-roof guardrail run" },
+        { code: "RISE", name: "Access equipment", use: "Professional ladders, mobile scaffold towers and selected access platforms matched to height and site.", href: "WURK - PRODUCT - Products - EN.dc.html#rise", slot: "wk-fam-rise", ph: "Mobile scaffold tower correctly assembled" },
+        { code: "HAUL", name: "Battery & equipment handling", use: "Trolleys, stair climbers and lifting equipment for controlled movement of heavy energy equipment.", href: "WURK - PRODUCT - Products - EN.dc.html#haul", slot: "wk-fam-haul", ph: "Battery being positioned with a lifting trolley" },
+      ],
+      workflow: [
+        { n: "01", t: "Plan", d: "Measure the space, route and access conditions before equipment reaches the work area." },
+        { n: "02", t: "Prepare", d: "Cut, strip and organise cables with controlled tooling." },
+        { n: "03", t: "Connect", d: "Use compatible dies, tools and torque settings for repeatable connections." },
+        { n: "04", t: "Access", d: "Select ladders, towers, platforms or edge protection based on the real work at height." },
+        { n: "05", t: "Position", d: "Move batteries and heavy equipment through the actual site route without improvisation." },
+        { n: "06", t: "Test", d: "Complete the electrical checks required for the system and installation scope." },
+        { n: "07", t: "Record", d: "Scan the QR code to open the manual, record inspection or calibration and order parts." },
+      ],
+      releaseChecklist: [
+        "Applicable technical file", "Conformity evidence and product marking", "Model-specific user instructions",
+        "Traceability and serialisation", "Defined inspection process", "Named service responsibility",
+        "Country-release and training notes",
+      ],
+      recordItems: [
+        "Model and serial number", "Current user manual", "Declaration / conformity documents",
+        "Technical datasheet", "Compatible accessories and parts", "Inspection status", "Calibration date",
+        "Service and repair history", "Warranty status", "Retirement / replacement information",
+      ],
+      kits: [
+        { name: "WURK Connect Basic", desc: "Core cable preparation and connector-assembly tools for routine PV work." },
+        { name: "WURK Connect Pro", desc: "Professional ratchet crimping, replaceable dies, controlled stripping and torque tools." },
+        { name: "WURK Commission", desc: "Electrical measurement and commissioning tools selected for the intended system and country." },
+        { name: "WURK Roof Safe", desc: "A project-specific fall-protection and access configuration.", chip: "Project supply" },
+        { name: "WURK Battery Move", desc: "Handling equipment selected around battery weight, route, stairs and final position." },
+        { name: "WURK Crew Complete", desc: "A configurable full-crew setup combining preparation, measurement, test, access and handling." },
+      ],
+      applications: APPLICATIONS.map((a, i) => ({
+        label: a.label,
+        onClick: () => this.setState({ app: i }),
+        bg: st.app === i ? "#FBF9EF" : "#FFFFFF",
+        bar: st.app === i ? "var(--color-brand-wurk)" : "transparent",
+        color: st.app === i ? "#4F4F4E" : "#5F5E5E",
+        weight: st.app === i ? 400 : 400,
+      })),
+      activeApp: APPLICATIONS[st.app],
+      selectorInputs: [
+        "Installation type", "Number of crews", "Country", "Working height", "Indoor or outdoor",
+        "Roof / ground condition", "Equipment weight", "System voltage & phase", "Connector & cable type",
+        "Required electrical tests", "Required documentation", "Purchase, rental or project supply",
+      ],
+      training: [
+        "Connector & cable preparation", "Correct torque practice", "Electrical measurement basics", "PV DC testing",
+        "Mobile tower assembly & pre-use checks", "Ladder selection & use", "Battery movement & route planning",
+        "Fall-protection system awareness", "Product inspection & retirement", "WURK QR records",
+      ],
+      references: [
+        { place: "Groningen, NL", type: "Residential solar", title: "24-home terraced PV rollout", crew: "3", metric: "18", metricLabel: "roofs", wurk: "CRIMP Pro cases, PROBE commissioning set and RISE platform steps across a repeated street layout.", slot: "wk-ref-1", ph: "Terraced-street residential PV install" },
+        { place: "Lyon, FR", type: "Commercial rooftop", title: "Warehouse flat-roof array", crew: "6", metric: "14,4 m", metricLabel: "working height", wurk: "RAIL edge-protection layout, RISE 8 m towers and PROBE three-phase commissioning.", slot: "wk-ref-2", ph: "Commercial flat roof with edge protection" },
+        { place: "Hamburg, DE", type: "Battery storage", title: "Basement commercial storage", crew: "4", metric: "250 kg", metricLabel: "module weight", wurk: "HAUL stair-climbing trolley and route survey, PREP torque tools and PROBE verification.", slot: "wk-ref-3", ph: "Battery module moved down stairs with a trolley" },
+      ],
+      knowledge: [
+        { cat: "CRIMP", title: "Why a connector tool is not automatically compatible with every \u201CMC4-type\u201D connector" },
+        { cat: "PREP", title: "Cable stripping errors that damage conductor or sealing performance" },
+        { cat: "PREP", title: "Torque tools: setting, use, storage and calibration" },
+        { cat: "PROBE", title: "Choosing a multimeter for PV DC work" },
+        { cat: "PROBE", title: "Insulation testing in PV installations" },
+        { cat: "RISE", title: "Ladder, tower or lift: how the work changes the access decision" },
+        { cat: "HAUL", title: "Planning a safe battery route before delivery" },
+        { cat: "Inspection", title: "How QR-linked inspection records reduce missing paperwork" },
+      ],
+      support: [
+        { t: "Documents", d: "Manuals, datasheets, conformity documents and assembly instructions." },
+        { t: "Inspection", d: "Pre-use checks, periodic inspection information and product records." },
+        { t: "Calibration", d: "Calibration options, certificates and due-date management for measuring equipment." },
+        { t: "Parts", d: "Approved dies, leads, wheels, braces, platforms, straps and chargers." },
+        { t: "Service", d: "Repair, maintenance and service support for applicable equipment." },
+        { t: "Training", d: "Product, task and site-safety learning resources." },
+        { t: "Warranty", d: "Product-specific warranty terms, registration and claim support." },
+        { t: "Contact", d: "Technical product support and project-equipment specification." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

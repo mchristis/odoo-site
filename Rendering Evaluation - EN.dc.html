@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<title>Rendering evaluation · ANDO factory visuals</title>
+<style>body{margin:0;background:#FFFFFF;} a{color:#4F4F4E;text-decoration:underline;} a:hover{color:#F76801;}</style>
+</helmet>
+<article style="font-family:var(--font-web);color:#252525;max-width:1120px;margin:0 auto;padding:48px 24px 96px;box-sizing:border-box;display:flex;flex-direction:column;gap:48px;">
+  <header style="display:flex;flex-direction:column;gap:12px;border-top:1px solid #D9D9D9;padding-top:24px;">
+    <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Internal · Rendering evaluation · 5 Nov 2026</span>
+    <h1 style="margin:0;font-size:clamp(32px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;">SVG for the line, 3D for the lab</h1>
+    <p style="margin:0;max-width:720px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Two working prototypes on the same camera, face tones and Design System. No station content, sequence or description was changed. Nothing has been applied to FactoryWalk yet.</p>
+  </header>
+
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px;">
+    <a href="Rendering Prototype A - Flash Test.dc.html" style="text-decoration:none;color:inherit;background:#F4F4F4;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;">
+      <img src="assets/rendering-eval/prototype-a-flash.jpg" alt="Prototype A, flash tester in SVG isometric" style="width:100%;height:auto;display:block;border-radius:8px;">
+      <span style="font-size:15px;font-weight:500;">A · Flash test · SVG isometric</span>
+      <span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;">Infeed, dark box with lamp housing, outfeed, control desk with I–V curve, operator. Module runs through, flash, curve draws.</span>
+    </a>
+    <a href="Rendering Prototype B - Hail Launcher.html" style="text-decoration:none;color:inherit;background:#F4F4F4;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;">
+      <img src="assets/rendering-eval/prototype-b-hail.jpg" alt="Prototype B, hail launcher in orthographic 3D" style="width:100%;height:auto;display:block;border-radius:8px;">
+      <span style="font-size:15px;font-weight:500;">B · Hail impact · orthographic 3D</span>
+      <span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;">Gantry moves the launcher over 11 points, laser spot, ice ball, impact marks, guard screen and console. Drag to turn.</span>
+    </a>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px;">
+    <h2 style="margin:0;font-size:var(--web-h3-size);font-weight:300;">Comparison</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;">
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="5">
+        <div style="background:#F4F4F4;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px;">
+          <span style="font-size:15px;font-weight:500;">{{ r.k }}</span>
+          <div style="display:flex;flex-direction:column;gap:2px;"><span style="font-size:var(--web-small-size);font-weight:400;">A · SVG</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">{{ r.a }}</span></div>
+          <div style="display:flex;flex-direction:column;gap:2px;"><span style="font-size:var(--web-small-size);font-weight:400;">B · 3D</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">{{ r.b }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px;">
+    <h2 style="margin:0;font-size:var(--web-h3-size);font-weight:300;">Existing architecture</h2>
+    <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);text-wrap:pretty;">Pages are Design Components without a bundler or npm. FactoryWalk already has its own isometric SVG engine (30° camera, three face tones, painter order, people, robots) driven by factory-walk-data.js. Colours and type come from colors_and_type.css. Any library that needs npm and a build step can only run here through an ES module CDN, or in Raja's production build.</p>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px;">
+    <h2 style="margin:0;font-size:var(--web-h3-size);font-weight:300;">Repositories</h2>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <sc-for list="{{ repos }}" as="r" hint-placeholder-count="10">
+        <div data-stack="1" style="background:#F4F4F4;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:minmax(0,220px) minmax(0,120px) minmax(0,1fr);gap:8px 24px;align-items:baseline;">
+          <span style="font-size:15px;font-weight:500;">{{ r.n }}</span>
+          <span style="font-size:13px;font-weight:300;color:#4F4F4E;border:1px solid #BBBBBB;border-radius:8px;padding:2px 10px;justify-self:start;">{{ r.v }}</span>
+          <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">{{ r.t }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px;">
+    <h2 style="margin:0;font-size:var(--web-h3-size);font-weight:300;">Recommended stack</h2>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <sc-for list="{{ stack }}" as="s" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:2px;border-top:1px solid #DDDDDD;padding-top:12px;"><span style="font-size:15px;font-weight:400;">{{ s.k }}</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">{{ s.v }}</span></div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px;">
+    <h2 style="margin:0;font-size:var(--web-h3-size);font-weight:300;">Implementation plan</h2>
+    <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;">
+      <sc-for list="{{ plan }}" as="p" hint-placeholder-count="6"><li style="font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);text-wrap:pretty;">{{ p }}</li></sc-for>
+    </ol>
+  </section>
+</article>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      rows: [
+        { k: 'Visual fidelity', a: 'Crisp lines at any size, exact match with the Whole line overview. Curves and round parts are approximations.', b: 'True round parts, soft shadows, real depth. Needs edge lines added to match the SVG drawing style.' },
+        { k: 'Loading', a: 'No library. The drawing is a few kB of logic; paints with the page.', b: 'three.js core from a CDN (several hundred kB compressed) plus a WebGL context. Short blank moment before the first frame.' },
+        { k: 'Animation', a: 'Smooth for simple moves (module travel, flash, curve). Rotating the camera is not possible.', b: 'Free camera, real mechanical motion (gantry, barrel, ball). 60 fps for this scene.' },
+        { k: 'Maintenance', a: 'Same engine and data format as FactoryWalk. One person can edit boxes and tones.', b: 'Separate scene file per machine. Needs someone who knows three.js; GLB models later need gltf tooling.' },
+        { k: 'Phones and access', a: 'Works everywhere, readable without JavaScript motion, reduced motion respected.', b: 'Needs WebGL; one 3D view per page at most. Reduced motion respected; needs a still image fallback.' }
+      ],
+      repos: [
+        { n: 'wheresryan22/anatomy', v: 'Use the rules', t: 'MIT. An agent skill plus a Node build kit for isometric SVG machines. Its craft rules (four-tone shading, back-to-front painting, geometry audit) are applied in prototype A. Its own limits note that it draws machines, not people, and builds are slow. Do not install; keep the FactoryWalk engine.' },
+        { n: 'elchininet/isometric', v: 'Not needed', t: 'Isometric SVG library. Overlaps with the existing FactoryWalk engine. Licence not checked in this round.' },
+        { n: 'owen-lacey/isodoodle', v: 'Not needed', t: 'Not inspected in this round. FactoryWalk already covers the isometric drawing.' },
+        { n: 'pmndrs/react-three-fiber', v: 'Production only', t: 'React renderer for three.js. Same scene graph as prototype B. Worth it if the production site is React/Next; here it needs a build step.' },
+        { n: 'pmndrs/drei', v: 'Production only', t: 'Helpers for R3F (controls, edges, soft shadows). Only together with R3F.' },
+        { n: 'pmndrs/gltfjsx', v: 'Later', t: 'Turns GLB models into components. Only when real CAD or GLB models of lab machines exist.' },
+        { n: 'donmccurdy/glTF-Transform', v: 'Later', t: 'Compresses GLB models. Same moment as gltfjsx.' },
+        { n: 'theatre-js/theatre', v: 'Not needed', t: 'Timeline editor for 3D animation. The motions here are short loops; plain code is enough.' },
+        { n: 'motiondivision/motion', v: 'Not needed', t: 'UI animation library. FactoryWalk motion already runs on CSS transitions and timers.' },
+        { n: 'shadcn-ui/ui', v: 'Do not use', t: 'Brings its own components and tokens. Conflicts with the STROHM.ENERGY Design System.' }
+      ],
+      stack: [
+        { k: 'Whole line and all 24 stations', v: 'Existing FactoryWalk SVG engine, refined with the Anatomy rules: four tones, rounded edges, detail parts per station. No new library.' },
+        { k: 'Lab machines where motion matters', v: 'three.js with an orthographic camera at the same angle: hail launcher, dynamic load frame, climate chamber doors. One 3D view at a time, SVG still as fallback.' },
+        { k: 'Production build (Raja)', v: 'React Three Fiber + drei for the same scenes, if the production site runs React. Add gltfjsx and glTF-Transform only when real GLB models arrive.' },
+        { k: 'Interface', v: 'STROHM.ENERGY Design System only.' }
+      ],
+      plan: [
+        'Approve the look of A and B (or list changes).',
+        'Write the drawing rules into one shared sheet: camera, four tones, stroke width, figure, accent use.',
+        'Refine Production stations in groups of six in FactoryWalk, checking each against the Whole line view.',
+        'Choose which lab tests get 3D (proposal: B9 Hail, B10 Dynamic load, B6 Thermal cycling chamber); the others stay SVG.',
+        'Build the 3D views as separate scene files that open from the station panel, with an SVG still while loading.',
+        'Hand the scene files to Raja for R3F in the production build.'
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

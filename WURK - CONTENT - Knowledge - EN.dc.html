@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>WURK Knowledge | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  .wk-art:hover { border-color:var(--color-brand-wurk) !important; }
+  .wk-art:hover .wk-art-t { color:var(--color-text-primary); }
+  .wk-fchip:hover { border-color:var(--color-text-primary) !important; color:var(--color-text-primary) !important; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="WurkNav" active="knowledge" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="WURK" rgb="158,61,46" eyebrow="WURK Knowledge" title="Practical equipment guidance for professional installation teams." intro="Cable and connector work, electrical measurement, working at height, battery handling, inspection, calibration and country requirements &#8212; each article reviewed and dated." slot="wurk-knowledge-hero" shot="WURK · Knowledge · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:44px;">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="10">
+        <span class="wk-fchip" style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.04em;text-transform:uppercase;color:{{ f.color }};border:1px solid {{ f.border }};background:{{ f.bg }};padding:6px 13px;cursor:pointer;border-radius:8px;">{{ f.label }}</span>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:36px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:20px;">Featured</div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;--cg:20px;">
+        <sc-for list="{{ featured }}" as="a" hint-placeholder-count="3">
+          <div class="wk-art" style="border-top:3px solid var(--color-brand-wurk);padding:26px 24px;display:flex;flex-direction:column;gap:12px;min-height:200px;background:#F4F4F4;border-radius:12px;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);">{{ a.cat }}</span>
+            <span class="wk-art-t" style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);flex:1;">{{ a.title }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ a.read }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPIC GROUPS BY FAMILY -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:36px;">
+      <h2 style="margin:0 0 28px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Browse by <span style="color:#8E8E8E;">equipment family.</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ groups }}" as="g" hint-placeholder-count="6">
+          <div style="padding:24px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--color-surface-card);">{{ g.code }}</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <sc-for list="{{ g.topics }}" as="t" hint-placeholder-count="5">
+                <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);" data-placeholder-link="true">{{ t }}&nbsp;&rsaquo;</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLE STRUCTURE NOTE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:36px;background:#FBF9EF;padding:28px 32px;border-radius:12px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">Every WURK article includes</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px 22px;">
+        <sc-for list="{{ articleParts }}" as="p" hint-placeholder-count="8"><span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);display:flex;gap:8px;align-items:baseline;line-height:var(--web-small-lh);"><span style="color:var(--color-text-primary);font-size:9px;">&#9679;</span>{{ p }}</span></sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 96px;box-sizing:border-box;">
+    <div style="background:var(--color-text-primary);padding:56px;color:#FFFFFF;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;border-radius:12px;">
+      <div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#FFFFFF;text-wrap:balance;">Bring the method <span style="color:#B2B3B3;">to the whole crew.</span></h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);color:#B8B8B5;max-width:560px;line-height:var(--web-body-lh);">WURK training connects product use, inspection and installation workflow.</p>
+      </div>
+      <a href="WURK - SUPPORT - Ownership and Support - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-wurk);color:var(--color-text-primary);font-weight:400;white-space:nowrap;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">View WURK training</a>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    const filterLabels = ["New", "Technical", "Safety", "Country requirements", "Field method", "Inspection", "Calibration", "Product care", "R&D", "Training"];
+    return {
+      filters: filterLabels.map((label, i) => ({
+        label,
+        color: i === 0 ? "#4F4F4E" : "#5F5E5E",
+        border: i === 0 ? "var(--color-brand-wurk)" : "#D4D4D4",
+        bg: i === 0 ? "#FBF9EF" : "#FFFFFF",
+      })),
+      featured: [
+        { cat: "CRIMP", title: "Why a connector tool is not automatically compatible with every \u201CMC4-type\u201D connector", read: "6 min read" },
+        { cat: "PROBE", title: "Choosing a multimeter for PV DC work", read: "5 min read" },
+        { cat: "RISE", title: "Ladder, tower or lift: how the work changes the access decision", read: "7 min read" },
+      ],
+      groups: [
+        { code: "CRIMP", topics: ["Connector compatibility", "Die selection", "Crimp inspection", "Tool wear", "Replacement dies"] },
+        { code: "PREP", topics: ["Cable cutting", "Stripping depth", "Conductor damage", "Torque practice", "Calibration"] },
+        { code: "GAUGE", topics: ["Layout control", "Laser accuracy", "Site references", "Digital level checks"] },
+        { code: "PROBE", topics: ["CAT categories", "PV DC measurement", "Clamp measurement", "Insulation testing", "Phase rotation", "Test-lead care"] },
+        { code: "HOLD / RAIL / RISE", topics: ["Work-at-height hierarchy", "Access selection", "Tower assembly", "Edge protection", "PPE inspection", "Rescue planning"] },
+        { code: "HAUL", topics: ["Load data", "Route survey", "Stair geometry", "Centre of gravity", "Final positioning"] },
+      ],
+      articleParts: ["Purpose", "Intended professional audience", "Scope", "Limitations", "Step-by-step guidance", "Safety note", "Related WURK products", "Downloadable checklist", "Revision date", "Technical reviewer"],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<style>a { color:#4F4F4E; } a:hover { color:#222222; }</style>
+</helmet>
+<div style="font-family:var(--font-web);color:#4F4F4E;display:flex;flex-direction:column;gap:0;">
+
+  <sc-if value="{{ showCatalogue }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1100px;width:100%;margin:0 auto;padding:56px 40px 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #D9D9D9;padding-top:24px;display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;justify-content:space-between;">
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">Catalogue</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ brand }} catalogue</div>
+        </div>
+        <!-- DEPTH-1264: catalogue removed (no product catalogues) -->
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showAudiences }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1100px;width:100%;margin:0 auto;padding:56px 40px 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #D9D9D9;padding-top:24px;display:flex;flex-direction:column;gap:24px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Who it is for</div>
+        <div role="tablist" style="display:flex;flex-wrap:wrap;gap:8px;">
+          <sc-for list="{{ audiences }}" as="a" hint-placeholder-count="7">
+            <button type="button" role="tab" aria-selected="{{ a.sel }}" onClick="{{ a.pick }}" style="cursor:pointer;font-family:inherit;font-size:var(--cta-font);font-weight:var(--web-btn-weight);min-height:44px;padding:0 20px;border-radius:var(--radius-btn,8px);border:1px solid {{ a.border }};background:{{ a.bg }};color:{{ a.color }};">{{ a.label }}</button>
+          </sc-for>
+        </div>
+        <div style="background:#F4F4F4;border-radius:var(--radius-card,12px);padding:24px;display:flex;flex-direction:column;gap:8px;">
+          <div style="font-size:20px;font-weight:300;">{{ audienceLabel }}</div>
+          <sc-if value="{{ hasAudText }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);max-width:760px;">{{ audText }}</div></sc-if>
+          <sc-if value="{{ noAudText }}" hint-placeholder-val="{{ true }}"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#B07818;line-height:var(--web-h3-lh);">TO CONFIRM</div></sc-if>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showFacts }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1100px;width:100%;margin:0 auto;padding:56px 40px 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #D9D9D9;padding-top:24px;display:flex;flex-direction:column;gap:24px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Key facts</div>
+        <!-- DEPTH-1091: LINA six key facts (UPLOAD 6 main items, verbatim) -->
+        <sc-if value="{{ hasBrandFacts }}" hint-placeholder-val="{{ false }}">
+          <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+            <sc-for list="{{ brandFacts }}" as="k" hint-placeholder-count="6">
+              <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;min-width:0;">
+                <img src="{{ k.icon }}" width="40" height="40" alt="" style="display:block;margin-bottom:8px;">
+                <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);font-variant-numeric:tabular-nums;color:#5F5E5E;">{{ k.no }}</div>
+                <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;text-wrap:balance;">{{ k.head }}</div>
+                <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;">{{ k.short }}</div>
+                <sc-if value="{{ k.open }}" hint-placeholder-val="{{ false }}">
+                  <div id="{{ k.id }}" style="margin-top:8px;padding-top:16px;border-top:1px solid #DDDDDD;display:flex;flex-direction:column;gap:10px;">
+                    <div style="font-size:var(--web-small-size);font-weight:500;line-height:var(--web-small-lh);color:#252525;">{{ k.moreHead }}</div>
+                    <sc-for list="{{ k.paras }}" as="p" hint-placeholder-count="3">
+                      <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;text-wrap:pretty;">{{ p }}</p>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <button type="button" aria-expanded="{{ k.expanded }}" aria-controls="{{ k.id }}" onClick="{{ k.toggle }}" style="margin-top:auto;align-self:flex-start;min-height:44px;padding:0;border:0;background:none;font-family:var(--font-web);font-size:var(--web-small-size);font-weight:300;color:#252525;cursor:pointer;text-decoration:underline;text-underline-offset:3px;" style-focus="outline:2px solid #252525;outline-offset:2px;">{{ k.label }}</button>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <!-- DEPTH-1171: FLUXX four key facts (verbatim, linked to source page) -->
+        <sc-if value="{{ hasLinkFacts }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;">
+            <sc-for list="{{ linkFacts }}" as="k" hint-placeholder-count="4">
+              <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;min-width:0;">
+                <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);font-variant-numeric:tabular-nums;color:#5F5E5E;">{{ k.no }}</div>
+                <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;text-wrap:balance;">{{ k.head }}</div>
+                <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;">{{ k.short }}</div>
+                <a href="{{ k.href }}" style="margin-top:auto;padding-top:8px;display:inline-flex;align-items:center;min-height:44px;align-self:flex-start;font-size:var(--web-small-size);font-weight:300;color:#252525;text-decoration:underline;text-underline-offset:3px;">Read more</a>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ noBrandFacts }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;">
+          <sc-for list="{{ four }}" as="f" hint-placeholder-count="4">
+            <div style="background:#F4F4F4;border-radius:var(--radius-card,12px);padding:20px;display:flex;flex-direction:column;gap:6px;">
+              <div style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);color:#8A8A89;font-weight:var(--web-eyebrow-weight);">{{ f.n }}</div>
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#B07818;line-height:var(--web-h3-lh);">TO CONFIRM</div>
+            </div>
+          </sc-for>
+        </div>
+        </sc-if>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showFinder }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1100px;width:100%;margin:0 auto;padding:56px 40px 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #D9D9D9;padding-top:24px;display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Product finder</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Filter the {{ brand }} range.</div>
+        <div style="background:#F4F4F4;border-radius:var(--radius-card,12px);padding:24px;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Filters and product data: <span style="font-weight:700;color:#B07818;">TO CONFIRM</span></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showTrace }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1100px;width:100%;margin:0 auto;padding:56px 40px 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #D9D9D9;padding-top:24px;display:flex;flex-direction:column;gap:24px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Factory measurement, visible at installation</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;">
+          <sc-for list="{{ trace }}" as="t" hint-placeholder-count="4">
+            <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:6px;">
+              <div style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);color:#8A8A89;font-weight:var(--web-eyebrow-weight);">{{ t.n }}</div>
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ t.title }}</div>
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#B07818;line-height:var(--web-h3-lh);">TO CONFIRM</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showScan }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1100px;width:100%;margin:0 auto;padding:56px 40px 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #D9D9D9;padding-top:24px;display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Scan sheet</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">One sheet. Every unit. The complete record.</div>
+        <div style="background:#F4F4F4;border-radius:var(--radius-card,12px);padding:24px;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ brand }} scan sheet layout and fields: <span style="font-weight:700;color:#B07818;">TO CONFIRM</span></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showSteps }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1100px;width:100%;margin:0 auto;padding:56px 40px 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #D9D9D9;padding-top:24px;display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Commissioning steps</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Step by step to one connected record.</div>
+        <div style="background:#F4F4F4;border-radius:var(--radius-card,12px);padding:24px;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Number of steps and step content for {{ brand }}: <span style="font-weight:700;color:#B07818;">TO CONFIRM</span></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showPrivacy }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1100px;width:100%;margin:0 auto;padding:56px 40px 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #D9D9D9;padding-top:24px;display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Privacy</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Owners choose what stays private.</div>
+        <div style="background:#F4F4F4;border-radius:var(--radius-card,12px);padding:24px;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Which {{ brand }} data owners can share or keep private: <span style="font-weight:700;color:#B07818;">TO CONFIRM</span></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showFaq }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1100px;width:100%;margin:0 auto;padding:56px 40px 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #D9D9D9;padding-top:24px;display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">FAQ</div>
+        <div style="background:#F4F4F4;border-radius:var(--radius-card,12px);padding:24px;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ brand }} questions and answers: <span style="font-weight:700;color:#B07818;">TO CONFIRM</span></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showDocs }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1100px;width:100%;margin:0 auto;padding:56px 40px 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #D9D9D9;padding-top:24px;display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Documentation</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Documentation per family and model.</div>
+        <div style="background:#F4F4F4;border-radius:var(--radius-card,12px);padding:24px;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ brand }} datasheets, manuals and certificates: <span style="font-weight:700;color:#B07818;">TO CONFIRM</span></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showOwnership }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1100px;width:100%;margin:0 auto;padding:56px 40px 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #D9D9D9;padding-top:24px;display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Ownership record</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">One document. Everything confirmed.</div>
+        <div style="background:#F4F4F4;border-radius:var(--radius-card,12px);padding:24px;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ brand }} ownership record and certificate: <span style="font-weight:700;color:#B07818;">TO CONFIRM</span></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showResp }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:1100px;width:100%;margin:0 auto;padding:56px 40px 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #D9D9D9;padding-top:24px;display:flex;flex-direction:column;gap:24px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Responsibility</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;">
+          <sc-for list="{{ resp }}" as="r" hint-placeholder-count="3">
+            <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:6px;">
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ r.t }}</div>
+              <sc-if value="{{ r.has }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-small-size);font-weight:300;line-height:1.6;color:#4F4F4E;">{{ r.d }}</div></sc-if>
+              <sc-if value="{{ r.tc }}" hint-placeholder-val="{{ true }}"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#B07818;line-height:var(--web-h3-lh);">TO CONFIRM</div></sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <div style="height:56px;"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:1400},&quot;brand&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;LINA&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;items&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;catalogue,audiences,facts,finder,trace,scansheet,steps&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+/* DEPTH-1092 */ const BRAND_FACT_ICONS = { LINA: ["assets/icons/lina-kf-01-weight.svg","assets/icons/lina-kf-02-no-penetration.svg","assets/icons/lina-kf-03-preassembled.svg","assets/icons/lina-kf-04-bifacial.svg","assets/icons/lina-kf-05-flat-green.svg","assets/icons/lina-kf-06-access.svg"] };
+/* DEPTH-1171 */ const LINK_FACTS = { FLUXX: [["Three segments.","Residential, Commercial and Utility.","FLUXX - PRODUCT - Products - EN.dc.html"],["Every system runs with EMON.","Every module joins the Wi-Fi Mesh.","FLUXX - PRODUCT - FLUXX with EMON - EN.dc.html"],["Unique QR and passive NFC on every module.","Readable before power-up.","FLUXX - SUPPORT - NFC and QR - EN.dc.html"],["Designed in Europe and manufactured by us.","","FLUXX - PRODUCT - Engineering and Manufacturing - EN.dc.html"]] };
+/* DEPTH-1091 */ const BRAND_FACTS = { LINA: [["12 kg/m²","A lightweight system for rooftop solar installations.","Low weight. Project specific assessment.",["LINA has a stated system weight of 12 kg/m². This makes weight an important starting point when assessing its suitability for an existing roof.","The roof’s load capacity, condition and wind exposure still need to be checked for each project. The complete roof load assessment must account for the selected configuration, any additional ballast required and applicable design loads.","Before installation, confirm the scope of the stated 12 kg/m² against the final technical documentation."]],["No roof penetration","Installed without piercing the roof membrane.","Keep the roof membrane intact.",["LINA is installed without penetrating the roof membrane. The mounting arrangement supports the solar system without requiring fixing holes through the waterproofing layer.","The installation must still be compatible with the roof covering and provide appropriate surface protection. Wind resistance, stability and any ballast requirements are determined for the individual project.","Drainage routes, roof details and access areas must remain clear."]],["Faster installation","Preassembled units simplify work on the roof.","Less assembly on site.",["Preassembled units reduce the number of components that need to be assembled on the roof. This simplifies placement and helps installation teams follow a repeatable sequence.","Actual installation time depends on roof access, lifting arrangements, layout, weather and the scope of electrical work.","Roof preparation, electrical connection, inspection and commissioning remain part of the complete installation."]],["Vertical. Bifacial.","Upright solar modules capture light on both sides.","Two active module faces.",["LINA uses vertically mounted bifacial solar modules. Both faces can contribute to electricity generation by receiving direct, diffuse and reflected light.","The production profile depends on row orientation, spacing, shading and the surrounding roof surface. With module faces directed east and west, generation can be distributed towards morning and afternoon.","Annual yield and the contribution from the rear face must be calculated for the specific site. Do not present a fixed energy gain as a universal result."]],["Flat roofs. Green roofs.","Configurations for conventional and vegetated rooftops.","Adapted to the roof beneath.",["LINA can be configured for conventional flat roofs and green roofs. The design considers both solar generation and the practical requirements of the roof.","For conventional roofs, the layout must respect the roof covering, drainage and service access. For green roofs, module clearance and row spacing must also account for vegetation height and maintenance.","Final suitability depends on roof construction, load capacity, wind conditions and the selected configuration."]],["Access maintained","Space between rows supports inspection and maintenance.","Keep the roof serviceable.",["Spaced vertical rows allow access to the roof between the solar modules. The layout can provide routes for inspecting the roof covering, checking drainage and maintaining vegetation where present.","Access must be designed into the installation from the start. Row spacing, equipment positions and required safety clearances determine how people can move around the system.","The final layout must preserve the access routes required for roof maintenance, technical equipment and emergency provisions."]]] };
+const AUD_TEXT = { MUKI: [
+  "Understand the selected functions, equipment, space and installation requirements before work begins.",
+  "Plan from a documented configuration, scope of supply and list of remaining site work.",
+  "Coordinate equipment location, dimensions, service access and connection routes with the building design.",
+  "Review electrical and thermal requirements, compatibility, controls, protection and commissioning responsibilities.",
+  "Review the project scope, operating assumptions and basis for estimated costs.",
+  "Explain the included equipment, options and installation conditions using configuration-specific information.",
+  "Coordinate repeatable configurations, building interfaces and handover requirements across projects.",
+] };
+class Component extends DCLogic {
+  state = { aud: 0, factOpen: {} };
+  renderVals() {
+    const brand = this.props.brand || "BRAND";
+    const set = new Set(String(this.props.items || "").split(",").map((s) => s.trim()).filter(Boolean));
+    const AUD = ["Homeowner", "Installer", "Architect", "Engineer", "Investor", "Reseller", "Developer"];
+    const a = this.state.aud;
+    return {
+      brand,
+      hasBrandFacts: !!BRAND_FACTS[brand], noBrandFacts: !BRAND_FACTS[brand] && !LINK_FACTS[brand], hasLinkFacts: !!LINK_FACTS[brand], linkFacts: (LINK_FACTS[brand] || []).map((f, i) => ({ no: "0" + (i + 1), head: f[0], short: f[1], href: encodeURI(f[2]) })),
+      brandFacts: (BRAND_FACTS[brand] || []).map((f, i) => { const o = !!(this.state.factOpen || {})[i]; return { icon: (BRAND_FACT_ICONS[brand] || [])[i] || "", no: "0" + (i + 1), head: f[0], short: f[1], moreHead: f[2], paras: f[3], open: o, expanded: o ? "true" : "false", label: o ? "Read less" : "Read more", id: "kf-" + brand.toLowerCase() + "-" + (i + 1), toggle: () => this.setState((s) => ({ factOpen: Object.assign({}, s.factOpen, { [i]: !(s.factOpen || {})[i] }) })) }; }),
+      showCatalogue: set.has("catalogue"), showAudiences: set.has("audiences"), showFacts: set.has("facts"),
+      showFinder: set.has("finder"), showTrace: set.has("trace"), showScan: set.has("scansheet"), showSteps: set.has("steps"), showPrivacy: set.has("privacy"), showFaq: set.has("faq"), showDocs: set.has("docs"), showOwnership: set.has("ownership"), showResp: set.has("responsibility"),
+      resp: [["Management standards (ISO)", "Certifications apply to all current manufacturing facilities. A product itself is not ISO certified."], ["Packaging", ""], ["End of life", ""]].map(([t, d]) => ({ t, d, has: !!d, tc: !d })),
+      audiences: AUD.map((label, i) => ({ label, sel: i === a ? "true" : "false", weight: i === a ? 300 : 300, border: i === a ? "#4F4F4E" : "#D9D9D9", bg: i === a ? "#4F4F4E" : "#FFFFFF", color: i === a ? "#FFFFFF" : "#4F4F4E", pick: () => this.setState({ aud: i }) })),
+      audienceLabel: brand + " for the " + AUD[a].toLowerCase(),
+      /* DEPTH-1072: MUKI audience texts (MUKI_ZORBA_Productdossier ch. 05 point 8) */ audText: (AUD_TEXT[brand] || [])[a] || "", hasAudText: !!(AUD_TEXT[brand] || [])[a], noAudText: !(AUD_TEXT[brand] || [])[a],
+      four: ["01", "02", "03", "04"].map((n) => ({ n })),
+      trace: ["Factory test performed", "Result linked to serial number", "QR scan on site", "Test results displayed"].map((title, i) => ({ n: "0" + (i + 1), title })),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>AIRO Commissioning | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  .ai-step:hover { border-color:var(--color-brand-airo) !important; }
+  .ai-step:hover .ai-step-t { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="AiroNav" active="commissioning" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="AIRO" rgb="0,131,187" eyebrow="AIRO commissioning" title="Measured. Balanced. Documented." intro="A ventilation system is not finished when the unit switches on." slot="airo-comm-hero" shot="Installer scanning QR/NFC on an AIRO unit, tablet showing room airflow measurement" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    
+    <p style="margin:0 0 40px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">It is finished when every room receives the intended airflow, the controls respond correctly and the installation has been documented.</p>
+    
+  </section>
+
+  <!-- FOUR-PHASE WORKFLOW (interactive) -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">The commissioning workflow</div>
+      <h2 style="margin:0 0 32px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">From QR scan <span style="color:#8E8E8E;">to a final PDF record.</span></h2>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:32px;--cg:16px;">
+        <sc-for list="{{ phases }}" as="p" hint-placeholder-count="4">
+          <button class="ai-step" onClick="{{ p.onClick }}" style="cursor:pointer;font-family:inherit;text-align:left;border:1px solid {{ p.border }};border-top:3px solid {{ p.topBar }};background:{{ p.bg }};padding:24px 22px;display:flex;flex-direction:column;gap:10px;border-radius:12px;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);letter-spacing:var(--web-eyebrow-ls);">{{ p.n }}</span>
+            <span class="ai-step-t" style="font-size:16px;font-weight:700;letter-spacing:0.01em;color:{{ p.titleColor }};">{{ p.t }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);">{{ p.d }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+        <div style="padding:18px 28px;border-bottom:1px solid var(--color-divider);background:#F5F7FB;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;">
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ activePhase.t }} &#8212; captured</span>
+          <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">Phase {{ activePhase.n }} of 04</span>
+        </div>
+        <div data-cols="2" style="padding:8px 28px 20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;--cg:32px;">
+          <sc-for list="{{ activePhase.items }}" as="i" hint-placeholder-count="6">
+            <div style="display:grid;grid-template-columns:16px minmax(0,1fr);gap:12px;padding:14px 0;border-bottom:1px solid var(--color-surface-card);align-items:start;">
+              <span style="font-size:var(--web-small-size);color:var(--color-text-primary);margin-top:1px;line-height:var(--web-small-lh);">&#10003;</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ i }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL RECORD -->
+  <section style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center;">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">The final record</div>
+          <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One document proves the <span style="color:#8E8E8E;">system was delivered.</span></h2>
+          <p style="margin:0 0 16px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">The commissioning record ties product identity, measured airflow, balancing, checks and photographs into a single PDF that activates the warranty and stays with the building.</p>
+          <a href="AIRO - PRODUCT - Projects - EN.dc.html#intake" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-airo);color:#FFFFFF;font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Start an AIRO project</a>
+        </div>
+        <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;--cg:12px;">
+          <sc-for list="{{ recordItems }}" as="r" hint-placeholder-count="12">
+            <div style="background:#F4F4F4;padding:13px 16px;font-size:12px;font-weight:300;color:var(--color-text-primary);display:flex;gap:8px;align-items:baseline;border-radius:12px;"><span style="color:var(--color-text-primary);font-size:8px;">&#9679;</span>{{ r }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+    <div style="background:var(--color-text-primary);padding:56px;color:#FFFFFF;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;border-radius:12px;">
+      <div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#FFFFFF;text-wrap:balance;">Every room, <span style="color:#B2B3B3;">the intended airflow.</span></h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);color:#B8B8B5;max-width:560px;line-height:var(--web-body-lh);">Commissioning turns an installed unit into a delivered, documented system.</p>
+      </div>
+      <a href="AIRO - PRODUCT - Solutions - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-airo);color:#FFFFFF;font-weight:400;white-space:nowrap;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Book a technical meeting</a>
+    </div>
+  </section>
+
+  <dc-import name="AndoPattern" brand="AIRO" items="trace,scansheet,steps" hint-size="100%,600px"></dc-import>
+  <dc-import name="ContentSections" brand="AIRO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="AIRO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="AIRO" accent="var(--color-brand-airo)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+const PHASES = [
+  { t: "Identify", d: "Scan the product and confirm what is installed.", items: ["Scan QR / NFC", "Product identity and model", "Serial numbers", "Filter configuration", "Sensor configuration", "Wi-Fi or EMON status"] },
+  { t: "Define rooms", d: "List rooms and enter the design airflow.", items: ["Room list", "Supply rooms", "Extract rooms", "Design airflow per room", "Distribution layout", "Target balance"] },
+  { t: "Measure & balance", d: "Measure each terminal and confirm balancing.", items: ["Measured airflow per terminal", "Balancing position", "Condensate check", "Electrical check", "Outdoor intake and exhaust check", "Service-clearance check"] },
+  { t: "Document", d: "Record checks, photographs and warranty.", items: ["Installation photographs", "Test results", "Warranty confirmation", "Maintenance schedule", "Final PDF record", "Handover to owner"] },
+];
+
+class Component extends DCLogic {
+  state = { phase: 0 };
+  renderVals() {
+    const st = this.state;
+    return {
+      phases: PHASES.map((p, i) => ({
+        n: String(i + 1).padStart(2, "0"), t: p.t, d: p.d,
+        onClick: () => this.setState({ phase: i }),
+        bg: st.phase === i ? "#F5F7FB" : "#FFFFFF",
+        border: st.phase === i ? "var(--color-brand-airo)" : "#D4D4D4",
+        topBar: st.phase === i ? "var(--color-brand-airo)" : "#D4D4D4",
+        titleColor: st.phase === i ? "var(--color-brand-airo)" : "#4F4F4E",
+      })),
+      activePhase: { n: String(st.phase + 1).padStart(2, "0"), t: PHASES[st.phase].t, items: PHASES[st.phase].items },
+      recordItems: ["QR / NFC scan", "Product identity", "Serial numbers", "Room list", "Supply & extract rooms", "Design airflow", "Measured airflow", "Balancing position", "Filter & sensor config", "Condensate & electrical checks", "Installation photographs", "Warranty & maintenance schedule"],
+    };
+  }
+}
+</script>
+</body>
+</html>

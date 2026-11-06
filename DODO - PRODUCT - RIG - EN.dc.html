@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>DODO RIG | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="DodoNav" active="install" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="DODO" rgb="229,183,59" title="Tools at the front. Hands free on the roof." intro="The RIG is the front-mounted installer kit for fitting DODO QUILL." slot="dodo-rig-hero" shot="DODO RIG — front-mounted installer tool kit worn on the roof" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:20px;">DODO &#183; <span style="color:var(--color-text-primary);">The DODO RIG</span></div>
+    <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">It keeps the press tool, shear, tape, marker, gloves, cable ties and Aqua clips within reach, so the installer works along the edge without returning to the ground.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0 0 44px;">
+      <a href="DODO - SUPPORT - Installers - EN.dc.html" style="font-size:var(--cta-font,16px);padding:0 24px;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--radius-btn);font-weight:700;">Become approved</a>
+      <a href="DODO - SUPPORT - Install Faster - EN.dc.html" style="font-size:var(--web-link-size);padding:0 6px;height:46px;display:inline-flex;align-items:center;color:var(--color-text-primary);font-weight:var(--web-link-weight);">See the install method<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+    
+  </section>
+
+  <!-- WHY -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;--cg:24px;">
+        <sc-for list="{{ why }}" as="b" hint-placeholder-count="3">
+          <div class="emon-card"  style="padding:32px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">{{ b.eyebrow }}</div>
+            <h3 style="margin:0 0 12px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">{{ b.title }}</h3>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ b.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">What's in the RIG</div>
+      <h2 style="margin:0 0 32px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One kit <span style="color:#8E8E8E;">for the whole edge.</span></h2>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ contents }}" as="c" hint-placeholder-count="8">
+          <div class="emon-card"  style="background:var(--color-card-dodo);padding:22px;min-height:120px;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">{{ c.t }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);">{{ c.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 96px;box-sizing:border-box;">
+    <div style="background:var(--color-surface-secondary);border-radius:12px;padding:56px;color:var(--color-text-primary);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;">
+      <div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The RIG comes <span style="color:#8E8E8E;">with approval.</span></h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Approved DODO installers receive the RIG, training and access to the commissioning flow.</p>
+      </div>
+      <a href="DODO - SUPPORT - Installers - EN.dc.html" style="font-size:var(--cta-font,16px);padding:0 26px;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--radius-btn);font-weight:700;white-space:nowrap;">Become a DODO Approved Installer</a>
+    </div>
+  </section>
+
+  <dc-import name="EpcInfo" brand="DODO" product="RIG" hint-size="100%,420px"></dc-import>
+  <dc-import name="ContentSections" brand="DODO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="DODO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="DODO" accent="var(--color-brand-dodo)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      why: [
+        { eyebrow:"Worn at the front", title:"Everything within reach", body:"The RIG holds every tool and consumable at the installer's front, so fitting a strip, adding an Aqua clip and securing a cable happens in one position along the edge." },
+        { eyebrow:"One continuous pass", title:"No trips back down", body:"Because the press tool, shear and consumables travel with the installer, the edge is completed in one continuous pass instead of repeated returns to the ground." },
+        { eyebrow:"Consistent results", title:"The method, every time", body:"Defined places for each tool support the ten-step method, so measuring, cutting, pressing and cable securing stay consistent from the first strip to the last." },
+      ],
+      contents: [
+        { t:"Press tool", d:"Seats the QUILL strip onto the panel frame edge." },
+        { t:"Edge shear", d:"Clean cuts for corners and strip ends." },
+        { t:"Tape & ruler", d:"Measure and mark the exposed edge." },
+        { t:"Marker", d:"Mark cut points and tie positions." },
+        { t:"Gloves", d:"Grip and hand protection at the edge." },
+        { t:"Aqua clips", d:"Drainage clip, one per strip." },
+        { t:"UV cable ties", d:"Black, UV-resistant, for the cable route." },
+        { t:"Alcohol wipes", d:"Clean the frame before fitting." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>FLUXX Commissioning | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="FluxxNav" active="support" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="FLUXX" rgb="253,199,6" title="Commission the battery from one scan." intro="Commissioning connects the battery to EMON, sets its limits and proves it works." slot="fluxx-commissioning-hero" shot="FLUXX · Commissioning · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section data-screen-label="01 Hero" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 64px;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;display:flex;gap:6px;flex-wrap:wrap;"><a href="FLUXX - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">FLUXX</a><span>&#8250;</span><a href="FLUXX - SUPPORT - Installation - EN.dc.html" style="color:var(--color-grey-70);">INSTALLATION</a><span>&#8250;</span><span style="color:var(--color-text-primary);">COMMISSIONING</span></div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+      <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;background:var(--color-brand-fluxx);"></span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Commissioning</span></div>
+      <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;border:1px solid #DDDDDD;border-radius:8px;padding:2px 6px;">Draft</span>
+    </div>
+    <p style="margin:0 0 40px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:720px;text-wrap:pretty;">The result is one record per battery that stays with the system.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;">
+      <div style="background:var(--color-card-fluxx);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Identity</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Every module identifies itself</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Unique QR and passive NFC on every module. Readable before power-up.</span></div>
+      <div style="background:var(--color-card-fluxx);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Mapping</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">The system maps itself</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Location, stack, inverter, AC, backup and meter, recorded as the work happens.</span></div>
+      <div style="background:var(--color-card-fluxx);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Documentation</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">The file writes itself</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Ten documents, including the single-line diagram, generated at approval.</span></div>
+    </div>
+  </section>
+
+  <section id="steps" data-screen-label="02 Steps" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 72px;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;display:flex;flex-direction:column;gap:24px;">
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Eight steps <span style="color:#8E8E8E;">in the EMON installer app.</span></h2>
+      <div style="display:flex;flex-direction:column;border-top:1px solid var(--color-text-primary);">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="8">
+          <div style="display:grid;grid-template-columns:48px minmax(0,1fr) minmax(0,2fr);gap:16px 24px;padding:20px 0;border-bottom:1px solid var(--color-divider);align-items:start;">
+            <span style="font-size:var(--web-eyebrow-size);color:var(--color-text-primary);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);">{{ s.n }}</span>
+            <span style="font-size:16px;font-weight:400;">{{ s.t }}</span>
+            <span style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ s.b }}</span><sc-if value="{{ s.hasFlag }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#5F5E5E;line-height:var(--web-min-lh);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">{{ s.flag }}</span></sc-if></span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="identity" data-screen-label="03 Identity" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 72px;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px 48px;">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Identity</div>
+        <h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The battery identifies itself, <span style="color:#8E8E8E;">even unpowered.</span></h2>
+      </div>
+      <div style="display:flex;flex-direction:column;">
+        <sc-for list="{{ identity }}" as="p" hint-placeholder-count="4">
+          <div style="padding:14px 0;border-top:1px solid var(--color-divider);font-size:14px;font-weight:300;color:var(--color-text-primary);display:flex;gap:12px;align-items:baseline;"><span style="width:9px;height:9px;background:var(--color-brand-fluxx);flex:none;"></span><span>{{ p }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="discovery" data-screen-label="04 Discovery" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 72px;box-sizing:border-box;">
+    <div style="background:var(--color-card-fluxx);border-radius:12px;padding:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px 40px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Standard Wi-Fi Mesh</div>
+        <h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The battery joins the mesh. <span style="color:#8E8E8E;">You press one button.</span></h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;font-weight:300;line-height:1.6;color:var(--color-text-primary);">
+        <p style="margin:0;max-width:760px;">FLUXX joins the same Wi-Fi mesh as the MOEBIUS inverter. EMON finds it automatically. There is no manual pairing and no gateway to set up.</p>
+        <p style="margin:0;max-width:760px;">Every FLUXX element is detected automatically: stackable modules, plug and play units, monobloc and portable power stations.</p>
+        <a href="MOEBIUS - SUPPORT - Connected Fast - EN.dc.html" style="font-size:14px;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;align-self:flex-start;color:var(--color-text-primary);">How the MOEBIUS mesh works &#8250;</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="mapping" data-screen-label="05 Mapping" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 72px;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;display:flex;flex-direction:column;gap:24px;">
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Every connection recorded as <span style="color:#8E8E8E;">it is made.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;">
+        <sc-for list="{{ mapping }}" as="m" hint-placeholder-count="6">
+          <div style="border:1px solid var(--color-divider);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:6px;"><span style="font-size:14px;font-weight:400;">{{ m.t }}</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ m.b }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="project-sheet" data-screen-label="06 Project sheet" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 72px;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px 48px;">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Project sheet</div>
+        <h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One A4 sheet opens <span style="color:#8E8E8E;">the whole project.</span></h2>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">One shared sheet for the whole system: MOEBIUS, FLUXX, NENDO and SYNQ in one project. Scan it on site, no laptop needed.</p>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;">
+          <a href="EMON - DOC - Scan Sheet A4 - EN.dc.html" style="font-size:14px;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Scan sheet A4, with NENDO &#8250;</a>
+          <a href="MOEBIUS - SUPPORT - Commissioning - EN.dc.html" style="font-size:14px;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">MOEBIUS commissioning &#8250;</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;border-top:1px solid var(--color-text-primary);">
+        <sc-for list="{{ schedule }}" as="d" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:12px 0;border-bottom:1px solid var(--color-divider);font-size:var(--web-small-size);line-height:var(--web-small-lh);"><span style="font-weight:300;color:var(--color-text-primary);">{{ d.name }}</span><span style="font-weight:400;">{{ d.ref }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="documents" data-screen-label="07 Documents" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 72px;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;display:flex;flex-direction:column;gap:24px;">
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The technical file is created while the <span style="color:#8E8E8E;">battery is installed.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px 24px;border-top:1px solid var(--color-text-primary);">
+        <sc-for list="{{ outputs }}" as="o" hint-placeholder-count="10">
+          <div style="display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--color-divider);font-size:14px;"><span style="color:var(--color-text-primary);font-size:var(--web-eyebrow-size);min-width:24px;line-height:var(--web-min-lh);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);">{{ o.n }}</span><span style="font-weight:300;">{{ o.label }}</span></div>
+        </sc-for>
+      </div>
+      <p style="margin:0;font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;max-width:760px;line-height:var(--web-min-lh);">TO CONFIRM: format and templates of the single-line diagram and grid operator form per country</p>
+    </div>
+  </section>
+
+  <section id="record" data-screen-label="08 Record" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 72px;box-sizing:border-box;">
+    <div style="background:var(--color-card-fluxx);border-radius:12px;padding:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px 40px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Commissioning record</div>
+        <h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One record <span style="color:#8E8E8E;">per battery.</span></h2>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">Saved in EMON and shared with the owner at handover.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px 24px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">
+        <span>Product code and serial</span><span>Capacity and firmware</span><span>Coupling and phase</span><span>Inverter pairing</span><span>Reserve and limits</span><span>Export limit</span><span>Test results</span><span>Installer and date</span>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="09 Next" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 16px;box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;">
+      <a href="FLUXX - SUPPORT - Installation - EN.dc.html" style="background:var(--color-card-fluxx);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;" style-hover="background:var(--color-surface-card-mid);"><span style="font-size:16px;font-weight:400;">Installation &#8250;</span><span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Mounting and connection per format.</span></a>
+      <a href="FLUXX - PRODUCT - FLUXX with EMON - EN.dc.html" style="background:var(--color-card-fluxx);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;" style-hover="background:var(--color-surface-card-mid);"><span style="font-size:16px;font-weight:400;">FLUXX with EMON &#8250;</span><span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">What EMON does after handover.</span></a>
+      <a href="FLUXX - SUPPORT - Talk to an Expert - EN.dc.html" style="background:var(--color-card-fluxx);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;" style-hover="background:var(--color-surface-card-mid);"><span style="font-size:16px;font-weight:400;">Contact a specialist &#8250;</span><span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Questions before or during installation.</span></a>
+    </div>
+  </section>
+
+  <div style="height:56px;"></div>
+  <dc-import name="AndoPattern" brand="FLUXX" items="trace" hint-size="100%,600px"></dc-import>
+  <dc-import name="ContentSections" brand="FLUXX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="FLUXX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="FLUXX" accent="var(--color-brand-fluxx)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const TC = "TO CONFIRM";
+const STEPS = [
+  { t: "Open the project", b: "Scan the A4 project QR to open the approved project, or scan a battery module to start a new one." },
+  { t: "Identify every module", b: "Scan the QR or tap the passive NFC on each module. The exact product record opens, with no manual serial entry." },
+  { t: "Discover the system", b: "The battery joins the MOEBIUS Wi-Fi mesh. EMON finds it and the other supported devices automatically." },
+  { t: "Map location and stack", b: "Place the battery on the site with room, wall and photo. Confirm each module's position in the stack." },
+  { t: "Map connections", b: "Record the inverter pairing and port, the AC connection point and phase, the backup circuit and the meter and CT position." },
+  { t: "Set limits", b: "Backup reserve, minimum and maximum state of charge, charge rate and export limit." },
+  { t: "Test and approve", b: "Run the charge, discharge and backup tests. Measurements, settings and photos are captured and the record is approved.", flag: TC + ": test sequence per model" },
+  { t: "Generate documents", b: "The owner summary, technical file and single-line diagram are generated automatically. Invite the owner to the EMON app." },
+];
+const MAPPING = [
+  { t: "Physical location", b: "Room, wall and photo, so anyone can find the battery later." },
+  { t: "Module position", b: "Position 1, 2, 3 in the stack, linked to each module's serial." },
+  { t: "Inverter pairing and port", b: "Which inverter and which battery port. Only documented pairings are offered." },
+  { t: "AC connection and phase", b: "Where the system connects to the installation and on which phase." },
+  { t: "Backup circuit", b: "Which circuit and which essential loads stay on during a power cut." },
+  { t: "Meter and CT", b: "Meter position and CT orientation, checked against live readings." },
+];
+const OUTPUTS = ["Owner summary", "Installer technical file", "Single-line diagram, drawn automatically", "Device schedule", "Stack and module map", "Settings snapshot", "Test log: charge, discharge, backup", "Commissioning photographs", "Warranty registration confirmation", "Grid operator notification form"];
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      steps: STEPS.map((s, j) => ({ ...s, n: String(j + 1).padStart(2, "0"), hasFlag: !!s.flag, flag: s.flag || "" })),
+      identity: ["Unique QR and passive NFC on every battery module", "Passive NFC responds before the battery is powered", "The QR opens the exact product or project record", "The right guided workflow starts automatically"],
+      mapping: MAPPING,
+      schedule: [{ name: "MOEBIUS inverter", ref: "INV-01" }, { name: "FLUXX battery", ref: "BAT-01" }, { name: "FLUXX modules", ref: "BAT-01.1…n" }, { name: "NENDO heat pump", ref: "HP-01" }, { name: "SYNQ meter", ref: "MET-01" }],
+      outputs: OUTPUTS.map((label, i) => ({ n: String(i + 1).padStart(2, "0"), label })),
+    };
+  }
+}
+</script>
+</body>
+</html>

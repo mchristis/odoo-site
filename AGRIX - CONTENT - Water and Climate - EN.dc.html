@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>AGRIX Water and Climate | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:#6B8E4E; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="AgrixNav" active="structures" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="AGRIX" rgb="107,142,78" eyebrow="Water &amp; climate" title="Water where the crop needs it. Protection where it does not." intro="AGRIX treats water as part of the structure." slot="agri-water-hero" shot="VID/PST-WATER-01 · 21:9 · rain moving through open, sealed and drained canopy zones into gutter, tank and drip irrigation · awaiting upload" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;"><a href="AGRIX - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">Agri-PV</a> &#8250; <span style="color:var(--color-text-primary);">WATER &amp; CLIMATE</span></div>
+    <p style="margin:0 0 24px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:820px;">Every horizontal project controls runoff, while optional packages collect, store, distribute or monitor water according to the crop and local rules.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:44px;">
+      <a href="AGRIX - PRODUCT - Calculator - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;background:#6B8E4E;color:#FFFFFF;border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Build a water scenario<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <a href="AGRIX - PRODUCT - Crop Selector - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;background:#F4F4F2;color:var(--color-text-primary);border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Check a crop</a>
+    </div>
+    
+  </section>
+
+  <!-- FOUR WATER MODES -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Four water behaviours &#8212; and they can coexist</div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;--cg:12px;">
+        <sc-for list="{{ modes }}" as="m" hint-placeholder-count="4">
+          <div style="background:#F4F4F4;padding:24px;border-radius:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#6B8E4E;margin-bottom:10px;letter-spacing:var(--web-eyebrow-ls);">{{ m.n }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">{{ m.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ m.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6B8E4E;margin-bottom:16px;">Design principles</div>
+      <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px 48px;--cg:48px;">
+        <sc-for list="{{ principles }}" as="p" hint-placeholder-count="3">
+          <div style="padding:20px 0;border-top:1px solid #F0F0EE;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">{{ p.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ p.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALITY WARNING -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="background:#FBECEC;padding:32px 36px;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B33;margin-bottom:10px;">Irrigation is not drinking water</div>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#8A3030;max-width:900px;">Collected rainwater may feed irrigation and storage. Animal drinking-water use requires suitable treatment, protected storage, testing and local approval. No harvested water is described as suitable for animal use without evidence and approval.</p>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      modes: [
+        { n: "01", title: "Pass", desc: "Rainfall passes naturally through open strips to reach the soil beneath the canopy." },
+        { n: "02", title: "Intercept", desc: "Water is intercepted at module edges, avoiding uncontrolled drip lines onto the crop." },
+        { n: "03", title: "Collect", desc: "Sealed zones collect water into gutters, downpipes and protected storage." },
+        { n: "04", title: "Store & distribute", desc: "Stored water is routed to tanks and drip irrigation, with overflow for stronger rain." },
+      ],
+      principles: [
+        { title: "No uncontrolled drip edges", desc: "Concentrated runoff can erode soil, damage roots or create dry and wet bands. Gaps, channels, gutters, splash protection and infiltration zones are agricultural components, not cosmetic details." },
+        { title: "Weather protection is crop-specific", desc: "Hail, intense sun, heavy rain, frost and wind affect crops differently. Protection is a configurable risk-reduction strategy, never a universal guarantee." },
+        { title: "Measured comparison where useful", desc: "Optional sensors can compare rainfall, soil moisture, temperature and humidity inside and outside the protected zone. EMON may display these data, but its core role remains layout, production and documentation." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

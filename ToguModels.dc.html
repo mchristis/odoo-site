@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="togu-products.js"></script></helmet>
+<section id="models" style="max-width:1400px;margin:0 auto;padding:72px clamp(16px,3vw,40px) 0;font-family:var(--font-web);color:#4F4F4E;">
+  <div style="border-top:1px solid #D4D4D4;padding-top:36px;display:flex;flex-direction:column;gap:12px;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Models and article codes</div>
+    <h2 style="margin:0 0 8px;font-size:26px;font-weight:700;line-height:1.2;">{{ count }} articles in {{ groups }} product groups.</h2>
+    <sc-for list="{{ fams }}" as="f" hint-placeholder-count="7">
+      <div style="margin-top:20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">{{ f.fam }}</div>
+      <sc-for list="{{ f.groups }}" as="g" hint-placeholder-count="2">
+        <details style="border-bottom:1px solid #E4E2E0;">
+          <summary style="padding:14px 0;font-size:var(--web-body-size);cursor:pointer;display:flex;justify-content:space-between;gap:12px;font-weight:500;"><span>{{ g.name }}</span><span style="font-size:var(--web-min-size);font-weight:300;color:#8A8A88;line-height:var(--web-min-lh);">{{ g.n }} articles</span></summary>
+          <div style="overflow-x:auto;padding-bottom:12px;">
+            <div data-stack="1" style="display:grid;grid-template-columns:minmax(360px,2.4fr) minmax(220px,1fr);min-width:600px;border-top:1px solid #1E1E1E;">
+              <sc-for list="{{ g.items }}" as="i" hint-placeholder-count="3"><span style="padding:9px 12px 9px 0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;border-bottom:1px solid #EEEEEE;">{{ i.d }}</span><span style="padding:9px 0;font-size:12px;font-weight:700;font-family:var(--font-web);font-variant-numeric:tabular-nums;border-bottom:1px solid #EEEEEE;word-break:break-all;">{{ i.c }}</span></sc-for>
+            </div>
+            <sc-if value="{{ g.note }}" hint-placeholder-val="{{ false }}"><p style="margin:10px 0 0;font-size:var(--web-min-size);font-weight:300;color:#B07818;line-height:var(--web-min-lh);">[TO CONFIRM] {{ g.note }}</p></sc-if>
+          </div>
+        </details>
+      </sc-for>
+    </sc-for>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;padding-top:16px;"><a href="TOGU - PRODUCT - Finder - EN.dc.html" style="font-size:14px;color:#4F4F4E;border-bottom:1px solid #1E1E1E;padding-bottom:2px;">Find the right part &#8250;</a><a href="TOGU - WEBSHOP - Shop - EN.dc.html" style="font-size:14px;color:#4F4F4E;border-bottom:1px solid #1E1E1E;padding-bottom:2px;">Shop TOGU &#8250;</a></div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() { const t = () => { if (window.TOGU_MODELS) this.forceUpdate(); else this.t = setTimeout(t, 100); }; t(); }
+  componentWillUnmount() { clearTimeout(this.t); }
+  renderVals() {
+    const M = window.TOGU_MODELS || [], fams = [];
+    M.forEach(g => { let f = fams.find(x => x.fam === g.fam); if (!f) fams.push(f = { fam: g.fam, groups: [] }); f.groups.push({ ...g, n: g.items.length }); });
+    return { fams, groups: String(M.length), count: String(M.reduce((n, g) => n + g.items.length, 0)) };
+  }
+}
+</script>
+</body>
+</html>

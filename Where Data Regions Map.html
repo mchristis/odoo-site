@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WHERE · Data regions map</title>
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: #FFFFFF; overflow: hidden; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  #wrap { position: relative; width: 100%; }
+  svg { display: block; width: 100%; }
+  .rg { cursor: pointer; transition: opacity 400ms ease; } .rg path { transition: fill 400ms ease; }
+  .rg.dim { opacity: 0.6; }
+  .lb { position: absolute; left: 0; top: 0; pointer-events: none; white-space: nowrap; font-size:12px; font-weight: 300; color: #4F4F4E; line-height: 1.3; transition: opacity 400ms ease; }
+  .lb, .lb b { text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 6px #fff; }
+  .lb b { display: block; font-size:14px; font-weight: 500; color: #252525; }
+  .lb.dim { opacity: 0.6; }
+  .link { fill: none; stroke: #8E8E8E; stroke-width: 1; stroke-dasharray: 3 4;  }
+  @keyframes flow { to { stroke-dashoffset: -84; } }
+  .pulse { display: none; }
+  @keyframes pulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(3.2); opacity: 0; } }
+  #load { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size:11px; letter-spacing:.1em; text-transform: uppercase; color: #6E6E6E; ;font-weight:500}
+  @media (prefers-reduced-motion: reduce) { .link, .pulse { animation: none; } }
+</style>
+</head>
+<body>
+<div id="wrap"><svg id="svg" role="img" aria-label="Map of EMON data regions"></svg><div id="load">Loading map</div></div>
+<script>
+(function () {
+  var wrap = document.getElementById('wrap'), svg = d3.select('#svg');
+  var post = function (m) { try { parent.postMessage(m, '*'); } catch (e) {} };
+  var EU = ['040','056','100','191','196','203','208','233','246','250','276','300','348','372','380','428','440','442','470','528','616','620','642','703','705','724','752','352','438','578'];
+  var UK = ['826'];
+  var APAC = ['702','458','764','704','360','608','116','418','104','096','626','036','554','392','410','598','242'];
+  var LATAM = ['484','320','084','340','222','558','188','591','192','214','332','388','170','862','328','740','218','604','068','076','600','858','032','152','780','630','044'];
+  var NOME = ['364', '760'];
+  var R = {
+    eu: { fill: '#5F5E5E', hub: [10.4, 51.1], name: 'EU / EEA', sub: 'Germany', state: 'host', off: [22, -30, 'r'] },
+    uk: { fill: '#8E8E8E', hub: [-1.6, 52.6], name: 'United Kingdom', sub: 'UK region', state: 'host', off: [-12, -10, 'l'] },
+    apac: { fill: '#A9A9A7', hub: [103.82, 1.35], name: 'Asia-Pacific', sub: 'Singapore', state: 'host', off: [12, 8, 'r'] },
+    latam: { fill: '#C6C6C4', hub: [-46.63, -23.55], name: 'Latin America', sub: 'São Paulo', state: 'host', off: [12, 6, 'r'] },
+    africa: { fill: '#D3D3D1', hub: [20, 4], name: 'Africa', sub: 'Via EU infrastructure', state: 'via', off: [12, 0, 'r'] },
+    me: { fill: '#DDDDDB', hub: [47, 24.5], name: 'Middle East', sub: 'Location to be determined', state: 'future', off: [12, 4, 'r'] }
+  };
+  var feats = null, W = 0, H = 0, sel = 'eu', groups = {}, labs = {}, linkEl = null;
+  var LINKED = { eu: ['africa'], africa: ['eu'] };
+
+  function hsh(a, b, c) { var x = (a * 73856093) ^ (b * 19349663) ^ (c * 83492791); x = Math.imul(x ^ (x >>> 13), 1274126177); return ((x ^ (x >>> 16)) >>> 0) / 4294967296; }
+  function shape(t) {
+    var g = Math.max(0.5, t.s * 0.07), x = t.x + g, y = t.y + g, s = t.s - 2 * g, r = hsh(t.x | 0, t.y | 0, t.k + 7), o = Math.floor(hsh(t.y | 0, t.x | 0, t.k + 3) * 4), k;
+    var c = [[x, y], [x + s, y], [x + s, y + s], [x, y + s]], rr = s / 2, f = function (v) { return Math.round(v * 10) / 10; };
+    k = t.n === 1 ? (r < 0.5 ? 0 : (r < 0.8 ? 1 : 3)) : Math.floor(r * 5);
+    if (k === 0) return 'M' + f(x) + ' ' + f(y) + 'h' + f(s) + 'v' + f(s) + 'h' + f(-s) + 'Z';
+    if (k === 1) return 'M' + f(x) + ' ' + f(y + rr) + 'a' + f(rr) + ' ' + f(rr) + ' 0 1 0 ' + f(s) + ' 0a' + f(rr) + ' ' + f(rr) + ' 0 1 0 ' + f(-s) + ' 0Z';
+    if (k === 2) { var p = c[o], a = c[(o + 1) % 4], b = c[(o + 3) % 4]; return 'M' + f(p[0]) + ' ' + f(p[1]) + 'L' + f(a[0]) + ' ' + f(a[1]) + 'A' + f(s) + ' ' + f(s) + ' 0 0 1 ' + f(b[0]) + ' ' + f(b[1]) + 'Z'; }
+    if (k === 3) { var a3 = c[o], b3 = c[(o + 1) % 4], d3p = c[(o + 2) % 4]; return 'M' + f(a3[0]) + ' ' + f(a3[1]) + 'L' + f(b3[0]) + ' ' + f(b3[1]) + 'L' + f(d3p[0]) + ' ' + f(d3p[1]) + 'Z'; }
+    var a4 = c[o], b4 = c[(o + 1) % 4]; return 'M' + f(a4[0]) + ' ' + f(a4[1]) + 'A' + f(rr) + ' ' + f(rr) + ' 0 0 0 ' + f(b4[0]) + ' ' + f(b4[1]) + 'Z';
+  }
+  function regionOf(f) {
+    var id = f.id;
+    if (EU.indexOf(id) >= 0) return 'eu'; if (UK.indexOf(id) >= 0) return 'uk'; if (APAC.indexOf(id) >= 0) return 'apac'; if (LATAM.indexOf(id) >= 0) return 'latam';
+    var c = d3.geoCentroid(f), lon = c[0], lat = c[1];
+    if (NOME.indexOf(id) < 0 && lon > 34 && lon < 64 && lat > 11 && lat < 43) return 'me';
+    if (lat < 36 && lat > -36 && lon > -20 && lon < 52) return 'africa';
+    return null;
+  }
+  function mosaic(proj, w, h, cell) {
+    var cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+    var ctx = cv.getContext('2d', { willReadFrequently: true }), path = d3.geoPath(proj, ctx);
+    feats.forEach(function (f, i) { var k = i + 1; ctx.fillStyle = 'rgb(' + (k & 255) + ',' + ((k >> 8) & 255) + ',200)'; ctx.beginPath(); path(f); ctx.fill(); });
+    var data = ctx.getImageData(0, 0, w, h).data, cols = Math.floor(w / cell), rows = Math.floor(h / cell), grid = new Int32Array(cols * rows).fill(-1), used = new Uint8Array(cols * rows), out = { base: [] };
+    for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) { var px = Math.floor(c * cell + cell / 2), py = Math.floor(r * cell + cell / 2), o = (py * w + px) * 4; if (data[o + 3] === 255 && data[o + 2] === 200) { var k = data[o] + (data[o + 1] << 8); if (k >= 1 && k <= feats.length) grid[r * cols + c] = k - 1; } }
+    function block(c0, r0, n) { var v = grid[r0 * cols + c0]; if (v < 0) return -1; for (var a = r0; a < r0 + n; a++) for (var b = c0; b < c0 + n; b++) { var i = a * cols + b; if (used[i] || grid[i] !== v) return -1; } return v; }
+    [4, 2, 1].forEach(function (n) { for (var r2 = 0; r2 + n <= rows; r2 += n) for (var c2 = 0; c2 + n <= cols; c2 += n) { var v = block(c2, r2, n); if (v < 0) continue; for (var a = r2; a < r2 + n; a++) for (var b = c2; b < c2 + n; b++) used[a * cols + b] = 1; var rg = feats[v].rg || 'base'; (out[rg] = out[rg] || []).push(shape({ k: v, x: c2 * cell, y: r2 * cell, s: n * cell, n: n })); } });
+    return out;
+  }
+  function arc(a, b) { var dx = b[0] - a[0], dy = b[1] - a[1], d = Math.sqrt(dx * dx + dy * dy) || 1, nx = -dy / d, ny = dx / d; if (ny > 0) { nx = -nx; ny = -ny; } var cx = (a[0] + b[0]) / 2 + nx * d * 0.2, cy = (a[1] + b[1]) / 2 + ny * d * 0.2; return 'M' + a[0] + ' ' + a[1] + 'Q' + cx + ' ' + cy + ' ' + b[0] + ' ' + b[1]; }
+
+  function paint() {
+    var lk = (sel && LINKED[sel]) || [];
+    Object.keys(groups).forEach(function (k) {
+      var on = k === sel, near = lk.indexOf(k) >= 0;
+      groups[k].classed('dim', false);
+      groups[k].select('path').attr('fill', on ? '#4F4F4E' : near ? '#A9A9A7' : '#DCDCDA');
+    });
+    Object.keys(labs).forEach(function (k) { labs[k].classList.toggle('dim', !!sel && k !== sel && lk.indexOf(k) < 0); });
+    if (linkEl) linkEl.style.opacity = (sel === 'eu' || sel === 'africa') ? 1 : 0;
+  }
+  function pick(k) { sel = k; paint(); post({ dataRegion: k }); }
+
+  function build() {
+    W = Math.round(wrap.clientWidth); if (!W || !feats) return;
+    H = Math.round(Math.max(240, Math.min(W * 0.44, 560)));
+    svg.selectAll('*').remove(); Object.keys(labs).forEach(function (k) { labs[k].remove(); }); groups = {}; labs = {};
+    svg.attr('viewBox', '0 0 ' + W + ' ' + H).attr('height', H);
+    var proj = d3.geoNaturalEarth1().fitExtent([[4, 4], [W - 4, H - 4]], { type: 'FeatureCollection', features: feats });
+    var mo = mosaic(proj, W, H, Math.max(5, W / 110));
+    svg.append('path').attr('fill', '#EDEDEB').attr('d', (mo.base || []).join(''));
+    var gl = svg.append('g');
+    Object.keys(R).forEach(function (k) {
+      var g = svg.append('g').attr('class', 'rg').attr('data-r', k).attr('tabindex', 0).attr('role', 'button').attr('aria-label', R[k].name + ', ' + R[k].sub);
+      g.append('path').attr('fill', R[k].fill).attr('d', (mo[k] || []).join(''));
+      g.node().addEventListener('click', function () { pick(k); });
+      g.node().addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(k); } });
+      groups[k] = g;
+    });
+    var DE = proj(R.eu.hub);
+    gl.raise();
+    linkEl = gl.append('path').attr('class', 'link').attr('d', arc(proj(R.africa.hub), DE)).style('transition', 'opacity 400ms ease').node();
+    Object.keys(R).forEach(function (k) {
+      var p = proj(R[k].hub), st = R[k].state, g = groups[k];
+      if (k === 'eu') { g.append('circle').attr('class', 'pulse').attr('cx', p[0]).attr('cy', p[1]).attr('r', 5).attr('fill', 'none').attr('stroke', '#F76801').attr('stroke-width', 1.2); g.append('circle').attr('cx', p[0]).attr('cy', p[1]).attr('r', 5).attr('fill', '#F76801').attr('stroke', '#FFFFFF').attr('stroke-width', 1.5); }
+      else if (st === 'host') g.append('circle').attr('cx', p[0]).attr('cy', p[1]).attr('r', 4.5).attr('fill', '#252525').attr('stroke', '#FFFFFF').attr('stroke-width', 1.5);
+      else if (st === 'planned') g.append('circle').attr('cx', p[0]).attr('cy', p[1]).attr('r', 4.5).attr('fill', '#FFFFFF').attr('stroke', '#252525').attr('stroke-width', 1.4);
+      else if (st === 'future') g.append('circle').attr('cx', p[0]).attr('cy', p[1]).attr('r', 4.5).attr('fill', '#FFFFFF').attr('stroke', '#5F5E5E').attr('stroke-width', 1.2).attr('stroke-dasharray', '2 2');
+      g.append('circle').attr('cx', p[0]).attr('cy', p[1]).attr('r', 14).attr('fill', 'transparent');
+      var d = document.createElement('div'), o = R[k].off; d.className = 'lb'; d.innerHTML = '<b>' + R[k].name + '</b>' + R[k].sub;
+      d.style.left = Math.round(p[0] + o[0]) + 'px'; d.style.top = Math.round(p[1] + o[1]) + 'px'; d.style.transform = o[2] === 'l' ? 'translate(-100%,-50%)' : 'translate(0,-50%)'; if (o[2] === 'l') d.style.textAlign = 'right';
+      wrap.appendChild(d); labs[k] = d;
+    });
+    paint(); post({ dataMapH: H });
+  }
+
+  window.addEventListener('message', function (e) { var d = e.data || {}; if ('setRegion' in d) { sel = R[d.setRegion] ? d.setRegion : null; paint(); } });
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json').then(function (r) { return r.json(); }).then(function (topo) {
+    feats = topojson.feature(topo, topo.objects.countries).features.filter(function (f) { return f.id !== '010' && f.properties.name !== 'Antarctica'; });
+    feats.forEach(function (f) { f.rg = regionOf(f); });
+    var l = document.getElementById('load'); if (l) l.remove();
+    var lw = 0, rt = null;
+    function check(delay) { clearTimeout(rt); rt = setTimeout(function () { var w = Math.round(wrap.clientWidth); if (w && Math.abs(w - lw) > 16) { lw = w; build(); } }, delay); }
+    new ResizeObserver(function () { check(lw ? 240 : 0); }).observe(wrap);
+    window.addEventListener('resize', function () { check(lw ? 240 : 0); });
+    setInterval(function () { var w = Math.round(wrap.clientWidth); if (w && Math.abs(w - lw) > 16) check(0); }, 500);
+  }).catch(function () { var l = document.getElementById('load'); if (l) l.textContent = 'Map could not load'; post({ dataMapH: 120 }); });
+  post({ dataMapH: 400 });
+})();
+</script>
+</body>
+</html>

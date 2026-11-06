@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>WURK Kits | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  select:focus { outline:none; border-color:var(--color-brand-wurk); }
+  .wk-kit:hover { border-color:var(--color-brand-wurk) !important; }
+  .wk-kit:hover .wk-kit-t { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="WurkNav" active="kits" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="WURK" rgb="158,61,46" eyebrow="WURK kits" title="Build the kit around the work." intro="Start with the installation type, crew size and project scope." slot="wurk-kits-hero" shot="WURK · Kits · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:720px;">WURK combines compatible products and removes equipment that does not match the task or country.</p>
+    <a href="#builder" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-wurk);color:var(--color-text-primary);font-weight:400;margin-bottom:40px;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Start kit builder</a>
+  </section>
+
+  <!-- KIT CARDS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:36px;">
+      <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One crew. <span style="color:#8E8E8E;">One coherent equipment system.</span></h2>
+      <p style="margin:0 0 28px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Kits are modular. You are never forced to buy duplicate tools you already own \u2014 individual products can be removed while compatibility warnings stay visible.</p>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ kits }}" as="k" hint-placeholder-count="7">
+          <a class="wk-kit" href="#builder" style="border-top:3px solid var(--color-brand-wurk);padding:24px 22px;display:flex;flex-direction:column;gap:12px;min-height:200px;background:#F4F4F4;border-radius:12px;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
+              <span class="wk-kit-t" style="font-size:15px;font-weight:700;line-height:1.2;">{{ k.name }}</span>
+              <sc-if value="{{ k.chip }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);background:#FBF3CC;padding:3px 7px;white-space:nowrap;border-radius:8px;">{{ k.chip }}</span></sc-if>
+            </div>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);flex:1;max-width:760px;">{{ k.desc }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+              <sc-for list="{{ k.fams }}" as="f" hint-placeholder-count="3"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.03em;color:var(--color-text-primary);border:1px solid var(--color-divider);padding:3px 8px;border-radius:8px;">{{ f }}</span></sc-for>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+      <p style="margin:20px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:820px;line-height:var(--web-min-lh);">A fixed roof-safety kit is never shown as universally suitable. WURK requests roof type, access method, anchor strategy, users, rescue approach and country before recommending a fall-protection configuration.</p>
+    </div>
+  </section>
+
+  <!-- KIT BUILDER (interactive) -->
+  <section id="builder" style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Kit builder</div>
+      <h2 style="margin:0 0 32px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Eleven steps <span style="color:#8E8E8E;">to a configured crew setup.</span></h2>
+      <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:start;">
+        <!-- steps rail -->
+        <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:1px;background:var(--color-divider);border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+          <sc-for list="{{ builderSteps }}" as="s" hint-placeholder-count="11">
+            <div style="background:#FFFFFF;padding:12px 18px;display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;align-items:baseline;">
+              <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);letter-spacing:var(--web-eyebrow-ls);">{{ s.n }}</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ s.t }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <!-- live config -->
+        <div style="flex:999 1 min(100%,400px);min-width:0;">
+          <div style="background:var(--color-card-wurk);padding:28px;margin-bottom:20px;border-radius:12px;">
+            <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;--cg:18px;">
+              <div>
+                <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Application</label>
+                <select onChange="{{ onApp }}" style="width:100%;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+                  <sc-for list="{{ appOptions }}" as="o" hint-placeholder-count="4"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+                </select>
+              </div>
+              <div>
+                <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Crew size</label>
+                <select onChange="{{ onCrew }}" style="width:100%;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+                  <sc-for list="{{ crewOptions }}" as="o" hint-placeholder-count="4"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!-- result -->
+          <div style="background:var(--color-card-wurk);border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+            <div style="padding:18px 24px;border-bottom:1px solid var(--color-divider);display:flex;justify-content:space-between;align-items:baseline;">
+              <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Your WURK crew setup</span>
+              <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ crewLabel }} &#183; {{ appLabel }}</span>
+            </div>
+            <sc-for list="{{ resultModules }}" as="m" hint-placeholder-count="4">
+              <div style="padding:16px 24px;border-bottom:1px solid var(--color-surface-card);display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:14px;align-items:baseline;">
+                <span style="font-size:12px;font-weight:700;color:var(--color-text-primary);">{{ m.code }}</span>
+                <span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);">{{ m.items }}</span>
+                <span style="font-size:12px;font-weight:700;color:var(--color-text-primary);white-space:nowrap;">&#215;{{ m.qty }}</span>
+              </div>
+            </sc-for>
+            <sc-if value="{{ hasExclusions }}" hint-placeholder-val="{{ true }}">
+              <div style="padding:16px 24px;background:#FBFBFA;">
+                <span style="font-size:var(--web-error-size);font-weight:var(--web-error-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#D8392C;">Excluded</span>
+                <p style="margin:6px 0 0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);max-width:760px;">{{ exclusions }}</p>
+              </div>
+            </sc-if>
+            <div style="padding:20px 24px;display:flex;flex-wrap:wrap;gap:10px;">
+              <a href="WURK - SUPPORT - Ownership and Support - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-wurk);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Request quotation</a>
+              <a href="WURK - PRODUCT - Selector - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;border:1px solid var(--color-divider);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Refine in selector</a>
+            </div>
+          </div>
+          <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);max-width:760px;">Illustrative configuration. Connector type, system voltage, roof conditions, documentation and country availability are confirmed before supply. Safety-critical modules require project-specific review.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="EpcInfo" brand="WURK" product="Kits" hint-size="100%,420px"></dc-import>
+  <dc-import name="ContentSections" brand="WURK" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="WURK" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="WURK" accent="var(--color-brand-wurk)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+const APPS = {
+  residential: { label: "Residential solar", modules: [
+    { code: "CRIMP", items: "MC4 Pro toolbox \u2014 crimper, dies, stripper", qty: 1 },
+    { code: "PREP", items: "Cable cutter and torque tool", qty: 1 },
+    { code: "PROBE", items: "Multimeter and clamp meter", qty: 1 },
+    { code: "RISE", items: "Platform steps / roof access", qty: 1 },
+  ], exclusions: "12 m mobile tower excluded \u2014 working height not required for typical domestic roofs." },
+  commercial: { label: "Commercial rooftop", modules: [
+    { code: "CRIMP", items: "MC4 Pro toolbox per crew", qty: 2 },
+    { code: "RAIL", items: "Flat-roof edge protection (layout on plan)", qty: 1 },
+    { code: "RISE", items: "8 m mobile scaffold tower", qty: 1 },
+    { code: "PROBE", items: "Clamp meter and insulation tester", qty: 1 },
+  ], exclusions: "Single-socket testers excluded \u2014 three-phase verification required instead." },
+  battery: { label: "Battery storage", modules: [
+    { code: "HAUL", items: "Stair-climbing trolley (route survey required)", qty: 1 },
+    { code: "PREP", items: "Torque tool for terminals", qty: 1 },
+    { code: "PROBE", items: "Multimeter and clamp meter", qty: 1 },
+    { code: "GAUGE", items: "Laser distance meter for clearances", qty: 1 },
+  ], exclusions: "Ladder-only access excluded \u2014 heavy-module handling needs controlled route equipment." },
+  ev: { label: "EV charging", modules: [
+    { code: "GAUGE", items: "Laser distance meter and level", qty: 1 },
+    { code: "PREP", items: "Cable cutter, stripper and torque tool", qty: 1 },
+    { code: "PROBE", items: "Multimeter, clamp and socket tester", qty: 1 },
+  ], exclusions: "PV DC insulation tester optional \u2014 depends on shared array scope." },
+};
+const CREWS = { s1: "1 crew", s2: "2 crews", s3: "3+ crews" };
+
+class Component extends DCLogic {
+  state = { app: "residential", crew: "s1" };
+  renderVals() {
+    const st = this.state;
+    const app = APPS[st.app] || APPS.residential;
+    const mult = st.crew === "s3" ? 3 : st.crew === "s2" ? 2 : 1;
+    return {
+      kits: [
+        { name: "WURK Connect Basic", desc: "Core cable preparation and connector-assembly tools for routine PV work.", fams: ["CRIMP", "PREP"] },
+        { name: "WURK Connect Pro", desc: "Professional ratchet crimping, replaceable dies, controlled stripping and torque tools.", fams: ["CRIMP", "PREP"] },
+        { name: "WURK Commission", desc: "Electrical measurement and commissioning tools selected for the system and country.", fams: ["PROBE", "GAUGE"] },
+        { name: "WURK Roof Safe", desc: "Project-specific fall-protection and access configuration, supplied after requirements are defined.", chip: "Project supply", fams: ["HOLD", "RAIL", "RISE"] },
+        { name: "WURK Battery Move", desc: "Handling equipment selected around battery weight, route, stairs and final position.", fams: ["HAUL"] },
+        { name: "WURK Site Access", desc: "Ladder, tower or platform selection based on height, duration, load and ground conditions.", chip: "Project supply", fams: ["RISE"] },
+        { name: "WURK Crew Complete", desc: "Configurable full-crew setup combining preparation, measurement, test, access and handling.", fams: ["CRIMP", "PROBE", "RISE", "HAUL"] },
+      ],
+      builderSteps: [
+        { n: "01", t: "Select country" }, { n: "02", t: "Select application" }, { n: "03", t: "Select crew size" },
+        { n: "04", t: "Select tasks" }, { n: "05", t: "System voltage and phase" }, { n: "06", t: "Connector and cable" },
+        { n: "07", t: "Working-height & access" }, { n: "08", t: "Battery / equipment loads" }, { n: "09", t: "Inspection & calibration" },
+        { n: "10", t: "Review configuration" }, { n: "11", t: "Save, share or request quotation" },
+      ],
+      appOptions: Object.keys(APPS).map(k => ({ value: k, label: APPS[k].label, selected: k === st.app })),
+      crewOptions: Object.keys(CREWS).map(k => ({ value: k, label: CREWS[k], selected: k === st.crew })),
+      onApp: (e) => this.setState({ app: e.target.value }),
+      onCrew: (e) => this.setState({ crew: e.target.value }),
+      appLabel: app.label, crewLabel: CREWS[st.crew],
+      resultModules: app.modules.map(m => ({ ...m, qty: m.qty * mult })),
+      hasExclusions: true,
+      exclusions: app.exclusions,
+    };
+  }
+}
+</script>
+</body>
+</html>

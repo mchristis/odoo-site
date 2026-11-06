@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<title>OGO Products | Rainwater storage formats | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-brand-ogo,#00A0E3); } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="OgoNav" active="products" hint-size="100%,57px"></dc-import>
+  <dc-import name="PageHero" brand="OGO" rgb="0,160,227" eyebrow="OGO · Products" title="Choose the storage format." intro="Choose DIVAN seating storage, WALL wall or fence storage, or TONY tower storage according to the space and water requirement." slot="ogo-products-hero" shot="OGO · Products · DIVAN, WALL and TONY around an outdoor space (visual brief 01)" hint-size="100%,625px"></dc-import>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:#666666;display:flex;gap:6px;flex-wrap:wrap;"><a href="OGO - PRODUCT - Overview - EN.dc.html" style="color:#666666;">OGO</a><span>&#8250;</span><span style="color:#222222;">PRODUCTS</span></div>
+  </section>
+
+  <sc-for list="{{ ranges }}" as="r" hint-placeholder-count="4">
+    <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">{{ r.n }} / Format</div>
+          <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ r.name }}</h2>
+          <div style="font-size:var(--web-body-size);color:#666666;">{{ r.sub }}</div>
+          <div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#F4F4F4;margin-top:8px;"><image-slot id="{{ r.slot }}" shape="rounded" radius="12" placeholder="{{ r.shot }}"></image-slot></div>
+          <a href="{{ r.href }}" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#222222;" style-hover="color:#4F4F4E;">{{ r.link }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ r.desc }}</p>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ r.intended }}</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span style="background:#F4F4F4;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);color:#4F4F4E;">Rainwater, non-potable</span>
+            <span style="background:#F4F4F4;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);color:#4F4F4E;display:inline-flex;gap:8px;align-items:center;">EMON water control <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Proposed · in development</span></span>
+          </div>
+          <div style="border-top:1px solid #222222;">
+            <sc-for list="{{ r.specs }}" as="sp" hint-placeholder-count="2">
+              <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">{{ sp.k }}</span><span style="font-size:var(--web-body-size);font-weight:{{ sp.w }};color:{{ sp.c }};">{{ sp.v }}</span></div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+
+  <section data-screen-label="Range and choice" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:flex;flex-direction:column;gap:16px;">
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The range</h2>
+      <div style="background:#F4F4F4;border-radius:12px;padding:8px 24px;max-width:1100px;">
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,0.6fr) minmax(0,1.2fr) minmax(0,1.6fr);gap:16px;padding:14px 0 10px;border-bottom:1px solid #D9D9D9;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;"><span>Model</span><span>Format</span><span>Water equipment</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,0.6fr) minmax(0,1.2fr) minmax(0,1.6fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;font-weight:500;">DIVAN</span><span style="color:#5F5E5E;">Garden bench with 750 litres of water storage · Target</span><span style="color:#5F5E5E;">Integrated pressure pump, stored hose and drip irrigation starter kit</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,0.6fr) minmax(0,1.2fr) minmax(0,1.6fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;font-weight:500;">WALL</span><span style="color:#5F5E5E;">Wall format water storage</span><span style="color:#5F5E5E;">Separate equipment box for the pump, hose and irrigation equipment</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,0.6fr) minmax(0,1.2fr) minmax(0,1.6fr);gap:16px;padding:14px 0;border-bottom:0;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;font-weight:500;">TONY</span><span style="color:#5F5E5E;">Tower format water storage, 350 L · 500 L · Target</span><span style="color:#5F5E5E;">Storage without the integrated pump and hose package</span></div>
+      </div>
+      <h3 style="margin:16px 0 0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;">Choose your format</h3>
+      <div style="background:var(--divan-card,#F4F4F4);border-radius:12px;padding:8px 24px;max-width:900px;">
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:16px;padding:14px 0 10px;border-bottom:1px solid #D9D9D9;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;"><span>Requirement</span><span>Model</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;">Seating, 750 litre storage and integrated water equipment</span><span style="color:#5F5E5E;font-weight:400;">DIVAN</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;">Wall format storage with a separate equipment module</span><span style="color:#5F5E5E;font-weight:400;">WALL</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:16px;padding:14px 0;border-bottom:0;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;">Tower storage without integrated water equipment</span><span style="color:#5F5E5E;font-weight:400;">TONY</span></div>
+      </div>
+      <div style="display:flex;gap:8px 24px;flex-wrap:wrap;"><a href="#specialist" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#222222;min-height:44px;display:inline-flex;align-items:center;" style-hover="color:#4F4F4E;">Request product information<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a></div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 96px;box-sizing:border-box;">
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+      <a href="#specialist" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);" style-hover="background:#5F5E5E;color:#F4F4F4;">Contact a specialist</a>
+      <a href="Content Pending.dc.html?brand=OGO&amp;topic=Compare" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#F4F4F4;color:#222222;border-radius:var(--cta-radius);" style-hover="background:#E3E3E3;">Compare water systems</a>
+      <a href="Content Pending.dc.html?brand=OGO&amp;topic=Planning%20with%20KALK" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#F4F4F4;color:#222222;border-radius:var(--cta-radius);" style-hover="background:#E3E3E3;">Plan your water system</a>
+    </div>
+  </section>
+
+  <dc-import name="ContentSections" brand="OGO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <div id="specialist" style="scroll-margin-top:24px;"></div>
+  <dc-import name="ReachSpecialist" brand="OGO" photo-slot-id="ogo-products-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="OGO" accent="var(--color-brand-ogo)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const v = (k, val) => ({ k, v: val, w: 500, c: "#252525" });
+    const tc = (k) => ({ k, v: "To confirm", w: 500, c: "#5F5E5E" });
+    return {
+      ranges: [
+        { n: "01", name: "DIVAN", sub: "Seating storage", slot: "ogo-products-divan", shot: "DIVAN outdoor seating with integrated rainwater storage (visual brief 02)", href: "OGO - PRODUCT - DIVAN - EN.dc.html", link: "Explore DIVAN",
+          desc: "Outdoor seating with 750 litres of rainwater storage and an included pump, hose, washing equipment and drip irrigation starter kit.",
+          intended: "Intended where seating and a water reserve share the same area.",
+          specs: [v("Capacity", "750 L · Target"), tc("Dimensions"), tc("Weight empty · filled")] },
+        { n: "02", name: "WALL slimline", sub: "Wall or boundary storage", slot: "ogo-products-wall-slimline", shot: "WALL slimline storage along a wall (visual brief 05)", href: "OGO - PRODUCT - WALL - EN.dc.html", link: "Explore WALL",
+          desc: "Slimline rainwater storage for a wall-side or boundary arrangement, with an EMON-connected monitoring and supported water-use configuration. Specify the module, support and hydraulic layout for the site.",
+          intended: "Intended where a narrow arrangement suits the site.",
+          specs: [v("Capacity", "About 1,000 L per module · Target"), v("Depth", "About 30 cm · Target")] },
+        { n: "03", name: "WALL storage fencing", sub: "Storage within a boundary", slot: "ogo-products-wall-fencing", shot: "WALL storage fencing as part of a garden boundary (visual brief 06)", href: "OGO - PRODUCT - WALL - EN.dc.html", link: "Explore WALL",
+          desc: "Modular rainwater storage fencing for a designed boundary arrangement, with EMON visibility and configured pump, irrigation or transfer functions.",
+          intended: "Intended where the water-storage and boundary layout are designed together.",
+          specs: [v("Set", "2 panels, about 800 L · Target"), v("Capacity", "About 400 L per panel · Target")] },
+        { n: "04", name: "TONY", sub: "Upright storage", slot: "ogo-products-tony", shot: "TONY upright rainwater storage near a downpipe (visual brief 08)", href: "OGO - PRODUCT - TONY - EN.dc.html", link: "Explore TONY",
+          desc: "Upright rainwater storage with an EMON-connected monitoring and supported water-use configuration. Select the approved tank size, outlet and pump arrangement for the location.",
+          intended: "Intended where a vertical tank format is suitable.",
+          specs: [v("Tower", "350 L · 500 L"), v("Planter", "230 L")] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<script src="./product-brands.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4F4F4E; text-decoration:none; }
+  a:hover { color:#1E1E1E; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="BrandBar" brand="{{ code }}" hint-size="100%,73px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="{{ brandCode }}" eyebrow="{{ brandCode }} · Products" title="{{ tagline }}" intro="{{ lead }}" split="{{ true }}" slot="pb-hero" shot="{{ heroDir }}" hint-size="100%,625px"></dc-import><section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    
+    
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;">
+      <a href="STROHM.ENERGY - PROJECT - All Projects - EN.dc.html#routes" style="height:48px;padding:0 28px;display:inline-flex;align-items:center;background:{{ accent }};color:#FFFFFF;font-size:var(--cta-font);letter-spacing:0.04em;border-radius:8px;font-weight:var(--web-btn-weight);">Request a technical project file</a>
+      <a href="STROHM.ENERGY - COMPANY - Who - Product Experts - EN.dc.html" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:#F5F5F5;border:1px solid #D4D4D4;color:#5F5E5E;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">Contact a specialist</a>
+    </div>
+    
+    <div style="font-size:var(--web-min-size);font-weight:300;color:#898989;margin-top:12px;line-height:var(--web-min-lh);">Product content placeholder — detailed specifications to be confirmed with the {{ code }} team.</div>
+  </section>
+
+  <!-- WHAT -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D4D4D4;padding-top:28px;">
+      <h2 style="margin:0 0 24px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">What we make</h2>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;--cg:12px;">
+        <sc-for list="{{ whatBlocks }}" as="w" hint-placeholder-count="4">
+          <div style="background:#F4F4F4;padding:24px;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;margin-bottom:8px;line-height:var(--web-h3-lh);">{{ w.title }}</div>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">{{ w.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <sc-for list="{{ groups }}" as="g" hint-placeholder-count="0">
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D4D4D4;padding-top:28px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:24px;"><h2 style="margin:0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">{{ g.title }}</h2><a href="{{ g.href }}" style="font-size:14px;font-weight:400;border-bottom:1px solid #4F4F4E;padding-bottom:2px;">View all &#8250;</a></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
+        <sc-for list="{{ g.cards }}" as="c" hint-placeholder-count="4">
+          <a href="{{ c.href }}" style="background:#F4F4F4;padding:24px;display:flex;flex-direction:column;gap:8px;border-radius:12px;" style-hover="background:#E3E3E3;">
+            <span style="font-size:15px;font-weight:700;color:#4F4F4E;">{{ c.name }}</span>
+            <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ c.type }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  </sc-for>
+  <div style="height:64px;"></div>
+  <dc-import name="BrandHow" accent="{{ accent }}" heading="{{ howHeading }}" intro="{{ howIntro }}" steps="{{ howSteps }}" cta="Request a {{ code }} project file" hint-size="100%,420px"></dc-import>
+
+  <dc-import name="EngineeredIntoProject" accent="{{ accent }}" hint-size="100%,320px"></dc-import>
+
+  <sc-if value="{{ showProject }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <a href="{{ code }} - PRODUCT - Overview - EN.dc.html#project" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;border-top:1px solid var(--color-text-primary);border-bottom:1px solid var(--color-divider);padding:28px 0;color:var(--color-text-primary);" style-hover="color:var(--color-text-primary);">
+      <span style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Project request</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Send your site data and files to our engineers.</span></span>
+      <span style="font-size:var(--web-small-size);font-weight:300;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Start a project &#8250;</span>
+    </a>
+  </section>
+  </sc-if>
+  <dc-import name="ContentSections" brand="{{ contentBrand }}" scope="brand" hint-size="100%,1600px"></dc-import>
+
+  <dc-import name="ReachSpecialist" brand="{{ contentBrand }}" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="{{ contentBrand }}" accent="{{ accent }}" hint-size="100%,520px"></dc-import>
+
+  <div style="height:32px;"></div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1480,&quot;height&quot;:960},&quot;brand&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;FLUXX&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    if (!window.STROHM_PRODUCT_BRANDS) {
+      this._t = setInterval(() => { if (window.STROHM_PRODUCT_BRANDS) { clearInterval(this._t); this.forceUpdate(); } }, 60);
+    }
+  }
+  componentWillUnmount() { if (this._t) clearInterval(this._t); }
+
+  renderVals() {
+    const B = window.STROHM_PRODUCT_BRANDS || {};
+    const key = this.props.brand || "FLUXX";
+    const b = B[key] || { code: key, subtitle: "", accent: "#5F5E5E", category: "", tagline: "", lead: "", what: [], how: "", contentBrand: key };
+    return { brandSlug: String(key).toLowerCase(), brandCode: b.code || key,
+      code: b.code, subtitle: b.subtitle, accent: b.accent, category: b.category,
+      tagline: b.tagline, lead: b.lead,
+      contentBrand: b.contentBrand || b.code,
+      heroDir: "BNR-" + b.code + "-01 · 21:9 · " + b.subtitle + " in real context · V3-R3 restrained, logo-colour cue · awaiting upload",
+      whatBlocks: (b.what || []).map((w) => ({ title: w[0], desc: w[1] })),
+      howHeading: "From selection to a documented " + b.code + " installation.",
+      howIntro: "How " + b.code + " products move from product selection to a real, documented project. Specific to " + b.subtitle.toLowerCase() + ".",
+      howSteps: b.how || "",
+      showProject: ["MOX","AGRIX","TERRIX","PONTIX","TECTIX","PARX","CHILL","TOGU"].includes(b.code),
+      groups: (b.groups || []).map((g) => ({ title: g.title, href: g.href, cards: g.items.map((i) => ({ name: i[0], type: i[1], href: i[2] })) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

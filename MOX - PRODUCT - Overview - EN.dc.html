@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>MOX Overview | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style> @media (max-width:720px){ .hero-card{width:calc(100% - 40px) !important;margin-top:20px !important;min-height:calc((100vw - 40px) * 1.25) !important;align-items:flex-end !important;} .hero-card-panel{width:100% !important;align-self:auto !important;padding:28px 20px !important;} } 
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoxNav" active="overview" hint-size="100%,57px"></dc-import>
+  <!-- HERO -->
+  <dc-import name="BrandHero2" brand="MOX" rgb="216,57,44" dark="#7A1C14" title="Solar structures, engineered as structures — not assembled later from unrelated parts." intro="MOX develops coordinated photovoltaic structures that solve the complete interface between the building, the frame, the modules, drainage, cabling, electrical equipment, installation, maintenance and digital documentation — from a façade awning to a building-integrated PV envelope." items="{{ moxSix }}" hint-size="100%,760px"></dc-import>
+  <!-- DEPTH-1261: shared range block (ANDO layout); former block archived in _ARCHIVE/DEPTH-1261 range block/ -->
+  <dc-import name="RangeBlock" hide-tool="1" brand="MOX" hint-size="100%,900px"></dc-import>
+  <!-- KALK CHECK (DEPTH-1354) -->
+  <section id="kalk-check" data-screen-label="KALK check" data-stack="1" style="position:relative;width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:72px auto 0;min-height:max(380px,calc(min(100vw - 2 * var(--web-side),1312px) / 3.2));border-radius:24px;overflow:hidden;background:#4F4F4E;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);box-sizing:border-box;">
+    
+    <div style="grid-column:span 1;background:#FFFFFF;padding:clamp(24px,2.6vw,36px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:12px;">
+      <div style="display:flex;align-items:center;gap:8px;font-size:15px;color:#252525;">MOX by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:20px;width:auto;display:block;filter:brightness(0);"></div>
+      <h2 style="margin:0;font-size:clamp(28px,2.6vw,38px);font-weight:200;line-height:1.1;letter-spacing:-0.5px;color:#252525;text-wrap:balance;">Find your MOX structure</h2>
+      
+      <p style="margin:0;font-size:15px;font-weight:300;line-height:1.45;color:#5F5E5E;text-wrap:pretty;">Tell KALK what you want to build with solar: awning, porch, pergola, fence or facade. KALK picks the MOX structure and the article codes. Your local distributor sends the price.</p>
+      <a href="KALK - Structure MOX - EN.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:8px;background:#D8392C;color:#252525;font-size:16px;text-decoration:none;" style-hover="background:#252525;color:#FFFFFF;">Start the structure check &#8250;</a>
+      <a href="KERN - SYSTEM - Overview - EN.dc.html" style="align-self:flex-start;font-size:14px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #BBBBBB;padding-bottom:2px;" style-hover="color:#252525;border-bottom-color:#252525;">Professional project team? Deliver with KERN &#8250;</a>
+      
+    </div>
+    <div style="grid-column:span 1;position:relative;min-height:240px;"><img src="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=4.7000,50.8790,4.7040,50.8802&bboxSR=4326&imageSR=3857&size=1600,760&format=jpg&f=image" alt="Satellite view of houses and gardens" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+  
+  </section>
+  <!-- WHO IT IS FOR (DEPTH-1329) -->
+  <dc-import name="AudienceTiles" brand="MOX" rgb="216,57,44" hint-size="100%,640px"></dc-import>
+  <!-- DEPTH-1265: BRAND with EMON block under the range -->
+  <dc-import name="EmonBlock" brand="MOX" hint-size="100%,860px"></dc-import>
+  <dc-import name="PlanningOperation" brand="MOX" hint-size="100%,760px"></dc-import>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px;align-items:start;">
+      <div><div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Calculators</div><h2 style="margin:0 0 12px;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Size a structure <span style="color:#8E8E8E;">in a minute.</span></h2><p style="margin:0 0 24px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Enter the dimensions and see modules, peak power and a first yield estimate. The result goes straight into a project review request.</p></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+        <a href="STROHM.ENERGY - TOOL - Structures Configurator - EN.dc.html?kind=fence" style="background:#F4F4F4;padding:18px;display:flex;flex-direction:column;gap:4px;border-radius:12px;" style-hover="background:#E3E3E3;"><span style="font-size:15px;font-weight:700;color:var(--color-text-primary);">FENCE</span><span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">Length and height</span></a>
+        <a href="STROHM.ENERGY - TOOL - Structures Configurator - EN.dc.html?kind=pergola" style="background:#F4F4F4;padding:18px;display:flex;flex-direction:column;gap:4px;border-radius:12px;" style-hover="background:#E3E3E3;"><span style="font-size:15px;font-weight:700;color:var(--color-text-primary);">PERGOLA / PORCH</span><span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">Width and depth</span></a>
+        <a href="STROHM.ENERGY - TOOL - Structures Configurator - EN.dc.html?kind=ombras" style="background:#F4F4F4;padding:18px;display:flex;flex-direction:column;gap:4px;border-radius:12px;" style-hover="background:#E3E3E3;"><span style="font-size:15px;font-weight:700;color:var(--color-text-primary);">OMBRAS</span><span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">Façade width</span></a>
+        <a href="STROHM.ENERGY - TOOL - Structures Configurator - EN.dc.html?kind=balcony" style="background:#F4F4F4;padding:18px;display:flex;flex-direction:column;gap:4px;border-radius:12px;" style-hover="background:#E3E3E3;"><span style="font-size:15px;font-weight:700;color:var(--color-text-primary);">BALCONY</span><span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">Balustrade length</span></a>
+      </div>
+    </div>
+  </section>
+  <section id="configure" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Guided selector</div>
+      <h2 style="margin:0 0 12px;max-width:560px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">What are <span style="color:#8E8E8E;">you building?</span></h2>
+      <p style="margin:0 0 28px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Start from the structure&#8217;s primary purpose. This is a starting point, not a structural approval &#8212; final suitability depends on approved engineering, local loads, site conditions and regulations.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;">
+        <sc-for list="{{ purposeTabs }}" as="t" hint-placeholder-count="6">
+          <button onClick="{{ t.onClick }}" style="cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;padding:12px 20px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};border-radius:8px;">{{ t.label }}</button>
+        </sc-for>
+      </div>
+      <div style="background:#F4F4F4;padding:32px;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">Suggested direction</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:10px;line-height:var(--web-h3-lh);">{{ result.title }}</div>
+        <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);max-width:760px;">{{ result.desc }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;">
+          <sc-for list="{{ result.products }}" as="p" hint-placeholder-count="3">
+            <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:6px 12px;background:#FFFFFF;border:1px solid var(--color-divider);color:var(--color-text-primary);border-radius:8px;">{{ p }}</span>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="{{ result.href }}" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">See the category<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+          <a href="#project" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);border:1px solid var(--color-text-primary);color:var(--color-text-primary);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Request a specialist review</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+  
+  <dc-import name="AndoPattern" brand="MOX" items="facts,faq" hint-size="100%,600px"></dc-import>
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;"><div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0;"><a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#structures" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;white-space:nowrap;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Explore the structures<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a><a href="#configure" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;white-space:nowrap;background:#FFFFFF;color:#4F4F4E;border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">What are you building?</a><!-- DEPTH-1264: catalogue removed (no product catalogues) --></div></section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;">
+
+    
+    <div style="font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);line-height:var(--web-min-lh);">Rain was considered. So were the cables.</div>
+    <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--color-text-primary);margin-top:28px;--cg:0px;">
+      <sc-for list="{{ heroStats }}" as="s" hint-placeholder-count="4">
+        <div style="padding:20px 20px 20px 0;border-right:1px solid var(--color-divider);">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:2px;line-height:var(--web-h3-lh);">{{ s.value }}</div>
+          <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ s.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+    </section>
+  <!-- PROPOSITION -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">The MOX position</div>
+      <h2 style="margin:0 0 16px;max-width:760px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">MOX does not sell profiles, brackets and rails. <span style="color:#8E8E8E;">It delivers a coordinated structure.</span></h2>
+      <p style="margin:0 0 40px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">When a solar structure is assembled from a separate frame supplier, mounting rails, a drainage afterthought and site-tied cabling, responsibility for leaks, loads and serviceability becomes unclear. MOX designs the whole system as one product &#8212; so the structure is complete before the installer arrives with a drill.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--color-divider);--cg:0px;">
+        <sc-for list="{{ method }}" as="m" hint-placeholder-count="6">
+          <div style="padding:28px 24px 28px 0;border-bottom:1px solid var(--color-divider);">
+            <div style="font-size:18px;font-weight:400;margin-bottom:10px;">{{ m.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ m.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <!-- MORE CHAPTERS behind Read more (DEPTH-1329) -->
+  <details data-screen-label="More about MOX" style="margin:0;padding:0;"><summary style="list-style:none;cursor:pointer;max-width:calc(1312px + 2 * var(--web-side));margin:48px auto 0;padding:0 var(--web-side);box-sizing:border-box;min-height:44px;display:flex;align-items:center;font-family:var(--font-web);font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;"><span style="border-bottom:1px solid #4F4F4E;padding-bottom:2px;">Read more about MOX (7)</span></summary>
+  <!-- STRUCTURES / CATEGORIES -->
+  <!-- CALCULATORS (DEPTH-38) -->
+  
+  <!-- SELECTOR: WHAT ARE YOU BUILDING -->
+  
+  <!-- METHOD: HOW STRUCTURE, PV, DRAINAGE, CABLING COORDINATE -->
+  <section id="method" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">How MOX works</div>
+      <h2 style="margin:0 0 32px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Structure, modules, water <span style="color:#8E8E8E;">and cables &#8212; designed together.</span></h2>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ coordinated }}" as="c" hint-placeholder-count="8">
+          <div style="padding:22px 20px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">{{ c.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ c.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);margin-top:14px;line-height:var(--web-min-lh);">The roof generates electricity. The gutter still has a job.</div>
+    </div>
+  </section>
+  <!-- STROHM INTEGRATION -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">STRØHM.ENERGY integration</div>
+      <h2 style="margin:0 0 12px;max-width:600px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Structure only, <span style="color:#8E8E8E;">or a complete energy system.</span></h2>
+      <p style="margin:0 0 32px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">MOX provides the structural platform. Depending on the application, it combines with the wider STRØHM.ENERGY ecosystem &#8212; not every brand on every structure, only the ones the project needs.</p>
+      <div style="display:flex;flex-direction:column;">
+        <sc-for list="{{ combos }}" as="c" hint-placeholder-count="4">
+          <div data-stack="1" style="display:grid;grid-template-columns:180px minmax(0,1fr);gap:24px;padding:18px 0;border-top:1px solid var(--color-divider);">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ c.app }}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <sc-for list="{{ c.brands }}" as="b" hint-placeholder-count="5">
+                <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:5px 10px;background:var(--color-card-mox);color:var(--color-text-primary);border-radius:8px;">{{ b }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <!-- ENGINEERING + QR -->
+  <section id="engineering" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Engineering &amp; documentation</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Every structure <span style="color:#8E8E8E;">documents itself.</span></h2>
+      <p style="margin:0 0 32px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Eligible MOX structures carry QR and NFC identity. At commissioning, the system records the configuration, components, tests and photographs against the exact project &#8212; and generates a PDF handover record. Final structural suitability always depends on approved MOX engineering documentation for the site.</p>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:24px;gap:12px;--cg:12px;">
+        <sc-for list="{{ qrSteps }}" as="q" hint-placeholder-count="4">
+          <div style="padding:24px 20px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);margin-bottom:12px;letter-spacing:var(--web-eyebrow-ls);">{{ q.n }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;">{{ q.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ q.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="padding:16px 24px;background:#FAFAF9;border-radius:12px;">
+        <p style="margin:0;font-size:14px;font-weight:400;font-style:italic;color:var(--color-text-primary);line-height:1.6;max-width:760px;">One QR code, years later, still explains the whole installation &#8212; what was installed, from which batch, with which accessories and tests.</p>
+      </div>
+    </div>
+  </section>
+  <!-- KNOWLEDGE PREVIEW -->
+  
+  <!-- FOR PROFESSIONALS CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;--cg:24px;">
+      <div style="background:var(--color-text-primary);color:#FFFFFF;padding:44px;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#E88;margin-bottom:16px;">For professionals</div>
+        <h3 style="margin:0 0 14px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Documentation, BIM/CAD and project engineering.</h3>
+        <p style="margin:0 0 24px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#D9D9D9;max-width:760px;">Installers, architects, engineers, EPC and developers: technical datasheets, structural drawings, module compatibility, foundation and drainage details, and project configuration support.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="MOX - SUPPORT - Ownership and Support - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#FFFFFF;color:var(--color-text-primary);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Open documentation</a>
+          <a href="MOX - WEBSHOP - Shop - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);border:1px solid var(--color-text-primary);color:#D9D9D9;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Request the catalogue</a>
+        </div>
+      </div>
+      <div style="background:var(--color-card-mox);padding:44px;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Request a configuration</div>
+        <h3 style="margin:0 0 14px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Tell us what you&#8217;re building.</h3>
+        <p style="margin:0 0 24px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">Send the project details and drawings. You receive a preliminary product direction, a required-information checklist, the engineering data still needed, and a project reference &#8212; not an instant quotation.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#configure" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Start a configuration</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div style="height:64px;"></div>
+  <dc-import name="BrandHow" accent="var(--color-brand-mox)" heading="From site conditions to a mounted, documented MOX structure." intro="MOX structures are engineered per project. The content here is specific to structural mounting — not generic." steps="Site dimensions|Application requirements|Roof or terrain conditions|Wind and snow loads|Product configuration|Structural calculations|Foundations or attachment|Production drawings and BOM" cta="Request a MOX project file" hint-size="100%,420px"></dc-import>
+  <dc-import name="EngineeredIntoProject" accent="var(--color-brand-mox)" hint-size="100%,320px"></dc-import>
+  </details>
+  <!-- ENGINEERING AND MANUFACTURING LINK (DEPTH-77) -->
+  <!-- MANUFACTURING (DEPTH-1230) -->
+  <section id="manufacturing" data-screen-label="Manufacturing" style="scroll-margin-top:156px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:40px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px 72px;align-items:center;">
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Manufacturing</h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">MOX structures are engineered for their application and site conditions. Custom extrusions and fabricated metal components are machined, finished and assembled with coordinated module supports, drainage, cable routes and service access. Verified components are identified and packed as project kits, with fabrication records carried through to installation and digital handover.</p>
+        <a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="align-self:flex-start;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;" style-hover="color:#4F4F4E;border-bottom-color:var(--color-brand-mox);">Walk through the MOX factory &#8250;</a>
+        <div style="display:flex;flex-wrap:wrap;gap:0 24px;border-top:1px solid #DDDDDD;"><a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html?chapter=test#mfg-walk" style="display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;" style-hover="color:#252525;">Testing</a><a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html?chapter=home#mfg-walk" style="display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;" style-hover="color:#252525;">To site</a><a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html?chapter=trace#mfg-walk" style="display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;" style-hover="color:#252525;">Traceability</a><a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html?chapter=circ#mfg-walk" style="display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;" style-hover="color:#252525;">Circularity</a></div>
+      </div>
+      <div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="mox-manufacturing-photo" shape="rounded" radius="12" placeholder="MOX manufacturing photo, 4:3: production line or test station"></image-slot></div>
+    </div>
+    <details style="border-top:1px solid #DDDDDD;padding-top:16px;">
+      <summary style="cursor:pointer;list-style:none;display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;">Read more</summary>
+      <div style="display:flex;flex-direction:column;gap:16px;padding-top:24px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Production · 12 stages</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px;">
+        <a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-mox,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">01</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Project engineering</span></a><a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-mox,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">02</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Extrusion dies</span></a><a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-mox,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">03</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Extrusion</span></a><a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-mox,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">04</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Cutting and machining</span></a><a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-mox,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">05</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Steel fabrication and welding</span></a><a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-mox,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">06</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Forming</span></a><a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-mox,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">07</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Finishes</span></a><a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-mox,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">08</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Drainage and seals</span></a><a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-mox,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">09</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Trial assembly</span></a><a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-mox,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">10</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Project kit and QR</span></a><a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-mox,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">11</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Robotic packing</span></a><a href="MOX - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-mox,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">12</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">From factory to site</span></a></div>
+      </div>
+    </details>
+    <div data-editor-only="" style="display:flex;flex-direction:column;gap:8px;border:1px dashed #BBBBBB;border-radius:12px;padding:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Earlier titles · editor only</div>
+      <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">01 Extrusion dies and profiles · 02 Cutting and machining · 03 Steel members and brackets · 04 Corrosion protection · 05 Factory subassemblies · 06 Trial assembly and verification · 07 Final inspection and packing</p>
+    </div>
+  </section>
+  <div style="height:32px;"></div>
+  <dc-import name="ProjectRequest" brand="MOX" hint-size="100%,1400px"></dc-import>
+  
+  
+  
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Knowledge</div>
+      <h2 style="margin:0 0 24px;max-width:560px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Understand the structure before <span style="color:#8E8E8E;">you specify it.</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ knowledge }}" as="k" hint-placeholder-count="6">
+          <div style="background:#F4F4F4;padding:24px;border-radius:12px;">
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);margin-bottom:6px;">{{ k.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);">{{ k.tag }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Knowledge-base articles in preparation.</p>
+    </div>
+  </section>
+  <dc-import name="ContentSections" brand="MOX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MOX" accent="var(--color-brand-mox)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+const CATEGORIES = [
+  { key: "attached", name: "Building-attached", count: "5 products", href: "MOX - PRODUCT - Architectural - EN.dc.html",
+    desc: "Shading, entrance, outdoor-living, balcony and boundary structures attached to or beside the building.",
+    products: "OMBRAS · PORCH · PERGOLA · BALCONY · FENCE" },
+  { key: "envelope", name: "Building envelope", count: "3 products", href: "MOX - PRODUCT - Architectural - EN.dc.html",
+    desc: "PV that forms part of the façade or the building envelope itself.",
+    products: "FACADE · BIPV Curtain Wall · BIPV Cladding" },
+];
+
+const PURPOSES = {
+  shelter:  { title: "An occupied or sheltered structure", desc: "For outdoor rooms, entrances and covered routes where people spend time or pass beneath. PERGOLA creates an occupied outdoor room; PORCH defines an entrance.", products: ["PERGOLA", "PORCH"], href: "MOX - PRODUCT - Architectural - EN.dc.html" },
+  facade:   { title: "A façade or building-integrated surface", desc: "PV that forms part of the building envelope. OMBRAS is a façade awning; FACADE mounts to the wall plane; BIPV Curtain Wall and Cladding integrate modules into the envelope itself.", products: ["OMBRAS", "FACADE", "BIPV Curtain Wall", "BIPV Cladding"], href: "MOX - PRODUCT - Architectural - EN.dc.html" },
+  boundary: { title: "A boundary that produces energy", desc: "PV integrated into the property line. FENCE is the residential boundary system. Large perimeter fences for industrial and utility sites are TERRIX.", products: ["FENCE"], href: "MOX - PRODUCT - Architectural - EN.dc.html" },
+};
+
+class Component extends DCLogic {
+  state = { frame: 0,  purpose: "shelter" };
+
+  componentDidMount() {
+    if (!(window.omelette && window.omelette.writeFile)) document.querySelectorAll('[data-editor-only]').forEach((el) => { el.style.display = 'none'; });  }
+  componentWillUnmount() { if (this._heroTimer) clearInterval(this._heroTimer); }
+  heroVals() { const fr = this.state.frame || 0, hv = {}; for (let i = 0; i < 6; i++) { hv["op" + i] = i === fr ? 1 : 0; hv["pe" + i] = i === fr ? "auto" : "none"; } hv.heroDots = [0, 1, 2, 3, 4, 5].map(i => ({ w: i === fr ? "22px" : "10px", bg: i === fr ? "#D8392C" : "rgba(255,255,255,0.4)" })); return hv; }
+  renderVals() { return { moxSix: [{"label":"Range","heading":"Engineered as structures.","sentence":"MOX spans small architectural products and major infrastructure.","media":{"type":"slot","slot":"mox-hero","alt":"MOX · Range · drop a photo or video"}},{"label":"Installation","heading":"Documentation, BIM/CAD and project engineering.","sentence":"Technical datasheets, structural drawings, module compatibility, foundation and drainage details, and project configuration support.","media":{"type":"slot","slot":"mox-hero-2","alt":"MOX · Installation · drop a photo or video"}},{"label":"QR record","heading":"Every structure documents itself.","sentence":"One QR code, years later, still explains the whole installation.","media":{"type":"slot","slot":"mox-hero-3","alt":"MOX · QR record · drop a photo or video"}},{"label":"Water and cables","heading":"Rain was considered. So were the cables.","sentence":"The roof generates electricity. The gutter still has a job.","media":{"type":"slot","slot":"mox-hero-4","alt":"MOX · Water and cables · drop a photo or video"}},{"label":"Coordinated","heading":"A coordinated structure, not parts.","sentence":"MOX does not sell profiles, brackets and rails. It delivers a coordinated structure.","media":{"type":"slot","slot":"mox-hero-5","alt":"MOX · Coordinated · drop a photo or video"}},{"label":"Calculators","heading":"Size a structure in a minute.","sentence":"Enter the dimensions and see modules, peak power and a first yield estimate.","media":{"type":"slot","slot":"mox-hero-6","alt":"MOX · Calculators · drop a photo or video"}}], ...this.heroVals(), ...this._rv() }; }
+  _rv() {
+    const st = this.state;
+    const purposeList = [
+      { key: "shelter", label: "Shelter / outdoor room" },
+      { key: "facade", label: "Façade / building-integrated" },
+      { key: "boundary", label: "Boundary" },
+    ];
+    return {
+      heroStats: [
+        { value: "9", label: "Structural products" },
+        { value: "2", label: "Categories, one method" },
+        { value: "1", label: "Coordinated responsibility" },
+        { value: "QR", label: "Digital handover record" },
+      ],
+      method: [
+        { title: "One coordinated structure", desc: "Frame, module support, drainage, cable routes and electrical zones are designed as a single product, not assembled on site from unrelated parts." },
+        { title: "Designed for real use", desc: "How people or vehicles move through it, how water is controlled, how modules are replaced and how it is serviced &#8212; considered from the start." },
+        { title: "Documented for life", desc: "Every eligible structure is commissioned digitally and keeps a QR/NFC record of configuration, components, tests and warranty." },
+      ],
+      categories: CATEGORIES.filter((c) => !c.hidden),
+      purposeTabs: purposeList.map(p => ({
+        label: p.label, onClick: () => this.setState({ purpose: p.key }),
+        bg: st.purpose === p.key ? "var(--color-brand-mox)" : "#FFFFFF",
+        color: st.purpose === p.key ? "#FFFFFF" : "#4F4F4E",
+        border: st.purpose === p.key ? "var(--color-brand-mox)" : "#E4E2E0",
+      })),
+      result: PURPOSES[st.purpose],
+      coordinated: [
+        { title: "Structure", desc: "Columns, beams and connections sized for the span, wind and snow &#8212; mechanically assembled from prepared components." },
+        { title: "Module support", desc: "A consistent grid positions and retains the modules and allows individual replacement." },
+        { title: "Drainage", desc: "Water is collected between and beneath the modules and discharged through concealed gutters and columns." },
+        { title: "Cable routes", desc: "Cables run inside the structural profiles, with accessible microinverter and connection positions." },
+        { title: "Electrical zones", desc: "Protected, ventilated, serviceable positions for inverters, protection and connection." },
+        { title: "Foundations", desc: "Baseplates and anchors selected for the actual ground or wall &#8212; no universal detail." },
+        { title: "Maintenance", desc: "Access and replaceable components designed in, not improvised after a fault." },
+        { title: "Commissioning", desc: "QR/NFC identity, tests and photographs recorded into a digital handover." },
+      ],
+      combos: [
+        { app: "Façade awning", brands: ["MOX", "ANDO", "MOEBIUS", "TOGU", "EMON"] },
+      ].filter((x) => !x.hidden),
+      qrSteps: [
+        { n: "01", title: "Scan or tap", desc: "QR/NFC identifies the exact structure and its configuration in EMON." },
+        { n: "02", title: "Record", desc: "Installation data, foundation/anchor references and photographs are captured." },
+        { n: "03", title: "Test", desc: "Structural, drainage and electrical checks are logged against the project." },
+        { n: "04", title: "Handover", desc: "A PDF handover record is generated; owner and installer are confirmed." },
+      ],
+      knowledge: [
+        { title: "Solar canopy versus structural PV system", tag: "Fundamentals" },
+        { title: "Open roof versus watertight photovoltaic roof", tag: "Drainage" },
+        { title: "Why module compatibility must be verified", tag: "PV integration" },
+        { title: "What determines wind and snow loading", tag: "Engineering" },
+        { title: "What information a structural quotation needs", tag: "Projects" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

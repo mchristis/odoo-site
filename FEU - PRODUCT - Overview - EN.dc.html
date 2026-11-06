@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>FEU Overview | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style> @media (max-width:720px){ .hero-card{width:calc(100% - 40px) !important;margin-top:20px !important;min-height:calc((100vw - 40px) * 1.25) !important;align-items:flex-end !important;} .hero-card-panel{width:100% !important;align-self:auto !important;padding:28px 20px !important;} } 
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  select:focus, input:focus { outline:none; border-color:var(--color-brand-feu); }
+  .feu-appcard:hover .feu-appcard-title { color:var(--color-text-primary); }
+  .feu-fam:hover { border-color:var(--color-brand-feu) !important; }
+  .feu-util:hover { border-color:var(--color-brand-feu) !important; }
+  .feu-util:hover .feu-util-t { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="FeuNav" active="" hint-size="100%,57px"></dc-import>
+  <!-- 1. HERO -->
+  <dc-import name="BrandHero2" brand="FEU" rgb="237,112,76" dark="#8A3418" title="Comfort where you need it. When the energy is already there." intro="FEU is radiant comfort heating on top of your main heating. EMON switches it on only for surplus solar, the low-price window of a time-of-use tariff or the cheapest hours of a dynamic tariff." items="{{ feuSix }}" hint-size="100%,760px"></dc-import>
+  <!-- DEPTH-1261: shared range block (ANDO layout); former block archived in _ARCHIVE/DEPTH-1261 range block/ -->
+  <dc-import name="RangeBlock" hide-tool="1" brand="FEU" hint-size="100%,900px"></dc-import>
+  <!-- KALK CHECK (DEPTH-1354) -->
+  <section id="kalk-check" data-screen-label="KALK check" data-stack="1" style="position:relative;width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:72px auto 0;min-height:max(380px,calc(min(100vw - 2 * var(--web-side),1312px) / 3.2));border-radius:24px;overflow:hidden;background:#4F4F4E;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);box-sizing:border-box;">
+    
+    <div style="grid-column:span 1;background:#FFFFFF;padding:clamp(24px,2.6vw,36px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:12px;">
+      <div style="display:flex;align-items:center;gap:8px;font-size:15px;color:#252525;">FEU by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:20px;width:auto;display:block;filter:brightness(0);"></div>
+      <h2 style="margin:0;font-size:clamp(28px,2.6vw,38px);font-weight:200;line-height:1.1;letter-spacing:-0.5px;color:#252525;text-wrap:balance;">Size your heating</h2>
+      
+      <p style="margin:0;font-size:15px;font-weight:300;line-height:1.45;color:#5F5E5E;text-wrap:pretty;">Tell KALK which rooms or terrace you want to heat. KALK calculates the power and suggests the FEU panels or terrace heaters. Your local distributor sends the price.</p>
+      <a href="KALK - Heating FEU - EN.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:8px;background:#ED704C;color:#252525;font-size:16px;text-decoration:none;" style-hover="background:#252525;color:#FFFFFF;">Start the heating check &#8250;</a>
+      <a href="KERN - SYSTEM - Overview - EN.dc.html" style="align-self:flex-start;font-size:14px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #BBBBBB;padding-bottom:2px;" style-hover="color:#252525;border-bottom-color:#252525;">Professional project team? Deliver with KERN &#8250;</a>
+      
+    </div>
+    <div style="grid-column:span 1;position:relative;min-height:240px;"><div style="position:absolute;inset:0;background:#FFFFFF;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;border-left:1px solid #E3E3E3;"><img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="" style="width:40%;max-width:220px;filter:brightness(0);opacity:0.12;"></div></div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">The product families</div>
+      <h2 style="margin:0 0 12px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Ten families. <span style="color:#8E8E8E;">One reason each.</span></h2>
+      <p style="margin:0 0 32px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">FEU is not a catalogue of identical panels. Each family exists for a specific surface, room and installation method.</p>
+      <sc-for list="{{ familyGroups }}" as="fg" hint-placeholder-count="4">
+        <div style="margin-bottom:36px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">{{ fg.label }}</div>
+          <div style="display:grid;grid-template-columns:{{ fg.cols }};gap:20px;">
+            <sc-for list="{{ fg.items }}" as="f" hint-placeholder-count="3">
+              <a class="feu-fam" href="{{ f.href }}" style="display:flex;flex-direction:column;background:#F4F4F4;border-radius:12px;">
+                <div style="aspect-ratio:16/10;">
+                  <dc-import name="MediaPlaceholder" code="{{ f.code }}" kind="RND" ratio="16 : 10" env="Neutral studio" visibility="50&#8211;90% visible" direction="{{ f.render }}" hint-size="100%,100%"></dc-import>
+                </div>
+                <div style="padding:20px;">
+                  <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap;">
+                    <span style="font-size:var(--web-h3-size);font-weight:300;letter-spacing:-0.01em;line-height:var(--web-h3-lh);">FEU {{ f.name }}</span>
+                    <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);">{{ f.output }}</span>
+                  </div>
+                  <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ f.desc }}</div>
+                </div>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  
+  <!-- WHO IT IS FOR (DEPTH-1329) -->
+  <dc-import name="AudienceTiles" brand="FEU" rgb="237,112,76" hint-size="100%,640px"></dc-import>
+  <!-- DEPTH-1265: BRAND with EMON block under the range -->
+  <dc-import name="EmonBlock" brand="FEU" hint-size="100%,860px"></dc-import>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Dynamic &amp; time-of-use tariffs</div>
+      <h2 style="margin:0 0 12px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">FEU runs only when <span style="color:#8E8E8E;">energy is cheap.</span></h2>
+      <p style="margin:0 0 32px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">On a dynamic or time-of-use tariff the electricity price changes through the day. EMON reads the price and switches FEU on only in the low-price window or the cheapest hours, and whenever your solar panels produce more than the house uses. Outside those moments FEU stays off and the main heating carries the house.</p>
+      <div style="padding:28px;background:#F4F4F4;border-radius:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Illustrative 24-hour day &#183; price vs FEU heating activity</div>
+          <div style="display:flex;gap:16px;font-size:11px;font-weight:300;color:var(--color-text-primary);">
+            <span><span style="display:inline-block;width:9px;height:9px;background:#D9D9D6;margin-right:5px;"></span>Electricity price</span>
+            <span><span style="display:inline-block;width:9px;height:9px;background:var(--color-brand-feu);margin-right:5px;"></span>FEU heating</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:3px;height:180px;">
+          <sc-for list="{{ tariffHours }}" as="h" hint-placeholder-count="24">
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;gap:2px;">
+              <div style="width:100%;position:relative;display:flex;flex-direction:column;justify-content:flex-end;height:100%;">
+                <div style="width:100%;background:var(--color-brand-feu);height:{{ h.heat }}%;"></div>
+                <div style="width:100%;background:#D9D9D6;height:{{ h.price }}%;"></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:10px;font-weight:300;color:var(--color-grey-70);">
+          <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span>
+        </div>
+        <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Illustrative profile only. See <a href="#smart" style="color:var(--color-text-primary);">the dynamic tariff simulator</a> to model your own day. Placeholder for CHT-FEU-TARIFF-PRICE-VS-HEATING-01.</p>
+      </div>
+    </div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;--cg:48px;">
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Solar-surplus heating</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Turn surplus solar energy <span style="color:#8E8E8E;">into comfort.</span></h2>
+        <p style="margin:0 0 16px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">When your home produces more solar electricity than it is currently using, EMON can activate Solar Surplus mode and gently preheat approved rooms &#8212; within limits you set.</p>
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 24px;margin-top:20px;--cg:24px;">
+          <sc-for list="{{ solarControls }}" as="c" hint-placeholder-count="7">
+            <div style="display:flex;gap:8px;align-items:baseline;">
+              <span style="color:var(--color-text-primary);font-size:12px;">&#9679;</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ c }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:20px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Not all excess solar electricity should automatically become heat. You stay in control of what and how much.</p>
+      </div>
+      <div>
+        <div style="padding:24px;background:#F4F4F4;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:18px;">Energy flow</div>
+          <div style="display:flex;flex-direction:column;gap:0;">
+            <sc-for list="{{ flow }}" as="f" hint-placeholder-count="5">
+              <div>
+                <div style="display:flex;align-items:center;gap:14px;padding:12px 0;">
+                  <div style="width:44px;height:44px;flex:none;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:0.04em;color:{{ f.color }};background:#FFFFFF;border-radius:8px;">{{ f.code }}</div>
+                  <div>
+                    <div style="font-size:var(--web-small-size);font-weight:300;">{{ f.name }}</div>
+                    <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ f.role }}</div>
+                  </div>
+                </div>
+                <div style="height:{{ f.gap }}px;margin-left:22px;border-left:1px solid var(--color-brand-feu);"></div>
+              </div>
+            </sc-for>
+          </div>
+          <p style="margin:14px 0 0;font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Optional FLUXX battery coordination. Placeholder DGM-FEU-PV-EMON-FEU-FLOW-01.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="radiant-emon" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;">
+      <div style="display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">FEU with EMON</div><h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Extra comfort <span style="color:#8E8E8E;">from energy that is already there.</span></h2><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;text-transform:uppercase;">DRAFT</span></div>
+      <div style="grid-column:span 2;min-width:0;display:flex;flex-direction:column;">
+        <p style="margin:0 0 12px;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">FEU is not the main heating of the house. The heat pump or boiler does that job. EMON switches FEU on only when energy is plentiful or cheap: surplus from your own solar panels, the low-price window of a time-of-use tariff, or the cheapest hours of a dynamic tariff. The result is extra warmth where you are, without paying for it at the expensive moment.</p>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Solar surplus</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">When your ANDO panels produce more than the house uses, EMON turns that surplus into warmth in the bathroom, the office or on the terrace instead of exporting it for a low feed-in price.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Time-of-use tariff</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">FEU runs in the low-price window, for example the night or midday rate. Outside that window it stays off.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Dynamic tariff</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">EMON watches the hourly price and switches FEU on only in the cheapest hours, or when the price is negative.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Comfort, not base load</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Warm bathroom tiles in the morning, a cosy corner in the evening, a heated terrace on a sunny spring afternoon. FEU adds comfort on top of the main heating.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Order of priority</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">EMON first covers the house, the battery and the heat pump. FEU gets the energy that is left over.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Your settings</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">You choose the rooms, the comfort times and the price or solar level at which FEU may run. A manual boost is always possible.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Peak control</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Several panels never all start at once, so the total power stays within the connection and any capacity-based grid fee.</span></div>
+        <p style="margin:14px 0 0;font-size:var(--web-min-size);font-weight:300;color:#B07818;max-width:760px;line-height:var(--web-min-lh);">[TO CONFIRM] EMON functions per FEU model, price thresholds and the sensors supported.</p>
+      </div>
+    </div>
+  </section>
+  
+  
+  <dc-import name="PlanningOperation" brand="FEU" hint-size="100%,760px"></dc-import>
+  <section style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Savings calculator</div>
+      <h2 style="margin:0 0 12px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">What could room-by-room heating change <span style="color:#8E8E8E;">for you?</span></h2>
+      <p style="margin:0 0 32px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A quick indication. Enter a few details to see where room-by-room control, dynamic tariffs and solar surplus could make a difference. The full calculator adds building, climate and tariff detail.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:start;">
+        <div style="flex:1 1 340px;min-width:0;background:var(--color-card-feu);padding:24px;border-radius:12px;">
+          <div style="margin-bottom:16px;">
+            <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Rooms in the home</label>
+            <input type="number" value="{{ prevRooms }}" onInput="{{ onPrevRooms }}" style="width:100%;box-sizing:border-box;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);font-weight:var(--web-input-weight);border-radius:8px;">
+          </div>
+          <div style="margin-bottom:16px;">
+            <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Rooms occupied at once</label>
+            <input type="number" value="{{ prevOcc }}" onInput="{{ onPrevOcc }}" style="width:100%;box-sizing:border-box;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);font-weight:var(--web-input-weight);border-radius:8px;">
+          </div>
+          <div style="margin-bottom:16px;">
+            <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Electricity tariff</label>
+            <select onChange="{{ onPrevTariff }}" style="width:100%;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+              <sc-for list="{{ tariffOptions }}" as="o" hint-placeholder-count="3"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+            </select>
+          </div>
+          <div>
+            <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">Solar on the roof</label>
+            <select onChange="{{ onPrevSolar }}" style="width:100%;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+              <sc-for list="{{ solarOptions }}" as="o" hint-placeholder-count="2"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+            </select>
+          </div>
+        </div>
+        <div style="flex:999 1 min(100%,400px);min-width:0;">
+          <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:16px;--cg:16px;">
+            <sc-for list="{{ prevResults }}" as="r" hint-placeholder-count="3">
+              <div style="background:var(--color-card-feu);padding:22px;border-radius:12px;">
+                <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:10px;">{{ r.label }}</div>
+                <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:var(--color-text-primary);line-height:var(--web-h3-lh);">{{ r.value }}</div>
+                <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);margin-top:4px;line-height:var(--web-min-lh);">{{ r.note }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="background:var(--color-card-feu);padding:20px 24px;border-radius:12px;">
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ prevSummary }}</div>
+          </div>
+          <div style="margin-top:20px;">
+            <a href="#smart" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;background:var(--color-brand-feu);color:#FFFFFF;border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Run the full calculation</a>
+          </div>
+        </div>
+      </div>
+      <p style="margin:20px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:900px;line-height:var(--web-min-lh);">Indicative estimate, not a guaranteed saving. The effect of zoning, dynamic tariffs and solar surplus depends on the building, insulation, occupancy, tariff and settings. Payback is not shown until FEU product and installation prices are confirmed.</p>
+    </div>
+  </section>
+  
+  <dc-import name="AndoPattern" brand="FEU" items="facts" hint-size="100%,600px"></dc-import>
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;"><p style="margin:0 0 16px;margin:12px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;max-width:760px;">Warm bathrooms, a warm workplace, a warm terrace. Without paying for it at the expensive moment.</p><div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0;"><a style-hover="background:#5F5E5E;color:#F4F4F4;" href="FEU - PRODUCT - Products - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;white-space:nowrap;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Find your FEU heater</a><a href="#radiant-emon" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;white-space:nowrap;background:#FFFFFF;color:#4F4F4E;border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">How EMON runs FEU</a><a href="FEU - PRODUCT - Products - EN.dc.html" style="font-size:var(--web-link-size);padding:0 6px;height:44px;display:inline-flex;align-items:center;color:#4F4F4E;text-decoration:underline;font-weight:var(--web-link-weight);">Explore the products<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a></div></section>
+  <!-- 2. HEAT THE SPACE YOU USE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Comfort per room</div>
+      <h2 style="margin:0 0 16px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Extra warmth only where <span style="color:#8E8E8E;">you are.</span></h2>
+      <p style="margin:0 0 32px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Your main heating keeps the house at its base temperature. FEU adds extra warmth room by room: every panel has its own schedule and comfort times, and runs only when EMON has surplus solar or cheap power available. Empty rooms get nothing extra.</p>
+
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start;--cg:32px;">
+        <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+          <div style="display:flex;border-bottom:1px solid var(--color-divider);">
+            <button onClick="{{ setConventional }}" style="flex:1;cursor:pointer;font-family:inherit;border:none;padding:15px 12px;font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);letter-spacing:0.04em;background:{{ convBg }};color:{{ convColor }};">Main heating only</button>
+            <button onClick="{{ setZoned }}" style="flex:1;cursor:pointer;font-family:inherit;border:none;border-left:1px solid var(--color-divider);padding:15px 12px;font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);letter-spacing:0.04em;background:{{ zonedBg }};color:{{ zonedColor }};">With FEU and EMON</button>
+          </div>
+          <sc-for list="{{ rooms }}" as="r" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:15px 20px;border-bottom:1px solid var(--color-surface-card);align-items:center;">
+              <div>
+                <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ r.room }}</div>
+                <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);">{{ r.mode }}</div>
+              </div>
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:{{ r.color }};line-height:var(--web-h3-lh);">{{ r.temp }}</div>
+            </div>
+          </sc-for>
+          <div style="padding:16px 20px;background:var(--color-card-feu);">
+            <div style="font-size:12px;font-weight:300;color:var(--color-text-primary);line-height:1.5;">{{ zoneSummary }}</div>
+          </div>
+        </div>
+        <div style="aspect-ratio:4/3;">
+          <dc-import name="MediaPlaceholder" code="ANM-FEU-ZONING-HOME-01" kind="ANM" ratio="4 : 3" env="House plan, five rooms" visibility="Diagrammatic" priority="P1" direction="Interactive house plan: Living (Comfort), Bedroom (Economy), Bathroom (Scheduled boost), Office (Occupied), Guest room (Off / frost protection). Toggle between whole-house and FEU zoned. Clearly labelled example assumptions, no guaranteed saving percentage." hint-size="100%,100%"></dc-import>
+        </div>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Illustrative example assumptions. Actual behaviour depends on the building, insulation, occupancy and settings.</p>
+    </div>
+  </section>
+  <!-- 3. CHOOSE BY APPLICATION -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Choose by application</div>
+      <h2 style="margin:0 0 32px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Different surfaces <span style="color:#8E8E8E;">for different spaces.</span></h2>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;--cg:20px;">
+        <sc-for list="{{ applications }}" as="a" hint-placeholder-count="7">
+          <a class="feu-appcard" href="{{ a.href }}" style="display:flex;flex-direction:column;gap:14px;">
+            <div style="aspect-ratio:4/3;">
+              <dc-import name="MediaPlaceholder" code="{{ a.code }}" kind="IMG" ratio="4 : 3" env="{{ a.env }}" visibility="5&#8211;15% visible" direction="{{ a.direction }}" hint-size="100%,100%"></dc-import>
+            </div>
+            <div>
+              <div class="feu-appcard-title" style="font-size:var(--web-body-size);font-weight:300;margin-bottom:4px;">{{ a.title }}</div>
+              <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);">{{ a.families }}</div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <!-- MORE CHAPTERS behind Read more (DEPTH-1329) -->
+  <details data-screen-label="More about FEU" style="margin:0;padding:0;"><summary style="list-style:none;cursor:pointer;max-width:calc(1312px + 2 * var(--web-side));margin:48px auto 0;padding:0 var(--web-side);box-sizing:border-box;min-height:44px;display:flex;align-items:center;font-family:var(--font-web);font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;"><span style="border-bottom:1px solid #4F4F4E;padding-bottom:2px;">Read more about FEU (8)</span></summary>
+  <!-- 4. THE PRODUCT FAMILIES -->
+  
+  <!-- 5. SMART CONTROL INSIDE THE SYSTEM -->
+  <section id="smart" style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Smart control is inside the system</div>
+      <h2 style="margin:0 0 12px;max-width:760px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Smart heating without a collection <span style="color:#8E8E8E;">of smart plugs.</span></h2>
+      <p style="margin:0 0 32px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Compatible FEU products contain their smart control and Wi-Fi mesh inside the heater and communicate directly with EMON. That means a cleaner installation and multiple heaters operating as one room or building system.</p>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start;">
+        <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;--cg:12px;">
+          <sc-for list="{{ smartBenefits }}" as="s" hint-placeholder-count="6">
+            <div style="background:#F4F4F4;padding:18px 20px;border-radius:12px;">
+              <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:4px;line-height:var(--web-small-lh);">{{ s.t }}</div>
+              <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);">{{ s.d }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="aspect-ratio:16/10;">
+            <dc-import name="MediaPlaceholder" code="UI-FEU-EMON-ROOM-DASHBOARD-01" kind="UI" ratio="16 : 10" env="EMON app" direction="Room dashboard: rooms as cards with current temperature, mode and live power. Source Han Sans KR, flat white, product accent dots." hint-size="100%,100%"></dc-import>
+          </div>
+          <div style="aspect-ratio:16/10;">
+            <dc-import name="MediaPlaceholder" code="ANM-FEU-WIFI-MESH-01" kind="ANM" ratio="16 : 10" env="Building cutaway" direction="Multiple FEU products maintaining mesh communication across a building. No unsupported range claims." hint-size="100%,100%"></dc-import>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:20px;">
+        <a href="#smart" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">See how smart heating works<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      </div>
+    </div>
+  </section>
+  <!-- 6. DYNAMIC TARIFF -->
+  
+  <!-- 7. SOLAR SURPLUS -->
+  
+  <!-- 8. BATTERY COORDINATION -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Battery coordination</div>
+      <h2 style="margin:0 0 12px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Comfort without emptying the <span style="color:#8E8E8E;">battery by accident.</span></h2>
+      <p style="margin:0 0 32px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Three energy modes decide how heating draws on grid, solar and a FLUXX battery. You set the reserves; EMON respects them.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;--cg:20px;">
+        <sc-for list="{{ batteryModes }}" as="m" hint-placeholder-count="3">
+          <div style="border-top:3px solid var(--color-brand-feu);padding:24px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:10px;line-height:var(--web-h3-lh);">{{ m.name }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ m.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:20px;padding:20px 24px;background:#F4F4F4;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">You can define</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px 28px;">
+          <sc-for list="{{ batteryLimits }}" as="l" hint-placeholder-count="5">
+            <div style="display:flex;gap:8px;align-items:baseline;">
+              <span style="color:var(--color-text-primary);font-size:12px;">&#9679;</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ l }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 9. SAVINGS CALCULATOR PREVIEW -->
+  
+  <!-- 10. COMPARE THE APPROACH -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Compare the approach</div>
+      <h2 style="margin:0 0 12px;max-width:720px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Compare the heating approach, <span style="color:#8E8E8E;">not only the heater.</span></h2>
+      <p style="margin:0 0 32px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">FEU does not replace a heat pump or boiler. It adds fast, local comfort where individual-room control, quick response and visual integration matter, powered by surplus or cheap energy.</p>
+      <div style="border:1px solid var(--color-divider);overflow-x:auto;border-radius:12px;">
+        <div style="min-width:720px;">
+          <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.4fr) repeat(5,minmax(0,1fr));background:var(--color-card-feu);border-bottom:1px solid var(--color-divider);">
+            <div style="padding:14px 18px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Criterion</div>
+            <sc-for list="{{ compareCols }}" as="c" hint-placeholder-count="5">
+              <div style="padding:14px 12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ c.color }};text-align:center;">{{ c.label }}</div>
+            </sc-for>
+          </div>
+          <sc-for list="{{ compareRows }}" as="row" hint-placeholder-count="6">
+            <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.4fr) repeat(5,minmax(0,1fr));border-bottom:1px solid var(--color-surface-card);align-items:center;">
+              <div style="padding:13px 18px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ row.crit }}</div>
+              <sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="5">
+                <div style="padding:13px 12px;font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);text-align:center;line-height:var(--web-min-lh);">{{ cell }}</div>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="margin-top:16px;background:var(--color-card-feu);padding:16px 22px;border-radius:12px;">
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">A modern heat pump normally uses less electricity than direct electric heating. FEU may still be the more practical option for specific rooms, supplementary heating, renovation constraints, low-use spaces or projects where individual-zone control has a larger effect than whole-building operation.</p>
+      </div>
+    </div>
+  </section>
+  <!-- 10b. PRODUCT SPECIALIST -->
+  
+  <!-- 11. PROFESSIONAL SUPPORT -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;--cg:48px;">
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">For professionals</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Designed for the room. <span style="color:#8E8E8E;">Specified for the project.</span></h2>
+        <p style="margin:0 0 24px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">FEU supports installers, architects, developers and distributors from heat-loss calculation through to EMON commissioning.</p>
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 24px;margin-bottom:28px;--cg:24px;">
+          <sc-for list="{{ proSupport }}" as="p" hint-placeholder-count="8">
+            <div style="display:flex;gap:8px;align-items:baseline;">
+              <span style="color:var(--color-text-primary);font-size:12px;">&#9679;</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ p }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="FEU - WEBSHOP - Shop - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Upload a project</a>
+          <a href="FEU - WEBSHOP - Shop - EN.dc.html" style="font-size:var(--cta-font);padding:0 20px;height:44px;display:inline-flex;align-items:center;background:var(--color-card-feu);color:var(--color-text-primary);border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Download technical files</a>
+        </div>
+      </div>
+      <div style="aspect-ratio:4/3;">
+        <dc-import name="MediaPlaceholder" code="IMG-FEU-PRO-ENGINEERING-01" kind="IMG" ratio="4 : 3" env="Engineering / specification context" visibility="Editorial" people="Professionals at work" priority="P2" direction="Architect or installer reviewing a room plan with FEU positioning. Warm, precise, uncluttered. Product visible in context." hint-size="100%,100%"></dc-import>
+      </div>
+    </div>
+  </section>
+  <!-- 12. INSTALLED PROJECTS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:32px;">
+        <div>
+          <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Installed projects</div>
+          <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Working systems, <span style="color:#8E8E8E;">documented.</span></h2>
+        </div>
+        <a href="STROHM.ENERGY - PROJECT - Overview - EN.dc.html" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);white-space:nowrap;">All projects<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      </div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;--cg:20px;">
+        <sc-for list="{{ projects }}" as="p" hint-placeholder-count="6">
+          <a href="STROHM.ENERGY - PROJECT - Overview - EN.dc.html" style="display:flex;flex-direction:column;background:#F4F4F4;border-radius:12px;">
+            <div style="aspect-ratio:3/2;">
+              <dc-import name="MediaPlaceholder" code="{{ p.code }}" kind="PRJ" ratio="3 : 2" env="{{ p.env }}" priority="P2" direction="{{ p.direction }}" hint-size="100%,100%"></dc-import>
+            </div>
+            <div style="padding:20px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:8px;">{{ p.type }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:10px;line-height:var(--web-small-lh);">{{ p.title }}</div>
+              <div style="display:flex;flex-direction:column;gap:4px;">
+                <sc-for list="{{ p.facts }}" as="f" hint-placeholder-count="3">
+                  <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;font-size:12px;">
+                    <span style="font-weight:300;color:var(--color-grey-70);">{{ f.k }}</span>
+                    <span style="font-weight:400;color:var(--color-text-primary);text-align:right;">{{ f.v }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Project records show installed products, output and role. No unsupported savings claims.</p>
+    </div>
+  </section>
+  <!-- UTILITY BAND (moved out of nav) -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 40px;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;--cg:20px;">
+        <sc-for list="{{ utility }}" as="u" hint-placeholder-count="4">
+          <a class="feu-util" href="{{ u.href }}" style="padding:24px;display:flex;flex-direction:column;gap:8px;min-height:150px;justify-content:space-between;background:#F4F4F4;border-radius:12px;">
+            <div>
+              <div class="feu-util-t" style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:6px;line-height:var(--web-h3-lh);">{{ u.title }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ u.desc }}</div>
+            </div>
+            <span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">{{ u.cta }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <!-- RADIANT HEATING EXPLAINER (DEPTH-70, DRAFT) -->
+  <section id="radiant" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;">
+      <div style="display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">How radiant heating works</div><h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Warm people and surfaces, <span style="color:#8E8E8E;">not the air.</span></h2><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;text-transform:uppercase;">DRAFT</span></div>
+      <div style="grid-column:span 2;min-width:0;display:flex;flex-direction:column;">
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Like the sun</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Infrared panels send out radiant heat, the same kind of warmth you feel from the sun on a cool spring day. It warms the people, floors and walls it reaches, not the air in between.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Comfort at a lower air temperature</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Because walls and floors are warm, a room feels comfortable at a lower air temperature than with a convector or radiator.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">No air movement</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Radiant heat does not stir up the air. Less dust circulates, which many people with allergies notice.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Dry walls</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Warm wall surfaces stay above the dew point, which helps against condensation and mould in cold corners.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Fast response</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">A panel is warm within minutes, so a room can be heated only when it is used.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Silent and maintenance-free</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">No fan, no water circuit, no moving parts.</span></div>
+        <p style="margin:14px 0 0;font-size:var(--web-min-size);font-weight:300;color:#B07818;max-width:760px;line-height:var(--web-min-lh);">[TO CONFIRM] Comfort and air-temperature effects depend on the room, insulation and panel position. No saving percentages are published until measured.</p>
+      </div>
+    </div>
+  </section>
+  <section id="radiant-where" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;">
+      <div style="display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Where FEU fits</div><h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Where extra warmth makes <span style="color:#8E8E8E;">the difference.</span></h2><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;text-transform:uppercase;">DRAFT</span></div>
+      <div style="grid-column:span 2;min-width:0;display:flex;flex-direction:column;">
+        <p style="margin:0 0 12px;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Places where a little direct warmth adds comfort, powered by surplus or cheap energy.</p>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Bathrooms</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Warm tiles and towels in the morning and evening, with a mirror or towel panel.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Home offices</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">A warm workplace while the rest of the house stays in economy mode.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Living spaces</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">A comfortable corner on cool evenings without turning up the whole heating system.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Alongside a heat pump</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Extra comfort in rooms that a low-temperature heat pump brings up slowly on the coldest days.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Terraces and outdoor spaces</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Direct warmth for people outside, where heating the air is pointless.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Renovation</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">No pipes to lay: mounted on the wall or ceiling and connected to a socket or a fixed connection.</span></div>
+        <p style="margin:14px 0 0;font-size:var(--web-min-size);font-weight:300;color:#B07818;max-width:760px;line-height:var(--web-min-lh);">[TO CONFIRM] Local rules for fixed electric heating differ per country.</p>
+      </div>
+    </div>
+  </section>
+  
+  </details>
+  <!-- ENGINEERING AND MANUFACTURING LINK (DEPTH-77) -->
+  <!-- MANUFACTURING (DEPTH-1230) -->
+  <section id="manufacturing" data-screen-label="Manufacturing" style="scroll-margin-top:156px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:40px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px 72px;align-items:center;">
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Manufacturing</h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Approved heating elements are integrated with metal, glass, mirror or architectural surfaces using controlled thermal and electrical assemblies. Compatible models receive integrated controls and EMON communication. Each heater is electrically and functionally tested, inspected and cooled before protected robotic packing and traceable dispatch.</p>
+        <a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - FEU - EN.dc.html#em-feu-machines" style="align-self:flex-start;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;" style-hover="color:#F76801;border-bottom-color:#F76801;">Explore the manufacturing process &#8250;</a>
+      </div>
+      <div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="feu-manufacturing-photo" shape="rounded" radius="12" placeholder="FEU manufacturing photo, 4:3: production line or test station"></image-slot></div>
+    </div>
+    <details style="border-top:1px solid #DDDDDD;padding-top:16px;">
+      <summary style="cursor:pointer;list-style:none;display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;">Read more</summary>
+      <div style="display:flex;flex-direction:column;gap:16px;padding-top:24px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Production · 14 stages</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px;">
+        <a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - FEU - EN.dc.html#em-feu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-feu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">01</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Incoming components</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - FEU - EN.dc.html#em-feu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-feu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">02</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Metal housings</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - FEU - EN.dc.html#em-feu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-feu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">03</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Glass and mirror</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - FEU - EN.dc.html#em-feu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-feu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">04</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Heating element</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - FEU - EN.dc.html#em-feu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-feu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">05</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Flat panel assembly</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - FEU - EN.dc.html#em-feu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-feu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">06</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">MIRROR</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - FEU - EN.dc.html#em-feu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-feu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">07</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">PYRAMID and DOME</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - FEU - EN.dc.html#em-feu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-feu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">08</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">VERTI and FOLD</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - FEU - EN.dc.html#em-feu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-feu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">09</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Smart controls</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - FEU - EN.dc.html#em-feu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-feu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">10</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">EMON test</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - FEU - EN.dc.html#em-feu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-feu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">11</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Heater test</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - FEU - EN.dc.html#em-feu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-feu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">12</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Labels</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - FEU - EN.dc.html#em-feu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-feu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">13</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Packing</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - FEU - EN.dc.html#em-feu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-feu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">14</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">From factory to site</span></a></div>
+      </div>
+    </details>
+    <div data-editor-only="" style="display:flex;flex-direction:column;gap:8px;border:1px dashed #BBBBBB;border-radius:12px;padding:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Earlier titles · editor only</div>
+      <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">01 Component inspection · 02 Housings and mounting parts · 03 Glass and mirror surfaces · 04 Heating assembly · 05 Heater assembly · 06 Test of every heater · 07 Labelling and packing</p>
+    </div>
+  </section>
+  <dc-import name="ContentSections" brand="FEU" scope="brand" hint-size="100%,1600px"></dc-import>
+  
+  <section style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));min-width:0;gap:48px;align-items:start;">
+        <div>
+          <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Product specialist</div>
+          <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Talk to someone who <span style="color:#8E8E8E;">understands the product.</span></h2>
+          <p style="margin:0 0 14px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Not every heating project can be solved with a webshop filter or a watts-per-square-metre estimate. Upload your plans, room information or existing calculation and discuss the project directly with a FEU product specialist.</p>
+          <p style="margin:0 0 22px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">We can help identify the correct product family, the information still required, a preliminary heating output, the mounting approach, electrical requirements and EMON control configuration.</p>
+          <div style="display:inline-flex;align-items:center;gap:10px;border:1px solid #E0C7CB;background:var(--color-card-feu);padding:10px 16px;margin-bottom:26px;border-radius:8px;">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--color-brand-feu);flex:none;"></span>
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Technical consultation. No sales pressure.</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;">
+            <a href="FEU - PRODUCT - Products - EN.dc.html#specialist" style="font-size:var(--cta-font);padding:0 20px;height:44px;display:inline-flex;align-items:center;background:var(--color-brand-feu);color:#FFFFFF;border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Book a technical meeting</a>
+            <a href="FEU - PRODUCT - Products - EN.dc.html#specialist" style="font-size:var(--cta-font);padding:0 20px;height:44px;display:inline-flex;align-items:center;background:var(--color-card-feu);border:1px solid var(--color-divider);color:var(--color-text-primary);border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Upload your plans</a>
+            <a href="FEU - PRODUCT - Products - EN.dc.html#specialist" style="font-size:var(--web-link-size);padding:0 20px;height:44px;display:inline-flex;align-items:center;color:var(--color-text-primary);font-weight:var(--web-link-weight);">Ask a product question<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="aspect-ratio:16/9;">
+            <dc-import name="MediaPlaceholder" code="IMG-FEU-HOME-SPECIALIST-01" kind="IMG" ratio="16 : 9" env="Consultation context" people="Specialist at work" priority="P1" direction="A FEU specialist reviewing a room plan on screen during a video consultation. Calm, technical, no hard-sell staging." hint-size="100%,100%"></dc-import>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;min-width:0;">
+            <div style="aspect-ratio:4/3;">
+              <dc-import name="MediaPlaceholder" code="UI-FEU-HOME-MEETING-BOOKING-01" kind="UI" ratio="4 : 3" env="Booking flow" direction="Meeting-type and calendar step: Product Consultation, Configuration Review, Installer Support." hint-size="100%,100%"></dc-import>
+            </div>
+            <div style="aspect-ratio:4/3;">
+              <dc-import name="MediaPlaceholder" code="UI-FEU-HOME-PLAN-UPLOAD-01" kind="UI" ratio="4 : 3" env="Upload flow" direction="Drag-and-drop plan upload with file list and project-data fields." hint-size="100%,100%"></dc-import>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <dc-import name="ReachSpecialist" brand="FEU" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="FEU" accent="var(--color-brand-feu)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { frame: 0,  zoned: true, prevRooms: 6, prevOcc: 2, prevTariff: "dynamic", prevSolar: "yes" };
+
+  num(v, d) { const n = parseFloat(v); return isNaN(n) ? d : n; }
+
+  componentDidMount() {
+    if (!(window.omelette && window.omelette.writeFile)) document.querySelectorAll('[data-editor-only]').forEach((el) => { el.style.display = 'none'; });  }
+  componentWillUnmount() { if (this._heroTimer) clearInterval(this._heroTimer); }
+  heroVals() { const fr = this.state.frame || 0, hv = {}; for (let i = 0; i < 6; i++) { hv["op" + i] = i === fr ? 1 : 0; hv["pe" + i] = i === fr ? "auto" : "none"; } hv.heroDots = [0, 1, 2, 3, 4, 5].map(i => ({ w: i === fr ? "22px" : "10px", bg: i === fr ? "#ED704C" : "rgba(255,255,255,0.4)" })); return hv; }
+  renderVals() { return { feuSix: [{"label":"Range","heading":"Ten families. One reason each.","sentence":"Ten families of infrared heating panels and terrace heaters, with controls and accessories.","media":{"type":"slot","slot":"feu-hero-main","alt":"FEU · Range · drop a photo or video"}},{"label":"Commissioning","heading":"Commissioned from one scan.","sentence":"Scan the QR to add the heater to the site in EMON. TO CONFIRM.","media":{"type":"slot","slot":"feu-hero-2","alt":"FEU · Commissioning · drop a photo or video"}},{"label":"One connected system","heading":"Smart control inside the heater.","sentence":"Compatible FEU products contain their smart control and Wi-Fi mesh inside the heater and communicate directly with EMON.","media":{"type":"slot","slot":"feu-hero-3","alt":"FEU · One connected system · drop a photo or video"}},{"label":"Cheap energy","heading":"Runs only when energy is cheap.","sentence":"EMON switches it on only for surplus solar, the low-price window of a time-of-use tariff or the cheapest hours of a dynamic tariff.","media":{"type":"slot","slot":"feu-hero-6","alt":"FEU · Cheap energy · drop a photo or video"}},{"label":"NFC, QR and Wi-Fi Mesh","heading":"No screen needed.","sentence":"Tap NFC or scan QR for heater details. Wi-Fi Mesh connects every device. TO CONFIRM.","media":{"type":"slot","slot":"feu-hero-4","alt":"FEU · NFC, QR and Wi-Fi Mesh · drop a photo or video"}},{"label":"Europe","heading":"Designed and hosted in Europe.","sentence":"Hosted in Europe. Data stays in Europe.","media":{"type":"slot","slot":"feu-hero-5","alt":"FEU · Europe · drop a photo or video"}}], ...this.heroVals(), ...this._rv() }; }
+  _rv() {
+    const st = this.state;
+    const zoned = st.zoned;
+    const on = "#DA5E70", off = "#F5F5F5";
+
+    // Zoning table
+    const roomsData = [
+      { room: "Living room", conv: { mode: "Heated", temp: "21 \u00B0C", color: "#DA5E70" }, zon: { mode: "Occupied \u00B7 comfort", temp: "21 \u00B0C", color: "#DA5E70" } },
+      { room: "Home office", conv: { mode: "Heated", temp: "21 \u00B0C", color: "#DA5E70" }, zon: { mode: "Working hours only", temp: "20 \u00B0C", color: "#DA5E70" } },
+      { room: "Bathroom", conv: { mode: "Heated", temp: "21 \u00B0C", color: "#DA5E70" }, zon: { mode: "Scheduled boost", temp: "22 \u00B0C", color: "#DA5E70" } },
+      { room: "Bedroom", conv: { mode: "Heated", temp: "21 \u00B0C", color: "#DA5E70" }, zon: { mode: "Economy until evening", temp: "18 \u00B0C", color: "#5F5E5E" } },
+      { room: "Guest room", conv: { mode: "Heated, unused", temp: "21 \u00B0C", color: "#DA5E70" }, zon: { mode: "Frost protection", temp: "12 \u00B0C", color: "#898989" } },
+    ];
+
+    // Dynamic tariff illustrative day (price index 0-100, heat activity 0-100)
+    const priceCurve = [22,20,18,17,16,18,30,48,58,52,44,40,42,46,50,55,68,86,92,80,60,44,32,26];
+    const heatCurve  = [8,10,14,18,22,26,20,10,6,20,34,30,18,14,12,10,8,6,4,6,10,14,10,8];
+    const tariffHours = priceCurve.map((p, i) => ({ price: Math.round(p * 0.9), heat: Math.round(heatCurve[i] * 0.9) }));
+
+    // Savings preview (illustrative only)
+    const rooms = Math.max(1, this.num(st.prevRooms, 6));
+    const occ = Math.min(rooms, Math.max(1, this.num(st.prevOcc, 2)));
+    const zoningPct = Math.round(Math.min(45, Math.max(8, (1 - occ / rooms) * 55)));
+    const tariffPct = st.prevTariff === "dynamic" ? "10\u201320%" : st.prevTariff === "tou" ? "6\u201312%" : "Limited";
+    const solarUse = st.prevSolar === "yes" ? "High" : "None on-site";
+    const prevResults = [
+      { label: "Rooms with extra comfort", value: occ + " of " + rooms, note: "The others stay on the main heating" },
+      { label: "When FEU may run", value: st.prevTariff === "dynamic" ? "Cheapest hours" : st.prevTariff === "tou" ? "Low-price window" : "Solar surplus only", note: st.prevTariff === "fixed" ? "No cheap hours on a fixed tariff" : "Set by EMON from the tariff" },
+      { label: "Solar surplus used", value: solarUse, note: st.prevSolar === "yes" ? "Warmth instead of low-price export" : "No panels on site" },
+    ];
+    const prevSummary = "FEU runs on surplus solar and cheap hours only, as extra comfort on top of the main heating. Solar surplus use: " + solarUse + ". Illustrative ranges, not guaranteed results.";
+
+    return {
+      // zoning toggle
+      setConventional: () => this.setState({ zoned: false }),
+      setZoned: () => this.setState({ zoned: true }),
+      convBg: !zoned ? "#FFFFFF" : off, convColor: !zoned ? "#4F4F4E" : "#5F5E5E", convWeight: !zoned ? 700 : 400,
+      zonedBg: zoned ? "#FFFFFF" : off, zonedColor: zoned ? "#4F4F4E" : "#5F5E5E", zonedWeight: zoned ? 700 : 400,
+      rooms: roomsData.map(r => ({ room: r.room, mode: zoned ? r.zon.mode : r.conv.mode, temp: zoned ? r.zon.temp : r.conv.temp, color: zoned ? r.zon.color : r.conv.color })),
+      zoneSummary: zoned
+        ? "With FEU: extra warmth in the rooms you use, when EMON has surplus solar or cheap power. Other rooms stay on the main heating."
+        : "Main heating only: every room at the base temperature set by the heat pump or boiler.",
+
+      applications: [
+        { title: "Living rooms", families: "RADIUS \u00B7 GLASS \u00B7 CERAMIC", code: "IMG-FEU-APP-LIVING-01", href: "#smart", env: "Contemporary living room", direction: "Discreet wall panel in a lived-in living room; panel identifiable, room dominant." },
+        { title: "Bathrooms", families: "MIRROR", code: "IMG-FEU-APP-BATHROOM-01", href: "#smart", env: "Modern bathroom", direction: "Heated mirror above a basin; no separate visible radiator." },
+        { title: "Working", families: "RADIUS \u00B7 GLASS", code: "IMG-FEU-APP-OFFICE-01", href: "#smart", env: "Home office", direction: "Panel warming a desk area while the rest of the home stays cooler." },
+        { title: "Sleeping", families: "RADIUS \u00B7 CERAMIC", code: "IMG-FEU-APP-BEDROOM-01", href: "#smart", env: "Bedroom", direction: "Calm bedroom, slim wall panel, warm evening light." },
+        { title: "Commercial interiors", families: "GRAIN \u00B7 RADIUS", code: "IMG-FEU-APP-COMMERCIAL-01", href: "#smart", env: "Retail or office interior", direction: "Ceiling and wall heating in a commercial interior." },
+        { title: "Ceiling integration", families: "GRAIN \u00B7 PYRAMID \u00B7 DOME", code: "IMG-FEU-APP-CEILING-01", href: "#smart", env: "Suspended-ceiling interior", direction: "Ceiling-integrated panels flush with a suspended-ceiling grid." },
+        { title: "Outdoor spaces", families: "VERTI \u00B7 FOLD", code: "IMG-FEU-APP-OUTDOOR-01", href: "#smart", env: "Terrace, evening", direction: "Terrace seating warmed by a freestanding outdoor heater at dusk." },
+      ],
+
+      familyGroups: [
+        { label: "Architectural wall panels", cols: "repeat(3,1fr)", items: [
+          { name: "RADIUS", output: "350\u20132,000 W", desc: "Versatile metal and aluminium panel for wall or ceiling, from small rooms to concentrated heating power.", code: "RND-FEU-RADIUS-HERO-01", render: "Metal/aluminium panel, front three-quarter, edges and thinness visible.", href: "FEU - PRODUCT - Products - EN.dc.html#radius" },
+          { name: "GLASS", output: "300 / 700 W", desc: "Slim glass infrared panel where the heating surface becomes part of the architecture.", code: "RND-FEU-GLASS-HERO-01", render: "Slim glass panel, reflective surface, minimal frame.", href: "FEU - PRODUCT - Products - EN.dc.html#glass" },
+          { name: "CERAMIC", output: "300 / 700 W", desc: "Paintable panel that can be finished to follow the interior rather than interrupt it.", code: "RND-FEU-CERAMIC-HERO-01", render: "Matte paintable surface, subtle texture.", href: "FEU - PRODUCT - Products - EN.dc.html#ceramic" },
+        ] },
+        { label: "Bathroom heating", cols: "repeat(2,1fr)", items: [
+          { name: "MIRROR", output: "450 / 680 W", desc: "Wall-mounted radiant heater integrated into a functional bathroom mirror \u2014 no separate radiator.", code: "RND-FEU-MIRROR-HERO-01", render: "Mirror panel, clean reflection, wall-mounted.", href: "FEU - PRODUCT - Products - EN.dc.html#mirror" },
+          { name: "GLASS+", output: "450 / 900 W", desc: "Higher-output glass panel with a deeper build for rooms that need the glass look and more power.", code: "RND-FEU-GLASSPLUS-HERO-01", render: "Deeper glass panel, side profile showing thickness.", href: "FEU - PRODUCT - Products - EN.dc.html#glass-plus" },
+        ] },
+        { label: "Integrated ceiling heating", cols: "repeat(3,1fr)", items: [
+          { name: "GRAIN", output: "300 / 600 W", desc: "Flat grain-textured panel for integration into 600\u00D7600 and 1200\u00D7600 ceiling systems.", code: "RND-FEU-GRAIN-HERO-01", render: "Grain-textured flat ceiling tile in a grid.", href: "FEU - PRODUCT - Products - EN.dc.html#grain" },
+          { name: "PYRAMID", output: "500 / 1,000 W", desc: "Five-face ceiling heater distributing heat in several directions where a flat surface is not enough.", code: "RND-FEU-PYRAMID-HERO-01", render: "Multi-facet ceiling unit, five radiant faces.", href: "FEU - PRODUCT - Products - EN.dc.html#pyramid" },
+          { name: "DOME", output: "500 / 1,000 W", desc: "Rounded multi-directional ceiling heater spreading radiant heat across a wider occupied area.", code: "RND-FEU-DOME-HERO-01", render: "Rounded dome ceiling heater, soft form.", href: "FEU - PRODUCT - Products - EN.dc.html#dome" },
+        ] },
+        { label: "Outdoor heating", cols: "repeat(2,1fr)", items: [
+          { name: "VERTI", output: "up to 2,700 W", desc: "Vertical 360\u00B0 freestanding terrace heater with three selectable 900 W sections and integrated LED lighting.", code: "RND-FEU-VERTI-HERO-01", render: "Tall vertical terrace heater with subtle LED glow.", href: "FEU - PRODUCT - Products - EN.dc.html#verti" },
+          { name: "FOLD", output: "600\u20132,200 W", desc: "Foldable freestanding heater with adjustable directional arms so heat follows the occupied area.", code: "RND-FEU-FOLD-HERO-01", render: "Foldable heater with directional arms, LED lighting.", href: "FEU - PRODUCT - Products - EN.dc.html#fold" },
+        ] },
+      ],
+
+      smartBenefits: [
+        { t: "Cleaner installation", d: "Control lives inside the heater \u2014 no shelf of plugs." },
+        { t: "Room grouping", d: "Operate several heaters as one room or zone." },
+        { t: "Schedules", d: "Per-room, per-day temperature schedules." },
+        { t: "Central commissioning", d: "Identify and set up each unit from EMON." },
+        { t: "Energy reporting", d: "See consumption by room and by period." },
+        { t: "Remote service", d: "Supported diagnostics and updates." },
+      ],
+
+      tariffHours,
+
+      solarControls: ["Which rooms may preheat", "Maximum room temperature", "Minimum solar surplus", "Battery reserve", "Heating priority", "Time windows", "Export-price threshold"],
+      flow: [
+        { code: "ANDO", name: "ANDO solar panels", role: "Generate electricity", color: "#8C9A2B", gap: 14 },
+        { code: "MOEB", name: "MOEBIUS inverter", role: "Convert to usable power", color: "#F1931B", gap: 14 },
+        { code: "EMON", name: "EMON", role: "Decide when and where", color: "#21AE8F", gap: 14 },
+        { code: "FEU", name: "FEU heating", role: "Comfort in approved rooms", color: "#DA5E70", gap: 14 },
+        { code: "FLUXX", name: "FLUXX battery", role: "Optional coordination", color: "#C9A11B", gap: 0 },
+      ],
+
+      batteryModes: [
+        { name: "Comfort", desc: "Heating may use available grid, solar or battery energy to maintain the selected comfort temperature." },
+        { name: "Balanced", desc: "EMON balances comfort, electricity price, solar forecasts and battery reserve." },
+        { name: "Lowest Cost", desc: "EMON prioritises low-price electricity and solar surplus while keeping your minimum temperatures." },
+      ],
+      batteryLimits: ["Minimum battery reserve", "Backup-energy reserve", "Maximum heating power", "Priority rooms", "Grid-price limit"],
+
+      // savings preview bindings
+      prevRooms: st.prevRooms, prevOcc: st.prevOcc,
+      onPrevRooms: (e) => this.setState({ prevRooms: e.target.value }),
+      onPrevOcc: (e) => this.setState({ prevOcc: e.target.value }),
+      onPrevTariff: (e) => this.setState({ prevTariff: e.target.value }),
+      onPrevSolar: (e) => this.setState({ prevSolar: e.target.value }),
+      tariffOptions: [{ value: "dynamic", label: "Dynamic (hourly)" }, { value: "tou", label: "Time-of-use (day/night)" }, { value: "fixed", label: "Fixed price" }].map(o => ({ ...o, selected: o.value === st.prevTariff })),
+      solarOptions: [{ value: "yes", label: "Yes" }, { value: "no", label: "No" }].map(o => ({ ...o, selected: o.value === st.prevSolar })),
+      prevResults, prevSummary,
+
+      compareCols: [
+        { label: "FEU", color: "#C24A5C" },
+        { label: "Gas", color: "#5F5E5E" },
+        { label: "Oil / diesel", color: "#5F5E5E" },
+        { label: "Electric radiators", color: "#5F5E5E" },
+        { label: "Fan heaters", color: "#5F5E5E" },
+      ],
+      compareRows: [
+        { crit: "Room-level control", cells: ["Per room", "Zone-limited", "Zone-limited", "Per unit", "Per unit"] },
+        { crit: "Response time", cells: ["Fast radiant", "Slow", "Slow", "Medium", "Fast, convective"] },
+        { crit: "Visual integration", cells: ["High", "Radiators visible", "Radiators visible", "Visible", "Portable"] },
+        { crit: "Energy-price flexibility", cells: ["High with EMON", "Low", "Low", "Manual", "Manual"] },
+        { crit: "Solar-surplus use", cells: ["Yes", "No", "No", "Limited", "Limited"] },
+        { crit: "Avoid heating unused rooms", cells: ["Yes", "Harder", "Harder", "Per unit", "Per unit"] },
+      ],
+
+      proSupport: ["Heat-loss calculations", "Product selection", "Positioning", "Electrical load planning", "Room zoning", "Control configuration", "CAD and BIM", "Tender specifications"],
+
+      projects: [
+        { type: "Residential", title: "Renovated townhouse, zoned heating", code: "PRJ-FEU-RESIDENTIAL-001", env: "Residential interior", direction: "RADIUS and CERAMIC across a renovated townhouse.", facts: [{ k: "Products", v: "RADIUS \u00B7 CERAMIC" }, { k: "Control", v: "EMON zoned" }, { k: "Role", v: "Primary + supplementary" }] },
+        { type: "Bathroom", title: "Family bathroom, mirror heating", code: "PRJ-FEU-BATHROOM-001", env: "Bathroom", direction: "MIRROR as the only visible heater.", facts: [{ k: "Products", v: "MIRROR 680 W" }, { k: "Control", v: "Scheduled boost" }, { k: "Role", v: "Room heating" }] },
+        { type: "Office", title: "Small office, ceiling integration", code: "PRJ-FEU-OFFICE-001", env: "Office interior", direction: "GRAIN in a suspended ceiling.", facts: [{ k: "Products", v: "GRAIN" }, { k: "Control", v: "EMON schedules" }, { k: "Role", v: "Primary" }] },
+        { type: "Hospitality", title: "Restaurant terrace, outdoor heating", code: "PRJ-FEU-HOSPITALITY-001", env: "Terrace, evening", direction: "VERTI units along a terrace.", facts: [{ k: "Products", v: "VERTI" }, { k: "Control", v: "Section select" }, { k: "Role", v: "Outdoor comfort" }] },
+        { type: "Ceiling integration", title: "Retail unit, directional ceiling heat", code: "PRJ-FEU-CEILING-001", env: "Retail interior", direction: "PYRAMID and DOME over a retail floor.", facts: [{ k: "Products", v: "PYRAMID \u00B7 DOME" }, { k: "Control", v: "EMON zones" }, { k: "Role", v: "Primary" }] },
+        { type: "Outdoor", title: "Hotel courtyard, seasonal heating", code: "PRJ-FEU-OUTDOOR-001", env: "Courtyard", direction: "FOLD heaters around seating.", facts: [{ k: "Products", v: "FOLD" }, { k: "Control", v: "Directional" }, { k: "Role", v: "Seasonal" }] },
+      ],
+
+      utility: [
+        { title: "Projects", desc: "Installed FEU systems with products, output and role \u2014 filter by environment and energy source.", cta: "Browse projects", href: "STROHM.ENERGY - PROJECT - Overview - EN.dc.html" },
+        { title: "Knowledge", desc: "How infrared heating works, room calculations, tariffs, solar and installation guidance.", cta: "Read the guides", href: "STROHM.ENERGY - CONTENT - Knowledge - EN.dc.html" },
+        { title: "Support", desc: "Manuals, warranty, returns, FAQs and contact for owners and installers.", cta: "Get support", href: "FEU - PRODUCT - Products - EN.dc.html#specialist" },
+        { title: "For professionals", desc: "FEU is supplied through installers and distributors. Technical files, configuration and webshop access for approved partners.", cta: "Partner tools", href: "FEU - WEBSHOP - Shop - EN.dc.html" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

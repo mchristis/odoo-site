@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<script src="./nav-data.js"></script>
+<style>
+  @keyframes nbFade { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
+  [data-nb] a:focus, [data-nb] button:focus { outline: none; }
+  [data-nb] a:focus-visible, [data-nb] button:focus-visible { outline: none; box-shadow: 0 2px 0 0 #4F4F4E; }
+  @media (prefers-reduced-motion: reduce) { .nb-panel { animation:none !important; } }
+</style>
+</helmet>
+<div data-nb="" ref="{{ rootRef }}" style="height:81px;font-family:var(--font-web);">
+<div style="position:fixed;top:0;left:0;right:0;z-index:1000;background:#FFFFFF;">
+  <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;height:80px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 var(--web-side);">
+
+    <a href="{{ homeHref }}" style="text-decoration:none;display:flex;align-items:center;flex:none;margin-right:clamp(16px,3vw,56px);">
+      <img src="assets/logos/STROHM-ENERGY-stacked-screen.svg" alt="STRØHM.ENERGY" style="height:clamp(48px,4.84vw,70px);width:auto;display:block;flex-shrink:0;"></img>
+    </a>
+
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Main" style="display:flex;align-items:center;gap:clamp(12px,1.8vw,36px);flex:1 1 auto;min-width:0;justify-content:center;">
+        <sc-for list="{{ items }}" as="item" hint-placeholder-count="4">
+<sc-if value="{{ item.hasLink }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;border-bottom:2px solid {{ item.line }};padding:6px 0 4px;"><a href="{{ item.href }}" aria-current="{{ item.current }}" style="text-decoration:none;font-size:16px;font-weight:{{ item.weight }};letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;color:{{ item.color }};" style-hover="color:#222222;">{{ item.label }}</a><button type="button" aria-label="{{ item.chevLabel }}" aria-expanded="{{ item.expanded }}" aria-controls="nb-panel" onClick="{{ item.onClick }}" style="background:none;border:none;cursor:pointer;padding:4px;display:inline-flex;align-items:center;color:{{ item.color }};" style-hover="color:#222222;"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="{{ chevW }}" style="flex:none;transition:transform .2s ease;transform:rotate({{ item.rot }});"><polyline points="2.5,4.5 6,8 9.5,4.5"></polyline></svg></button></span></sc-if>
+          <sc-if value="{{ item.noLink }}" hint-placeholder-val="{{ true }}">          <button type="button" aria-expanded="{{ item.expanded }}" aria-current="{{ item.current }}" aria-controls="nb-panel" onClick="{{ item.onClick }}" style="background:none;border:none;border-bottom:2px solid {{ item.line }};cursor:pointer;padding:6px 0 4px;font-family:inherit;font-size:16px;font-weight:{{ item.weight }};letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;color:{{ item.color }};display:inline-flex;align-items:center;gap:8px;" style-hover="color:#222222;">{{ item.label }}<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="{{ chevW }}" style="flex:none;transition:transform .2s ease;transform:rotate({{ item.rot }});"><polyline points="2.5,4.5 6,8 9.5,4.5"></polyline></svg></button></sc-if>
+        </sc-for>
+      </nav>
+      <div style="display:flex;align-items:center;gap:clamp(14px,1.6vw,24px);flex:none;">
+        <button type="button" aria-expanded="{{ companyExpanded }}" aria-current="{{ companyCurrent }}" aria-controls="nb-panel" onClick="{{ toggleCompany }}" style="background:none;border:none;border-bottom:2px solid {{ companyLine }};cursor:pointer;padding:6px 0 4px;font-family:inherit;font-size:16px;font-weight:{{ companyWeight }};letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;color:{{ companyColor }};display:inline-flex;align-items:center;gap:8px;" style-hover="color:#222222;">Company<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="{{ chevW }}" style="flex:none;transition:transform .2s ease;transform:rotate({{ companyRot }});"><polyline points="2.5,4.5 6,8 9.5,4.5"></polyline></svg></button>
+        <button type="button" onClick="{{ openContact }}" style="background:none;border:none;cursor:pointer;padding:0;font-family:inherit;font-size:16px;font-weight:300;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;color:#666666;" style-hover="color:#222222;">Contact</button>
+        <a data-nb-shop="" href="WEBSHOP - SITE - Landing - EN.dc.html" style="text-decoration:none;font-size:16px;font-weight:300;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;color:#666666;" style-hover="color:#222222;">Shop</a>
+        <!-- SEARCH: hidden until search works (NAV-9). Set SEARCH_ENABLED = true in the logic to restore. -->
+        <sc-if value="{{ searchEnabled }}" hint-placeholder-val="{{ false }}">
+          <button type="button" aria-label="Search" style="background:none;border:none;cursor:pointer;padding:0;display:flex;color:#4A4A4A;" style-hover="color:#222222;">
+            <svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.35"><circle cx="8" cy="8" r="6"></circle><line x1="12.5" y1="12.5" x2="17" y2="17"></line></svg>
+          </button>
+        </sc-if>
+        <dc-import name="LanguageSelector" hint-size="56px,32px"></dc-import>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:16px;flex:none;">
+        <a data-nb-shop="" href="WEBSHOP - SITE - Landing - EN.dc.html" style="text-decoration:none;font-size:16px;font-weight:300;letter-spacing:0.06em;text-transform:uppercase;color:#666666;min-height:44px;display:flex;align-items:center;">Shop</a>
+        <sc-if value="{{ searchEnabled }}" hint-placeholder-val="{{ false }}">
+          <button type="button" aria-label="Search" style="background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center;width:32px;height:44px;color:#4A4A4A;">
+            <svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.35"><circle cx="8" cy="8" r="6"></circle><line x1="12.5" y1="12.5" x2="17" y2="17"></line></svg>
+          </button>
+        </sc-if>
+        <dc-import name="LanguageSelector" hint-size="56px,32px"></dc-import>
+        <button type="button" aria-label="{{ menuLabel }}" aria-expanded="{{ mobileExpanded }}" aria-controls="nb-mobile" onClick="{{ toggleMobile }}" style="background:none;border:none;cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center;width:44px;height:44px;color:#3A3A3A;">
+          <sc-if value="{{ mobileClosed }}" hint-placeholder-val="{{ true }}">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="3" y1="6" x2="17" y2="6"></line><line x1="3" y1="10" x2="17" y2="10"></line><line x1="3" y1="14" x2="17" y2="14"></line></svg>
+          </sc-if>
+          <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="4" y1="4" x2="16" y2="16"></line><line x1="16" y1="4" x2="4" y2="16"></line></svg>
+          </sc-if>
+        </button>
+      </div>
+    </sc-if>
+  </div>
+
+  <!-- DESKTOP PANEL: one pattern for all four menus -->
+  <sc-if value="{{ desktopOpen }}" hint-placeholder-val="{{ false }}">
+    <div id="nb-panel" class="nb-panel" style="position:absolute;top:100%;left:0;right:0;background:#FFFFFF;border-bottom:1px solid #DDDDDD;max-height:80vh;overflow-y:auto;overflow-x:hidden;animation:nbFade 0.12s ease;">
+      <sc-for list="{{ panels }}" as="p" hint-placeholder-count="0">
+        <sc-if value="{{ p.show }}" hint-placeholder-val="{{ false }}">
+          <dc-import name="ProductsPanel" kind="{{ p.key }}" hint-size="100%,300px"></dc-import>
+        </sc-if>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <!-- MOBILE MENU -->
+  <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+    <div id="nb-mobile" class="nb-panel" style="position:absolute;top:100%;left:0;right:0;height:calc(100vh - 88px);overflow-y:auto;background:#FFFFFF;border-top:1px solid #DDDDDD;animation:nbFade 0.12s ease;">
+      <div style="padding:8px clamp(16px,3vw,40px) 40px;">
+        <sc-for list="{{ mItems }}" as="m" hint-placeholder-count="4">
+          <div style="border-bottom:1px solid #DDDDDD;">
+            <button type="button" id="{{ m.btnId }}" aria-expanded="{{ m.expanded }}" aria-controls="{{ m.panelId }}" onClick="{{ m.onToggle }}" style="cursor:pointer;width:100%;min-height:56px;background:none;border:none;padding:0 4px;display:flex;align-items:center;justify-content:space-between;font-family:inherit;font-size:13px;font-weight:300;letter-spacing:0.08em;text-transform:uppercase;color:{{ m.color }};text-align:left;">
+              <span style="border-bottom:2px solid {{ m.line }};padding-bottom:2px;">{{ m.label }}</span>
+              <svg width="12" height="12" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.2" style="flex:none;transition:transform .2s ease;transform:rotate({{ m.chevRot }});"><polyline points="2,3.5 5,6.5 8,3.5"></polyline></svg>
+            </button>
+            <div id="{{ m.panelId }}" role="region" aria-labelledby="{{ m.btnId }}" style="display:{{ m.display }};padding:0 0 16px;">
+              <dc-import name="ProductsPanel" kind="{{ m.key }}" mobile="{{ true }}" hint-size="100%,300px"></dc-import>
+            </div>
+          </div>
+        </sc-for>
+        <div style="display:flex;flex-direction:column;padding-top:8px;">
+          <button type="button" onClick="{{ openContact }}" style="cursor:pointer;background:none;border:none;border-bottom:1px solid #DDDDDD;min-height:56px;padding:0 4px;text-align:left;font-family:inherit;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6E6E6E;">Contact</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</div>
+<dc-import name="ContactModal" open="{{ contactOpen }}" on-close="{{ closeContact }}" hint-size="0,0"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;homeHref&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Homepage.dc.html&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+// All menu labels and contents live in nav-data.js (window.STROHM_NAV.MENUS), rendered by ProductsPanel.dc.html.
+const SEARCH_ENABLED = true; // DEPTH-189: icon shown site wide (search function still to build)
+const MOBILE_MAX = 1023;
+const FALLBACK_MENUS = [{ key:"products", label:"Products" }, { key:"systems", label:"Systems" }, { key:"projects", label:"Projects" }, { key:"finance", label:"Finance" }];
+
+class Component extends DCLogic {
+  state = { open: null, contactOpen: false, mobileMenu: false, mOpen: null,
+    mobile: typeof window !== "undefined" && window.innerWidth <= MOBILE_MAX };
+
+  componentDidMount() {
+    if (!window.STROHM_NAV) {
+      this._t = setInterval(() => { if (window.STROHM_NAV) { clearInterval(this._t); this.forceUpdate(); } }, 50);
+    }
+    this._onResize = () => { const m = window.innerWidth <= MOBILE_MAX; if (m !== this.state.mobile) this.setState({ mobile: m, open: null, mobileMenu: false }); };
+    this._onKey = (e) => { if (e.key === "Escape" && (this.state.open || this.state.mobileMenu)) this.setState({ open: null, mobileMenu: false }); };
+    this._onDown = (e) => { if ((this.state.open || this.state.mobileMenu) && this._root && !this._root.contains(e.target)) this.setState({ open: null, mobileMenu: false }); };
+    window.addEventListener("resize", this._onResize);
+    document.addEventListener("keydown", this._onKey);
+    document.addEventListener("mousedown", this._onDown);
+    this._onResize();
+  }
+  componentWillUnmount() {
+    if (this._t) clearInterval(this._t);
+    window.removeEventListener("resize", this._onResize);
+    document.removeEventListener("keydown", this._onKey);
+    document.removeEventListener("mousedown", this._onDown);
+  }
+
+  renderVals() { const chevW = "1"; /* DEPTH-585 test */
+    const st = this.state;
+    const active = this.props.active;
+    const open = st.open;
+    const allMenus = (window.STROHM_NAV ? window.STROHM_NAV.MENUS : FALLBACK_MENUS).map((m) => ({ key: m.key, label: m.label, landing: m.landing, right: !!m.right }));
+    const menus = allMenus.filter((m) => !m.right);
+
+    return { chevW,
+      rootRef: (el) => { this._root = el; },
+      homeHref: this.props.homeHref || "STROHM.ENERGY - SITE - Homepage - EN.dc.html",
+      isDesktop: !st.mobile, isMobile: st.mobile,
+      searchEnabled: SEARCH_ENABLED,
+      companyColor: active === "company" ? "#4F4F4E" : (open === "company" ? "#3A3A3A" : "#666666"),
+      companyLine: "transparent", companyWeight: active === "company" ? 500 : 300,
+      companyCurrent: active === "company" ? "page" : "false",
+      contactOpen: st.contactOpen,
+      openContact: () => this.setState({ contactOpen: true, open: null, mobileMenu: false }),
+      closeContact: () => this.setState({ contactOpen: false }),
+      items: menus.map((m) => ({
+        label: m.label,
+        expanded: open === m.key ? "true" : "false",
+        hasLink: false, noLink: true, href: m.landing ? m.landing.href : "#", chevLabel: (open === m.key ? "Close " : "Open ") + m.label + " menu",
+        current: active === m.key ? "page" : "false",
+        line: "transparent", weight: active === m.key ? 500 : 300,
+        rot: open === m.key ? "180deg" : "0deg",
+        color: active === m.key ? "#4F4F4E" : (open === m.key ? "#3A3A3A" : "#666666"),
+        onClick: () => this.setState((s) => ({ open: s.open === m.key ? null : m.key })),
+      })),
+      desktopOpen: !st.mobile && !!open,
+      panels: allMenus.map((m) => ({ key: m.key, show: open === m.key })),
+      companyExpanded: open === "company" ? "true" : "false", companyRot: open === "company" ? "180deg" : "0deg",
+      toggleCompany: () => this.setState((s) => ({ open: s.open === "company" ? null : "company" })),
+
+      mobileOpen: st.mobile && st.mobileMenu,
+      mobileClosed: !(st.mobile && st.mobileMenu),
+      mobileExpanded: st.mobileMenu ? "true" : "false",
+      menuLabel: st.mobileMenu ? "Close menu" : "Open menu",
+      toggleMobile: () => this.setState((s) => ({ mobileMenu: !s.mobileMenu })),
+      mItems: allMenus.map((m) => {
+        const isOpen = st.mOpen === m.key;
+        return {
+          key: m.key, label: m.label,
+          btnId: "nb-m-btn-" + m.key, panelId: "nb-m-panel-" + m.key,
+          expanded: isOpen ? "true" : "false",
+          chevRot: isOpen ? "180deg" : "0deg",
+          display: isOpen ? "block" : "none",
+          color: active === m.key ? "#4F4F4E" : "#6E6E6E",
+          line: "transparent",
+          onToggle: () => this.setState((s) => ({ mOpen: s.mOpen === m.key ? null : m.key })),
+        };
+      }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

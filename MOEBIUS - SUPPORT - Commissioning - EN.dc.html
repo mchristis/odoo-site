@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>MOEBIUS Commissioning | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { text-decoration:none; color:var(--color-text-primary); }
+  .mc-link:hover { color:var(--color-text-primary) !important; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoebiusNav" active="commissioning" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="MOEBIUS" rgb="241,147,27" eyebrow="The defining MOEBIUS method" title="Commission the complete energy system from one scan." intro="The product identifies itself." slot="mc-hero" shot="VID-MOEBIUS-COMMISSIONING-01 · 21:9 · 10–15s loop: installer scans A4 project QR or taps passive NFC on an unpowered inverter; the exact project opens; devices appear; the record builds · V3-R3 restrained · awaiting upload" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;"><a href="MOEBIUS - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">MOEBIUS</a> &#8250; <span style="color:var(--color-text-primary);">COMMISSIONING</span></div>
+    <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:780px;">The system builds its own technical record. A unique QR and passive NFC identity open the correct project, recognise the exact inverter and start a guided commissioning workflow — while the installation is happening, not after.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;">
+      <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#sequence" style="height:var(--cta-height);padding:0 var(--cta-pad-x);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);letter-spacing:0.04em;border-radius:var(--cta-radius);">See the eight steps</a>
+      <a href="MOEBIUS - PRODUCT - Find Your Inverter - EN.dc.html" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:var(--color-card-moebius);border:1px solid var(--color-divider);color:var(--color-text-primary);font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">Find your inverter</a>
+    </div>
+    
+  </section>
+
+
+  <!-- THE PROMISE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <h2 style="margin:0 0 8px;max-width:720px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Every inverter installed. <span style="color:#8E8E8E;">Every connection mapped. Every document ready.</span></h2>
+      <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:720px;">Installing an inverter is only part of completing an energy system. The installer must record where equipment is located, how modules connect, which string belongs to which MPPT, how cables are routed and whether the finished system matches the design. MOEBIUS brings these steps into one structured commissioning process — across micro, string and hybrid inverters.</p>
+      <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:720px;">The method was previously distributed across overview, connection, product and warranty pages. It belongs in one place, because it is the product experience — not a support function added after the sale.</p>
+      <div data-cols="3" style="display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr));--cg:12px;">
+        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="3">
+          <div style="border-radius:12px;background:#F4F4F4;padding:28px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:10px;">{{ p.tag }}</div>
+            <div style="font-size:var(--web-body-size);font-weight:300;color:var(--color-text-primary);margin-bottom:8px;">{{ p.title }}</div>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ p.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8-STEP SEQUENCE -->
+  <section id="sequence" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">The commissioning workflow</div>
+      <h2 style="margin:0 0 32px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">A faster installation starts before the <span style="color:#8E8E8E;">inverter is powered.</span></h2>
+      <div data-cols="4" style="display:grid;gap:12px;grid-template-columns:repeat(4,minmax(0,1fr));--cg:12px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="8">
+          <div style="border-radius:12px;background:#F4F4F4;padding:24px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);margin-bottom:12px;letter-spacing:var(--web-eyebrow-ls);">{{ s.n }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:8px;line-height:var(--web-small-lh);">{{ s.title }}</div>
+            <p style="margin:0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);max-width:760px;">{{ s.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- IDENTITY -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start;--cg:48px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Identify</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The inverter identifies itself— <span style="color:#8E8E8E;">even unpowered.</span></h2>
+        <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">A unique QR and passive NFC identity mean the installer never types a serial number. Tapping an unpowered inverter opens the exact product record; scanning the A4 project QR opens the approved project. The correct workflow starts automatically.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ identityPoints }}" as="i" hint-placeholder-count="4">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);display:flex;gap:10px;"><span style="color:var(--color-text-primary);">&#8226;</span>{{ i }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="aspect-ratio:4/3;border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+        <image-slot id="mc-identity" shape="rect" placeholder="IMG-MOEBIUS-IDENTITY-01 · 4:3 · close detail: passive NFC tap on an unpowered inverter, QR label, EMON opening the exact record · V3-R3 · awaiting upload"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- WI-FI MESH USP -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start;--cg:48px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Standard Wi-Fi mesh</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The system finds itself. <span style="color:#8E8E8E;">You press one button.</span></h2>
+        <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">Every MOEBIUS inverter forms a standard Wi-Fi mesh on site. There is no manual pairing, no typing addresses and no hunting for devices. The inverter appears in the commissioning app within seconds, supported devices join the mesh automatically, and the complete commissioned record uploads with a single tap — no laptop, no gateway hunt, far less time on the roof.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ meshPoints }}" as="m" hint-placeholder-count="5">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);display:flex;gap:10px;"><span style="color:var(--color-text-primary);">&#8226;</span>{{ m }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:var(--color-card-moebius);border:1px solid var(--color-divider);border-radius:12px;padding:var(--card-padding);">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">On site &#183; how it feels</div>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <sc-for list="{{ meshSteps }}" as="s" hint-placeholder-count="4">
+            <div style="display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--color-surface-card);">
+              <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);flex:none;line-height:var(--web-small-lh);">{{ s.t }}</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ s.desc }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:20px;padding:14px 16px;background:#F4F4F4;border-radius:12px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#5F5E5E;">One button uploads the complete record to EMON.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRING / MPPT MAP (inline SVG) -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Map the electrical system</div>
+      <h2 style="margin:0 0 24px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Strings and MPPTs, <span style="color:#8E8E8E;">recorded as they are wired.</span></h2>
+      <div style="background:var(--color-card-moebius);border:1px solid var(--color-divider);border-radius:12px;padding:var(--card-padding);">
+        <svg viewBox="0 0 900 320" style="width:100%;height:auto;font-family:var(--font-web);">
+          <!-- strings -->
+          <sc-for list="{{ mpptRows }}" as="r" hint-placeholder-count="3">
+            <g>
+              <rect x="20" y="{{ r.y }}" width="150" height="44" rx="6" fill="#F4F4F4"></rect>
+              <text x="34" y="{{ r.ty }}" font-size="13" font-weight="700" fill="#5F5E5E">{{ r.string }}</text>
+              <text x="34" y="{{ r.ty2 }}" font-size="11" font-weight="300" fill="#5F5E5E">{{ r.detail }}</text>
+              <line x1="170" y1="{{ r.midY }}" x2="360" y2="{{ r.midY }}" stroke="#DDDDDD" stroke-width="1.5"></line>
+              <circle cx="360" cy="{{ r.midY }}" r="4" style="fill:var(--color-brand-moebius)"></circle>
+              <rect x="360" y="{{ r.y }}" width="150" height="44" rx="6" fill="#F4F4F4" style="stroke:var(--color-brand-moebius)" stroke-width="1"></rect>
+              <text x="374" y="{{ r.ty }}" font-size="13" font-weight="700" fill="#FB8C00">{{ r.mppt }}</text>
+              <text x="374" y="{{ r.ty2 }}" font-size="11" font-weight="300" fill="#FB8C00">{{ r.mpptDetail }}</text>
+              <line x1="510" y1="{{ r.midY }}" x2="700" y2="160" stroke="#DDDDDD" stroke-width="1.5"></line>
+            </g>
+          </sc-for>
+          <!-- inverter -->
+          <rect x="700" y="120" width="180" height="80" rx="8" fill="#252525"></rect>
+          <text x="790" y="152" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">MOEBIUS</text>
+          <text x="790" y="174" font-size="11" font-weight="300" fill="#8E8E8E" text-anchor="middle">3 MPPT · verified</text>
+        </svg>
+        <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);margin-top:12px;line-height:var(--web-min-lh);">Illustrative string-to-MPPT allocation captured during commissioning. Actual topology depends on the project.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A4 PROJECT PLAN -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div data-stack="1" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:48px;align-items:start;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">The A4 project plan</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One sheet opens the <span style="color:#8E8E8E;">whole approved project.</span></h2>
+        <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">A single A4 project sheet carries the project QR, the device schedule and the commissioning checklist. The installer scans it on site to open the approved project and follow the guided workflow — no laptop, no manual look-up.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ a4Includes }}" as="a" hint-placeholder-count="5">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);display:flex;gap:10px;"><span style="color:var(--color-text-primary);">&#8226;</span>{{ a }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:var(--color-card-moebius);border:1px solid var(--color-divider);border-radius:12px;padding:var(--card-padding);">
+        <div style="aspect-ratio:1/1.414;background:#F4F4F4;border:1px solid #DDDDDD;border-radius:12px;padding:24px;display:flex;flex-direction:column;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--color-divider);padding-bottom:14px;margin-bottom:16px;">
+            <div>
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:var(--color-text-primary);line-height:var(--web-h3-lh);">MOEBIUS project plan</div>
+              <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">Project 2026-XXXX · [DUMMY]</div>
+            </div>
+            <div style="width:56px;height:56px;background:var(--color-text-primary);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-size:11px;letter-spacing:0.1em;">QR</div>
+          </div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:8px;">Device schedule</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <sc-for list="{{ deviceSchedule }}" as="d" hint-placeholder-count="4">
+              <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-surface-card);padding-bottom:5px;">
+                <span>{{ d.name }}</span><span style="color:var(--color-grey-70);">{{ d.ref }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="margin-top:auto;font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);">Scan to open the approved project in EMON.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL FILE OUTPUTS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Automatic outputs</div>
+      <h2 style="margin:0 0 24px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The technical file is created while the <span style="color:#8E8E8E;">system is installed.</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 32px;--cg:32px;">
+        <sc-for list="{{ outputs }}" as="o" hint-placeholder-count="9">
+          <div style="font-size:14px;font-weight:300;color:var(--color-text-primary);line-height:1.5;padding:12px 0;border-top:1px solid #DDDDDD;display:flex;gap:12px;"><span style="color:var(--color-grey-70);font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);">{{ o.n }}</span>{{ o.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID PROFILE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="background:#F4F4F4;border-radius:12px;padding:32px 36px;">
+        <div style="font-size:var(--web-error-size);font-weight:var(--web-error-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:10px;">Selected, not assumed</div>
+        <h2 style="margin:0 0 10px;max-width:720px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The right grid profile, <span style="color:#8E8E8E;">selected at commissioning.</span></h2>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:820px;">The applicable grid profile is chosen and recorded during the guided workflow, against the connection and local requirements — not left to a factory default. The choice is stored in the commissioned record.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HANDOVER TO OWNERSHIP -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+      <div style="max-width:620px;">
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">When commissioning is approved, <span style="color:#8E8E8E;">ownership begins.</span></h2>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">The accepted commissioned record becomes the owner's file — warranty confirmed, monitoring live, service worked from the record.</p>
+      </div>
+      <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="MOEBIUS - SUPPORT - Ownership - EN.dc.html" style="height:var(--cta-height);padding:0 var(--cta-pad-x);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);letter-spacing:0.04em;border-radius:var(--cta-radius);">Continue to Ownership<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </section>
+
+  <div style="height:64px;"></div>
+  <dc-import name="AndoPattern" brand="MOEBIUS" items="scansheet" hint-size="100%,600px"></dc-import>
+
+
+  <div style="height:32px;"></div>
+  <dc-import name="ContentSections" brand="MOEBIUS" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOEBIUS" photo-slot-id="moebius-commissioning-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MOEBIUS" accent="var(--color-brand-moebius)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:960}}">
+class Component extends DCLogic {
+  renderVals() {
+    const steps = [
+      { title: "Open or create project", desc: "Scan the A4 project QR to open an approved project, or scan the inverter QR / tap passive NFC to start a new one." },
+      { title: "Identify the inverter", desc: "The exact product record opens — no manual serial-number entry." },
+      { title: "Discover the system", desc: "EMON discovers supported devices on the installation automatically." },
+      { title: "Build the mesh", desc: "A standard Wi-Fi mesh links the supported devices for local communication." },
+      { title: "Map locations", desc: "Each device is placed to its physical location on the site." },
+      { title: "Map strings & MPPTs", desc: "String-to-MPPT allocation is recorded as it is wired." },
+      { title: "Verify & approve", desc: "Measurements, settings and photographs are captured and the record is approved." },
+      { title: "Generate documents", desc: "The owner summary and installer technical file are generated automatically." },
+    ];
+    const rows = [
+      { string: "String 1", detail: "12 modules", mppt: "MPPT A", mpptDetail: "input verified", y: 30 },
+      { string: "String 2", detail: "12 modules", mppt: "MPPT B", mpptDetail: "input verified", y: 138 },
+      { string: "String 3", detail: "10 modules", mppt: "MPPT C", mpptDetail: "input verified", y: 246 },
+    ];
+    return {
+      pillars: [
+        { tag: "Identity", title: "The product identifies itself", desc: "Unique QR and passive NFC. No manual serial entry, even before power." },
+        { tag: "Mapping", title: "The system maps itself", desc: "Devices, locations, strings and MPPTs recorded as the work happens." },
+        { tag: "Documentation", title: "The file writes itself", desc: "The owner summary and technical file are generated at commissioning." },
+      ],
+      steps: steps.map((s, i) => Object.assign({ n: String(i + 1).padStart(2, "0") }, s)),
+      identityPoints: [
+        "Passive NFC responds on an unpowered inverter",
+        "QR opens the exact product or project record",
+        "The A4 project QR opens the approved project",
+        "The correct guided workflow starts automatically",
+      ],
+      meshPoints: [
+        "Self-forming Wi-Fi mesh — no manual pairing",
+        "The inverter appears in the app within seconds",
+        "Supported devices join the mesh automatically",
+        "One tap uploads the whole commissioned record",
+        "No gateway. No network setup per device.", /* DEPTH-1126 */
+      ],
+      meshSteps: [
+        { t: "0:05", desc: "Power on — the inverter forms its mesh and appears in the app." },
+        { t: "0:20", desc: "Supported devices are discovered and join automatically." },
+        { t: "0:40", desc: "Locations, strings and MPPTs are confirmed in the app." },
+        { t: "1 tap", desc: "The complete record uploads to EMON — no laptop, no gateway hunt." },
+      ],
+      mpptRows: rows.map((r) => ({
+        string: r.string, detail: r.detail, mppt: r.mppt, mpptDetail: r.mpptDetail,
+        y: r.y, ty: r.y + 20, ty2: r.y + 35, midY: r.y + 22,
+      })),
+      a4Includes: [
+        "Project QR linked to the approved project",
+        "Device schedule with references",
+        "Commissioning checklist",
+        "Site and connection notes",
+        "Scan on site — no laptop required",
+      ],
+      deviceSchedule: [
+        { name: "MOEBIUS inverter", ref: "INV-01" },
+        { name: "ANDO modules · strings", ref: "STR-01…03" },
+        { name: "FLUXX battery", ref: "BAT-01" },
+        { name: "SYNQ meter", ref: "MET-01" },
+      ],
+      outputs: [
+        "Owner summary", "Installer technical file", "Device schedule",
+        "String & MPPT map", "Grid-profile record", "Measurement log",
+        "Commissioning photographs", "Warranty confirmation", "Settings snapshot",
+      ].map((label, i) => ({ n: String(i + 1).padStart(2, "0"), label })),
+    };
+  }
+}
+</script>
+</body>
+</html>

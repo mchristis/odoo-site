@@ -1,0 +1,383 @@
+{
+  "version": "1.0",
+  "status": "PROPOSED STRUCTURE. MANAGERS ARE FICTIONAL CONCEPTS. TO CONFIRM",
+  "regions": [
+    {
+      "id": "RAM-01",
+      "number": "01",
+      "name": "Benelux Dutch",
+      "languages": "Dutch, English",
+      "units": [
+        "NL",
+        "BE-VLG"
+      ],
+      "managerRef": "MGR-RAM-01",
+      "odooTeam": "sales_team_ram_01",
+      "manager": {
+        "ref": "MGR-RAM-01",
+        "name": "Sophie van der Meer",
+        "portrait": "assets/team/regional-01.png",
+        "fictionalConcept": true,
+        "email": null
+      }
+    },
+    {
+      "id": "RAM-02",
+      "number": "02",
+      "name": "Francophone Europe",
+      "languages": "French, English",
+      "units": [
+        "FR",
+        "BE-WAL",
+        "BE-BRU-FR",
+        "LU-FR",
+        "CH-FR",
+        "MC"
+      ],
+      "managerRef": "MGR-RAM-02",
+      "odooTeam": "sales_team_ram_02",
+      "manager": {
+        "ref": "MGR-RAM-02",
+        "name": "Julien Moreau",
+        "portrait": "assets/team/regional-02.png",
+        "fictionalConcept": true,
+        "email": null
+      }
+    },
+    {
+      "id": "RAM-03",
+      "number": "03",
+      "name": "Germany",
+      "languages": "German, English",
+      "units": [
+        "DE"
+      ],
+      "managerRef": "MGR-RAM-03",
+      "odooTeam": "sales_team_ram_03",
+      "manager": {
+        "ref": "MGR-RAM-03",
+        "name": "Lukas Schneider",
+        "portrait": "assets/team/regional-03.png",
+        "fictionalConcept": true,
+        "email": null
+      }
+    },
+    {
+      "id": "RAM-04",
+      "number": "04",
+      "name": "Alpine Region",
+      "languages": "German, English, Italian preferred",
+      "units": [
+        "AT",
+        "CH-DE",
+        "CH-IT",
+        "LI"
+      ],
+      "managerRef": "MGR-RAM-04",
+      "odooTeam": "sales_team_ram_04",
+      "manager": {
+        "ref": "MGR-RAM-04",
+        "name": "Elena Bianchi",
+        "portrait": "assets/team/regional-04.png",
+        "fictionalConcept": true,
+        "email": null
+      }
+    },
+    {
+      "id": "RAM-05",
+      "number": "05",
+      "name": "UK & Ireland",
+      "languages": "English",
+      "units": [
+        "GB",
+        "IE"
+      ],
+      "managerRef": "MGR-RAM-05",
+      "odooTeam": "sales_team_ram_05",
+      "manager": {
+        "ref": "MGR-RAM-05",
+        "name": "Scott Edwards",
+        "title": "UK Field Sales Representative",
+        "portrait": null,
+        "fictionalConcept": false,
+        "email": null
+      }
+    },
+    {
+      "id": "RAM-06",
+      "number": "06",
+      "name": "Iberia",
+      "languages": "Spanish, Portuguese, English",
+      "units": [
+        "ES",
+        "PT",
+        "AD"
+      ],
+      "managerRef": "MGR-RAM-06",
+      "odooTeam": "sales_team_ram_06",
+      "manager": {
+        "ref": "MGR-RAM-06",
+        "name": "Carlos Mendes",
+        "portrait": "assets/team/regional-06.png",
+        "fictionalConcept": true,
+        "email": null
+      }
+    },
+    {
+      "id": "RAM-07",
+      "number": "07",
+      "name": "Italy & Mediterranean",
+      "languages": "Italian, English",
+      "units": [
+        "IT",
+        "MT",
+        "SM",
+        "VA"
+      ],
+      "managerRef": "MGR-RAM-07",
+      "odooTeam": "sales_team_ram_07",
+      "manager": {
+        "ref": "MGR-RAM-07",
+        "name": "Giulia Rossi",
+        "portrait": "assets/team/regional-07.png",
+        "fictionalConcept": true,
+        "email": null
+      }
+    },
+    {
+      "id": "RAM-08",
+      "number": "08",
+      "name": "Nordics",
+      "languages": "English, relevant local languages",
+      "units": [
+        "SE",
+        "DK",
+        "NO",
+        "FI",
+        "IS"
+      ],
+      "managerRef": "MGR-RAM-08",
+      "odooTeam": "sales_team_ram_08",
+      "manager": {
+        "ref": "MGR-RAM-08",
+        "name": "Erik Lundqvist",
+        "portrait": "assets/team/regional-08.png",
+        "fictionalConcept": true,
+        "email": null
+      }
+    },
+    {
+      "id": "RAM-09",
+      "number": "09",
+      "name": "Poland & Baltics",
+      "languages": "Polish, English",
+      "units": [
+        "PL",
+        "LT",
+        "LV",
+        "EE"
+      ],
+      "managerRef": "MGR-RAM-09",
+      "odooTeam": "sales_team_ram_09",
+      "manager": {
+        "ref": "MGR-RAM-09",
+        "name": "Katarzyna Nowak",
+        "portrait": "assets/team/regional-09.png",
+        "fictionalConcept": true,
+        "email": null
+      }
+    },
+    {
+      "id": "RAM-10",
+      "number": "10",
+      "name": "Central Europe",
+      "languages": "Czech or Slovak, English, Hungarian preferred",
+      "units": [
+        "CZ",
+        "SK",
+        "HU"
+      ],
+      "managerRef": "MGR-RAM-10",
+      "odooTeam": "sales_team_ram_10",
+      "manager": {
+        "ref": "MGR-RAM-10",
+        "name": "Marek Svoboda",
+        "portrait": "assets/team/regional-10.png",
+        "fictionalConcept": true,
+        "email": null
+      }
+    },
+    {
+      "id": "RAM-11",
+      "number": "11",
+      "name": "Southeastern Europe",
+      "languages": "English and regional languages",
+      "units": [
+        "RO",
+        "BG",
+        "GR",
+        "CY",
+        "MD"
+      ],
+      "managerRef": "MGR-RAM-11",
+      "odooTeam": "sales_team_ram_11",
+      "manager": {
+        "ref": "MGR-RAM-11",
+        "name": "Andreea Popescu",
+        "portrait": "assets/team/regional-11.png",
+        "fictionalConcept": true,
+        "email": null
+      }
+    },
+    {
+      "id": "RAM-12",
+      "number": "12",
+      "name": "Adriatic & Balkans",
+      "languages": "English and relevant local languages",
+      "units": [
+        "SI",
+        "HR",
+        "RS",
+        "BA",
+        "ME",
+        "XK",
+        "AL",
+        "MK"
+      ],
+      "managerRef": "MGR-RAM-12",
+      "odooTeam": "sales_team_ram_12",
+      "manager": {
+        "ref": "MGR-RAM-12",
+        "name": "Nikola Petrović",
+        "portrait": "assets/team/regional-12.png",
+        "fictionalConcept": true,
+        "email": null
+      }
+    }
+  ],
+  "countries": {
+    "NL": "Netherlands",
+    "BE": "Belgium",
+    "FR": "France",
+    "LU": "Luxembourg",
+    "CH": "Switzerland",
+    "MC": "Monaco",
+    "DE": "Germany",
+    "AT": "Austria",
+    "LI": "Liechtenstein",
+    "GB": "United Kingdom",
+    "IE": "Ireland",
+    "ES": "Spain",
+    "PT": "Portugal",
+    "AD": "Andorra",
+    "IT": "Italy",
+    "MT": "Malta",
+    "SM": "San Marino",
+    "VA": "Vatican City",
+    "SE": "Sweden",
+    "DK": "Denmark",
+    "NO": "Norway",
+    "FI": "Finland",
+    "IS": "Iceland",
+    "PL": "Poland",
+    "LT": "Lithuania",
+    "LV": "Latvia",
+    "EE": "Estonia",
+    "CZ": "Czechia",
+    "SK": "Slovakia",
+    "HU": "Hungary",
+    "RO": "Romania",
+    "BG": "Bulgaria",
+    "GR": "Greece",
+    "CY": "Cyprus",
+    "MD": "Moldova",
+    "SI": "Slovenia",
+    "HR": "Croatia",
+    "RS": "Serbia",
+    "BA": "Bosnia and Herzegovina",
+    "ME": "Montenegro",
+    "XK": "Kosovo",
+    "AL": "Albania",
+    "MK": "North Macedonia",
+    "UA": "Ukraine"
+  },
+  "central": {
+    "id": "CENTRAL",
+    "name": "Central team",
+    "odooTeam": "sales_team_central",
+    "note": "Ukraine and other unassigned territories are followed centrally until a regional assignment is approved."
+  },
+  "rules": {
+    "BE": {
+      "by": "language",
+      "options": [
+        {
+          "lang": "nl",
+          "label": "Dutch (Flanders, Dutch-speaking Brussels)",
+          "unit": "BE-VLG",
+          "region": "RAM-01"
+        },
+        {
+          "lang": "fr",
+          "label": "French (Wallonia, French-speaking Brussels)",
+          "unit": "BE-WAL",
+          "region": "RAM-02"
+        }
+      ],
+      "default": "RAM-01",
+      "note": "Brussels is routed by the customer’s language selection."
+    },
+    "LU": {
+      "by": "language",
+      "options": [
+        {
+          "lang": "fr",
+          "label": "French",
+          "unit": "LU-FR",
+          "region": "RAM-02"
+        },
+        {
+          "lang": "other",
+          "label": "Other languages",
+          "unit": "LU",
+          "region": "CENTRAL"
+        }
+      ],
+      "default": "RAM-02",
+      "note": "French-speaking Luxembourg goes to Francophone Europe. Other languages: central team until confirmed."
+    },
+    "CH": {
+      "by": "language",
+      "options": [
+        {
+          "lang": "fr",
+          "label": "French",
+          "unit": "CH-FR",
+          "region": "RAM-02"
+        },
+        {
+          "lang": "de",
+          "label": "German",
+          "unit": "CH-DE",
+          "region": "RAM-04"
+        },
+        {
+          "lang": "it",
+          "label": "Italian",
+          "unit": "CH-IT",
+          "region": "RAM-04"
+        }
+      ],
+      "default": "RAM-04",
+      "note": "Switzerland is routed by language region, not by canton boundaries."
+    }
+  },
+  "odooFields": [
+    "region_id",
+    "country_code",
+    "subdivision_code",
+    "preferred_language",
+    "manager_ref",
+    "contact_routing_ref"
+  ]
+}

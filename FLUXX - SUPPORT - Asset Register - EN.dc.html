@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<title>FLUXX Asset register | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } html { scroll-behavior:smooth; } [id] { scroll-margin-top:120px; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="FluxxNav" active="support" hint-size="100%,57px"></dc-import>
+  <dc-import name="PageHero" brand="FLUXX" rgb="253,199,6" eyebrow="FLUXX · Asset register" title="One record per battery." intro="The result is one record per battery that stays with the system." slot="fluxx-asset-register-hero" shot="FLUXX · Asset register · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;">
+      <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One record <span style="color:#8E8E8E;">per battery.</span></h2>
+      <p style="margin:0 0 32px;max-width:760px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#4F4F4E;">Saved in EMON and shared with the owner at handover.</p>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ record }}" as="r" hint-placeholder-count="8">
+          <div style="background:var(--color-card-fluxx, #F1EFE9);border-radius:12px;padding:20px 20px 24px;display:flex;flex-direction:column;gap:6px;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">{{ r.n }}</span>
+            <span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">{{ r.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Performance</div>
+        <h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Followed <span style="color:#8E8E8E;">for life.</span></h2>
+      </div>
+      <div style="grid-column:span 2;display:flex;flex-direction:column;gap:16px;">
+        <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Follow the battery over its whole life: temperature, cell lifetime, degradation and more.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <sc-for list="{{ life }}" as="l" hint-placeholder-count="4">
+            <span style="background:#F4F4F4;border-radius:8px;padding:10px 16px;font-size:var(--web-small-size);font-weight:300;color:#252525;">{{ l }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:flex;gap:24px;flex-wrap:wrap;">
+      <a href="FLUXX - SUPPORT - Commissioning - EN.dc.html" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Commissioning &#8250;</a>
+      <a href="FLUXX - SUPPORT - NFC and QR - EN.dc.html" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">NFC and QR &#8250;</a>
+      <a href="FLUXX - PRODUCT - FLUXX with EMON - EN.dc.html" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">FLUXX with EMON &#8250;</a>
+    </div>
+  </section>
+  <div style="height:64px;"></div>
+  <dc-import name="ContentSections" brand="FLUXX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="FLUXX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="FLUXX" accent="var(--color-brand-fluxx)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const R = ["Product code and serial", "Capacity and firmware", "Coupling and phase", "Inverter pairing", "Reserve and limits", "Export limit", "Test results", "Installer and date"];
+    return { record: R.map((label, i) => ({ n: String(i + 1).padStart(2, "0"), label })), life: ["Temperature", "Cell lifetime", "Degradation", "State of charge"] };
+  }
+}
+</script>
+</body>
+</html>

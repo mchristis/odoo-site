@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>PARX Bikeports | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>body { margin:0; }</style>
+</helmet>
+<dc-import name="StructureCategory"
+  brand="PARX"
+  category="Bikeports"
+  eyebrow="PARX · Bikeports"
+  heading="Bicycle parking with a PV roof."
+  intro="PV bike shelters, from one or two bays at a private house to modular-length rows for schools, stations and cycle routes."
+  hero-slot-id="parx-bikeports-hero"
+  hero-placeholder="BNR-PARX-BIKEPORTS-01 · 21:9 · bicycle shelter with PV roof · awaiting upload"
+  products-heading="Two bicycle structures."
+  products="{{ products }}"
+  guidance-heading="Home or public?"
+  guidance="{{ guidance }}"
+  engineering="{{ engineering }}"
+  hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const S = "#898989";
+    return {
+      products: [
+        { name: "HOME Bikeport", status: "In preparation", statusColor: "#898989", href: "PARX - PRODUCT - HOME Bikeport - EN.dc.html", tagline: "Residential PV bike shelter", desc: "Small PV roof for one or two bicycle bays at a private house. Weather cover and optional e-bike charging." },
+        { name: "PUBLIC Bikeport", status: "In preparation", statusColor: "#898989", href: "PARX - PRODUCT - Public Bikeport - EN.dc.html", tagline: "Public PV bike shelter", desc: "Modular-length PV bike shelter for schools, stations and cycle routes. Vandal-resistant detailing, optional e-bike charging." },
+      ],
+      guidance: [
+        { name: "HOME Bikeport", when: "For bicycles and e-bikes at home, where shelter and charging are needed without a full carport." },
+        { name: "PUBLIC Bikeport", when: "For schools, stations and cycle routes, with vandal-resistant detailing." },
+      ],
+      engineering: [
+        { title: "Vehicle clearance", desc: "Parking layout, column positions and headroom are set before structure and charging." },
+        { title: "Wind & snow loading", desc: "Span and exposure drive the structural design; confirmed per project." },
+        { title: "Foundations", desc: "Ground screws, driven piles or concrete, selected for the actual ground." },
+        { title: "Drainage", desc: "Water directed away from parking, charging points and access routes." },
+        { title: "EV charging", desc: "Protected, measured charging positions coordinated with the electrical design." },
+        { title: "Expansion", desc: "Additional bays and conduits anticipated for future charging demand." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

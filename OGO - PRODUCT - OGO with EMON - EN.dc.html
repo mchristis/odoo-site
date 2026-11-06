@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<title>OGO and EMON | Tank visibility pumps and irrigation | STRØHM.ENERGY</title>
+<meta name="description" content="View stored-water estimates, temperature and history, and operate configured OGO pumps, irrigation zones and transfer circuits.">
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-brand-ogo,#00A0E3); } summary::-webkit-details-marker { display:none; } summary:focus-visible, a:focus-visible, button:focus-visible { outline:2px solid #00A0E3; outline-offset:3px; border-radius:4px; } section[id] { scroll-margin-top:24px; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="OgoNav" active="emon" hint-size="100%,57px"></dc-import>
+  <dc-import name="PageHero" brand="OGO" rgb="0,160,227" eyebrow="OGO · EMON water control" title="Understand the reserve before using it." intro="EMON connects the water reservoir with its installed measurements and supported controls. See the latest tank information, choose the intended use and review the system response." slot="ogo-emon-water-hero" shot="OGO · EMON water control · illustrative tank overview with level, temperature and measurement status (visual brief 09)" hint-size="100%,625px"></dc-import>
+
+  <section data-screen-label="01 Intro" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:#666666;margin-bottom:20px;display:flex;gap:6px;flex-wrap:wrap;"><a href="OGO - PRODUCT - Overview - EN.dc.html" style="color:#666666;">OGO</a><span>&#8250;</span><span style="color:#222222;">EMON water control</span></div>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <div style="font-size:var(--web-small-size);color:#5F5E5E;font-weight:500;">Proposed · in development</div>
+      <p style="margin:0;max-width:900px;font-size:clamp(24px,2.4vw,32px);font-weight:300;line-height:1.3;color:#252525;text-wrap:pretty;">See how much water is available, predict what is needed and distribute it automatically within your limits.</p>
+      <nav aria-label="On this page" style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a href="#see" style="height:44px;padding:0 16px;display:inline-flex;align-items:center;background:#F4F4F4;border-radius:8px;font-size:var(--web-small-size);color:#222222;" style-hover="background:#E3E3E3;">See</a>
+        <a href="#predict" style="height:44px;padding:0 16px;display:inline-flex;align-items:center;background:#F4F4F4;border-radius:8px;font-size:var(--web-small-size);color:#222222;" style-hover="background:#E3E3E3;">Predict</a>
+        <a href="#distribute" style="height:44px;padding:0 16px;display:inline-flex;align-items:center;background:#F4F4F4;border-radius:8px;font-size:var(--web-small-size);color:#222222;" style-hover="background:#E3E3E3;">Distribute</a>
+        <a href="#limits" style="height:44px;padding:0 16px;display:inline-flex;align-items:center;background:#F4F4F4;border-radius:8px;font-size:var(--web-small-size);color:#222222;" style-hover="background:#E3E3E3;">Your limits</a>
+        <a href="#faults" style="height:44px;padding:0 16px;display:inline-flex;align-items:center;background:#F4F4F4;border-radius:8px;font-size:var(--web-small-size);color:#222222;" style-hover="background:#E3E3E3;">Faults and outages</a>
+        <a href="#products" style="height:44px;padding:0 16px;display:inline-flex;align-items:center;background:#F4F4F4;border-radius:8px;font-size:var(--web-small-size);color:#222222;" style-hover="background:#E3E3E3;">Per product</a>
+      </nav>
+      <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">How to read values</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px 32px;">
+          <div style="display:flex;gap:12px;align-items:flex-start;"><span style="flex:none;width:12px;height:12px;margin-top:6px;border-radius:50%;background:#00A0E3;"></span><div style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-body-size);font-weight:500;color:#252525;">Measured</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;">Read from an installed sensor, with the time of the reading.</span></div></div>
+          <div style="display:flex;gap:12px;align-items:flex-start;"><span style="flex:none;width:12px;height:12px;margin-top:6px;border-radius:50%;box-sizing:border-box;border:1.5px solid #00A0E3;"></span><div style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-body-size);font-weight:500;color:#252525;">Calculated</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;">Derived from measurements and settings, such as litres from tank level.</span></div></div>
+          <div style="display:flex;gap:12px;align-items:flex-start;"><span style="flex:none;width:12px;height:12px;margin-top:6px;border-radius:50%;box-sizing:border-box;border:1.5px dashed #00A0E3;"></span><div style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-body-size);font-weight:500;color:#252525;">Forecast</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;">Expected, from the weather service. Never treated as measured rain.</span></div></div>
+        </div>
+        <p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">Every value carries a timestamp and a state. Expected collection, remaining duration and leak detection are estimates or indications.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="phone" data-screen-label="01b Your phone is the screen" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start;--cg:48px;">
+      <div style="display:flex;flex-direction:column;gap:32px;">
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">What you see in EMON</div>
+          <h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Your phone <span style="color:#8E8E8E;">is the screen.</span></h2>
+          <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Tap the marked NFC point to open the product’s EMON dashboard; control requires authorisation</p>
+        </div>
+        <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Tap for the essentials</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;"><span style="background:#FFFFFF;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);font-weight:300;color:#252525;">Water level</span><span style="background:#FFFFFF;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);font-weight:300;color:#252525;">Remaining litres and fill percentage</span><span style="background:#FFFFFF;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);font-weight:300;color:#252525;">Water temperature</span><span style="background:#FFFFFF;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);font-weight:300;color:#252525;">Pump status</span><span style="background:#FFFFFF;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);font-weight:300;color:#252525;">Irrigation zone</span><span style="background:#FFFFFF;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);font-weight:300;color:#252525;">Notifications</span></div>
+        </div>
+        <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Go deeper with EMON</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;"><span style="background:#FFFFFF;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);font-weight:300;color:#252525;">Flow and consumption</span><span style="background:#FFFFFF;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);font-weight:300;color:#252525;">Pressure downstream of the pump</span><span style="background:#FFFFFF;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);font-weight:300;color:#252525;">History with timestamps</span><span style="background:#FFFFFF;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);font-weight:300;color:#252525;">Data-quality information</span><span style="background:#FFFFFF;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);font-weight:300;color:#252525;">Irrigation schedules</span><span style="background:#FFFFFF;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);font-weight:300;color:#252525;">Low water, leak, pump fault and low temperature alerts</span><span style="background:#FFFFFF;border-radius:8px;padding:8px 14px;font-size:var(--web-small-size);font-weight:300;color:#252525;">Authorised remote commands</span></div>
+        </div>
+      </div>
+      <div style="aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:#EBECEC;">
+        <image-slot id="ogo-phone-screen" shape="rect" placeholder="Hand holding a phone with the EMON water screen: tank level, litres, temperature, pump"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="02 App home" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px;align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">App home</div>
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One screen, seven parts</h2>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ home }}" as="h" hint-placeholder-count="7">
+            <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:14px 0;border-top:1px solid #E3E3E3;">
+              <span style="font-size:var(--web-small-size);color:#666666;">{{ h.n }}</span>
+              <div style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-body-size);font-weight:500;color:#252525;">{{ h.t }}</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">{{ h.d }}</span></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:8px;"><div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="ogo-emon-water-overview" shape="rounded" radius="12" placeholder="Illustrative EMON water overview with tank level, temperature and measurement status (visual brief 09)"></image-slot></div><figcaption style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Illustrative</figcaption></figure>
+    </div>
+  </section>
+  <section id="screens" data-screen-label="02b App screens" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">App screens · Illustrative</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:16px;">
+        <figure style="margin:0;display:flex;flex-direction:column;gap:12px;min-width:0;"><div style="aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="ogo-ov-emon-1" shape="rounded" radius="12" placeholder="EMON app screen · water level · illustrative · Proposed · in development"></image-slot></div><figcaption style="display:flex;gap:8px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;"><span style="font-variant-numeric:tabular-nums;color:#5F5E5E;">01</span><span>Water level</span></figcaption></figure>
+        <figure style="margin:0;display:flex;flex-direction:column;gap:12px;min-width:0;"><div style="aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="ogo-ov-emon-2" shape="rounded" radius="12" placeholder="EMON app screen · water temperature · illustrative · Proposed · in development"></image-slot></div><figcaption style="display:flex;gap:8px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;"><span style="font-variant-numeric:tabular-nums;color:#5F5E5E;">02</span><span>Water temperature</span></figcaption></figure>
+        <figure style="margin:0;display:flex;flex-direction:column;gap:12px;min-width:0;"><div style="aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="ogo-ov-emon-3" shape="rounded" radius="12" placeholder="EMON app screen · flow and consumption · illustrative · Proposed · in development"></image-slot></div><figcaption style="display:flex;gap:8px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;"><span style="font-variant-numeric:tabular-nums;color:#5F5E5E;">03</span><span>Flow and consumption</span></figcaption></figure>
+        <figure style="margin:0;display:flex;flex-direction:column;gap:12px;min-width:0;"><div style="aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="ogo-ov-emon-4" shape="rounded" radius="12" placeholder="EMON app screen · pump control · illustrative · Proposed · in development"></image-slot></div><figcaption style="display:flex;gap:8px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;"><span style="font-variant-numeric:tabular-nums;color:#5F5E5E;">04</span><span>Pump control</span></figcaption></figure>
+        <figure style="margin:0;display:flex;flex-direction:column;gap:12px;min-width:0;"><div style="aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="ogo-ov-emon-5" shape="rounded" radius="12" placeholder="EMON app screen · irrigation by schedule or litres · illustrative · Proposed · in development"></image-slot></div><figcaption style="display:flex;gap:8px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;"><span style="font-variant-numeric:tabular-nums;color:#5F5E5E;">05</span><span>Irrigation by schedule or litres</span></figcaption></figure>
+        <figure style="margin:0;display:flex;flex-direction:column;gap:12px;min-width:0;"><div style="aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="ogo-ov-emon-6" shape="rounded" radius="12" placeholder="EMON app screen · notifications · illustrative · Proposed · in development"></image-slot></div><figcaption style="display:flex;gap:8px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;"><span style="font-variant-numeric:tabular-nums;color:#5F5E5E;">06</span><span>Notifications</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="connected" data-screen-label="01 Connected system" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div style="font-size:var(--web-small-size);color:#5F5E5E;font-weight:500;">Proposed · in development</div>
+      <h2 style="margin:24px 0 0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Connected system</h2>
+      <p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The connected controller links the water level sensor, temperature sensor, flow meter, pressure sensor, pump control and irrigation valve. The pump itself does not need a separate Wi-Fi module.</p>
+      <h3 style="margin:16px 0 0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;">Connectivity and monitoring</h3>
+      <div style="background:#F4F4F4;border-radius:12px;padding:8px 24px;max-width:1000px;">
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 0 10px;border-bottom:1px solid #D9D9D9;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;"><span>Function</span><span>Required capability</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;">Wi-Fi mesh</span><span style="color:#5F5E5E;">Controller connects through the ecosystem’s specified mesh network</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;">Water level</span><span style="color:#5F5E5E;">Measure level and calculate estimated remaining litres and fill percentage</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;">Water temperature</span><span style="color:#5F5E5E;">Monitor stored water temperature</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;">Flow measurement</span><span style="color:#5F5E5E;">Measure delivered water volume and record consumption</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;">Pressure monitoring</span><span style="color:#5F5E5E;">Measure pressure downstream of the pump</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;">Pump control</span><span style="color:#5F5E5E;">Enable or inhibit operation, report running status and available faults</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;">Irrigation control</span><span style="color:#5F5E5E;">Operate the zone valve using schedules or measured water quantities</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;">Notifications</span><span style="color:#5F5E5E;">Low water, detected leaks, pump faults and low temperature</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;">Local operation</span><span style="color:#5F5E5E;">Hose use and pump protection continue without internet</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;">EMON integration</span><span style="color:#5F5E5E;">Monitoring, settings, history and authorised remote commands</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:16px;padding:14px 0;border-bottom:0;font-size:var(--web-body-size);line-height:1.4;"><span style="color:#252525;">NFC access</span><span style="color:#5F5E5E;">Tap the marked NFC point to open the product’s EMON dashboard; control requires authorisation</span></div>
+      </div>
+      <h3 style="margin:16px 0 0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;">Pump and water circuit</h3>
+      <p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">One branch supplies the garden hose, spray gun and water fed washing brush. A separate filtered branch reduces pressure to the level required by the drip irrigation system.</p>
+      <p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The vessel remains vented and unpressurised. Only the circuit downstream of the pump operates under pressure.</p>
+      <p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">All connectivity and monitoring functions above are development requirements, subject to integration and validation.</p>
+      <details><summary style="cursor:pointer;min-height:44px;display:flex;align-items:center;font-size:var(--web-small-size);color:#4F4F4E;"><span style="text-decoration:underline;text-underline-offset:3px;">Read more: earlier introduction</span></summary><div style="display:flex;flex-direction:column;gap:8px;padding-top:8px;max-width:820px;"><span style="font-size:var(--web-h3-size);font-weight:300;color:#252525;">Rainwater storage with connected control.</span><span style="font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Collect rainwater, see what is available and direct it to where it is needed. OGO combines outdoor storage with EMON monitoring and control for supported pumps, irrigation zones and water-transfer connections.</span></div></details>
+    </div>
+  </section>
+
+  <section data-screen-label="04 EMON" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px;align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Proposed · in development</div>
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Water information in EMON</h2>
+        <p style="margin:0;max-width:620px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">See the latest available measurement before deciding what to use. Review which tank supplies a pump, which destination is selected and whether the system is ready to run.</p>
+        <p style="margin:0;max-width:620px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A command sent from the app and a confirmed pump or valve state are shown as different events. Where a flow meter is installed, review measured delivery as well as the change in tank level.</p>
+        <a href="OGO - PRODUCT - OGO with EMON - EN.dc.html" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#222222;" style-hover="color:#4F4F4E;">See how EMON manages water<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="ogo-ov-emon-tank" shape="rounded" radius="12" placeholder="OGO · EMON tank overview · illustrative screen (visual brief 09)"></image-slot></div>
+        <div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#666666;">Illustrative screen.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="see" data-screen-label="03 See" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:flex;flex-direction:column;gap:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">See</div>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">How much water is available</h2>
+      <div style="display:flex;flex-direction:column;margin-top:8px;">
+        <sc-for list="{{ see }}" as="f" hint-placeholder-count="4">
+          <div style="display:flex;flex-wrap:wrap;gap:16px 32px;padding:24px 0;border-top:1px solid #E3E3E3;">
+            <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:10px;">
+              <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;text-wrap:balance;">{{ f.title }}</h3>
+              <div style="display:flex;gap:6px 14px;flex-wrap:wrap;"><sc-for list="{{ f.states }}" as="s" hint-placeholder-count="1"><span style="display:inline-flex;align-items:center;gap:6px;font-size:var(--web-small-size);color:#666666;"><span style="width:12px;height:12px;border-radius:50%;box-sizing:border-box;background:{{ s.bg }};border:{{ s.bd }};"></span>{{ s.label }}</span></sc-for></div>
+            </div>
+            <div style="flex:2 1 400px;display:flex;flex-direction:column;gap:12px;"><sc-for list="{{ f.text }}" as="p" hint-placeholder-count="2"><p style="margin:0;max-width:620px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ p }}</p></sc-for></div>
+            <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:8px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Requires</div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;"><sc-for list="{{ f.req }}" as="q" hint-placeholder-count="2"><span style="background:#F4F4F4;border-radius:8px;padding:6px 10px;font-size:var(--web-small-size);line-height:1.3;color:#252525;">{{ q }}</span></sc-for></div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:8px;max-width:640px;"><div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="ogo-emon-water-history" shape="rounded" radius="12" placeholder="Illustrative EMON tank-level and temperature history with a marked gap in sensor data (visual brief 10)"></image-slot></div><figcaption style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Illustrative</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="predict" data-screen-label="04 Predict" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:flex;flex-direction:column;gap:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Predict</div>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">What is needed, and what may come</h2>
+      <p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">EMON combines three different sources. Each answers its own question, and none replaces the other two.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin-top:8px;">
+        <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px;">
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:var(--web-small-size);color:#666666;"><span style="width:12px;height:12px;border-radius:50%;box-sizing:border-box;border:1.5px dashed #00A0E3;"></span>Forecast</span>
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;">Forecast rain</h3>
+          <div aria-hidden="true" style="height:120px;background:#FFFFFF;border-radius:8px;padding:16px;box-sizing:border-box;display:flex;align-items:flex-end;gap:8px;">
+            <div style="flex:1;height:20%;border:1.5px dashed #00A0E3;border-bottom:0;border-radius:4px 4px 0 0;"></div>
+            <div style="flex:1;height:55%;border:1.5px dashed #00A0E3;border-bottom:0;border-radius:4px 4px 0 0;"></div>
+            <div style="flex:1;height:85%;border:1.5px dashed #00A0E3;border-bottom:0;border-radius:4px 4px 0 0;"></div>
+            <div style="flex:1;height:35%;border:1.5px dashed #00A0E3;border-bottom:0;border-radius:4px 4px 0 0;"></div>
+            <div style="flex:1;height:8%;border:1.5px dashed #00A0E3;border-bottom:0;border-radius:4px 4px 0 0;"></div>
+            <div style="flex:1;height:8%;border:1.5px dashed #00A0E3;border-bottom:0;border-radius:4px 4px 0 0;"></div>
+            <div style="flex:1;height:40%;border:1.5px dashed #00A0E3;border-bottom:0;border-radius:4px 4px 0 0;"></div>
+          </div>
+          <p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;"><span style="color:#252525;font-weight:500;">Tells you</span> what may fall at the site in the coming days.</p>
+          <p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;"><span style="color:#252525;font-weight:500;">Does not tell you</span> how much reached the tanks or the soil.</p>
+        </div>
+        <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px;">
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:var(--web-small-size);color:#666666;"><span style="width:12px;height:12px;border-radius:50%;background:#00A0E3;"></span>Measured</span>
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;">Soil moisture</h3>
+          <div aria-hidden="true" style="height:120px;background:#FFFFFF;border-radius:8px;padding:16px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:12px;">
+            <div style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:12px;align-items:center;font-size:12px;color:#666666;"><span>Zone 1</span><div style="height:10px;border-radius:8px;background:#F4F4F4;overflow:hidden;"><div style="width:68%;height:100%;background:#00A0E3;border-radius:8px;"></div></div></div>
+            <div style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:12px;align-items:center;font-size:12px;color:#666666;"><span>Zone 2</span><div style="height:10px;border-radius:8px;background:#F4F4F4;overflow:hidden;"><div style="width:30%;height:100%;background:#00A0E3;border-radius:8px;"></div></div></div>
+            <div style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:12px;align-items:center;font-size:12px;color:#666666;"><span>Zone 3</span><div style="height:10px;border-radius:8px;background:#F4F4F4;overflow:hidden;"><div style="width:52%;height:100%;background:#00A0E3;border-radius:8px;"></div></div></div>
+          </div>
+          <p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;"><span style="color:#252525;font-weight:500;">Tells you</span> whether a zone needs water now, at the sensor.</p>
+          <p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;"><span style="color:#252525;font-weight:500;">Does not tell you</span> what other zones or the next days need.</p>
+        </div>
+        <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px;">
+          <span style="display:inline-flex;align-items:center;gap:14px;font-size:var(--web-small-size);color:#666666;flex-wrap:wrap;"><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:50%;background:#00A0E3;"></span>Measured level</span><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:50%;box-sizing:border-box;border:1.5px solid #00A0E3;"></span>Calculated litres</span></span>
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;">Stored water</h3>
+          <div aria-hidden="true" style="height:120px;background:#FFFFFF;border-radius:8px;padding:12px 16px;box-sizing:border-box;display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;align-items:stretch;">
+            <div style="border:1.5px solid #00A0E3;border-radius:8px;overflow:hidden;display:flex;flex-direction:column;">
+              <div style="flex:3;"></div>
+              <div style="flex:5;background:#00A0E3;"></div>
+              <div style="flex:2;background:#FFEB9E;border-radius:0 0 6px 6px;"></div>
+            </div>
+            <div style="display:flex;flex-direction:column;font-size:12px;color:#666666;">
+              <span style="flex:3;display:flex;align-items:center;">Free capacity</span>
+              <span style="flex:5;display:flex;align-items:center;color:#252525;">Usable</span>
+              <span style="flex:2;display:flex;align-items:center;">Your reserve</span>
+            </div>
+          </div>
+          <p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;"><span style="color:#252525;font-weight:500;">Tells you</span> how much can be used above the reserve you set.</p>
+          <p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;"><span style="color:#252525;font-weight:500;">Does not tell you</span> what the garden needs.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline;justify-content:space-between;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Illustrative · no measured values</span>
+      </div>
+      <p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A regional rainfall deficit describes an area over a season. It does not say how much a specific garden needs. EMON decides per zone, from the soil sensor, the stored water and the forecast for the site.</p>
+      <p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Sensor placement and settings matter. A reading from one planting area does not automatically represent the whole garden.</p>
+      <div style="display:flex;flex-direction:column;margin-top:8px;">
+        <sc-for list="{{ predict }}" as="f" hint-placeholder-count="2">
+          <div style="display:flex;flex-wrap:wrap;gap:16px 32px;padding:24px 0;border-top:1px solid #E3E3E3;">
+            <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:10px;">
+              <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;text-wrap:balance;">{{ f.title }}</h3>
+              <div style="display:flex;gap:6px 14px;flex-wrap:wrap;"><sc-for list="{{ f.states }}" as="s" hint-placeholder-count="1"><span style="display:inline-flex;align-items:center;gap:6px;font-size:var(--web-small-size);color:#666666;"><span style="width:12px;height:12px;border-radius:50%;box-sizing:border-box;background:{{ s.bg }};border:{{ s.bd }};"></span>{{ s.label }}</span></sc-for></div>
+            </div>
+            <div style="flex:2 1 400px;display:flex;flex-direction:column;gap:12px;"><sc-for list="{{ f.text }}" as="p" hint-placeholder-count="1"><p style="margin:0;max-width:620px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ p }}</p></sc-for></div>
+            <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:8px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Requires</div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;"><sc-for list="{{ f.req }}" as="q" hint-placeholder-count="2"><span style="background:#F4F4F4;border-radius:8px;padding:6px 10px;font-size:var(--web-small-size);line-height:1.3;color:#252525;">{{ q }}</span></sc-for></div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="distribute" data-screen-label="05 Distribute" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:flex;flex-direction:column;gap:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Distribute</div>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Water where it is needed, automatically</h2>
+      <div style="display:flex;flex-direction:column;margin-top:8px;">
+        <sc-for list="{{ distribute }}" as="f" hint-placeholder-count="4">
+          <div style="display:flex;flex-wrap:wrap;gap:16px 32px;padding:24px 0;border-top:1px solid #E3E3E3;">
+            <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:10px;">
+              <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;text-wrap:balance;">{{ f.title }}</h3>
+              <div style="display:flex;gap:6px 14px;flex-wrap:wrap;"><sc-for list="{{ f.states }}" as="s" hint-placeholder-count="1"><span style="display:inline-flex;align-items:center;gap:6px;font-size:var(--web-small-size);color:#666666;"><span style="width:12px;height:12px;border-radius:50%;box-sizing:border-box;background:{{ s.bg }};border:{{ s.bd }};"></span>{{ s.label }}</span></sc-for></div>
+            </div>
+            <div style="flex:2 1 400px;display:flex;flex-direction:column;gap:12px;"><sc-for list="{{ f.text }}" as="p" hint-placeholder-count="2"><p style="margin:0;max-width:620px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ p }}</p></sc-for></div>
+            <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:8px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Requires</div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;"><sc-for list="{{ f.req }}" as="q" hint-placeholder-count="2"><span style="background:#F4F4F4;border-radius:8px;padding:6px 10px;font-size:var(--web-small-size);line-height:1.3;color:#252525;">{{ q }}</span></sc-for></div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:0;max-width:820px;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">Useful extras: a local rain gauge, and pressure and pump-current measurement.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin-top:16px;">
+        <figure style="margin:0;display:flex;flex-direction:column;gap:8px;"><div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="ogo-emon-water-pump" shape="rounded" radius="12" placeholder="Pump-control example separating the app command from equipment and flow status (visual brief 11)"></image-slot></div><figcaption style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Illustrative</figcaption></figure>
+        <figure style="margin:0;display:flex;flex-direction:column;gap:8px;"><div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="ogo-emon-water-zones" shape="rounded" radius="12" placeholder="Rainwater irrigation layout with a reservoir, pump and two controlled zones (visual brief 12)"></image-slot></div><figcaption style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#666666;">Activate the configured zone with the required water and pressure available.</figcaption></figure>
+        <figure style="margin:0;display:flex;flex-direction:column;gap:8px;"><div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="ogo-emon-water-transfer" shape="rounded" radius="12" placeholder="Controlled water transfer between an OGO source reservoir and a receiving tank (visual brief 13)"></image-slot></div><figcaption style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Illustrative</figcaption></figure>
+      </div>
+      <h3 style="margin:32px 0 0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;">Three kinds of evidence</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;">
+        <div style="flex:1 1 220px;background:#F4F4F4;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-small-size);color:#666666;">01</span><span style="font-size:var(--web-body-size);font-weight:500;color:#252525;">Command sent</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;">The app has sent the instruction.</span></div>
+        <div style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;padding:0 4px;font-size:24px;font-weight:200;color:#666666;" aria-label="is not the same as">&#8800;</div>
+        <div style="flex:1 1 220px;background:#F4F4F4;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-small-size);color:#666666;">02</span><span style="font-size:var(--web-body-size);font-weight:500;color:#252525;">Equipment running</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;">The controller reports the pump as running.</span></div>
+        <div style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;padding:0 4px;font-size:24px;font-weight:200;color:#666666;" aria-label="is not the same as">&#8800;</div>
+        <div style="flex:1 1 220px;background:#F4F4F4;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-small-size);color:#666666;">03</span><span style="font-size:var(--web-body-size);font-weight:500;color:#252525;">Flow confirmed</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;">A flow meter measures water moving in the circuit.</span></div>
+      </div>
+      <p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">EMON shows which of the three it has. Example: “Pump started. Water flow not yet confirmed.”</p>
+    </div>
+  </section>
+
+  <section data-screen-label="06 Explained" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:flex;flex-direction:column;gap:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Explained</div>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Every decision has a reason</h2>
+      <p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">When EMON postpones, stops or suggests something, the app says why. Example messages:</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px;margin-top:8px;">
+        <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;margin-bottom:8px;">Decisions</div>
+          <sc-for list="{{ decisions }}" as="m" hint-placeholder-count="6"><div style="background:#FFFFFF;border-radius:8px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;"><span style="flex:none;width:12px;height:12px;margin-top:5px;border-radius:50%;background:#00A0E3;"></span><span style="font-size:var(--web-body-size);line-height:1.4;color:#252525;">{{ m }}</span></div></sc-for>
+        </div>
+        <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;margin-bottom:8px;">Suggestions and indications</div>
+          <sc-for list="{{ suggestions }}" as="m" hint-placeholder-count="6"><div style="background:#FFFFFF;border-radius:8px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;"><span style="flex:none;width:12px;height:12px;margin-top:5px;border-radius:50%;background:#FFEB9E;"></span><span style="font-size:var(--web-body-size);line-height:1.4;color:#252525;">{{ m }}</span></div></sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="limits" data-screen-label="07 Limits" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:flex;flex-direction:column;gap:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Your limits</div>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Automation within the limits you set</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px;align-items:start;margin-top:8px;">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <h3 style="margin:0 0 8px;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;">Order of priority</h3>
+          <div style="display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;align-items:baseline;background:#F4F4F4;border-radius:8px;padding:16px 20px;"><span style="font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);color:#252525;">01</span><span style="font-size:var(--web-body-size);color:#252525;">Protection of people and equipment</span></div>
+          <div style="display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;align-items:baseline;background:#F4F4F4;border-radius:8px;padding:16px 20px;"><span style="font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);color:#252525;">02</span><span style="font-size:var(--web-body-size);color:#252525;">Your reserves</span></div>
+          <div style="display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;align-items:baseline;background:#F4F4F4;border-radius:8px;padding:16px 20px;"><span style="font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);color:#252525;">03</span><span style="font-size:var(--web-body-size);color:#252525;">Water need within the time windows</span></div>
+          <div style="display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;align-items:baseline;background:#F4F4F4;border-radius:8px;padding:16px 20px;"><span style="font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);color:#252525;">04</span><span style="font-size:var(--web-body-size);color:#252525;">Energy optimisation</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ rules }}" as="r" hint-placeholder-count="6"><p style="margin:0;padding:14px 0;border-top:1px solid #E3E3E3;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ r }}</p></sc-for>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px;align-items:start;margin-top:24px;">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;">Settings per zone</h3>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span style="background:#F4F4F4;border-radius:8px;padding:8px 12px;font-size:var(--web-small-size);color:#252525;">Time windows</span>
+            <span style="background:#F4F4F4;border-radius:8px;padding:8px 12px;font-size:var(--web-small-size);color:#252525;">Moisture start and stop thresholds</span>
+            <span style="background:#F4F4F4;border-radius:8px;padding:8px 12px;font-size:var(--web-small-size);color:#252525;">Wait time</span>
+            <span style="background:#F4F4F4;border-radius:8px;padding:8px 12px;font-size:var(--web-small-size);color:#252525;">Maximum litres</span>
+            <span style="background:#F4F4F4;border-radius:8px;padding:8px 12px;font-size:var(--web-small-size);color:#252525;">Maximum runtime</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;">Modes</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:8px;">
+            <div style="background:#F4F4F4;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-body-size);font-weight:500;color:#252525;">Automatic</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;">EMON follows your settings.</span></div>
+            <div style="background:#F4F4F4;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-body-size);font-weight:500;color:#252525;">Temporary manual</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;">Time-limited. Protection stays active.</span></div>
+            <div style="background:#F4F4F4;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-body-size);font-weight:500;color:#252525;">Maintenance</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;">For service work on the installation.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faults" data-screen-label="08 Faults and outages" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:flex;flex-direction:column;gap:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Faults and outages</div>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">When something fails</h2>
+      <div style="background:#F4F4F4;border-radius:12px;padding:8px 24px;max-width:1000px;margin-top:8px;">
+        <sc-for list="{{ faults }}" as="x" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:8px 24px;padding:16px 0;border-bottom:{{ x.line }};">
+            <span style="font-size:var(--web-body-size);font-weight:500;line-height:1.4;color:#252525;">{{ x.k }}</span>
+            <span style="font-size:var(--web-body-size);line-height:1.5;color:#5F5E5E;text-wrap:pretty;">{{ x.v }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <h3 style="margin:24px 0 0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;">Connection and local behaviour</h3>
+      <p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The configuration identifies the controller, communication route, power source and local operating behaviour. If the remote connection is unavailable, the interface should show that state rather than imply that a command reached the equipment.</p>
+      <p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Confirm the actual behaviour of local schedules, manual controls and protection functions during commissioning.</p>
+    </div>
+  </section>
+
+  <section data-screen-label="09 Data and access" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:flex;flex-direction:column;gap:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Data and access</div>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Clear data, clear permissions</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin-top:8px;">
+        <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;">
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;text-wrap:balance;">Measured water delivery</h3>
+          <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Where a flow meter is included, review measured delivery for the circuit and period recorded. Without that meter, do not present estimated changes in tank volume as precise metered irrigation consumption.</p>
+        </div>
+        <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;">
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;text-wrap:balance;">Clear permissions</h3>
+          <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The owner manages operational access according to the supported permission structure. An installer’s temporary access should be limited to the purpose and duration granted.</p>
+          <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">An installation record, commercial invoice or equipment purchase does not by itself grant another party permission to start a pump.</p>
+        </div>
+        <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;">
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.2;color:#252525;text-wrap:balance;">Alerts and water quality</h3>
+          <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Critical alerts arrive at once. Other alerts are bundled.</p>
+          <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">EMON makes no claim about water quality. Stored rainwater is not drinking water.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" data-screen-label="10 Per product" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:flex;flex-direction:column;gap:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Per product</div>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">EMON in each OGO product</h2>
+      <p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Each product page shows what EMON measures and controls, the sensors it needs, how it relates to other reservoirs, what stays available locally and what happens in faults and outages.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;margin-top:8px;">
+        <a href="OGO - PRODUCT - DIVAN - EN.dc.html#emon" style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;" style-hover="background:#E3E3E3;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Seating storage · 750 L</span><span style="font-size:var(--web-h3-size);font-weight:300;color:#252525;">DIVAN</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">View stock and temperature, follow water use, and operate the connected pump, irrigation or transfer.</span><span style="font-size:var(--web-small-size);color:#222222;margin-top:auto;">DIVAN in EMON<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></a>
+        <a href="OGO - PRODUCT - WALL - EN.dc.html#emon" style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;" style-hover="background:#E3E3E3;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Wall or boundary storage</span><span style="font-size:var(--web-h3-size);font-weight:300;color:#252525;">WALL slimline</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">Separate or hydraulically linked reservoirs, shown as actually installed.</span><span style="font-size:var(--web-small-size);color:#222222;margin-top:auto;">WALL in EMON<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></a>
+        <a href="OGO - PRODUCT - WALL - EN.dc.html#emon" style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;" style-hover="background:#E3E3E3;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Storage within a boundary</span><span style="font-size:var(--web-h3-size);font-weight:300;color:#252525;">WALL storage fencing</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">Total storage and the relevant measuring points. A module without its own sensor is not measured separately.</span><span style="font-size:var(--web-small-size);color:#222222;margin-top:auto;">WALL in EMON<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></a>
+        <a href="OGO - PRODUCT - TONY - EN.dc.html#emon" style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;" style-hover="background:#E3E3E3;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">Upright storage · 350 L · 500 L</span><span style="font-size:var(--web-h3-size);font-weight:300;color:#252525;">TONY</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">Measures the selected variant and links to suitable circuits.</span><span style="font-size:var(--web-small-size);color:#222222;margin-top:auto;">TONY in EMON<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="11 KALK EMON KERN" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:flex;flex-direction:column;gap:16px;">
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Plan, operate, record</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:8px;margin-top:8px;">
+        <a href="Content Pending.dc.html?brand=OGO&amp;topic=Planning%20with%20KALK" style="background:#F4F4F4;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:6px;" style-hover="background:#E3E3E3;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#666666;">KALK · PLANNING</span><span style="font-size:var(--web-body-size);color:#222222;text-wrap:pretty;">Estimates before installation: collection, demand, storage, space and hydraulics. Planner in preparation<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></a>
+        <div style="background:#E3E3E3;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#666666;">EMON · OPERATION</span><span style="font-size:var(--web-body-size);color:#222222;text-wrap:pretty;">Monitors and controls the installed system. This page.</span></div>
+        <a href="KERN - SYSTEM - Overview - EN.dc.html" style="background:#F4F4F4;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:6px;" style-hover="background:#E3E3E3;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#666666;">KERN · INSTALLATION RECORD</span><span style="font-size:var(--web-body-size);color:#222222;text-wrap:pretty;">Records, documents, commissioning, maintenance and service history. Admin access is not operational control<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="12 Questions" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--divan-rule,#D9D9D9);padding-top:32px;display:flex;">
+      <a href="OGO - CONTENT - Knowledge - EN.dc.html" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#222222;min-height:44px;display:inline-flex;align-items:center;" style-hover="color:#4F4F4E;">Questions in Knowledge<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </section>
+
+  <section data-screen-label="13 Discuss" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 96px;box-sizing:border-box;">
+    <div style="background:#F4F4F4;border-radius:12px;padding:clamp(24px,4vw,48px);display:flex;flex-direction:column;gap:16px;">
+      <h2 style="margin:0;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);letter-spacing:-0.5px;color:#252525;text-wrap:balance;">Contact a water specialist</h2>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+        <a href="#specialist" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);" style-hover="background:#5F5E5E;color:#F4F4F4;">Contact a specialist</a>
+        <a href="OGO - PRODUCT - Products - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#FFFFFF;color:#222222;border-radius:var(--cta-radius);" style-hover="background:#E3E3E3;">Explore connected configurations</a>
+        <a href="#see" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#FFFFFF;color:#222222;border-radius:var(--cta-radius);" style-hover="background:#E3E3E3;">Check equipment requirements</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="ContentSections" brand="OGO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <div id="specialist" style="scroll-margin-top:24px;"></div>
+  <dc-import name="ReachSpecialist" brand="OGO" photo-slot-id="ogo-emon-water-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="OGO" accent="var(--color-brand-ogo)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const M = { label: "Measured", bg: "#00A0E3", bd: "0" };
+    const C = { label: "Calculated", bg: "transparent", bd: "1.5px solid #00A0E3" };
+    const F = { label: "Forecast", bg: "transparent", bd: "1.5px dashed #00A0E3" };
+    const row = (title, states, text, req) => ({ title, states, text, req });
+    return {
+      home: [
+        { n: "01", t: "Water reserve", d: "Usable total, each tank, your reserves and the last reading." },
+        { n: "02", t: "Today's plan", d: "Scheduled irrigation and transfers, and why something was postponed." },
+        { n: "03", t: "Weather and expected collection", d: "The forecast for the site and the estimated inflow." },
+        { n: "04", t: "Controls", d: "Pump, zone, allowed transfer and stop." },
+        { n: "05", t: "History", d: "Tank trend, temperature, measured delivery and events." },
+        { n: "06", t: "Status and maintenance", d: "Equipment state, alerts and reminders." },
+        { n: "07", t: "Tap to view", d: "Tap the NFC point on DIVAN or the WALL equipment box to open the vessel’s dashboard. Reading the tag does not grant control." }
+      ],
+      see: [
+        row("Tank level and estimated volume", [M, C], [
+          "Each tank in litres, as a fill percentage and as free capacity.",
+          "The installed sensor measures tank level. A configured tank profile converts that measurement into an estimated volume.",
+          "The display identifies the tank, measurement time and data state. Usable volume may be lower than the total stored volume because of the outlet position, pump requirements or selected reserve."
+        ], ["Level sensor", "Calibrated tank profile"]),
+        row("Usable reserve", [C], [
+          "The water above your reserve and the technical minimum of pump and outlet. This is the amount EMON plans with."
+        ], ["Level sensor", "Reserve setting per tank"]),
+        row("Water temperature", [M], [
+          "View the temperature at the installed sensor location. Use the reading to understand operating conditions and review relevant configured alerts.",
+          "A temperature reading does not measure water cleanliness, establish potable suitability or guarantee that every part of the installation is protected against frost."
+        ], ["Temperature sensor"]),
+        row("Measurement history", [M, C], [
+          "Level, temperature, delivered litres, pump runs, irrigation, transfers and faults, by day, week, month or year, with export.",
+          "Review how level, volume estimate and temperature have changed over time. Distinguish measured data from calculated values and recognise periods where the connection or sensor data is missing.",
+          "Compare readings over the available recording period. History begins when the installed system records the relevant measurements; it is not reconstructed as measured data for earlier periods."
+        ], ["Stored data", "Flow meter for delivered litres"])
+      ],
+      predict: [
+        row("Local weather", [F], [
+          "Expected rain, temperature and dry spells for the site location. A forecast is never treated as measured rain. When the forecast is not current, only forecast-based decisions pause."
+        ], ["Weather service", "Site location"]),
+        row("Expected collection", [F, C], [
+          "Forecast rain, multiplied by the connected roof area, minus losses. An estimate of what may reach the tanks."
+        ], ["Connected roof area", "Loss factor", "Weather forecast"])
+      ],
+      distribute: [
+        row("Pump operation", [M], [
+          "Select a supported pump and issue a start or stop command. EMON checks the operating conditions defined for that circuit and displays the available command and status information.",
+          "Set a maximum runtime and a minimum source level where those functions are implemented in the selected system. Local pump protection remains part of the equipment design."
+        ], ["Suitable pump", "Controller", "Protection"]),
+        row("Irrigation zones", [M, F], [
+          "With soil-moisture sensors, EMON waters each zone automatically within its time windows, taking the stock and the forecast into account.",
+          "Choose a connected zone and activate the required valve and pump arrangement. Use the approved schedule and runtime settings for the installed circuit.",
+          "Different emitters and zones can need different pressure, filtration and flow. Soil-moisture sensing, weather-based decisions and automatic plant-demand control are additional functions only where separately specified."
+        ], ["Pump", "Filters", "Controllable valves", "Soil-moisture sensor per zone", "Flow meter per independently controlled circuit"]),
+        row("Transfer water between systems", [M, C], [
+          "Automatic transfer between pre-approved tanks or destinations.",
+          "Choose an approved source and destination. The transfer arrangement must provide the suitable pump or hydraulic path, controlled valves where required and the measurements needed to stop safely.",
+          "A source-low condition, destination-high condition, unavailable measurement or equipment fault must be handled according to the commissioned operating logic. The app should make the stopped or unavailable state understandable."
+        ], ["Pipes", "Pump", "Valves", "Level monitoring", "Linked controllers for several reservoirs"]),
+        row("Watering by litres", [M], [
+          "With a suitable flow meter installed, select the quantity for a watering cycle. EMON measures delivery and closes the irrigation valve when the target is reached."
+        ], ["Flow meter", "Controllable irrigation valve"]),
+        row("Holiday watering", [M, F], [
+          "A holiday setting combines a watering schedule with a water allowance and minimum reserve. Low water notifications help you review the plan before storage runs out.",
+          "Notifications do not provide additional water. The available reserve and plant requirements still determine how long an unattended installation can operate."
+        ], ["Irrigation zone", "Level sensor", "Reserve setting"]),
+        row("Pumping on solar surplus", [M, F], [
+          "Flexible pumping and transfers move to hours with solar surplus when the water need allows it. Needed watering is never postponed indefinitely."
+        ], ["Controllable pump", "Solar generation in EMON"]),
+        row("Alerts and maintenance", [M], [
+          "Alerts for low stock, unreliable data, lost connection and equipment faults. Reminders for filters, cleaning, inspection and winter preparation."
+        ], ["Relevant measurements", "Service intervals set at commissioning"])
+      ],
+      decisions: [
+        "Watering postponed: soil is moist enough.",
+        "Transfer stopped: minimum reserve reached.",
+        "No weather optimisation: forecast not current.",
+        "Pump started. Water flow not yet confirmed.",
+        "Watering paused. The water level has reached the minimum limit.",
+        "Remote connection unavailable. Local hose operation remains available when power and water are present."
+      ],
+      suggestions: [
+        "Rain expected tomorrow. Postpone this watering?",
+        "Stock estimated sufficient for three waterings at your set use.",
+        "Rain expected. Make room by transfer to the approved tank?",
+        "Solar surplus expected. Transfer moved to that window.",
+        "Level dropped without planned use. Possible leak, please check.",
+        "Pump running, no flow measured. Check inlet and filter.",
+        "Check and clean the water filter."
+      ],
+      rules: [
+        "Set a reserve in litres for each tank. Technical pump limits stay active.",
+        "Set a minimum reserve for automatic irrigation. When the selected level is reached, scheduled watering stops and EMON reports the remaining reserve. Independent low water protection continues to protect the pump. A user reserve setting does not override equipment protection.",
+        "Before forecast rain, free capacity is made only by useful watering or an approved transfer. Never by automatic discharge to waste.",
+        "Not enough water: the affected irrigation or transfer stops and is reported. No automatic fallback to another tank, no automatic mains top-up.",
+        "Solar surplus may shift flexible work. It does not postpone needed watering indefinitely.",
+        "Zones run at the same time only where the pump and pipes are designed for it.",
+        "New tanks and zones are configured and checked before automation is released."
+      ],
+      faults: [
+        ["Internet connection lost", "Local schedules, sensors and protection continue on the local controller."],
+        ["Forecast not current", "Only forecast-based decisions pause."],
+        ["Essential measurement missing", "Only the function that depends on it pauses."],
+        ["Power failure", "Safe stop."],
+        ["Power restored", "Fresh measurements and valid conditions first. Queued commands are never replayed."]
+      ].map((f, i, a) => ({ k: f[0], v: f[1], line: i === a.length - 1 ? "0" : "1px solid #D9D9D9" }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>INVEST | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#F7F7F5; } a { color:var(--color-text-primary); } a:hover { color:var(--color-text-primary); } [id] { scroll-margin-top:100px; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;">
+  <dc-import name="NavBar" active="finance" hint-size="100%,80px"></dc-import>
+
+  <dc-import name="BrandHero2" brand="FINANCE" rgb="200,200,200" dark="#4F4F4E" title="Every project deserves financing. Every investor deserves quality." intro="INVEST is the platform where certified installers submit projects, STRØHM.ENERGY validates them, and qualified investors receive proposals — matched by the company that controls the full chain from panel to yield." items="{{ heroItems }}" hint-size="100%,760px"></dc-import><section data-screen-label="Invest — Hero">
+    <div style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 56px;text-align:center;">
+      
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#flow-a" style="text-decoration:none;height:var(--cta-height);padding:0 var(--cta-pad-x);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);letter-spacing:0.04em;border-radius:var(--cta-radius);">Submit a project</a>
+        <a href="#flow-b" style="text-decoration:none;height:48px;padding:0 24px;display:inline-flex;align-items:center;background:var(--color-surface-secondary);color:var(--color-text-primary);font-size:var(--cta-font);letter-spacing:0.04em;border-radius:8px;font-weight:var(--web-btn-weight);">Never lose a project</a>
+        <a href="#flow-c" style="text-decoration:none;height:48px;padding:0 24px;display:inline-flex;align-items:center;background:var(--color-surface-secondary);color:var(--color-text-primary);font-size:var(--cta-font);letter-spacing:0.04em;border-radius:8px;font-weight:var(--web-btn-weight);">Receive investment proposals</a>
+      </div>
+    </div>
+    <div data-cols="3" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 64px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+      <sc-for list="{{ heroStats }}" as="s" hint-placeholder-count="3">
+        <div style="text-align:center;padding-top:16px;">
+          <div style="font-size:var(--web-small-size);font-weight:400;color:#AEAEAE;margin-bottom:4px;">Figure to be confirmed</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">{{ s }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Invest — How it works" style="background:var(--color-text-primary);width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:24px auto;border-radius:24px;overflow:hidden;box-sizing:border-box;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;text-align:center;">
+      <h2 style="margin:0 0 16px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#D9DADA;text-wrap:balance;">How the <span style="color:#B2B3B3;">platform works</span></h2>
+      <p style="margin:0 0 64px;font-size:var(--web-h3-size);font-weight:300;color:#FFFFFF;max-width:760px;line-height:var(--web-h3-lh);">Three parties. One quality gate. Zero projects wasted.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:32px;text-align:left;">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#AEAEAE;margin-bottom:12px;">Project side</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#D9DADA;max-width:760px;">Installers and project developers submit energy projects they cannot or do not want to self-finance. Residential rooftops, commercial sites, community grids, battery installations.</p>
+        </div>
+        <div style="padding:0 32px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#D9DADA;margin-bottom:12px;">STRØHM.ENERGY</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#FFFFFF;max-width:760px;">Every submitted project goes through full due diligence. Technical study, yield modelling, legal structure, financial businesscase. Only validated projects move forward. No exceptions.</p>
+        </div>
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#AEAEAE;margin-bottom:12px;">Investor side</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#D9DADA;max-width:760px;">Registered investors receive curated project proposals matched to their profile — ticket size, project type, geography, preferred return. No searching. Projects come to them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Invest — Flow A" id="flow-a" style="background:#FFFFFF;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+      <div style="margin-bottom:20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Submit a project</div>
+      <h2 style="margin:0 0 24px;max-width:760px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">You found the project. <span style="color:#8E8E8E;">We find the money.</span></h2>
+      <p style="margin:0 0 48px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">If you have a site, a client, or an energy project that needs financing — residential, commercial, or utility scale — submit it to STRØHM.ENERGY. We do the full study. We find the investors. You install.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;margin-bottom:56px;">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Who can submit</div>
+          <sc-for list="{{ whoCanSubmit }}" as="e" hint-placeholder-count="4">
+            <div style="display:flex;gap:12px;align-items:flex-start;padding:8px 0;">
+              <span style="width:16px;height:16px;border-radius:8px;background:var(--color-text-primary);flex:none;margin-top:2px;"></span>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ e }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">What we need</div>
+          <sc-for list="{{ whatWeNeed }}" as="e" hint-placeholder-count="4">
+            <div style="display:flex;gap:12px;align-items:flex-start;padding:8px 0;">
+              <span style="width:16px;height:16px;border-radius:8px;background:#AEAEAE;flex:none;margin-top:2px;"></span>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ e }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:20px;margin-bottom:16px;">
+        <sc-for list="{{ stepsA }}" as="step" hint-placeholder-count="5">
+          <div style="padding-top:16px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#AEAEAE;margin-bottom:10px;letter-spacing:var(--web-eyebrow-ls);">{{ step.n }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ step.title }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:0 0 56px;font-size:var(--web-min-size);font-weight:300;color:#AEAEAE;max-width:760px;line-height:var(--web-min-lh);">First feedback and full-dossier timing are confirmed once the platform is live — not yet published.</p>
+
+      <sc-if value="{{ !projectSubmitted }}" hint-placeholder-val="{{ true }}">
+        <div style="background:var(--color-card-strohm);border-radius:12px;padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px;">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);">Location and installation type<input type="text" placeholder="Address, residential / commercial / utility" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);">Estimated capacity<input type="text" placeholder="kWp / kWh, hardware configuration" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);">Client and ownership<input type="text" placeholder="Client profile and ownership structure" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);">Email<input type="email" placeholder="you@company.com" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+          <div style="grid-column:1/-1;"><button style-hover="background:#5F5E5E;color:#F4F4F4;" onClick="{{ submitProject }}" style="font-family:inherit;cursor:pointer;height:var(--cta-height);padding:0 var(--cta-pad-x);border:none;border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);letter-spacing:0.04em;">Submit your project</button></div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ projectSubmitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background:var(--color-card-strohm);border-radius:12px;padding:40px;font-size:var(--web-body-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-body-lh);">Received. We will confirm feedback timing and how to proceed once we've reviewed the location, capacity and client details.</div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section data-screen-label="Invest — Flow B" id="flow-b" style="background:var(--color-text-primary);width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:24px auto;border-radius:24px;overflow:hidden;box-sizing:border-box;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+      <div style="margin-bottom:20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Never lose a project</div>
+      <h2 style="margin:0 0 24px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#FFFFFF;text-wrap:balance;">Never let a <span style="color:#B2B3B3;">project die.</span></h2>
+      <p style="margin:0 0 20px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#FFFFFF;text-wrap:pretty;">A client who cannot invest today is not a lost project. It is a project waiting for the right investor. Every time a client says no to the investment, that project has a second life — through STRØHM.ENERGY.</p>
+      <p style="margin:0 0 48px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#D9DADA;max-width:760px;">As a certified STRØHM.ENERGY installer you have one obligation when a client cannot or will not invest: pass it on. Not tomorrow. Now. STRØHM.ENERGY finds the investor. You still install. Everyone wins.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px;margin-bottom:56px;">
+        <div style="font-size:var(--web-h3-size);font-weight:300;color:#FFFFFF;line-height:1.4;">Client can't invest? Pass it on.</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;color:#FFFFFF;line-height:var(--web-h3-lh);">Project too big for one investor? We split it.</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;color:#FFFFFF;line-height:var(--web-h3-lh);">Site without a buyer? We find them.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:20px;margin-bottom:24px;">
+        <sc-for list="{{ howItWorksB }}" as="e" hint-placeholder-count="4">
+          <div style="padding-top:16px;">
+            <span style="font-size:var(--web-small-size);font-weight:300;color:#D9DADA;line-height:var(--web-small-lh);">{{ e }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:0 0 48px;font-size:var(--web-min-size);font-style:italic;font-weight:300;color:#AEAEAE;max-width:640px;line-height:var(--web-min-lh);">This is not a referral system. This is a commitment to zero waste in the energy transition. Every viable project gets a shot.</p>
+
+      <sc-if value="{{ !passSubmitted }}" hint-placeholder-val="{{ true }}">
+        <div style="background:#4F4F4E;border-radius:12px;padding:clamp(24px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px;">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#FFFFFF;">Project details<input type="text" placeholder="Location, type, size" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#FFFFFF;">Reason for referral<input type="text" placeholder="Why the client can't invest" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+          <div style="grid-column:1/-1;"><button onClick="{{ submitPass }}" style="font-family:inherit;cursor:pointer;height:48px;padding:0 28px;border:none;border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);font-size:var(--cta-font);letter-spacing:0.04em;font-weight:var(--web-btn-weight);">I have a project to pass on</button></div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ passSubmitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#4F4F4E;border-radius:12px;padding:32px;font-size:var(--web-small-size);font-weight:300;color:#FFFFFF;line-height:var(--web-small-lh);">Received. STRØHM.ENERGY will take over from here and contact the client if needed.</div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section data-screen-label="Invest — Flow C" id="flow-c" style="background:#FFFFFF;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+      <div style="margin-bottom:20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Become an investor</div>
+      <h2 style="margin:0 0 24px;max-width:760px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Stop looking for projects. <span style="color:#8E8E8E;">Let projects find you.</span></h2>
+      <p style="margin:0 0 48px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">Register your investor profile once. Tell us what you are looking for — project type, geography, minimum and maximum ticket, preferred return structure. We match you to validated STRØHM.ENERGY projects and send you proposals directly.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:24px;margin-bottom:56px;">
+        <sc-for list="{{ investorBenefits }}" as="e" hint-placeholder-count="4">
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <span style="width:16px;height:16px;border-radius:8px;background:var(--color-text-primary);flex:none;margin-top:2px;"></span>
+            <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ e }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ !investorSubmitted }}" hint-placeholder-val="{{ true }}">
+        <div style="background:var(--color-card-strohm);border-radius:12px;padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px;">
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);">Type<select style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"><option>Individual</option><option>Family office</option><option>Institutional fund</option><option>Other</option></select></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);">Ticket size<div style="display:flex;gap:8px;"><input type="text" placeholder="Min €" style="flex:1;min-width:0;font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"><input type="text" placeholder="Max €" style="flex:1;min-width:0;font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></div></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);">Preferred project type<select style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"><option>All</option><option>Solar</option><option>Battery</option><option>Hybrid</option></select></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);">Geography<select style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"><option>No preference</option><option>Belgium</option><option>Netherlands</option><option>Europe</option></select></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);">Name<input type="text" placeholder="Full name" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+          <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);">Email<input type="email" placeholder="you@company.com" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+          <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:16px;">
+            <button style-hover="background:#5F5E5E;color:#F4F4F4;" onClick="{{ submitInvestor }}" style="font-family:inherit;cursor:pointer;height:var(--cta-height);padding:0 var(--cta-pad-x);border:none;border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);letter-spacing:0.04em;align-self:flex-start;">Register as investor</button>
+            <p style="margin:0;font-size:var(--web-min-size);font-weight:300;color:#AEAEAE;max-width:760px;line-height:var(--web-min-lh);">Your details are used exclusively for project matchmaking within the STRØHM.ENERGY INVEST platform.</p>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ investorSubmitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background:var(--color-card-strohm);border-radius:12px;padding:40px;font-size:var(--web-body-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-body-lh);">We review your profile and contact you when a matching project is ready for investment.</div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section data-screen-label="Invest — Open projects" style="background:var(--color-card-strohm);width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:24px auto;border-radius:24px;overflow:hidden;box-sizing:border-box;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+      <h2 style="margin:0 0 40px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Currently validated <span style="color:#8E8E8E;">and open for investment</span></h2>
+      <div style="background:#F4F4F4;border-radius:12px;padding:56px 32px;text-align:center;">
+        <p style="margin:0 0 8px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">No projects are published here yet.</p>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;color:#898989;max-width:640px;margin-left:auto;margin-right:auto;line-height:var(--web-small-lh);">More projects are validated every month. Register your investor profile to receive new proposals before they go public.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Invest — Track record" style="background:#FFFFFF;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <h2 style="margin:0 0 40px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Track record</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:24px;">
+        <sc-for list="{{ trackRecord }}" as="s" hint-placeholder-count="6">
+          <div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#AEAEAE;margin-bottom:6px;line-height:var(--web-small-lh);">To be confirmed</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">{{ s }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Invest — FAQ">
+    <div style="max-width:760px;margin:0 auto;padding:96px 40px;">
+      <h2 style="margin:0 0 12px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">For installers</h2>
+      <sc-for list="{{ faqInstallers }}" as="q" hint-placeholder-count="4">
+        <div style="">
+          <button onClick="{{ q.onClick }}" style="font-family:inherit;cursor:pointer;width:100%;background:none;border:none;display:flex;justify-content:space-between;gap:16px;padding:24px 0;text-align:left;font-size:var(--web-body-size);font-weight:500;color:var(--color-text-primary);">{{ q.q }} <span>{{ q.sign }}</span></button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}"><div style="padding:0 0 24px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#898989;">{{ q.a }}</div></sc-if>
+        </div>
+      </sc-for>
+      <h2 style="margin:56px 0 12px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">For investors</h2>
+      <sc-for list="{{ faqInvestors }}" as="q" hint-placeholder-count="6">
+        <div style="">
+          <button onClick="{{ q.onClick }}" style="font-family:inherit;cursor:pointer;width:100%;background:none;border:none;display:flex;justify-content:space-between;gap:16px;padding:24px 0;text-align:left;font-size:var(--web-body-size);font-weight:500;color:var(--color-text-primary);">{{ q.q }} <span>{{ q.sign }}</span></button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}"><div style="padding:0 0 24px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#898989;">{{ q.a }}</div></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Invest — Closing CTA">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 96px;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;">
+      <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#flow-a" style="text-decoration:none;background:#4F4F4E;border-radius:12px;padding:40px 32px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:160px;;color:#F4F4F4">
+        <div style="font-size:var(--web-h3-size);font-weight:300;color:#FFFFFF;line-height:var(--web-h3-lh);">You install. We finance.</div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#D9DADA;">Submit a project<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></div>
+      </a>
+      <a href="#flow-b" style="text-decoration:none;background:#E3E3E3;border-radius:12px;padding:40px 32px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:160px;">
+        <div style="font-size:var(--web-h3-size);font-weight:300;color:#FFFFFF;">Client said no? Project says yes.</div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-surface-card);">Pass a project on<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></div>
+      </a>
+      <a href="#flow-c" style="text-decoration:none;background:#AEAEAE;border-radius:12px;padding:40px 32px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:160px;">
+        <div style="font-size:var(--web-h3-size);font-weight:300;color:var(--color-text-primary);">Tell us what you want. We bring it to you.</div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Register as investor<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></div>
+      </a>
+    </div>
+  </section>
+
+  <div style="height:48px;"></div>
+  <dc-import name="ReachSpecialist" brand="FINANCE" lead="Speak with the finance team to find the right model for your project." photo-slot-id="finance-specialist" hint-size="100%,420px"></dc-import>
+
+  <section data-screen-label="Invest — Disclaimer">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 32px;box-sizing:border-box;">
+      <p style="margin:0;font-size:var(--web-min-size);font-weight:300;color:#AEAEAE;line-height:var(--web-min-lh);max-width:760px;">INVEST connects project submissions with registered investors following STRØHM.ENERGY's due diligence process. This page describes the platform and is not an offer, solicitation, or investment advice. Regulatory status is disclosed per project type in its dossier.</p>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const HERO_STATS = ["Projects in due diligence", "Projects open for investment", "MW matched to date"];
+const WHO_CAN_SUBMIT = ["Certified STRØHM.ENERGY installers", "Independent project developers", "Energy consultants with client projects", "Municipalities or public institutions with build plans"];
+const WHAT_WE_NEED = ["Location and installation type", "Estimated capacity and hardware configuration", "Client profile and ownership structure", "Any existing subsidy application or grid connection request"];
+const STEPS_A = [
+  { n: "01", title: "Submit your project — location, technical specs, estimated capacity, businesscase, client profile." },
+  { n: "02", title: "Due diligence by STRØHM.ENERGY — technical feasibility, energy yield, legal structure, financial businesscase." },
+  { n: "03", title: "Study and validation — a complete, independent project dossier. Only validated projects reach investors." },
+  { n: "04", title: "We find your investors — the dossier goes to our network of private investors, family offices and institutional partners." },
+  { n: "05", title: "Deal closed. You install. — STRØHM.ENERGY hardware, your expertise, EMON for monitoring afterwards." },
+];
+const HOW_IT_WORKS_B = [
+  "Installer submits a short form with project details and reason for referral",
+  "STRØHM.ENERGY takes over and contacts the client if needed",
+  "Project goes through due diligence",
+  "Installer receives the installation assignment once the deal is closed",
+];
+const INVESTOR_BENEFITS = [
+  "Only projects that have passed STRØHM.ENERGY's full due diligence",
+  "Complete project dossier with every proposal: technical, financial, legal",
+  "Live monitoring via EMON after closing",
+  "Personal contact with our investment desk for any questions",
+];
+const TRACK_RECORD = ["Projects submitted by installers", "Projects approved after due diligence", "Projects fully financed", "MW operational via INVEST", "Registered investors in our network", "Weeks average, submission to financing"];
+const FAQ_INSTALLERS = [
+  ["Do I need to be certified to submit a project?", "Yes. Project submissions are open to installers who are certified within the STRØHM.ENERGY network. If you are not yet certified, visit our Installer Certification page to get started."],
+  ["What if my project does not pass due diligence?", "We provide detailed feedback on every project that does not pass. In many cases the project can be resubmitted after adjustments to the technical setup or financial structure."],
+  ["Do I receive a fee for passing on a project?", "Compensation structures for referrals are defined per project and discussed at the time of submission. Contact our INVEST desk for details."],
+  ["How long does the process take from submission to deal?", "Feedback, due diligence and financing timelines are confirmed once the platform is live — not yet published."],
+];
+const FAQ_INVESTORS = [
+  ["How are projects selected?", "Every project on this platform has passed STRØHM.ENERGY's full technical, financial, and legal due diligence. We reject projects that do not meet our quality standards. You only see what we stand behind."],
+  ["What is the minimum investment?", "Minimum entry varies per project and is shown on each project card. Individual and institutional minimums are confirmed once the platform is live — not yet published."],
+  ["How is my return calculated and paid out?", "Returns are tied to energy production and the financial structure of each project. Payout is quarterly or annual depending on the project. All data is visible live via EMON."],
+  ["What happens if an installation underperforms?", "Each project dossier includes a risk section and downside scenario. STRØHM.ENERGY hardware is monitored via EMON and any underperformance triggers an alert to our operations team."],
+  ["Is this platform regulated?", "STRØHM.ENERGY INVEST operates in compliance with applicable financial regulations in Belgium and the Netherlands. Specific regulatory status per project type is disclosed in the project dossier."],
+  ["How does EMON reporting work for investors?", "After closing, you receive access to your investor dashboard within EMON. You can track real-time production, revenue performance, and yield against projection for every project in your portfolio."],
+];
+const HERO_ITEMS = [{"label":"How it works","heading":"How the platform works","sentence":"Three parties. One quality gate. Zero projects wasted.","media":{"type":"slot","slot":"strohm-energy-invest-hero","alt":"FINANCE hero picture 1"}},{"label":"For installers","heading":"You found the project. We find the money.","sentence":"If you have a site, a client, or an energy project that needs financing — residential, commercial, or utility scale — submit it to STRØHM.ENERGY. We do the full study. We find the investors. You install.","media":{"type":"slot","slot":"finance-invest-hero-2","alt":"FINANCE hero picture 2"}},{"label":"Never let a project die","heading":"Never let a project die.","sentence":"A client who cannot invest today is not a lost project. It is a project waiting for the right investor. Every time a client says no to the investment, that project has a second life — through STRØHM.ENERGY.","media":{"type":"slot","slot":"finance-invest-hero-3","alt":"FINANCE hero picture 3"}},{"label":"For investors","heading":"Stop looking for projects. Let projects find you.","sentence":"Register your investor profile once. Tell us what you are looking for — project type, geography, minimum and maximum ticket, preferred return structure. We match you to validated STRØHM.ENERGY projects and send you proposals directly.","media":{"type":"slot","slot":"finance-invest-hero-4","alt":"FINANCE hero picture 4"}},{"label":"Open for investment","heading":"Currently validated and open for investment","sentence":"No projects are published here yet.","media":{"type":"slot","slot":"finance-invest-hero-5","alt":"FINANCE hero picture 5"}},{"label":"Track record","heading":"Track record","sentence":"TO CONFIRM","media":{"type":"slot","slot":"finance-invest-hero-6","alt":"FINANCE hero picture 6"}}];
+class Component extends DCLogic {
+  renderVals() { return Object.assign({}, this._rvBase(), { heroItems: HERO_ITEMS }); }
+  state = { open: {}, projectSubmitted: false, passSubmitted: false, investorSubmitted: false };
+  _rvBase() {
+    const o = this.state.open;
+    const faqMap = (list, offset) => list.map((f, i) => ({ q: f[0], a: f[1], open: !!o[offset + i], sign: o[offset + i] ? "\u2212" : "+", onClick: () => this.setState((s) => ({ open: { ...s.open, [offset + i]: !s.open[offset + i] } })) }));
+    return {
+      heroStats: HERO_STATS,
+      whoCanSubmit: WHO_CAN_SUBMIT,
+      whatWeNeed: WHAT_WE_NEED,
+      stepsA: STEPS_A,
+      howItWorksB: HOW_IT_WORKS_B,
+      investorBenefits: INVESTOR_BENEFITS,
+      trackRecord: TRACK_RECORD,
+      faqInstallers: faqMap(FAQ_INSTALLERS, 0),
+      faqInvestors: faqMap(FAQ_INVESTORS, 100),
+      projectSubmitted: this.state.projectSubmitted,
+      passSubmitted: this.state.passSubmitted,
+      investorSubmitted: this.state.investorSubmitted,
+      submitProject: () => this.setState({ projectSubmitted: true }),
+      submitPass: () => this.setState({ passSubmitted: true }),
+      submitInvestor: () => this.setState({ investorSubmitted: true }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

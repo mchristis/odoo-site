@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>Join or start a PACT group | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } input:focus, select:focus { outline:none; border-color:#222222; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="systems" hint-size="100%,89px"></dc-import>
+  <dc-import name="BrandBar" brand="PACT" hint-size="100%,73px"></dc-import>
+  <dc-import name="PageHero" brand="PACT" rgb="214,153,14" eyebrow="PACT · Register" title="Start a group or join one." intro="Joining PACT begins with a free, non-binding expression of interest where indicated on the campaign." slot="pact-register-hero" shot="PACT · Register · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;align-items:flex-start;"><div style="display:inline-block;margin:0 0 28px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B07818;">Proposed, to confirm. Prototype: entries are stored in this browser only.</div><p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#666666;text-wrap:pretty;">Provide your contact details and location to see suitable groups. Technical information can be supplied later when your personal proposal is prepared. Registration is not an order.</p></section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;max-width:720px;">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#F4F4F4;border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:12px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Interest registered.</div>
+          <div style="font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#666666;">This is not an order. Quote acceptance is a separate step.</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ open }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <sc-for list="{{ paths }}" as="p" hint-placeholder-count="2"><span onClick="{{ p.pick }}" style="cursor:pointer;height:44px;display:inline-flex;align-items:center;padding:0 22px;border-radius:8px;font-size:15px;font-weight:500;color:#222222;background:{{ p.bg }};border:1px solid {{ p.border }};">{{ p.label }}</span></sc-for>
+          </div>
+          <sc-for list="{{ fields }}" as="f" hint-placeholder-count="4">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#4F4F4E;"><span>{{ f.label }}</span><input type="{{ f.type }}" value="{{ f.value }}" onChange="{{ f.onChange }}" style="height:44px;box-sizing:border-box;padding:0 14px;border:1px solid #BBBBBB;border-radius:8px;font:inherit;font-weight:var(--web-input-weight);font-size:var(--web-input-size);color:#222222;background:#FFFFFF;"></input></label>
+          </sc-for>
+          <label style="display:flex;gap:10px;align-items:flex-start;font-size:var(--web-label-size);line-height:1.5;color:#666666;font-weight:var(--web-label-weight);"><input type="checkbox" checked="{{ consent }}" onChange="{{ onConsent }}" style="margin-top:3px;accent-color:var(--color-brand-pact, #4F4F4E);width:20px;height:20px;"></input><span>I agree to be contacted about this registration and to the terms. Registration is free and non-binding.</span></label>
+          <sc-if value="{{ invalid }}" hint-placeholder-val="{{ false }}"><div style="font-size:14px;color:#B07818;font-weight:700;">Name, a valid e-mail address, postcode and consent are required.</div></sc-if>
+          <div><button onClick="{{ submit }}" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border:0;border-radius:var(--cta-radius,8px);background:var(--color-brand-pact,#D6990E);color:#222222;font:inherit;font-size:var(--cta-font,16px);font-weight:400;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">{{ button }}</button></div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+  <div style="height:160px;"></div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() { try { if (new URLSearchParams(location.search).get("mode") === "start") location.replace("PACT - SYSTEM - Start a Project - EN.dc.html"); } catch (e) {} }
+  state = { mode: null, v: {}, consent: false, sent: false, invalid: false };
+  render0() { const q = new URLSearchParams(typeof location !== "undefined" ? location.search : ""); return q.get("mode") === "start" ? "start" : "join"; }
+  renderVals() {
+    const s = this.state, mode = s.mode || this.render0();
+    const set = (k, val) => this.setState((st) => ({ v: Object.assign({}, st.v, { [k]: val }) }));
+    const defs = [["name", "Name", "text"], ["email", "E-mail", "email"], ["postcode", "Postcode", "text"]].concat(mode === "start" ? [["group", "Group name (street, association, company or municipality)", "text"]] : []);
+    return {
+      sent: s.sent, open: !s.sent, invalid: s.invalid, consent: s.consent,
+      paths: [["join", "Find a group"], ["start", "Start a group"]].map((p) => ({ label: p[1], bg: mode === p[0] ? "#F4F4F4" : "#FFFFFF", border: mode === p[0] ? "#222222" : "#BBBBBB", pick: () => { if (p[0] === "start") { window.location.href = "PACT - SYSTEM - Start a Project - EN.dc.html"; return; } this.setState({ mode: p[0] }); } })),
+      fields: defs.map((d) => ({ label: d[1], type: d[2], value: s.v[d[0]] || "", onChange: (e) => set(d[0], e.target.value) })),
+      button: mode === "start" ? "Propose a group" : "Register interest",
+      onConsent: (e) => this.setState({ consent: e.target.checked }),
+      submit: () => {
+        const v = s.v;
+        if (!(v.name || "").trim() || !/.+@.+\..+/.test((v.email || "").trim()) || !(v.postcode || "").trim() || !s.consent) { this.setState({ invalid: true }); return; }
+        try { const k = "strohm-pact-registrations"; const a = JSON.parse(localStorage.getItem(k) || "[]"); a.push({ mode, data: v, at: new Date().toISOString() }); localStorage.setItem(k, JSON.stringify(a)); } catch (e) {}
+        this.setState({ sent: true, invalid: false });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

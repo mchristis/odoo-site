@@ -1,0 +1,59 @@
+/* STRØHM.ENERGY web typography: one source of truth (typography audit, 24 Oct 2026, Q1–Q6).
+   Loaded after the design system's colors_and_type.css; overrides its stepped --web-* values.
+   Font files: when the licensed Neue Helvetica WOFF2 files are in fonts/, add the @font-face rules here (Q2). */
+:root {
+  /* Layout grid (Products reference, DEPTH-851) */
+  --web-side: clamp(20px,5.8vw,84px);
+  --web-grid: 1312px;
+  --web-hero-top: 83px;
+  --web-hero-ratio: 2.1/1;
+  --web-hero-min: 520px;
+  --web-hero-radius: 24px;
+  --web-hero-h: max(520px, calc(min(100vw - 168px, 1312px) / 2.1));
+  --font-web: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* Display: fluid between phone minimum and desktop maximum */
+  --web-hero-size: clamp(26px, 11cqi, 58px);  --web-hero-lh: 1.08;  --web-hero-weight: 100;
+  --web-h1-size: clamp(40px, 4.4vw, 64px);    --web-h1-lh: 1.05;    --web-h1-weight: 100;
+  --web-h2-size: clamp(36px, 3.6vw, 52px);    --web-h2-lh: 1.08;    --web-h2-weight: 200;
+  --web-h2card-size: clamp(24px, 2.4vw, 32px); --web-h2card-lh: 1.08; --web-h2card-weight: 200;
+  --web-sub-size: clamp(24px, 2.4vw, 32px);   --web-sub-lh: 1.08;   --web-sub-weight: 200;
+  --web-lead-size: clamp(18px, 1.65vw, 24px); --web-lead-lh: 1.15;  --web-lead-weight: 200;
+
+  /* Text: fixed at every width */
+  --web-h3-size: 20px;      --web-h3-lh: 1.25;    --web-h3-weight: 300;
+  --web-body-size: 16px;    --web-body-lh: 1.6;   --web-body-weight: 300;  --web-body-hl-weight: 500;
+  --web-small-size: 14px;   --web-small-lh: 1.55; --web-small-weight: 300;
+  --web-min-size: 12px;     --web-min-lh: 1.5;    --web-min-weight: 300;
+  --web-nav-size: 14px;     --web-nav-weight: 300;  --web-nav-active-weight: 500;
+  --web-link-size: 14px;    --web-link-weight: 500;
+  --cta-font: 16px;         --web-btn-sm-size: 14px; --web-btn-weight: 400;
+  --web-tag-size: 12px;     --web-tag-weight: 500;
+  --web-label-size: 14px;   --web-label-weight: 500;
+  --web-input-size: 16px;   --web-input-weight: 300;
+  --web-error-size: 14px;   --web-error-weight: 400;
+  --web-eyebrow-size: 11px; --web-eyebrow-weight: 500; --web-eyebrow-ls: 0.1em;
+}
+/* Q10: equal-width figures for every number */
+body { font-variant-numeric: tabular-nums; }
+/* Titles never overflow narrow cards: long brand words (STRØHM.ENERGY) wrap when they do not fit */
+[style*="--web-h3-size"], [style*="--web-h2card-size"], [style*="--web-sub-size"], [style*="--web-h2-size"], [style*="--web-h1-size"] { overflow-wrap: anywhere; }
+
+@media (max-width:1024px){:root{--web-hero-h: calc((100vw - 2 * var(--web-side)) * 0.75);}}
+@media (max-width:720px){:root{--web-side: 20px;--web-hero-h: calc((100vw - 40px) * 0.75);}}
+
+/* Q4 grid reflow (DEPTH-897, user 26 Oct 2026). Desktop above 1024px unchanged.
+   data-cols="N": equal 2–6 column grids reflow by available width, cards at least 240px, never more than N columns.
+   data-stack: mixed-width grids stack to one column below 720px. Charts (7+ columns) and label/value rows are not marked. */
+@media (max-width:1024px){
+ [data-cols="2"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 1 * var(--cg,0px)) / 2 - 1px))),1fr)) !important}
+ [data-cols="3"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 2 * var(--cg,0px)) / 3 - 1px))),1fr)) !important}
+ [data-cols="4"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 3 * var(--cg,0px)) / 4 - 1px))),1fr)) !important}
+ [data-cols="5"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 4 * var(--cg,0px)) / 5 - 1px))),1fr)) !important}
+ [data-cols="6"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 5 * var(--cg,0px)) / 6 - 1px))),1fr)) !important}
+ [data-cols]>[style*="grid-column:span"],[data-cols]>[style*="grid-column: span"]{grid-column:1/-1 !important}
+}
+@media (max-width:720px){
+ [data-stack]{grid-template-columns:minmax(0,1fr) !important}
+ [data-stack]>*{grid-column:auto !important;grid-row:auto !important}
+}

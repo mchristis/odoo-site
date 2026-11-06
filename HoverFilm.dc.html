@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="position:relative;display:block;width:100%;min-width:280px;aspect-ratio:16 / 9;min-height:158px;">
+  <div ref="{{ cardRef }}" onMouseEnter="{{ enter }}" onMouseLeave="{{ leave }}" onFocus="{{ enter }}" onBlur="{{ leave }}" tabIndex="0" aria-label="{{ label }}" style="position:absolute;inset:0;border-radius:12px;overflow:hidden;background:#EFEFED;border:1px solid #DDDDDD;transform-origin:top left;transition:transform 0.4s cubic-bezier(0.2,0.8,0.2,1);transform:{{ tf }};z-index:{{ z }};cursor:pointer;">
+    <iframe ref="{{ frameRef }}" src="{{ src }}" title="{{ label }}" style="position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;"></iframe>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;src&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ANDO - FILM - Factory Line - EN.dc.html&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Film, plays on hover&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;hold&quot;:{&quot;editor&quot;:&quot;float&quot;,&quot;default&quot;:1.5,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  state = { open: false, tf: 'none' };
+  cardRef = React.createRef();
+  frameRef = React.createRef();
+  componentDidMount() { this.t = setTimeout(() => this.seek(this.props.hold ?? 1.5, false), 1200); }
+  componentWillUnmount() { clearTimeout(this.t); }
+  seek(time, play) {
+    try {
+      const f = this.frameRef.current, doc = f && f.contentDocument, el = doc && doc.querySelector('[data-om-exportable-video-with-duration-secs]');
+      if (!el) { if (!play) this.t = setTimeout(() => this.seek(time, play), 500); return; }
+      el.dispatchEvent(new (f.contentWindow.CustomEvent)('data-om-seek-to-time-frame', { detail: { time, sync: true } }));
+      if (play) { const b = doc.querySelector('button[title^="Play/pause"]'); if (b) setTimeout(() => b.click(), 60); }
+    } catch (e) {}
+  }
+  renderVals() {
+    return {
+      src: (this.props.src || '') + '?embed=1',
+      label: this.props.label ?? 'Film, plays on hover',
+      cardRef: this.cardRef, frameRef: this.frameRef,
+      tf: this.state.open ? this.state.tf : 'none',
+      z: this.state.open ? 40 : 1,
+      enter: () => {
+        let tf = 'none';
+        try {
+          const card = this.cardRef.current, r = card.getBoundingClientRect();
+          const box = (card.closest('section') || document.body).getBoundingClientRect();
+          const pad = 24, avail = box.width - pad * 2;
+          const target = Math.max(r.width, Math.min(avail, 1280, (window.innerHeight - 32) * 16 / 9)), s = target / r.width, h = target * 9 / 16;
+          const dx = box.left + (box.width - target) / 2 - r.left;
+          let dy = 0; if (r.top + h > window.innerHeight - 16) dy = Math.max(16 - r.top, window.innerHeight - 16 - h - r.top);
+          tf = 'translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px) scale(' + s.toFixed(3) + ')';
+        } catch (e) {}
+        this.setState({ open: true, tf }); this.seek(0, true);
+      },
+      leave: () => { this.setState({ open: false }); this.seek(this.props.hold ?? 1.5, false); },
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Why | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./nav-data.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4F4F4E; text-decoration:none; }
+  a:hover { color:#1E1E1E; }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+  <dc-import name="NavBar" active="company" hint-size="100%,89px"></dc-import>
+  <dc-import name="CompanyNav" active="why" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="BrandHero2" brand="COMPANY" rgb="247,104,1" dark="#4F4F4E" title="Energy systems have become unnecessarily fragmented." intro="Most energy installations combine products from different manufacturers, each with its own interfaces, configuration methods and technical requirements." items="{{ heroItems }}" hint-size="100%,760px"></dc-import><section data-screen-label="WHY — In short" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:40px 64px;">
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;max-width:640px;">STRØHM.ENERGY develops connected hardware, software and system solutions designed to simplify installation, commissioning and long-term operation.</p>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;max-width:640px;">One connected approach. From product design to system operation.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">Key facts</div>
+        <div style="border-top:1px solid #D9D9D9;">
+          <sc-for list="{{ facts }}" as="f" hint-placeholder-count="5">
+            <div data-stack="1" style="display:grid;grid-template-columns:minmax(120px,0.4fr) minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;">
+              <span style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;line-height:var(--web-small-lh);">{{ f.k }}</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;">{{ f.v }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="WHY — 01 Purpose" id="purpose" style="scroll-margin-top:160px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:120px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 64px;border-top:1px solid #D9D9D9;padding-top:32px;">
+      <div style="display:flex;flex-direction:column;gap:12px;"><span style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);color:#8A8A89;font-weight:var(--web-eyebrow-weight);">01</span><h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Why <span style="color:#8E8E8E;">STRØHM.ENERGY exists</span></h2></div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <p style="margin:0;max-width:680px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The failure is rarely in a single product. It happens between products — where hardware from different brands is left for an installer to reconcile. EMON is the intelligence that closes those gaps, so the parts are designed, configured and validated to work together.</p>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;max-width:680px;">STRØHM.ENERGY exists to organise those parts into a clearer physical and digital system. Not by hiding the technology, but by designing it properly.</p>
+        <p style="margin:0;font-size:19px;font-weight:300;line-height:1.5;color:#4F4F4E;max-width:680px;">We want products with character — products that leave an impact.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="WHY — 02 Fragmentation" id="fragmentation" style="scroll-margin-top:160px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:120px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 64px;border-top:1px solid #D9D9D9;padding-top:32px;">
+      <div style="display:flex;flex-direction:column;gap:12px;"><span style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);color:#8A8A89;font-weight:var(--web-eyebrow-weight);">02</span><h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Built as a system <span style="color:#8E8E8E;">from the start.</span></h2></div>
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <p style="margin:0;max-width:680px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">STRØHM.ENERGY develops products as parts of one coordinated ecosystem, not as isolated devices. Our twenty-five product brands and seven energy systems share common engineering principles, connected software, commissioning tools, documentation and long-term lifecycle support.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px;">
+          <sc-for list="{{ shortCards }}" as="c" hint-placeholder-count="3">
+            <div style="background:#F4F4F4;padding:24px;display:flex;flex-direction:column;gap:6px;border-radius:12px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6E6E6E;">{{ c.n }}</div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">{{ c.t }}</div><div style="font-size:var(--web-small-size);font-weight:300;line-height:1.6;color:#4F4F4E;">{{ c.b }}</div></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="WHY — 03 Six differences" id="differences" style="scroll-margin-top:160px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:120px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 64px;">
+        <div style="display:flex;flex-direction:column;gap:12px;"><span style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);color:#8A8A89;font-weight:var(--web-eyebrow-weight);">03</span><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Why we are different</div><h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">We do not try to be different. <span style="color:#8E8E8E;">We try to be right.</span></h2></div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <p style="margin:0;max-width:680px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">We do not challenge conventions to attract attention. We question them because many no longer serve the product, the installer or the person using it. When a familiar solution is still the right one, we keep it. When it is not, we redesign it.</p>
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;margin-top:8px;line-height:var(--web-h3-lh);">Different by design. Six things we do differently.</div>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#4F4F4E;max-width:680px;">Not different for its own sake. Different because accepting avoidable imperfection would only transfer the problem to an installer or a customer.</p>
+        </div>
+      </div>
+      <div style="border-top:1px solid #D9D9D9;">
+        <sc-for list="{{ sixThings }}" as="item" hint-placeholder-count="6">
+          <div style="display:grid;grid-template-columns:48px minmax(0,1fr) minmax(0,1.2fr) minmax(0,1fr);gap:16px 24px;padding:20px 0;border-bottom:1px solid #D9D9D9;align-items:start;">
+            <span style="font-size:var(--web-eyebrow-size);color:#8A8A89;font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);">{{ item.n }}</span>
+            <span style="font-size:16px;font-weight:700;line-height:1.35;color:#4F4F4E;">{{ item.title }}</span>
+            <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;">{{ item.body }}</span>
+            <span style="font-size:var(--web-small-size);font-weight:300;line-height:1.6;color:#4F4F4E;">{{ item.result }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="WHY — 04 Philosophy" id="philosophy" style="scroll-margin-top:160px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:120px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:flex;flex-direction:column;gap:48px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 64px;">
+        <div style="display:flex;flex-direction:column;gap:12px;"><span style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);color:#8A8A89;font-weight:var(--web-eyebrow-weight);">04</span><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Ideas that define everything we build</div><h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">We question the <span style="color:#8E8E8E;">accepted answer</span></h2></div>
+        <p style="margin:0;max-width:680px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Most product development begins with what already exists. We begin with what should exist. Our teams challenge established layouts, standard workflows and familiar assumptions. Sometimes the correct answer is a better component. Sometimes it is a completely different product architecture. Sometimes it is removing something that nobody needs.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 64px;">
+        <div style="display:flex;flex-direction:column;gap:12px;"><h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Designed with purpose, products should have character</h3><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Function does not require anonymity.</div></div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;max-width:680px;">Energy equipment is often treated as something to hide. We believe technical products can be precise, recognisable and honest about what they do.</p>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;max-width:680px;">Every STRØHM.ENERGY brand has its own role and identity, but all products share common principles. Clear interfaces. Purposeful materials. Consistent indicators. Logical installation. Connected documentation. No decoration without function.</p>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;max-width:680px;">We do not want twenty-five brands that look identical. We want twenty-five specialists that clearly belong to the same family.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">What we refuse</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;">
+          <sc-for list="{{ principles }}" as="p" hint-placeholder-count="4">
+            <div style="background:#F4F4F4;padding:24px;display:flex;flex-direction:column;gap:10px;border-radius:12px;"><span style="font-size:var(--web-eyebrow-size);color:#8A8A89;line-height:var(--web-small-lh);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);">{{ p.n }}</span><span style="font-size:16px;font-weight:700;color:#4F4F4E;">{{ p.t }}</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;">{{ p.b }}</span></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="WHY — 05 Sustainability" id="sustainability" style="scroll-margin-top:160px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:120px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 64px;border-top:1px solid #D9D9D9;padding-top:32px;">
+      <div style="display:flex;flex-direction:column;gap:12px;"><span style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);color:#8A8A89;font-weight:var(--web-eyebrow-weight);">05</span><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Sustainability</div><h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Sustainability starts <span style="color:#8E8E8E;">with the product itself.</span></h2></div>
+      <div>
+        <div style="border-top:1px solid #D9D9D9;">
+          <sc-for list="{{ sustainability }}" as="s" hint-placeholder-count="6">
+            <div style="font-size:var(--web-body-size);font-weight:300;color:#4F4F4E;padding:16px 0;border-bottom:1px solid #D9D9D9;line-height:var(--web-body-lh);">{{ s }}</div>
+          </sc-for>
+        </div>
+        <p style="margin:20px 0 0;font-style:italic;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Recycling percentages, carbon figures and circularity claims are published only once documented.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="WHY — Next page" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:120px var(--web-side) 120px;box-sizing:border-box;">
+    <a href="STROHM.ENERGY - COMPANY - What - EN.dc.html" style="text-decoration:none;border-top:1px solid #4F4F4E;padding-top:24px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;transition:border-color 180ms ease;" style-hover="border-top-color:#F76801;">
+      <span style="font-size:var(--web-min-size);letter-spacing:0.08em;color:#5F5E5E;line-height:var(--web-min-lh);">Next · 02 / 06</span>
+      <span style="font-size:clamp(28px,3vw,40px);font-weight:200;color:#252525;">What<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+    </a>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const HERO_ITEMS = [{"label":"Why we exist","heading":"Why STRØHM.ENERGY exists","sentence":"The failure is rarely in a single product.","href":"#purpose","media":{"type":"slot","slot":"strohm-energy-why-hero","alt":"Why hero picture 1"}},{"label":"Built as a system","heading":"Built as a system from the start.","sentence":"STRØHM.ENERGY develops products as parts of one coordinated ecosystem, not as isolated devices.","href":"#fragmentation","media":{"type":"slot","slot":"why-hero-2","alt":"Why hero picture 2"}},{"label":"Right, not different","heading":"We do not try to be different. We try to be right.","sentence":"We do not challenge conventions to attract attention.","href":"#differences","media":{"type":"slot","slot":"why-hero-3","alt":"Why hero picture 3"}},{"label":"Accepted answers","heading":"We question the accepted answer","sentence":"Most product development begins with what already exists.","href":"#philosophy","media":{"type":"slot","slot":"why-hero-4","alt":"Why hero picture 4"}},{"label":"Sustainability","heading":"Sustainability starts with the product itself.","sentence":"Recycling percentages, carbon figures and circularity claims are published only once documented.","href":"#sustainability","media":{"type":"slot","slot":"why-hero-5","alt":"Why hero picture 5"}}];
+class Component extends DCLogic {
+  renderVals() { return Object.assign({}, this._rvBase(), { heroItems: HERO_ITEMS }); }
+  _rvBase() {
+    return {
+      facts: [
+        { k: "Problem", v: "Fragmented systems — different interfaces, configuration methods and requirements between products." },
+        { k: "Design philosophy", v: "Designed to work together — hardware, software and documentation developed as one system." },
+        { k: "Six differences", v: "Six things we do differently." },
+        { k: "Principles", v: "We don’t copy · We don’t sell parts · We don’t launch average · We don’t blend in" },
+        { k: "Sustainability", v: "Sustainability starts with the product itself." },
+      ],
+      shortCards: [
+        { n: "01 · Problem", t: "Fragmented systems", b: "Different interfaces, configuration methods and requirements between products." },
+        { n: "02 · Design philosophy", t: "Designed to work together", b: "Hardware, software and documentation developed as one system." },
+        { n: "03 · For professional partners", t: "Simpler work on site", b: "Installation, commissioning and long-term operation, in the sections below." },
+      ],
+      sixThings: [
+        { n: "01", title: "We design the complete system", body: "Most energy installations are assembled from unrelated products. We develop products around shared connections, information and installation logic.", result: "The result: fewer compatibility questions and a more coherent installation." },
+        { n: "02", title: "We design for the installer and the user", body: "An energy product must be straightforward to specify, install, commission, understand and maintain.", result: "Technical depth is available when it is needed. Everyday operation remains clear." },
+        { n: "03", title: "Every product has a digital identity", body: "QR and NFC identification connect the physical product to its documentation, serial number, warranty, commissioning information and service history.", result: "The correct information stays connected to the correct product." },
+        { n: "04", title: "Hardware and software belong together", body: "EMON connects generation, storage, consumption, tariffs and connected equipment in one energy environment.", result: "The software is not added afterwards. It is part of how the system is designed." },
+        { n: "05", title: "We make complexity visible only when useful", body: "Energy systems are technically complex. Their interfaces do not have to be.", result: "We organise information around decisions, actions and outcomes rather than exposing every parameter at once." },
+        { n: "06", title: "We build connected products without a closed island", body: "STRØHM.ENERGY products work as one ecosystem while retaining the interfaces needed for meters, networks, installers and compatible third-party equipment.", result: "This protects system flexibility and reduces dependency on one product generation." },
+      ],
+      principles: [
+        { n: "1", t: "We don’t copy.", b: "Everyone does it that way. We do it our way. We do not accept a convention simply because the industry has used it for years. Every product, connection and workflow can be reconsidered. We keep what works and redesign what does not." },
+        { n: "2", t: "We don’t sell parts.", b: "We don’t hand you a single part. We surround you with a complete system, or nothing. A product includes more than hardware. It includes software, packaging, installation, commissioning, documentation, service, warranty and eventual replacement. We take responsibility for the complete experience." },
+        { n: "3", t: "We don’t launch average.", b: "At least six things radically new, better or different. Otherwise it stays in the lab. Quality should not be an abstract promise. It should be visible in the materials, tolerances, connections, documentation, traceability and the way the product behaves throughout its working life." },
+        { n: "4", t: "We don’t blend in.", b: "Twenty-five brands, none of them boring. Prefer dull? Plenty elsewhere. Every product has to save energy and earn money. That is the minimum, not the goal. We also want soul: a clear idea behind every product, a recognisable identity and enough swing to be remembered. Technically serious, never anonymous, and style never at the cost of function." },
+      ],
+      sustainability: [
+        "Products that can remain useful as systems expand.",
+        "Replaceable components where technically practical.",
+        "Clear product identification and service history.",
+        "Reduced installation errors and unnecessary replacement.",
+        "Packaging and logistics designed around actual product requirements.",
+        "Better energy visibility through EMON.",
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

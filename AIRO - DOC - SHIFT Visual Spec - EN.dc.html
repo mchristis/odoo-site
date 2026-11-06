@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>AIRO SHIFT Visual Spec | STRØHM.ENERGY</title>
+<script src="./doc-page.js"></script>
+<style> doc-page:not(:defined){visibility:hidden} body { margin:0; } a { color:var(--color-text-primary); } </style>
+</helmet>
+<doc-page size="a4" margin="18mm">
+<div style="font-family:var(--font-web);color:var(--color-text-primary);font-size:10pt;line-height:1.5;">
+  <div style="font-size:8pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-text-primary);">STRØHM.ENERGY · AIRO · Internal document</div>
+  <h1 style="margin:8px 0 6px;font-size:24pt;font-weight:700;">SHIFT visual specification</h1>
+  <div style="font-size:10pt;font-weight:300;color:var(--color-text-primary);margin-bottom:18px;">Version 1 · 27 September 2026 · photos, videos, sketches and animation for the SHIFT page</div>
+
+  <h2 style="margin:18px 0 6px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">1. General rules</h2>
+  <div style="display:grid;grid-template-columns:34mm 1fr;gap:4px 12px;font-size:9.5pt;">
+    <b>Look</b><span style="font-weight:300;">Calm Northern European interiors, white or light plaster walls, oak, linen. Soft daylight. No brand logos except AIRO.</span>
+    <b>Colour</b><span style="font-weight:300;">Greyscale site. Airflow shown in two tones only: cool incoming air light grey-blue, warm outgoing air warm grey. No saturated blue or orange.</span>
+    <b>People</b><span style="font-weight:300;">Optional, hands only in installation shots. No posed families.</span>
+    <b>Product</b><span style="font-weight:300;">Square white front panel with rounded corners, Ø 160 mm wall pipe, AIRO wordmark only. Supplier markings removed.</span>
+    <b>Files</b><span style="font-weight:300;">AIRO_SHIFT_[TYPE]_[NAME]_v1. Photos JPG 3000 px long side. Video MP4 H.264, 1920 × 1080, 25 fps, no music bed required, captions burnt-in optional.</span>
+    <b>Claims</b><span style="font-weight:300;">No efficiency percentages or noise values on visuals until confirmed.</span>
+  </div>
+
+  <h2 style="margin:20px 0 6px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">2. Photos</h2>
+  <sc-for list="{{ photos }}" as="p" hint-placeholder-count="6">
+    <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:9px 0;">
+      <div style="display:flex;justify-content:space-between;gap:12px;"><b>{{ p.id }} · {{ p.name }}</b><span style="font-weight:300;color:var(--color-text-primary);">{{ p.fmt }}</span></div>
+      <div style="font-weight:300;color:var(--color-text-primary);margin:2px 0 5px;">{{ p.use }}</div>
+      <div style="background:var(--color-surface-card);padding:7px 10px;font-family:Menlo,Consolas,monospace;font-size:8.3pt;">{{ p.prompt }}</div>
+    </div>
+  </sc-for>
+
+  <h2 style="margin:20px 0 6px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">3. Sketches and diagrams</h2>
+  <p style="margin:0 0 6px;font-weight:300;">Build as vector line drawings: 1 px black lines, light grey fills, Helvetica labels, no perspective tricks. Not AI-generated.</p>
+  <sc-for list="{{ sketches }}" as="p" hint-placeholder-count="4">
+    <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:9px 0;">
+      <div style="display:flex;justify-content:space-between;gap:12px;"><b>{{ p.id }} · {{ p.name }}</b><span style="font-weight:300;color:var(--color-text-primary);">{{ p.fmt }}</span></div>
+      <div style="font-weight:300;color:var(--color-text-primary);margin-top:2px;">{{ p.prompt }}</div>
+    </div>
+  </sc-for>
+
+  <h2 style="margin:20px 0 6px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">4. Animation</h2>
+  <sc-for list="{{ anims }}" as="p" hint-placeholder-count="2">
+    <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:9px 0;">
+      <div style="display:flex;justify-content:space-between;gap:12px;"><b>{{ p.id }} · {{ p.name }}</b><span style="font-weight:300;color:var(--color-text-primary);">{{ p.fmt }}</span></div>
+      <sc-for list="{{ p.shots }}" as="s" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:22mm 1fr;gap:10px;font-size:9pt;padding:3px 0;"><span style="font-weight:700;">{{ s.t }}</span><span style="font-weight:300;color:var(--color-text-primary);">{{ s.d }}</span></div></sc-for>
+    </div>
+  </sc-for>
+
+  <h2 style="margin:20px 0 6px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">5. Videos</h2>
+  <sc-for list="{{ videos }}" as="p" hint-placeholder-count="3">
+    <div style="break-inside:avoid;border-bottom:1px solid var(--color-divider);padding:9px 0;">
+      <div style="display:flex;justify-content:space-between;gap:12px;"><b>{{ p.id }} · {{ p.name }}</b><span style="font-weight:300;color:var(--color-text-primary);">{{ p.fmt }}</span></div>
+      <div style="font-weight:300;color:var(--color-text-primary);margin:2px 0 4px;">{{ p.use }}</div>
+      <sc-for list="{{ p.shots }}" as="s" hint-placeholder-count="6"><div style="display:grid;grid-template-columns:22mm 1fr;gap:10px;font-size:9pt;padding:3px 0;"><span style="font-weight:700;">{{ s.t }}</span><span style="font-weight:300;color:var(--color-text-primary);">{{ s.d }}</span></div></sc-for>
+    </div>
+  </sc-for>
+
+  <h2 style="margin:20px 0 6px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">6. Open before production</h2>
+  <div style="font-weight:300;color:var(--color-text-primary);">Core hole diameter and wall thickness range, cycle time per phase, final front panel design and colours, outer hood shapes, confirmed electrical connection per country, AIRO wordmark position on the panel.</div>
+</div>
+</doc-page>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const S = (arr) => arr.map(([t, d]) => ({ t, d }));
+class Component extends DCLogic {
+  renderVals() {
+    const base = "Architectural interior photograph, white plaster wall, soft window daylight from the left, natural oak floor, neutral greyscale grade, 35 mm lens, straight verticals, photorealistic, no text, no logos except a small AIRO wordmark on the unit";
+    return {
+      photos: [
+        { id: "P1", name: "AIRO_SHIFT_HERO_01", fmt: "21:9 · hero", use: "SHIFT page hero (slot airo-shift-hero).", prompt: base + " + square white SHIFT front panel with rounded corners mounted high on the external wall of a calm bedroom, linen bed edge in frame, window with sheer curtain beside it, unit fills 10% of frame" },
+        { id: "P2", name: "AIRO_SHIFT_PAIR_01", fmt: "16:9", use: "How it works, paired units.", prompt: base + " + open-plan living room with two identical SHIFT units on opposite external walls, both visible, sofa and low shelf, early evening light" },
+        { id: "P3", name: "AIRO_SHIFT_OUTSIDE_01", fmt: "4:3", use: "Outer hood on the façade.", prompt: "Exterior photo of a brick façade with a small flat white SHIFT outer hood next to a window, overcast daylight, straight-on, greyscale grade" },
+        { id: "P4", name: "AIRO_SHIFT_FILTER_01", fmt: "4:3", use: "Everyday use, filter change.", prompt: base + " + two hands lifting off the front panel and pulling the round filter out of the unit, close-up, shallow depth of field" },
+        { id: "P5", name: "AIRO_SHIFT_PANELS_01", fmt: "16:9", use: "Accessories, front panels.", prompt: "Studio product photo on light grey, three SHIFT front panels side by side: white, anthracite, fabric-covered light grey, front view, soft shadowless light" },
+        { id: "P6", name: "AIRO_SHIFT_EXPLODED_01", fmt: "1:1", use: "Spare parts and accessories.", prompt: "Studio exploded view on white: front panel, fan unit, ceramic regenerator cylinder, filter, Ø 160 mm wall pipe, outer hood, aligned on one axis, even spacing, soft light, greyscale" },
+      ],
+      sketches: [
+        { id: "S1", name: "AIRO_SHIFT_INSTALL_SKETCH_01", fmt: "4:3", prompt: "Wall section: plaster, masonry, insulation, brick. Pipe through the wall sloping slightly outwards, regenerator and fan inside the pipe, inner unit and front panel on the room side, outer hood on the façade. Dimension lines for pipe Ø and wall thickness labelled [TO CONFIRM]." },
+        { id: "S2", name: "AIRO_SHIFT_POSITION_01", fmt: "16:9", prompt: "Room plan from above with two SHIFT positions on opposite external walls, arrows showing air crossing the room, keep-clear zones near corners, curtains and furniture shaded." },
+        { id: "S3", name: "AIRO_SHIFT_DIY_STEPS_01", fmt: "3 × 3 grid", prompt: "Eight small numbered line drawings matching the eight installation steps on the page: position, check wall, core drill, pipe, outer hood from inside, seal and core, power, panel and pairing." },
+        { id: "S4", name: "AIRO_SHIFT_PHASES_01", fmt: "16:9", prompt: "Two side-by-side sections of the unit: Phase 1 warm grey arrows leaving, regenerator filling with heat; Phase 2 light grey arrows entering, regenerator releasing heat. Small temperature labels room/outdoor." },
+      ],
+      anims: [
+        { id: "A1", name: "AIRO_SHIFT_CYCLE_ANIM_01", fmt: "16:9 loop · 12 s", shots: S([["0–4 s", "Section view. Warm room air flows out, regenerator fills with a warm grey tone."], ["4–5 s", "Fan reverses, small arrow icon turns."], ["5–9 s", "Cold outdoor air enters, takes the tone from the regenerator, leaves into the room warm."], ["9–12 s", "Zoom out to room plan: second unit runs in opposite phase, balance indicator steady."]]) },
+        { id: "A2", name: "AIRO_SHIFT_CO2_ANIM_01", fmt: "1:1 loop · 8 s", shots: S([["0–3 s", "Bedroom icon, CO₂ value rises during the night."], ["3–6 s", "SHIFT speeds up one step, value falls."], ["6–8 s", "Speed returns to low, value stable."]]) },
+      ],
+      videos: [
+        { id: "V1", name: "AIRO_SHIFT_INSTALL_VIDEO_01", fmt: "16:9 · 90 s", use: "Installation from inside, page section 02. Real installer, real wall.", shots: S([["0–8 s", "Wide: empty room, installer marks the position with a level."], ["8–25 s", "Core drill through the wall from inside, dust extraction on, time-lapse."], ["25–40 s", "Pipe cut to length and inserted."], ["40–55 s", "Outer hood passed through the pipe and fixed, all from inside. Cut to a quick outside shot of the finished hood."], ["55–75 s", "Seal, core, filter, power connection (electrician)."], ["75–90 s", "Front panel on, app pairing on a phone, room calm. End card: AIRO SHIFT."]]) },
+        { id: "V2", name: "AIRO_SHIFT_FILTER_VIDEO_01", fmt: "9:16 · 30 s", use: "Social and support: filter change without tools.", shots: S([["0–5 s", "Hand removes the front panel."], ["5–15 s", "Filter out, tapped clean or replaced."], ["15–25 s", "Filter back, panel on."], ["25–30 s", "App shows filter timer reset."]]) },
+        { id: "V3", name: "AIRO_SHIFT_EXPLAINER_01", fmt: "16:9 · 45 s", use: "Overview page and social: why one fan in two directions saves heat. Combines animation A1 with photo P2.", shots: S([["0–10 s", "Problem: closed windows, stale air, open window loses heat."], ["10–35 s", "Animation A1."], ["35–45 s", "Result in the room, end card with sizing tool link."]]) },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

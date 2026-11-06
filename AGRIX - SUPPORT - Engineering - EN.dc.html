@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>AGRIX Engineering | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:#6B8E4E; }
+  input, textarea, select { font-family:var(--font-web); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="AgrixNav" active="structures" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="AGRIX" rgb="107,142,78" eyebrow="German engineering" title="First tell us what the farm needs to do. Then book the meeting." intro="AGRIX projects are supported by a specialised engineering team in Germany." slot="agrix-engineering-hero" shot="AGRIX · Engineering · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;"><a href="AGRIX - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">Agri-PV</a> &#8250; <span style="color:var(--color-text-primary);">ENGINEERING</span></div>
+    <p style="margin:0 0 24px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:820px;">The online meeting follows a short project brief so the discussion begins with the real site, not a generic presentation.</p>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;--cg:32px;">
+      <!-- BRIEF -->
+      <div style="padding:32px;background:#F4F4F4;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6B8E4E;margin-bottom:16px;">Prepare a project brief</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <input placeholder="Country and site" style="height:42px;padding:0 12px;border:1px solid var(--color-grey-40);font-size:var(--web-input-size);font-weight:var(--web-input-weight);outline:none;border-radius:8px;" />
+          <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;--cg:12px;">
+            <input placeholder="Available land (ha)" style="height:42px;padding:0 12px;border:1px solid var(--color-grey-40);font-size:var(--web-input-size);font-weight:var(--web-input-weight);outline:none;border-radius:8px;" />
+            <input placeholder="Estimated capacity (kWp)" style="height:42px;padding:0 12px;border:1px solid var(--color-grey-40);font-size:var(--web-input-size);font-weight:var(--web-input-weight);outline:none;border-radius:8px;" />
+          </div>
+          <input placeholder="Crop or livestock" style="height:42px;padding:0 12px;border:1px solid var(--color-grey-40);font-size:var(--web-input-size);font-weight:var(--web-input-weight);outline:none;border-radius:8px;" />
+          <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;--cg:12px;">
+            <input placeholder="Widest implement (m)" style="height:42px;padding:0 12px;border:1px solid var(--color-grey-40);font-size:var(--web-input-size);font-weight:var(--web-input-weight);outline:none;border-radius:8px;" />
+            <select style="height:42px;padding:0 10px;border:1px solid var(--color-grey-40);font-size:var(--web-input-size);font-weight:var(--web-input-weight);background:#FFFFFF;color:var(--color-text-primary);border-radius:8px;">
+              <option>Preferred system: advise me</option><option>TWIG</option><option>HEDGE</option>
+            </select>
+          </div>
+          <textarea placeholder="Principal question for engineering" rows="3" style="padding:10px 12px;border:1px solid var(--color-grey-40);font-size:var(--web-input-size);font-weight:var(--web-input-weight);outline:none;resize:vertical;border-radius:8px;"></textarea>
+          <div style="border:1px dashed #D6D4D2;padding:18px;text-align:center;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:var(--color-grey-70);background:#FAFAF9;border-radius:8px;">Upload field plans, photographs and machinery data</div>
+          <button style-hover="background:#5F5E5E;color:#F4F4F4;" onClick="{{ submit }}" style="cursor:pointer;font-family:inherit;min-height:var(--cta-height,56px);border:none;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);font-weight:400;border-radius:var(--cta-radius,8px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">{{ btnLabel }}</button>
+          <p style="margin:4px 0 0;font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);max-width:760px;">The calendar opens after the brief is submitted, so the meeting starts from your real site.</p>
+        </div>
+      </div>
+
+      <!-- WHAT THEY REVIEW + PROFILE -->
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">What the team reviews</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;">
+          <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="9">
+            <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:8px 12px;background:var(--color-surface-card);color:var(--color-text-primary);border-radius:8px;">{{ r }}</span>
+          </sc-for>
+        </div>
+        <div style="padding:28px;display:flex;gap:20px;align-items:flex-start;background:#F4F4F4;border-radius:12px;">
+          <div style="width:96px;height:120px;flex:none;"><image-slot id="agri-eng-portrait" shape="rounded" radius="8" placeholder="PPL-V3-AGRIX-AGRI-01 · 4:5 · real approved staff portrait, working context"></image-slot></div>
+          <div>
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6B8E4E;margin-bottom:8px;">Agri-PV engineering</div>
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:4px;line-height:var(--web-h3-lh);">[PERSON PROFILE REQUIRED FROM STRØHM.ENERGY]</div>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">This is a technical discussion, not a sales call. The specialist can review TWIG or HEDGE suitability, spans, loads, foundations, machinery geometry, crop-light assumptions, drainage, safety and construction &#8212; and confirm what is technically possible.</p>
+          </div>
+        </div>
+        <p style="margin:20px 0 0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">The first meeting should confirm missing data, likely system direction, custom-engineering triggers, required studies and the scope of the preliminary proposal. It is not a substitute for final design.</p>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="ContentSections" brand="AGRIX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="AGRIX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="AGRIX" accent="var(--color-brand-agrix)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { sent: false };
+  renderVals() {
+    return {
+      reviews: ["TWIG or HEDGE suitability", "Spans, heights and row pitch", "Wind, snow and structural loads", "Soil and foundation options", "Machinery and headland geometry", "Crop light and ventilation", "Drainage, harvesting and irrigation", "Livestock, fire, lightning and impact safety", "Construction, service and module replacement"],
+      submit: () => this.setState({ sent: true }),
+      btnLabel: this.state.sent ? "Brief received. The team will follow up." : "Submit brief, then book",
+    };
+  }
+}
+</script>
+</body>
+</html>

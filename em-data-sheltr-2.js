@@ -1,0 +1,96 @@
+// SHELTR (Protect) part 2.
+window.EM_SHELTR_B = { phases: [
+  ['HUSH acoustic assemblies', 'Controlled acoustic construction, not insulation added to a cabinet. Lining absorption data does not give the noise reduction of the whole enclosure.', [
+    ['Define acoustic layers', 'Absorber and barrier arrangement'], ['Verify material documentation', 'Moisture, temperature and fire properties'],
+    ['Cut acoustic materials', 'Dimensions'], ['Prepare panel cavities', 'Clean and dry'],
+    ['Fit vibration damping', 'Location and attachment'], ['Install absorbers', 'Thickness and density'],
+    ['Fit protective facings', 'Retained without blocking function'], ['Secure edges and joints', 'No shedding'],
+    ['Assemble acoustic baffles', 'Passage geometry'], ['Seal removable acoustic panels', 'No sound leaks'],
+    ['Inspect gaps and compression', 'Match validated construction'], ['Verify moisture drainage', 'No water retention'], ['Identify panel variants', 'Assembly allocation']]],
+  ['Ventilation and thermal management', 'Configuration-specific airflow parts for KUBO and HUSH; free airflow around heat pumps is kept.', [
+    ['Prepare intake and exhaust', 'Configuration'], ['Install louvres and baffles', 'Direction'],
+    ['Fit filters', 'Accessible replacement'], ['Install fans', 'Direction and support'],
+    ['Install ducts or separators', 'No recirculation'], ['Fit dampers', 'Movement'],
+    ['Install cooling equipment', 'Mounting and drainage'], ['Install anti-condensation heating', 'Clearances'],
+    ['Fit temperature and humidity sensors', 'Representative positions'], ['Inspect airflow passages', 'Unobstructed'],
+    ['Verify maintenance access', 'Filters and fans replaceable'], ['Record component identities', 'Traceable']]],
+  ['Optional controls and monitoring', 'Electronics only where active controls or monitoring are included; passive CARA has no control board.', [
+    ['Release the board specification', 'Functions'], ['Receive PCBs and components', 'Identity and batch'],
+    ['Print and inspect solder paste', 'Deposits'], ['Place components', 'Pick-and-place'],
+    ['Reflow solder', 'Validated profile'], ['Inspect boards', 'Optical inspection'],
+    ['Fit terminals and large parts', 'Approved soldering'], ['Program firmware', 'Controlled release'],
+    ['Test inputs and outputs', 'Response'], ['Apply coating', 'Protection'],
+    ['Install the control assembly', 'Protected location'], ['Connect fans, heaters and sensors', 'Wiring'],
+    ['Connect protective bonding', 'Approved'], ['Test local control', 'Standalone behaviour'],
+    ['Verify EMON communication', 'Values and alarms'], ['Record software and configuration', 'Product-linked']]],
+  ['Assemble CARA', 'Open clearances from the compatibility review are preserved.', [
+    ['Load the frame into the fixture', 'Size and orientation'], ['Install equipment supports', 'Mounting'],
+    ['Fit the protective roof', 'Slope and overhang'], ['Install drip edges or gutters', 'Discharge'],
+    ['Fit optional sides', 'Airflow preserved'], ['Install cable and pipe guides', 'Protected routing'],
+    ['Fit mounting interfaces', 'Wall, roof or ground'], ['Tighten connections', 'Approved method'],
+    ['Verify equipment clearances', 'Compatibility record'], ['Check service and replacement access', 'Removal route'], ['Inspect the structure', 'Accepted']]],
+  ['Assemble KUBO', 'A declared enclosure configuration, not a universal sealed cabinet.', [
+    ['Assemble the cabinet frame', 'Geometry'], ['Install supports and shelves', 'Approved loads'],
+    ['Fit base and wall panels', 'Interfaces'], ['Install ventilation or cooling', 'Thermal design'],
+    ['Fit cable and pipe entries', 'Protection'], ['Install roof and drainage', 'Water path'],
+    ['Install doors, hinges and locks', 'Operation'], ['Fit seals', 'Compression'],
+    ['Install optional partitions', 'Configuration'], ['Install controls', 'Wiring'],
+    ['Verify access and removal routes', 'Serviceable'], ['Inspect the cabinet', 'Accepted']]],
+  ['Assemble HUSH', 'The acoustic and airflow geometry validated for the equipment combination is preserved.', [
+    ['Assemble the frame', 'Dimensions'], ['Fit supports or isolation', 'Load path'],
+    ['Install acoustic panels', 'Orientation'], ['Install intake and exhaust baffles', 'Passage geometry'],
+    ['Fit airflow separators', 'No recirculation'], ['Install weather protection', 'Acoustic and airflow kept'],
+    ['Fit doors and removable panels', 'Sealed, serviceable'], ['Install drainage', 'Including equipment discharge'],
+    ['Fit guards', 'Protection'], ['Inspect acoustic continuity', 'No gaps'],
+    ['Verify equipment and service clearances', 'Approved configuration'], ['Complete assembly inspection', 'Accepted']]],
+  ['Test equipment and enclosure together', 'First-article and project verification with the actual equipment or a justified representative.', [
+    ['Install equipment or representative load', 'Position and interfaces'], ['Verify structural support', 'Loading'],
+    ['Run defined operating conditions', 'Thermal or airflow load'], ['Measure intake and exhaust', 'Recirculation'],
+    ['Measure pressure loss', 'Airflow resistance'], ['Record temperatures', 'Within limits'],
+    ['Verify ventilation controls', 'Response'], ['Test fan or control failures', 'Fault behaviour'],
+    ['Check condensation', 'No accumulation'], ['Check drainage under water input', 'Discharge'],
+    ['Verify routine maintenance access', 'Reachable'], ['Demonstrate equipment removal', 'Replacement method'],
+    ['Record limitations', 'Compatibility boundaries']]],
+  ['Verify HUSH acoustic performance', 'Results state the equipment, configuration, operating conditions and measured effect.', [
+    ['Define the test arrangement', 'Equipment, location and method'], ['Measure without HUSH', 'Baseline'],
+    ['Install the approved HUSH', 'Assembly'], ['Repeat equivalent conditions', 'Comparable'],
+    ['Measure sound', 'Documented results'], ['Review frequency behaviour', 'Tonal or low-frequency limits'],
+    ['Verify thermal and airflow at the same time', 'No hidden penalty'], ['State the measured result', 'Boundary and conditions'], ['Release the qualified combination', 'Approved compatibility']]],
+  ['Qualification and routine inspection', 'Routine inspection confirms conformity; not every enclosure gets full acoustic or environmental qualification. Battery fire containment, pressure relief or refrigerant hazard management are separate engineered capabilities.', [
+    ['Structural strength', 'Equipment loads, site actions and connections'], ['Weather protection', 'Declared configuration'],
+    ['Thermal behaviour', 'Equipment limits and solar exposure'], ['Airflow', 'Pressure loss, separation and recirculation'],
+    ['Acoustic performance', 'HUSH and equipment combination'], ['Corrosion protection', 'Materials, treatment and exposure'],
+    ['Mechanical access', 'Doors, locks, panels and replacement'], ['Electrical accessories', 'Wiring and safety'],
+    ['Acoustic materials', 'Retention, moisture and fire properties'], ['Packaging', 'Panels, seals and coatings']], 'nonum'],
+  ['Final inspection and identification', 'The product identifies the configuration it was approved to protect.', [
+    ['Inspect dimensions and mounting points', 'Drawing compliance'], ['Inspect finish and edges', 'No damage'],
+    ['Check doors, locks and panels', 'Operation'], ['Inspect gaskets and acoustic materials', 'Complete'],
+    ['Check airflow and drainage openings', 'Unobstructed'], ['Test electrical accessories', 'Function'],
+    ['Apply model and configuration labels', 'Identity'], ['Apply QR and NFC', 'Product record'],
+    ['Verify compatibility documentation', 'Equipment and limits'], ['Review inspection records', 'No open defects'], ['Authorise factory release', 'Quality approval']]],
+  ['Pack and ship', 'Shipped assembled or as an identified kit.', [
+    ['Select the packing configuration', 'Assembled or kit'], ['Scan released components', 'Model and revision'],
+    ['Apply surface protection', 'No coating damage'], ['Protect seals and acoustic faces', 'No crushing'],
+    ['Present to the handling station', 'Supported'], ['Engage the lifting tool', 'Structural surfaces'],
+    ['Verify secure pickup', 'Feedback'], ['Transfer to crate or pallet', 'Controlled'],
+    ['Add separators', 'No abrasion'], ['Restrain doors and removable parts', 'No movement'],
+    ['Pack ventilation components', 'Blades and controls protected'], ['Count and pack fastening kits', 'Quantities'],
+    ['Pack mounting and sealing accessories', 'Model kit'], ['Insert instructions and compatibility information', 'Revision'],
+    ['Verify contents', 'Independent checks'], ['Close and secure', 'No local crushing'],
+    ['Label mass, orientation and lifting', 'Handling'], ['Record package identity', 'Packing record'], ['Release the shipment', 'Accepted']]],
+  ['Install and hand over', 'Site acceptance confirms the installed environment matches the approved configuration.', [
+    ['Inspect delivery', 'No damage'], ['Verify mounting surface and attachment', 'Site interface'],
+    ['Assemble and secure SHELTR', 'Released instructions'], ['Install the equipment', 'Mounting and clearances'],
+    ['Complete cable, pipe and drainage', 'No obstruction'], ['Verify intake and exhaust clearances', 'Compatibility record'],
+    ['Test equipment operation', 'Installed behaviour'], ['Check access and replacement routes', 'Serviceable'],
+    ['Record as-built configuration', 'Equipment and enclosure'], ['Register product identity', 'QR/NFC'],
+    ['Deliver the handover file', 'Inspection, maintenance and warranty']]]
+], records: [
+  ['Equipment compatibility', 'Model, dimensions, mass, airflow and service'], ['Engineering', 'Structure, mounting, drainage and limits'],
+  ['Materials', 'Metals, plastics, gaskets and acoustic materials'], ['Fabrication', 'Cutting, forming, welding and inspection'],
+  ['Finish', 'Treatment batches and acceptance'], ['Thermal management', 'Fans, filters, cooling and controls'],
+  ['Acoustic verification', 'Equipment combination, method and results'], ['Functional tests', 'Temperatures, airflow, drainage and access'],
+  ['Electronics', 'Hardware, firmware and tests where fitted'], ['Factory release', 'Quality authorisation'],
+  ['Packaging', 'Contents, condition and shipment'], ['Installation', 'As-built equipment, clearances and commissioning'],
+  ['Service', 'Maintenance, repairs and approved equipment changes']
+] };

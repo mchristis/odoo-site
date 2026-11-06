@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="font-family:var(--font-web);color:#4F4F4E;">
+  <div style="display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;margin-bottom:24px;">
+    <sc-for list="{{ bar }}" as="b" hint-placeholder-count="8"><div style="display:flex;flex-direction:column;gap:6px;"><div style="height:2px;background:{{ b.c }};"></div><span style="font-size:10px;font-weight:700;letter-spacing:0.06em;color:{{ b.c }};overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">{{ b.l }}</span></div></sc-for>
+  </div>
+  <sc-if value="{{ asking }}" hint-placeholder-val="{{ true }}">
+    <div style="background:#F5F5F5;padding:28px;display:flex;flex-direction:column;gap:18px;border-radius:12px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Step {{ stepNum }} of 8 · {{ stepTitle }}</div>
+      <sc-for list="{{ qs }}" as="q" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <span style="font-size:15px;font-weight:700;">{{ q.label }}</span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <sc-for list="{{ q.opts }}" as="o" hint-placeholder-count="4"><button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.sel }}" style="font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);min-height:40px;padding:0 16px;border-radius:12px;border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }};cursor:pointer;">{{ o.l }}</button></sc-for>
+          </div>
+          <sc-if value="{{ q.warn }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-min-size);font-weight:300;color:#B07818;line-height:var(--web-min-lh);">{{ q.warn }}</span></sc-if>
+        </div>
+      </sc-for>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ back }}" style="font-family:inherit;font-size:var(--cta-font,16px);min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border-radius:var(--cta-radius,8px);border:1px solid #BBBBBB;background:#FFFFFF;color:#4F4F4E;cursor:pointer;font-weight:400;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Back</button></sc-if>
+        <button type="button" onClick="{{ next }}" style="font-family:inherit;font-size:var(--cta-font);height:var(--cta-height);padding:0 var(--cta-pad-x);border-radius:var(--cta-radius);border:none;background:#4F4F4E;color:#F4F4F4;cursor:pointer;">{{ nextLabel }}</button>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;">
+      <div style="flex:3 1 420px;min-width:0;background:#F5F5F5;padding:28px;display:flex;flex-direction:column;gap:14px;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Screening result</div>
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ resTitle }}</div>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;">{{ resText }}</p>
+        <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Next action: {{ resNext }}</div>
+        <sc-if value="{{ hasReasons }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;border-top:1px solid #DDDDDD;"><span style="font-size:12px;font-weight:700;padding:10px 0 4px;">Why</span><sc-for list="{{ reasons }}" as="r" hint-placeholder-count="2"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;padding:4px 0;">· {{ r }}</span></sc-for></div></sc-if>
+        <sc-if value="{{ hasGaps }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;border-top:1px solid #DDDDDD;"><span style="font-size:12px;font-weight:700;padding:10px 0 4px;">Missing evidence</span><sc-for list="{{ gaps }}" as="r" hint-placeholder-count="2"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#B07818;padding:4px 0;">· {{ r }}</span></sc-for></div></sc-if>
+        <div style="font-size:var(--web-min-size);font-weight:300;color:#8A8A88;line-height:var(--web-min-lh);">A screening assessment, not a guaranteed yield or planning decision. PROP does not show a suitability percentage or an annual kWh from incomplete data.</div>
+        <button type="button" onClick="{{ restart }}" style="align-self:flex-start;font-family:inherit;font-size:var(--web-tag-size);padding:0;border:none;background:none;color:#4F4F4E;text-decoration:underline;cursor:pointer;font-weight:var(--web-tag-weight);">Start again</button>
+        <sc-if value="{{ canDetail }}" hint-placeholder-val="{{ false }}">
+          <div style="border-top:1px solid #1E1E1E;margin-top:8px;padding-top:16px;display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Detailed yield stage</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;text-transform:uppercase;">SAMPLE POWER CURVES</span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;">
+              <sc-for list="{{ yf }}" as="f" hint-placeholder-count="8">
+                <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">{{ f.label }}
+                  <sc-if value="{{ f.isSel }}" hint-placeholder-val="{{ false }}"><select value="{{ f.value }}" onChange="{{ f.onChange }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 8px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;color:#4F4F4E;font-weight:var(--web-input-weight);"><sc-for list="{{ f.options }}" as="o" hint-placeholder-count="5"><option value="{{ o }}">{{ o }}</option></sc-for></select></sc-if>
+                  <sc-if value="{{ f.isNum }}" hint-placeholder-val="{{ true }}"><input type="number" step="any" min="0" value="{{ f.value }}" onChange="{{ f.onChange }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;color:#4F4F4E;box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input></sc-if>
+                </label>
+              </sc-for>
+            </div>
+            <sc-for list="{{ yr }}" as="r" hint-placeholder-count="4"><div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid #DDDDDD;padding-top:8px;"><span style="font-size:13px;font-weight:{{ r.w }};">{{ r.k }}</span><span style="font-size:var(--web-small-size);text-align:right;line-height:var(--web-small-lh);"><span style="font-weight:700;">{{ r.v }}</span> <span style="font-weight:300;">{{ r.u }}</span></span></div></sc-for>
+            <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;">Weibull wind-speed distribution × power curve, with air-density, availability, electrical and site losses. Range shows measurement and model uncertainty. The power curves are SAMPLE curves until model-specific measured curves are published.</div>
+            <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:6px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Financial stage</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;text-transform:uppercase;">EXAMPLE VALUES</span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;">
+              <sc-for list="{{ ff }}" as="f" hint-placeholder-count="6"><label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">{{ f.label }}<input type="number" step="any" min="0" value="{{ f.value }}" onChange="{{ f.onChange }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;color:#4F4F4E;box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input></label></sc-for>
+            </div>
+            <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;--cg:2px;">
+              <sc-for list="{{ cases }}" as="c" hint-placeholder-count="3"><div style="background:#FFFFFF;padding:14px;display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">{{ c.n }}</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ c.kwh }} kWh/year</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ c.save }} / year</span><span style="font-size:15px;font-weight:700;">{{ c.pay }}</span></div></sc-for>
+            </div>
+            <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;">Payback uses installed price, maintenance, self-consumption, tariff and export value. Low, base and high cases follow the yield range. Never rated power multiplied by hours.</div>
+          </div>
+        </sc-if>
+      </div>
+      <div style="flex:2 1 300px;min-width:0;display:flex;flex-direction:column;gap:12px;">
+        <sc-if value="{{ leadClosed }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ openLead }}" style="font-family:inherit;font-size:var(--cta-font);height:var(--cta-height);border:none;border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;cursor:pointer;padding:0 var(--cta-pad-x);">Get my project summary as PDF</button></sc-if>
+        <sc-if value="{{ leadOpen }}" hint-placeholder-val="{{ false }}">
+          <form onSubmit="{{ onLead }}" style="background:#F4F4F4;padding:24px;display:flex;flex-direction:column;gap:14px;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Where should we send it?</div>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Email address<input type="email" required="required" autoComplete="email" value="{{ leadEmail }}" onChange="{{ onLeadEmail }}" style="font-family:inherit;font-size:var(--web-input-size);height:48px;padding:0 14px;border:1px solid #BBBBBB;border-radius:8px;box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">WhatsApp number<input type="tel" required="required" autoComplete="tel" placeholder="+31 6 12345678" value="{{ leadWa }}" onChange="{{ onLeadWa }}" style="font-family:inherit;font-size:var(--web-input-size);height:48px;padding:0 14px;border:1px solid #BBBBBB;border-radius:8px;box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input></label>
+            <label style="display:flex;gap:10px;align-items:flex-start;font-size:var(--web-label-size);font-weight:var(--web-label-weight);line-height:1.5;cursor:pointer;"><input type="checkbox" checked="{{ leadConsent }}" onChange="{{ onLeadConsent }}" style="margin-top:3px;"></input><span>Yes, PROP and STRØHM.ENERGY may send me product news and offers by email and WhatsApp. I can unsubscribe at any time.</span></label>
+            <button type="submit" style="font-family:inherit;font-size:var(--cta-font);height:var(--cta-height);border:none;border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;cursor:pointer;padding:0 var(--cta-pad-x);">Download PDF</button>
+            <sc-if value="{{ leadMsg }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ leadMsg }}</div></sc-if>
+            <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#8A8A88;">Needed to send the summary. Marketing only with the box ticked. See the <a href="STROHM.ENERGY - SITE - Privacy - EN.dc.html" style="text-decoration:underline;">Privacy Policy</a>.</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:#B07818;line-height:var(--web-min-lh);">PROTOTYPE: details are stored in this browser only, nothing is sent yet.</div>
+          </form>
+        </sc-if>
+        <a href="PROP - SUPPORT - Talk to an Expert - EN.dc.html" style="display:flex;align-items:center;justify-content:center;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);background:#F5F5F5;color:#4F4F4E;font-size:var(--cta-font,16px);font-weight:400;box-sizing:border-box;">Book a review</a>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:800}}">
+const STEPS = [
+  ["Project intent", [["site", "What kind of site?", ["Home", "Business", "Farm", "Public space", "Remote site"]], ["goal", "Main goal", ["Energy", "Resilience", "Lighting", "Education", "Design"]], ["grid", "Connection", ["Grid-connected", "Off-grid"]]]],
+  ["Proposed position", [["pos", "Where could the turbine go?", ["Ground mast", "Existing structure", "Roof", "Façade", "Canopy or shelter", "Undecided"]]]],
+  ["Height and space", [["height", "Proposed rotor or hub height", ["Under 6 m", "6 to 12 m", "12 to 20 m", "Over 20 m", "Not sure"]], ["space", "Safety area and service access", ["Enough", "Limited", "None", "Not sure"]]]],
+  ["Obstacles and terrain", [["obst", "Nearest buildings or trees", ["Far and lower", "Close and similar height", "Close and higher", "Not sure"]], ["terrain", "Terrain", ["Open land or coast", "Ridge", "Flat, some obstacles", "Valley", "Dense urban"]]]],
+  ["Visual evidence", [["photos", "Photos of the site (N, E, S, W)", ["I can add photos", "Not now"]]]],
+  ["Energy use", [["use", "Annual electricity use", ["Under 3.000 kWh", "3.000 to 10.000 kWh", "Over 10.000 kWh", "Not sure"]]]],
+  ["Planning and constraints", [["right", "Right to install", ["Owner", "Lease with permission", "No or unclear"]], ["plan", "Known restrictions", ["None known", "Heritage or conservation", "Airport, radar or height limit", "Not sure"]]]],
+  ["Wind evidence", [["wind", "What wind evidence is there?", ["On-site measurement", "Nearby station or mast", "Wind map only", "No evidence"]]]],
+];
+const RES = {
+  good: ["PROMISING FOR REVIEW", "The information suggests that this location may justify a detailed assessment. This is not yet an output guarantee. PROP will review the wind evidence, mounting and system requirements.", "BOOK REVIEW or SUBMIT FULL PROJECT"],
+  measure: ["MEASUREMENT RECOMMENDED", "The location cannot be assessed reliably from maps and photos alone. A temporary wind measurement or further site evidence is recommended before selecting a turbine.", "REQUEST MEASUREMENT PLAN"],
+  bad: ["UNSUITABLE IN THIS POSITION", "The proposed position is likely to suffer from insufficient height, obstruction, turbulence, structural risk or planning constraints. A different position or another energy solution may be more appropriate.", "TRY ANOTHER POSITION or EXPLORE SOLAR AND STORAGE"],
+};
+// SAMPLE power curves (kW at 1..20 m/s) per family, to be replaced by measured curves. DEPTH-83.
+const CURVE = {
+  "TULIP": [0, 0, 0.05, 0.15, 0.3, 0.5, 0.8, 1.15, 1.5, 1.8, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0],
+  "ROSE": [0, 0, 0.02, 0.05, 0.1, 0.17, 0.26, 0.36, 0.45, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0],
+  "IRIS (Darrieus)": [0, 0, 0.1, 0.3, 0.6, 1.0, 1.6, 2.3, 3.0, 3.6, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 0, 0, 0, 0],
+  "REED (H-rotor)": [0, 0, 0.1, 0.3, 0.7, 1.2, 1.9, 2.8, 3.7, 4.5, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 0, 0, 0],
+  "CALLA (Savonius)": [0, 0.01, 0.03, 0.06, 0.1, 0.15, 0.2, 0.25, 0.28, 0.3, 0.3, 0.3, 0.3, 0, 0, 0, 0, 0, 0, 0],
+};
+const YF = [["model", "Turbine family", "REED (H-rotor)", Object.keys(CURVE)], ["vmean", "Mean wind speed at hub height (m/s)", 5], ["k", "Weibull shape factor k", 2], ["rho", "Air density (kg/m³)", 1.225], ["avail", "Availability (%)", 95], ["elec", "Electrical losses (%)", 8], ["site", "Turbulence and site losses (%)", 10], ["unc", "Uncertainty (± %)", 20]];
+const FF = [["price", "Installed price (€)", 18000], ["maint", "Maintenance per year (€)", 250], ["self", "Self-consumption (%)", 60], ["tariff", "Electricity price (€/kWh)", 0.3], ["export", "Export value (€/kWh)", 0.06]];
+const gamma = (z) => { const g = 7, c = [0.99999999999980993, 676.5203681218851, -1259.1392167224028, 771.32342877765313, -176.61502916214059, 12.507343278686905, -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7]; if (z < 0.5) return Math.PI / (Math.sin(Math.PI * z) * gamma(1 - z)); z -= 1; let x = c[0]; for (let i = 1; i < g + 2; i++) x += c[i] / (z + i); const t = z + g + 0.5; return Math.sqrt(2 * Math.PI) * Math.pow(t, z + 0.5) * Math.exp(-t) * x; };
+class Component extends DCLogic {
+  state = { step: 0, a: {}, y: {}, f: {}, leadOpen: false, leadEmail: "", leadWa: "", leadConsent: false, leadMsg: "" };
+  judge() {
+    const a = this.state.a, reasons = [], gaps = [];
+    const hard = [];
+    if (a.right === "No or unclear") hard.push("No clear right to install.");
+    if (a.space === "None") hard.push("No safe area or service access.");
+    if (a.obst === "Close and higher" && (a.height === "Under 6 m" || a.height === "Not sure")) hard.push("Obstacles higher than the rotor, close by: strong wake and turbulence.");
+    if (a.terrain === "Dense urban" && ["Roof", "Façade"].includes(a.pos)) hard.push("Building mount in dense urban airflow: high turbulence risk.");
+    if (a.plan === "Heritage or conservation" || a.plan === "Airport, radar or height limit") reasons.push("Planning constraint to resolve first.");
+    if (["Roof", "Façade", "Existing structure"].includes(a.pos)) reasons.push("Building or structure mount needs structural, vibration and turbulence review.");
+    if (a.photos !== "I can add photos") gaps.push("Site photos in four directions.");
+    if (!a.wind || a.wind === "Wind map only" || a.wind === "No evidence") gaps.push("Measured wind at the site or a nearby station.");
+    if (!a.height || a.height === "Not sure") gaps.push("Proposed hub height.");
+    if (!a.obst || a.obst === "Not sure") gaps.push("Height and distance of nearby obstacles.");
+    let key;
+    if (hard.length) key = "bad";
+    else {
+      const res = (["Open land or coast", "Ridge"].includes(a.terrain) ? 2 : a.terrain === "Flat, some obstacles" ? 1 : 0) + (["12 to 20 m", "Over 20 m"].includes(a.height) ? 2 : a.height === "6 to 12 m" ? 1 : 0) + (a.obst === "Far and lower" ? 1 : 0);
+      const evid = (a.wind === "On-site measurement" ? 2 : a.wind === "Nearby station or mast" ? 1 : 0) + (a.photos === "I can add photos" ? 1 : 0);
+      key = res >= 3 && evid >= 2 ? "good" : res <= 1 ? "bad" : "measure";
+      if (key === "bad") reasons.push("Low height or sheltered terrain for the proposed position.");
+    }
+    return { key, reasons: hard.concat(reasons), gaps };
+  }
+  pdf() {
+    const r = this.judge(), R = RES[r.key], a = this.state.a;
+    const w = window.open("", "_blank"); if (!w) { this.setState({ leadMsg: "The PDF window was blocked. Allow pop-ups and try again." }); return; }
+    const row = (k, v) => '<tr><td style="padding:7px 0;border-bottom:1px solid #DDD;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);">' + k + '</td><td style="padding:7px 0;border-bottom:1px solid #DDD;font-weight:300;text-align:right;font-size:var(--web-small-size);line-height:var(--web-small-lh);">' + v + '</td></tr>';
+    const rows = STEPS.flatMap(([, qs]) => qs.map(([k, l]) => row(l, a[k] || "–"))).join("");
+    w.document.write('<html><head><title>PROP Wind Check</title></head><body style="font-family:var(--font-web);color:#4F4F4E;padding:40px;max-width:680px"><div style="font-size:11px;font-weight:700;letter-spacing:.1em">PROP · STRØHM.ENERGY</div><h1 style="font-size:var(--web-h1-size);margin:8px 0 6px;font-weight:100;line-height:var(--web-h1-lh);">' + R[0] + '</h1><p style="font-weight:300">' + R[1] + '</p><p><b>Next action:</b> ' + R[2] + '</p>' + (r.reasons.length ? '<h2 style="font-size:15px">Why</h2><ul>' + r.reasons.map(x => '<li>' + x + '</li>').join("") + '</ul>' : "") + (r.gaps.length ? '<h2 style="font-size:15px">Missing evidence</h2><ul>' + r.gaps.map(x => '<li>' + x + '</li>').join("") + '</ul>' : "") + '<h2 style="font-size:15px">Your answers</h2><table style="width:100%;border-collapse:collapse;font-size:13px">' + rows + '</table><p style="font-size:var(--web-min-size);font-weight:300;margin-top:24px;line-height:var(--web-min-lh);">Screening assessment, not a guaranteed yield or planning decision. Prepared for ' + this.state.leadEmail + '.</p></body></html>');
+    w.document.close(); w.focus(); w.print();
+  }
+  lead(ev) {
+    ev.preventDefault();
+    const { leadEmail: em, leadWa: wa, leadConsent: ok } = this.state;
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { this.setState({ leadMsg: "That email address looks slightly imaginary." }); return; }
+    if (wa.replace(/[^0-9]/g, "").length < 8) { this.setState({ leadMsg: "The WhatsApp number seems a few digits short." }); return; }
+    try { const L = JSON.parse(localStorage.getItem("prop-windcheck-leads") || "[]"); L.push({ email: em, whatsapp: wa, marketingConsent: ok, at: new Date().toISOString(), answers: this.state.a, result: this.judge().key }); localStorage.setItem("prop-windcheck-leads", JSON.stringify(L)); } catch (e) {}
+    this.pdf();
+    this.setState({ leadMsg: "Done. The wind has been duly noted.", leadOpen: false });
+  }
+  renderVals() {
+    const s = this.state, done = s.step >= STEPS.length, cur = STEPS[Math.min(s.step, STEPS.length - 1)];
+    const set = (k, v) => this.setState(st => ({ a: { ...st.a, [k]: v } }));
+    const r = done ? this.judge() : { key: "measure", reasons: [], gaps: [] }, R = RES[r.key];
+    const yv = (k) => { const d = YF.find(x => x[0] === k); const v = s.y[k] ?? d[2]; return d[3] ? v : (isFinite(+String(v).replace(",", ".")) ? +String(v).replace(",", ".") : 0); };
+    const fv = (k) => { const v = +String(s.f[k] ?? FF.find(x => x[0] === k)[2]).replace(",", "."); return isFinite(v) ? v : 0; };
+    const curve = CURVE[yv("model")] || CURVE["REED (H-rotor)"], k = Math.max(1, yv("k")), vm = Math.max(0.5, yv("vmean"));
+    const c = vm / gamma(1 + 1 / k);
+    let kw = 0; for (let v = 0.25; v <= 25; v += 0.5) { const f = (k / c) * Math.pow(v / c, k - 1) * Math.exp(-Math.pow(v / c, k)) * 0.5; const i = Math.floor(v); const p = i >= 1 && i <= 20 ? (curve[i - 1] + ((curve[i] ?? 0) - curve[i - 1]) * (v - i)) : 0; kw += f * Math.max(0, p); }
+    const net = kw * 8760 * (yv("rho") / 1.225) * (yv("avail") / 100) * (1 - yv("elec") / 100) * (1 - yv("site") / 100);
+    const u = yv("unc") / 100, fmt = (n) => Math.round(n).toLocaleString("de-DE");
+    const save = (kwh) => kwh * (fv("self") / 100) * fv("tariff") + kwh * (1 - fv("self") / 100) * fv("export") - fv("maint");
+    const pay = (kwh) => { const sv = save(kwh); return sv > 0 ? (fv("price") / sv).toFixed(1).replace(".", ",") + " years" : "No payback"; };
+    const detail = {
+      canDetail: done && r.key !== "bad",
+      yf: YF.map(([key, label, d, opts]) => ({ label, value: s.y[key] ?? d, isSel: !!opts, isNum: !opts, options: opts || [], onChange: (e) => { const v = e.target.value; this.setState(st => ({ y: { ...st.y, [key]: v } })); } })),
+      yr: [{ k: "Mean power output", v: (net / 8760).toFixed(2).replace(".", ","), u: "kW", w: 300 }, { k: "Annual energy (base)", v: fmt(net), u: "kWh/year", w: 700 }, { k: "Range", v: fmt(net * (1 - u)) + " – " + fmt(net * (1 + u)), u: "kWh/year", w: 300 }, { k: "Capacity factor", v: ((net / 8760) / Math.max(...curve) * 100).toFixed(0), u: "%", w: 300 }],
+      ff: FF.map(([key, label, d]) => ({ label, value: s.f[key] ?? d, onChange: (e) => { const v = e.target.value; this.setState(st => ({ f: { ...st.f, [key]: v } })); } })),
+      cases: [["LOW", net * (1 - u)], ["BASE", net], ["HIGH", net * (1 + u)]].map(([n, kwh]) => ({ n, kwh: fmt(kwh), save: "€ " + fmt(save(kwh)), pay: pay(kwh) })),
+    };
+    return {
+      ...detail,
+      bar: STEPS.map(([l], i) => ({ l, c: i <= s.step ? "#4F4F4E" : "#D4D4D4" })),
+      asking: !done, done, stepNum: String(s.step + 1), stepTitle: cur[0],
+      qs: cur[1].map(([k, label, opts]) => ({ label, warn: k === "pos" && ["Roof", "Façade", "Existing structure"].includes(s.a.pos) ? "Roof, façade and structure mounts need extra structural, vibration and turbulence checks." : "", opts: opts.map(l => { const sel = s.a[k] === l; return { l, sel, pick: () => set(k, l), bg: sel ? "#1E1E1E" : "#FFFFFF", fg: sel ? "#FFFFFF" : "#4F4F4E", bd: sel ? "#4F4F4E" : "#BBBBBB", w: sel ? 400 : 400 }; }) })),
+      canBack: s.step > 0, back: () => this.setState({ step: s.step - 1 }), next: () => this.setState({ step: s.step + 1 }), nextLabel: s.step === STEPS.length - 1 ? "Show result" : "Next",
+      resTitle: R[0], resText: R[1], resNext: R[2], reasons: r.reasons, hasReasons: r.reasons.length > 0, gaps: r.gaps, hasGaps: r.gaps.length > 0,
+      restart: () => this.setState({ step: 0, a: {}, leadOpen: false, leadMsg: "" }),
+      leadOpen: s.leadOpen, leadClosed: !s.leadOpen, leadEmail: s.leadEmail, leadWa: s.leadWa, leadConsent: s.leadConsent, leadMsg: s.leadMsg,
+      openLead: () => this.setState({ leadOpen: true, leadMsg: "" }), onLead: (ev) => this.lead(ev),
+      onLeadEmail: (ev) => this.setState({ leadEmail: ev.target.value }), onLeadWa: (ev) => this.setState({ leadWa: ev.target.value }), onLeadConsent: (ev) => this.setState({ leadConsent: ev.target.checked }),
+    };
+  }
+}
+</script>
+</body>
+</html>

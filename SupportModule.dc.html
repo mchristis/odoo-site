@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<style> a { text-decoration:none; } </style>
+</helmet>
+<section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 72px;box-sizing:border-box;font-family:var(--font-web);color:#4F4F4E;">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px;">
+    <a href="{{ shopHref }}" style="background:#F4F4F4;border-radius:12px;padding:24px;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#252525;" style-hover="background:#E3E3E3;">Product documents in the webshop<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    <sc-if value="{{ showContact }}" hint-placeholder-val="{{ false }}"><a href="{{ contactHref }}" style="background:#F4F4F4;border-radius:12px;padding:24px;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#252525;" style-hover="background:#E3E3E3;">Contact a specialist<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a></sc-if>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1480,&quot;height&quot;:240},&quot;kind&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;product&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;product&quot;,&quot;system&quot;,&quot;project&quot;]},&quot;brand&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#5F5E5E&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+/* DEPTH-1242 (Knowledge/Support decision 2): former Support section replaced by two destinations. Old version: _ARCHIVE/DEPTH-1242 support module/. */
+const SHOPS = new Set(["AGRIX","AIRO","ANDO","CHILL","DODO","EMON","FEU","FLUXX","GLOW","LINA","MOEBIUS","MOX","MUKI","NENDO","OGO","OZZY","PARX","PONTIX","PROP","SHELTR","SYNQ","TECTIX","TERRIX","TOGU","WURK","XOOM"]);
+const SYSTEMS = new Set(["EMON","TRIBE","KALK","KERN","PUSH","PACT","DEPOT"]);
+class Component extends DCLogic {
+  /* DEPTH-1257 (architecture decision 1): one contact block per page. The Contact a specialist card only shows when the page has no ReachSpecialist block (#specialist). */
+  state = { hasSpecialist: true };
+  componentDidMount() { const chk = () => this.setState({ hasSpecialist: !!document.getElementById("specialist") }); chk(); this._t = setTimeout(chk, 1500); }
+  componentWillUnmount() { clearTimeout(this._t); }
+  renderVals() {
+    const b = String(this.props.brand || "").toUpperCase(), kind = this.props.kind || "product";
+    const shopHref = SHOPS.has(b) ? b + " - WEBSHOP - Shop - EN.dc.html" : "WEBSHOP - SITE - Home - EN.dc.html";
+    let contactHref = "#specialist";
+    if (SYSTEMS.has(b)) contactHref = b + " - SYSTEM - Overview - EN.dc.html#specialist";
+    else if (kind === "product" && SHOPS.has(b)) contactHref = b + " - SUPPORT - Talk to an Expert - EN.dc.html";
+    return { shopHref, contactHref, showContact: !this.state.hasSpecialist };
+  }
+}
+</script>
+</body>
+</html>

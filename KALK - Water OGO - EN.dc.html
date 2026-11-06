@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>:root{--web-side:clamp(20px,5.8vw,84px);}body{margin:0;background:#F7F7F5;font-family:var(--font-web);}a{color:#4F4F4E;}a:hover{color:#252525;}.leaflet-container{background:#E3E3E3;font-family:var(--font-web);}</style>
+<style data-q4-reflow>/* Q4 grid reflow (DEPTH-897, user 26 Oct 2026). Desktop above 1024px unchanged.
+   data-cols="N": equal 2–6 column grids reflow by available width, cards at least 240px, never more than N columns.
+   data-stack: mixed-width grids stack to one column below 720px. Charts (7+ columns) and label/value rows are not marked. */
+@media (max-width:1024px){
+ [data-cols="2"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 1 * var(--cg,0px)) / 2 - 1px))),1fr)) !important}
+ [data-cols="3"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 2 * var(--cg,0px)) / 3 - 1px))),1fr)) !important}
+ [data-cols="4"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 3 * var(--cg,0px)) / 4 - 1px))),1fr)) !important}
+ [data-cols="5"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 4 * var(--cg,0px)) / 5 - 1px))),1fr)) !important}
+ [data-cols="6"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 5 * var(--cg,0px)) / 6 - 1px))),1fr)) !important}
+ [data-cols]>[style*="grid-column:span"],[data-cols]>[style*="grid-column: span"]{grid-column:1/-1 !important}
+}
+@media (max-width:720px){
+ [data-stack]{grid-template-columns:minmax(0,1fr) !important}
+ [data-stack]>*{grid-column:auto !important;grid-row:auto !important}
+}</style>
+</helmet>
+<div data-screen-label="KALK Water OGO" style="display:flex;flex-direction:column;min-height:100vh;">
+  <dc-import name="NavBar" active="systems" hint-size="100%,80px"></dc-import>
+  <div style="position:relative;width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:24px auto 48px;height:clamp(600px,calc(100vh - 160px),820px);border-radius:24px;overflow:hidden;box-sizing:border-box;">
+    <div ref="{{ mapRef }}" style="position:absolute;inset:0;"></div>
+    <sc-if value="{{ isPlace }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;left:24px;top:24px;right:calc(min(440px, 100% - 32px) + 32px);bottom:24px;z-index:450;display:flex;align-items:center;justify-content:center;pointer-events:none;"><svg viewBox="0 0 560 300" width="100%" style="display:block;max-width:560px;" aria-label="Line drawing of OGO TONY, DIVAN and WALL"><rect x="62" y="130" width="46" height="100" rx="8" stroke="#FFFFFF" stroke-width="1.2" fill="none"/><line x1="62" y1="150" x2="108" y2="150" stroke="#FFFFFF" stroke-width="0.8"/><path d="M85 130 V100 H120" stroke="#FFFFFF" stroke-width="1.2" fill="none"/><circle cx="98" cy="214" r="3.5" stroke="#FFFFFF" stroke-width="1.2" fill="none"/><line x1="40" y1="230" x2="130" y2="230" stroke="#FFFFFF" stroke-width="0.8"/><text x="85" y="262" text-anchor="middle" fill="#FFFFFF" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="100" font-size="15" letter-spacing="3">OGO TONY</text><text x="85" y="282" text-anchor="middle" fill="#FFFFFF" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="100" font-size="11" letter-spacing="1">350 · 500 L</text><rect x="190" y="170" width="150" height="60" rx="10" stroke="#FFFFFF" stroke-width="1.2" fill="none"/><rect x="190" y="110" width="150" height="56" rx="10" stroke="#FFFFFF" stroke-width="1.2" fill="none"/><line x1="200" y1="170" x2="330" y2="170" stroke="#FFFFFF" stroke-width="0.8"/><line x1="205" y1="230" x2="205" y2="236" stroke="#FFFFFF" stroke-width="1.2" fill="none"/><line x1="325" y1="230" x2="325" y2="236" stroke="#FFFFFF" stroke-width="1.2" fill="none"/><path d="M265 110 V84 H300" stroke="#FFFFFF" stroke-width="1.2" fill="none"/><line x1="170" y1="236" x2="360" y2="236" stroke="#FFFFFF" stroke-width="0.8"/><text x="265" y="262" text-anchor="middle" fill="#FFFFFF" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="100" font-size="15" letter-spacing="3">OGO DIVAN</text><text x="265" y="282" text-anchor="middle" fill="#FFFFFF" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="100" font-size="11" letter-spacing="1">750 L · seat</text><rect x="400" y="60" width="40" height="170" rx="6" stroke="#FFFFFF" stroke-width="1.2" fill="none"/><line x1="404" y1="80" x2="436" y2="80" stroke="#FFFFFF" stroke-width="0.8"/><rect x="444" y="60" width="40" height="170" rx="6" stroke="#FFFFFF" stroke-width="1.2" fill="none"/><line x1="448" y1="80" x2="480" y2="80" stroke="#FFFFFF" stroke-width="0.8"/><rect x="488" y="60" width="40" height="170" rx="6" stroke="#FFFFFF" stroke-width="1.2" fill="none"/><line x1="492" y1="80" x2="524" y2="80" stroke="#FFFFFF" stroke-width="0.8"/><path d="M420 60 V34 H520" stroke="#FFFFFF" stroke-width="1.2" fill="none"/><line x1="390" y1="230" x2="540" y2="230" stroke="#FFFFFF" stroke-width="0.8"/><text x="464" y="262" text-anchor="middle" fill="#FFFFFF" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="100" font-size="15" letter-spacing="3">OGO WALL</text><text x="464" y="282" text-anchor="middle" fill="#FFFFFF" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="100" font-size="11" letter-spacing="1">about 1.000 L per module</text></svg></div></sc-if>
+    <div style="position:absolute;right:16px;top:16px;bottom:16px;z-index:500;width:min(440px,calc(100% - 32px));display:flex;flex-direction:column;justify-content:flex-end;pointer-events:none;">
+      <div style="pointer-events:auto;background:#FFFFFF;border-radius:12px;padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px;max-height:100%;overflow:auto;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:15px;color:#252525;">OGO by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:20px;width:auto;display:block;filter:brightness(0);"></div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:#5F5E5E;"><div style="width:64px;height:4px;border-radius:2px;background:#E3E3E3;overflow:hidden;"><div style="height:4px;width:{{ progressPct }};background:#00A0E3;"></div></div><span>{{ progressLabel }}</span></div>
+        </div>
+
+        <sc-if value="{{ isPlace }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h1 style="margin:0;font-size:32px;font-weight:200;line-height:1.1;color:#252525;">Rainwater check</h1>
+            <p style="margin:0;font-size:15px;font-weight:300;line-height:1.5;color:#5F5E5E;">Find your place in Europe. KALK reads the rainfall there, compares it with what you want to use the water for and suggests the OGO tank that fits. The financial calculation follows by email.</p>
+            <div style="font-size:14px;color:#252525;">Main purpose</div>
+            <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;--cg:8px;">
+              <sc-for list="{{ purposeOpts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.pick }}" style="min-height:48px;padding:4px 6px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:13px;color:#252525;cursor:pointer;">{{ o.label }}</button></sc-for>
+            </div>
+            <input value="{{ query }}" onChange="{{ onQuery }}" placeholder="Street, town, country" style="min-height:48px;padding:0 16px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:16px;outline:none;" style-focus="border-color:#00A0E3;">
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <sc-for list="{{ results }}" as="r" hint-placeholder-count="0"><button onClick="{{ r.pick }}" style="text-align:left;min-height:44px;padding:8px 12px;border:0;border-radius:8px;background:#F4F4F4;font-family:var(--font-web);font-size:14px;color:#252525;cursor:pointer;">{{ r.label }}</button></sc-for>
+            </div>
+            <sc-if value="{{ hasRain }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:12px;">
+                <div style="display:flex;justify-content:space-between;font-size:14px;color:#252525;"><span>Rainfall per year</span><b>{{ rainYear }} mm</b></div>
+                <div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px;align-items:end;height:60px;">
+                  <sc-for list="{{ rainBars }}" as="b" hint-placeholder-count="12"><div style="height:{{ b.h }};background:#00A0E3;border-radius:2px 2px 0 0;"></div></sc-for>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px;font-size:10px;color:#5F5E5E;text-align:center;"><span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>A</span><span>S</span><span>O</span><span>N</span><span>D</span></div>
+                <div style="font-size:11px;font-weight:300;color:#5F5E5E;">{{ rainSource }}</div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isArea }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Where the rain is collected</h2>
+            <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:#5F5E5E;">Rain runs from the roof into the gutter and down the downpipes. The tank is filled from the downpipes you connect, so only their part of the roof counts.</p>
+            <div style="display:flex;flex-direction:column;gap:6px;background:#F4F4F4;border-radius:8px;padding:12px;font-size:14px;color:#252525;">
+              <span><b>Draw the outline of your roof</b>: click each corner of the roof on the map, at least three. <span style="font-weight:300;">{{ drawInfo }}</span></span>
+              <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+                <div style="display:flex;justify-content:space-between;background:#FFFFFF;border-radius:8px;padding:10px 12px;"><span>Corners</span><b>{{ ptCount }}</b></div>
+                <div style="display:flex;justify-content:space-between;background:#FFFFFF;border-radius:8px;padding:10px 12px;"><span>Roof area</span><b>{{ roofM2 }} m²</b></div>
+              </div>
+              <span style="font-size:12px;font-weight:300;color:#5F5E5E;">Rain falls straight down, so the area seen from above counts, also for a pitched roof.</span>
+              <div style="display:flex;gap:16px;"><button onClick="{{ undoPt }}" style="padding:0;min-height:36px;border:0;background:none;border-bottom:1px solid #4F4F4E;font-family:var(--font-web);font-size:13px;cursor:pointer;">Undo last corner</button><button onClick="{{ clearPts }}" style="padding:0;min-height:36px;border:0;background:none;border-bottom:1px solid #4F4F4E;font-family:var(--font-web);font-size:13px;cursor:pointer;">Clear</button></div>
+            </div>
+            <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:#252525;">Downpipes on this roof<input type="number" min="1" value="{{ pipesAll }}" onChange="{{ onPipesAll }}" style="min-height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:15px;"></label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:#252525;">Downpipes connected to the tank<input type="number" min="1" value="{{ pipes }}" onChange="{{ onPipes }}" style="min-height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:15px;"></label>
+              <sc-if value="{{ noDraw }}" hint-placeholder-val="{{ true }}"><label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:#252525;">Or enter roof area per downpipe (m²)<input type="number" min="1" value="{{ perPipe }}" onChange="{{ onPerPipe }}" style="min-height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:15px;"></label></sc-if>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:#252525;">Gutter length to these downpipes (m)<input type="number" min="0" value="{{ gutter }}" onChange="{{ onGutter }}" style="min-height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:15px;"></label>
+            <div style="display:flex;justify-content:space-between;background:#F4F4F4;border-radius:8px;padding:12px 16px;font-size:14px;color:#252525;"><span>Roof area to the tank</span><b>{{ area }} m²</b></div>
+            <div style="font-size:14px;color:#252525;">Roof surface</div>
+            <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+              <sc-for list="{{ roofOpts }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.pick }}" style="min-height:44px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:14px;color:#252525;cursor:pointer;">{{ o.label }}</button></sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isUse }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">What you use the water for</h2>
+            <sc-for list="{{ uses }}" as="u" hint-placeholder-count="6">
+              <label style="display:flex;align-items:center;gap:12px;background:#F4F4F4;border-radius:8px;padding:8px 12px;font-size:14px;color:#252525;"><span style="flex:1;">{{ u.label }}</span><input type="number" min="0" value="{{ u.val }}" onChange="{{ u.on }}" style="width:80px;min-height:36px;padding:0 8px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);"><span style="width:96px;font-size:12px;color:#5F5E5E;">{{ u.unit }}</span></label>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Your OGO tank</h2>
+            <div style="background:#00A0E3;border-radius:12px;padding:16px;color:#252525;display:flex;flex-direction:column;gap:4px;"><span style="font-size:14px;">Recommended</span><span style="font-size:26px;"><b>{{ tank }}</b></span><span style="font-size:14px;">{{ tankLine }}</span></div>
+            <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+              <sc-for list="{{ figures }}" as="f" hint-placeholder-count="4"><div style="background:#F4F4F4;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;"><span style="font-size:12px;color:#5F5E5E;">{{ f.label }}</span><span style="font-size:17px;color:#252525;"><b>{{ f.value }}</b> {{ f.unit }}</span></div></sc-for>
+            </div>
+            <div style="font-size:14px;color:#252525;">Tank level per month</div>
+            <div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px;align-items:end;height:70px;">
+              <sc-for list="{{ levels }}" as="b" hint-placeholder-count="12"><div style="height:{{ b.h }};background:{{ b.c }};border-radius:2px 2px 0 0;" title="{{ b.t }}"></div></sc-for>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px;font-size:10px;color:#5F5E5E;text-align:center;"><span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>A</span><span>S</span><span>O</span><span>N</span><span>D</span></div>
+            <p style="margin:0;font-size:12px;font-weight:300;line-height:1.5;color:#5F5E5E;">Indicative check. Volumes from the OGO range (TONY 350/500 L, DIVAN 750 L, WALL about 1.000 L per module); filter loss 10 % and irrigation need per m² TO CONFIRM. Grey bars: months the tank runs empty.</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Financial calculation by email</h2>
+            <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:#5F5E5E;">Water saved per year, payback are sent as a PDF. Your local distributor sends the price. A TRIBE installer checks the location of the tank.</p>
+            <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+              <input placeholder="First name" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+              <input placeholder="Last name" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+              <input placeholder="Email" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+              <input placeholder="Phone" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+            </div>
+            <label style="display:flex;gap:12px;align-items:flex-start;font-size:13px;line-height:1.5;color:#252525;"><input type="checkbox" checked="{{ consent }}" onChange="{{ toggleConsent }}" style="margin-top:3px;accent-color:#00A0E3;"><span>I agree that STRØHM.ENERGY uses these details to send my rainwater check and passes them to a local distributor for the price. Required. <a href="#">Privacy policy</a></span></label>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Sent</h2>
+            <p style="margin:0;font-size:16px;font-weight:300;line-height:1.5;color:#5F5E5E;">Your rainwater check and the financial calculation are on their way as a PDF. A TRIBE installer will contact you.</p>
+            <a href="OGO - PRODUCT - Overview - EN.dc.html" style="font-size:14px;">Back to OGO &#8250;</a>
+          </div>
+        </sc-if>
+
+        <div style="display:flex;justify-content:space-between;gap:12px;">
+          <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}"><button onClick="{{ back }}" style="min-height:48px;padding:0 20px;border:0;border-radius:8px;background:#F4F4F4;font-family:var(--font-web);font-size:16px;color:#252525;cursor:pointer;">&#8249; Back</button></sc-if>
+          <sc-if value="{{ showNext }}" hint-placeholder-val="{{ true }}"><button onClick="{{ next }}" disabled="{{ nextDisabled }}" style="margin-left:auto;min-height:48px;padding:0 24px;border:0;border-radius:8px;background:{{ nextBg }};font-family:var(--font-web);font-size:16px;color:#252525;cursor:pointer;">{{ nextLabel }} &#8250;</button></sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const TANKS = [
+  { name: "OGO TONY", line: "Compact tank", sizes: [350, 500], unit: "" },
+  { name: "OGO DIVAN", line: "Seat with integrated tank", sizes: [750], unit: "" },
+  { name: "OGO WALL", line: "Modular wall tank, about 1.000 L per module", sizes: [1000, 2000, 3000, 4000, 5000, 6000, 8000, 10000, 12000], unit: "module" }
+];
+const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const IRR = [0, 0, 5, 20, 40, 55, 65, 55, 30, 10, 0, 0];
+class Component extends DCLogic {
+  state = { purpose: "house", step: 0, query: "", results: [], pin: null, rain: null, src: "", area: 80, pts: [], pipesAll: 2, pipes: 2, perPipe: 40, gutter: 10, roof: "pitched", garden: 50, people: 4, wash: 4, car: 1, other: 0, consent: false };
+  mapRef = React.createRef();
+  componentDidMount() { this._w = setInterval(() => { if (window.L && this.mapRef.current && !this.map) { clearInterval(this._w); this.init(); } }, 100); }
+  componentWillUnmount() { clearInterval(this._w); if (this._ro) this._ro.disconnect(); if (this.map) this.map.remove(); }
+  init() {
+    const L = window.L;
+    this.map = L.map(this.mapRef.current, { zoomControl: false, maxZoom: 20 }).setView([50.5, 9], 4);
+    L.control.zoom({ position: "bottomleft" }).addTo(this.map);
+    L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", { maxNativeZoom: 19, maxZoom: 20, attribution: "Imagery Esri" }).addTo(this.map);
+    this.g = L.layerGroup().addTo(this.map);
+    [0, 300, 1000].forEach((ms) => setTimeout(() => this.map && this.map.invalidateSize(), ms));
+    if (window.ResizeObserver) { this._ro = new ResizeObserver(() => this.map && this.map.invalidateSize()); this._ro.observe(this.mapRef.current); }
+    this.map.on("click", (e) => { if (this.state.step === 0) this.setPin([e.latlng.lat, e.latlng.lng]); else if (this.state.step === 1 && this.map.getZoom() >= 16) this.setState((s) => ({ pts: s.pts.concat([[e.latlng.lat, e.latlng.lng]]) }), () => this.drawRoof()); });
+  }
+  drawRoof() { const L = window.L; if (!this.g) return; this.g.clearLayers(); const p = this.state.pts; if (this.state.pin && !p.length) L.circleMarker(this.state.pin, { radius: 8, color: "#FFFFFF", weight: 2, fillColor: "#00A0E3", fillOpacity: 1 }).addTo(this.g);
+    if (p.length > 1) (p.length > 2 ? L.polygon(p, { color: "#FFFFFF", weight: 2, fillColor: "#00A0E3", fillOpacity: 0.25 }) : L.polyline(p, { color: "#FFFFFF", weight: 2 })).addTo(this.g);
+    p.forEach((q) => L.circleMarker(q, { radius: 5, color: "#FFFFFF", weight: 2, fillColor: "#00A0E3", fillOpacity: 1 }).addTo(this.g)); }
+  roofArea() { const p = this.state.pts; if (p.length < 3) return 0; const lat0 = p.reduce((a, q) => a + q[0], 0) / p.length, lon0 = p.reduce((a, q) => a + q[1], 0) / p.length, kx = Math.cos(lat0 * Math.PI / 180) * 111320; const m = p.map((q) => [(q[1] - lon0) * kx, (q[0] - lat0) * 110540]); let a = 0; for (let i = 0; i < m.length; i++) { const j = (i + 1) % m.length; a += m[i][0] * m[j][1] - m[j][0] * m[i][1]; } return Math.abs(a) / 2; }
+  areaT() { const s = this.state, A = this.roofArea(); if (A > 20000) return 0; if (A > 0) return A * Math.min(1, (+s.pipes || 0) / Math.max(1, +s.pipesAll || 1)); return (+s.pipes || 0) * (+s.perPipe || 0); }
+  setPin(p) {
+    if (this.map && this.map.getZoom() < 17) this.map.setView(p, 19);
+    this.setState({ pin: p, rain: null, src: "Reading rainfall…" });
+    if (this.g) { this.g.clearLayers(); window.L.circleMarker(p, { radius: 8, color: "#FFFFFF", weight: 2, fillColor: "#00A0E3", fillOpacity: 1 }).addTo(this.g); }
+    const url = "https://archive-api.open-meteo.com/v1/archive?latitude=" + p[0].toFixed(3) + "&longitude=" + p[1].toFixed(3) + "&start_date=2015-01-01&end_date=2024-12-31&daily=precipitation_sum&timezone=UTC";
+    const fb = () => { if (!this.state.rain) this.setState({ rain: [65, 55, 55, 45, 55, 65, 70, 70, 60, 70, 70, 70], src: "Rainfall could not be read in time; example values for a temperate climate." }); };
+    clearTimeout(this._rt); this._rt = setTimeout(fb, 6000);
+    fetch(url).then((r) => r.json()).then((d) => { clearTimeout(this._rt);
+      const t = (d.daily || {}).time || [], v = (d.daily || {}).precipitation_sum || [], m = new Array(12).fill(0);
+      t.forEach((x, i) => { m[+x.slice(5, 7) - 1] += v[i] || 0; }); const years = t.length / 365.25 || 1;
+      this.setState({ rain: m.map((x) => x / years), src: "Average 2015–2024, historical weather data (Open-Meteo)." });
+    }).catch(() => this.setState({ rain: [65, 55, 55, 45, 55, 65, 70, 70, 60, 70, 70, 70], src: "Rainfall could not be read; example values for a temperate climate." }));
+  }
+  onQuery(v) { this.setState({ query: v }); clearTimeout(this._q); if (v.trim().length < 3) { this.setState({ results: [] }); return; }
+    this._q = setTimeout(() => fetch("https://nominatim.openstreetmap.org/search?format=json&limit=5&viewbox=-25,72,45,34&bounded=1&q=" + encodeURIComponent(v)).then((r) => r.json()).then((l) => this.setState({ results: (l || []).map((x) => ({ label: x.display_name, lat: +x.lat, lon: +x.lon })) })).catch(() => this.setState({ results: [] })), 400); }
+  calc() {
+    const s = this.state, rain = s.rain || new Array(12).fill(60), areaT = this.areaT(), cf = { pitched: 0.9, flat: 0.7, green: 0.3 }[s.roof] * 0.9;
+    const inn = rain.map((mm) => mm * areaT * cf);
+    const out = DAYS.map((d, i) => (+s.people || 0) * 24 * d + (+s.wash || 0) * 50 * d / 7 + (+s.car || 0) * 150 + (+s.other || 0) * d + (+s.garden || 0) * Math.max(0, IRR[i] - rain[i] * 0.5));
+    const pref = s.purpose === "garden" ? ["OGO TONY", "OGO DIVAN", "OGO WALL"] : s.purpose === "business" ? ["OGO WALL"] : ["OGO DIVAN", "OGO WALL"];
+    const sim = (cap) => { let lvl = cap * 0.5, used = 0; const lv = []; for (let y = 0; y < 2; y++) for (let i = 0; i < 12; i++) { lvl = Math.min(cap, lvl + inn[i]); const u = Math.min(lvl, out[i]); lvl -= u; if (y === 1) { used += u; lv.push(lvl); } } return { used, lv }; };
+    const all = []; TANKS.filter((t) => pref.indexOf(t.name) >= 0).forEach((t) => t.sizes.forEach((c) => all.push({ t, c }))); all.sort((a, b) => a.c - b.c);
+    const max = sim(1e9).used; let best = all[all.length - 1];
+    for (const x of all) { if (sim(x.c).used >= max * 0.9) { best = x; break; } }
+    const r = sim(best.c);
+    return { inn: inn.reduce((a, b) => a + b, 0), out: out.reduce((a, b) => a + b, 0), used: r.used, lv: r.lv, best };
+  }
+  renderVals() {
+    const s = this.state, fmt = (v) => Number(Math.round(v || 0)).toLocaleString("nl-BE"), pick = (on) => (on ? "#00A0E3" : "#F4F4F4");
+    const rain = s.rain, ry = rain ? rain.reduce((a, b) => a + b, 0) : 0, rmax = rain ? Math.max(...rain, 1) : 1;
+    const c = s.step >= 3 ? this.calc() : null, can = [!!s.pin, this.areaT() > 0, true, true, s.consent, false][s.step];
+    const num = (k) => (e) => this.setState({ [k]: e.target.value });
+    return {
+      mapRef: this.mapRef, progressPct: Math.round(Math.min(s.step, 5) / 5 * 100) + "%", progressLabel: Math.min(s.step + 1, 6) + " of 6",
+      isPlace: s.step === 0, isArea: s.step === 1, isUse: s.step === 2, isResult: s.step === 3, isContact: s.step === 4, isDone: s.step === 5,
+      query: s.query, onQuery: (e) => this.onQuery(e.target.value), results: s.results.map((x) => ({ label: x.label, pick: () => { this.setState({ results: [], query: x.label.split(",").slice(0, 3).join(",") }); if (this.map) this.map.setView([x.lat, x.lon], 20); this.setPin([x.lat, x.lon]); } })),
+      hasRain: !!rain || !!s.pin, rainYear: rain ? fmt(ry) : "…", rainBars: (rain || new Array(12).fill(0)).map((m) => ({ h: Math.round(m / rmax * 100) + "%" })), rainSource: s.src,
+      purposeOpts: [["garden", "Garden only"], ["house", "House and garden"], ["business", "Car wash or business"]].map(([v, l]) => ({ label: l, bg: pick(s.purpose === v), pick: () => this.setState(v === "garden" ? { purpose: v, garden: 80, people: 0, wash: 0, car: 0, other: 0 } : v === "house" ? { purpose: v, garden: 50, people: 4, wash: 4, car: 1, other: 0 } : { purpose: v, garden: 0, people: 0, wash: 0, car: 40, other: 200 }) })),
+      area: fmt(this.areaT()), ptCount: s.pts.length, roofM2: fmt(this.roofArea() > 20000 ? 0 : this.roofArea()), drawInfo: this.roofArea() > 20000 ? "This outline is too large for one roof. Zoom in on your roof and draw it again." : this.roofArea() > 0 ? "Drawn roof: " + fmt(this.roofArea()) + " m²." : (this.map && this.map.getZoom() < 16 ? "Zoom in on your roof to draw it." : "Or enter the area below."), noDraw: this.roofArea() === 0, undoPt: () => this.setState((st) => ({ pts: st.pts.slice(0, -1) }), () => this.drawRoof()), clearPts: () => this.setState({ pts: [] }, () => this.drawRoof()), pipesAll: s.pipesAll, onPipesAll: num("pipesAll"), pipes: s.pipes, perPipe: s.perPipe, gutter: s.gutter, onPipes: num("pipes"), onPerPipe: num("perPipe"), onGutter: num("gutter"),
+      roofOpts: [["pitched", "Pitched roof"], ["flat", "Flat roof"], ["green", "Green roof"]].map(([v, l]) => ({ label: l, bg: pick(s.roof === v), pick: () => this.setState({ roof: v }) })),
+      uses: [["garden", "Garden to irrigate", "m²"], ["people", "People using the toilets", "people"], ["wash", "Washing machine loads", "per week"], ["car", "Car washes", "per month"], ["other", "Other use", "litres per day"]].map(([k, l, u]) => ({ label: l, unit: u, val: s[k], on: num(k) })),
+      tank: c ? (c.best.t.unit === "module" ? Math.round(c.best.c / 1000) + " × OGO WALL module" + (c.best.c > 1000 ? "s" : "") : c.best.t.name + " " + fmt(c.best.c) + " L") : "", tankLine: c ? c.best.t.line + " · covers " + Math.round(c.used / Math.max(1, c.out) * 100) + " % of your water use" : "",
+      figures: c ? [{ label: "Collected per year", value: fmt(c.inn), unit: "L" }, { label: "Needed per year", value: fmt(c.out), unit: "L" }, { label: "Rainwater used", value: fmt(c.used), unit: "L" }, { label: "From the mains", value: fmt(Math.max(0, c.out - c.used)), unit: "L" }] : [],
+      levels: c ? c.lv.map((l, i) => ({ h: Math.max(4, Math.round(l / c.best.c * 100)) + "%", c: l < c.best.c * 0.03 ? "#BBBBBB" : "#00A0E3", t: fmt(l) + " L" })) : [],
+      consent: s.consent, toggleConsent: () => this.setState({ consent: !s.consent }),
+      canBack: s.step > 0 && s.step < 5, back: () => this.setState({ step: s.step - 1 }),
+      showNext: s.step < 5, nextLabel: ["Next", "Next", "See the tank", "Financial calculation by email", "Send", ""][s.step], nextDisabled: !can, nextBg: can ? "#00A0E3" : "#E3E3E3",
+      next: () => { if (!can) return; if (s.step === 0 && s.pin && this.map) this.map.setView(s.pin, 20); this.setState({ step: s.step + 1 }, () => this.drawRoof()); }
+    };
+  }
+}
+</script>
+</body>
+</html>

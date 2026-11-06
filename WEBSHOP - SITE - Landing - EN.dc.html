@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>WEBSHOP Landing | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>body{margin:0;background:#FFFFFF}*{box-sizing:border-box}a{color:var(--color-text-primary);text-decoration:none}a:hover{color:#1E1E1E}</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);font-weight:300;">
+  <dc-import name="NavBar" active="" hint-size="100%,80px"></dc-import>
+  <dc-import name="WebshopNav" active="" hint-size="100%,57px"></dc-import>
+  <dc-import name="PageHero" brand="WEBSHOP" rgb="235,236,236" title="Every STRØHM.ENERGY line, one catalogue." slot="webshop-landing-hero" shot="WEBSHOP · Landing · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 64px;box-sizing:border-box;border-bottom:1px solid var(--color-divider);">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;margin-bottom:20px;">B2B webshop</div>
+    <sc-if value="{{ isSplit }}" hint-placeholder-val="{{ true }}">
+    <div data-stack="1" style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:start;">
+      
+      <p style="margin:8px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Each line carries its own technical filters, four stock routes (EU, floating, factory, manufacturing) and the shared commercial layer. <sc-if value="{{ isGuest }}" hint-placeholder-val="{{ true }}">Availability and pricing appear once you are logged in.</sc-if><sc-if value="{{ isMember }}" hint-placeholder-val="{{ false }}">Your availability and pricing are shown on every product.</sc-if></p>
+    </div>
+    </sc-if>
+    <sc-if value="{{ isStacked }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:32px;">
+      <h1 style="margin:0;font-size:clamp(56px,8vw,112px);line-height:0.98;font-weight:100;letter-spacing:-0.035em;color:var(--color-text-primary);text-wrap:balance;">Every STRØHM.ENERGY line, one catalogue.</h1>
+      <p style="margin:0;max-width:58ch;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);text-wrap:pretty;">Each line carries its own technical filters, four stock routes (EU, floating, factory, manufacturing) and the shared commercial layer. <sc-if value="{{ isGuest }}" hint-placeholder-val="{{ true }}">Availability and pricing appear once you are logged in.</sc-if><sc-if value="{{ isMember }}" hint-placeholder-val="{{ false }}">Your availability and pricing are shown on every product.</sc-if></p>
+    </div>
+    </sc-if>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:40px;"><a href="WEBSHOP - SITE - Catalogue - EN.dc.html" style="text-decoration:none;height:var(--cta-height);padding:0 var(--cta-pad-x);display:inline-flex;align-items:center;border-radius:var(--cta-radius);font-size:var(--cta-font);font-weight:400;background:#4F4F4E;color:#FFFFFF;border:1px solid #1E1E1E;" style-hover="background:#5F5E5E;">Browse catalogue</a><sc-if value="{{ isMember }}" hint-placeholder-val="{{ false }}"><a href="STROHM.ENERGY - SITE - Account - EN.dc.html" style="text-decoration:none;height:48px;padding:0 26px;display:inline-flex;align-items:center;border-radius:var(--radius-btn);font-size:var(--cta-font);font-weight:var(--web-btn-weight);background:var(--color-surface-card);color:var(--color-text-primary);border:1px solid #D4D4D4;" style-hover="border-color:#1E1E1E;">My account</a></sc-if><sc-if value="{{ isGuest }}" hint-placeholder-val="{{ true }}"><a href="STROHM.ENERGY - SITE - Login - EN.dc.html" style="text-decoration:none;height:48px;padding:0 26px;display:inline-flex;align-items:center;border-radius:var(--radius-btn);font-size:var(--cta-font);font-weight:var(--web-btn-weight);background:var(--color-surface-card);color:var(--color-text-primary);border:1px solid #D4D4D4;" style-hover="border-color:#1E1E1E;">Log in</a><a href="STROHM.ENERGY - SITE - Register - EN.dc.html" style="text-decoration:none;height:48px;padding:0 26px;display:inline-flex;align-items:center;border-radius:var(--radius-btn);font-size:var(--cta-font);font-weight:var(--web-btn-weight);background:var(--color-surface-card);color:var(--color-text-primary);border:1px solid #D4D4D4;" style-hover="border-color:#1E1E1E;">Register</a></sc-if></div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side);box-sizing:border-box;border-bottom:1px solid var(--color-divider);">
+    <div style="max-width:60ch;margin-bottom:32px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">Product lines</div><h2 style="margin:0;font-size:var(--web-sub-size);font-weight:var(--web-sub-weight);line-height:var(--web-sub-lh);letter-spacing:-0.02em;color:var(--color-text-primary);">Pick a line to see products, stock and prices</h2></div>
+    <dc-import name="EcosystemGrid" set="products" shop-mode="{{ true }}" hint-size="100%,640px"></dc-import>
+  </section>
+  <sc-if value="{{ showHow }}" hint-placeholder-val="{{ true }}">
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side);box-sizing:border-box;">
+    <div style="max-width:60ch;margin-bottom:32px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">How the webshop works</div></div>
+    <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;"><a href="WEBSHOP - SITE - How It Works - EN.dc.html#routes" style="text-decoration:none;background:var(--color-surface-card);border-radius:var(--radius-card);padding:var(--card-padding);display:flex;flex-direction:column;gap:24px;min-height:150px;" style-hover="background:#E3E3E3;"><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:var(--color-text-primary);">Choose the right supply route</span><span style="margin-top:auto;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">How it works<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></a><a href="WEBSHOP - SITE - How It Works - EN.dc.html" style="text-decoration:none;background:var(--color-surface-card);border-radius:var(--radius-card);padding:var(--card-padding);display:flex;flex-direction:column;gap:24px;min-height:150px;" style-hover="background:#E3E3E3;"><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:var(--color-text-primary);">A tour of the portal</span><span style="margin-top:auto;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">How it works<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></a><a href="WEBSHOP - SITE - How It Works - EN.dc.html#contact" style="text-decoration:none;background:var(--color-surface-card);border-radius:var(--radius-card);padding:var(--card-padding);display:flex;flex-direction:column;gap:24px;min-height:150px;" style-hover="background:#E3E3E3;"><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:var(--color-text-primary);">A person who knows the whole webshop</span><span style="margin-top:auto;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">How it works<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></a></div>
+  </section>
+  </sc-if>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;split&quot;,&quot;stacked&quot;],&quot;default&quot;:&quot;split&quot;,&quot;tsType&quot;:&quot;\&quot;split\&quot; | \&quot;stacked\&quot;&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;audience&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;guest&quot;,&quot;signed-in&quot;],&quot;default&quot;:&quot;guest&quot;,&quot;tsType&quot;:&quot;\&quot;guest\&quot; | \&quot;signed-in\&quot;&quot;,&quot;section&quot;:&quot;Hero&quot;},&quot;showHowItWorks&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const layout = this.props.heroLayout ?? "split";
+    const member = (this.props.audience ?? "guest") === "signed-in";
+    return {
+      isSplit: layout === "split",
+      isStacked: layout === "stacked",
+      isGuest: !member,
+      isMember: member,
+      showHow: this.props.showHowItWorks ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

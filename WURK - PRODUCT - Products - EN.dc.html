@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>WURK Products | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  .wk-prod:hover { border-color:var(--color-brand-wurk) !important; }
+  .wk-prod:hover .wk-prod-t { color:var(--color-text-primary); }
+  .wk-chip:hover { border-color:var(--color-text-primary) !important; color:var(--color-text-primary) !important; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="WurkNav" active="products" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="WURK" rgb="158,61,46" eyebrow="WURK products" title="Choose by task, not by catalogue page." intro="The right equipment depends on what you are installing, where the work happens and what must be measured, moved or protected." slot="wurk-products-hero" shot="WURK · Products · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:720px;">Use the filters or start the WURK selector.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0 0 40px;">
+      <a href="WURK - PRODUCT - Selector - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-wurk);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Start with my task</a>
+      <a href="#crimp" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-card-wurk);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">View all products</a>
+    </div>
+  </section>
+
+  <!-- FILTERS + STATUS KEY -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+    <div style="padding:28px 32px;background:#F4F4F4;border-radius:12px;">
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;--cg:28px;">
+        <sc-for list="{{ filterGroups }}" as="g" hint-placeholder-count="4">
+          <div>
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">{{ g.label }}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="6">
+                <span class="wk-chip" style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:var(--color-text-primary);border:1px solid var(--color-divider);padding:5px 11px;cursor:pointer;border-radius:8px;">{{ it }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--color-surface-card);display:flex;flex-wrap:wrap;gap:8px 22px;">
+        <sc-for list="{{ statusKey }}" as="s" hint-placeholder-count="5">
+          <div style="display:flex;gap:8px;align-items:center;"><span style="width:9px;height:9px;background:{{ s.color }};"></span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ s.label }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAMILY SECTIONS -->
+  <sc-for list="{{ families }}" as="fam" hint-placeholder-count="8">
+    <section id="{{ fam.id }}" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+      <div style="border-top:1px solid var(--color-divider);padding-top:36px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:24px;">
+          <div style="display:flex;align-items:baseline;gap:16px;">
+            <span style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ fam.code }}</span>
+            <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ fam.name }}</span>
+          </div>
+        </div>
+        <p style="margin:0 0 28px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ fam.intro }}</p>
+        <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;--cg:20px;">
+          <sc-for list="{{ fam.products }}" as="p" hint-placeholder-count="3">
+            <div class="wk-prod" style="display:flex;flex-direction:column;background:#F4F4F4;border-radius:12px;">
+              <div style="aspect-ratio:4/3;background:var(--color-card-wurk);position:relative;border-radius:8px;overflow:hidden;">
+                <image-slot id="{{ p.slot }}" shape="rounded" radius="8" placeholder="{{ p.name }}"></image-slot>
+              </div>
+              <div style="padding:22px 20px;display:flex;flex-direction:column;gap:12px;flex:1;">
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
+                  <span class="wk-prod-t" style="font-size:15px;font-weight:700;line-height:1.25;">{{ p.name }}</span>
+                  <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ p.statusColor }};white-space:nowrap;padding-top:3px;">&#9679; {{ p.status }}</span>
+                </div>
+                <p style="margin:0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);max-width:760px;">{{ p.fn }}</p>
+                <div style="display:flex;flex-direction:column;gap:5px;">
+                  <sc-for list="{{ p.specs }}" as="s" hint-placeholder-count="3">
+                    <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;font-size:11px;align-items:baseline;border-bottom:1px solid var(--color-surface-card);padding-bottom:4px;">
+                      <span style="font-weight:300;color:var(--color-grey-70);">{{ s.k }}</span>
+                      <span style="font-weight:700;color:var(--color-text-primary);text-align:right;">{{ s.v }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+                <div style="display:flex;gap:8px;margin-top:auto;padding-top:6px;">
+                  <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border:1px solid var(--color-divider);padding:3px 8px;border-radius:8px;">DOC</span>
+                  <sc-if value="{{ p.calib }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border:1px solid var(--color-divider);padding:3px 8px;border-radius:8px;">CAL</span></sc-if>
+                </div>
+                <a href="WURK - PRODUCT - Selector - EN.dc.html" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">{{ p.cta }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+
+  <!-- CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 96px;box-sizing:border-box;">
+    <div style="background:var(--color-text-primary);padding:56px;color:#FFFFFF;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;border-radius:12px;">
+      <div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#FFFFFF;text-wrap:balance;">Not sure which model <span style="color:#B2B3B3;">fits the job?</span></h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The selector removes unsuitable options by height, load, voltage, connector, surface and country before showing equipment.</p>
+      </div>
+      <a href="WURK - PRODUCT - Selector - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-wurk);color:var(--color-text-primary);font-weight:400;white-space:nowrap;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Start WURK selector</a>
+    </div>
+  </section>
+
+  <dc-import name="ContentSections" brand="WURK" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="WURK" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="WURK" accent="var(--color-brand-wurk)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+const AV = { status: "Available", statusColor: "#4CAF50", cta: "View product" };
+const PS = { status: "Project supply", statusColor: "var(--color-brand-wurk)", cta: "Request specification" };
+const CP = { status: "Certification pending", statusColor: "#D8392C", cta: "View development status" };
+
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      filterGroups: [
+        { label: "Task", items: ["Measure & mark", "Cut & strip", "Assemble connectors", "Apply torque", "Test DC", "Test AC", "Test insulation", "Access at height", "Protect an edge", "Move a battery"] },
+        { label: "Application", items: ["Residential solar", "Commercial solar", "Battery storage", "EV charging", "Heat pump", "Ventilation", "Electrical", "Industrial"] },
+        { label: "Product family", items: ["CRIMP", "PREP", "GAUGE", "PROBE", "HOLD", "RAIL", "RISE", "HAUL"] },
+        { label: "Status", items: ["Available", "Project supply", "Pre-release", "Certification pending", "Coming soon"] },
+      ],
+      statusKey: [
+        { label: "Available", color: "#4CAF50" },
+        { label: "Project supply", color: "var(--color-brand-wurk)" },
+        { label: "Pre-release", color: "#5F5E5E" },
+        { label: "Certification pending", color: "#D8392C" },
+        { label: "Coming soon", color: "#C7C7C4" },
+      ],
+      families: [
+        { id: "crimp", code: "CRIMP", name: "Connector assembly", href: "#crimp", intro: "Controlled crimping tools, approved die combinations and installer cases. The tool, die, connector and cable are treated as one compatibility decision \u2014 never a \u201Cuniversal\u201D claim.",
+          products: [
+            { name: "WURK MC4 Basic Toolbox", fn: "Core spanners, stripper, cutter and basic crimping equipment for defined connector and cable combinations.", specs: [{ k: "Contents", v: "6 tools" }, { k: "Cable range", v: "4\u20136 mm\u00B2" }, { k: "Case", v: "Yes" }], ...AV, slot: "wk-crimp-1" },
+            { name: "WURK MC4 Pro Toolbox", fn: "Professional ratchet crimper, replaceable dies, controlled stripper, cutter and assembly tools.", specs: [{ k: "Crimper", v: "Ratchet" }, { k: "Dies", v: "Replaceable" }, { k: "Cable range", v: "2,5\u20136 mm\u00B2" }], ...AV, slot: "wk-crimp-2" },
+            { name: "WURK MC4 Premium Installer Case", fn: "Complete installer case with premium crimper, die set, cable preparation tools and organised replacement positions.", specs: [{ k: "Positions", v: "Organised" }, { k: "Die set", v: "Full" }, { k: "Warranty", v: "Model-specific" }], ...AV, slot: "wk-crimp-3" },
+          ] },
+        { id: "prep", code: "PREP", name: "Cable preparation & torque", href: "#prep", intro: "Controlled cutting, stripping and torque reduce avoidable connection errors before commissioning begins.",
+          products: [
+            { name: "WURK Solar Cable Cutter", fn: "Insulated or application-rated cutter for clean cuts in the defined PV and electrical cable range.", specs: [{ k: "Max diameter", v: "Defined range" }, { k: "Blade", v: "Replaceable" }], ...AV, slot: "wk-prep-1" },
+            { name: "WURK PV Cable Stripper", fn: "Adjustable stripping tool for defined PV cable sizes, with controlled depth and strip length.", specs: [{ k: "Cable sizes", v: "PV defined" }, { k: "Depth", v: "Controlled" }], ...AV, slot: "wk-prep-2" },
+            { name: "WURK Torque Tool", fn: "Adjustable screwdriver or wrench for inverter, distribution and battery terminals.", specs: [{ k: "Torque range", v: "Adjustable" }, { k: "Calibration", v: "Option" }], ...AV, calib: true, slot: "wk-prep-3" },
+          ] },
+        { id: "gauge", code: "GAUGE", name: "Layout & measurement", href: "#gauge", intro: "Layout errors multiply across rails, cable routes, equipment clearances and service access. GAUGE gives one measurement system from survey to final alignment.",
+          products: [
+            { name: "WURK Tape 5 m", fn: "Metric professional tape with automatic lock and clear site markings.", specs: [{ k: "Range", v: "5 m" }, { k: "Lock", v: "Automatic" }], ...AV, slot: "wk-gauge-1" },
+            { name: "WURK Laser Distance Meter", fn: "Indoor and outdoor measurement in the selected 40 m, 60 m and 100 m classes.", specs: [{ k: "Classes", v: "40 / 60 / 100 m" }, { k: "Modes", v: "Memory + calc" }], ...AV, calib: true, slot: "wk-gauge-2" },
+            { name: "WURK Level", fn: "Professional 600 mm and 1000 mm spirit level, magnetic and digital variants where approved.", specs: [{ k: "Lengths", v: "600 / 1000 mm" }, { k: "Digital", v: "Where approved" }], ...AV, slot: "wk-gauge-3" },
+          ] },
+        { id: "probe", code: "PROBE", name: "Electrical testing", href: "#probe", intro: "A tester is suitable only when its voltage, current, measurement category, leads, protection and functions match the work. Every rating is shown on the page, not hidden in a manual.",
+          products: [
+            { name: "WURK Digital Multimeter", fn: "True-RMS AC measurement and defined DC capability for the approved installation scope.", specs: [{ k: "True RMS", v: "Yes" }, { k: "CAT rating", v: "On release" }], ...CP, slot: "wk-probe-1" },
+            { name: "WURK AC/DC Clamp Meter", fn: "Non-intrusive current checks for selected PV strings, batteries, inverters and AC circuits.", specs: [{ k: "Jaw", v: "Defined" }, { k: "AC/DC", v: "Yes" }], ...CP, slot: "wk-probe-2" },
+            { name: "WURK Insulation Resistance Tester", fn: "Defined test-voltage options for applicable PV and electrical insulation checks.", specs: [{ k: "Test voltages", v: "Defined" }, { k: "Standard", v: "IEC 61010" }], ...CP, slot: "wk-probe-3" },
+            { name: "WURK Phase Rotation Tester", fn: "Three-phase sequence verification for applicable commercial and industrial systems.", specs: [{ k: "Phases", v: "3" }, { k: "Range", v: "Defined" }], ...CP, slot: "wk-probe-4" },
+            { name: "WURK Socket Tester EU", fn: "Schuko socket verification with optional RCD test where approved.", specs: [{ k: "Plug", v: "Schuko" }, { k: "RCD", v: "Optional" }], ...CP, slot: "wk-probe-5" },
+            { name: "WURK Socket Tester UK", fn: "UK socket verification with optional RCD test where approved.", specs: [{ k: "Plug", v: "BS 1363" }, { k: "RCD", v: "Optional" }], ...CP, slot: "wk-probe-6" },
+          ] },
+        { id: "hold", code: "HOLD", name: "Personal fall protection", href: "#hold", intro: "HOLD products are specified as compatible systems, not sold as unrelated harnesses, hooks and lanyards. Collective protection and safer access are considered first.",
+          products: [
+            { name: "WURK Installer Safety Harness Kit", fn: "Full-body harness, compatible connection equipment and defined lanyard or fall-arrest components.", specs: [{ k: "Type", v: "Full body" }, { k: "Release", v: "Country-specific" }], ...PS, slot: "wk-hold-1" },
+            { name: "WURK Temporary Lifeline Kit", fn: "Temporary horizontal or vertical system for the structure, user count, span and method.", specs: [{ k: "Span", v: "Project-defined" }, { k: "Users", v: "Project-defined" }], ...PS, slot: "wk-hold-2" },
+            { name: "WURK Roof Anchor / Ladder Hook", fn: "Temporary access and anchor products for a defined roof construction and load condition.", specs: [{ k: "Roof", v: "Defined" }, { k: "Load", v: "Condition-based" }], ...PS, slot: "wk-hold-3" },
+          ] },
+        { id: "rail", code: "RAIL", name: "Collective edge protection", href: "#rail", intro: "The layout is part of the product. A guardrail cannot be selected from perimeter length alone \u2014 corners, gates, membrane, wind and base loads all matter.",
+          products: [
+            { name: "WURK Flat Roof Edge Protection", fn: "Modular, freestanding, counterweighted guardrail intended to avoid roof penetration where conditions permit.", specs: [{ k: "Base", v: "Counterweighted" }, { k: "Layout", v: "Per roof plan" }], ...PS, slot: "wk-rail-1" },
+          ] },
+        { id: "rise", code: "RISE", name: "Access equipment", href: "#rise", intro: "A ladder is not the automatic answer to every elevated task. RISE brings ladders, mobile towers and platforms into one decision process matched to height, duration, reach and load.",
+          products: [
+            { name: "WURK Mobile Scaffold Tower 6 m", fn: "Platform-height class for extended fa\u00E7ade and indoor industrial work.", specs: [{ k: "Platform", v: "6 m" }, { k: "Stabilisers", v: "Required" }], ...AV, slot: "wk-rise-1" },
+            { name: "WURK Mobile Scaffold Tower 8 m", fn: "Platform-height class requiring full stabiliser, assembly and access review.", specs: [{ k: "Platform", v: "8 m" }, { k: "Assembly", v: "Reviewed" }], ...AV, slot: "wk-rise-2" },
+            { name: "WURK Mobile Scaffold Tower 12 m", fn: "Highest initial platform-height class. Project and country restrictions checked before supply.", specs: [{ k: "Platform", v: "12 m" }, { k: "Working height", v: "\u2248 14,4 m*" }], ...PS, slot: "wk-rise-3" },
+          ] },
+        { id: "haul", code: "HAUL", name: "Battery & equipment handling", href: "#haul", intro: "Battery handling starts before delivery. Weight is only one input \u2014 dimensions, centre of gravity, stairs, thresholds, doors, floor and final position determine the equipment.",
+          products: [
+            { name: "WURK Battery Lifting Trolley 100 kg", fn: "For compact residential batteries and equipment within the approved load envelope.", specs: [{ k: "Rated load", v: "100 kg" }, { k: "Brakes", v: "Yes" }], ...AV, slot: "wk-haul-1" },
+            { name: "WURK Battery Lifting Trolley 250 kg", fn: "For heavy battery modules where stability and route planning are confirmed.", specs: [{ k: "Rated load", v: "250 kg" }, { k: "Route", v: "Confirmed" }], ...AV, slot: "wk-haul-2" },
+            { name: "WURK Battery Stair-Climbing Trolley", fn: "Manual or powered variants selected around load, stair geometry, landing space and operator.", specs: [{ k: "Stairs", v: "Geometry-based" }, { k: "Drive", v: "Manual / powered" }], ...PS, slot: "wk-haul-3" },
+          ] },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

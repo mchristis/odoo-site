@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<style> a { text-decoration:none; } </style>
+</helmet>
+<section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 72px;box-sizing:border-box;font-family:var(--font-web);color:#4F4F4E;">
+  <div style="border-top:1px solid #D4D4D4;padding-top:32px;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ accent }};margin-bottom:12px;">How</div>
+    <h2 style="margin:0 0 8px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ heading }}</h2>
+    <p style="margin:0 0 24px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;max-width:680px;">{{ intro }}</p>
+    <div style="border:1px solid #D4D4D4;border-radius:12px;overflow:hidden;background:#FFFFFF;">
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));--cg:0px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="8">
+          <div style="padding:22px 20px;border-top:{{ s.rowBorder }};border-left:{{ s.colBorder }};">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#898989;margin-bottom:8px;letter-spacing:var(--web-eyebrow-ls);">{{ s.n }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;line-height:1.35;">{{ s.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="margin-top:20px;">
+      <a href="STROHM.ENERGY - PROJECT - All Projects - EN.dc.html#routes" style="height:46px;padding:0 24px;display:inline-flex;align-items:center;background:{{ accent }};color:#FFFFFF;font-size:var(--cta-font);border-radius:8px;font-weight:var(--web-btn-weight);">{{ cta }}</a>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:360},&quot;accent&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#5F5E5E&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heading&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;From product selection to a real project.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;intro&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;cta&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Request a technical project file&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;steps&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent || "#5F5E5E";
+    const heading = this.props.heading || "From product selection to a real project.";
+    const intro = this.props.intro || "How products from this brand move from selection to a documented, buildable installation.";
+    const cta = this.props.cta || "Request a technical project file";
+    // steps passed as a "|"-separated string so the block is reusable per brand
+    const raw = this.props.steps || "Site dimensions|Application requirements|Site conditions|Loads and exposure|Product configuration|Calculations|Drawings and BOM|Installation and commissioning";
+    const arr = raw.split("|").map((s) => s.trim()).filter(Boolean);
+    return {
+      accent, heading, intro, cta,
+      steps: arr.map((label, i) => ({
+        n: String(i + 1).padStart(2, "0"), label,
+        rowBorder: i < 4 ? "none" : "1px solid #D9D9D9",
+        colBorder: (i % 4 === 0) ? "none" : "1px solid #D9D9D9",
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

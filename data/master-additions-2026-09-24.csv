@@ -1,0 +1,8 @@
+# AGRI sheet: move these rows from the MOX sheet; set Brand = AGRI (temporary name). Product range unchanged.
+"Brand","Brand Domain","Series","Category","Goods Type","Application","Topology","Finish / Colour","Article Code","Notes","FULL DESCRIPTION"
+"AGRI","Utility & Special Environment Solar PV Structures","AGRI-PV (HORIZONTAL)","Elevated Agri-PV Canopy","Goods","Utility / Agricultural","—","—","(TBD – taxonomy/config stage)","Ref 003.1. Codename ROOT.","MOX AGRI-PV (HORIZONTAL) — Elevated, ground-mounted solar canopy enabling continued farming or grazing underneath (crops/livestock beneath)."
+"AGRI","Utility & Special Environment Solar PV Structures","AGRI-PV (VERTICAL)","Vertical Bifacial Agri-PV","Goods","Utility / Agricultural","—","—","(TBD – taxonomy/config stage)","Ref 003.2. Codename TWIG.","MOX AGRI-PV (VERTICAL) — Ground-mounted near-vertical, often bifacial solar row system integrated into farmland layouts to preserve usable land."
+
+# LINA sheet: new brand, domain Generate Energy. Status: concept. Series, models, specs and article codes to be confirmed.
+"Brand","Brand Domain","Series","Category","Goods Type","Application","Topology","Finish / Colour","Article Code","Notes","FULL DESCRIPTION"
+"LINA","Solar generation","(to be confirmed)","Vertical solar module with integrated mounting","Goods","Flat roof · green roof","Vertical, low-profile","(to be confirmed)","(to be assigned)","Concept. Power, dimensions, weight, certification, warranty and availability not confirmed.","LINA - VERTICAL SOLAR SYSTEM - FLAT AND GREEN ROOFS - CONCEPT"

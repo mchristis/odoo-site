@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<style>body { margin:0; } button { font-family:inherit; }</style>
+</helmet>
+<section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;font-family:var(--font-web);color:#4F4F4E;">
+  <div style="border-top:1px solid #E4E2E0;padding-top:40px;">
+    <div style="font-size:var(--web-error-size);font-weight:var(--web-error-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#D8392C;margin-bottom:16px;">Configure {{ product }}</div>
+    <h2 style="margin:0 0 12px;font-size:28px;font-weight:400;line-height:1.25;max-width:600px;">{{ heading }}</h2>
+    <p style="margin:0 0 28px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">Choose a size and the direction the {{ facing }} faces to see an indicative starting point. This is directional guidance, not a yield calculation &#8212; final capacity and suitability come from an energy model and approved MOX engineering.</p>
+
+    <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;--cg:32px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:10px;">{{ sizeLabel }}</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
+          <sc-for list="{{ sizeOptions }}" as="s" hint-placeholder-count="3">
+            <button onClick="{{ s.onClick }}" style="cursor:pointer;text-align:left;font-size:14px;font-weight:400;padding:14px 16px;border:1px solid {{ s.border }};background:{{ s.bg }};color:{{ s.color }};display:flex;justify-content:space-between;align-items:center;gap:12px;border-radius:8px;">
+              <span>{{ s.label }}</span>
+              <span style="font-size:12px;font-weight:300;color:{{ s.subColor }};">{{ s.sub }}</span>
+            </button>
+          </sc-for>
+        </div>
+
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:10px;">Direction it faces</div>
+        <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:24px;--cg:8px;">
+          <sc-for list="{{ orientOptions }}" as="o" hint-placeholder-count="8">
+            <button onClick="{{ o.onClick }}" style="cursor:pointer;font-size:var(--web-btn-sm-size);font-weight:400;padding:12px 0;border:1px solid {{ o.border }};background:{{ o.bg }};color:{{ o.color }};border-radius:8px;">{{ o.label }}</button>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{ hasVariant }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:10px;">{{ variantLabel }}</div>
+          <div style="display:flex;gap:8px;">
+            <sc-for list="{{ variantOptions }}" as="v" hint-placeholder-count="2">
+              <button onClick="{{ v.onClick }}" style="cursor:pointer;font-size:var(--web-btn-sm-size);font-weight:400;padding:12px 18px;border:1px solid {{ v.border }};background:{{ v.bg }};color:{{ v.color }};border-radius:8px;">{{ v.label }}</button>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="background:#F4F4F4;padding:28px;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">Indicative starting point</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:16px;line-height:var(--web-h3-lh);">{{ summary }}</div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:8px;">Solar suitability &#8212; {{ orientName }}</div>
+        <div style="height:10px;background:#EBEBE8;margin-bottom:8px;overflow:hidden;">
+          <div style="height:100%;width:{{ ratingPct }};background:{{ ratingColor }};transition:width 0.3s;"></div>
+        </div>
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:{{ ratingColor }};margin-bottom:14px;line-height:var(--web-h3-lh);">{{ ratingLabel }}</div>
+        <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">{{ guidance }}</p>
+        <div style="border-top:1px solid #E4E2E0;padding-top:16px;">
+          <div style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;margin-bottom:14px;line-height:var(--web-min-lh);">Estimated module capacity for this size is confirmed per project from approved MOX engineering documentation.</div>
+          <a href="STROHM.ENERGY - TOOL - Structures Configurator - EN.dc.html#quotation" style="text-decoration:none;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Send this to a specialist<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;product&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;OMBRAS&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;OMBRAS&quot;,&quot;PORCH&quot;,&quot;PERGOLA&quot;,&quot;FENCE&quot;]}}">
+const CATALOG = {
+  OMBRAS: { heading: "Size and façade direction.", facing: "façade", sizeLabel: "Layout", sizes: [
+      { key: "1d", label: "OMBRAS 1D", sub: "One module deep" },
+      { key: "2d", label: "OMBRAS 2D", sub: "Two modules deep" },
+      { key: "line", label: "OMBRAS LINE", sub: "Continuous bays" } ], variant: null },
+  PORCH: { heading: "Size and entrance direction.", facing: "entrance", sizeLabel: "Size", sizes: [
+      { key: "s", label: "Compact", sub: "Single doorway" },
+      { key: "m", label: "Standard", sub: "Wide entrance" },
+      { key: "l", label: "Extended", sub: "Entrance + route" } ], variant: null },
+  PERGOLA: { heading: "Size and terrace direction.", facing: "roof", sizeLabel: "Grid size", sizes: [
+      { key: "s", label: "Compact", sub: "Residential terrace" },
+      { key: "m", label: "Standard", sub: "Multi-bay" },
+      { key: "l", label: "Multi-row", sub: "Hospitality / shared" } ], variant: null },
+  FENCE: { heading: "Geometry and boundary direction.", facing: "fence", sizeLabel: "Geometry", sizes: [
+      { key: "land", label: "Landscape", sub: "Lower boundary" },
+      { key: "port", label: "Portrait", sub: "Taller / more privacy" },
+      { key: "stack", label: "Stacked", sub: "Two levels" } ],
+    variant: { label: "Module type", options: [ { key: "open", label: "Open (bifacial)" }, { key: "private", label: "Private (full-black)" } ] } },
+};
+
+const ORIENTS = [
+  { key: "S", name: "South", rating: 100, label: "Best" },
+  { key: "SE", name: "South-East", rating: 82, label: "Very good" },
+  { key: "SW", name: "South-West", rating: 82, label: "Very good" },
+  { key: "E", name: "East", rating: 62, label: "Moderate" },
+  { key: "W", name: "West", rating: 62, label: "Moderate" },
+  { key: "N", name: "North", rating: 30, label: "Limited" },
+];
+const ORDER = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+const NAMES = { N: "North", NE: "North-East", E: "East", SE: "South-East", S: "South", SW: "South-West", W: "West", NW: "North-West" };
+const RATING = { N: 30, NE: 46, E: 62, SE: 82, S: 100, SW: 82, W: 62, NW: 46 };
+const RLABEL = { 100: "Best", 82: "Very good", 62: "Moderate", 46: "Fair", 30: "Limited" };
+
+function colorFor(v) { return v >= 82 ? "#1F8A4C" : v >= 62 ? "#C08A1E" : "#C0603A"; }
+
+class Component extends DCLogic {
+  state = { size: null, orient: "S", variant: null };
+
+  renderVals() {
+    const product = (this.props.product || "OMBRAS").toUpperCase();
+    const cat = CATALOG[product] || CATALOG.OMBRAS;
+    const st = this.state;
+    const size = st.size || cat.sizes[0].key;
+    const variant = st.variant || (cat.variant ? cat.variant.options[0].key : null);
+    const sizeObj = cat.sizes.find(s => s.key === size) || cat.sizes[0];
+
+    const rating = RATING[st.orient];
+    const isFence = product === "FENCE";
+    // vertical bifacial fences favour E/W more than a tilted roof would
+    const adjRating = isFence && (st.orient === "E" || st.orient === "W") ? 74 : rating;
+    const rlabel = RLABEL[rating] || "Moderate";
+    const flabel = isFence && (st.orient === "E" || st.orient === "W") ? "Good (vertical)" : rlabel;
+
+    let guidance;
+    if (isFence) {
+      guidance = (st.orient === "E" || st.orient === "W")
+        ? "A vertical boundary facing east or west produces strongly in the morning or evening &#8212; often a useful complement to a south roof. Corners with mixed orientation should use module-level electronics."
+        : (rating >= 82 ? "A south-facing boundary gives the highest daily generation. Confirm shading from planting and neighbouring structures."
+          : rating >= 46 ? "A workable orientation; a long fence may combine several directions. Use separately managed strings around corners."
+          : "A north-facing boundary generates little on the front face; consider it primarily as a boundary with bifacial rear gain, or use non-PV infill here.");
+    } else {
+      guidance = rating >= 82 ? "A south-facing installation gives the highest daily generation for a fixed roof. Confirm shading and the fixed inclination with engineering."
+        : rating >= 62 ? "A workable orientation with moderate yield. Multiple MPPT inputs or module-level electronics help where the structure spans more than one direction."
+        : "A north-facing fixed roof generates comparatively little. It can still deliver shelter and shading; discuss whether the generation justifies the orientation.";
+    }
+
+    const variantSummary = variant ? (variant === "open" ? " · open bifacial" : variant === "private" ? " · private full-black" : "") : "";
+    const summary = product + " " + sizeObj.label + " · facing " + NAMES[st.orient] + variantSummary;
+
+    const mkSize = (s) => ({ label: s.label, sub: s.sub, onClick: () => this.setState({ size: s.key }),
+      bg: size === s.key ? "#4F4F4E" : "#FFFFFF", color: size === s.key ? "#FFFFFF" : "#4F4F4E",
+      subColor: size === s.key ? "#898989" : "#898989", border: size === s.key ? "#1E1E1E" : "#E4E2E0" });
+    const mkOrient = (k) => ({ label: k, onClick: () => this.setState({ orient: k }),
+      bg: st.orient === k ? "#D8392C" : "#FFFFFF", color: st.orient === k ? "#FFFFFF" : "#4F4F4E",
+      border: st.orient === k ? "#D8392C" : "#E4E2E0" });
+    const mkVar = (v) => ({ label: v.label, onClick: () => this.setState({ variant: v.key }),
+      bg: variant === v.key ? "#4F4F4E" : "#FFFFFF", color: variant === v.key ? "#FFFFFF" : "#4F4F4E",
+      border: variant === v.key ? "#4F4F4E" : "#E4E2E0" });
+
+    return {
+      product, heading: cat.heading, facing: cat.facing, sizeLabel: cat.sizeLabel,
+      sizeOptions: cat.sizes.map(mkSize),
+      orientOptions: ORDER.map(mkOrient),
+      hasVariant: !!cat.variant,
+      variantLabel: cat.variant ? cat.variant.label : "",
+      variantOptions: cat.variant ? cat.variant.options.map(mkVar) : [],
+      summary,
+      orientName: NAMES[st.orient],
+      ratingPct: adjRating + "%",
+      ratingColor: colorFor(adjRating),
+      ratingLabel: flabel,
+      guidance,
+    };
+  }
+}
+</script>
+</body>
+</html>

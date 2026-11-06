@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="./image-slot.js"></script>
+</helmet>
+<div style="position:relative;width:100%;aspect-ratio:4 / 5;background:#EDEDEB;overflow:hidden;border-radius:12px;">
+  <div style="position:absolute;inset:0;opacity:{{ p.lBg.op }};transition:opacity 320ms ease;background:#E6D9C2;"></div>
+  <div style="position:absolute;inset:0;transform-origin:50% 40%;opacity:{{ p.founders.op }};transform:{{ p.founders.tf }};transition:{{ tr }};">
+    <svg viewBox="0 0 400 500" width="100%" height="100%" aria-hidden="true"><circle cx="200" cy="200" r="170" fill="#D9734A"></circle><rect x="80" y="80" width="240" height="240" fill="none" stroke="#FFFFFF" stroke-width="14"></rect><circle cx="320" cy="80" r="13" fill="#111111"></circle></svg>
+  </div>
+  <div style="position:absolute;inset:0;transform-origin:50% 40%;opacity:{{ p.builders.op }};transform:{{ p.builders.tf }};transition:{{ tr }};">
+    <svg viewBox="0 0 400 500" width="100%" height="100%" aria-hidden="true"><rect x="52" y="40" width="296" height="296" fill="none" stroke="#4657B8" stroke-width="34"></rect></svg>
+  </div>
+  <div style="position:absolute;inset:0;transform-origin:50% 40%;opacity:{{ p.product.op }};transform:{{ p.product.tf }};transition:{{ tr }};">
+    <svg viewBox="0 0 400 500" width="100%" height="100%" aria-hidden="true"><polygon points="200,22 374,344 26,344" fill="#B9473F"></polygon></svg>
+  </div>
+  <div style="position:absolute;inset:0;transform-origin:50% 40%;opacity:{{ p.webshop.op }};transform:{{ p.webshop.tf }};transition:{{ tr }};">
+    <svg viewBox="0 0 400 500" width="100%" height="100%" aria-hidden="true"><g fill="none" stroke="#C9A13B" stroke-width="13"><circle cx="200" cy="200" r="174"></circle><circle cx="200" cy="200" r="128"></circle><circle cx="200" cy="200" r="82"></circle></g></svg>
+  </div>
+  <div style="position:absolute;inset:0;transform-origin:50% 40%;opacity:{{ p.local.op }};transform:{{ p.local.tf }};transition:{{ tr }};">
+    <svg viewBox="0 0 400 500" width="100%" height="100%" aria-hidden="true"><g fill="#B9473F" transform="translate(30 30) scale(3.4)"><path d="M50 50 L41.3 23.6 A14 14 0 1 0 23.6 41.3 Z"></path><path d="M50 50 L41.3 23.6 A14 14 0 1 0 23.6 41.3 Z" transform="rotate(90 50 50)"></path><path d="M50 50 L41.3 23.6 A14 14 0 1 0 23.6 41.3 Z" transform="rotate(180 50 50)"></path><path d="M50 50 L41.3 23.6 A14 14 0 1 0 23.6 41.3 Z" transform="rotate(270 50 50)"></path></g></svg>
+  </div>
+  <div style="position:absolute;inset:0;transform-origin:0% 100%;opacity:{{ p.accA.op }};transform:{{ p.accA.tf }};transition:{{ tr }};">
+    <svg viewBox="0 0 400 500" width="100%" height="100%" aria-hidden="true"><path d="M0 500 L0 404 A96 96 0 0 1 96 500 Z" fill="{{ accFill }}"></path></svg>
+  </div>
+  <div style="position:absolute;inset:0;transform-origin:100% 0%;opacity:{{ p.accB.op }};transform:{{ p.accB.tf }};transition:{{ tr }};">
+    <svg viewBox="0 0 400 500" width="100%" height="100%" aria-hidden="true"><path d="M400 0 L400 96 A96 96 0 0 1 304 0 Z" fill="{{ accFill }}"></path></svg>
+  </div>
+  <div style="position:absolute;left:21%;width:58%;top:24%;bottom:0;background:#CFCFCC;clip-path:inset(0 round 50% 50% 0 0 / 28% 28% 0 0);">
+    <image-slot id="{{ slot }}" mask="inset(0 round 50% 50% 0 0 / 28% 28% 0 0)" placeholder="{{ placeholder }}" style="display:block;width:100%;height:100%;color:#3A3A3A;"></image-slot>
+  </div>
+  <sc-if value="{{ hasLabel }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:12px;bottom:12px;background:#FFFFFF;padding:4px 8px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#3A3A3A;">{{ label }}</div></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:320,&quot;height&quot;:400},&quot;role&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;founders&quot;,&quot;builders&quot;,&quot;product&quot;,&quot;webshop&quot;,&quot;local&quot;],&quot;default&quot;:&quot;founders&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;seed&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;mathieu&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;slot&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;who-lab-portrait&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;placeholder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Drop approved portrait&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;reduced&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const role = this.props.role || 'founders';
+    const seed = String(this.props.seed || '');
+    let h = 0; for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+    const reduced = this.props.reduced || (typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const v = h % 3, w = (h >> 3) % 2;
+    const rot = { founders: [0, -90, 0][v], builders: [-5, 0, 5][v], product: [-7, 0, 7][v], webshop: [0, 0, 0][v], local: [0, 45, 0][v] };
+    const tx = { webshop: ['-10px', '0px', '10px'][v] };
+    const out = { lBg: { op: role === 'local' ? 1 : 0 } };
+    ['founders', 'builders', 'product', 'webshop', 'local'].forEach((id) => {
+      const on = role === id;
+      out[id] = on
+        ? { op: 1, tf: 'translateX(' + (tx[id] || '0px') + ') rotate(' + rot[id] + 'deg) scale(1)' }
+        : { op: 0, tf: reduced ? 'none' : 'rotate(-90deg) scale(0.55)' };
+    });
+    const acc = ['#8DB3DD', '#C9A13B', '#3F3F3F', '#D9734A'];
+    out.accA = { op: w === 0 ? 1 : 0, tf: w === 0 ? 'scale(1) rotate(0deg)' : (reduced ? 'none' : 'scale(0.2) rotate(90deg)') };
+    out.accB = { op: w === 1 ? 1 : 0, tf: w === 1 ? 'scale(1) rotate(0deg)' : (reduced ? 'none' : 'scale(0.2) rotate(-90deg)') };
+    let fill = acc[(h >> 5) % acc.length];
+    if ((role === 'founders' && fill === '#D9734A') || (role === 'webshop' && fill === '#C9A13B')) fill = '#8DB3DD';
+    return {
+      p: out, accFill: fill,
+      tr: reduced ? 'opacity 200ms ease' : 'transform 620ms cubic-bezier(.34,1.45,.64,1), opacity 260ms ease',
+      slot: this.props.slot || 'who-lab-portrait',
+      placeholder: this.props.placeholder || 'Drop approved portrait',
+      label: this.props.label || '', hasLabel: !!this.props.label,
+    };
+  }
+}
+</script>
+</body>
+</html>

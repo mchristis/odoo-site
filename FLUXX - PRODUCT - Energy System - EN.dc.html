@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<title>FLUXX Energy System | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } html { scroll-behavior:smooth; } [id] { scroll-margin-top:120px; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="FluxxNav" active="overview" hint-size="100%,57px"></dc-import>
+  <dc-import name="PageHero" brand="FLUXX" rgb="253,199,6" eyebrow="FLUXX · Energy system" title="The battery is one part of the system." intro="How it connects to solar, the inverter and the home decides what the system can do later: retrofit, expansion and backup." slot="fluxx-energy-system-hero" shot="FLUXX · Energy system · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:48px var(--web-side) 0;box-sizing:border-box;"><div style="border-top:1px solid var(--color-divider);padding-top:24px;display:flex;gap:24px;flex-wrap:wrap;align-items:center;"><span style="font-size:var(--web-body-size);font-weight:300;color:#5F5E5E;">AC or DC coupled, all-in-one or modular: what decides what the system can do later.</span><a href="FLUXX - CONTENT - Knowledge - EN.dc.html#architecture" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Why storage architecture matters &#8250;</a></div></section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">EMON and Wi-Fi Mesh</div>
+        <h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One system, <span style="color:#8E8E8E;">connected.</span></h2>
+      </div>
+      <div style="grid-column:span 2;display:flex;flex-direction:column;gap:16px;">
+        <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">EMON reads solar, battery, load, grid and price, then decides when FLUXX charges, holds or discharges.</p>
+        <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Wi-Fi Mesh connects every module. There is no manual pairing and no gateway to set up.</p>
+        <div style="display:flex;gap:24px;flex-wrap:wrap;">
+          <a href="FLUXX - PRODUCT - FLUXX with EMON - EN.dc.html" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">FLUXX with EMON &#8250;</a>
+          <a href="FLUXX - SUPPORT - Connected Fast - EN.dc.html" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Wi-Fi Mesh &#8250;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div style="height:64px;"></div>
+  <dc-import name="ContentSections" brand="FLUXX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="FLUXX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="FLUXX" accent="var(--color-brand-fluxx)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const T = [
+      { kind: "Connection", name: "AC-coupled", text: "The battery has its own inverter and connects on the AC side of the home, next to the solar inverter.", rows: [["Retrofit", "Works alongside an existing solar system."], ["Expansion", "Add storage without changing the solar inverter."], ["Backup", "Handled by the battery inverter, where supported."]] },
+      { kind: "Connection", name: "DC-coupled", text: "The battery shares a hybrid inverter with the solar panels. Solar charges the battery before conversion to AC.", rows: [["Retrofit", "Usually needs a hybrid inverter."], ["Expansion", "Limited by the inverter's battery input."], ["Backup", "Handled by the hybrid inverter, where supported."]] },
+      { kind: "Build", name: "All-in-one", text: "Battery, inverter and control in one housing.", rows: [["Retrofit", "One unit to place and connect."], ["Expansion", "Within the limits of the family."], ["Backup", "Built in, where the model supports it."]] },
+      { kind: "Build", name: "Modular", text: "Separate battery modules stack or sit in a cabinet, with a separate or shared inverter.", rows: [["Retrofit", "Plan the space for the final size."], ["Expansion", "Add modules as needs grow."], ["Backup", "Depends on the inverter chosen."]] },
+    ];
+    return { types: T.map((t) => ({ ...t, rows: t.rows.map(([k, v]) => ({ k, v })) })) };
+  }
+}
+</script>
+</body>
+</html>

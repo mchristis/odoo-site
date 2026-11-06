@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>KALK PLAN | STRØHM.ENERGY</title>
+<script src="./image-slot.js"></script>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } input:focus { outline:none; border-color:#222222; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="systems" hint-size="100%,80px"></dc-import>
+  <dc-import name="BrandBar" brand="KALK" hint-size="100%,73px"></dc-import>
+
+  <dc-import name="PageHero" brand="KALK" rgb="137,137,137" title="KALK PLAN. From location to proposal." intro="Plan a residential rooftop, a commercial installation or a ground-mounted solar project from your phone, tablet or computer." slot="kalk-plan-hero" shot="KALK PLAN screen: roof layout on satellite map, live kWp counter" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:#666666;margin-bottom:20px;display:flex;gap:6px;"><a href="KALK - SYSTEM - Overview - EN.dc.html" style="color:#666666;">KALK</a><span>›</span><span>PLAN</span></div>
+    <div style="display:inline-block;margin:0 0 16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B07818;">Proposed, to confirm</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:center;">
+      <div>
+        
+        <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#666666;max-width:560px;">Define the available area, place modules, configure the mounting structure and electrical components, calculate expected generation and prepare the project documentation.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#specialist" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Talk to a specialist</a>
+          <a href="#flow" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#F4F4F4;color:#222222;border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">See the workflow</a>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section id="flow" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;">
+      <h2 style="margin:0 0 32px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One <span style="color:#8E8E8E;">connected workflow</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:16px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="6">
+          <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;min-height:150px;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#666666;">{{ s.n }}</span>
+            <span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ s.t }}</span>
+            <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#666666;">{{ s.d }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;">
+      <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Step by step</div>
+      <h2 style="margin:0 0 40px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">How KALK <span style="color:#8E8E8E;">PLAN works.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:40px 24px;">
+        <sc-for list="{{ explain }}" as="e" hint-placeholder-count="12">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="aspect-ratio:300/560;max-width:180px;"><image-slot id="{{ e.slot }}" src="{{ e.src }}" shape="rounded" radius="12" placeholder="{{ e.t }}"></image-slot></div>
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#666666;">{{ e.n }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ e.t }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#666666;">{{ e.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+    <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;">
+        <div>
+          <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">{{ g.k }}</div>
+          <h2 style="margin:0 0 24px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ g.t1 }} {{ g.t2 }}</h2>
+          <div style="display:flex;flex-direction:column;border-top:1px solid #D9D9D9;">
+            <sc-for list="{{ g.items }}" as="i" hint-placeholder-count="6">
+              <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid #EBEBEB;">
+                <span style="font-size:14px;font-weight:700;">{{ i.t }}</span>
+                <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#666666;">{{ i.d }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="aspect-ratio:4/3;">
+          <image-slot id="{{ g.slot }}" src="{{ g.src }}" shape="rounded" radius="12" placeholder="{{ g.ph }}"></image-slot>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;">
+      <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Sample</div>
+      <h2 style="margin:0 0 12px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Sample wireframes</h2>
+      <p style="margin:0 0 32px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Illustrative wireframes, not product screens. Replace with real KALK PLAN screens when available.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;"><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/kalk-plan-hero-sample.svg" alt="Hero screen (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Hero screen</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/kalk-plan-design-sample.svg" alt="Design (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Design</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/kalk-plan-engineering-sample.svg" alt="Engineering (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Engineering</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/kalk-plan-proposal-sample.svg" alt="Proposal (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Proposal</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/step-roof.svg" alt="Roof setup (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Roof setup</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/step-obstructions.svg" alt="Obstructions (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Obstructions</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/step-elevated.svg" alt="Elevated roofs (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Elevated roofs</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/step-auto.svg" alt="Auto placement (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Auto placement</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/step-area.svg" alt="Custom area (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Custom area</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/step-edit.svg" alt="Manual edit (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Manual edit</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/step-azimuth.svg" alt="Azimuth (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Azimuth</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/step-table.svg" alt="Table settings (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Table settings</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/step-sun.svg" alt="3D and sun path (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">3D and sun path</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/step-heat.svg" alt="Irradiance per panel (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Irradiance per panel</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/step-strings.svg" alt="Stringing (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Stringing</div></div><div style="display:flex;flex-direction:column;gap:8px;"><div style="background:#F4F4F4;border-radius:12px;padding:12px;"><img src="assets/kalk/step-proposal.svg" alt="Proposal (sample wireframe)" style="width:100%;height:auto;display:block;border-radius:8px;"></img></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Proposal</div></div></div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="background:#F4F4F4;border-radius:12px;padding:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px;">
+      <div>
+        <h2 style="margin:0 0 12px;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Built on the <span style="color:#8E8E8E;">STRØHM.ENERGY range</span></h2>
+        <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The bill of materials uses real STRØHM.ENERGY articles. Modules, inverters, storage, mounting and electrical parts come from the same catalogue that fills the order.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;">
+        <a href="ANDO - PRODUCT - Overview - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#FFFFFF;border-radius:var(--cta-radius,8px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;" style-hover="background:#E3E3E3;">ANDO · Modules</a>
+        <a href="MOEBIUS - PRODUCT - Overview - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#FFFFFF;border-radius:var(--cta-radius,8px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;" style-hover="background:#E3E3E3;">MOEBIUS · Inverters</a>
+        <a href="FLUXX - PRODUCT - Overview - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#FFFFFF;border-radius:var(--cta-radius,8px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;" style-hover="background:#E3E3E3;">FLUXX · Storage</a>
+        <a href="MOX - PRODUCT - Overview - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#FFFFFF;border-radius:var(--cta-radius,8px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;" style-hover="background:#E3E3E3;">MOX · Mounting</a>
+        <a href="TOGU - PRODUCT - Overview - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#FFFFFF;border-radius:var(--cta-radius,8px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;" style-hover="background:#E3E3E3;">TOGU · Connectivity</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;margin-bottom:10px;">For installers</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:8px;line-height:var(--web-h3-lh);">Design, engineer and quote on site.</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#666666;">Revise the layout with the customer present. Leave with the drawing set, the bill of materials and a branded proposal.</div>
+      </div>
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;margin-bottom:10px;">For homeowners</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:8px;line-height:var(--web-h3-lh);">See your roof before you decide.</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#666666;">The proposal shows your own roof in 3D, the expected generation per month, the payback period and the savings over 25 years.</div>
+      </div>
+    </div>
+  </section>
+
+  <div id="specialist" style="height:64px;"></div>
+  <dc-import name="ReachSpecialist" brand="KALK" photo-slot-id="kalk-plan-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="ContentSections" brand="KALK" scope="brand" sections="references,news" hint-size="100%,1600px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { name: "", email: "", phone: "", role: "Installer", consent: false, sent: false, invalid: false };
+  submit = () => {
+    const s = this.state;
+    if (!/.+@.+\..+/.test(s.email) || s.phone.trim().length < 6 || !s.consent) { this.setState({ invalid: true }); return; }
+    try { const k = "kalk-plan-specialist-leads"; const a = JSON.parse(localStorage.getItem(k) || "[]"); a.push({ name: s.name, email: s.email, phone: s.phone, role: s.role, at: new Date().toISOString() }); localStorage.setItem(k, JSON.stringify(a)); } catch (e) {}
+    this.setState({ sent: true, invalid: false });
+  };
+  renderVals() {
+    const s = this.state;
+    return {
+      explain: [{"n":"01","t":"Roof setup","d":"Draw each roof on the satellite map. Set the height from ground, the edge setback and a parapet if there is one.","slot":"kalk-plan-step-roof","src":"assets/kalk/partner/roof.png"},{"n":"02","t":"Obstructions","d":"Mark skylights, chimneys, vents and trees. Panels keep clear of them and their shade is calculated.","slot":"kalk-plan-step-obstructions","src":"assets/kalk/partner/obstructions.png"},{"n":"03","t":"Elevated roofs","d":"Add higher roof parts and neighbouring volumes. They cast shade on the roof below.","slot":"kalk-plan-step-elevated","src":"assets/kalk/partner/elevated.png"},{"n":"04","t":"Auto placement","d":"Tap a roof and confirm. KALK PLAN fills the free area with modules.","slot":"kalk-plan-step-auto","src":"assets/kalk/partner/auto.png"},{"n":"05","t":"Custom area","d":"Draw your own placement area when only part of the roof should be used.","slot":"kalk-plan-step-area","src":"assets/kalk/partner/area.png"},{"n":"06","t":"Manual edit","d":"Move, copy or delete single modules or whole tables. The kWp counter updates live.","slot":"kalk-plan-step-edit","src":"assets/kalk/partner/edit.png"},{"n":"07","t":"Azimuth","d":"Turn a table to any orientation, or align it to a roof edge in one tap.","slot":"kalk-plan-step-azimuth","src":"assets/kalk/partner/azimuth.png"},{"n":"08","t":"Table settings","d":"Choose the structure profile. Set leg height, tilt, row and column gaps and leg spacing. Metric or imperial.","slot":"kalk-plan-step-table","src":"assets/kalk/partner/table.png"},{"n":"09","t":"3D and sun path","d":"View the site in 3D. Move through the day and the seasons to see where the shade falls.","slot":"kalk-plan-step-sun","src":"assets/kalk/partner/sun.png"},{"n":"10","t":"Irradiance per panel","d":"Each module is coloured by the sunlight it receives, so weak positions are easy to spot.","slot":"kalk-plan-step-heat","src":"assets/kalk/partner/heat.png"},{"n":"11","t":"Stringing","d":"Modules are strung automatically. Each string has its own colour and can be edited.","slot":"kalk-plan-step-strings","src":"assets/kalk/partner/strings.png"},{"n":"12","t":"Drawings and proposal","d":"Shadow captures, layout drawings, bill of materials and the customer proposal come from the same design.","slot":"kalk-plan-step-proposal","src":"assets/kalk/partner/proposal.png"}],
+      steps: [
+        { n: "01.", t: "Capture", d: "Find the location. Define the roof, building or ground area." },
+        { n: "02.", t: "Design", d: "Add obstructions, select modules and generate a first layout." },
+        { n: "03.", t: "Configure", d: "Choose mounting structures, inverters, batteries and electrical components." },
+        { n: "04.", t: "Simulate", d: "Evaluate sun position, shading, irradiance and expected energy production." },
+        { n: "05.", t: "Engineer", d: "Prepare string layouts, electrical diagrams, cable calculations and material lists." },
+        { n: "06.", t: "Propose", d: "Compare costs and savings, then prepare a customer proposal from the same project data." }
+      ],
+      groups: [
+        { k: "Design", t1: "The real site,", t2: "in 3D.", slot: "kalk-plan-design", src: "assets/kalk/partner/design.png", ph: "KALK PLAN screen: 3D view with sun path and per-panel irradiance",
+          items: [
+            { t: "Roof and ground", d: "Draw roofs on the satellite map, or ground-mount areas. Height, edge setback and parapet per roof." },
+            { t: "Obstructions", d: "Skylights, chimneys, trees and elevated roofs, placed where they are." },
+            { t: "Panel placement", d: "Automatic placement, or a custom area. Move, copy, delete and set azimuth by hand. Live kWp counter." },
+            { t: "Structure", d: "Profile choice, front leg height, tilt, row and column gaps, leg spacing. Metric or imperial." },
+            { t: "Sun and shade", d: "Sun path by season and hour. Irradiance heat map per panel. Shadow captures at set dates and times." },
+            { t: "Stringing", d: "Automatic stringing, each string shown in its own colour." }
+          ] },
+        { k: "Engineering", t1: "Drawings", t2: "from the same model.", slot: "kalk-plan-engineering", src: "assets/kalk/partner/engineering.png", ph: "KALK PLAN output: PV layout sheet with title block and string layout",
+          items: [
+            { t: "PV and string layouts", d: "Per roof or zone, with title block." },
+            { t: "Single-line diagram", d: "Generated from the stringing and the equipment." },
+            { t: "Earthing and lightning", d: "Earthing routes, pits and lightning protection coverage." },
+            { t: "Cable routing", d: "DC and AC routes, with lengths." },
+            { t: "Bill of materials", d: "Structural and electrical, calculated automatically." },
+            { t: "Engineer drawing set", d: "One PDF for the installation team." }
+          ] },
+        { k: "Proposal", t1: "One design,", t2: "one proposal.", slot: "kalk-plan-proposal", src: "assets/kalk/partner/proposalMain.png", ph: "KALK PLAN output: customer proposal cover and generation page",
+          items: [
+            { t: "Customer proposal", d: "PDF with your company branding." },
+            { t: "Generation", d: "Month by month, with shading, temperature and wiring losses shown separately." },
+            { t: "Return", d: "Payback period and savings over 25 years, with module degradation." },
+            { t: "Storage", d: "Add FLUXX battery storage inside the same proposal." },
+            { t: "CAPEX or OPEX", d: "Purchase, or OPEX / PPA models." }
+          ] }
+      ],
+      roles: ["Installer", "Homeowner"].map(r => ({ label: r, pick: () => this.setState({ role: r }), bg: s.role === r ? "#222222" : "#FFFFFF", fg: s.role === r ? "#FFFFFF" : "#222222", border: s.role === r ? "#222222" : "#BBBBBB" })),
+      name: s.name, email: s.email, phone: s.phone, consent: s.consent,
+      onName: e => this.setState({ name: e.target.value }),
+      onEmail: e => this.setState({ email: e.target.value }),
+      onPhone: e => this.setState({ phone: e.target.value }),
+      onConsent: e => this.setState({ consent: e.target.checked }),
+      invalid: s.invalid, sent: s.sent, notSent: !s.sent, submit: this.submit
+    };
+  }
+}
+</script>
+</body>
+</html>

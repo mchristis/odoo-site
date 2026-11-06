@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>EMON Shop | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+:root{--fg:var(--color-text-primary);--txt:#4F4F4E;--mut:var(--color-text-primary);--ph:#C8C7C3;--line:#E5E5E5;--line2:#D9D9D9;--bg:var(--color-surface-card);--card:#FFFFFF;--brand:#21AE8F;--ok:#4C8F2A;--warn:#B26A00;--err:#B23B3B;--info:#1F5FA8}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font-web);color:var(--txt);background:var(--bg);font-size:var(--web-small-size);line-height:1.5}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+header{background:var(--card);border-bottom:1px solid var(--line)}
+.mast{display:flex;align-items:baseline;justify-content:space-between;padding:18px 0}
+.brand{font-size:var(--web-h2card-size);font-weight:700;letter-spacing:.02em;color:var(--fg)}
+.brand small{display:block;font-size:9px;letter-spacing:.22em;color:var(--mut);font-weight:400;margin-top:2px}
+.cat{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--mut);font-weight:var(--web-eyebrow-weight)}
+.auth{display:flex;gap:8px}
+.auth button{font-family:inherit;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;padding:7px 12px;border:1px solid var(--line2);background:#fff;color:var(--txt);cursor:pointer;font-weight:var(--web-eyebrow-weight)}
+.auth button.on{background:var(--fg);color:#fff;border-color:var(--fg)}
+.lead{color:var(--mut);font-size:var(--web-small-size);max-width:760px;padding:14px 0 0}
+main{padding:22px 0 60px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.gallery{background:var(--card);border:1px solid var(--line)}
+.gview{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,#f7f7f7,#f7f7f7 10px,#f2f2f2 10px,#f2f2f2 20px);color:var(--ph);text-align:center;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;font-weight:var(--web-eyebrow-weight)}
+.gtabs{display:flex;border-top:1px solid var(--line)}
+.gtab{flex:1;font-family:inherit;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;padding:9px 0;border:none;border-right:1px solid var(--line);background:#fff;color:var(--mut);cursor:pointer;font-weight:var(--web-eyebrow-weight)}
+.gtab:last-child{border-right:none}.gtab.active{color:var(--fg);border-bottom:2px solid var(--brand)}
+h1{font-size:var(--web-h2card-size);font-weight:700;color:var(--fg);margin:0 0 2px}
+.artcode{font-size:var(--web-min-size);color:var(--ph);font-weight:400;margin-left:10px;letter-spacing:.04em}
+.sub{font-size:var(--web-min-size);color:var(--mut);margin-bottom:14px}
+.desc{font-size:var(--web-small-size);color:var(--txt);margin:0 0 16px}
+.spectable{border-top:1px solid var(--fg);border-bottom:1px solid var(--fg)}
+.specr{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid var(--line);font-size:var(--web-min-size)}
+.specr:first-child{border-top:none}
+.sk{color:var(--mut)}.sv{color:var(--fg);text-align:right}
+.pend{color:var(--ph)}
+.sechead{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--mut);font-weight:var(--web-eyebrow-weight);margin:22px 0 8px}
+.pricenote{font-size:var(--web-min-size);color:var(--mut);margin-bottom:10px}
+details.route{border:1px solid var(--line);margin-bottom:8px;background:#fff}
+details.route>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:14px 1.3fr .8fr 1fr 1.1fr auto;gap:10px;align-items:center;padding:11px 14px;font-size:var(--web-min-size)}
+details.route>summary::-webkit-details-marker{display:none}
+.mark{width:9px;height:9px;border-radius:50%}
+.mark.ok{background:var(--ok)}.mark.info{background:var(--info)}.mark.warn{background:var(--warn)}.mark.idle{background:var(--ph)}
+.rdetail{padding:0 14px 14px;font-size:var(--web-min-size)}
+.rdgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 0}
+.rd .k{font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--mut);font-weight:var(--web-eyebrow-weight)}
+.rd .v{font-size:var(--web-min-size);color:var(--fg)}
+.pay{padding:8px 0;border-top:1px solid var(--line);color:var(--mut);font-size:var(--web-min-size)}
+.eprline{font-size:var(--web-min-size);color:var(--mut);border-top:1px solid var(--line);padding-top:9px;margin-top:12px}
+.gatebar{width:100%;padding:11px;background:var(--fg);color:#fff;border:none;font-family:inherit;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;cursor:pointer;font-weight:var(--web-eyebrow-weight)}
+.obtn{margin-top:10px;padding:10px 16px;font-family:inherit;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;border:1px solid var(--brand);background:var(--brand);color:#fff;cursor:pointer;font-weight:var(--web-eyebrow-weight)}
+.stockbar{display:flex;height:6px;width:100%;background:var(--line);margin:8px 0 3px;overflow:hidden}
+.stockbar span{height:100%;display:block}.sb-w0{background:#4f4f4e}.sb-w1{background:var(--color-text-primary)}.sb-w2{background:#c8c7c3}.sb-res{background:var(--err)}.sb-free{background:var(--ok)}
+.sblegend{font-size:var(--web-min-size,12px);font-weight:300;color:var(--mut);margin-bottom:4px}.sblegend .lg{display:inline-block;width:8px;height:8px;margin-right:3px}.lg0{background:#4f4f4e}.lg1{background:var(--color-text-primary)}.lg2{background:#c8c7c3}.lgr{background:var(--err)}.lgf{background:var(--ok)}
+.cutoffline{display:flex;gap:10px;align-items:baseline;border-top:1px solid var(--line);margin-top:8px;padding-top:8px;font-size:var(--web-min-size)}
+.ck-k{color:var(--mut)}.ck-t{font-variant-numeric:tabular-nums;font-weight:700}.ck-t.soon{color:var(--warn)}
+.ck-s{margin-left:auto;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;font-weight:var(--web-eyebrow-weight)}.ck-s.ok{color:var(--ok)}.ck-s.warn{color:var(--warn)}
+.holdline{font-size:var(--web-min-size);color:var(--mut);border-top:1px solid #ececec;margin-top:7px;padding-top:7px}
+.note{font-size:var(--web-min-size);color:var(--mut);background:var(--color-bg-canvas);border:1px solid var(--line);padding:10px 12px;margin-top:16px}
+foot,.foot{display:block;font-size:var(--web-min-size);color:var(--mut);border-top:1px solid var(--line);margin-top:30px;padding-top:14px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+
+/* ws brand-switcher bar (injected) */
+.wsbar{position:sticky;top:0;z-index:50;background:var(--color-text-primary);color:#fff;font-family:var(--font-web)}
+.wsbar-in{max-width:1100px;margin:0 auto;padding:0 26px;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.wsbar-logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:var(--web-min-size);letter-spacing:.22em;font-weight:700}
+.wsbar-logo span{font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:var(--color-grey-70);font-size:var(--web-eyebrow-size);text-transform:uppercase}
+.wsbar-menu{position:relative}
+.wsbar-menu>summary{list-style:none;cursor:pointer;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #3a3a38;border-radius:6px;font-weight:var(--web-eyebrow-weight)}
+.wsbar-menu>summary::-webkit-details-marker{display:none}
+.wsbar-menu[open]>summary{background:#2a2a28}
+.wsbar-drop{position:absolute;right:0;top:calc(100% + 8px);width:600px;max-width:82vw;background:#fff;color:var(--color-text-primary);border:1px solid #d9d9d9;border-radius:16px;box-shadow:none;padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:0 22px;z-index:60}
+.wsbar-grp{grid-column:1/-1;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);font-weight:var(--web-eyebrow-weight);margin:14px 0 4px;border-top:1px solid #D9D9D9;padding-top:11px}
+.wsbar-grp.first{margin-top:0;border-top:none;padding-top:0}
+.wsbar-a{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:7px 8px;text-decoration:none;color:var(--color-text-primary);border-radius:5px}
+.wsbar-a:hover{background:var(--color-surface-card)}
+.wsbar-a b{font-weight:700;font-size:var(--web-small-size);letter-spacing:.02em}
+.wsbar-a em{font-size:var(--web-min-size);color:var(--color-text-primary);text-align:right;font-style:normal}
+@media(max-width:720px){.wsbar-drop{grid-template-columns:1fr;width:300px}.wsbar-in{padding:0 16px}}
+
+#foot{display:none}</style>
+</helmet>
+<dc-import name="WebshopBar" hint-size="100%,52px"></dc-import>
+<header><div class="wrap">
+<div class="mast">
+ <div class="brand">EMON<small>STRØHM.ENERGY</small></div>
+ <div class="cat">Display interface / Single product</div>
+ <div class="auth"><button id="btnAnon" class="on">Anonymous</button><button id="btnAuth">Log in</button></div>
+</div>
+<p class="lead">EMON is the monitoring and control layer above the STRØHM.ENERGY product lines. VISTA is its one hardware product: a detachable 13 inch touch display for onboarding, monitoring and control.</p>
+</div></header>
+<main><div class="wrap"><div class="grid">
+ <div>
+  <div class="gallery">
+   <div class="gview" id="gv">EMON VISTA<br>Photo</div>
+   <div class="gtabs">
+    <button class="gtab active" data-v="Photo">Photo</button>
+    <button class="gtab" data-v="3D">3D</button>
+    <button class="gtab" data-v="Technical">Technical</button>
+    <button class="gtab" data-v="Install">Install</button>
+   </div>
+  </div>
+  <div class="note">EMON voice, product framing: a calm home screen for the whole system. VISTA detaches from its wall or magnetic mount and controls SYNQ metering, FLUXX storage, MOEBIUS inverters and the rest through one interface.</div>
+ </div>
+ <div>
+  <h1>EMON VISTA<span class="artcode">EM-DISP-13-V1-WIFI-M</span></h1>
+  <div class="sub">Detachable TFT display interface &middot; Residential / Commercial</div>
+  <p class="desc">A 13 inch detachable touch display for onboarding, monitoring and control across the EMON ecosystem. Wall mounted or magnetic, connected over Wi-Fi mesh. One screen for the whole installation.</p>
+  <div class="spectable" id="spec"></div>
+  <div id="commercial"></div>
+  <div class="eprline">WEEE and packaging contribution applies per delivery country, shown at checkout.</div>
+ </div>
+</div>
+<div class="foot" id="foot"></div>
+</div></main>
+
+<dc-import name="Footer" show-ebook="{{ false }}" hint-size="100%,400px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1200,"height":880}}'>
+class Component extends DCLogic {
+  componentDidMount(){
+    if(this._booted) return; this._booted = true;
+
+var state={auth:false};
+var SPEC=[["Brand","EMON"],["Series","VISTA"],["Category","Detachable TFT display interface"],["Screen","13 inch touch, TFT"],["Mount","Wall mount / magnetic, detachable"],["Connectivity","Wi-Fi mesh"],["Role","Onboarding, monitoring, control"],["Application","Residential / Commercial"],["Finish","PEND"],["Resolution","PEND"],["Processor","PEND"],["Battery / detached runtime","PEND"],["Dimensions","PEND"],["Weight","PEND"],["Operating range","PEND"],["Warranty term","PEND"]];
+var RDEF={EU:{label:"EU stock",mark:"ok",eta:"< 1 week"},Floating:{label:"Floating stock",mark:"info",eta:"< 6 weeks"},Factory:{label:"Factory stock",mark:"warn",eta:"< 8 weeks"},MTO:{label:"Manufacturing order",mark:"idle",eta:"< 10 weeks"}};
+var ORDER=["EU","Floating","Factory","MTO"];
+var PAY={EU:"100% on order",Floating:"100% on order",Factory:"30% deposit, 70% before dispatch",MTO:"30% deposit, 70% before dispatch"};
+var HOLD={EU:"Reservation hold, payment within 24 h or the hold lapses.",Floating:"Reservation hold, payment within 12 h or the hold lapses.",Factory:"Reservation hold, payment within 48 h or the hold lapses."};
+var BASE=180;
+var RT={EU:{locs:[["Rotterdam NL",6],["Hamburg DE",4],["Poznan PL",2]],pr:BASE,moqs:"1 unit"},
+ Floating:{q:60,r:20,sh:"FL 2026 14",date:"05 Aug 2026",pr:Math.round(BASE*0.98),moqs:"20 pcs"},
+ Factory:{q:400,pr:Math.round(BASE*0.99),moqs:"200 pcs",moq:"1 pallet (200 pcs)"},
+ MTO:{pr:Math.round(BASE*1.03),moqs:"500 pcs",moq:"container (500 pcs)"}};
+function eur(n){return "EUR "+Math.round(n).toLocaleString("en-GB");}
+function euLine(){var m=RT.EU.locs.reduce(function(a,l){return Math.min(a,1);},1);return RT.EU.pr;}
+function cetNow(){var t=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Amsterdam",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date());var a=t.split(":");return(+a[0])*60+(+a[1]);}
+function cutoffHTML(){var n=cetNow(),c=14*60;if(n<c){var r=c-n;var soon=r<60?" soon":"";return '<span class="ck-k">Order before 14:00 CET</span><span class="ck-t'+soon+'">'+Math.floor(r/60)+' h '+String(r%60).padStart(2,"0")+' min left</span><span class="ck-s ok">Ships today</span>';}return '<span class="ck-k">Cutoff 14:00 CET passed</span><span class="ck-s warn">Ships next business day</span>';}
+function spec(){document.getElementById("spec").innerHTML=SPEC.map(function(r){var v=r[1]==="PEND"?'<span class="pend">datasheet pending</span>':r[1];return '<div class="specr"><span class="sk">'+r[0]+'</span><span class="sv">'+v+'</span></div>';}).join("");}
+function euBar(){var pr=RT.EU.locs;var tot=pr.reduce(function(s,x){return s+x[1];},0)||1;return '<div class="stockbar">'+pr.map(function(x,i){return '<span class="sb-w'+(i%3)+'" style="width:'+(x[1]/tot*100).toFixed(1)+'%"></span>';}).join("")+'</div><div class="sblegend">'+pr.map(function(x,i){return '<span class="lg lg'+(i%3)+'"></span>'+x[0]+' '+x[1];}).join(" &nbsp; ")+' pcs</div>';}
+function flBar(){var q=RT.Floating.q,r=RT.Floating.r,f=Math.max(0,q-r);var tot=q||1;return '<div class="stockbar"><span class="sb-res" style="width:'+(r/tot*100).toFixed(1)+'%"></span><span class="sb-free" style="width:'+(f/tot*100).toFixed(1)+'%"></span></div><div class="sblegend"><span class="lg lgr"></span>Reserved '+r+' &nbsp; <span class="lg lgf"></span>Free to order '+f+' pcs</div>';}
+function route(r){var d=RT[r],def=RDEF[r];var line=d.pr;var qty=r==="MTO"?"Made to order":(r==="EU"?(d.locs.reduce(function(a,l){return a+l[1];},0)+" pcs"):(d.q+" pcs"))+" available";
+ var detail="";
+ if(r==="EU"){detail='<div class="rdgrid">'+d.locs.map(function(l){return '<div class="rd"><div class="k">'+l[0]+'</div><div class="v">'+l[1]+' pcs, '+eur(d.pr)+'</div></div>';}).join("")+'</div>'+euBar()+'<div class="cutoffline">'+cutoffHTML()+'</div>';}
+ else if(r==="Floating"){detail='<div class="rdgrid"><div class="rd"><div class="k">Available</div><div class="v">'+d.q+' pcs</div></div><div class="rd"><div class="k">Reserved</div><div class="v">'+d.r+' pcs</div></div><div class="rd"><div class="k">Shipment</div><div class="v">'+d.sh+'</div></div><div class="rd"><div class="k">ETA</div><div class="v">'+d.date+'</div></div></div>'+flBar();}
+ else{detail='<div class="rdgrid"><div class="rd"><div class="k">Minimum order</div><div class="v">'+d.moq+'</div></div><div class="rd"><div class="k">Route</div><div class="v">'+(r==="MTO"?"Made to order":"Factory stock")+'</div></div></div>';}
+ var hold=HOLD[r]?'<div class="holdline">'+HOLD[r]+'</div>':"";
+ return '<details class="route"'+(r==="EU"?" open":"")+'><summary><span class="mark '+def.mark+'"></span><span>'+def.label+'</span><span>'+def.eta+'</span><span>MOQ '+d.moqs+'</span><span>'+qty+'</span><b>'+eur(line)+'</b></summary><div class="rdetail">'+detail+'<div class="pay">Payment terms: <b>'+PAY[r]+'</b></div>'+hold+'<div><button class="obtn">Order now</button></div></div></details>';}
+function commercial(){var el=document.getElementById("commercial");
+ if(!state.auth){el.innerHTML='<div class="sechead">Commercial</div><button class="gatebar">Log in to see availability, price and warehouse split</button>';return;}
+ el.innerHTML='<div class="sechead">Order routes</div><div class="pricenote">Prices, stock, warehouse split, dated ETA and holds are provisional demo data.</div>'+ORDER.map(route).join("");}
+function foot(){document.getElementById("foot").innerHTML='<b>EMON VISTA, single product:</b> no filter, because a filter with one SKU narrows nothing. The four order routes, the EU warehouse split, the 14:00 CET dispatch cutoff and the reservation holds (EU 24 h, floating 12 h, factory 48 h, MTO none) match every other STRØHM.ENERGY shop.';}
+document.getElementById("btnAuth").onclick=function(){state.auth=true;this.classList.add("on");document.getElementById("btnAnon").classList.remove("on");commercial();};
+document.getElementById("btnAnon").onclick=function(){state.auth=false;this.classList.add("on");document.getElementById("btnAuth").classList.remove("on");commercial();};
+document.querySelectorAll(".gtab").forEach(function(t){t.onclick=function(){document.querySelectorAll(".gtab").forEach(function(x){x.classList.remove("active");});t.classList.add("active");document.getElementById("gv").innerHTML="EMON VISTA<br>"+t.dataset.v;};});
+spec();commercial();foot();
+setInterval(function(){document.querySelectorAll(".cutoffline").forEach(function(e){e.innerHTML=cutoffHTML();});},30000);
+
+  }
+}
+</script>
+</body>
+</html>

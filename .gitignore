@@ -1,0 +1,13 @@
+# Internal working files: kept on this Mac only (user, 6 Nov 2026)
+/_*
+!/_ds/
+/*.md
+/*.txt
+/*.doc
+/*.csv
+/*.xml
+/uploads/
+/scraps/
+/screenshots/
+/.thumbnail
+.DS_Store

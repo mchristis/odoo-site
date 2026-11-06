@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>WEBSHOP How It Works | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { text-decoration:none; color:var(--color-text-primary); }
+  a:hover { color:var(--color-text-primary); }
+  input, select, button { font-family:var(--font-web); }
+  .hw-card:hover .hw-arrow { transform:translateX(3px); }
+  .hw-arrow { display:inline-block; transition:transform 160ms ease; }
+</style>
+<script src="image-slot.js"></script>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);font-weight:300;">
+
+  <dc-import name="NavBar" active="" hint-size="100%,80px"></dc-import>
+  <dc-import name="WebshopNav" active="support" hint-size="100%,57px"></dc-import>
+
+  <!-- WE SELECT WHO REPRESENTS -->
+  <dc-import name="PageHero" brand="WEBSHOP" rgb="235,236,236" title="We select who represents our products. You choose to stand behind our approach." intro="Our products carry our name onto your projects, so we are strict about who installs them." slot="webshop-how-it-works-hero" shot="WEBSHOP · How It Works · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 64px;box-sizing:border-box;border-bottom:1px solid var(--color-divider);">
+    <div style="max-width:20ch;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:20px;">How the webshop works</div>
+    </div>
+    <div data-stack="1" style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:start;">
+      <p style="margin:8px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">We ask installers to apply, then we run due diligence on the company and select one partner per exclusive area. In return we train, teach and support you, and hand over qualified project leads through our lead generator. Strict conditions and correct agreements are the only route to a mutual success.</p>
+    </div>
+    <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px;--cg:16px;">
+      <sc-for list="{{ pact }}" as="p" hint-placeholder-count="3">
+        <div style="background:var(--color-surface-card);border-radius:var(--radius-card);padding:var(--card-padding);">
+          <div style="font-size:var(--web-h3-size);font-weight:400;color:var(--color-text-primary);margin-bottom:10px;">{{ p.t }}</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ p.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- SUPPLY ROUTES -->
+  <section id="routes" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side);box-sizing:border-box;border-bottom:1px solid var(--color-divider);">
+    <div style="max-width:60ch;margin-bottom:32px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">What · four ways to order</div>
+      <h2 style="margin:0;font-size:var(--web-sub-size);font-weight:var(--web-sub-weight);line-height:var(--web-sub-lh);letter-spacing:-0.02em;color:var(--color-text-primary);">Choose the right supply route</h2>
+      <p style="margin:14px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Every order runs through one of four routes, depending on product status, stock location, order size and project timing.</p>
+    </div>
+    <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;--cg:16px;">
+      <sc-for list="{{ routes }}" as="r" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;background:var(--color-surface-card);border:1px solid var(--color-divider);border-radius:var(--radius-card);padding:var(--card-padding);min-height:210px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:14px;">Route {{ r.n }}</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;color:var(--color-text-primary);margin-bottom:8px;line-height:var(--web-h3-lh);">{{ r.t }}</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ r.d }}</p>
+          <span style="margin-top:auto;padding-top:18px;font-size:12px;font-weight:700;letter-spacing:0.04em;color:var(--color-text-primary);">Lead time: {{ r.lead }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div data-cols="3" style="margin-top:24px;background:var(--color-surface-card);border-radius:var(--radius-card);padding:24px 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;--cg:24px;">
+      <sc-for list="{{ addons }}" as="a" hint-placeholder-count="3">
+        <div>
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:var(--color-text-primary);margin-bottom:6px;line-height:var(--web-h3-lh);">{{ a.t }}</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ a.d }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- A TOUR OF THE PORTAL -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side);box-sizing:border-box;border-bottom:1px solid var(--color-divider);">
+    <div style="max-width:60ch;margin-bottom:36px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">Inside the account</div>
+      <h2 style="margin:0;font-size:var(--web-sub-size);font-weight:var(--web-sub-weight);line-height:var(--web-sub-lh);letter-spacing:-0.02em;color:var(--color-text-primary);">A tour of the portal</h2>
+    </div>
+    <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;--cg:16px;">
+      <sc-for list="{{ tour }}" as="t" hint-placeholder-count="4">
+        <div style="background:var(--color-surface-card);border:1px solid var(--color-divider);border-radius:var(--radius-card);overflow:hidden;display:flex;flex-direction:column;">
+          <div style="aspect-ratio:4/3;background:var(--color-surface-card);">
+            <image-slot id="{{ t.slot }}" shape="rect" placeholder="{{ t.ph }}"></image-slot>
+          </div>
+          <div style="padding:22px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:10px;">{{ t.step }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:300;color:var(--color-text-primary);margin-bottom:8px;line-height:var(--web-h3-lh);">{{ t.t }}</div>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ t.d }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- MUTUAL EXPECTATIONS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side);box-sizing:border-box;border-bottom:1px solid var(--color-divider);">
+    <div style="max-width:60ch;margin-bottom:32px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">How we work together</div>
+      <h2 style="margin:0;font-size:var(--web-sub-size);font-weight:var(--web-sub-weight);line-height:var(--web-sub-lh);letter-spacing:-0.02em;color:var(--color-text-primary);">Mutual expectations</h2>
+      <p style="margin:14px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">A one-page understanding of how STRØHM.ENERGY and you work together — separate from the legal terms.</p>
+    </div>
+    <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;--cg:16px;">
+      <div style="background:var(--color-surface-card);border-radius:var(--radius-card);padding:var(--card-padding);">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:var(--color-text-primary);margin-bottom:16px;line-height:var(--web-h3-lh);">STRØHM.ENERGY commits to</div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ strohmCommits }}" as="c" hint-placeholder-count="4">
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);padding:12px 0;border-top:1px solid #E0E0E0;">{{ c }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:var(--color-surface-card);border-radius:var(--radius-card);padding:var(--card-padding);">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:var(--color-text-primary);margin-bottom:16px;line-height:var(--web-h3-lh);">You commit to</div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ youCommit }}" as="c" hint-placeholder-count="4">
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);padding:12px 0;border-top:1px solid #E0E0E0;">{{ c }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TALK TO US FIRST -->
+  <section id="contact" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side);box-sizing:border-box;border-bottom:1px solid var(--color-divider);">
+    <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;--cg:48px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">Talk to us first</div>
+        <h2 style="margin:0;font-size:var(--web-sub-size);font-weight:var(--web-sub-weight);line-height:var(--web-sub-lh);letter-spacing:-0.02em;color:var(--color-text-primary);">A person who knows the whole webshop</h2>
+        <p style="margin:18px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:52ch;">Not sure if the webshop fits how you work? Book a free 30-minute online session — before you even register. Your webshop contact walks you through how to order, the four routes, how we ship, how to keep everything running smoothly, and what to do if something goes wrong.</p>
+        <div style="margin-top:26px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:12px;">Available for</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <sc-for list="{{ availFor }}" as="v" hint-placeholder-count="3">
+              <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border:1px solid var(--color-divider);border-radius:var(--radius-card);padding:7px 14px;line-height:var(--web-small-lh);">{{ v }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;margin-top:28px;">
+          <div style="width:64px;height:64px;border-radius:50%;overflow:hidden;background:var(--color-surface-card);flex:none;">
+            <image-slot id="hw-contact-portrait" shape="circle" placeholder="Contact photo — Mr. Rowi"></image-slot>
+          </div>
+          <div>
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:3px;">PM</div>
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:var(--color-text-primary);line-height:var(--web-h3-lh);">Mr. Rowi</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Your webshop contact</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;">
+          <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#register" style="height:var(--cta-height);padding:0 var(--cta-pad-x);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);font-weight:400;letter-spacing:0.04em;border-radius:var(--cta-radius);">Book a meeting</a>
+          <a href="#chat" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:var(--color-surface-card);border:1px solid var(--color-divider);color:var(--color-text-primary);font-size:var(--cta-font,16px);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Live chat</a>
+          <a href="#contactform" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:var(--color-surface-card);border:1px solid var(--color-divider);color:var(--color-text-primary);font-size:var(--cta-font,16px);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Contact form</a>
+        </div>
+      </div>
+      <div style="position:relative;aspect-ratio:16/9;border-radius:var(--radius-card);overflow:hidden;background:var(--color-text-primary);">
+        <image-slot id="hw-founder-video" shape="rect" placeholder="Founder welcome video / poster — how STRØHM.ENERGY works operationally (16:9)"></image-slot>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+          <div style="width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;">
+            <div style="width:0;height:0;border-left:20px solid var(--color-text-primary);border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px;"></div>
+          </div>
+        </div>
+        <div style="position:absolute;left:22px;bottom:22px;pointer-events:none;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:6px;">Founder welcome · 60 sec</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;color:#FFFFFF;line-height:var(--web-h3-lh);">How STRØHM.ENERGY works, in a minute</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEBSHOP KNOWLEDGE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 88px;box-sizing:border-box;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:24px;flex-wrap:wrap;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">Webshop · Knowledge</div>
+        <h2 style="margin:0;font-size:var(--web-sub-size);font-weight:var(--web-sub-weight);line-height:var(--web-sub-lh);letter-spacing:-0.02em;color:var(--color-text-primary);">Webshop knowledge</h2>
+        <p style="margin:14px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:64ch;">Explainers, technical articles and engineering guides for installers, engineers and specifiers.</p>
+      </div>
+      <a class="ws-underline" href="WEBSHOP - CONTENT - Knowledge - EN.dc.html" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);text-decoration:underline;text-underline-offset:3px;color:var(--color-text-primary);white-space:nowrap;">View all<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;">
+      <sc-for list="{{ kTabs }}" as="t" hint-placeholder-count="7">
+        <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:8px 14px;border-radius:var(--radius-card);border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};cursor:pointer;">{{ t.label }}</span>
+      </sc-for>
+    </div>
+    <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;--cg:16px;">
+      <sc-for list="{{ articles }}" as="a" hint-placeholder-count="3">
+        <a class="hw-card" href="WEBSHOP - CONTENT - Knowledge - EN.dc.html" style="display:flex;flex-direction:column;background:var(--color-surface-card);border:1px solid var(--color-divider);border-radius:var(--radius-card);overflow:hidden;">
+          <div style="aspect-ratio:16/9;background:var(--color-surface-card);">
+            <image-slot id="{{ a.slot }}" shape="rect" placeholder="Article image"></image-slot>
+          </div>
+          <div style="padding:24px;display:flex;flex-direction:column;flex:1;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:12px;">{{ a.tag }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:300;color:var(--color-text-primary);margin-bottom:10px;line-height:var(--web-h3-lh);">{{ a.t }}</div>
+            <p style="margin:0 0 16px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ a.d }}</p>
+            <span style="margin-top:auto;font-size:var(--web-small-size);font-weight:300;letter-spacing:0.04em;color:var(--color-text-primary);line-height:var(--web-small-lh);">Read more <span class="hw-arrow"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 88px;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="WEBSHOP - CONTENT - News - EN.dc.html" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:var(--color-surface-card);border:1px solid var(--color-divider);color:var(--color-text-primary);font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">Webshop news</a>
+      <a href="WEBSHOP - CONTENT - References - EN.dc.html" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:var(--color-surface-card);border:1px solid var(--color-divider);color:var(--color-text-primary);font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">Webshop references</a>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const KTABS = ["All","Four ways to order","EU Stock route","Factory Stock route","Floating Stock route","Manufacturing Order route","Logistics & delivery"];
+class Component extends DCLogic {
+  renderVals(){
+    return {
+      pact: [
+        { t:"We train and support", d:"Product training, technical guidance and ongoing support behind every system you install." },
+        { t:"We hand over leads", d:"Qualified project leads routed to you through our lead generator, within your exclusive area." },
+        { t:"You stand behind us", d:"You represent our products and our approach — held by strict conditions and a correct agreement." },
+      ],
+      routes: [
+        { n:"01", t:"EU Stock", d:"Fastest route, from available European stock. For live projects that cannot wait.", lead:"1–5 working days" },
+        { n:"02", t:"Floating Stock", d:"Stock made visible through connected wholesalers and supply partners.", lead:"Varies by partner" },
+        { n:"03", t:"Factory Stock", d:"Direct factory purchase for larger orders, export supply or project volume.", lead:"2–6 weeks" },
+        { n:"04", t:"Manufacturing Order", d:"Planned production for launches and project quantities not yet in stock.", lead:"By production slot" },
+      ],
+      addons: [
+        { t:"Order before 13:00", d:"Ships the same day for next-working-day delivery (home batteries excepted)." },
+        { t:"Tail-lift / forklift (kooiaap)", d:"Available for a fixed surcharge when you tell us in advance — order it at least 3 days before delivery." },
+        { t:"Delivery windows", d:"Pallet, truck-access and time-window options set per warehouse in your profile." },
+      ],
+      tour: [
+        { step:"01 · Dashboard", t:"Everything at a glance", d:"Land on a personalised dashboard: open orders, deliveries in transit, new leads, and quick actions tuned to your account level.", slot:"hw-tour-dashboard", ph:"Portal dashboard screenshot" },
+        { step:"02 · Catalogue", t:"Browse with your prices", d:"Every product shows live stock and your net price. Filter by category, compare, and add to cart — no hidden public pricing.", slot:"hw-tour-catalogue", ph:"Catalogue screenshot" },
+        { step:"03 · Checkout", t:"Choose your route", d:"At checkout pick the supply route, delivery site and window, add a tail-lift when needed, and see the exact lead time.", slot:"hw-tour-checkout", ph:"Checkout screenshot" },
+        { step:"04 · After the order", t:"Track, document, resolve", d:"Follow the delivery, download documents, register systems by serial/QR, and open an RMA in a couple of clicks if anything's off.", slot:"hw-tour-after", ph:"Order tracking screenshot" },
+      ],
+      strohmCommits: [
+        "Confirm and ship orders to agreed lead times and routes",
+        "Keep documents, warranty and RMA correct per product line",
+        "Hand over qualified local leads within your exclusive area",
+        "Provide training, technical guidance and ongoing support",
+      ],
+      youCommit: [
+        "Keep company, team and delivery data correct and up to date",
+        "Follow up on the leads we hand over, promptly and professionally",
+        "Record commissioning and register systems by serial / QR",
+        "Represent our products and approach to the agreed standard",
+      ],
+      availFor: ["Ordering","Logistics","Smooth operations"],
+      kTabs: KTABS.map((label,i)=>({ label, bg: i===0?"#4F4F4E":"#FFFFFF", color: i===0?"#FFFFFF":"#5F5E5E", border: i===0?"#1E1E1E":"#D4D4D4" })),
+      articles: [
+        { tag:"Four ways to order", t:"Understanding four ways to order", d:"A functional explanation of four ways to order and how it is engineered, specified and installed. Content placeholder for editorial completion.", slot:"hw-article-1" },
+        { tag:"Four ways to order", t:"Understanding four ways to order", d:"A functional explanation of four ways to order and how it is engineered, specified and installed. Content placeholder for editorial completion.", slot:"hw-article-2" },
+        { tag:"Four ways to order", t:"Understanding four ways to order", d:"A functional explanation of four ways to order and how it is engineered, specified and installed. Content placeholder for editorial completion.", slot:"hw-article-3" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

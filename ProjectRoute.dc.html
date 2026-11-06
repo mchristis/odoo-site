@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<script src="./project-data.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4F4F4E; text-decoration:none; }
+  a:hover { color:#1E1E1E; }
+  input, select, textarea { font-family:var(--font-web); }
+  .pr-chips { scrollbar-width:none; } .pr-chips::-webkit-scrollbar { display:none; }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail" data-bg-color="#F5F5F5">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#F5F5F5"/>
+    <rect x="120" y="150" width="520" height="34" rx="6" fill="#4F4F4E"/>
+    <rect x="120" y="210" width="700" height="18" rx="4" fill="#B2B3B3"/>
+    <rect x="120" y="240" width="620" height="18" rx="4" fill="#B2B3B3"/>
+    <rect x="120" y="320" width="960" height="300" rx="14" fill="#D4D4D4"/>
+    <circle cx="150" cy="90" r="8" fill="#4F4F4E"/>
+    <text x="176" y="97" font-family="Helvetica,Arial,sans-serif" font-size="26" font-weight="700" fill="#1E1E1E">PROJECTS</text>
+  </svg>
+</template>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+  <dc-import name="NavBar" active="projects" hint-size="100%,80px"></dc-import>
+<dc-import name="BrandHero2" brand="{{ label }}" rgb="200,200,200" dark="#4F4F4E" title="{{ headline }}" intro="{{ heroLead }}" items="{{ heroItems }}" hint-size="100%,760px"></dc-import>
+
+
+  
+
+  <!-- INTRO -->
+  <section id="overview" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:48px var(--web-side) 0;box-sizing:border-box;">
+    <div style="padding-top:28px;">
+      <h2 style="margin:0 0 12px;max-width:760px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ introHead }}</h2>
+      <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#4F4F4E;max-width:760px;">{{ introBody }}</p>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin:32px 0 0;">
+      <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#develop" style="min-height:var(--cta-height,56px);padding:0 28px;display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);letter-spacing:0.04em;border-radius:8px;">{{ primaryCta }}</a>
+      <a href="#type" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:#F5F5F5;border:1px solid #D4D4D4;color:#4F4F4E;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">{{ secondaryCta }}</a>
+    </div>
+  </section>
+
+  <!-- PROJECT TYPES -->
+  <section id="type" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="padding-top:28px;">
+      <h2 style="margin:0 0 6px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">Find a Project Type</h2>
+      <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:300;color:#4F4F4E;max-width:640px;line-height:var(--web-body-lh);">{{ typeIntro }}</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;">
+        <sc-for list="{{ applications }}" as="a" hint-placeholder-count="8">
+          <a href="#develop" style="background:#F4F4F4;padding:20px;display:flex;flex-direction:column;gap:6px;min-height:92px;border-radius:12px;" style-hover="background:#E3E3E3;">
+            <span style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;line-height:var(--web-small-lh);">{{ a.label }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:#4F4F4E;line-height:var(--web-min-lh);">Products · systems · examples</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- DECISION ROUTES (commercial/utility only) -->
+  <sc-if value="{{ showRoutes }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+      <div style="padding-top:28px;">
+        <h2 style="margin:0 0 20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">{{ routesHead }}</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;">
+          <sc-for list="{{ routes }}" as="r" hint-placeholder-count="4">
+            <div style="background:#F4F4F4;padding:24px;border-radius:12px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#898989;margin-bottom:8px;letter-spacing:var(--web-eyebrow-ls);">{{ r.n }}</div>
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;margin-bottom:6px;line-height:var(--web-h3-lh);">{{ r.title }}</div>
+              <p style="margin:0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#4F4F4E;max-width:760px;">{{ r.desc }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- DEVELOP / INTAKE (workflow differs per route) -->
+  <section id="develop" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div data-stack="1" style="padding-top:28px;display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:48px;align-items:start;">
+      <div>
+        <h2 style="margin:0 0 6px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">{{ intakeLabel }}</h2>
+        <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#4F4F4E;max-width:760px;">{{ intakeIntro }}</p>
+        <sc-if value="{{ hasTenderPath }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#F4F4F4;display:flex;gap:0;margin-bottom:20px;border-radius:12px;overflow:hidden;width:fit-content;">
+            <button onClick="{{ setDirectMode }}" style="cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;padding:10px 18px;border:none;background:{{ directBg }};color:{{ directColor }};">Direct enquiry</button>
+            <button onClick="{{ setTenderMode }}" style="cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;padding:10px 18px;border:none;background:{{ tenderBg }};color:{{ tenderColor }};">Tender or RFP response</button>
+          </div>
+        </sc-if>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <sc-for list="{{ intakePoints }}" as="p" hint-placeholder-count="5">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;line-height:var(--web-small-lh);display:flex;gap:10px;"><span style="color:#1F8A5B;">&#10003;</span>{{ p }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:28px;">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <sc-for list="{{ formFields }}" as="f" hint-placeholder-count="6">
+            <sc-if value="{{ f.isSelect }}" hint-placeholder-val="{{ false }}">
+              <select style="height:42px;padding:0 10px;border:1px solid #BBBBBB;border-radius:8px;font-size:var(--web-input-size);font-weight:var(--web-input-weight);background:#FFFFFF;color:#4F4F4E;"><option>{{ f.label }}</option></select>
+            </sc-if>
+            <sc-if value="{{ f.isText }}" hint-placeholder-val="{{ true }}">
+              <input placeholder="{{ f.label }}" style="height:42px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-size:var(--web-input-size);font-weight:var(--web-input-weight);outline:none;background:#FFFFFF;color:#4F4F4E;" />
+            </sc-if>
+            <sc-if value="{{ f.isArea }}" hint-placeholder-val="{{ false }}">
+              <textarea placeholder="{{ f.label }}" rows="3" style="padding:10px 12px;border:1px solid #BBBBBB;border-radius:12px;font-size:var(--web-input-size);font-weight:var(--web-input-weight);outline:none;resize:vertical;background:#FFFFFF;color:#4F4F4E;"></textarea>
+            </sc-if>
+            <sc-if value="{{ f.isUpload }}" hint-placeholder-val="{{ false }}">
+              <div style="border-radius:12px;padding:16px;text-align:center;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#898989;background:#FAFAF9;">{{ f.label }}</div>
+            </sc-if>
+          </sc-for>
+          <label style="display:flex;gap:10px;align-items:flex-start;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#4F4F4E;line-height:1.5;margin-top:4px;"><input type="checkbox" style="margin-top:2px;" />{{ consent }}</label>
+          <button style-hover="background:#5F5E5E;color:#F4F4F4;" onClick="{{ submit }}" style="cursor:pointer;font-family:inherit;min-height:var(--cta-height,56px);border:none;border-radius:8px;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);letter-spacing:0.04em;">{{ submitBtn }}</button>
+          <p style="margin:2px 0 0;font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);max-width:760px;">{{ confirmNote }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TENDERS & RFPs -->
+  <sc-if value="{{ hasTenderPath }}" hint-placeholder-val="{{ false }}">
+    <section id="tenders" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+      <div style="padding-top:28px;">
+        <h2 style="margin:0 0 6px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">Tenders &amp; RFPs</h2>
+        <h3 style="margin:0 0 12px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);max-width:760px;">{{ tenderHead }}</h3>
+        <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#4F4F4E;max-width:760px;">{{ tenderBody }}</p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
+          <sc-for list="{{ tenderSupplies }}" as="s" hint-placeholder-count="5">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;line-height:var(--web-small-lh);display:flex;gap:10px;"><span style="color:#1F8A5B;">&#10003;</span>{{ s }}</div>
+          </sc-for>
+        </div>
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#develop" onClick="{{ setTenderMode }}" style="min-height:var(--cta-height,56px);padding:0 24px;display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);border-radius:8px;">Respond to a tender or RFP</a>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ENGINEERING -->
+  <section id="engineering" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="padding-top:28px;">
+      <h2 style="margin:0 0 6px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">Project Engineering</h2>
+      <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#4F4F4E;max-width:760px;">{{ engineeringLine }}</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="STROHM.ENERGY - PROJECT - Engineering - EN.dc.html" style="min-height:var(--cta-height,56px);padding:0 24px;display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);border-radius:8px;">See how we engineer projects</a>
+        <a href="STROHM.ENERGY - PROJECT - Engineering - EN.dc.html#review" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:#F5F5F5;border:1px solid #D4D4D4;color:#4F4F4E;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">Request a technical review</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section id="partners" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="padding-top:28px;">
+      <h2 style="margin:0 0 6px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">Find Project Partners</h2>
+      <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:300;color:#4F4F4E;max-width:640px;line-height:var(--web-body-lh);">{{ partnersLine }}</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+        <sc-for list="{{ partners }}" as="p" hint-placeholder-count="6">
+          <div style="background:#F5F5F5;border-radius:12px;padding:22px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;margin-bottom:8px;">{{ p.type }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:10px;">{{ p.name }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#4F4F4E;">{{ p.coverage }}<br/>{{ p.status }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVEN IN PRACTICE -->
+  <section id="proven" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="padding-top:28px;">
+      <h2 style="margin:0 0 6px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">Proven in Practice</h2>
+      <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:300;color:#4F4F4E;max-width:640px;line-height:var(--web-body-lh);">Completed projects, application examples and documented ways to use our products and systems.</p>
+      <div class="pr-chips" style="display:flex;gap:8px;overflow-x:auto;margin-bottom:20px;">
+        <sc-for list="{{ statusChips }}" as="s" hint-placeholder-count="4">
+          <button onClick="{{ s.onClick }}" style="cursor:pointer;font-family:inherit;white-space:nowrap;font-size:var(--web-btn-sm-size);font-weight:400;padding:8px 14px;border-radius:12px;border:1px solid {{ s.border }};background:{{ s.bg }};color:{{ s.color }};">{{ s.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;">
+        <sc-for list="{{ provenCards }}" as="p" hint-placeholder-count="6">
+          <a href="{{ p.href }}" style="display:flex;flex-direction:column;background:#F5F5F5;border-radius:12px;overflow:hidden;">
+            <div style="aspect-ratio:16/10;background:#F4F4F4;position:relative;">
+              <image-slot id="{{ p.slotId }}" shape="rect" placeholder="{{ p.imageDir }}"></image-slot>
+              <span style="position:absolute;top:12px;left:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#FFFFFF;background:{{ p.statusColour }};padding:5px 9px;border-radius:8px;">{{ p.status }}</span>
+              <span style="position:absolute;top:12px;right:12px;width:56px;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);background:#4F4F4E;color:#F4F4F4;display:flex;align-items:center;justify-content:center;text-align:center;font-size:var(--cta-font,16px);font-weight:400;line-height:1.2;padding:4px var(--cta-pad-x,32px);box-sizing:border-box;">{{ p.capacity }}</span>
+            </div>
+            <div style="padding:20px;display:flex;flex-direction:column;flex:1;">
+              <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+                <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">{{ p.application }}</span>
+                <span style="font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">{{ p.country }}</span>
+              </div>
+              <h3 style="margin:0 0 10px;font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ p.title }}</h3>
+              <p style="margin:0 0 16px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;max-width:760px;">{{ p.summary }}</p>
+              <sc-if value="{{ p.hasDetail }}" hint-placeholder-val="{{ false }}">
+                <div data-cols="2" style="padding-top:14px;margin-bottom:14px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 16px;--cg:16px;">
+                  <sc-if value="{{ p.client }}" hint-placeholder-val="{{ false }}"><div style="grid-column:1/-1;font-size:var(--web-min-size);font-weight:300;color:#4F4F4E;"><b style="color:#4F4F4E;font-weight:500;">Client</b><br/>{{ p.client }}</div></sc-if>
+                  <sc-if value="{{ p.mountingSystem }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-min-size);font-weight:300;color:#4F4F4E;"><b style="color:#4F4F4E;font-weight:500;">Mounting system</b><br/>{{ p.mountingSystem }}</div></sc-if>
+                  <sc-if value="{{ p.inverters }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-min-size);font-weight:300;color:#4F4F4E;"><b style="color:#4F4F4E;font-weight:500;">Inverters</b><br/>{{ p.inverters }}</div></sc-if>
+                  <sc-if value="{{ p.modules }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-min-size);font-weight:300;color:#4F4F4E;"><b style="color:#4F4F4E;font-weight:500;">Modules</b><br/>{{ p.modules }}</div></sc-if>
+                  <sc-if value="{{ p.timeSchedule }}" hint-placeholder-val="{{ false }}"><div style="grid-column:1/-1;font-size:var(--web-min-size);font-weight:300;color:#4F4F4E;"><b style="color:#4F4F4E;font-weight:500;">Time schedule</b><br/>{{ p.timeSchedule }}</div></sc-if>
+                </div>
+              </sc-if>
+              <span style="margin-top:auto;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#4F4F4E;">View the project<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section id="locations" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="padding-top:28px;">
+      <h2 style="margin:0 0 6px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">Project Locations</h2>
+      <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:300;color:#4F4F4E;max-width:640px;line-height:var(--web-body-lh);">Where STRØHM.ENERGY {{ labelLower }} products and systems are installed or available. Completed and concept projects are always labelled.</p>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;align-items:start;">
+        <div style="background:#F4F4F4;aspect-ratio:16/10;border-radius:12px;overflow:hidden;">
+          <image-slot id="pr-map" shape="rounded" radius="20" placeholder="Map interface · {{ labelLower }} · pins by status/country/application · completed vs concept distinguished · awaiting map component"></image-slot>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ locationRows }}" as="l" hint-placeholder-count="6">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;">
+              <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;border-radius:50%;background:#1F8A5B;flex:none;"></span><span style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;line-height:var(--web-small-lh);">{{ l.country }}</span></div>
+              <span style="font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">{{ l.count }} projects</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="padding-top:28px;">
+      <div data-stack="1" style="background:#4F4F4E;border-radius:12px;padding:48px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px;align-items:center;">
+        <div>
+          <h3 style="margin:0 0 12px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);color:#FFFFFF;line-height:var(--web-h2card-lh);">{{ finalHead }}</h3>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#D9DADA;max-width:640px;">{{ finalBody }}</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="#develop" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:#FFFFFF;color:#4F4F4E;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">{{ primaryCta }}</a>
+          <a style-hover="background:#F4F4F4;color:#4F4F4E;" href="STROHM.ENERGY - SITE - Find an Installer - EN.dc.html" style="border:1px solid #4F4F4E;box-sizing:border-box;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:transparent;color:#4F4F4E;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">{{ finalAlt }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <div style="height:48px;"></div>
+  <dc-import name="ReachSpecialist" brand="PROJECTS" lead="TO CONFIRM" photo-slot-id="projects-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1480,&quot;height&quot;:960},&quot;category&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;residential&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;residential&quot;,&quot;commercial&quot;,&quot;utility&quot;]}}">
+const T = (label) => ({ label, isText: true });
+const S = (label) => ({ label, isSelect: true });
+const A = (label) => ({ label, isArea: true });
+const U = (label) => ({ label, isUpload: true });
+
+const CONFIG = {
+  residential: {
+    eyebrow: "Residential projects",
+    headline: "Start with your home. We will help find the right route.",
+    lead: "Tell us what you want to generate, store, heat, charge or control. We identify the relevant products and systems, then connect you with a suitable available installer in your region.",
+    primaryCta: "Tell us about your home", secondaryCta: "Explore residential applications", finalAlt: "Find a residential installer",
+    heroDir: "IMG-STRØHM-RESIDENTIAL-HERO-01 · 3:1 · calm contemporary home with discreet solar/carport/battery/heat-pump/EV · natural daylight · V3-R3",
+    introHead: "STRØHM.ENERGY manufactures the products. Local partners install them.",
+    introBody: "A residential energy project should begin with the property, energy use, available space and what the homeowner wants to achieve — not a random product list. We collect a limited amount of practical information, identify the likely product and system route, and introduce the project to a suitable local installer who verifies the property, prepares the final offer, orders the products and completes the installation.",
+    typeIntro: "What would you like to do at home?",
+    intakeLabel: "Tell us enough to find the correct next step",
+    intakeIntro: "You do not need a complete technical file. Start with the information you already know.",
+    intakePoints: ["A suitable available installer is identified by project fit, not only distance", "You keep ownership of your information and consent", "The installer prepares the final technical and commercial proposal"],
+    form: [T("Name"), T("Email"), S("Property type"), T("Postal code and city"), S("What are you interested in?"), S("Existing situation (solar, battery, heat pump, EV)"), U("Upload roof / property photographs, electricity bill"), S("Timing")],
+    consent: "I agree to STRØHM.ENERGY reviewing this enquiry and sharing it with a suitable installation partner.",
+    submitBtn: "Find my project route",
+    confirmNote: "We will review the information and identify the most suitable available installer or next technical step. We do not promise an installer before checking availability and coverage.",
+    showRoutes: false,
+    engineeringLine: "Most homes are completed by a qualified local installer. Where a property is complex, our engineering team can support product configuration and calculations.",
+    partnersLine: "Matched by project fit, not only by distance — property type, required products, residential experience, training, location and availability.",
+    finalHead: "Tell us what you want to change at home.", finalBody: "Start with a few practical details. We will help identify the products, systems and suitable local installation route.",
+  },
+  commercial: {
+    eyebrow: "Commercial projects",
+    headline: "Upload the project. We will define the next step.",
+    lead: "Share the available site information, drawings, energy data and objectives. Our team reviews the opportunity, prepares initial calculations where required and coordinates the project with the appropriate installer or engineering partner.",
+    primaryCta: "Upload your project", secondaryCta: "Explore commercial applications", finalAlt: "Book a project review",
+    heroDir: "IMG-STRØHM-COMMERCIAL-HERO-01 · 3:1 · office/warehouse/hotel/farm/car-park context, meaningful energy application · V3-R3",
+    introHead: "Commercial projects need more than a product list.",
+    introBody: "STRØHM.ENERGY provides the engineering and the products. Installation is carried out by our network of EPC partners. Commercial energy projects often combine operational requirements, building constraints, grid limits, energy prices, investment objectives and multiple technologies. STRØHM.ENERGY reviews the submitted information before deciding whether the project should move directly to an installer, receive an initial calculation, or enter a more complete engineering process.",
+    typeIntro: "Find your commercial application.",
+    intakeLabel: "Start with the information you already have",
+    intakeIntro: "You do not need to complete every field. Better project data allows a faster and more accurate initial review.",
+    intakePoints: ["Site, energy, products, engineering, commercial route and finance are all reviewed", "One submission can lead to several possible ways to proceed", "An NDA can be requested before detailed review"],
+    form: [T("Company name and contact person"), T("Email and telephone"), T("Project name and address"), S("Sector / building or site type"), T("Annual electricity consumption / peak demand"), S("Requested solution"), T("Available roof / land / parking area"), U("Upload energy bills, roof/site plans, single-line diagrams, drawings"), S("Indicative budget / purchase, lease or finance interest")],
+    consent: "I agree to STRØHM.ENERGY reviewing this project and coordinating it with a suitable installer or engineering partner.",
+    submitBtn: "Submit project for review",
+    confirmNote: "Your project has been received. Our team will review the available information and identify the appropriate technical and partner route.",
+    showRoutes: true,
+    routesHead: "One project submission. Several possible routes.",
+    routes: [
+      { title: "Installer referral", desc: "Scope is clear and a qualified local installer can complete design and installation." },
+      { title: "Initial STRØHM.ENERGY calculation", desc: "Preliminary sizing, product configuration or feasibility must be established first." },
+      { title: "Joint project development", desc: "STRØHM.ENERGY and a local engineering or installation partner define the project together." },
+      { title: "Full project engineering", desc: "Technically complex, high-value or multi-system projects needing coordinated drawings, calculations and packages." },
+    ],
+    engineeringLine: "From site information to a coordinated project file: feasibility, sizing, layouts, structural and electrical design, bills of materials and commissioning plan. STRØHM.ENERGY's own scope stops at engineering and products — installation on site is carried out by our EPC partners.",
+    partnersLine: "Installation is carried out by our network of EPC partners, matched to the project by scale, sector and location. A commercial project may also need other local participants — engineering companies, architects, developers, distributors, service and financing partners.",
+    finalHead: "Have drawings, energy data or only an initial idea?", finalBody: "Upload what is available. Our team will review the project and define whether it should proceed to an installer, an initial calculation or a complete engineering process.",
+  },
+  utility: {
+    eyebrow: "Utility & Infrastructure",
+    headline: "Engineered as a complete, buildable project package.",
+    lead: "STRØHM.ENERGY defines the technical solution, prepares the coordinated project file, models performance and indicative ROI, and supplies the product package for execution by the selected installer, EPC or project partner.",
+    primaryCta: "Submit a utility project", secondaryCta: "Explore utility project types", finalAlt: "Book an engineering meeting",
+    heroDir: "IMG-STRØHM-UTILITY-HERO-01 · 3:1 · utility solar / agri-PV / energy hub / infrastructure · scale, terrain, engineering context · V3-R3",
+    introHead: "Large projects should be technically defined before products are ordered.",
+    introBody: "Utility and infrastructure projects combine site conditions, structural requirements, grid constraints, regulation, financial assumptions, manufacturing, logistics and long-term operation. They cannot be reduced to a standard product quotation. STRØHM.ENERGY's engineering team works from the available project information to define the technical architecture, product configuration, calculations, documentation and coordinated supply package.",
+    typeIntro: "Find your utility or infrastructure application.",
+    intakeLabel: "Submit the technical and commercial basis of the project",
+    intakeIntro: "The engineering review starts from the site, grid, technical scope and commercial basis you can provide.",
+    intakePoints: ["A 10-stage engineering process from intake to executable package", "A coordinated package, not a collection of unrelated quotations", "Performance and ROI always show their assumptions"],
+    form: [S("Organisation and role (investor, developer, EPC, authority…)"), T("Project name, country, coordinates"), T("Target capacity and completion date"), S("Site: land/roof area, topography, grid status"), T("Grid connection / export capacity / offtake"), S("Technical scope (modules, mounting, inverters, storage…)"), U("Upload site plans, survey, grid offer, single-line diagrams, financial model"), T("Target investment value / ROI model / procurement process")],
+    consent: "I agree to STRØHM.ENERGY's engineering team reviewing this project under the agreed confidentiality terms.",
+    submitBtn: "Submit for engineering review",
+    confirmNote: "The financial model is indicative and does not constitute a guaranteed return, investment recommendation or final project offer.",
+    tenderInfo: {
+      head: "How STRØHM.ENERGY responds to tenders and RFPs",
+      body: "Most utility and infrastructure projects reach STRØHM.ENERGY through a public tender or an RFP rather than a direct enquiry. STRØHM.ENERGY provides the engineering and the products; installation and site execution are carried out by our network of EPC partners. For a bid or pre-qualification, STRØHM.ENERGY can supply:",
+      supplies: ["Company profile and capability statement", "Reference projects and track record", "Product certifications and technical datasheets", "Indicative technical and commercial proposal", "Confirmation of EPC partner coverage for the tender's region"],
+    },
+    tenderForm: [T("Issuing organisation / contracting authority"), T("Tender or RFP reference number"), T("Submission deadline"), T("Tender portal or document link"), S("Confidentiality: NDA required before detailed review?"), T("Project name, country, coordinates"), T("Target capacity and completion date"), U("Upload the tender documents, technical requirements, evaluation criteria")],
+    tenderConsent: "I agree to STRØHM.ENERGY's engineering team reviewing this tender under the agreed confidentiality terms.",
+    tenderSubmitBtn: "Submit tender for review",
+    tenderConfirmNote: "We will confirm whether STRØHM.ENERGY can respond within the stated deadline and what supporting documents will be provided.",
+    showRoutes: true,
+    routesHead: "From project basis to executable package.",
+    routes: [
+      { title: "Feasibility & architecture", desc: "Site, grid and structural review; product combination and capacity defined." },
+      { title: "Engineering & modelling", desc: "Structural and electrical engineering, performance and indicative ROI modelling." },
+      { title: "Technical file & supply", desc: "Drawings, calculations, bills of materials and coordinated product package." },
+      { title: "Execution support", desc: "Manufacturing, logistics, installation and commissioning coordination with EPC/installer." },
+    ],
+    engineeringLine: "STRØHM.ENERGY defines the project technically before products are ordered — engineering, calculations, layouts, bills of materials, performance modelling, indicative ROI and coordinated supply.",
+    partnersLine: "Engineered by STRØHM.ENERGY, executed with the appropriate project partner — EPC, installer, structural/electrical engineers, grid, logistics and commissioning partners.",
+    finalHead: "Bring us the site, the target and the available data.", finalBody: "Our engineering team will determine the next technical step and define what is required to convert the opportunity into a coordinated project and product package.",
+  },
+};
+
+function heroShort(s) { if (!s) return s; let f = ((s.match(/^.*?[.?!](?=\s|$)/) || [s])[0]); const wc = (x) => x.split(/\s+/).length; if (wc(f) > 20) { const m = f.match(/^(.*?)( — |: )/); if (m) f = m[1] + "."; } if (wc(f) > 20) { const i = f.indexOf(", "); if (i > 0) f = f.slice(0, i) + "."; } return f; }
+class Component extends DCLogic {
+  state = { status: "All", submitted: false, isTender: false };
+  componentDidMount() {
+    if (!window.STROHM_PROJECTS) { this._t = setInterval(() => { if (window.STROHM_PROJECTS) { clearInterval(this._t); this.forceUpdate(); } }, 60); }
+  }
+  componentWillUnmount() { if (this._t) clearInterval(this._t); }
+
+  renderVals() {
+    const PJ = window.STROHM_PROJECTS;
+    const cat = this.props.category || "residential";
+    const c = CONFIG[cat] || CONFIG.residential;
+    const catObj = PJ ? PJ.category(cat) : { label: "Residential" };
+    const st = this.state;
+
+    const hasTenderPath = !!c.tenderForm;
+    const subNav = [
+      { label: "Overview", href: "#overview" }, { label: "Proven in Practice", href: "#proven" }, { label: "Project Types", href: "#type" },
+    ].concat(hasTenderPath ? [{ label: "Tenders & RFPs", href: "#tenders" }] : []).concat([
+      { label: "Develop a Project", href: "#develop" }, { label: "Engineering", href: "#engineering" }, { label: "Partners", href: "#partners" }, { label: "Locations", href: "#locations" },
+    ]);
+    const isTender = hasTenderPath && st.isTender;
+
+    const proven = PJ ? PJ.getProjects(cat, { status: st.status, limit: 6 }) : [];
+    const apps = PJ ? (PJ.applications[cat] || []) : [];
+    const partners = PJ ? PJ.getPartners(cat, {}).slice(0, 6) : [];
+    const statuses = ["All"].concat(PJ ? PJ.statuses : []);
+    const byCountry = {};
+    (PJ ? PJ.getProjects(cat, {}) : []).forEach((p) => { byCountry[p.country] = (byCountry[p.country] || 0) + 1; });
+
+    return {
+      label: catObj.label, labelLower: (catObj.label || "").toLowerCase(),
+      heroItems: [["Overview", c.introHead, c.introBody, "#overview"], ["Project types", "Find a Project Type", c.typeIntro, "#type"], ["Develop a project", c.intakeLabel, c.intakeIntro, "#develop"], ["Engineering", "Project Engineering", c.engineeringLine, "#engineering"], ["Partners", "Find Project Partners", c.partnersLine, "#partners"]].map((x, i) => ({ label: x[0], href: x[3], heading: x[1] || x[0], sentence: heroShort(x[2] || "") || "TO CONFIRM", media: { type: "slot", slot: i === 0 ? "pr-hero" : "pr-" + cat + "-hero-" + (i + 1), alt: (catObj.label || "") + " hero picture " + (i + 1) } })),
+      heroLead: heroShort(c.lead || "") || "",
+      eyebrow: c.eyebrow, headline: c.headline, lead: c.lead, heroDir: c.heroDir,
+      primaryCta: c.primaryCta, secondaryCta: c.secondaryCta, finalAlt: c.finalAlt,
+      subNav,
+      introHead: c.introHead, introBody: c.introBody, typeIntro: c.typeIntro,
+      applications: apps.map((a) => ({ label: a })),
+      showRoutes: !!c.showRoutes, routesHead: c.routesHead || "",
+      routes: (c.routes || []).map((r, i) => ({ n: String(i + 1).padStart(2, "0"), title: r.title, desc: r.desc })),
+      intakeLabel: c.intakeLabel, intakeIntro: c.intakeIntro, intakePoints: c.intakePoints,
+      formFields: isTender ? c.tenderForm : c.form,
+      consent: isTender ? c.tenderConsent : c.consent,
+      submit: () => this.setState({ submitted: true }),
+      submitBtn: st.submitted ? "Received. The project team will follow up." : (isTender ? c.tenderSubmitBtn : c.submitBtn),
+      confirmNote: isTender ? c.tenderConfirmNote : c.confirmNote,
+      hasTenderPath, isTender,
+      setDirectMode: () => this.setState({ isTender: false }),
+      setTenderMode: () => this.setState({ isTender: true }),
+      directBg: !isTender ? "#1E1E1E" : "#FFFFFF", directColor: !isTender ? "#FFFFFF" : "#5F5E5E",
+      tenderBg: isTender ? "#1E1E1E" : "#FFFFFF", tenderColor: isTender ? "#FFFFFF" : "#5F5E5E",
+      tenderHead: c.tenderInfo ? c.tenderInfo.head : "", tenderBody: c.tenderInfo ? c.tenderInfo.body : "",
+      tenderSupplies: c.tenderInfo ? c.tenderInfo.supplies : [],
+      engineeringLine: c.engineeringLine, partnersLine: c.partnersLine,
+      partners,
+      statusChips: statuses.map((s) => ({ label: s, onClick: () => this.setState({ status: s }), bg: st.status === s ? "#4F4F4E" : "#FFFFFF", color: st.status === s ? "#FFFFFF" : "#5F5E5E", border: st.status === s ? "#4F4F4E" : "#D4D4D4" })),
+      provenCards: proven.map((p) => ({
+        href: p.href || "#", slotId: "pr-" + p.id, imageDir: p.imageDir, status: p.status, statusColour: p.statusColour,
+        application: p.application, capacity: p.capacity, country: p.country, title: p.title, summary: p.summary,
+        client: p.client || null, mountingSystem: p.mountingSystem || null, inverters: p.inverters || null, modules: p.modules || null,
+        timeSchedule: p.timeSchedule || null,
+        hasDetail: !!(p.client || p.mountingSystem || p.inverters || p.modules || p.timeSchedule),
+      })),
+      locationRows: Object.keys(byCountry).map((k) => ({ country: k, count: byCountry[k] })),
+      finalHead: c.finalHead, finalBody: c.finalBody,
+    };
+  }
+}
+</script>
+</body>
+</html>

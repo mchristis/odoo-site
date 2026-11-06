@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="epc-data.js"></script>
+</helmet>
+<section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;box-sizing:border-box;font-family:var(--font-web);color:#4F4F4E;">
+  <div style="border-top:1px solid #E4E2E0;padding-top:40px;display:flex;flex-direction:column;gap:24px;">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:16px;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">For EPCs and installers</div>
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ title }}</h2>
+      </div>
+      <sc-if value="{{ hasExpert }}" hint-placeholder-val="{{ false }}">
+        <a href="{{ expertHref }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:var(--cta-height,56px);padding:0 20px;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius,8px);font-size:var(--cta-font,16px);font-weight:400;" style-hover="background:#5F5E5E;color:#F4F4F4;">Contact a specialist</a>
+      </sc-if>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:12px;">
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="7">
+        <div style="background:#F4F4F4;border-radius:12px;padding:16px 20px;display:flex;flex-direction:column;gap:6px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A88;">{{ r.label }}</div>
+          <sc-if value="{{ r.has }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ r.value }}</div></sc-if>
+          <sc-if value="{{ r.tc }}" hint-placeholder-val="{{ true }}"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#B07818;line-height:var(--web-h3-lh);">TO CONFIRM</div></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:420},&quot;brand&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;XOOM&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;product&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;POST&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() { const t = () => { if (window.EPC_INFO) this.forceUpdate(); else this.t = setTimeout(t, 100); }; t(); }
+  componentWillUnmount() { clearTimeout(this.t); }
+  renderVals() {
+    const brand = (this.props.brand ?? "").toUpperCase(), product = this.props.product ?? "";
+    const E = window.EPC_INFO || { expert: {}, products: {} };
+    const d = (E.products || {})[(brand + " " + product).trim()] || {};
+    const F = [["Standards and certification", "standards"], ["Warranty", "warranty"], ["Lead time", "leadTime"], ["Minimum order", "moq"], ["Datasheet", "datasheet"], ["Installation manual", "manual"], ["CAD / BIM drawings", "drawings"]];
+    const rows = F.map(([label, k]) => ({ label, value: d[k] || "", has: !!d[k], tc: !d[k] }));
+    const expertHref = (E.expert || {})[brand] || "";
+    return { title: [brand, product].filter(Boolean).join(" ") + " for project planning", rows, hasExpert: !!expertHref, expertHref };
+  }
+}
+</script>
+</body>
+</html>

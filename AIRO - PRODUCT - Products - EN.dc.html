@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>AIRO Products | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  .ai-prod:hover { border-color:var(--color-brand-airo) !important; }
+  .ai-prod:hover .ai-prod-t { color:var(--color-text-primary); }
+  .ai-tab:hover { color:var(--color-text-primary) !important; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="AiroNav" active="products" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="AIRO" rgb="0,131,187" eyebrow="AIRO products" title="Seven families, one controlled-air system." intro="Every AIRO family plays a defined role in the airflow path." slot="airo-products-hero" shot="AIRO · Products · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 40px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:720px;">Choose by the space you need to ventilate, or compare families directly.</p>
+  </section>
+
+  <!-- COMPARE SWITCHER (interactive) -->
+  <section id="compare" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+    <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+      <div style="display:flex;flex-wrap:wrap;border-bottom:1px solid var(--color-divider);">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+          <button class="ai-tab" onClick="{{ t.onClick }}" style="cursor:pointer;font-family:inherit;border:none;background:{{ t.bg }};border-bottom:2px solid {{ t.bar }};padding:16px 22px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ t.color }};">{{ t.label }}</button>
+        </sc-for>
+      </div>
+      <div style="padding:32px;">
+        <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:820px;margin-bottom:28px;">{{ activeGroup.intro }}</div>
+        <div style="overflow-x:auto;">
+          <div style="min-width:640px;display:grid;grid-template-columns:{{ activeGroup.cols }};gap:12px;">
+            <sc-for list="{{ activeGroup.grid }}" as="cell" hint-placeholder-count="16">
+              <div style="background:{{ cell.bg }};padding:14px 18px;font-size:{{ cell.size }};font-weight:{{ cell.weight }};color:{{ cell.color }};letter-spacing:{{ cell.ls }};text-transform:{{ cell.tt }};border-radius:8px;">{{ cell.v }}</div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAMILY SECTIONS -->
+  <!-- DEPTH-64b: old family sections removed (duplicate ids); families now in AiroFamilies below. Original: _ARCHIVE/AIRO - PRODUCT - Products - EN - pre-families 2026-09-27 -->
+
+  <!-- STANDARD VS OPTIONAL -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:36px;background:#F5F7FB;padding:28px 32px;border-radius:12px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:10px;">Standard versus optional</div>
+      <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:900px;">Each product page separates confirmed standard equipment from available options &#8212; sensors, filters, bypass systems, controls and interfaces that require a different configuration. Optional equipment is never presented as standard, and specifications from different models are never combined.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="compare" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:flex;flex-direction:column;gap:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Compare</div>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Single room, <span style="color:#8E8E8E;">whole house or with a heat pump.</span></h2>
+      <div style="overflow-x:auto;border-top:1px solid var(--color-text-primary);"><div data-stack="1" style="display:grid;grid-template-columns:minmax(180px,1.3fr) repeat(3,minmax(150px,1fr));min-width:720px;"><div style="padding:10px 12px 10px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);"></div><div style="padding:10px 12px 10px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);">Single-room ERV (SHIFT, SWAP, WAVE)</div><div style="padding:10px 12px 10px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);">Central ERV (FLOW)</div><div style="padding:10px 12px 10px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);">Heat pump ERV (GUST)</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Outdoor air supply</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Yes</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Yes</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Yes</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Indoor air extract</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Yes</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Yes</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Yes</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Heat recovery</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Yes</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Yes</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Yes</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Filtration</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Yes</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Yes</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Yes</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Full duct network</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">No</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Yes</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Yes</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Room retrofit</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Strong fit</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Depends</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Depends</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Whole house</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Multiple units</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Strong fit</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Strong fit</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">CO₂ demand control</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:#B07818;border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Model dependent · TO CONFIRM</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Available</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:#B07818;border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Model dependent · TO CONFIRM</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Humidity demand</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:#B07818;border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Model dependent · TO CONFIRM</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Available</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:#B07818;border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Model dependent · TO CONFIRM</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Active heating or cooling</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">No</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">No</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Yes</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">EMON integration</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:#B07818;border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Planned system layer · TO CONFIRM</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:#B07818;border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Planned system layer · TO CONFIRM</div><div style="padding:11px 12px 11px 0;font-size:var(--web-small-size);font-weight:300;color:#B07818;border-bottom:1px solid var(--color-divider);line-height:var(--web-small-lh);">Planned system layer · TO CONFIRM</div></div></div>
+      <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);">GUST is supplied as HP HUB: AI-HP-HUB-C-MVHR-BAL-350M3-V1, -620M3-V1, -950M3-V1 (350, 620 and 950 m³/h).</div>
+    </div>
+  </section>
+  <dc-import name="AiroFamilies" hint-size="100%,5200px"></dc-import>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 96px;box-sizing:border-box;">
+    <div style="background:var(--color-text-primary);padding:56px;color:#FFFFFF;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;border-radius:12px;">
+      <div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#FFFFFF;text-wrap:balance;">Not sure which family <span style="color:#B2B3B3;">fits the building?</span></h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Upload your plans and AIRO returns a preliminary review of the likely solution category within 48 hours.</p>
+      </div>
+      <a href="AIRO - PRODUCT - Projects - EN.dc.html#intake" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-airo);color:#FFFFFF;font-weight:400;white-space:nowrap;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Upload your plans</a>
+    </div>
+  </section>
+
+  <dc-import name="ContentSections" brand="AIRO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="AIRO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="AIRO" accent="var(--color-brand-airo)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+function headerRow(cells) { return cells.map((v, i) => ({ v, bg: "#FBFBFA", size: "11px", weight: 700, color: i === 0 ? "#5F5E5E" : "var(--color-brand-airo)", ls: "0.04em", tt: "uppercase" })); }
+function bodyRow(cells) { return cells.map((v, i) => ({ v, bg: "#FFFFFF", size: i === 0 ? "12px" : "13px", weight: i === 0 ? 300 : 300, color: i === 0 ? "#4F4F4E" : "#5F5E5E", ls: "0", tt: "none" })); }
+
+const GROUPS = {
+  one: { label: "One room", cols: "1.2fr 1fr 1fr", intro: "Single-room units add balanced ventilation with heat recovery to one space without a duct network. SHIFT is regenerative; SWAP runs separate supply and extract paths.",
+    grid: [...headerRow(["Model", "AIRO SHIFT", "AIRO SWAP"]), ...bodyRow(["Principle", "Regenerative, alternating", "Dual-path, continuous"]), ...bodyRow(["Duct network", "Not required", "Not required"]), ...bodyRow(["Best for", "Rooms, paired for balance", "Rooms needing continuous flow"]), ...bodyRow(["Mount", "External wall", "Vertical / horizontal / window"])] },
+  home: { label: "Whole home", cols: "1.2fr 1fr 1fr 1fr", intro: "FLOW central MVHR units serve a whole home through a designed ROUTE duct network, recovering heat across supply and extract.",
+    grid: [...headerRow(["Model", "FLOW 250", "FLOW 350", "FLOW 500"]), ...bodyRow(["Home size", "Compact", "Standard", "Larger"]), ...bodyRow(["Duct network", "Required", "Required", "Required"]), ...bodyRow(["Heat recovery", "Yes", "Yes", "Yes"]), ...bodyRow(["Distribution", "ROUTE", "ROUTE", "ROUTE"])] },
+  larger: { label: "Larger spaces", cols: "1.2fr 1fr", intro: "WAVE 750 delivers high-volume ventilation with filtration inside the occupied room, for classrooms, meeting rooms and offices.",
+    grid: [...headerRow(["Model", "AIRO WAVE 750"]), ...bodyRow(["Placement", "In the occupied room"]), ...bodyRow(["Best for", "Classrooms, offices, meeting rooms"]), ...bodyRow(["Filtration", "Yes"]), ...bodyRow(["Note", "Visible in room \u2014 position for airflow, access & acoustics"])] },
+  condition: { label: "Conditioned air", cols: "1.2fr 1fr 1fr 1fr", intro: "GUST combines balanced ventilation with an integrated heat-pump circuit that heats, cools and dehumidifies the incoming air.",
+    grid: [...headerRow(["Model", "GUST 350", "GUST 620", "GUST 950"]), ...bodyRow(["Capacity", "Entry", "Mid", "High"]), ...bodyRow(["Ventilation", "Yes", "Yes", "Yes"]), ...bodyRow(["Heat / cool / dehumidify", "Yes", "Yes", "Yes"]), ...bodyRow(["Note", "Capacity depends on airflow & load", "\u2014", "\u2014"])] },
+  distribute: { label: "Distribute & control", cols: "1.2fr 1fr 1fr", intro: "ROUTE carries balanced air to every room; CONTROL provides the sensors and controls that balance rooms and respond to CO\u2082 and humidity.",
+    grid: [...headerRow(["System", "AIRO ROUTE", "AIRO CONTROL"]), ...bodyRow(["Role", "Air distribution", "Sensing & control"]), ...bodyRow(["Works with", "FLOW, GUST", "All AIRO units"]), ...bodyRow(["Note", "Pressure-loss data on release", "CO\u2082 & humidity response"])] },
+};
+const GKEYS = ["one", "home", "larger", "condition", "distribute"];
+
+class Component extends DCLogic {
+  state = { tab: 0 };
+  renderVals() {
+    const st = this.state;
+    return {
+      tabs: GKEYS.map((k, i) => ({
+        label: GROUPS[k].label,
+        onClick: () => this.setState({ tab: i }),
+        bg: st.tab === i ? "#F5F7FB" : "#FFFFFF",
+        bar: st.tab === i ? "var(--color-brand-airo)" : "transparent",
+        color: st.tab === i ? "#4F4F4E" : "#5F5E5E",
+      })),
+      activeGroup: GROUPS[GKEYS[st.tab]],
+      families: [
+        { id: "shift", code: "SHIFT", role: "Ventilate one room", body: "A regenerative single-room unit that alternates airflow direction, recovering heat in a ceramic core \u2014 no duct network required.", constraint: "A single regenerative unit alternates airflow direction. Two coordinated units provide a more balanced result.", cardCols: 1, slot: "airo-p-shift", ph: "SHIFT wall unit and external hood",
+          models: [{ name: "AIRO SHIFT", tag: "Regenerative, single room", specs: [{ k: "Duct network", v: "None" }, { k: "Mount", v: "External wall" }, { k: "Pairing", v: "Recommended" }] }] },
+        { id: "swap", code: "SWAP", role: "Ventilate one room", body: "A single-room unit with separate supply and extract paths for continuous balanced ventilation with heat recovery.", constraint: "The system requires two airflow openings or an approved window-related installation arrangement.", cardCols: 1, slot: "airo-p-swap", ph: "SWAP unit, vertical and horizontal mount",
+          models: [{ name: "AIRO SWAP", tag: "Dual-path, single room", specs: [{ k: "Openings", v: "Two / window" }, { k: "Mount", v: "Vertical / horizontal" }, { k: "Flow", v: "Continuous" }] }] },
+        { id: "flow", hidden: true /* Q57: not in master; preserved */, code: "FLOW", role: "Ventilate a complete home", body: "Central MVHR units \u2014 250, 350 and 500 \u2014 serving a whole home through a designed ROUTE duct network.", constraint: "FLOW requires a designed duct network and sufficient service space.", cardCols: 3, slot: "airo-p-flow", ph: "FLOW unit in a plant room with duct connections",
+          models: [
+            { name: "FLOW 250", tag: "Compact homes", specs: [{ k: "Home size", v: "Compact" }, { k: "Recovery", v: "Yes" }, { k: "Duct", v: "Required" }] },
+            { name: "FLOW 350", tag: "Standard homes", specs: [{ k: "Home size", v: "Standard" }, { k: "Recovery", v: "Yes" }, { k: "Duct", v: "Required" }] },
+            { name: "FLOW 500", tag: "Larger homes", specs: [{ k: "Home size", v: "Larger" }, { k: "Recovery", v: "Yes" }, { k: "Duct", v: "Required" }] },
+          ] },
+        { id: "wave", code: "WAVE 750", role: "Ventilate a larger space", body: "High-volume in-room ventilation with filtration for classrooms, meeting rooms and offices.", constraint: "WAVE is visible inside the occupied room and requires suitable positioning for airflow, access and acoustics.", cardCols: 1, slot: "airo-p-wave", ph: "WAVE 750 in a classroom",
+          models: [{ name: "AIRO WAVE 750", tag: "Larger occupied spaces", specs: [{ k: "Placement", v: "In room" }, { k: "Filtration", v: "Yes" }, { k: "Reheat", v: "Available" }] }] },
+        { id: "gust", code: "GUST", role: "Ventilate and condition incoming air", body: "Ventilation combined with an integrated heat-pump circuit that heats, cools and dehumidifies incoming air \u2014 350, 620, 950.", constraint: "GUST does not automatically replace the complete building heating or cooling system. Capacity depends on airflow, outdoor conditions and building load.", cardCols: 3, slot: "airo-p-gust", ph: "GUST unit showing heat-pump circuit",
+          models: [
+            { name: "GUST 350", tag: "Entry capacity", specs: [{ k: "Ventilation", v: "Yes" }, { k: "Heat / cool", v: "Yes" }, { k: "Dehumidify", v: "Yes" }] },
+            { name: "GUST 620", tag: "Mid capacity", specs: [{ k: "Ventilation", v: "Yes" }, { k: "Heat / cool", v: "Yes" }, { k: "Dehumidify", v: "Yes" }] },
+            { name: "GUST 950", tag: "High capacity", specs: [{ k: "Ventilation", v: "Yes" }, { k: "Heat / cool", v: "Yes" }, { k: "Dehumidify", v: "Yes" }] },
+          ] },
+        { id: "route", code: "ROUTE", role: "Distribute air", body: "The duct distribution system that carries balanced air to every supply and extract room.", constraint: "ROUTE pressure-loss data is published once confirmed.", cardCols: 1, slot: "airo-p-route", ph: "ROUTE distribution manifold and ducting",
+          models: [{ name: "AIRO ROUTE", tag: "Air distribution", specs: [{ k: "Works with", v: "FLOW / GUST" }, { k: "Balancing", v: "Per room" }, { k: "Pressure data", v: "On release" }] }] },
+        { id: "control", code: "ACC", role: "Control and monitor", body: "Sensors and controls that balance rooms, respond to CO\u2082 and humidity and report into EMON where supported.", constraint: "EMON integration subject to model and configuration.", cardCols: 1, slot: "airo-p-control", ph: "CONTROL panel and room sensor",
+          models: [{ name: "AIRO CONTROL", tag: "Sensors & controls", specs: [{ k: "Inputs", v: "CO\u2082 / humidity" }, { k: "Works with", v: "All units" }, { k: "EMON", v: "Config-dependent" }] }] },
+      ].filter((f) => !f.hidden),
+    };
+  }
+}
+</script>
+</body>
+</html>

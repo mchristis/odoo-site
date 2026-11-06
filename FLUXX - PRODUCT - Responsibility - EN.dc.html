@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>FLUXX Responsibility | STRØHM.ENERGY</title>
+<meta name="robots" content="noindex">
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="FluxxNav" active="responsibility" hint-size="100%,57px"></dc-import>
+  <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:16px var(--web-side);box-sizing:border-box;font-size:12px;font-weight:400;letter-spacing:0.08em;color:#5F5E5E;border-bottom:1px solid var(--color-divider);">DRAFT. Temporary text written without a FLUXX source. Standards are named as applicable, not as held. Replace before publishing.</div>
+  <dc-import name="BrandResponsibility" brand="FLUXX" unit="battery" intro="{{ intro }}" durability="{{ durability }}" materials="{{ materials }}" certs="{{ certs }}" packaging="{{ packaging }}" eol="{{ eol }}" hint-size="100%,2400px"></dc-import>
+  <dc-import name="ContentSections" brand="FLUXX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="FLUXX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="FLUXX" accent="#4F4F4E" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const TC = (w) => `[TO CONFIRM: ${w}]`;
+    return {
+      intro: "Safety testing, declared materials, audited management systems and a documented return route at end of life. Every claim on this page is linked to a document.",
+      durability: [
+        { test: "Cell and system safety", standard: "IEC 62619 (applicable)", result: TC("result per family") },
+        { test: "Transport safety", standard: "UN 38.3 (applicable)", result: TC("result per family") },
+        { test: "Grid-connected storage safety", standard: "IEC 62040 or VDE-AR-E 2510-50 (applicable, per country)", result: TC("result per family") },
+        { test: "Cycle life", standard: TC("test method"), result: TC("cycles at depth of discharge") },
+      ],
+      materials: [
+        { label: "Cell chemistry", headline: "One chemistry, declared per family.", value: TC("cell chemistry per family, e.g. LFP") + " The material record is held at serial level.", dir: "FLUXX_RESPONSIBILITY_MATERIALS_CELL_01 · cell or module macro, chemistry label visible · 16:10 · placeholder (P2)" },
+        { label: "Declarations", headline: "Substances declared, not assumed.", value: "REACH and RoHS declarations and the EU Battery Regulation carbon-footprint declaration, per family. " + TC("which declarations exist"), dir: "FLUXX_RESPONSIBILITY_MATERIALS_DECLARATION_01 · declaration document preview · 16:10 · placeholder (P2)" },
+      ],
+      certs: [
+        { code: "ISO 9001", label: "Quality management " + TC("held for FLUXX facilities") },
+        { code: "ISO 14001", label: "Environmental management " + TC("held for FLUXX facilities") },
+        { code: "ISO 45001", label: "Occupational health and safety " + TC("held for FLUXX facilities") },
+      ],
+      packaging: "Lithium batteries ship as dangerous goods under ADR, in approved packaging. " + TC("packaging materials and pallet take-back"),
+      eol: [
+        "Battery in use",
+        "Return through the installer or take-back point",
+        "Separate collection under the EU Battery Regulation (EU) 2023/1542",
+        "Approved treatment and material recovery",
+        "Recycling record",
+        "Closed ownership record",
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

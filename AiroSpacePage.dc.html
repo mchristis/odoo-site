@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="strohm-type.css"><script src="./image-slot.js"></script></helmet>
+<div style="font-family:var(--font-web);color:#4F4F4E;">
+  <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:14px var(--web-side);box-sizing:border-box;font-size:12px;font-weight:700;letter-spacing:0.08em;color:#B07818;border-bottom:1px solid #E3E1DB;">DRAFT. General building-physics practice, figures indicative. Check against national rules before publishing.</div>
+  <dc-import name="PageHero" brand="AIRO" eyebrow="{{ d.name }} ventilation" title="{{ d.title }}" intro="{{ d.lede }}" split="{{ true }}" slot="{{ imgId }}" shot="{{ imgPh }}" hint-size="100%,625px"></dc-import><section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;"><div style="font-size:12px;font-weight:300;color:#8A8A88;margin-bottom:20px;display:flex;gap:6px;flex-wrap:wrap;"><a href="AIRO - PRODUCT - Overview - EN.dc.html" style="color:#8A8A88;">AIRO</a><span>&#8250;</span><a href="AIRO - CONTENT - Why Ventilation - EN.dc.html" style="color:#8A8A88;">Why ventilation matters</a><span>&#8250;</span><span style="color:#5F5E5E;">{{ d.name }}</span></div></section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D4D4D4;padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;">
+      <div style="display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">01 / The problem</div><h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ d.problemTitle }}</h2></div>
+      <div style="grid-column:span 2;min-width:0;display:flex;flex-direction:column;gap:14px;">
+        <sc-for list="{{ d.problem }}" as="p" hint-placeholder-count="2"><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;max-width:820px;">{{ p }}</p></sc-for>
+        <sc-if value="{{ hasChart }}" hint-placeholder-val="{{ false }}"><dc-import name="AiroAirCharts" kind="{{ d.chart }}" hint-size="100%,300px"></dc-import></sc-if>
+      </div>
+    </div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D4D4D4;padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;">
+      <div style="display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">02 / What good air needs</div><h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">What to <span style="color:#8E8E8E;">aim for.</span></h2></div>
+      <div data-stack="1" style="grid-column:span 2;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);border-top:1px solid #1E1E1E;">
+        <sc-for list="{{ needs }}" as="c" hint-placeholder-count="8"><span style="padding:12px 12px 12px 0;font-size:14px;font-weight:{{ c.w }};line-height:1.6;color:{{ c.fg }};border-bottom:1px solid #E4E2E0;">{{ c.v }}</span></sc-for>
+      </div>
+    </div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D4D4D4;padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;">
+      <div style="display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">03 / The AIRO solution</div><h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ d.solutionTitle }}</h2></div>
+      <div style="grid-column:span 2;min-width:0;display:flex;flex-direction:column;gap:14px;">
+        <sc-for list="{{ d.solution }}" as="p" hint-placeholder-count="2"><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;max-width:820px;">{{ p }}</p></sc-for>
+        <div style="display:flex;gap:24px;flex-wrap:wrap;"><sc-for list="{{ d.links }}" as="l" hint-placeholder-count="2"><a href="{{ l.href }}" style="font-size:14px;border-bottom:1px solid #1E1E1E;padding-bottom:2px;">{{ l.t }} &#8250;</a></sc-for></div>
+        <div style="border-left:2px solid #1E1E1E;padding:4px 0 4px 16px;display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">For installers and architects</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ d.pro }}</span></div>
+      </div>
+    </div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #1E1E1E;padding-top:32px;display:flex;flex-direction:column;gap:18px;">
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Check your {{ lower }}.</h2>
+      <dc-import name="AiroAirCheck" hint-size="100%,760px"></dc-import>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;space&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;bedroom&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;bedroom&quot;,&quot;bathroom&quot;,&quot;kitchen&quot;,&quot;classroom&quot;,&quot;office&quot;]}}">
+const P = "AIRO - PRODUCT - Products - EN.dc.html";
+const SP = {
+  bedroom: { name: "Bedroom", chart: "bedroom", title: "Sleep in fresh air, with the window closed.", lede: "Two people in a closed bedroom raise CO₂ all night. Quiet, CO₂-controlled ventilation keeps the air fresh while you sleep, without cold draughts, street noise or pollen from an open window.",
+    problemTitle: "The air gets used up overnight.", problem: ["During eight hours of sleep, two people breathe out enough CO₂ to make the air in a closed bedroom stale. Waking up tired or with a headache is often the first sign.", "Moisture from breathing also settles on cold window frames and outside walls, where mould can start behind curtains and wardrobes."],
+    needs: [["CO₂", "Ideally below about 1.000 ppm through the night (indicative)."], ["Humidity", "About 40 to 60 %."], ["Sound", "As quiet as possible at the night speed."], ["Filtration", "F7 against pollen and fine dust, especially for allergy sufferers."]],
+    solutionTitle: "One quiet unit through the wall.", solution: ["AIRO SHIFT ventilates a bedroom through the external wall, without ducts. Its CO₂ sensor raises the speed when the air gets stale and returns to the quiet night speed when it is fresh. Heat recovery keeps the room warm."],
+    links: [{ t: "AIRO SHIFT", href: "AIRO - PRODUCT - SHIFT - EN.dc.html" }, { t: "Whole home: FLOW", href: P + "#flow" }], pro: "Position the unit away from the bed head and above furniture height. For balanced ventilation, pair with a unit in an adjacent room." },
+  bathroom: { name: "Bathroom", chart: "shower", title: "Every shower leaves water in the air.", lede: "After a shower the humidity in a bathroom jumps close to 100 %. Without extract, that moisture settles on walls, ceilings and grout, and mould follows.",
+    problemTitle: "Humidity peaks, then lingers.", problem: ["A single shower releases a large amount of water vapour in minutes. In a bathroom without mechanical extract it takes hours to disappear, and some of it condenses in cold corners and behind tiles.", "Black mould in grout and on the ceiling is the visible result. Spores spread to the rest of the house."],
+    needs: [["Extract", "Continuous low extract, boost during and after showering."], ["Humidity control", "Automatic boost based on relative humidity."], ["Air supply", "An undercut door or transfer grille so replacement air can enter."], ["Maintenance", "Easy-to-clean valve and filter."]],
+    solutionTitle: "Extract with a humidity boost.", solution: ["In a home with AIRO FLOW, the bathroom is an extract room: moist air is removed continuously and the RH sensor boosts extract after every shower. In homes without ducts, a single-room unit handles the bathroom."],
+    links: [{ t: "AIRO FLOW", href: P + "#flow" }, { t: "RH sensor: CONTROL", href: P + "#control" }], pro: "Place the extract valve high and away from the door. Size boost for the shower period and check the replacement air path." },
+  kitchen: { name: "Kitchen", chart: "", title: "Cooking fills the air with moisture, smells and fine particles.", lede: "Frying, boiling and baking release steam, grease and fine particles. A cooker hood catches part of it at the source; ventilation removes the rest from the room.",
+    problemTitle: "More than smell.", problem: ["Cooking, especially frying and on gas, produces fine particles and water vapour. In an open-plan home they spread to the living room within minutes.", "A cooker hood that only recirculates removes grease and some smell, but not moisture or CO₂."],
+    needs: [["Extract", "Continuous extract from the kitchen area."], ["Cooker hood", "Capture at the source during cooking."], ["Supply", "Fresh air elsewhere so the kitchen does not run under-pressure."], ["Filtration", "Grease filter at the hood, F7 on supply air."]],
+    solutionTitle: "Hood at the source, AIRO for the room.", solution: ["With AIRO FLOW the kitchen is an extract zone: moisture and smells leave continuously, while filtered fresh air is supplied to the living spaces. The cooker hood handles the peak during cooking."],
+    links: [{ t: "AIRO FLOW", href: P + "#flow" }, { t: "Why ventilation matters", href: "AIRO - CONTENT - Why Ventilation - EN.dc.html#dust" }], pro: "Do not connect cooker hood exhaust to the MVHR duct network. Check the combined balance of hood and MVHR in airtight homes." },
+  classroom: { name: "Classroom", chart: "classroom", title: "Fresh air helps pupils concentrate.", lede: "Twenty-eight pupils and a teacher in one room raise CO₂ above healthy levels within minutes. Quiet, CO₂-controlled ventilation keeps the air fresh through the whole lesson.",
+    problemTitle: "Too many people for an open window.", problem: ["In a closed classroom CO₂ passes 1.400 ppm within about ten minutes of the start of a lesson. Pupils get tired and concentration drops.", "In winter, airing through windows makes the room cold and draughty; next to a road it lets in noise and fine dust."],
+    needs: [["Fresh air", "Sized per pupil and teacher."], ["CO₂", "Below about 1.000 to 1.200 ppm during lessons (indicative, per national rules)."], ["Sound", "Low, so speech stays clear."], ["Filtration", "F7 or higher on supply air."]],
+    solutionTitle: "High volume, low noise.", solution: ["AIRO WAVE delivers several hundred m³/h of filtered fresh air per unit and recovers the heat. CO₂ control raises the airflow during lessons and lowers it during breaks, evenings and holidays."],
+    links: [{ t: "AIRO WAVE", href: P + "#wave" }, { t: "Size ventilation", href: "AIRO - PRODUCT - Ventilation Sizing - EN.dc.html" }], pro: "Follow national school building rules for fresh air rates and sound. Plan filter changes outside lesson hours and log them in EMON." },
+  office: { name: "Office", chart: "", title: "Fresh air for clear thinking.", lede: "Meeting rooms fill up and empty out all day. CO₂-controlled ventilation follows the occupancy, so every meeting starts and ends in fresh air.",
+    problemTitle: "Air quality follows occupancy.", problem: ["A meeting room with eight people reaches stale air quickly with the door closed. Open-plan offices vary from nearly empty to full within an hour.", "Fixed ventilation either wastes energy in empty rooms or falls short when they are full."],
+    needs: [["CO₂ control", "Airflow follows the number of people."], ["Filtration", "F7 against city dust and pollen."], ["Sound", "Low enough for calls and meetings."], ["Energy", "Heat recovery and low fan power."]],
+    solutionTitle: "Ventilation that counts heads.", solution: ["For single rooms and home offices, AIRO SHIFT or SWAP add fresh air without ducts. For larger offices and meeting rooms, WAVE or a central FLOW system with CO₂ zone control supplies each room according to its use."],
+    links: [{ t: "AIRO WAVE", href: P + "#wave" }, { t: "CO₂ zone control", href: P + "#control" }], pro: "Zone meeting rooms separately with CO₂ dampers. Integrate with the BMS where needed; use EMON for monitoring and schedules." },
+};
+class Component extends DCLogic {
+  renderVals() {
+    const k = SP[this.props.space] ? this.props.space : "bedroom", d = SP[k];
+    return { d, lower: d.name.toLowerCase(), hasChart: !!d.chart, imgId: "airo-space-" + k, imgPh: "AIRO_SPACE_" + k.toUpperCase() + "_01 · 21:9 · " + d.name.toLowerCase() + " with an AIRO unit in context · awaiting upload",
+      needs: d.needs.flatMap(([a, b]) => [{ v: a, w: 700, fg: "#4F4F4E" }, { v: b, w: 300, fg: "#5F5E5E" }]) };
+  }
+}
+</script>
+</body>
+</html>

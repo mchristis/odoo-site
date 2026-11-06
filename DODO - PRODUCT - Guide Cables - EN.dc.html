@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>DODO Guide Cables | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="DodoNav" active="cables" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="DODO" rgb="229,183,59" title="Cable guidance is already built into the edge." intro="DODO QUILL gives installers defined tie points at the middle and ends of each strip." slot="dodo-guide-cables-hero" shot="DODO · Guide Cables · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:20px;">DODO &#183; <span style="color:var(--color-text-primary);">Guide cables</span></div>
+    <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Cables can be secured towards the panel corners while the same product protects the open edge beneath the array.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0 0 44px;">
+      <a href="#method" style="font-size:var(--cta-font,16px);padding:0 24px;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--radius-btn);font-weight:700;">See the cable method</a>
+      <a href="DODO - PRODUCT - Calculator - EN.dc.html" style="font-size:var(--web-link-size);padding:0 6px;height:46px;display:inline-flex;align-items:center;color:var(--color-text-primary);font-weight:var(--web-link-weight);">Calculate what I need<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+    <div style="aspect-ratio:16/9;">
+      <dc-import name="MediaPlaceholder" code="VID-DODO-CABLE-ROUTE-01" kind="VID" ratio="16 : 9" env="Technical" priority="P1" direction="Three cable types routed through centre and end eyes, tie placement, corner transition and final underside view. On-screen: GUIDE. SECURE. DOCUMENT." hint-size="100%,100%"></dc-import>
+    </div>
+  </section>
+
+  <!-- CORE COPY BLOCKS -->
+  <section id="method" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;--cg:24px;">
+        <sc-for list="{{ blocks }}" as="b" hint-placeholder-count="4">
+          <div class="emon-card"  style="padding:32px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">{{ b.eyebrow }}</div>
+            <h3 style="margin:0 0 12px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">{{ b.title }}</h3>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ b.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- DO / DON'T -->
+  <section style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Controlled routing, not improvised routing</div>
+      <h2 style="margin:0 0 32px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">How cables should sit <span style="color:#8E8E8E;">at the edge.</span></h2>
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start;--cg:24px;">
+        <div class="emon-card"  style="background:var(--color-card-dodo);border-top:3px solid var(--color-semantic-success);padding:28px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-semantic-success);margin-bottom:16px;">Do</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <sc-for list="{{ dos }}" as="d" hint-placeholder-count="4">
+              <div style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--color-semantic-success);font-size:12px;">&#9679;</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ d }}</span></div>
+            </sc-for>
+          </div>
+        </div>
+        <div class="emon-card"  style="background:var(--color-card-dodo);border-top:3px solid var(--color-semantic-error);padding:28px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-semantic-error);margin-bottom:16px;">Do not</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <sc-for list="{{ donts }}" as="d" hint-placeholder-count="4">
+              <div style="display:flex;gap:10px;align-items:baseline;"><span style="color:var(--color-semantic-error);font-size:12px;">&#9679;</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ d }}</span></div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:24px;aspect-ratio:21/9;">
+        <dc-import name="MediaPlaceholder" code="DIAG-DODO-CABLE-DO-DONT-01" kind="DGM" ratio="21 : 9" env="Two-column diagram" direction="Do: supported, smooth, clear of roof and sharp edges. Do not: over-tightened, rubbing, unsupported or blocking Aqua path." hint-size="100%,100%"></dc-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPATIBLE CABLES -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;--cg:48px;">
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Compatible cable types</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The installer stays responsible <span style="color:#8E8E8E;">for the electrical detail.</span></h2>
+        <p style="margin:0 0 16px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The system is intended for common solar DC cables, protective earthing conductors and compatible communication or optimiser wiring. The supplied UV-resistant ties can be used with common PV cable constructions, including 4&#160;mm&#178; and 6&#160;mm&#178; conductor sizes.</p>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">The installer remains responsible for cable diameter, bend radius, spacing, electrical separation and local standards.</p>
+      </div>
+      <div class="emon-card"  style="">
+        <sc-for list="{{ cableFacts }}" as="f" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:18px 24px;border-bottom:1px solid var(--color-surface-card);align-items:center;">
+            <span style="font-size:14px;font-weight:300;color:var(--color-text-primary);">{{ f.k }}</span>
+            <span style="font-size:14px;font-weight:700;color:var(--color-text-primary);">{{ f.v }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- PART OF ONE INSTALLATION -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;background:var(--color-surface-info);border-radius:12px;padding:28px 32px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:10px;">Part of one installation</div>
+      <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:900px;">Cable routing happens after QUILL and Aqua have been fitted. The installer checks that cables do not rub, hang on the roof or interfere with drainage. The completed cable route is photographed and stored in EMON.</p>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 96px;box-sizing:border-box;">
+    <div style="background:var(--color-surface-secondary);border-radius:12px;padding:56px;color:var(--color-text-primary);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;">
+      <div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One edge system. <span style="color:#8E8E8E;">Three functions.</span></h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Bird protection, cable guidance and drainage in one controlled installation.</p>
+      </div>
+      <a href="DODO - PRODUCT - Calculator - EN.dc.html" style="font-size:var(--cta-font,16px);padding:0 26px;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--radius-btn);font-weight:700;white-space:nowrap;">Calculate what I need</a>
+    </div>
+  </section>
+
+  <dc-import name="ContentSections" brand="DODO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="DODO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="DODO" accent="var(--color-brand-dodo)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      blocks: [
+        { eyebrow: "From loose routing", title: "From loose routing to defined securing points", body: "Loose or improvised cable routing makes inspection difficult and can allow movement near roof surfaces and metal edges. QUILL provides repeated guidance eyes along the protected perimeter, so compatible cables can be tied in a planned route." },
+        { eyebrow: "Middle and end", title: "At the middle and at the end", body: "Middle guidance supports the route along the array. End guidance helps turn the cable towards the panel corner or next approved fixing point. This reduces the need to improvise a separate cable channel at the protected edge." },
+        { eyebrow: "No separate gutter", title: "No separate gutter along the edge", body: "Because the tie points are integrated into every strip, the installer routes cables towards the panel corners without adding a separate cable gutter along the array edge." },
+        { eyebrow: "Documented", title: "Part of one commissioning record", body: "The finished cable route is one of the five EMON photographs, so cable placement is documented alongside the bird inspection, QUILL, Aqua and completed array." },
+      ],
+      dos: [
+        "Support cables through the centre and end eyes along a planned route.",
+        "Keep a smooth path towards the panel corner or next approved fixing point.",
+        "Hold cables clear of roof surfaces and sharp metal edges.",
+        "Leave the Aqua drainage path unobstructed.",
+      ],
+      donts: [
+        "Over-tighten ties so the cable insulation is pinched.",
+        "Allow cables to rub against frames or roof surfaces.",
+        "Leave long unsupported sections hanging on the roof.",
+        "Route cables across or blocking the Aqua clip.",
+      ],
+      cableFacts: [
+        { k: "Solar DC cables", v: "Compatible" },
+        { k: "Protective earthing", v: "Compatible" },
+        { k: "Communication / optimiser", v: "Compatible" },
+        { k: "Conductor sizes (ties)", v: "4 mm\u00B2 \u00B7 6 mm\u00B2" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

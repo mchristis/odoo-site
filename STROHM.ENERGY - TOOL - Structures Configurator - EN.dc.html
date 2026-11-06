@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>Structures configurator | STRØHM.ENERGY</title>
+<meta name="robots" content="noindex">
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,64px"></dc-import>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;display:flex;gap:6px;"><a href="STROHM.ENERGY - SITE - Homepage - EN.dc.html" style="color:var(--color-grey-70);">STRØHM.ENERGY</a><span>&#8250;</span><span style="color:var(--color-text-primary);">Structures configurator</span></div>
+    <a href="KALK - SYSTEM - Overview - EN.dc.html" style="display:inline-flex;align-items:center;gap:6px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:12px;" style-hover="color:#8E6F93;">Powered by KALK</a>
+    <h1 style="margin:0 0 16px;font-size:var(--web-h1-size);line-height:var(--web-h1-lh);letter-spacing:-0.02em;font-weight:100;"><span style="font-weight:700;">Structures</span> <span style="font-weight:300;">configurator</span></h1>
+    <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:720px;">Pick a structure, enter the dimensions and see modules, peak power and a first yield estimate. Final design by STRØHM.ENERGY engineering.</p><a href="MOX - PRODUCT - Overview - EN.dc.html" style="display:inline-block;margin:-16px 0 32px;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);" style-hover="color:var(--color-brand-mox);">Back to MOX<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    <div role="tablist" aria-label="Structure" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+        <button type="button" role="tab" aria-selected="{{ t.sel }}" onClick="{{ t.pick }}" style="font-family:inherit;font-size:var(--cta-font);font-weight:var(--web-btn-weight);height:44px;padding:0 20px;border-radius:var(--radius-btn);border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};cursor:pointer;" style-hover="border-color:var(--color-brand-mox);">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <dc-import name="MoxCalculator" kind="{{ kind }}" hint-size="100%,560px"></dc-import>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:24px;">
+      <sc-for list="{{ links }}" as="l" hint-placeholder-count="3"><a href="{{ l.href }}" style="font-size:14px;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;" style-hover="color:var(--color-text-primary);">{{ l.name }} &#8250;</a></sc-for>
+    </div>
+  </section>
+
+  <section id="quotation" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px;">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Project review</div>
+        <h2 style="margin:0;font-size:var(--web-sub-size);font-weight:var(--web-sub-weight);line-height:var(--web-sub-lh);">Request a project review</h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Send the site details and the calculator result. A MOX specialist replies with a preliminary product direction and a required-information checklist.</p>
+      </div>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onSubmit }}" style="grid-column:span 2;min-width:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;">
+          <sc-for list="{{ qFields }}" as="f" hint-placeholder-count="6">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">{{ f.label }}
+              <input type="{{ f.type }}" required="{{ f.req }}" value="{{ f.value }}" onChange="{{ f.onChange }}" autoComplete="{{ f.ac }}" style="font-family:inherit;font-size:var(--web-input-size);height:48px;padding:0 16px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input>
+            </label>
+          </sc-for>
+          <label style="grid-column:1/-1;display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Calculator result
+            <textarea value="{{ result }}" onChange="{{ onResult }}" rows="3" style="font-family:inherit;font-size:var(--web-input-size);padding:12px 16px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);box-sizing:border-box;resize:vertical;font-weight:var(--web-input-weight);"></textarea>
+          </label>
+          <label style="grid-column:1/-1;display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Notes (optional)
+            <textarea value="{{ notes }}" onChange="{{ onNotes }}" rows="3" placeholder="Roof or ground type, access, timing" style="font-family:inherit;font-size:var(--web-input-size);padding:12px 16px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);box-sizing:border-box;resize:vertical;font-weight:var(--web-input-weight);"></textarea>
+          </label>
+          <div style="grid-column:1/-1;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+            <button type="submit" style="font-family:inherit;font-size:var(--cta-font);height:var(--cta-height);padding:0 var(--cta-pad-x);border:none;border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;cursor:pointer;" style-hover="background:#5F5E5E;color:#F4F4F4;">Send request</button>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:#B07818;line-height:var(--web-min-lh);">PROTOTYPE: the request is saved in this browser, not sent.</span>
+          </div>
+        </form>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="grid-column:span 2;background:var(--color-card-mox);padding:32px;display:flex;flex-direction:column;gap:8px;border-radius:12px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Request received.</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Filed neatly. The structure is already standing a little straighter.</div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+  <div style="height:96px;"></div>
+  <dc-import name="ContentSections" brand="MOX" scope="brand" sections="references,news" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" accent="var(--color-brand-mox)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const TABS = [
+  { k: "fence", label: "FENCE", links: [["FENCE", "FENCE"]] },
+  { k: "carport", label: "Carport", links: [["CLASSIC Carport", "CLASSIC Carport"], ["RESIDENTIAL Carport", "RESIDENTIAL Carport"]] },
+  { k: "curve", label: "CURVE kits", links: [["CURVE Carport", "CURVE Carport"]] },
+  { k: "pergola", label: "PERGOLA / PORCH", links: [["PERGOLA", "PERGOLA"], ["PORCH", "PORCH"]] },
+  { k: "ombras", label: "OMBRAS", links: [["OMBRAS", "OMBRAS"]] },
+  { k: "balcony", label: "BALCONY", links: [["BALCONY", "BALCONY"]] },
+];
+class Component extends DCLogic {
+  state = (() => {
+    const q = typeof location !== "undefined" ? new URLSearchParams(location.search) : new URLSearchParams();
+    let g = null; try { g = JSON.parse(sessionStorage.getItem("strohm-planner-verified") || "null"); } catch (e) {}
+    const prod = q.get("product") || q.get("kind") || "";
+    const res = q.get("modules") ? `${q.get("modules")} modules, ${String(q.get("kwp") || "").replace(".", ",")} kWp` : "";
+    return { kind: prod && TABS.find(t => t.k === prod) ? prod : "fence", q: { name: "", email: g?.email || "", phone: g?.phone || "", address: "", product: prod ? (TABS.find(t => t.k === prod)?.label || prod) : "" }, result: res, notes: "", sent: false };
+  })();
+  renderVals() {
+    const k = TABS.find(t => t.k === this.state.kind) ? this.state.kind : "fence";
+    const s = this.state;
+    const F = [["name", "Name", "text", "name", true], ["email", "Email address", "email", "email", true], ["phone", "Mobile number", "tel", "tel", true], ["address", "Site address", "text", "street-address", true], ["product", "Product", "text", "off", false]];
+    return {
+      qFields: F.map(([key, label, type, ac, req]) => ({ label, type, ac, req, value: s.q[key], onChange: (e) => { const v = e.target.value; this.setState(st => ({ q: { ...st.q, [key]: v } })); } })),
+      result: s.result, notes: s.notes, onResult: (e) => this.setState({ result: e.target.value }), onNotes: (e) => this.setState({ notes: e.target.value }),
+      notSent: !s.sent, sent: s.sent,
+      onSubmit: (e) => { e.preventDefault(); try { localStorage.setItem("mox-quotation-request", JSON.stringify({ ...s.q, result: s.result, notes: s.notes, at: new Date().toISOString() })); } catch (err) {} this.setState({ sent: true }); },
+      kind: k,
+      tabs: TABS.map(t => { const sel = t.k === k; return { label: t.label, sel, pick: () => this.setState({ kind: t.k }), bg: sel ? "#1E1E1E" : "#FFFFFF", color: sel ? "#FFFFFF" : "#4F4F4E", border: sel ? "#1E1E1E" : "#DDDDDD", weight: sel ? 400 : 400 }; }),
+      links: TABS.find(t => t.k === k).links.map(([n, f]) => ({ name: n, href: `MOX - PRODUCT - ${f} - EN.dc.html` })),
+    };
+  }
+}
+</script>
+</body>
+</html>

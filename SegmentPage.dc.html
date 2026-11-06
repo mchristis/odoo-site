@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<script src="./image-slot.js"></script>
+<style> body { margin:0; background:#FFFFFF; } a { color:#1E1E1E; } a:hover { color:#5F5E5E; } </style>
+</helmet>
+<div style="font-family:var(--font-web);color:#4F4F4E;min-height:100vh;">
+  <dc-import name="NavBar" active="company" hint-size="100%,80px"></dc-import>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">{{ eyebrow }}</div>
+    <h1 style="margin:0 0 20px;font-size:var(--web-h1-size);line-height:var(--web-h1-lh);font-weight:100;letter-spacing:-0.01em;max-width:760px;">{{ title }}</h1>
+    <p style="margin:0 0 40px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;max-width:680px;">{{ intro }}</p>
+    <div style="aspect-ratio:21/9;margin-bottom:64px;">
+      <image-slot id="{{ heroSlotId }}" shape="rounded" radius="24" placeholder="{{ heroPlaceholder }}"></image-slot>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+    <div style="border-top:1px solid #D4D4D4;padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:24px;">What this looks like</div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:64px;--cg:12px;">
+        <sc-for list="{{ points }}" as="p" hint-placeholder-count="3">
+          <div style="background:#F4F4F4;padding:28px;border-radius:12px;">
+            <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:10px;line-height:var(--web-small-lh);">{{ p.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ p.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 96px;box-sizing:border-box;">
+    <div style="background:#F5F5F5;padding:48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;border-radius:12px;">
+      <div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:8px;line-height:var(--web-h3-lh);">{{ ctaTitle }}</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;max-width:520px;line-height:var(--web-small-lh);">{{ ctaDesc }}</div>
+      </div>
+      <a href="STROHM.ENERGY - SITE - Find an Installer - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius,8px);text-decoration:none;white-space:nowrap;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Connect with a local installer</a>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900},&quot;segment&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;residential&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;residential&quot;,&quot;commercial&quot;,&quot;utility&quot;]}}">
+const SEGMENTS = {
+  residential: {
+    eyebrow: "Residential", title: "For your home.",
+    intro: "See how solar, storage, heating and control work together for a home — then leave your details and we'll connect you with a qualified local installer.",
+    heroPlaceholder: "Drop a residential installation photo",
+    points: [
+      { title: "Generation & storage", desc: "Solar panels, battery storage and inverters sized for your roof and household consumption." },
+      { title: "Heating & control", desc: "Heat pumps, smart switching and EMON control tuned to your tariff and comfort." },
+      { title: "One installer, one file", desc: "A single qualified installer commissions the whole system, with one technical record." },
+    ],
+    ctaTitle: "Ready to see it on your roof?", ctaDesc: "Leave your details and a qualified local installer will assess your home and propose a system.",
+  },
+  commercial: {
+    eyebrow: "Commercial", title: "For commercial buildings.",
+    intro: "Coordinated generation, storage, metering and control for offices, retail and industry — specified and documented as one system.",
+    heroPlaceholder: "Drop a commercial rooftop or facility photo",
+    points: [
+      { title: "Coordinated generation", desc: "Rooftop and carport solar, sized against real demand profiles and peak-shaving needs." },
+      { title: "Metering & control", desc: "SYNQ metering and EMON control manage load, export limits and capacity tariffs." },
+      { title: "Specified & documented", desc: "One technical file across generation, storage and conversion for facilities and compliance teams." },
+    ],
+    ctaTitle: "Discuss your building's system.", ctaDesc: "Tell us about the site and we'll connect you with a specifier or installer experienced in commercial systems.",
+  },
+  utility: {
+    eyebrow: "Utility", title: "For utility & projects.",
+    intro: "Utility-scale generation, storage and conversion, engineered and delivered to the construction programme with full traceability.",
+    heroPlaceholder: "Drop a utility-scale or construction-site photo",
+    points: [
+      { title: "Utility-scale conversion", desc: "MAGNUS-class inverters and utility mounting systems engineered for project-scale generation." },
+      { title: "Delivered to programme", desc: "Logistics and stock routes built around construction schedules, not retail lead times." },
+      { title: "Full traceability", desc: "Every component, serial and commissioning record documented for project handover and O&M." },
+    ],
+    ctaTitle: "Talk to project engineering.", ctaDesc: "Share your project scope and timeline — we'll route it to the right engineering and delivery team.",
+  },
+};
+
+class Component extends DCLogic {
+  renderVals() {
+    const key = this.props.segment || "residential";
+    const s = SEGMENTS[key] || SEGMENTS.residential;
+    return { ...s, heroSlotId: "segment-" + key + "-hero" };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>SYNQ Overview | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style> @media (max-width:720px){ .hero-card{width:calc(100% - 40px) !important;margin-top:20px !important;min-height:calc((100vw - 40px) * 1.25) !important;align-items:flex-end !important;} .hero-card-panel{width:100% !important;align-self:auto !important;padding:28px 20px !important;} } 
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:#4a5c59; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  
+  <dc-import name="SynqNav" active="meters" hint-size="100%,57px"></dc-import>
+  <!-- HERO -->
+  <dc-import name="BrandHero2" brand="SYNQ" rgb="89,143,148" dark="#2E5054" title="The hardware behind every energy decision." intro="Every watt measured. Every device connected. Every installation documented." items="{{ synqSix }}" hint-size="100%,760px"></dc-import>
+  <!-- DEPTH-1261: shared range block (ANDO layout); former block archived in _ARCHIVE/DEPTH-1261 range block/ -->
+  <dc-import name="RangeBlock" brand="SYNQ" hide-tool="1" hint-size="100%,900px"></dc-import>
+  <!-- METER CHECK (DEPTH-1342) -->
+  <section id="meter-check" data-screen-label="Meter check" data-stack="1" style="position:relative;width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:72px auto 0;min-height:max(380px,calc(min(100vw - 2 * var(--web-side),1312px) / 3.2));border-radius:24px;overflow:hidden;background:#4F4F4E;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);box-sizing:border-box;">
+    
+    <div style="grid-column:span 1;background:#FFFFFF;padding:clamp(24px,2.6vw,36px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:12px;">
+      <div style="display:flex;align-items:center;gap:8px;font-size:15px;color:#252525;">SYNQ by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:20px;width:auto;display:block;filter:brightness(0);"></div>
+      <h2 style="margin:0;font-size:clamp(28px,2.6vw,38px);font-weight:200;line-height:1.1;letter-spacing:-0.5px;color:#252525;text-wrap:balance;">Find your meter</h2>
+      
+      <p style="margin:0;font-size:15px;font-weight:300;line-height:1.45;color:#5F5E5E;text-wrap:pretty;">Tell KALK which meter you have and what you want to measure. KALK puts together the SYNQ set and shows where it goes in your fuse box. Your local distributor sends the price.</p>
+      <a href="KALK - Meter SYNQ - EN.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:8px;background:#598F94;color:#252525;font-size:16px;text-decoration:none;" style-hover="background:#252525;color:#FFFFFF;">Start the meter check &#8250;</a>
+      <a href="KERN - SYSTEM - Overview - EN.dc.html" style="align-self:flex-start;font-size:14px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #BBBBBB;padding-bottom:2px;" style-hover="color:#252525;border-bottom-color:#252525;">Professional project team? Deliver with KERN &#8250;</a>
+      
+    </div>
+    <div style="grid-column:span 1;position:relative;min-height:240px;"><div style="position:absolute;inset:0;background:#FFFFFF;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;border-left:1px solid #E3E3E3;"><svg viewBox="0 0 560 300" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" aria-label="Line drawing of a fuse box with SYNQ meters" style="display:block;"><rect x="60" y="30" width="300" height="240" rx="10" stroke="#252525" stroke-width="1" fill="none"/><line x1="72" y1="98" x2="348" y2="98" stroke="#252525" stroke-width="0.6"/><rect x="78" y="70" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="100" y="70" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="122" y="70" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="144" y="70" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="166" y="70" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="188" y="70" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="210" y="70" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="232" y="70" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="254" y="70" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="276" y="70" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="298" y="70" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="320" y="70" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><line x1="72" y1="178" x2="348" y2="178" stroke="#252525" stroke-width="0.6"/><rect x="78" y="150" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="100" y="150" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="122" y="150" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="144" y="150" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="166" y="150" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="188" y="150" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="210" y="150" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="232" y="150" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="254" y="150" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="276" y="150" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="298" y="150" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="320" y="150" width="17" height="46" rx="2" stroke="#252525" stroke-width="1" fill="none"/><rect x="390" y="60" width="50" height="86" rx="6" stroke="#252525" stroke-width="1" fill="none"/><rect x="402" y="118" width="26" height="16" rx="3" stroke="#252525" stroke-width="1" fill="none"/><line x1="110" y1="270" x2="110" y2="296" stroke="#252525" stroke-width="1"/><ellipse cx="110" cy="284" rx="10" ry="6" stroke="#252525" stroke-width="1" fill="none"/><line x1="180" y1="270" x2="180" y2="296" stroke="#252525" stroke-width="1"/><ellipse cx="180" cy="284" rx="10" ry="6" stroke="#252525" stroke-width="1" fill="none"/><line x1="250" y1="270" x2="250" y2="296" stroke="#252525" stroke-width="1"/><ellipse cx="250" cy="284" rx="10" ry="6" stroke="#252525" stroke-width="1" fill="none"/><text x="210" y="22" text-anchor="middle" fill="#252525" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="100" font-size="13" letter-spacing="3">DIN METER · CT CLAMPS · HUB</text><text x="415" y="166" text-anchor="middle" fill="#252525" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="100" font-size="13" letter-spacing="3">P1 READER</text></svg></div></div>
+  </section>
+  <section id="academy" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">SYNQ Academy</div>
+      <h2 style="margin:0 0 12px;max-width:560px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Understand the method before you <span style="color:#8E8E8E;">choose the meter.</span></h2>
+      <p style="margin:0 0 32px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">There is no single right way to measure a building. The correct method depends on the meter, the connection and the country. SYNQ Academy explains each one plainly, so the choice is deliberate.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ academy }}" as="a" hint-placeholder-count="6">
+          <div style="background:#F4F4F4;padding:24px;border-radius:12px;">
+            <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;line-height:var(--web-small-lh);">{{ a.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);margin-bottom:10px;">{{ a.desc }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:400;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ a.series }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  
+  <!-- WHO IT IS FOR (DEPTH-1329) -->
+  <dc-import name="AudienceTiles" brand="SYNQ" rgb="89,143,148" hint-size="100%,640px"></dc-import>
+  <!-- DEPTH-1265: BRAND with EMON block under the range -->
+  <dc-import name="EmonBlock" brand="SYNQ" hint-size="100%,860px"></dc-import>
+  <section id="connected" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Connected fast</div>
+      <h2 style="margin:0 0 20px;max-width:560px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The installer scans. <span style="color:#8E8E8E;">EMON remembers.</span></h2>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:24px;gap:12px;--cg:12px;">
+        <sc-for list="{{ connected }}" as="c" hint-placeholder-count="4">
+          <div style="padding:24px 20px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);margin-bottom:12px;letter-spacing:var(--web-eyebrow-ls);">{{ c.n }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;">{{ c.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ c.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="padding:16px 24px;background:#F4F5F4;border-radius:12px;">
+        <p style="margin:0;font-size:14px;font-weight:400;font-style:italic;color:var(--color-text-primary);line-height:1.6;max-width:760px;">Every installation documents itself. NFC identity, QR commissioning and integrated Wi-Fi mesh &#8212; local-first, with internet optional.</p>
+      </div>
+    </div>
+  </section>
+  <section id="system" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">One communication architecture</div>
+      <h2 style="margin:0 0 32px;max-width:600px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Many devices. <span style="color:#8E8E8E;">One record. One ecosystem.</span></h2>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ protocols }}" as="p" hint-placeholder-count="8">
+          <div style="padding:20px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:14px;font-weight:400;margin-bottom:4px;">{{ p.name }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ p.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">SYNQ measurement hardware feeds EMON, which turns the data into a single view of the installation. NEXUS extends this from measurement into active energy management and control.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;">
+        <a href="SYNQ - PRODUCT - NEXUS - EN.dc.html" style="font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);padding:14px 20px;background:#F4F5F4;border-radius:8px;">NEXUS energy hub<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+        <a href="EMON - SYSTEM - System - EN.dc.html" style="font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);padding:14px 20px;background:#F4F5F4;border-radius:8px;">EMON platform<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      </div>
+    </div>
+  </section>
+  
+  <div style="height:96px;"></div>
+  <!-- DEPTH-1342: PlanningOperation removed (doubled the meter check) -->
+  <dc-import name="AndoPattern" brand="SYNQ" items="facts" hint-size="100%,600px"></dc-import>
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;"><p style="margin:0 0 16px;margin:12px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;max-width:760px;">The installer scans. EMON remembers.</p><p style="margin:0 0 16px;margin:12px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;max-width:760px;">Scan. Measure. Connected.</p><div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0;"><a style-hover="background:#5F5E5E;color:#F4F4F4;" href="SYNQ - PRODUCT - Products - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;white-space:nowrap;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Find your meter<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a><a href="SYNQ - SUPPORT - Talk to an Expert - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;white-space:nowrap;background:#FFFFFF;color:#4F4F4E;border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Contact a specialist</a></div></section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;">
+    <button type="button" onClick="{{ toggleStats }}" aria-expanded="{{ statsExpanded }}" style="min-height:44px;padding:0;border:0;background:none;font-family:var(--font-web);font-size:var(--web-small-size);font-weight:300;color:#252525;cursor:pointer;text-decoration:underline;text-underline-offset:3px;">{{ statsLabel }}</button>
+    <sc-if value="{{ statsOpen }}" hint-placeholder-val="{{ false }}">
+
+
+    
+
+    <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--color-text-primary);--cg:0px;">
+      <sc-for list="{{ heroStats }}" as="s" hint-placeholder-count="4">
+        <div style="padding:20px 20px 20px 0;border-right:1px solid var(--color-divider);display:flex;align-items:center;gap:10px;">
+          <span style="width:16px;height:16px;flex:none;color:var(--color-text-primary);">&#10003;</span>
+          <div>
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ s.label }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ s.desc }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    </sc-if>
+  </section>
+  <!-- MEASURE / CONNECT / UNDERSTAND -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">What SYNQ does</div>
+      <h2 style="margin:0 0 40px;max-width:600px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Measure. <span style="color:#8E8E8E;">Connect. Understand.</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--color-divider);--cg:0px;">
+        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="3">
+          <div style="padding:28px 24px 28px 0;border-bottom:1px solid var(--color-divider);">
+            <div style="font-size:18px;font-weight:400;margin-bottom:10px;">{{ p.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ p.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <!-- MORE CHAPTERS behind Read more (DEPTH-1329) -->
+  <details data-screen-label="More about SYNQ" style="margin:0;padding:0;"><summary style="list-style:none;cursor:pointer;max-width:calc(1312px + 2 * var(--web-side));margin:48px auto 0;padding:0 var(--web-side);box-sizing:border-box;min-height:44px;display:flex;align-items:center;font-family:var(--font-web);font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;"><span style="border-bottom:1px solid #4F4F4E;padding-bottom:2px;">Read more about SYNQ (3)</span></summary>
+  <!-- SYNQ ACADEMY -->
+  
+  <!-- CONNECTED FAST -->
+  
+  <!-- ONE COMMS ARCHITECTURE -->
+  
+  <!-- TECHNOLOGY -->
+  <section id="technology" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Technology</div>
+      <h2 style="margin:0 0 32px;max-width:560px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The hardware is not the product. <span style="color:#8E8E8E;">The installation it creates is.</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ techPages }}" as="t" hint-placeholder-count="6">
+          <a href="{{ t.href }}" style="text-decoration:none;padding:24px;display:flex;flex-direction:column;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-body-size);font-weight:300;color:var(--color-text-primary);margin-bottom:8px;">{{ t.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);margin-bottom:16px;">{{ t.desc }}</div>
+            <span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);margin-top:auto;">Read more<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <!-- AUTOMATIC WARRANTY PDF -->
+  <dc-import name="WarrantyPDF" accent="var(--color-brand-synq)" heading="From factory test to installed warranty." product-name="SYNQ" intro="When a SYNQ product is installed, its QR or NFC identity connects it directly to the correct site and technical file. After commissioning is approved, EMON automatically generates the SYNQ installation and warranty PDF — recording the metering configuration, CT ratio and direction, limits and commissioning results against the exact serial number. We are the only ones who do this, so the warranty is documented from the start." slot-id="synq-warranty-pdf" placeholder="Drop a sample SYNQ warranty PDF page" contents="{{ synqWarrantyContents }}" upload-labels="{{ synqUploadLabels }}" hint-size="100%,800px"></dc-import>
+  <!-- NEWS -->
+  <dc-import name="NewsFeed" eyebrow="SYNQ news" heading="Product updates. Firmware. Projects." accent="var(--color-brand-synq)" all-label="All SYNQ news" install-heading="SYNQ in the field." install-note="Metering installations across Europe. Shown where permission has been granted." items="{{ productNews }}" installations="{{ installations }}" hint-size="100%,900px"></dc-import>
+  </details>
+  <div style="height:64px;"></div>
+  <!-- ENGINEERING AND MANUFACTURING LINK (DEPTH-77) -->
+  <!-- MANUFACTURING (DEPTH-1230) -->
+  <section id="manufacturing" data-screen-label="Manufacturing" style="scroll-margin-top:156px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:40px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px 72px;align-items:center;">
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Manufacturing</h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Precision-moulded housings and finished metal parts are combined with SMT-assembled electronics, sensors and communication components. Each device is programmed and tested; measurement products are also calibrated. Approved devices are robotically packed with their accessories and traced through dispatch.</p>
+        <a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="align-self:flex-start;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;" style-hover="color:#4F4F4E;border-bottom-color:var(--color-brand-synq);">Walk through the SYNQ factory &#8250;</a>
+        <div style="display:flex;flex-wrap:wrap;gap:0 24px;border-top:1px solid #DDDDDD;"><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html?chapter=test#mfg-walk" style="display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;" style-hover="color:#252525;">Testing</a><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html?chapter=home#mfg-walk" style="display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;" style-hover="color:#252525;">To site</a><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html?chapter=trace#mfg-walk" style="display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;" style-hover="color:#252525;">Traceability</a><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html?chapter=circ#mfg-walk" style="display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;" style-hover="color:#252525;">Circularity</a></div>
+      </div>
+      <div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="synq-manufacturing-photo" shape="rounded" radius="12" placeholder="SYNQ manufacturing photo, 4:3: production line or test station"></image-slot></div>
+    </div>
+    <details style="border-top:1px solid #DDDDDD;padding-top:16px;">
+      <summary style="cursor:pointer;list-style:none;display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;">Read more</summary>
+      <div style="display:flex;flex-direction:column;gap:16px;padding-top:24px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Production · 13 stages</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px;">
+        <a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-synq,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">01</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Injection moulds</span></a><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-synq,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">02</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Moulding</span></a><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-synq,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">03</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Halo and light guides</span></a><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-synq,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">04</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Aluminium front</span></a><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-synq,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">05</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">SMT line</span></a><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-synq,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">06</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Cables, CTs and antenna</span></a><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-synq,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">07</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Assembly</span></a><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-synq,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">08</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Programming and identity</span></a><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-synq,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">09</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">P1 test (P1 reader)</span></a><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-synq,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">10</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Calibration (energy meter)</span></a><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-synq,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">11</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Labels</span></a><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-synq,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">12</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Robotic packing</span></a><a href="SYNQ - PRODUCT - Engineering and Manufacturing - EN.dc.html#mfg-walk" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-synq,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">13</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">From factory to site</span></a></div>
+      </div>
+    </details>
+    <div data-editor-only="" style="display:flex;flex-direction:column;gap:8px;border:1px dashed #BBBBBB;border-radius:12px;padding:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Earlier titles · editor only</div>
+      <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">01 Moulded plastic parts · 02 Circuit boards · 03 Front plate and cables · 04 Assembly · 05 Programming and provisioning · 06 Calibration and testing · 07 Labelling and packing</p>
+    </div>
+  </section>
+  
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="ContentSections" brand="SYNQ" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="SYNQ" photo-slot-id="synq-landing-specialist" hint-size="100%,420px"></dc-import>
+  
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="SYNQ" accent="var(--color-brand-synq)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const DEVICES = [
+  { series: "PIP", title: "P1 Dongle", conn: "P1 port · RJ12 → Wi-Fi + pass-through", method: "P1", phase: "1P / 3P", app: "Residential", range: "Smart-meter P1", mid: false, note: "Plug-in P1 reader with pass-through splitter. The fastest way to read a modern smart meter." },
+  { series: "LINQ", title: "TIC Reader (Linky)", conn: "TIC port plug-in", method: "TIC (Linky)", phase: "1P / 3P", app: "Residential", range: "France + Belgium", mid: false, note: "Plugs into the Linky TIC port. USB-C power, RS485. For France and Belgium." },
+  { series: "IRIS", title: "Optical Probe", conn: "Optical LED-pulse reader", method: "Optical pulse", phase: "1P / 3P", app: "Residential", range: "Utility meters", mid: false, note: "Clip-on optical sensor that reads the LED pulse of an existing utility meter." },
+  { series: "CINCH", title: "CT Smart Meter Kit", conn: "DIN rail + split-core CT", method: "CT clamp", phase: "1P", app: "Residential", range: "100 / 250 / 600 A", mid: false, note: "DIN-rail meter with split-core CT. No busbar disconnection required." },
+  { series: "CINCH", title: "CT Smart Meter Kit — 3P", conn: "DIN rail + 3× split-core CT", method: "CT clamp", phase: "3P", app: "Commercial", range: "100 / 250 / 600 / 1000 / 3000 A", mid: false, note: "Three-phase CT metering up to 3000 A for commercial and industrial supplies." },
+  { series: "TALLY", title: "Direct Smart Meter", conn: "DIN rail, direct inline", method: "Direct", phase: "1P", app: "Residential", range: "100 A · MID / non-MID", mid: true, note: "Direct-connected DIN meter to 100 A. MID-certified option for billing." },
+  { series: "TALLY", title: "Direct Smart Meter — 3P", conn: "DIN rail, direct inline", method: "Direct", phase: "3P", app: "Commercial", range: "100 A · MID / non-MID", mid: true, note: "Three-phase direct meter to 100 A. MID-certified option for billing." },
+  { series: "HALO", title: "CT Clamp", conn: "Split-core CT clamp", method: "CT clamp", phase: "1P / 3P", app: "Commercial", range: "100 / 250 / 600 / 1000 / 3000 A", mid: false, note: "Standalone split-core current transformer clamps across the full range." },
+  { series: "LEDGER", title: "Data Logger", conn: "RS485 / Ethernet / Wi-Fi mesh / 4G / 5G", method: "Energy Hub", phase: "1P / 3P", app: "Commercial", range: "Multi-device gateway", mid: false, note: "Wall-mount logger and gateway aggregating multiple devices to EMON." },
+];
+
+class Component extends DCLogic {
+  state = { statsOpen: false, frame: 0,  conn: "All", phase: "All", app: "All" };
+
+  componentDidMount() {
+    if (!(window.omelette && window.omelette.writeFile)) document.querySelectorAll('[data-editor-only]').forEach((el) => { el.style.display = 'none'; });  }
+  componentWillUnmount() { if (this._heroTimer) clearInterval(this._heroTimer); }
+  heroVals() { const fr = this.state.frame || 0, hv = {}; for (let i = 0; i < 6; i++) { hv["op" + i] = i === fr ? 1 : 0; hv["pe" + i] = i === fr ? "auto" : "none"; } hv.heroDots = [0, 1, 2, 3, 4, 5].map(i => ({ w: i === fr ? "22px" : "10px", bg: i === fr ? "#598F94" : "rgba(255,255,255,0.4)" })); return hv; }
+  renderVals() { return { synqSix: [{"label":"Range","heading":"From P1 dongle to 3000 A.","sentence":"Accurate, bidirectional measurement of grid, solar, storage and loads — from a plug-in P1 dongle to a 3000 A CT.","media":{"type":"slot","slot":"synq-hero-2","alt":"SYNQ · From P1 dongle to 3000 A · drop a photo or video"}},{"label":"Commissioning","heading":"The installer scans. EMON remembers.","sentence":"Every installation documents itself.","media":{"type":"slot","slot":"synq-hero-3","alt":"SYNQ · The installer scans. EMON remembers · drop a photo or video"}},{"label":"One connected system","heading":"Many devices. One record. One ecosystem.","sentence":"SYNQ measurement hardware feeds EMON, which turns the data into a single view of the installation.","media":{"type":"slot","slot":"synq-hero","alt":"SYNQ · One connected system · drop a photo or video"}},{"label":"Local-first","heading":"Local first. Internet optional.","sentence":"Operates with internet optional.","media":{"type":"slot","slot":"synq-hero-5","alt":"SYNQ · Local-first · drop a photo or video"}},{"label":"NFC, QR and Wi-Fi Mesh","heading":"NFC, QR and Wi-Fi Mesh.","sentence":"Tap to identify any device. Wi-Fi mesh on CINCH, TALLY and LEDGER. No gateway needed.","media":{"type":"slot","slot":"synq-hero-4","alt":"SYNQ · NFC, QR and Wi-Fi Mesh · drop a photo or video"}},{"label":"Europe","heading":"Designed and hosted in Europe.","sentence":"Hosted in Europe. Data stays in Europe.","media":{"type":"slot","slot":"synq-hero-6","alt":"SYNQ · Europe · drop a photo or video"}}], ...this.heroVals(), ...this._rv(), statsOpen: !!this.state.statsOpen, statsExpanded: this.state.statsOpen ? "true" : "false", statsLabel: this.state.statsOpen ? "Read less" : "Read more: SYNQ in four points", toggleStats: () => this.setState((s) => ({ statsOpen: !s.statsOpen })) }; }
+  _rv() {
+    const st = this.state;
+    const results = DEVICES.filter(d => {
+      if (st.conn !== "All" && d.method !== st.conn) return false;
+      if (st.phase !== "All" && !d.phase.includes(st.phase === "Single-phase" ? "1P" : "3P")) return false;
+      if (st.app !== "All" && d.app !== st.app) return false;
+      return true;
+    });
+    return {
+      heroStats: [
+        { label: "Every watt measured", desc: "P1 to 3000 A current transformers." },
+        { label: "NFC identity", desc: "Tap to identify any device." },
+        { label: "Wi-Fi mesh", desc: "On CINCH, TALLY and LEDGER. No gateway needed." },
+        { label: "Local-first", desc: "Operates with internet optional." },
+      ],
+      pillars: [
+        { title: "Measure", desc: "Accurate, bidirectional measurement of grid, solar, storage and loads — from a plug-in P1 dongle to a 3000 A CT." },
+        { title: "Connect", desc: "One communication architecture — Wi-Fi mesh, RS485/Modbus, Ethernet and cellular — bringing every device into one record." },
+        { title: "Understand", desc: "Data feeds EMON, where measurements become a clear operational view and the basis for control." },
+      ],
+      connOptions: ["All", "P1", "TIC (Linky)", "Optical pulse", "CT clamp", "Direct", "Energy Hub"],
+      phaseOptions: ["All", "Single-phase", "Three-phase"],
+      appOptions: ["All", "Residential", "Commercial"],
+      onConnChange: (e) => this.setState({ conn: e.target.value }),
+      onPhaseChange: (e) => this.setState({ phase: e.target.value }),
+      onAppChange: (e) => this.setState({ app: e.target.value }),
+      results,
+      resultCount: results.length,
+      resultLabel: results.length === 1 ? "device" : "devices",
+      noResults: results.length === 0,
+      academy: [
+        { title: "P1 interface", desc: "The digital port on modern smart meters. The fastest way to read consumption and production.", series: "PIP" },
+        { title: "CT clamp", desc: "A split core placed around a live conductor measures current without breaking the circuit.", series: "CINCH · HALO" },
+        { title: "Direct DIN meter", desc: "The conductor passes through the meter. MID-certified versions for billing.", series: "TALLY" },
+        { title: "Optical pulse", desc: "An optical sensor reads the LED pulse of an existing utility meter. No wiring change.", series: "IRIS" },
+        { title: "TIC (Linky)", desc: "The information port of French and Belgian Linky meters, read directly.", series: "LINQ" },
+        { title: "Data logging & gateways", desc: "Aggregating many devices and protocols into one connection to EMON.", series: "LEDGER" },
+      ],
+      connected: [
+        { n: "01", title: "Scan", desc: "QR commissioning opens the correct device workflow in EMON." },
+        { n: "02", title: "Identify", desc: "NFC returns the exact device, serial number and documentation." },
+        { n: "03", title: "Mesh", desc: "Wi-Fi mesh on CINCH, TALLY and LEDGER connects devices without a separate gateway." },
+        { n: "04", title: "Record", desc: "Every device, CT ratio and phase is logged into the technical file." },
+      ],
+      protocols: [
+        { name: "Wi-Fi mesh", desc: "On CINCH, TALLY and LEDGER. Self-organising, no gateway." },
+        { name: "RS485 / Modbus", desc: "Wired industrial device bus." },
+        { name: "Ethernet", desc: "Fixed-line building connection." },
+        { name: "4G / 5G", desc: "Cellular where no LAN exists." },
+        { name: "P1 / TIC", desc: "Direct smart-meter ports." },
+        { name: "Optical pulse", desc: "LED-pulse reading of legacy meters." },
+        { name: "Bidirectional", desc: "Import and export, per phase." },
+        { name: "EMON-native", desc: "One record, one ecosystem." },
+      ],
+      techPages: [
+        { title: "Wi-Fi Mesh", desc: "SYNQ builds its own local network — automatic discovery, no gateway.", href: "SYNQ - PRODUCT - Products - EN.dc.html#mesh" },
+        { title: "NFC & QR commissioning", desc: "The installer scans. EMON recognises article, serial, firmware and warranty.", href: "SYNQ - SUPPORT - Install and Commission - EN.dc.html#identify" },
+        { title: "Local-first architecture", desc: "Measurement, communication and automation continue without the internet.", href: "SYNQ - PRODUCT - Products - EN.dc.html#local-first" },
+        { title: "Digital installation record", desc: "Every installation documents itself, linked forever to the exact product.", href: "SYNQ - SUPPORT - Install and Commission - EN.dc.html#record" },
+        { title: "Protocols and connections", desc: "P1, TIC, optical pulse, CT, direct, Modbus and RS485.", href: "SYNQ - PRODUCT - Products - EN.dc.html#connections" },
+        { title: "EMON integration", desc: "Measurements become tariffs, optimisation, reporting and documentation.", href: "SYNQ - SUPPORT - Ownership and Support - EN.dc.html" },
+      ],
+      synqUploadLabels: [
+        "Meter label / serial + QR",
+        "Device in the distribution board",
+        "CT clamp / connection point",
+        "Meter cabinet — full view",
+      ],
+      synqWarrantyContents: [
+        "Product, model, serial, hardware & firmware version",
+        "Phase configuration & power / current class",
+        "Meter configuration, CT ratio & CT direction",
+        "Grid import & export limits",
+        "Load-management & controlled-output assignments",
+        "Network & communication status",
+        "Commissioning results & installation photographs",
+        "Warranty confirmation & certificate",
+      ],
+      productNews: [],
+      installations: [],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

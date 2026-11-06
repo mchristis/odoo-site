@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#F3F2F1">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#F3F2F1"/>
+    <rect x="150" y="330" width="620" height="34" rx="4" fill="#4F4F4E"/>
+    <rect x="150" y="384" width="620" height="34" rx="4" fill="#4F4F4E"/>
+    <rect x="150" y="438" width="360" height="34" rx="4" fill="#4F4F4E"/>
+    <rect x="150" y="520" width="180" height="46" rx="4" fill="#21AE8F"/>
+  </svg>
+</template>
+<x-dc>
+<helmet data-dc-atomics>
+<title>About | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./regional-map-data.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4F4F4E; text-decoration:none; }
+  a:hover { color:#21AE8F; }
+  @media (max-width: 1023px) { .cs-bar { flex-wrap:wrap; padding-top:6px !important; padding-bottom:6px !important; gap:6px 16px !important; } .cs-left { flex-wrap:wrap; row-gap:0; } }
+  @keyframes sdDraw { to { stroke-dashoffset:0; } }
+  @keyframes sdFade { to { opacity:1; } }
+  @media (prefers-reduced-motion: reduce) { .sd { animation:none !important; stroke-dashoffset:0 !important; } .sd-t { animation:none !important; opacity:1 !important; } }
+  @keyframes csFade { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .cs-panel { animation:none !important; } }
+  .cs-bar button:focus-visible, .cs-bar a:focus-visible { outline: 2px solid #3A3A3A; outline-offset: 2px; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+
+  <dc-import name="NavBar" active="company" hint-size="100%,80px"></dc-import>
+
+  <dc-import name="CompanyNav" active="" hint-size="100%,57px"></dc-import>
+<dc-import name="BrandHero2" brand="COMPANY" rgb="247,104,1" dark="#4F4F4E" title="Energy has enough components. It needs a system." intro="We create connected energy technologies, from the first concept to production, system integration and long-term operation." items="{{ heroItems }}" hint-size="100%,760px"></dc-import>
+
+  <!-- 1 · OPENING BANNER -->
+  <section style="position:relative;background:#F5F5F4;overflow:hidden;">
+    
+    <div style="position:relative;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:clamp(72px,9vw,150px) var(--web-side);box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;gap:48px 56px;">
+      <div style="flex:1 1 520px;max-width:760px;min-width:0;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;margin:0 0 20px;">Designed. Engineered. Manufactured.</div>
+        
+        
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="STROHM.ENERGY - COMPANY - Why - EN.dc.html#differences" style="display:inline-flex;align-items:center;gap:8px;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Explore our approach</a>
+          <a href="STROHM.ENERGY - SITE - Homepage - EN.dc.html#ecosystem" style="display:inline-flex;align-items:center;gap:8px;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);border:1px solid #4F4F4E;color:#4F4F4E;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">See the product ecosystem</a>
+        </div>
+      </div>
+      <div style="flex:1 1 420px;min-width:0;max-width:760px;margin-left:auto;"><img src="assets/company-hero-system.png" alt="Line drawing of a house with solar panels, inverter, battery, heat pump, EV charger and energy management connected to the grid" style="display:block;width:100%;height:auto;mix-blend-mode:multiply;"></div>
+    </div>
+  </section>
+
+
+  <!-- COMPANY LANDING · SIX SECTIONS (Step 5) -->
+  <section data-screen-label="Company landing — six sections" id="company-six" style="scroll-margin-top:156px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;margin-bottom:24px;">The company in six questions</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;"><a href="STROHM.ENERGY - COMPANY - Why - EN.dc.html" style="text-decoration:none;background:#F4F4F4;display:flex;flex-direction:column;border-radius:12px;" style-hover="background:#E3E3E3;"><div style="aspect-ratio:4/3;"><image-slot id="co-landing-why" shape="rounded" radius="8" placeholder="WHY · drop a visual"></image-slot></div><div style="padding:24px;display:flex;flex-direction:column;gap:8px;flex:1;"><div style="display:flex;align-items:baseline;gap:12px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">Why</span><span style="font-size:var(--web-small-size);font-weight:300;color:#6E6E6E;line-height:var(--web-small-lh);">Purpose</span><span style="margin-left:auto;font-size:12px;letter-spacing:0.08em;color:#8A8A89;">01 / 06</span></div><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;flex:1;max-width:760px;">Energy systems have become unnecessarily fragmented.</p><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;max-width:760px;">Most energy installations combine products from different manufacturers, each with its own interfaces, configuration methods and technical requirements. STRØHM.ENERGY develops connected hardware, software and system solutions designed to simplify installation, commissioning and long-term operation.</p><span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;align-self:flex-start;">Read why<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></div></a><a href="STROHM.ENERGY - COMPANY - What - EN.dc.html" style="text-decoration:none;background:#F4F4F4;display:flex;flex-direction:column;border-radius:12px;" style-hover="background:#E3E3E3;"><div style="aspect-ratio:4/3;"><image-slot id="co-landing-what" shape="rounded" radius="8" placeholder="WHAT · drop a visual"></image-slot></div><div style="padding:24px;display:flex;flex-direction:column;gap:8px;flex:1;"><div style="display:flex;align-items:baseline;gap:12px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">What</span><span style="font-size:var(--web-small-size);font-weight:300;color:#6E6E6E;line-height:var(--web-small-lh);">Activities</span><span style="margin-left:auto;font-size:12px;letter-spacing:0.08em;color:#8A8A89;">02 / 06</span></div><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;flex:1;max-width:760px;">We are a product company, not a product catalogue.</p><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;max-width:760px;">STRØHM.ENERGY develops and manufactures renewable energy products, integrated systems and digital tools for professional installers, EPC contractors and distribution partners.</p><span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;align-self:flex-start;">Read what<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></div></a><a href="STROHM.ENERGY - COMPANY - Who - EN.dc.html" style="text-decoration:none;background:#F4F4F4;display:flex;flex-direction:column;border-radius:12px;" style-hover="background:#E3E3E3;"><div style="aspect-ratio:4/3;"><image-slot id="co-landing-who" shape="rounded" radius="8" placeholder="WHO · drop a visual"></image-slot></div><div style="padding:24px;display:flex;flex-direction:column;gap:8px;flex:1;"><div style="display:flex;align-items:baseline;gap:12px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">Who</span><span style="font-size:var(--web-small-size);font-weight:300;color:#6E6E6E;line-height:var(--web-small-lh);">People</span><span style="margin-left:auto;font-size:12px;letter-spacing:0.08em;color:#8A8A89;">03 / 06</span></div><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;flex:1;max-width:760px;">The people who make it happen.</p><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;max-width:760px;">Founders, builders, product specialists and local sales. One international team, organised so you always reach the right contact and speak directly with a specialist.</p><span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;align-self:flex-start;">Read who<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></div></a><a href="STROHM.ENERGY - COMPANY - Where - EN.dc.html" style="text-decoration:none;background:#F4F4F4;display:flex;flex-direction:column;border-radius:12px;" style-hover="background:#E3E3E3;"><div style="aspect-ratio:4/3;"><image-slot id="co-landing-where" shape="rounded" radius="8" placeholder="WHERE · drop a visual"></image-slot></div><div style="padding:24px;display:flex;flex-direction:column;gap:8px;flex:1;"><div style="display:flex;align-items:baseline;gap:12px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">Where</span><span style="font-size:var(--web-small-size);font-weight:300;color:#6E6E6E;line-height:var(--web-small-lh);">Locations and data</span><span style="margin-left:auto;font-size:12px;letter-spacing:0.08em;color:#8A8A89;">04 / 06</span></div><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;flex:1;max-width:760px;">Twelve hubs, one manufacturing organisation, and where your energy data is stored.</p><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;max-width:760px;">We develop and manufacture renewable energy products for installers and EPC companies, with hubs in Europe, Asia, Africa and the Americas.</p><span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;align-self:flex-start;">Read where<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></div></a><a href="STROHM.ENERGY - COMPANY - How - EN.dc.html" style="text-decoration:none;background:#F4F4F4;display:flex;flex-direction:column;border-radius:12px;" style-hover="background:#E3E3E3;"><div style="aspect-ratio:4/3;"><image-slot id="co-landing-how" shape="rounded" radius="8" placeholder="HOW · drop a visual"></image-slot></div><div style="padding:24px;display:flex;flex-direction:column;gap:8px;flex:1;"><div style="display:flex;align-items:baseline;gap:12px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">How</span><span style="font-size:var(--web-small-size);font-weight:300;color:#6E6E6E;line-height:var(--web-small-lh);">Methods</span><span style="margin-left:auto;font-size:12px;letter-spacing:0.08em;color:#8A8A89;">05 / 06</span></div><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;flex:1;max-width:760px;">From observation to operation.</p><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;max-width:760px;">STRØHM.ENERGY combines industrial design, product engineering, manufacturing and digital technology within one coordinated product organisation.</p><span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;align-self:flex-start;">Read how<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></div></a><a href="STROHM.ENERGY - COMPANY - When - EN.dc.html" style="text-decoration:none;background:#F4F4F4;display:flex;flex-direction:column;border-radius:12px;" style-hover="background:#E3E3E3;"><div style="aspect-ratio:4/3;"><image-slot id="co-landing-when" shape="rounded" radius="8" placeholder="WHEN · drop a visual"></image-slot></div><div style="padding:24px;display:flex;flex-direction:column;gap:8px;flex:1;"><div style="display:flex;align-items:baseline;gap:12px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">When</span><span style="font-size:var(--web-small-size);font-weight:300;color:#6E6E6E;line-height:var(--web-small-lh);">Timeline</span><span style="margin-left:auto;font-size:12px;letter-spacing:0.08em;color:#8A8A89;">06 / 06</span></div><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;flex:1;max-width:760px;">How STRØHM.ENERGY began.</p><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;max-width:760px;">The professional experience behind STRØHM.ENERGY reaches back to 1988. Decades of experience in product development and manufacturing inform how we approach materials, production processes, technical details and product quality.</p><span style="align-self:flex-start;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6E6E6E;border:1px solid #BBBBBB;padding:2px 6px;border-radius:8px;">TO CONFIRM</span><span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;align-self:flex-start;">Read when<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></div></a></div></section>
+    <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;"><div style="border-top:1px solid #D4D4D4;padding-top:40px;"><p style="margin:0;font-size:var(--web-sub-size);font-weight:var(--web-sub-weight);line-height:var(--web-sub-lh);color:#4F4F4E;max-width:880px;text-wrap:balance;">We do not want twenty-five brands that look identical. We want twenty-five specialists that clearly belong to the same family.</p></div></section>
+    <!-- CLOSING CTA -->
+  <section id="contact" style="scroll-margin-top:156px;background:#F3F2F1;margin-top:120px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:120px var(--web-side);box-sizing:border-box;">
+      <h2 style="margin:0 0 40px;max-width:720px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Energy works better when its parts <span style="color:#8E8E8E;">understand each other.</span></h2>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="STROHM.ENERGY - SITE - Homepage - EN.dc.html#ecosystem" style="display:inline-flex;align-items:center;gap:8px;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Explore products</a>
+        <a href="STROHM.ENERGY - COMPANY - Who - Product Experts - EN.dc.html" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);border:1px solid #4F4F4E;color:#4F4F4E;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Contact a specialist</a>
+        <button type="button" onClick="{{ openProjectContact }}" style="background:none;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);border:1px solid #4F4F4E;color:#4F4F4E;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Talk to us</button>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="ContactModal" open="{{ contactOpen }}" mode="detailed" on-close="{{ closeContact }}" hint-size="0,0"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const HERO_ITEMS = [{"label":"Why","heading":"Energy systems have become unnecessarily fragmented.","sentence":"Purpose","href":"#company-six","media":{"type":"slot","slot":"about-hero-1","alt":"About hero picture 1"}},{"label":"What","heading":"We are a product company, not a product catalogue.","sentence":"Activities","href":"#company-six","media":{"type":"slot","slot":"about-hero-2","alt":"About hero picture 2"}},{"label":"Who","heading":"The people who make it happen.","sentence":"People","href":"#company-six","media":{"type":"slot","slot":"about-hero-3","alt":"About hero picture 3"}},{"label":"Where","heading":"Twelve hubs, one manufacturing organisation, and where your energy data is stored.","sentence":"Locations and data","href":"#company-six","media":{"type":"slot","slot":"about-hero-4","alt":"About hero picture 4"}},{"label":"How","heading":"From observation to operation.","sentence":"Methods","href":"#company-six","media":{"type":"slot","slot":"about-hero-5","alt":"About hero picture 5"}},{"label":"When","heading":"How STRØHM.ENERGY began.","sentence":"Timeline","href":"#company-six","media":{"type":"slot","slot":"about-hero-6","alt":"About hero picture 6"}}];
+class Component extends DCLogic {
+  renderVals() { return Object.assign({}, this._rvBase(), { heroItems: HERO_ITEMS }); }
+  state = { contactOpen: false, teamTab: "Product Design and Engineering", subOpen: null, subActive: null, ramH: 2600, locH: 640, whoH: 1000, expH: 260, qtH: 900 };
+
+  componentDidMount() {
+    const MAP = { why: ["why","different"], what: ["about","system","configuration","emon","site","products"], how: ["how","develop","punk","rule","quality","sustainability"], who: ["who-map","people","founder","team","regional","experts"], where: ["network","locations","international"], when: ["when","story","milestones","next"] };
+    const ORDER = ["why","different","about","system","configuration","emon","site","products","how","develop","punk","rule","quality","sustainability","who-map","people","founder","team","regional","experts","network","locations","international","when","story","milestones","next","contact"];
+    this._onScroll = () => {
+      let cur = null;
+      for (const id of ORDER) { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= 190) cur = id; }
+      let g = null;
+      for (const k in MAP) if (MAP[k].indexOf(cur) >= 0) g = k;
+      if (g !== this.state.subActive) this.setState({ subActive: g });
+    };
+    this._openHash = () => { const t = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null; if (!t) return; let p = t.parentElement, o = false; while (p) { if (p.tagName === "DETAILS" && !p.open) { p.open = true; o = true; } p = p.parentElement; } if (o) setTimeout(() => window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 170 }), 60); };
+    window.addEventListener("hashchange", this._openHash); setTimeout(this._openHash, 400);
+    this._onMsg = (e) => { if (e.data && typeof e.data.qtHeight === "number" && e.data.qtHeight > 100) this.setState({ qtH: Math.ceil(e.data.qtHeight) + 8 }); if (e.data && e.data.expPick) { const fr = document.querySelector('iframe[title^="Product expert finder"]'); if (fr) { fr.contentWindow.postMessage(e.data, '*'); setTimeout(() => window.scrollTo({ top: fr.getBoundingClientRect().top + window.scrollY - 170, behavior: 'smooth' }), 120); } } if (e.data && e.data.expModal) { const f = document.querySelector('iframe[title^="Product expert finder"]'); if (f) window.scrollTo({ top: f.getBoundingClientRect().top + window.scrollY - 170, behavior: "smooth" }); } if (e.data && typeof e.data.expHeight === "number" && e.data.expHeight > 100) this.setState({ expH: Math.ceil(e.data.expHeight) + 8 }); if (e.data && typeof e.data.ramHeight === "number" && e.data.ramHeight > 400) this.setState({ ramH: Math.ceil(e.data.ramHeight) + 8 }); if (e.data && typeof e.data.locHeight === "number" && e.data.locHeight > 200) this.setState({ locH: Math.ceil(e.data.locHeight) + 8 }); if (e.data && typeof e.data.whoHeight === "number" && e.data.whoHeight > 300) this.setState({ whoH: Math.ceil(e.data.whoHeight) + 8 }); };
+    window.addEventListener("message", this._onMsg);
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    this._onScroll();
+  }
+  componentWillUnmount() { if (this._onScroll) window.removeEventListener("scroll", this._onScroll); if (this._onMsg) window.removeEventListener("message", this._onMsg); }
+  _rvBase() {
+    const TEAM_CATS = ["Product Design and Engineering", "Software and Energy-Management", "Manufacturing and Quality Control", "Product Specialists", "Regional Business Development"];
+    const active = this.state.teamTab;
+    return {
+      contactOpen: this.state.contactOpen, openProjectContact: () => this.setState({ contactOpen: true }), closeContact: () => this.setState({ contactOpen: false }),
+      ramH: this.state.ramH,
+      locH: this.state.locH,
+      whoH: this.state.whoH,
+      expH: this.state.expH,
+      qtH: this.state.qtH,
+      teamCategories: TEAM_CATS.map((c) => ({
+        label: c,
+        onClick: () => this.setState({ teamTab: c }),
+        weight: c === active ? 400 : 400,
+        color: c === active ? "#4F4F4E" : "#8A8A89",
+        underline: c === active ? "underline" : "none",
+      })),
+      teamMembers: [0, 1, 2].map((i) => ({
+        slotId: "company-team-" + active.replace(/\s+/g, "-").toLowerCase() + "-" + i,
+        role: active === "Product Specialists" ? "Product Specialist" : active === "Regional Business Development" ? "Regional Business Lead" : active === "Software and Energy-Management" ? "Software Engineer" : active === "Manufacturing and Quality Control" ? "Quality Engineer" : "Product Designer",
+        name: "Name pending",
+      })),
+      credentials: [
+        { title: "Product evaluation", desc: "IEC 61215 and IEC 61730 certified evaluation \u2014 15+ years of panel testing and type approval across European and Asian production facilities." },
+        { title: "Reliability data", desc: "PVEL scorecard methodology \u2014 interprets thermal cycling, damp heat, UV and mechanical stress data for procurement and project finance." },
+        { title: "System design", desc: "Calculates precise output per location, orientation, roof slope and shading profile for any ANDO series using real irradiance datasets." },
+        { title: "Bankability & sourcing", desc: "Advises on Tier-1 status, supply chain risk and the documentation required for project finance and insurance." },
+        { title: "Manufacturing knowledge", desc: "Direct factory experience in China, Southeast Asia and Europe since 2009 \u2014 cell technology from PERC to TOPCon to HJT." },
+        { title: "Certification", desc: "Prepares full certificate packages for building permits, grid connection, incentive schemes and ESG compliance." },
+        { title: "Degradation modelling", desc: "Uses batch-specific A-MUM production data to build accurate 30-year output curves per installed panel batch." },
+      ],
+      sixThings: [
+        { n: "01", title: "We design the complete system", body: "Most energy installations are assembled from unrelated products. We develop products around shared connections, information and installation logic.", result: "The result: fewer compatibility questions and a more coherent installation." },
+        { n: "02", title: "We design for the installer and the user", body: "An energy product must be straightforward to specify, install, commission, understand and maintain.", result: "Technical depth is available when it is needed. Everyday operation remains clear." },
+        { n: "03", title: "Every product has a digital identity", body: "QR and NFC identification connect the physical product to its documentation, serial number, warranty, commissioning information and service history.", result: "The correct information stays connected to the correct product." },
+        { n: "04", title: "Hardware and software belong together", body: "EMON connects generation, storage, consumption, tariffs and connected equipment in one energy environment.", result: "The software is not added afterwards. It is part of how the system is designed." },
+        { n: "05", title: "We make complexity visible only when useful", body: "Energy systems are technically complex. Their interfaces do not have to be.", result: "We organise information around decisions, actions and outcomes rather than exposing every parameter at once." },
+        { n: "06", title: "We build connected products without a closed island", body: "STRØHM.ENERGY products work as one ecosystem while retaining the interfaces needed for meters, networks, installers and compatible third-party equipment.", result: "This protects system flexibility and reduces dependency on one product generation." },
+      ],
+      howSteps7: [{ name: "From observation to operation, in full", items: [{"label":"01 OBSERVE","title":"Observe","subtitle":"Step 01","text":"We study how products are selected, installed, commissioned and used.","colour":"#8EB15F"},{"label":"02 DESIGN","title":"Design","subtitle":"Step 02","text":"Industrial design, interaction design and technical architecture are developed together.","colour":"#CDD62B"},{"label":"03 ENGINEER","title":"Engineer","subtitle":"Step 03","text":"Products are engineered to our own specification.","colour":"#F1931B"},{"label":"04 VALIDATE","title":"Validate","subtitle":"Step 04","text":"Performance, compatibility, safety and country requirements are verified for each intended market.","colour":"#1B8B9A"},{"label":"05 MANUFACTURE","title":"Manufacture","subtitle":"Step 05","text":"Production is managed through our controlled production network. Every product is built to our specification and released only after our own testing and quality checks.","colour":"#DF550C"},{"label":"06 CONNECT","title":"Connect","subtitle":"Step 06","text":"Products are incorporated into the wider STRØHM.ENERGY and EMON ecosystem.","colour":"#21AE8F"},{"label":"07 SUPPORT","title":"Support","subtitle":"Step 07","text":"Documentation, warranty, product identity and service information stay connected throughout the product lifecycle.","colour":"#90ABD0"}] }],
+      howSteps: [{ name: "From observation to operation", items: [{"label":"01 OBSERVE","title":"Observe","subtitle":"Step 01","text":"We study how products are selected, installed, commissioned, operated and maintained, identifying the real challenges faced by installers and users.","colour":"#8EB15F"},{"label":"02 DESIGN","title":"Design","subtitle":"Step 02","text":"Industrial design, mechanical construction, electronics, interaction design and product architecture are developed as part of one coherent concept.","colour":"#CDD62B"},{"label":"03 ENGINEER","title":"Engineer","subtitle":"Step 03","text":"We translate product concepts into technical specifications, engineered components, functional prototypes and manufacturable solutions.","colour":"#F1931B"},{"label":"04 VALIDATE","title":"Validate","subtitle":"Step 04","text":"Products are assessed for performance, safety, compatibility, durability and the requirements of their intended markets.","colour":"#1B8B9A"},{"label":"05 MANUFACTURE","title":"Manufacture","subtitle":"Step 05","text":"We manufacture products to our own designs and specifications, bringing production engineering, component sourcing, assembly, testing and quality control into one coordinated manufacturing process.","colour":"#DF550C"},{"label":"06 CONNECT","title":"Connect","subtitle":"Step 06","text":"Hardware, software, communication and energy management are brought together within the wider STRØHM.ENERGY ecosystem, including EMON.","colour":"#21AE8F"}] }],
+      whoGroups: (() => {
+        const COL = (window.STROHM_NAV && window.STROHM_NAV.COLOUR) || {};
+        const dec = (s) => { const el = document.createElement('textarea'); el.innerHTML = s; return el.value; };
+        const founders = [
+          { label: "Mathieu", title: "Mathieu", subtitle: "Product and System Direction", text: "Co-founder", href: "#founder", firstLabel: "profile" },
+          { label: "Huang Tzu Chi", title: "Huang Tzu Chi", subtitle: "Co-founder & Managing Director Asia", text: "Hong Kong · Taiwan · Shenzhen", href: "#founder", firstLabel: "profile", flag: "Profile pending final approval" },
+          { label: "Ronny", title: "Ronny", subtitle: "Co-founder & EPC Technical Advisor", text: "Co-founder", href: "#founder", firstLabel: "profile" },
+        ];
+        const depts = ["Leadership & Management","Product Design & Engineering","Graphic & Web Design","Software Development","Manufacturing & Quality","Operations & Supply Chain","Applications & Installation","Regional Account Management"]
+          .map((n, i) => ({ label: n, title: n, subtitle: "Team " + String(i + 1).padStart(2, "0"), href: "#team-dept-" + (i + 1), firstLabel: "team" }));
+        const ram = window.RAM_DATA ? window.RAM_DATA.regions : [];
+        const regions = ram.map(r => ({ label: r.name, title: r.manager ? r.manager.name : r.name, subtitle: (r.manager && r.manager.title) || "Regional Account Manager · " + r.name, text: "Languages: " + r.languages, href: "#regional", firstLabel: "regional map", secondHref: "STROHM.ENERGY - SITE - Regional Account Management - EN.dc.html", secondLabel: "contact", flag: r.manager && r.manager.fictionalConcept ? "Fictional example, to confirm" : (r.manager && !r.manager.portrait ? "Portrait pending" : "") }));
+        regions.push({ label: "International", title: "International Sales", subtitle: "Outside Europe, upon request", href: "#regional", firstLabel: "regional map", secondHref: "STROHM.ENERGY - SITE - Regional Account Management - EN.dc.html", secondLabel: "contact" });
+        const EX = [["ando","ANDO","Thomas Vermeulen","Solar PV Technical Specialist"],["moebius","MOEBIUS","Arjun Menon","Power Conversion Specialist"],["fluxx","FLUXX","Bram de Vries","Battery Systems Specialist"],["fluxx-bess","FLUXX BESS","Dr. Markus Feldmann","Commercial & Utility Battery Storage Specialist"],["synq","SYNQ","Ananya Rao","Smart Metering Specialist"],["ozzy","OZZY","Meera Kulkarni","Smart Switching Specialist"],["nendo","NENDO + OGO","Mihai Ionescu","Thermal Systems Specialist"],["xoom","XOOM","Lukas Schneider","EV Charging Specialist"],["airo","AIRO","Andrei Popescu","Ventilation & Indoor Air Quality Specialist"],["feu","FEU","Kateryna Hrytsenko","Radiant Heating Specialist"],["glow","GLOW","Milica Petrović","Solar Lighting Specialist"],["chill","CHILL","Elīna Ozoliņa","Architectural Product & Infrastructure Specialist"],["prop","PROP","Viktoria Stoyanova","Wind Turbine Specialist"],["mox","MOX + SHELTR","Hendrik Van Aelst","Structural & Protection Specialist"],["togu","TOGU","Mei-Ling Lin","Electrical Connectivity Specialist"],["dodo","DODO","Charlotte Whitmore","Product Safety & Protection Specialist"],["wurk","WURK","Marek Kováč","Installation Equipment & Site Safety Specialist"],["muki","MUKI","Filip De Smet","Integrated Energy Systems Specialist"],["agrix","AGRIX","Dr. Klaus Reinhardt","Agricultural Solar & Agrivoltaics Specialist"],["lina","LINA","Piotr Zieliński","Vertical Solar & Flat-Roof Mounting Specialist"]]
+          .map(([id, label, name, role]) => ({ label, title: name, subtitle: role, href: "#expert-" + id, firstLabel: "profile", colour: COL[label.split(" ")[0]] || "#E3E3E3", flag: "Fictional example, to confirm" }));
+        return [
+          { name: "Founders", items: founders },
+          { name: "Team", items: depts },
+          { name: "Regional sales", items: regions },
+          { name: "Product experts", items: EX },
+        ];
+      })(),
+      functionalGroups: [
+        { name: "Generate", desc: "Solar modules, wind and supporting generation technologies.", brands: ["ANDO", "LINA", "PROP"] },
+        { name: "Convert", desc: "Inverters and power electronics that connect generation, storage and loads.", brands: ["MOEBIUS"] },
+        { name: "Store", desc: "Stationary and portable energy storage systems.", brands: ["FLUXX", "MUKI"] },
+        { name: "Use", desc: "Heating, hot water, EV charging, ventilation, lighting, switching and connected electrical products.", brands: ["NENDO", "FEU", "XOOM", "AIRO", "OGO", "GLOW", "CHILL", "OZZY"] },
+        { name: "Connect", desc: "Cables, meters, sensors, mounting, protection, installation and communication hardware.", brands: ["SYNQ", "TOGU", "MOX", "AGRIX", "SHELTR", "DODO", "WURK"] },
+        { name: "Understand", desc: "EMON software, monitoring, commissioning and energy optimisation.", brands: ["EMON"] },
+      ],
+      audiences: [
+        { name: "Installers", desc: "Clear product selection, faster commissioning, connected documentation and remote system insight." },
+        { name: "Distributors & resellers", desc: "A structured product family, consistent data and a scalable commercial platform." },
+        { name: "Property owners & businesses", desc: "Understandable energy products that can grow as requirements change." },
+        { name: "Project developers", desc: "Integrated technical packages for larger residential, commercial and energy projects." },
+      ],
+      howWeWork: [
+        { title: "Observe", desc: "We study how products are selected, installed, commissioned and used." },
+        { title: "Design", desc: "Industrial design, interaction design and technical architecture are developed together." },
+        { title: "Engineer", desc: "Products are engineered to our own specification." },
+        { title: "Validate", desc: "Performance, compatibility, safety and country requirements are verified for each intended market." },
+        { title: "Manufacture", desc: "Production is managed through our controlled production network. Every product is built to our specification and released only after our own testing and quality checks." },
+        { title: "Connect", desc: "Products are incorporated into the wider STRØHM.ENERGY and EMON ecosystem." },
+        { title: "Support", desc: "Documentation, warranty, product identity and service information stay connected throughout the product lifecycle." },
+      ],
+      advantages: [
+        "Faster installation",
+        "Better performance",
+        "Clearer technical information",
+        "Stronger system integration",
+        "Simpler maintenance",
+        "Better materials",
+        "A longer usable lifespan",
+        "A more understandable user experience",
+      ],
+      punkFor: [
+        "For the installer on the roof.",
+        "For the technician during commissioning.",
+        "For the user who wants to understand their energy.",
+        "For the service team that still needs the right information years later.",
+      ],
+      network: [
+        { title: "Installer network", desc: "Certified installers across Europe, with connected documentation, faster commissioning and remote system insight.", flag: "TO VERIFY", cta: "Join the network" },
+        { title: "Distribution partners", flag: "", desc: "A structured product family, consistent data and a scalable commercial platform for distributors and resellers.", cta: "Become a partner" },
+        { title: "Production network", flag: "", desc: "Specialist development and production within our controlled Asian production network.", cta: "Work with us" },
+      ],
+      lpConfig: [
+        "System sizing and load profiles",
+        "Battery capacity and charge strategy",
+        "Inverter and grid compatibility",
+        "Cable dimensions and electrical protection",
+        "Meter, CT and P1 configuration",
+        "Phase balancing and export limits",
+        "Backup and emergency-power priorities",
+        "Heating and EV-charging demand",
+        "Dynamic tariffs and energy prices",
+        "Firmware, communication and commissioning settings",
+      ],
+      lpStats: [
+        { title: "One ecosystem", flag: "", desc: "Products designed together" },
+        { title: "One intelligence", flag: "", desc: "Connected through EMON" },
+        { title: "One responsibility", desc: "Supported as one system", flag: "TO VERIFY" },
+      ],
+      lpEmon: [
+        "Guided product onboarding",
+        "Compatibility & configuration checks",
+        "Commissioning workflows",
+        "Live energy-flow visualisation",
+        "Battery status and health",
+        "Solar generation & consumption",
+        "Grid import and export",
+        "EV charging & heating demand",
+        "Tariff-based optimisation",
+        "Alerts, diagnostics & service",
+        "Documentation & serial numbers",
+        "Warranty history",
+      ],
+      lpSite: [
+        "The building and electrical connection",
+        "Local grid rules",
+        "Available generation",
+        "Expected consumption",
+        "User priorities",
+        "Required backup capacity",
+        "Future expansion",
+        "Commercial or residential operation",
+      ],
+      lpQLines: [
+        "Care is an engineering principle.",
+        "Quality begins where indifference ends.",
+        "Every component matters. The relationship between them matters more.",
+        "Technology becomes meaningful when it is understood.",
+      ],
+      lpQMeets: [
+        { role: "Engineering", desc: "Engineering can calculate whether a product functions." },
+        { role: "Experience", desc: "Experience tells us whether it functions well." },
+        { role: "Design", desc: "Design determines whether it is understandable, serviceable and appropriate for the people who must install and live with it." },
+      ],
+      lpQRel: [
+        "The idea and its execution",
+        "The component and the system",
+        "The product and the installer",
+        "The machine and the person using it",
+        "Technical performance and visual character",
+        "Production precision and long-term care",
+      ],
+      lpDev: [
+        "Better conceived",
+        "Better configured",
+        "Better manufactured",
+        "Better connected",
+        "Better understood",
+        "Better maintained",
+      ],
+      hpAbout: [
+        { title: "What STRØHM.ENERGY is", desc: "One organisation designing and manufacturing the full stack of an energy system, rather than assembling parts from unrelated suppliers.", flag: "TO VERIFY" },
+        { title: "Company overview", flag: "", desc: "Twenty-five product brands and seven systems, engineered to the same standards and connected through one platform." },
+        { title: "The people behind it", desc: "A product is only as good as the people who understand it. Each brand has a technical specialist you can actually book.", flag: "TO VERIFY" },
+        { title: "Technical expertise", flag: "", desc: "Mechanical, structural, electrical and software engineering under one roof, from first concept to installed operation." },
+      ],
+      hpWhat: [
+        { title: "What we make", statement: "One ecosystem. Different roles.", desc: "Generation, storage, conversion, use, control, structure and protection — designed to fit together." },
+        { title: "Who we design for", statement: "One system. Different users.", desc: "Homeowners, installers, engineers, developers and investors, each addressed in their own language." },
+        { title: "Quality by design", statement: "Quality is not inspected in. It is designed in.", desc: "Reliability is engineered from the first drawing, not checked at the end of the line." },
+        { title: "What we deliver", statement: "More than hardware.", desc: "Products, documentation, configuration and long-term traceability through EMON." },
+      ],
+      hpHow: [
+        { n: "01", title: "How we work", desc: "From observation to operation — real conditions shape the design." },
+        { n: "02", title: "How we develop", desc: "The existing product is only the starting point for the next one." },
+        { n: "03", title: "How we manufacture", desc: "Controlled production network, our specification, our testing and release, serial traceability." },
+        { n: "04", title: "How we deliver", desc: "Products supported from factory to installation and beyond." },
+        { n: "05", title: "Partner network", desc: "Built with partners, not alone — installers, distributors, resellers, stockholding, engineering and service partners." },
+      ],
+      hpIntl: [
+        { title: "Where we work", desc: "European product knowledge combined with Asian execution and manufacturing strength." },
+        { title: "One connected network", desc: "A single coordinated network for manufacturing, engineering, logistics and installation." },
+        { title: "Locations and responsibilities", desc: "Clear responsibilities across development, production, distribution and local support." },
+        { title: "Where to buy", desc: "Routes to installers, distributors, resellers and stockholding partners in each market." },
+      ],
+      hpSteps: [
+        { title: "Product Lab + R&D", desc: "From market need to industrial production.", href: "STROHM.ENERGY - SITE - Product Lab and R and D - EN.dc.html" },
+        { title: "Product Design", desc: "Industrial and product design.", href: "STROHM.ENERGY - SITE - Product Lab and R and D - EN.dc.html" },
+        { title: "Project Engineering", desc: "Products turned into buildable projects.", href: "STROHM.ENERGY - PROJECT - Engineering - EN.dc.html" },
+        { title: "Testing and Certification", desc: "Validation, compliance and quality control.", href: "STROHM.ENERGY - SITE - Product Lab and R and D - EN.dc.html" },
+        { title: "Manufacturing Development", desc: "Designed for repeatable production.", href: "STROHM.ENERGY - SITE - Product Lab and R and D - EN.dc.html" },
+        { title: "Digital Product Documentation", desc: "QR/NFC records and traceability.", href: "EMON - SYSTEM - System - EN.dc.html" },
+        { title: "Training and Commissioning", desc: "Installer training and start-up.", href: "STROHM.ENERGY - SITE - Find an Installer - EN.dc.html" },
+      ],
+      ...(() => {
+        const D = {"about":"We are a product company, not a product catalogue.","why":"Energy systems have become unnecessarily fragmented.","system":"One system, not a collection of brands.","different":"Six things we do differently.","products":"Different technologies. One connected ecosystem.","quality":"We see beauty in a system that works properly.","sustainability":"Sustainability starts with the product itself.","how":"From observation to operation.","founder":"The three people responsible for establishing the company and defining its direction.","team":"The specialists responsible for development, engineering and operations.","experts":"Product specialists available for technical consultation and guidance.","network":"Built with partners, not alone.","locations":"European product knowledge. Asian manufacturing strength.","regional":"Twelve European regions. Outside Europe, upon request.","who-map":"Product experts by brand.","develop":"The existing product is only the starting point.","punk":"A punk attitude. Engineering discipline.","rule":"Four questions for every product.","configuration":"Better performance begins with better system design.","emon":"EMON connects energy data, devices and control.","site":"Designed to work together. Configured for each site.","international":"International by design.","story":"How STRØHM.ENERGY began.","milestones":"Key stages in our development.","next":"Our direction and future development."};
+        const G = [
+          { id: "why", label: "Why", sub: "Purpose", items: [["Purpose", "STROHM.ENERGY - COMPANY - Why - EN.dc.html#purpose"], ["Fragmentation", "STROHM.ENERGY - COMPANY - Why - EN.dc.html#fragmentation"], ["Different by design", "STROHM.ENERGY - COMPANY - Why - EN.dc.html#differences"], ["Philosophy", "STROHM.ENERGY - COMPANY - Why - EN.dc.html#philosophy"], ["Sustainability", "STROHM.ENERGY - COMPANY - Why - EN.dc.html#sustainability"]] },
+          { id: "what", label: "What", sub: "Activities", items: [["About", "STROHM.ENERGY - COMPANY - What - EN.dc.html#about"], ["System", "STROHM.ENERGY - COMPANY - What - EN.dc.html#system"], ["Products", "STROHM.ENERGY - COMPANY - What - EN.dc.html#range"], ["Configuration", "STROHM.ENERGY - COMPANY - What - EN.dc.html#range"], ["Site", "STROHM.ENERGY - COMPANY - What - EN.dc.html#range"], ["EMON", "STROHM.ENERGY - COMPANY - What - EN.dc.html#range"], ["Systems", "STROHM.ENERGY - COMPANY - What - EN.dc.html#range"]] },
+          { id: "how", label: "How", sub: "Methods", items: [["Our process", "STROHM.ENERGY - COMPANY - How - EN.dc.html#process"], ["Development rules", "STROHM.ENERGY - COMPANY - How - EN.dc.html#development"], ["Design approach", "STROHM.ENERGY - COMPANY - How - EN.dc.html#punk-attitude"], ["Engineering & manufacturing", "STROHM.ENERGY - COMPANY - How - EN.dc.html#engineering"], ["Quality", "STROHM.ENERGY - COMPANY - How - EN.dc.html#quality-head"], ["Automation & people", "STROHM.ENERGY - COMPANY - How - EN.dc.html#automation"], ["Since 1988", "STROHM.ENERGY - COMPANY - When - EN.dc.html#since-1988"]] },
+          { id: "who", label: "Who", sub: "People", items: [["Expertise map", "STROHM.ENERGY - COMPANY - Who - Product Experts - EN.dc.html#who-map"], ["Founders", "STROHM.ENERGY - COMPANY - Who - EN.dc.html#founder"], ["Team", "STROHM.ENERGY - COMPANY - Who - EN.dc.html#team"], ["Regional account management", "STROHM.ENERGY - COMPANY - Who - EN.dc.html#regional"], ["Product experts", "STROHM.ENERGY - COMPANY - Who - Product Experts - EN.dc.html"]] },
+          { id: "where", label: "Where", sub: "Locations", items: [["Network", "STROHM.ENERGY - COMPANY - Where - EN.dc.html#network"], ["Locations", "STROHM.ENERGY - COMPANY - Where - EN.dc.html#locations"], ["International", "STROHM.ENERGY - COMPANY - Where - EN.dc.html#international"]] },
+          { id: "when", label: "When", sub: "Timeline (draft)", items: [["Our story", "STROHM.ENERGY - COMPANY - When - EN.dc.html#story"], ["Milestones", "STROHM.ENERGY - COMPANY - When - EN.dc.html#milestones"], ["What\u2019s next", "STROHM.ENERGY - COMPANY - When - EN.dc.html#next"]] },
+        ];
+        const open = this.state.subOpen;
+        const close = () => this.setState({ subOpen: null });
+        const subGroups = G.map((g) => ({
+          label: g.label, hasItems: true,
+          expanded: open === g.id ? "true" : "false", rot: open === g.id ? "180deg" : "0deg",
+          color: this.state.subActive === g.id ? "#4F4F4E" : (open === g.id ? "#3A3A3A" : "#666666"),
+          line: this.state.subActive === g.id ? "#222222" : "transparent",
+          current: this.state.subActive === g.id ? "location" : "false",
+          onEnter: () => this.setState({ subOpen: g.id }),
+          onToggle: () => this.setState((s) => ({ subOpen: s.subOpen === g.id ? null : g.id })),
+        }));
+        const og = G.find((g) => g.id === open);
+        return { subGroups, subClose: close, subPanelOpen: !!og,
+          subPanel: og ? { label: og.label + " \u00b7 " + og.sub, onClose: close, items: og.items.map((x) => ({ label: x[0], href: x[1], desc: (() => { const k = x[1].split("#")[1]; const AL = { purpose: "why", differences: "different", process: "how", development: "develop", "punk-attitude": "punk", "quality-head": "quality" }; return D[AL[k] || k] || ""; })() })) } : { label: "", onClose: close, items: [] } };
+      })(),
+      showRoster: false,
+      teamDisciplines: [
+        { name: "Product Design and Engineering", desc: "Industrial design, mechanical engineering, product development" },
+        { name: "Software and Energy Management", desc: "EMON, interfaces, device integration, system control" },
+        { name: "Manufacturing and Quality", desc: "Production engineering, testing, supplier quality" },
+        { name: "Product Specialists", desc: "Technical product knowledge, documentation, application support" },
+        { name: "Regional Business Development", desc: "Market development, installer relations, distribution" },
+      ],
+      locations: [
+        { city: "London", role: "UK Market", desc: "United Kingdom market and partner development — installer relationships, distribution and project development, close to local grid and certification requirements." },
+        { city: "Maastricht", role: "European Market", desc: "European market coordination — installers, distributors and commercial partners across the EU, close to European grid codes and regulation." },
+        { city: "Hong Kong", role: "International Management", desc: "The bridge between European markets and our Asian network — international management, sourcing, commercial operations and finance." },
+        { city: "Taiwan", role: "Product Development & Quality", desc: "Turns product ideas into controlled development programmes — planning, supply chain communication, implementation and quality oversight." },
+        { city: "Shenzhen, China", role: "Engineering & Manufacturing", desc: "Our engineering and manufacturing network — prototyping, tooling, assembly, automated production and quality control." },
+        { city: "India", role: "Software, Data & Automation", desc: "The digital layer behind the whole organisation — EMON, ERP, webshop automation and the operational systems that connect it all." },
+      ],
+      qualityBuiltOn: [
+        "Defined materials and components",
+        "Controlled tolerances",
+        "Verified thermal and electrical performance",
+        "Automated and manual production checks",
+        "Serialised product identification",
+        "Traceable component and production data",
+        "Factory testing",
+        "Documented commissioning",
+        "Connected warranty and service history",
+      ],
+      ruleSteps: [{ name: "Four questions", items: [{"label":"01","title":"What are we questioning?","subtitle":"Question 01","text":"Identify the conventional industry assumption the product challenges.","colour":"#8EB15F"},{"label":"02","title":"What are we changing?","subtitle":"Question 02","text":"Define the actual technical, functional or design difference.","colour":"#CDD62B"},{"label":"03","title":"What can we prove?","subtitle":"Question 03","text":"Demonstrate measurable improvements in performance, installation, reliability or usability.","colour":"#F1931B"},{"label":"04","title":"What makes it STROHM.ENERGY?","subtitle":"Question 04","text":"Give the product a coherent identity while maintaining compatibility with the wider ecosystem.","colour":"#1B8B9A"}] }],
+      hpStepsSel: (() => { const C = ["#8EB15F","#CDD62B","#F1931B","#1B8B9A","#DF550C","#21AE8F","#90ABD0"]; const S = [["Product Lab + R&D","From market need to industrial production.","STROHM.ENERGY - SITE - Product Lab and R and D - EN.dc.html"],["Product Design","Industrial and product design.","STROHM.ENERGY - SITE - Product Lab and R and D - EN.dc.html"],["Project Engineering","Products turned into buildable projects.","STROHM.ENERGY - PROJECT - Engineering - EN.dc.html"],["Testing and Certification","Validation, compliance and quality control.","STROHM.ENERGY - SITE - Product Lab and R and D - EN.dc.html"],["Manufacturing Development","Designed for repeatable production.","STROHM.ENERGY - SITE - Product Lab and R and D - EN.dc.html"],["Digital Product Documentation","QR/NFC records and traceability.","EMON - SYSTEM - System - EN.dc.html"],["Training and Commissioning","Installer training and start-up.","STROHM.ENERGY - SITE - Find an Installer - EN.dc.html"]]; return [{ name: "Under one organisation", items: S.map((x, i) => ({ label: "0" + (i + 1), title: x[0], subtitle: "Step 0" + (i + 1), text: x[1], href: x[2], firstLabel: "page", colour: C[i] })) }]; })(),
+      hpHowSel: (() => { const C = ["#8EB15F","#CDD62B","#F1931B","#1B8B9A","#DF550C","#21AE8F","#90ABD0"]; const S = [["How we work","From observation to operation — real conditions shape the design."],["How we develop","The existing product is only the starting point for the next one."],["How we manufacture","Controlled production network, our specification, our testing and release, serial traceability."],["How we deliver","Products supported from factory to installation and beyond."],["Partner network","Built with partners, not alone — installers, distributors, resellers, stockholding, engineering and service partners."]]; return [{ name: "From idea to operation", items: S.map((x, i) => ({ label: "0" + (i + 1), title: x[0], subtitle: "0" + (i + 1), text: x[1], colour: C[i] })) }]; })(),
+      qualitySteps: (() => { const C = ["#8EB15F","#CDD62B","#F1931B","#1B8B9A","#DF550C","#21AE8F","#90ABD0","#ED704C","#FCDE15"]; const Q = ["Defined materials and components","Controlled tolerances","Verified thermal and electrical performance","Automated and manual production checks","Serialised product identification","Traceable component and production data","Factory testing","Documented commissioning","Connected warranty and service history"]; return [{ name: "Every product is developed around", items: Q.map((q, i) => ({ label: "0" + (i + 1), title: q, subtitle: "Quality 0" + (i + 1), text: "", flag: "Description to follow", colour: C[i] })) }]; })(),
+      sustainability: [
+        "Products that can remain useful as systems expand.",
+        "Replaceable components where technically practical.",
+        "Clear product identification and service history.",
+        "Reduced installation errors and unnecessary replacement.",
+        "Packaging and logistics designed around actual product requirements.",
+        "Better energy visibility through EMON.",
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

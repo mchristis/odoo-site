@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>MOEBIUS Ownership and Support | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { text-decoration:none; color:var(--color-text-primary); }
+  .mo-link:hover { color:var(--color-text-primary) !important; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoebiusNav" active="ownership" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="MOEBIUS" rgb="241,147,27" eyebrow="After commissioning" title="Registered at commissioning. Serviced from the record." intro="Ownership begins from the accepted commissioned record." slot="mo-hero" shot="IMG-MOEBIUS-OWNERSHIP-01 · 21:9 · owner's EMON view on phone beside the installed inverter; calm domestic context · V3-R3 · awaiting upload" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;"><a href="MOEBIUS - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">MOEBIUS</a> &#8250; <span style="color:var(--color-text-primary);">OWNERSHIP</span></div>
+    <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:780px;">The warranty is confirmed, monitoring is live, and every later service works from the same file the installer approved on site.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;">
+      <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#warranty" style="height:var(--cta-height);padding:0 var(--cta-pad-x);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);letter-spacing:0.04em;border-radius:var(--cta-radius);">How warranty is confirmed</a>
+      <a href="MOEBIUS - SUPPORT - Commissioning - EN.dc.html" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:var(--color-card-moebius);border:1px solid var(--color-divider);color:var(--color-text-primary);font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">Back to Commissioning</a>
+    </div>
+    
+  </section>
+
+
+  <!-- WARRANTY: CONFIRMED NOT ASSUMED -->
+  <section id="warranty" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start;--cg:48px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Warranty</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The warranty is not assumed. <span style="color:#8E8E8E;">It is confirmed.</span></h2>
+        <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">Instead of a form filled in from memory, the warranty is activated from the commissioned record — the exact product identity, the installation data and the commissioning result the installer approved. From factory test to installed warranty, one continuous chain.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ warrantyPoints }}" as="w" hint-placeholder-count="4">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);display:flex;gap:10px;"><span style="color:var(--color-text-primary);">&#8226;</span>{{ w }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:var(--color-card-moebius);border:1px solid var(--color-divider);border-radius:12px;padding:var(--card-padding);">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Warranty record &#183; [DUMMY]</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <sc-for list="{{ warrantyRows }}" as="r" hint-placeholder-count="6">
+            <div style="display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--color-surface-card);padding-bottom:11px;">
+              <span style="font-size:12px;font-weight:300;color:var(--color-text-primary);">{{ r.k }}</span>
+              <span style="font-size:12px;font-weight:400;color:var(--color-text-primary);text-align:right;">{{ r.v }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:16px;font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);">Confirmed from the commissioned record. Terms depend on product and market.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MONITORING -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Monitoring</div>
+      <h2 style="margin:0 0 24px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Live production, <span style="color:#8E8E8E;">seen from the same record.</span></h2>
+      <div data-cols="3" style="display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr));--cg:12px;">
+        <sc-for list="{{ monitorBlocks }}" as="m" hint-placeholder-count="3">
+          <div style="border-radius:12px;background:#F4F4F4;padding:28px;">
+            <div style="font-size:16px;font-weight:400;color:var(--color-text-primary);margin-bottom:8px;">{{ m.title }}</div>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ m.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE FROM THE RECORD -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start;--cg:48px;">
+      <div style="aspect-ratio:4/3;border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+        <image-slot id="mo-service" shape="rect" placeholder="IMG-MOEBIUS-SERVICE-01 · 4:3 · service technician opening the project record by QR/NFC at the inverter · V3-R3 · awaiting upload"></image-slot>
+      </div>
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Service</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The installation does not disappear when <span style="color:#8E8E8E;">the installer leaves.</span></h2>
+        <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">A service visit begins by opening the same commissioned record — identity, strings, MPPT allocation, grid profile, settings and history are all there. Revisions are recorded against the file, so the record stays true to the installed system.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ servicePoints }}" as="s" hint-placeholder-count="4">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);display:flex;gap:10px;"><span style="color:var(--color-text-primary);">&#8226;</span>{{ s }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:64px;"></div>
+  <dc-import name="AndoPattern" brand="MOEBIUS" items="privacy" hint-size="100%,600px"></dc-import>
+
+
+  <div style="height:32px;"></div>
+  <dc-import name="ContentSections" brand="MOEBIUS" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOEBIUS" photo-slot-id="moebius-ownership-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MOEBIUS" accent="var(--color-brand-moebius)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:960}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      warrantyPoints: [
+        "Activated from the commissioned record, not a manual form",
+        "Linked to the exact product identity and installation data",
+        "Factory test result carried through to installed warranty",
+        "Confirmation stored in the owner's file",
+      ],
+      warrantyRows: [
+        { k: "Product", v: "MOEBIUS inverter" },
+        { k: "Identity", v: "QR / NFC verified" },
+        { k: "Commissioned", v: "2026-06-18" },
+        { k: "Installer", v: "Certified partner" },
+        { k: "Warranty status", v: "Confirmed" },
+        { k: "Grid profile", v: "Recorded" },
+      ],
+      monitorBlocks: [
+        { title: "Live production", desc: "Generation and system state shown against the installed configuration." },
+        { title: "Per-string context", desc: "A fault is connected to a string, MPPT and location — not just a code." },
+        { title: "One view", desc: "Owner and installer see the same system, at the level appropriate to each." },
+      ],
+      servicePoints: [
+        "Open the project by QR or passive NFC",
+        "Identity, strings, MPPT and grid profile already present",
+        "Revisions recorded against the file",
+        "Record stays true to the installed system",
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

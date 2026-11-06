@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Why STRØHM.ENERGY | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+</helmet>
+<section data-screen-label="Why STROHM.ENERGY" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;font-family:var(--font-web);color:#4F4F4E;">
+  <div style="border-top:1px solid #1E1E1E;padding-top:32px;display:flex;flex-direction:column;gap:28px;">
+    <dc-import name="PageHero" brand="STROHM.ENERGY" rgb="200,200,200" title="One maker. One system. One plan." slot="strohm-energy-why-strohm-hero" shot="STROHM.ENERGY · Why STRØHM.ENERGY · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><div style="display:flex;flex-direction:column;gap:12px;max-width:760px;">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Why STRØHM.ENERGY</span>
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B07818;border:1px solid #B07818;border-radius:4px;padding:2px 6px;">Draft</span>
+      </div>
+      
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;">
+      <sc-for list="{{ points }}" as="p" hint-placeholder-count="5">
+        <div style="background:var(--color-card-strohm);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;">
+          <span style="font-size:var(--web-eyebrow-size);color:#5F5E5E;font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);">{{ p.n }}</span>
+          <span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ p.t }}</span>
+          <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ p.b }}</span>
+          <sc-if value="{{ p.hasLink }}" hint-placeholder-val="{{ false }}"><a href="{{ p.href }}" style="font-size:var(--web-small-size);color:#4F4F4E;text-decoration:none;border-bottom:1px solid #1E1E1E;padding-bottom:2px;align-self:flex-start;line-height:var(--web-small-lh);">{{ p.linkLabel }} &#8250;</a></sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:0;font-size:var(--web-min-size);font-weight:300;color:#B07818;max-width:760px;line-height:var(--web-min-lh);">TO CONFIRM before publishing: devices EMON controls today, production locations, data hosting, behaviour when offline.</p>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900},&quot;scope&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;fluxx&quot;]}}">
+const ALL = [
+  { key: "plan", t: "One system, one plan", b: "EMON controls the battery, heat pump, inverter and EV charger with one schedule. They no longer compete for the same cheap hour or push the same peak.", href: "FLUXX - PRODUCT - FLUXX with EMON - EN.dc.html", linkLabel: "How EMON plans" },
+  { key: "brands", t: "Our own brands across the home", b: "Batteries, heat pumps, inverters, solar panels, mounting and meters: FLUXX, NENDO, MOEBIUS, ANDO, MOX and SYNQ, engineered and manufactured by STRØHM.ENERGY.", href: "FLUXX - PRODUCT - Products - EN.dc.html", linkLabel: "FLUXX range", fluxxOnlyLink: true },
+  { key: "europe", t: "European by design", b: "Designed for European grids and rules, in European hands.", href: "MOEBIUS - PRODUCT - Responsibility - EN.dc.html", linkLabel: "Responsibility" },
+  { key: "commission", t: "One scan, one record", b: "Every product identifies itself by QR and NFC. Commissioning maps the system and writes the technical file, diagrams and forms automatically.", href: "MOEBIUS - SUPPORT - Commissioning - EN.dc.html", linkLabel: "Fast commissioning" },
+  { key: "rules", t: "Rules you set, decisions you can see", b: "You set the reserve, price and power limits. EMON plans inside them and shows why it acted." },
+  { key: "furniture", t: "Batteries as furniture", b: "POUF, DIVAN and BENCH are batteries built into a seat or bench, for the living room instead of the garage.", href: "FLUXX - PRODUCT - Products - EN.dc.html#monobloc", linkLabel: "FLUXX furniture batteries" },
+];
+class Component extends DCLogic {
+  renderVals() {
+    const scope = this.props.scope ?? "home";
+    const list = ALL.filter((p) => scope === "fluxx" || p.key !== "furniture");
+    return { points: list.map((p, i) => ({ ...p, n: String(i + 1).padStart(2, "0"), hasLink: !!p.href && !(p.fluxxOnlyLink && scope !== "fluxx"), href: p.href || "", linkLabel: p.linkLabel || "" })) };
+  }
+}
+</script>
+</body>
+</html>

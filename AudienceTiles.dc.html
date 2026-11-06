@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="./image-slot.js"></script>
+<script src="./audience-data.js"></script>
+<style>@media (max-width:860px){ .at-row{flex-direction:column !important;height:auto !important;} .at-tile{flex:none !important;height:360px !important;} .at-body{max-height:none !important;opacity:1 !important;} } @media (prefers-reduced-motion:reduce){ .at-tile,.at-body{transition:none !important;} }</style>
+</helmet>
+<section ref="{{ rootRef }}" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;font-family:var(--font-web);">
+  <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:24px;">{{ eyebrow }}</div>
+    <div class="at-row" onMouseLeave="{{ leave }}" style="display:flex;gap:12px;height:{{ rowH }};">
+      <sc-for list="{{ tiles }}" as="t" hint-placeholder-count="7">
+        <div class="at-tile" role="button" tabindex="0" aria-expanded="{{ t.open }}" onMouseEnter="{{ t.enter }}" onFocus="{{ t.enter }}" onClick="{{ t.enter }}" style="position:relative;flex:{{ t.flex }} 1 0;min-width:0;border-radius:12px;overflow:hidden;background:#EBECEC;cursor:pointer;outline:none;transition:flex 0.5s ease;">
+          <div style="position:absolute;inset:0;"><image-slot id="{{ t.slot }}" shape="rect" placeholder="{{ t.dir }}"></image-slot></div>
+          <sc-if value="{{ t.hasVideo }}" hint-placeholder-val="{{ false }}"><video data-i="{{ t.i }}" src="{{ t.video }}" muted loop playsinline preload="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ t.vop }};transition:opacity 0.4s ease;pointer-events:none;"></video></sc-if>
+          <div style="position:absolute;left:0;right:0;bottom:0;box-sizing:border-box;padding:16px 18px 18px;background:{{ tint }};color:#252525;display:flex;flex-direction:column;gap:8px;">
+            <div style="font-size:{{ t.labelSize }};font-weight:{{ t.labelWeight }};line-height:1.25;overflow:hidden;overflow-wrap:anywhere;">{{ t.label }}</div>
+            <div class="at-body" style="max-height:{{ t.mh }};opacity:{{ t.op }};overflow:hidden;transition:max-height 0.5s ease, opacity 0.4s ease;display:flex;flex-direction:column;gap:10px;">
+              <div style="font-size:var(--web-small-size);font-weight:var(--web-small-weight);line-height:var(--web-small-lh);text-wrap:pretty;">{{ t.text }}</div>
+              <sc-if value="{{ t.showMore }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-small-size);font-weight:var(--web-small-weight);line-height:var(--web-small-lh);text-wrap:pretty;">{{ t.more }}</div></sc-if>
+              <sc-if value="{{ t.hasMore }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ t.toggle }}" style="align-self:flex-start;border:none;background:transparent;padding:6px 0;min-height:32px;cursor:pointer;font-family:var(--font-web);font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#252525;text-decoration:underline;">{{ t.moreLabel }}</button></sc-if>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:760},&quot;eyebrow&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Who it is for&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;rgb&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;181,198,74&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;items&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;{label:string,text:string,more?:string,slot?:string,video?:string,dir?:string}[]&quot;}}">
+class Component extends DCLogic {
+  state = { active: -1, more: {} };
+  items() { return this.props.items || ((window.STROHM_AUDIENCES || {})[this.props.brand]) || []; } /* DEPTH-1329: brand fallback from audience-data.js */
+  componentDidMount() { if (!this.props.items && this.props.brand && !((window.STROHM_AUDIENCES || {})[this.props.brand])) { let n = 0; this._aw = setInterval(() => { n++; if ((window.STROHM_AUDIENCES || {})[this.props.brand] || n > 100) { clearInterval(this._aw); this.forceUpdate(); } }, 50); } }
+  componentWillUnmount() { clearInterval(this._aw); }
+  componentDidUpdate() {
+    const root = this._root; if (!root) return;
+    root.querySelectorAll("video[data-i]").forEach(v => { const on = +v.getAttribute("data-i") === this.state.active; if (on) { v.play && v.play().catch(() => {}); } else { v.pause && v.pause(); } });
+  }
+  renderVals() {
+    const it = this.items(), a = this.state.active, rgb = this.props.rgb || "181,198,74";
+    const reduced = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const tiles = it.map((x, i) => {
+      const on = i === a, more = !!this.state.more[i];
+      return {
+        i, label: x.label, text: x.text || "", more: x.more || "", slot: x.slot || ("aud-" + i), dir: x.dir || (x.label + " · drop a photo or short loop"),
+        flex: on ? 3.2 : 1, open: on ? "true" : "false",
+        labelSize: on ? "var(--web-h3-size)" : "var(--web-small-size)", labelWeight: on ? 300 : 400,
+        mh: on ? "420px" : "0px", op: on ? 1 : 0,
+        hasMore: !!x.more, showMore: more && !!x.more, moreLabel: more ? "Read less" : "Read more",
+        hasVideo: !!x.video && !reduced, video: x.video || "", vop: on ? 1 : 0,
+        enter: () => { if (this.state.active !== i) this.setState({ active: i }); },
+        toggle: (e) => { e.stopPropagation(); this.setState(s => ({ more: { ...s.more, [i]: !s.more[i] } })); }
+      };
+    });
+    return {
+      rowH: { cinematic: "440px", tall: "640px" }[this.props.stage] || "520px",
+      eyebrow: this.props.eyebrow || "Who it is for", tiles,
+      tint: "linear-gradient(rgba(" + rgb + ",0.3),rgba(" + rgb + ",0.3)),rgba(255,255,255,0.86)",
+      leave: () => this.setState({ active: -1 }),
+      rootRef: (el) => { this._root = el; }
+    };
+  }
+}
+</script>
+</body>
+</html>

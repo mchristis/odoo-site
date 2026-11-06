@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>Login | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  ::placeholder { color:#6F6F6D; opacity:1; }
+  input:disabled, select:disabled, textarea:disabled { color:#C8C7C3; }
+  body { margin:0; background:#FFFFFF; }
+  a { text-decoration:none; color:#1E1E1E; }
+  a:hover { color:#5F5E5E; }
+  input, button { font-family:var(--font-web); }
+  input:focus { outline:2px solid #1E1E1E; outline-offset:-1px; border-color:#1E1E1E; }
+  input:disabled { background:#F5F5F5; color:#B2B3B3; }
+  .lg-link:hover { color:#1E1E1E !important; }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;font-weight:300;">
+
+  <dc-import name="NavBar" active="" hint-size="100%,80px"></dc-import>
+  <dc-import name="WebshopNav" active="login" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="STROHM.ENERGY" rgb="200,200,200" eyebrow="Trade access" title="Sign in" intro="Stock and your net prices sit behind this screen." slot="strohm-energy-login-hero" shot="STROHM.ENERGY · Login · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 96px;box-sizing:border-box;">
+    <div data-stack="1" style="display:grid;grid-template-columns:1.15fr 1fr;gap:28px;align-items:start;">
+
+      <!-- LEFT COLUMN -->
+      <div>
+
+        <!-- SIGN IN -->
+        <sc-if value="{{ isForm }}" hint-placeholder-val="{{ true }}">
+        <section>
+          <p style="font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;max-width:56ch;margin:0 0 32px;">Categories and specifications stay open to everyone.</p>
+
+          <div style="background:#F5F5F5;border:1px solid #D4D4D4;border-radius:12px;padding:28px;max-width:520px;">
+            <sc-if value="{{ showError }}" hint-placeholder-val="{{ false }}">
+              <div style="background:#FBEEEC;border:1px solid #E8CFC9;border-radius:12px;padding:14px 16px;margin:0 0 20px;font-size:13px;line-height:1.5;color:#B3261E;display:flex;gap:10px;align-items:flex-start;">
+                <span style="width:8px;height:8px;border-radius:50%;background:#B3261E;flex:none;margin-top:6px;"></span>
+                <span>{{ errorText }}</span>
+              </div>
+            </sc-if>
+
+            <div style="margin-bottom:18px;">
+              <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#5F5E5E;margin-bottom:6px;">Email</label>
+              <input type="email" autocomplete="username" value="{{ email }}" onInput="{{ onEmail }}" placeholder="name@company.be" style="width:100%;box-sizing:border-box;font-size:var(--web-input-size);color:#4F4F4E;background:#FFFFFF;border:1px solid #D4D4D4;border-radius:12px;padding:11px 12px;min-height:44px;font-weight:var(--web-input-weight);" />
+            </div>
+
+            <div style="margin-bottom:16px;">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;gap:12px;">
+                <label style="font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#5F5E5E;">Password</label>
+                <button onClick="{{ toggleReveal }}" style="background:none;border:0;padding:0;font-size:var(--web-tag-size);color:#5F5E5E;cursor:pointer;letter-spacing:0.02em;font-weight:var(--web-tag-weight);" class="lg-link">{{ revealLabel }}</button>
+              </div>
+              <input type="{{ pwType }}" autocomplete="current-password" value="{{ password }}" onInput="{{ onPassword }}" onKeyDown="{{ onKeyDown }}" style="width:100%;box-sizing:border-box;font-size:var(--web-input-size);color:#4F4F4E;background:#FFFFFF;border:1px solid #D4D4D4;border-radius:12px;padding:11px 12px;min-height:44px;font-weight:var(--web-input-weight);" />
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px;">
+              <label style="display:flex;gap:10px;font-size:var(--web-label-size);color:#5F5E5E;align-items:center;font-weight:var(--web-label-weight);"><input type="checkbox" checked="{{ remember }}" onChange="{{ toggleRemember }}" style="width:18px;height:18px;accent-color:#1E1E1E;" /> Keep me signed in</label>
+              <button onClick="{{ goForgot }}" class="lg-link" style="background:none;border:0;padding:0;font-size:14px;color:#5F5E5E;cursor:pointer;text-decoration:underline;">Forgot password</button>
+            </div>
+
+            <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+              <button onClick="{{ onSubmit }}" style="border:1px solid #4F4F4E;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);font-weight:400;padding:0 var(--cta-pad-x);border-radius:var(--cta-radius);cursor:pointer;min-height:var(--cta-height,56px);">{{ submitLabel }}</button>
+              <a href="STROHM.ENERGY - SITE - Register - EN.dc.html" style="display:inline-flex;align-items:center;border:1px solid #D4D4D4;background:#F5F5F5;color:#4F4F4E;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);border-radius:var(--cta-radius,8px);min-height:44px;box-sizing:border-box;min-height:var(--cta-height,56px);justify-content:center;">Register instead</a>
+            </div>
+
+            <p style="font-size:var(--web-small-size);color:#5F5E5E;margin:20px 0 0;line-height:var(--web-small-lh);max-width:760px;">No account yet? Quick registration takes about two minutes and opens live stock and your net prices after review.</p>
+          </div>
+
+          <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:24px;">
+            <button onClick="{{ demoPending }}" class="lg-link" style="background:none;border:0;padding:0;font-size:var(--web-tag-size);color:#898989;cursor:pointer;text-decoration:underline;font-weight:var(--web-tag-weight);">Preview: account still in review</button>
+          </div>
+        </section>
+        </sc-if>
+
+        <!-- FORGOT -->
+        <sc-if value="{{ isForgot }}" hint-placeholder-val="{{ false }}">
+        <section>
+          <p style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin:0 0 12px;max-width:760px;">Trade access</p>
+          <h1 style="font-size:var(--web-h1-size);line-height:var(--web-h1-lh);letter-spacing:-0.02em;font-weight:100;margin:0 0 14px;">Reset password</h1>
+          <p style="font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;max-width:56ch;margin:0 0 32px;">Enter the email on the account. We send a single-use link that stays valid for one hour.</p>
+
+          <div style="background:#F5F5F5;border:1px solid #D4D4D4;border-radius:12px;padding:28px;max-width:520px;">
+            <div style="margin-bottom:24px;">
+              <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#5F5E5E;margin-bottom:6px;">Email</label>
+              <input type="email" value="{{ email }}" onInput="{{ onEmail }}" placeholder="name@company.be" style="width:100%;box-sizing:border-box;font-size:var(--web-input-size);color:#4F4F4E;background:#FFFFFF;border:1px solid #D4D4D4;border-radius:12px;padding:11px 12px;min-height:44px;font-weight:var(--web-input-weight);" />
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <button onClick="{{ onSendReset }}" style="border:1px solid #4F4F4E;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);font-weight:400;padding:0 var(--cta-pad-x);border-radius:var(--cta-radius);cursor:pointer;min-height:var(--cta-height,56px);">Send reset link</button>
+              <button onClick="{{ goForm }}" style="border:1px solid #D4D4D4;background:#F5F5F5;color:#4F4F4E;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);border-radius:var(--cta-radius,8px);cursor:pointer;min-height:44px;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Back to sign in</button>
+            </div>
+            <p style="font-size:var(--web-small-size);color:#5F5E5E;margin:20px 0 0;line-height:var(--web-small-lh);max-width:760px;">If the address isn't on an account we still show this screen. Nothing about who holds an account is revealed here.</p>
+          </div>
+        </section>
+        </sc-if>
+
+        <!-- RESET SENT -->
+        <sc-if value="{{ isSent }}" hint-placeholder-val="{{ false }}">
+        <section style="max-width:760px;">
+          <p style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin:0 0 12px;max-width:760px;">Trade access</p>
+          <h1 style="font-size:var(--web-h1-size);line-height:var(--web-h1-lh);letter-spacing:-0.02em;font-weight:100;margin:0 0 14px;">Check your email</h1>
+          <p style="font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;margin:0 0 28px;max-width:760px;">Sent. The link straightened its posture and left. It works once, for one hour.</p>
+          <div style="border:1px solid #D4D4D4;border-radius:12px;overflow:hidden;margin:0 0 28px;background:#FFFFFF;">
+            <div style="display:flex;flex-wrap:wrap;border-bottom:1px solid #D4D4D4;"><div style="flex:1 1 220px;min-width:0;padding:16px 18px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#5F5E5E;background:#F5F5F5;border-right:1px solid #D4D4D4;">Sent to</div><div style="flex:999 1 min(100%,400px);min-width:0;padding:16px 18px;font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">{{ emailShown }}</div></div>
+            <div style="display:flex;flex-wrap:wrap;"><div style="flex:1 1 220px;min-width:0;padding:16px 18px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#5F5E5E;background:#F5F5F5;border-right:1px solid #D4D4D4;">Link valid for</div><div style="flex:999 1 min(100%,400px);min-width:0;padding:16px 18px;font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">One hour, single use</div></div>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <button onClick="{{ goForm }}" style="border:1px solid #4F4F4E;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);font-weight:400;padding:0 var(--cta-pad-x);border-radius:var(--cta-radius);cursor:pointer;min-height:var(--cta-height,56px);">Back to sign in</button>
+            <button onClick="{{ onSendReset }}" style="border:1px solid #D4D4D4;background:#F5F5F5;color:#4F4F4E;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);border-radius:var(--cta-radius,8px);cursor:pointer;min-height:44px;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Send it again</button>
+          </div>
+        </section>
+        </sc-if>
+
+        <!-- PENDING APPROVAL -->
+        <sc-if value="{{ isPending }}" hint-placeholder-val="{{ false }}">
+        <section style="max-width:760px;">
+          <p style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin:0 0 12px;max-width:760px;">Account in review</p>
+          <h1 style="font-size:var(--web-h1-size);line-height:var(--web-h1-lh);letter-spacing:-0.02em;font-weight:100;margin:0 0 14px;">Nearly there</h1>
+          <p style="font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;margin:0 0 28px;max-width:760px;">Your credentials are correct. The account itself is still being reviewed, so stock and prices stay closed for now. We email you the moment it opens — usually within a few hours.</p>
+          <div style="border:1px solid #D4D4D4;border-radius:12px;overflow:hidden;margin:0 0 28px;background:#FFFFFF;">
+            <div style="display:flex;flex-wrap:wrap;border-bottom:1px solid #D4D4D4;"><div style="flex:1 1 220px;min-width:0;padding:16px 18px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#5F5E5E;background:#F5F5F5;border-right:1px solid #D4D4D4;">Sign-in</div><div style="flex:999 1 min(100%,400px);min-width:0;padding:16px 18px;font-size:14px;display:flex;align-items:center;gap:10px;color:#1f7a3d;"><span style="width:8px;height:8px;border-radius:50%;background:#1f7a3d;"></span>Recognised</div></div>
+            <div style="display:flex;flex-wrap:wrap;border-bottom:1px solid #D4D4D4;"><div style="flex:1 1 220px;min-width:0;padding:16px 18px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#5F5E5E;background:#F5F5F5;border-right:1px solid #D4D4D4;">VAT number</div><div style="flex:999 1 min(100%,400px);min-width:0;padding:16px 18px;font-size:14px;display:flex;align-items:center;gap:10px;color:#1f7a3d;"><span style="width:8px;height:8px;border-radius:50%;background:#1f7a3d;"></span>Validated against VIES</div></div>
+            <div style="display:flex;flex-wrap:wrap;border-bottom:1px solid #D4D4D4;"><div style="flex:1 1 220px;min-width:0;padding:16px 18px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#5F5E5E;background:#F5F5F5;border-right:1px solid #D4D4D4;">Account</div><div style="flex:999 1 min(100%,400px);min-width:0;padding:16px 18px;font-size:14px;display:flex;align-items:center;gap:10px;color:#B5710A;"><span style="width:8px;height:8px;border-radius:50%;background:#B5710A;"></span>In review, within a few hours</div></div>
+            <div style="display:flex;flex-wrap:wrap;"><div style="flex:1 1 220px;min-width:0;padding:16px 18px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#5F5E5E;background:#F5F5F5;border-right:1px solid #D4D4D4;">Prices &amp; stock</div><div style="flex:999 1 min(100%,400px);min-width:0;padding:16px 18px;font-size:14px;display:flex;align-items:center;gap:10px;color:#5F5E5E;"><span style="width:8px;height:8px;border-radius:50%;background:#B2B3B3;"></span>Open on approval</div></div>
+          </div>
+          <p style="color:#5F5E5E;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);margin:0 0 28px;max-width:760px;">While you wait you can browse every category and full specifications, or complete your profile to add free STRØHM.ENERGY leads once the account is live.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="WEBSHOP - SITE - Catalogue - EN.dc.html" style="display:inline-flex;align-items:center;border:1px solid #4F4F4E;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);font-weight:400;padding:0 var(--cta-pad-x);border-radius:var(--cta-radius);min-height:var(--cta-height,56px);box-sizing:border-box;">Browse categories</a>
+            <a href="STROHM.ENERGY - SITE - Register - EN.dc.html" style="display:inline-flex;align-items:center;border:1px solid #D4D4D4;background:#F5F5F5;color:#4F4F4E;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);border-radius:var(--cta-radius,8px);min-height:44px;box-sizing:border-box;min-height:var(--cta-height,56px);justify-content:center;">Complete my profile</a>
+            <button onClick="{{ goForm }}" style="border:1px solid #D4D4D4;background:#F5F5F5;color:#4F4F4E;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);border-radius:var(--cta-radius,8px);cursor:pointer;min-height:44px;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Back to sign in</button>
+          </div>
+        </section>
+        </sc-if>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div style="background:#F5F5F5;border:1px solid #D4D4D4;border-radius:12px;padding:28px;">
+        <p style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;padding-bottom:8px;border-bottom:1px solid #D4D4D4;margin:0 0 20px;max-width:760px;font-weight:var(--web-eyebrow-weight);">What sits behind sign-in</p>
+        <sc-for list="{{ gated }}" as="g" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:20px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid #D9D9D9;">
+            <div style="text-align:center;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#5F5E5E;letter-spacing:var(--web-eyebrow-ls);">{{ g.n }}</div>
+            <div>
+              <b style="display:block;font-size:14px;margin-bottom:2px;color:#4F4F4E;">{{ g.title }}</b>
+              <span style="font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">{{ g.desc }}</span>
+            </div>
+          </div>
+        </sc-for>
+        <div style="background:#F5F5F5;border-radius:12px;padding:18px 20px;margin-top:22px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;margin-bottom:6px;line-height:var(--web-h3-lh);">Prices are confidential</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">Net prices are specific to your account and tier. They are never shown publicly, and sharing them outside your company breaks the trade terms.</div>
+        </div>
+        <p style="font-size:var(--web-small-size);color:#5F5E5E;margin:20px 0 0;line-height:var(--web-small-lh);max-width:760px;">Trouble signing in? Your account manager can reset access, or write to trade@strohm.energy.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <dc-import name="Footer" show-ebook="{{ false }}" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:900}}">
+const GATED = [
+  { n:"1", title:"Live stock", desc:"Real availability per warehouse, with lead times." },
+  { n:"2", title:"Your net prices", desc:"Priced to your account tier, not a list price." },
+  { n:"3", title:"Ordering & documents", desc:"Place orders, download invoices, track shipments." },
+  { n:"4", title:"Leads & RMA", desc:"Free STRØHM.ENERGY leads and warranty handling, once approved." },
+];
+
+class Component extends DCLogic {
+  state = { screen:"form", email:"", password:"", reveal:false, remember:true, error:"", busy:false };
+
+  go(s) { this.setState({ screen:s, error:"", busy:false }); if (typeof window !== "undefined") window.scrollTo({ top:0, behavior:"smooth" }); }
+
+  submit() {
+    const { email, password } = this.state;
+    if (!email.trim() || !password) { this.setState({ error:"Email and password, both of them. The form is stubborn about it." }); return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) { this.setState({ error:"That address doesn't look finished. Check it once more." }); return; }
+    this.setState({ busy:true, error:"" });
+    if (this._t) clearTimeout(this._t);
+    this._t = setTimeout(() => {
+      if (typeof window !== "undefined") window.location.href = "Portal v2.dc.html";
+    }, 700);
+  }
+
+  sendReset() {
+    if (!this.state.email.trim()) { this.setState({ error:"We need an address to send it to." }); return; }
+    this.go("sent");
+  }
+
+  renderVals() {
+    const st = this.state;
+    return {
+      isForm: st.screen === "form",
+      isForgot: st.screen === "forgot",
+      isSent: st.screen === "sent",
+      isPending: st.screen === "pending",
+      email: st.email,
+      emailShown: st.email.trim() || "your email",
+      password: st.password,
+      pwType: st.reveal ? "text" : "password",
+      revealLabel: st.reveal ? "Hide" : "Show",
+      remember: st.remember,
+      showError: !!st.error,
+      errorText: st.error,
+      submitLabel: st.busy ? "Signing in\u2026" : "Sign in",
+      gated: GATED,
+      onEmail: (e) => this.setState({ email: e.target.value, error:"" }),
+      onPassword: (e) => this.setState({ password: e.target.value, error:"" }),
+      onKeyDown: (e) => { if (e.key === "Enter") this.submit(); },
+      toggleReveal: () => this.setState((s) => ({ reveal: !s.reveal })),
+      toggleRemember: () => this.setState((s) => ({ remember: !s.remember })),
+      onSubmit: () => this.submit(),
+      onSendReset: () => this.sendReset(),
+      goForgot: () => this.go("forgot"),
+      goForm: () => this.go("form"),
+      demoPending: () => this.go("pending"),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

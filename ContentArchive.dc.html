@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<script src="./content-data.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { text-decoration:none; }
+  input { font-family:var(--font-web); }
+  .ar-chips { scrollbar-width:none; }
+  .ar-chips::-webkit-scrollbar { display:none; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,89px"></dc-import>
+  <sc-if value="{{ showBrandBar }}" hint-placeholder-val="{{ false }}"><dc-import name="BrandBar" brand="{{ brandProp }}" hint-size="100%,73px"></dc-import></sc-if>
+
+  <!-- HEADER -->
+  <dc-import name="PageHero" brand="{{ brandName }}" eyebrow="{{ brandName }} · {{ sectionUpper }}" title="{{ headline }}" intro="{{ intro }}" split="{{ true }}" slot="{{ heroSlot }}" shot="{{ heroShot }}" hint-size="100%,625px"></dc-import><section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;"><div style="font-size:12px;font-weight:300;color:#898989;margin-bottom:16px;"><a href="{{ brandHref }}" style="color:#898989;">{{ brandName }}</a> &#8250; <span style="color:#5F5E5E;">{{ sectionUpper }}</span></div></section>
+
+  <sc-if value="{{ hasLead }}" hint-placeholder-val="{{ false }}"><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 40px;box-sizing:border-box;"><div style="border-top:1px solid #D9D9D9;padding-top:32px;"><h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ leadTitle }}</h2><p style="margin:0 0 24px;max-width:820px;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ leadIntro }}</p><div style="border-top:1px solid #222222;"><sc-for list="{{ lead }}" as="it" hint-placeholder-count="5"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:8px 16px;padding:16px 0;border-bottom:1px solid #D9D9D9;"><span style="font-size:var(--web-body-size);font-weight:700;color:#4F4F4E;">{{ it.title }}</span><span style="display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#666666;">{{ it.text }}</span><sc-if value="{{ it.hasNote }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B07818;">{{ it.note }}</span></sc-if><sc-if value="{{ it.hasLink }}" hint-placeholder-val="{{ true }}"><a href="{{ it.href }}" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#222222;" style-hover="color:#4F4F4E;">{{ it.link }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a></sc-if></span></div></sc-for></div></div></section></sc-if>
+
+  <sc-if value="{{ hasChapters }}" hint-placeholder-val="{{ false }}"><section data-screen-label="Knowledge chapters" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 56px;box-sizing:border-box;display:flex;flex-wrap:wrap;gap:40px 72px;align-items:flex-start;">
+    <nav aria-label="Chapters" style="flex:1 1 220px;max-width:300px;position:sticky;top:156px;display:flex;flex-direction:column;gap:4px;">
+      <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:8px;">Chapters</span>
+      <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="7"><a href="#{{ ch.id }}" style="min-height:44px;display:flex;align-items:center;gap:12px;padding:0 12px;border-radius:8px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#252525;" style-hover="background:#F4F4F4;"><span style="font-size:var(--web-eyebrow-size);color:#5F5E5E;">{{ ch.num }}</span>{{ ch.title }}</a></sc-for>
+    </nav>
+    <div style="flex:999 1 480px;min-width:0;display:flex;flex-direction:column;gap:56px;">
+      <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="3"><article id="{{ ch.id }}" style="scroll-margin-top:156px;display:flex;flex-direction:column;gap:16px;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Chapter {{ ch.num }}</span>
+        <h2 style="margin:0;font-size:clamp(32px,3vw,44px);font-weight:200;line-height:1.1;letter-spacing:-0.5px;color:#252525;text-wrap:balance;">{{ ch.title }}</h2>
+        <p style="margin:0;max-width:680px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ ch.intro }}</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:8px;">
+          <sc-for list="{{ ch.articles }}" as="ar" hint-placeholder-count="6"><div style="background:#F4F4F4;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">{{ ar.title }}</span><sc-if value="{{ ar.hasNote }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;">{{ ar.note }}</span></sc-if></div></sc-for>
+        </div>
+        <sc-if value="{{ ch.hasRelated }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-wrap:wrap;gap:8px 24px;"><sc-for list="{{ ch.related }}" as="rl" hint-placeholder-count="2"><a href="{{ rl.href }}" style="min-height:44px;display:inline-flex;align-items:center;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;" style-hover="color:#252525;">{{ rl.label }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a></sc-for></div></sc-if>
+      </article></sc-for>
+    </div>
+  </section></sc-if>
+
+  <sc-if value="{{ hasFaq }}" hint-placeholder-val="{{ false }}"><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 40px;box-sizing:border-box;"><div style="border-top:1px solid #D9D9D9;padding-top:32px;"><h2 style="margin:0 0 24px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ faqTitle }}</h2><sc-for list="{{ faqPages }}" as="fp" hint-placeholder-count="4"><div style="margin:0 0 32px;"><div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;padding-bottom:8px;border-bottom:1px solid #222222;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#666666;">{{ fp.page }}</span><a href="{{ fp.href }}" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#222222;" style-hover="color:#4F4F4E;">{{ fp.page }} page<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a></div><sc-for list="{{ fp.groups }}" as="fg" hint-placeholder-count="2"><details style="border-bottom:1px solid #D9D9D9;"><summary style="cursor:pointer;min-height:56px;display:flex;align-items:center;gap:12px;font-size:var(--web-body-size);font-weight:700;color:#4F4F4E;"><span>{{ fg.title }}</span><span style="font-size:var(--web-small-size);font-weight:300;color:#666666;">{{ fg.count }}</span></summary><div style="padding:0 0 16px;"><sc-for list="{{ fg.items }}" as="fq" hint-placeholder-count="2"><div style="padding:12px 0;"><div style="font-size:var(--web-body-size);font-weight:700;color:#4F4F4E;margin-bottom:6px;">{{ fq.q }}</div><p style="margin:0;max-width:820px;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#666666;text-wrap:pretty;">{{ fq.a }}</p><sc-if value="{{ fq.hasNote }}" hint-placeholder-val="{{ false }}"><div style="margin-top:6px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B07818;">{{ fq.note }}</div></sc-if></div></sc-for></div></details></sc-for></div></sc-for></div></section></sc-if>
+
+  <sc-if value="{{ hasList2 }}" hint-placeholder-val="{{ false }}"><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 40px;box-sizing:border-box;"><div style="border-top:1px solid #D9D9D9;padding-top:32px;"><h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ list2Title }}</h2><p style="margin:0 0 24px;max-width:820px;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ list2Intro }}</p><div style="border-top:1px solid #222222;"><sc-for list="{{ list2 }}" as="it" hint-placeholder-count="5"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:8px 16px;padding:16px 0;border-bottom:1px solid #D9D9D9;"><span style="font-size:var(--web-body-size);font-weight:700;color:#4F4F4E;">{{ it.title }}</span><span style="display:flex;flex-direction:column;gap:8px;"><span style="font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#666666;">{{ it.text }}</span><sc-if value="{{ it.hasNote }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B07818;">{{ it.note }}</span></sc-if><sc-if value="{{ it.hasLink }}" hint-placeholder-val="{{ true }}"><a href="{{ it.href }}" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#222222;" style-hover="color:#4F4F4E;">{{ it.link }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a></sc-if></span></div></sc-for></div></div></section></sc-if>
+  <!-- DEPTH-1249: strip look (user): eyebrow, one line, topic chips; search, sort and type rows removed -->
+  <section data-screen-label="Archive header" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:48px var(--web-side) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:24px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <h2 style="margin:0;font-size:var(--web-eyebrow-size);font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#898989;">{{ stripHeading }}</h2>
+      <p style="margin:0;max-width:720px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;">{{ stripIntro }}</p>
+    </div>
+    <sc-if value="{{ showCoFilters }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-wrap:wrap;gap:16px;"><label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-eyebrow-size);font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#898989;">Brand<select value="{{ brandF }}" onChange="{{ onBrandF }}" style="min-height:44px;min-width:180px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;font-family:var(--font-web);font-size:var(--web-small-size);font-weight:300;color:#252525;text-transform:none;letter-spacing:0;"><sc-for list="{{ coBrands }}" as="o" hint-placeholder-count="3"><option value="{{ o }}">{{ o }}</option></sc-for></select></label><sc-if value="{{ hasCoApps }}" hint-placeholder-val="{{ false }}"><label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-eyebrow-size);font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#898989;">Application<select value="{{ appF }}" onChange="{{ onAppF }}" style="min-height:44px;min-width:180px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;font-family:var(--font-web);font-size:var(--web-small-size);font-weight:300;color:#252525;text-transform:none;letter-spacing:0;"><sc-for list="{{ coApps }}" as="o" hint-placeholder-count="3"><option value="{{ o }}">{{ o }}</option></sc-for></select></label></sc-if><label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-eyebrow-size);font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#898989;">Format<select value="{{ fmtF }}" onChange="{{ onFmtF }}" style="min-height:44px;min-width:180px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;font-family:var(--font-web);font-size:var(--web-small-size);font-weight:300;color:#252525;text-transform:none;letter-spacing:0;"><sc-for list="{{ coFormats }}" as="o" hint-placeholder-count="3"><option value="{{ o }}">{{ o }}</option></sc-for></select></label></div></sc-if>
+    <div class="ar-chips" style="display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;">
+        <sc-for list="{{ topicChips }}" as="c" hint-placeholder-count="10">
+          <button onClick="{{ c.onClick }}" style="cursor:pointer;font-family:inherit;white-space:nowrap;font-size:var(--web-btn-sm-size);font-weight:400;padding:8px 14px;border-radius:12px;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.color }};">{{ c.label }}</button>
+        </sc-for>
+      </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:28px var(--web-side) 0;box-sizing:border-box;">
+    <sc-if value="{{ false }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+      <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ countLabel }}</div>
+      <sc-if value="{{ hasActiveFilters }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ clearFilters }}" style="cursor:pointer;font-family:inherit;font-size:12px;font-weight:400;color:{{ accent }};background:none;border:none;">Clear filters &#215;</button>
+      </sc-if>
+    </div></sc-if>
+
+    <sc-if value="{{ showGrid }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;">
+        <sc-for list="{{ visible }}" as="card" hint-placeholder-count="9">
+          <a href="{{ card.href }}" style="display:flex;flex-direction:column;background:#F4F4F4;border-radius:12px;overflow:hidden;">
+            <div style="aspect-ratio:16/10;background:#EBECEC;position:relative;">
+              <image-slot id="{{ card.slotId }}" shape="rect" placeholder="{{ card.imageDir }}"></image-slot>
+              <span style="position:absolute;top:12px;left:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#FFFFFF;background:{{ typeBg }};padding:5px 9px;border-radius:4px;">{{ card.type }}</span>
+            </div>
+            <div style="padding:20px;display:flex;flex-direction:column;flex:1;">
+              <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+                <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ accent }};">{{ card.topic }}</span>
+                <span style="font-size:11px;font-weight:{{ card.dateWeight }};letter-spacing:0.04em;color:{{ card.dateColor }};">{{ card.dateLabel }}</span>
+              </div>
+              <h3 style="margin:0 0 10px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ card.title }}</h3>
+              <p style="margin:0 0 18px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">{{ card.summary }}</p>
+              <span style="margin-top:auto;font-size:12px;font-weight:700;letter-spacing:0.04em;color:{{ accent }};">{{ card.cta }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ canLoadMore }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;justify-content:center;padding:40px 0 0;">
+          <button style-hover="background:#5F5E5E;color:#F4F4F4;" onClick="{{ loadMore }}" style="cursor:pointer;font-family:inherit;min-height:var(--cta-height,56px);padding:0 32px;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);border:none;border-radius:8px;">Load more</button>
+        </div>
+      </sc-if>
+    </sc-if>
+
+    <sc-if value="{{ showEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="border:1px dashed #D6D4D2;border-radius:12px;padding:64px 40px;text-align:center;background:#FFFFFF;">
+        <div style="font-size:16px;font-weight:400;color:#5F5E5E;margin-bottom:8px;">No results match those filters.</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;margin-bottom:20px;line-height:var(--web-small-lh);">Try a broader topic, clear the search, or reset the filters.</div>
+        <button style-hover="background:#5F5E5E;color:#F4F4F4;" onClick="{{ clearFilters }}" style="cursor:pointer;font-family:inherit;min-height:var(--cta-height,56px);padding:0 24px;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);border:none;border-radius:8px;">Clear all filters</button>
+      </div>
+    </sc-if>
+  </section>
+
+  <!-- RELATED -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D4D4D4;padding-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="{{ brandHref }}" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:#F5F5F5;border:1px solid #D4D4D4;color:#5F5E5E;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">Back to {{ brandName }}</a>
+      <a href="{{ newsHref }}" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:#F5F5F5;border:1px solid #D4D4D4;color:#5F5E5E;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">News</a>
+      <a href="{{ knowledgeHref }}" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:#F5F5F5;border:1px solid #D4D4D4;color:#5F5E5E;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">Knowledge</a>
+      <a href="{{ referencesHref }}" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:#F5F5F5;border:1px solid #D4D4D4;color:#5F5E5E;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">References</a>
+    </div>
+  </section>
+
+  {{ children }}
+  <div style="height:80px;"></div>
+  <dc-import name="Footer" show-ebook="{{ showEbook }}" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1480,&quot;height&quot;:960},&quot;brand&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;MOX&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;section&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;news&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;news&quot;,&quot;knowledge&quot;,&quot;references&quot;]}}">
+const HEADLINES = {
+  news: (b) => b + " news",
+  knowledge: (b) => b + " knowledge",
+  references: (b) => b + " references",
+};
+const COMPANY_HEADLINE = { news: "STRØHM.ENERGY Updates", knowledge: "Knowledge and Methods", references: "Proven in Practice" };
+const INTROS = {
+  news: "Company developments, launches, projects, certifications and market updates. Published weekly.",
+  knowledge: "Explainers, technical articles and engineering guides for installers, engineers and specifiers.",
+  references: "Documented projects and systems with real configuration data and measured outcomes.",
+};
+
+class Component extends DCLogic {
+  renderVals() { const L = this.props.lead; const CH = this.props.chapters || []; const SM = { news: ["News", "Company developments, launches, projects and market updates."], knowledge: ["Knowledge", "How the products are designed, engineered, built and installed."], references: ["References", "Selected projects and systems, with real data and outcomes."] }[this.props.section || "news"] || ["News", ""]; return Object.assign(this.__rv(), { stripHeading: SM[0], stripIntro: SM[1], hasChapters: false, chapters: CH.map((x, i) => Object.assign({}, x, { num: String(i + 1).padStart(2, "0"), articles: (x.articles || []).map((a) => (typeof a === "string" ? { title: a, hasNote: false } : Object.assign({}, a, { hasNote: !!a.note }))), related: x.related || [], hasRelated: !!(x.related && x.related.length) })), hasLead: !!(L && L.length), lead: (L || []).map(x => Object.assign({}, x, { hasLink: !!x.href, hasNote: !!x.note })), hasList2: !!(this.props.list2 && this.props.list2.length), list2: (this.props.list2 || []).map(x => Object.assign({}, x, { hasLink: !!x.href, hasNote: !!x.note })), list2Title: this.props.list2Title || "", list2Intro: this.props.list2Intro || "", hasFaq: false, faqPages: (this.props.faqPages || []).map(p => Object.assign({}, p, { groups: (p.groups || []).map(g => Object.assign({}, g, { items: (g.items || []).map(i => Object.assign({}, i, { hasNote: !!i.note })) })) })), faqTitle: this.props.faqTitle || "", leadTitle: this.props.leadTitle || "", leadIntro: this.props.leadIntro || "" }); }
+  __rv() { const v = this.__rv0(); return Object.assign({}, this._phVals(v), v); }
+  state = { topic: "All", type: "All", query: "", sort: "newest", limit: 9 };
+
+  componentDidMount() {
+    if (!window.STROHM_CONTENT) {
+      this._t = setInterval(() => { if (window.STROHM_CONTENT) { clearInterval(this._t); this.forceUpdate(); } }, 60);
+    }
+  }
+  componentWillUnmount() { if (this._t) clearInterval(this._t); }
+
+  _phVals(v){ const b=String(v.brandName||v.brand||this.props.brand||"").toLowerCase(); const sec=String(v.sectionUpper||"engineering-and-manufacturing").toLowerCase().replace(/[^a-z0-9]+/g,"-"); return { heroSlot: b+"-"+sec+"-hero", heroShot: (v.brandName||v.brand||"")+" · "+(v.sectionUpper||"Engineering and manufacturing")+" · hero photo or short muted loop (3–6 s)" }; }
+  __rv0() {
+    const C = window.STROHM_CONTENT;
+    const brandProp = this.props.brand || "MOX";
+    const isCompany = brandProp === "ALL" || brandProp === "STROHM";
+    const brand = isCompany ? "ALL" : brandProp;
+    const section = this.props.section || "news";
+    const accent = isCompany ? "#5F5E5E" : (C ? C.brandAccent(brand) : "#5F5E5E");
+    const brandName = isCompany ? "STROHM.ENERGY" : brandProp;
+    const st = this.state;
+
+    /* DEPTH-1248: real articles passed as chapters (e.g. ANDO) are shown as the standard topic chips + cards, not as a separate chapter layout */
+    const CH = this.props.chapters || [];
+    const own = CH.length ? [].concat(...CH.map((ch, ci) => (ch.articles || []).map((ar, ai) => { const o = typeof ar === "string" ? { title: ar } : ar; return { id: (ch.id || "c" + ci) + "-" + ai, section, brand, topic: ch.title, type: o.type || "Explainer", title: o.title, summary: o.note || "Content placeholder for editorial completion.", date: "", href: o.href || "#", cta: "Read the explanation" }; }))) : null;
+    const coK = isCompany && section === "knowledge" && C;
+    let pool = own ? own.slice() : (coK ? C.items.filter((x) => x.section === "knowledge") : (C ? C.getContent(brand, section, {}) : [])); /* DEPTH-1255: company Knowledge shows every brand */
+    if (coK && st.brandF && st.brandF !== "All") pool = pool.filter((x) => x.brand === st.brandF);
+    if (coK && st.fmtF && st.fmtF !== "All") pool = pool.filter((x) => x.type === st.fmtF);
+    if (coK && st.appF && st.appF !== "All") pool = pool.filter((x) => x.application === st.appF);
+    /* DEPTH-1253: faqPages (KERN, KALK, OGO) shown as Knowledge cards instead of a Q&A accordion; subject from the group title; answers kept. Titles still questions: editorial rewrite open (_MIGRATION_FAQ_2026-10-31.md). */
+    const FP = this.props.faqPages || [];
+    if (FP.length && section === "knowledge") {
+      const subj = (t) => { t = String(t || "").toLowerCase(); if (/compar|versus|differ/.test(t)) return "Comparisons"; if (/select|choos|plan|cost|price|licen|buy/.test(t)) return "Selection guides"; if (/use|application|where/.test(t)) return "Applications"; if (/integrat|connect|emon|system|data|record|document|process|module/.test(t)) return "System design and integration"; if (/manufactur|engineer|test|quality/.test(t)) return "Engineering and manufacturing"; return "Technology"; };
+      const fi = [];
+      FP.forEach((p, pi) => (p.groups || []).forEach((g, gi) => (g.items || []).forEach((it, ii) => fi.push({ id: "fq-" + pi + "-" + gi + "-" + ii, section, brand, topic: subj(g.title + " " + it.q), type: "Article", title: it.q, summary: it.a, date: "", href: p.href || "#", cta: "Read the explanation", imageDir: brandProp + " · " + it.q }))));
+      const covered = {}; fi.forEach((x) => { covered[x.topic] = 1; });
+      pool = fi.concat(pool.filter((x) => !(x.sample && covered[x.topic])));
+    }
+    // topic
+    if (st.topic !== "All") pool = pool.filter((x) => x.topic === st.topic);
+    // type
+    if (st.type !== "All") pool = pool.filter((x) => x.type === st.type);
+    // search
+    const q = st.query.trim().toLowerCase();
+    if (q) pool = pool.filter((x) => (x.title + " " + x.summary + " " + x.topic + " " + x.type).toLowerCase().includes(q));
+    // sort
+    pool = pool.slice();
+    if (st.sort === "oldest") pool.sort((a, b) => (a.date > b.date ? 1 : -1));
+    else if (st.sort === "az") pool.sort((a, b) => a.title.localeCompare(b.title));
+    else pool.sort((a, b) => ((a.sample ? 1 : 0) - (b.sample ? 1 : 0)) || (a.date < b.date ? 1 : a.date > b.date ? -1 : 0)); /* DEPTH-1251b */
+
+    const total = pool.length;
+    const visible = pool.slice(0, st.limit);
+    const tax = own ? CH.map((ch) => ch.title) : (coK ? (C.subjects || []) : (C && !isCompany ? ((C.taxonomy[brand] || {})[section] || []) : []));
+    const types = C ? C.types[section] : [];
+
+    const chip = (val, cur, setter) => ({
+      label: val, onClick: setter,
+      bg: cur === val ? "#4F4F4E" : "#FFFFFF",
+      color: cur === val ? "#FFFFFF" : "#5F5E5E",
+      border: cur === val ? "#1E1E1E" : "#D4D4D4",
+    });
+
+    const typeBg = section === "news" ? accent : section === "knowledge" ? "#5F5E5E" : "#4F4F4E";
+
+    return {
+      showCoFilters: !!coK,
+      coBrands: coK ? ["All"].concat(Array.from(new Set(C.items.filter((x) => x.section === "knowledge").map((x) => x.brand))).filter((b) => b !== "STROHM").sort()) : [],
+      coFormats: coK ? ["All"].concat(C.types.knowledge) : [],
+      coApps: coK ? ["All"].concat(Array.from(new Set(C.items.filter((x) => x.section === "knowledge" && x.application).map((x) => x.application))).sort()) : [],
+      hasCoApps: !!coK && C.items.some((x) => x.section === "knowledge" && x.application),
+      brandF: st.brandF || "All", fmtF: st.fmtF || "All", appF: st.appF || "All",
+      onBrandF: (e) => this.setState({ brandF: e.target.value, limit: 9 }), onFmtF: (e) => this.setState({ fmtF: e.target.value, limit: 9 }), onAppF: (e) => this.setState({ appF: e.target.value, limit: 9 }),
+      accent, brandName, brandProp, showBrandBar: ["ANDO","MOEBIUS","FLUXX","SYNQ","OZZY","XOOM","NENDO","OGO","FEU","AIRO","MOX","TOGU","DODO","SHELTR","MUKI","CHILL","GLOW","WURK","AGRIX","TERRIX","PONTIX","TECTIX","PARX","LINA","PROP","TRIBE","KERN","PUSH","PACT","DEPOT","KALK"].indexOf(brandProp) >= 0,
+      showEbook: brandProp !== "WEBSHOP",
+      brandHref: C ? (C.pageHref[brand] || "STROHM.ENERGY - SITE - Homepage - EN.dc.html") : "#",
+      sectionUpper: section.toUpperCase(),
+      headline: isCompany ? (COMPANY_HEADLINE[section] || (HEADLINES[section] || HEADLINES.news)(brandName)) : (HEADLINES[section] || HEADLINES.news)(brandName),
+      intro: INTROS[section] || INTROS.news,
+      searchPlaceholder: "Search " + brandName + " " + section + "…",
+
+      query: st.query, sort: st.sort,
+      onSearch: (e) => this.setState({ query: e.target.value, limit: 9 }),
+      onSort: (e) => this.setState({ sort: e.target.value }),
+
+      topicChips: ["All"].concat(tax).map((t) => chip(t, st.topic, () => this.setState({ topic: t, limit: 9 }))),
+      typeChips: ["All"].concat(types).map((t) => chip(t, st.type, () => this.setState({ type: t, limit: 9 }))),
+
+      countLabel: total + (total === 1 ? " result" : " results"),
+      hasActiveFilters: st.topic !== "All" || st.type !== "All" || !!q,
+      clearFilters: () => this.setState({ topic: "All", type: "All", query: "", limit: 9 }),
+
+      showGrid: total > 0,
+      showEmpty: total === 0,
+      visible: visible.map((it) => ({
+        href: it.href || "#", slotId: "ar-" + it.id, imageDir: it.imageDir,
+        type: it.type, topic: it.topic, dateLabel: it.sample ? "SAMPLE" : it.date, dateColor: it.sample ? "#B07818" : "#898989", dateWeight: it.sample ? 700 : 300, title: it.title, summary: it.summary, cta: it.cta,
+      })),
+      typeBg,
+      canLoadMore: st.limit < total,
+      loadMore: () => this.setState((s) => ({ limit: s.limit + 9 })),
+
+      newsHref: C ? C.archiveHref(isCompany ? "strohm" : brand, "news") : "#",
+      knowledgeHref: C ? C.archiveHref(isCompany ? "strohm" : brand, "knowledge") : "#",
+      referencesHref: C ? C.archiveHref(isCompany ? "strohm" : brand, "references") : "#",
+    };
+  }
+}
+</script>
+</body>
+</html>

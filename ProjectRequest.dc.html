@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./project-method-data.js"></script>
+</helmet>
+<section id="project" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;font-family:var(--font-web);color:var(--color-text-primary);scroll-margin-top:120px;">
+  <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Project request · {{ brand }}</div>
+    <h2 style="margin:0 0 12px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Start <span style="color:#8E8E8E;">a project.</span></h2>
+    <p style="margin:0 0 40px;font-size:var(--web-body-size);font-weight:300;line-height:1.6;max-width:760px;text-wrap:pretty;">{{ intro }}</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;">
+      <div style="background:var(--color-surface-card);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:14px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">What to send</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <sc-for list="{{ send }}" as="s" hint-placeholder-count="6"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);padding-bottom:8px;border-bottom:1px solid var(--color-divider);">{{ s }}</div></sc-for>
+        </div>
+      </div>
+      <div style="background:var(--color-surface-card);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:14px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">What you receive</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <sc-for list="{{ receive }}" as="r" hint-placeholder-count="6"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);padding-bottom:8px;border-bottom:1px solid var(--color-divider);">{{ r }}</div></sc-for>
+        </div>
+      </div>
+      <div style="background:var(--color-surface-card);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:14px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Who installs</div>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:1.5;max-width:760px;">{{ install }}</p>
+        <sc-if value="{{ epcOnly }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);max-width:760px;">This request is for EPCs and installers only.</p></sc-if>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;border:1px solid var(--color-divider);border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:24px;">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Sent. The drawings have found their engineers.</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);max-width:760px;">Reference {{ refNo }}. An engineer contacts you about the project file.</p>
+          <button type="button" onClick="{{ reset }}" style="align-self:flex-start;margin-top:8px;cursor:pointer;font-family:inherit;background:none;border:none;border-bottom:1px solid var(--color-text-primary);padding:0 0 2px;font-size:14px;color:var(--color-text-primary);">Send another request</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <span style="font-size:12px;font-weight:700;">Request type</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <sc-for list="{{ typeOpts }}" as="t" hint-placeholder-count="2">
+                <button type="button" onClick="{{ t.onClick }}" style="cursor:pointer;font-family:inherit;height:40px;padding:0 16px;border-radius:var(--radius-btn);border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};font-size:14px;font-weight:400;">{{ t.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <sc-if value="{{ hasCalc }}" hint-placeholder-val="{{ false }}">
+            <div style="background:var(--color-surface-card);border-radius:8px;padding:16px 20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;">
+              <span style="font-size:14px;font-weight:300;line-height:1.5;">{{ calcText }}</span>
+              <a href="{{ calcHref }}" style="font-size:14px;font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">{{ calcLink }}</a>
+            </div>
+          </sc-if>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;">
+            <sc-for list="{{ fieldList }}" as="f" hint-placeholder-count="6">
+              <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-label-size);font-weight:var(--web-label-weight);">{{ f.label }}</span><input value="{{ f.value }}" onInput="{{ f.onInput }}" style="height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);color:var(--color-text-primary);background:#FFFFFF;outline:none;" style-focus="border-color:#4F4F4E;" /></label>
+            </sc-for>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Project description</span><textarea value="{{ message }}" onInput="{{ onMessage }}" rows="4" style="padding:12px;border:1px solid #BBBBBB;border-radius:8px;font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);color:var(--color-text-primary);resize:vertical;outline:none;" style-focus="border-color:#4F4F4E;"></textarea></label>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <span style="font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Files: drawings, photos, technical files</span>
+            <label style="display:flex;align-items:center;justify-content:center;min-height:88px;border:1px dashed #BBBBBB;border-radius:8px;cursor:pointer;font-size:var(--web-label-size);font-weight:var(--web-label-weight);padding:16px;text-align:center;" style-hover="border-color:#4F4F4E;">
+              <input type="file" multiple="{{ true }}" onChange="{{ onFiles }}" style="display:none;" />
+              <span>Choose files or drop them here · PDF, DWG, KML, JPG, PNG</span>
+            </label>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <sc-for list="{{ files }}" as="x" hint-placeholder-count="0"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:var(--color-surface-card);padding:6px 10px;border-radius:4px;">{{ x }}</span></sc-for>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px;">
+            <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Name</span><input value="{{ name }}" onInput="{{ onName }}" style="height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);outline:none;" style-focus="border-color:#4F4F4E;" /></label>
+            <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Company</span><input value="{{ company }}" onInput="{{ onCompany }}" style="height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);outline:none;" style-focus="border-color:#4F4F4E;" /></label>
+            <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Email</span><input type="email" value="{{ email }}" onInput="{{ onEmail }}" style="height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);outline:none;" style-focus="border-color:#4F4F4E;" /></label>
+            <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Phone</span><input value="{{ phone }}" onInput="{{ onPhone }}" style="height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);outline:none;" style-focus="border-color:#4F4F4E;" /></label>
+            <label style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-label-size);font-weight:var(--web-label-weight);">You are</span><select value="{{ role }}" onChange="{{ onRole }}" style="height:44px;padding:0 10px;border:1px solid #BBBBBB;border-radius:8px;font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);background:#FFFFFF;color:var(--color-text-primary);"><sc-for list="{{ roles }}" as="r" hint-placeholder-count="4"><option value="{{ r }}">{{ r }}</option></sc-for></select></label>
+          </div>
+          <label style="display:flex;gap:10px;align-items:flex-start;font-size:var(--web-label-size);font-weight:var(--web-label-weight);line-height:1.5;cursor:pointer;"><input type="checkbox" checked="{{ consent }}" onChange="{{ onConsent }}" style="margin-top:3px;" /><span>I agree that STRØHM.ENERGY uses these details and files to prepare the project file and contacts me about it.</span></label>
+          <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+            <button type="button" onClick="{{ submit }}" style="cursor:pointer;font-family:inherit;height:var(--cta-height);padding:0 var(--cta-pad-x);border:none;border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);font-weight:500;" style-hover="background:#5F5E5E;">Send project request</button>
+            <sc-if value="{{ error }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-small-size);font-weight:300;color:#B07818;line-height:var(--web-small-lh);">{{ error }}</span></sc-if>
+          </div>
+          <p style="margin:0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#898989;max-width:760px;">Prototype: requests and file names are kept in this browser only.</p>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:1400},&quot;brand&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;MOX&quot;,&quot;AGRIX&quot;,&quot;TERRIX&quot;,&quot;PONTIX&quot;,&quot;TECTIX&quot;,&quot;PARX&quot;,&quot;CHILL&quot;,&quot;TOGU&quot;],&quot;default&quot;:&quot;MOX&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { type: null, vals: {}, message: "", files: [], name: "", company: "", email: "", phone: "", role: null, consent: false, sent: false, refNo: "", error: "", calcIn: null };
+  componentDidMount() {
+    this._t = setInterval(() => { if (window.STROHM_PROJECT) { clearInterval(this._t); this.loadCalc(); this.forceUpdate(); } }, 60);
+  }
+  componentWillUnmount() { clearInterval(this._t); }
+  loadCalc() {
+    const d = (window.STROHM_PROJECT || {})[this.props.brand || "MOX"];
+    if (!d || !d.calc) return;
+    try { const c = JSON.parse(localStorage.getItem(d.calc.key) || "null"); if (c) this.setState({ calcIn: c, message: this.state.message || ("Calculator inputs: " + Object.entries(c).map(([k, v]) => k + ": " + v).join(" · ")) }); } catch (e) {}
+  }
+  renderVals() {
+    const brand = this.props.brand || "MOX";
+    const d = (window.STROHM_PROJECT || {})[brand] || { intro: "", send: [], receive: [], install: "", types: ["Project"], roles: ["Owner or client"], fields: [] };
+    const st = this.state;
+    const type = st.type || d.types[0];
+    const set = (k) => (e) => this.setState({ [k]: e.target.value, error: "" });
+    return {
+      brand, intro: d.intro, send: d.send, receive: d.receive, install: d.install, epcOnly: !!d.epcOnly,
+      typeOpts: d.types.map((t) => ({ label: t, onClick: () => this.setState({ type: t }), bg: t === type ? "#4F4F4E" : "#FFFFFF", color: t === type ? "#FFFFFF" : "#4F4F4E", border: t === type ? "#4F4F4E" : "#DDDDDD" })),
+      hasCalc: !!d.calc, calcHref: d.calc ? d.calc.href : "", calcLink: st.calcIn ? "Open the calculator" : "Use the calculator",
+      calcText: st.calcIn ? "Your " + (d.calc ? d.calc.label : "") + " inputs are added to this request." : "Inputs from the " + (d.calc ? d.calc.label : "") + " can be added to this request.",
+      fieldList: d.fields.map((f) => ({ label: f, value: st.vals[f] || "", onInput: (e) => this.setState({ vals: Object.assign({}, st.vals, { [f]: e.target.value }), error: "" }) })),
+      message: st.message, onMessage: set("message"),
+      files: st.files, onFiles: (e) => this.setState({ files: Array.from(e.target.files || []).map((f) => f.name) }),
+      name: st.name, onName: set("name"), company: st.company, onCompany: set("company"), email: st.email, onEmail: set("email"), phone: st.phone, onPhone: set("phone"),
+      roles: d.roles, role: st.role || d.roles[0], onRole: set("role"),
+      consent: st.consent, onConsent: (e) => this.setState({ consent: e.target.checked, error: "" }),
+      sent: st.sent, notSent: !st.sent, refNo: st.refNo, error: st.error,
+      submit: () => {
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(st.email)) return this.setState({ error: "No email address. The engineers are good, not psychic." });
+        if (!st.consent) return this.setState({ error: "Please tick the consent box first." });
+        const refNo = brand + "-" + Date.now().toString().slice(-6);
+        try { const k = "strohm-project-requests"; const all = JSON.parse(localStorage.getItem(k) || "[]"); all.push({ refNo, brand, type, vals: st.vals, message: st.message, files: st.files, name: st.name, company: st.company, email: st.email, phone: st.phone, role: st.role || d.roles[0], calc: st.calcIn, at: new Date().toISOString() }); localStorage.setItem(k, JSON.stringify(all)); } catch (e) {}
+        this.setState({ sent: true, refNo, error: "" });
+      },
+      reset: () => this.setState({ sent: false, vals: {}, message: "", files: [], consent: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

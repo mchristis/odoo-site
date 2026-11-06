@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>SYNQ How It Works | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:#4a5c59; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="SynqNav" active="how" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="SYNQ" rgb="89,143,148" eyebrow="Technology" title="The hardware is not the product. The installation it creates is." slot="synq-how-it-works-hero" shot="SYNQ · How It Works · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    
+    <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+      <sc-for list="{{ topics }}" as="t" hint-placeholder-count="6">
+        <a href="{{ t.href }}" style="padding:24px;display:flex;flex-direction:column;gap:14px;background:#F4F4F4;border-radius:12px;">
+          <div>
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">{{ t.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ t.desc }}</div>
+          </div>
+          <span style="margin-top:auto;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">Read more<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <sc-for list="{{ sections }}" as="s" hint-placeholder-count="4">
+    <section id="{{ s.id }}" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+      <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">{{ s.tag }}</div>
+        <h2 style="margin:0 0 16px;max-width:760px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ s.headline }}</h2>
+        <p style="margin:0 0 24px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ s.intro }}</p>
+        <a href="{{ s.href }}" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">Read the full page<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      </div>
+    </section>
+  </sc-for>
+
+  <div style="height:64px;"></div>
+
+
+  <div style="height:32px;"></div>
+  <dc-import name="ContentSections" brand="SYNQ" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="SYNQ" specialist-name="Mr. Kiwi" photo-slot-id="synq-howitworks-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="SYNQ" accent="var(--color-brand-synq)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      topics: [
+        { title: "Wi-Fi Mesh", desc: "SYNQ builds its own local network — automatic discovery, no gateway.", href: "SYNQ - PRODUCT - Products - EN.dc.html#mesh" },
+        { title: "NFC & QR commissioning", desc: "The installer scans. EMON recognises article, serial, firmware and warranty.", href: "SYNQ - SUPPORT - Install and Commission - EN.dc.html#identify" },
+        { title: "Local-first architecture", desc: "Measurement, communication and automation continue without the internet.", href: "SYNQ - PRODUCT - Products - EN.dc.html#local-first" },
+        { title: "Digital installation record", desc: "Every installation documents itself, linked forever to the exact product.", href: "SYNQ - SUPPORT - Install and Commission - EN.dc.html#record" },
+        { title: "Protocols & SDK", desc: "P1, TIC, pulse, CT, direct, Modbus and RS485 — plus developer resources.", href: "SYNQ - PRODUCT - Products - EN.dc.html#connections" },
+        { title: "EMON integration", desc: "Measurements become tariffs, optimisation, reporting and documentation.", href: "SYNQ - PRODUCT - Products - EN.dc.html#connections" },
+      ],
+      sections: [
+        { id: "mesh", tag: "Integrated Wi-Fi Mesh", headline: "SYNQ does not just connect to your router. It builds the network.", intro: "Most metering hardware simply joins the home router. Every active SYNQ device carries integrated Wi-Fi mesh, so compatible devices discover each other and form one local communication network.", href: "SYNQ - PRODUCT - Products - EN.dc.html#mesh" },
+        { id: "local", tag: "Local-first architecture", headline: "Local first. Internet optional.", intro: "Measurement is local. Communication is local. Automation is local. Only cloud services require the internet — so an outage never stops the installation from doing its job.", href: "SYNQ - PRODUCT - Products - EN.dc.html#local-first" },
+        { id: "protocols", tag: "Protocols & connections", headline: "However the building speaks, SYNQ listens.", intro: "Metering starts with how you connect to the installation. SYNQ reads the common smart-meter ports and the standard field buses, then carries everything into one EMON record.", href: "SYNQ - PRODUCT - Products - EN.dc.html#connections" },
+        { id: "emon", tag: "Designed for EMON", headline: "Measurements become intelligence.", intro: "Without accurate measurement, EMON cannot optimise anything. SYNQ gives EMON the data; EMON turns it into decisions.", href: "SYNQ - PRODUCT - Products - EN.dc.html#connections" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

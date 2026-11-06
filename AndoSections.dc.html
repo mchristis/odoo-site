@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<script src="./image-slot.js"></script>
+<meta name="ext-resource-dependency" content="assets/ando-hero/1.png">
+<meta name="ext-resource-dependency" content="assets/ando-hero/2.png">
+<meta name="ext-resource-dependency" content="assets/ando-hero/3a.png">
+<meta name="ext-resource-dependency" content="assets/ando-hero/3b.png">
+<meta name="ext-resource-dependency" content="assets/ando-hero/4.png">
+<meta name="ext-resource-dependency" content="assets/ando-hero/5.png">
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#1E1E1E; text-decoration:none; }
+  a:hover { color:#6b8f1f; }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);color:#4F4F4E;">
+<sc-if value="{{ show_supply }}" hint-placeholder-val="{{ false }}">
+<div>
+<!-- SUPPLY CHAIN -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div data-stack="1" style="border-top:1px solid #E3E1DB;padding-top:40px;display:grid;grid-template-columns:1fr 1.4fr;gap:48px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">Supply chain</div>
+        <h3 style="margin:0 0 20px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);">Where the components come from.</h3>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">Every ANDO module is assembled from components sourced across a traceable supply chain. Each component has a documented origin, published because transparency is the starting point for trust.</p>
+      </div>
+      <div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ supplyChain }}" as="c" hint-placeholder-count="7">
+            <div style="display:flex;gap:16px;padding:16px 0;border-top:1px solid #E3E1DB;">
+              <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#898989;width:20px;flex:none;letter-spacing:var(--web-eyebrow-ls);">{{ c.n }}</span>
+              <div>
+                <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:2px;">{{ c.name }}</div>
+                <div style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">{{ c.desc }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:24px;aspect-ratio:16/8;">
+          <image-slot id="ando-origin-map" shape="rounded" radius="12" placeholder="Drop a component origin overview graphic"></image-slot>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+</div>
+</sc-if>
+
+<sc-if value="{{ show_facts }}" hint-placeholder-val="{{ false }}">
+<div>
+<!-- PRODUCTION & QUALITY FACTS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #E3E1DB;padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">Production &amp; quality facts</div>
+      <h3 style="margin:0 0 8px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);">Built to last.</h3>
+      <h3 style="margin:0 0 24px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);color:#898989;">Produced to a standard.</h3>
+      <p style="margin:0 0 40px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:800px;">The numbers behind the range: production capacity, cell technology, material standards, automation and the bankability and insurance backing that support project finance. Every panel is flash-tested before dispatch &#8212; the full mechanic is covered under Flash test above.</p>
+      <div style="display:flex;flex-direction:column;">
+        <sc-for list="{{ productionFacts }}" as="f" hint-placeholder-count="6">
+          <div style="display:flex;flex-wrap:wrap;gap:24px;padding:20px 0;border-top:1px solid #E3E1DB;">
+            <div style="flex:1 1 280px;min-width:0;font-size:16px;font-weight:400;">{{ f.label }}</div>
+            <div style="flex:999 1 min(100%,400px);min-width:0;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ f.value }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  
+</div>
+</sc-if>
+
+<sc-if value="{{ show_warranty }}" hint-placeholder-val="{{ false }}">
+<div>
+<!-- WARRANTY (consolidated) -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #E3E1DB;padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">Warranty</div>
+      <h3 style="margin:0 0 16px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);">Two guarantees. Both in writing.</h3>
+      <p style="margin:0 0 32px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:900px;">ANDO modules carry two separate warranties &#8212; a product warranty covering defects in materials and manufacturing, and a power output warranty guaranteeing minimum performance over time. Both are activated automatically at the moment of QR registration, with no additional paperwork required.</p>
+
+      <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;--cg:12px;">
+        <div style="padding:28px;background:#F4F4F4;border-radius:12px;">
+          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:20px;">
+            <span style="font-size:var(--web-h2card-size);line-height:var(--web-h2card-lh);"><span style="font-weight:700;">30</span><span style="font-weight:300;"> yr</span></span>
+            <span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;">Product warranty</span>
+          </div>
+          <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);max-width:760px;">Standard product warranty covers defects in materials and workmanship. If a panel fails due to a manufacturing fault, it is replaced. For Glas-Glas panels, the product warranty extends to 35 years &#8212; the dual glass layer provides additional protection against weathering and degradation.</p>
+          <div style="display:flex;flex-direction:column;">
+            <div style="display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid #E3E1DB;font-size:var(--web-small-size);line-height:var(--web-small-lh);"><strong style="font-weight:400;">30 years</strong><span style="color:#5F5E5E;">&#8212; Standard ANDO modules</span></div>
+            <div style="display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid #E3E1DB;font-size:var(--web-small-size);line-height:var(--web-small-lh);"><strong style="font-weight:400;">35 years</strong><span style="color:#5F5E5E;">&#8212; Glas-Glas variant</span></div>
+          </div>
+          <p style="margin:20px 0 0;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);max-width:760px;">If an issue occurs, contact the installer who placed the system. Strohm.energy provides direct support if the installer is not reachable.</p>
+        </div>
+        <div style="padding:28px;background:#F4F4F4;border-radius:12px;">
+          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:20px;">
+            <span style="font-size:var(--web-h2card-size);line-height:var(--web-h2card-lh);"><span style="font-weight:700;">30</span><span style="font-weight:300;"> yr</span></span>
+            <span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;">Power output warranty</span>
+          </div>
+          <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);max-width:760px;">Every solar module degrades slowly over time. ANDO guarantees the rate at which this happens. Output is guaranteed at 99% after year one, and at 80% after 30 years. EMON tracks actual output against this guaranteed curve and flags deviations automatically.</p>
+          <div style="aspect-ratio:16/9;margin-bottom:16px;">
+            <image-slot id="ando-warranty-curve" shape="rounded" radius="8" placeholder="Drop the guaranteed vs actual output curve chart"></image-slot>
+          </div>
+          <p style="margin:0;font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);max-width:760px;">EMON tracks actual vs guaranteed output from day one. If actual output falls below the guaranteed curve, the deviation is flagged and documented automatically.</p>
+        </div>
+      </div>
+
+      <div style="background:#F4F4F4;border-radius:12px;padding:24px;margin-bottom:24px;display:flex;gap:16px;align-items:flex-start;">
+        <div style="width:32px;height:32px;border:1px solid #CDD62B;border-radius:8px;flex:none;"></div>
+        <div>
+          <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:6px;line-height:var(--web-small-lh);">Warranty activates automatically on QR scan.</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">No registration form. No website login. No paperwork to post. The moment the installer scans the panel QR code with the EMON Smart Scan app, the warranty start date is recorded and the panel is registered. The building owner receives confirmation automatically.</div>
+        </div>
+      </div>
+
+      <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;--cg:24px;">
+        <div style="background:#F4F4F4;border-radius:12px;padding:24px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:12px;">Glas-Glas variant</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:10px;line-height:var(--web-small-lh);">35-year curve &#8212; shallower degradation model</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">If you have the ANDO glass-glass bifacial variant, the degradation model extends to 35 years and uses a shallower curve &#8212; the dual-glass construction reduces UV and moisture ingress at the cell layer, which measurably slows the degradation rate over time. EMON applies the correct curve automatically based on the article code logged at installation.</div>
+        </div>
+        <div style="border-radius:12px;padding:24px;background:#F5F5F5;display:flex;align-items:center;">
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);max-width:760px;">A 30-year performance warranty is a significant commitment from any manufacturer. EMON makes it a visible one. You can see the curve from year one, see where your panels sit on it today, and if they ever fall below it, you have thirty years of continuous monitoring data to support the claim. That is not a promise. That is a record.</p>
+        </div>
+      </div>
+
+      <div style="padding:16px 0;border-top:1px solid #E3E1DB;">
+        <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:6px;line-height:var(--web-small-lh);">Insurance</div>
+        <div style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">Panels covered by product liability insurance. Installer warranty underwritten separately by the installer.</div>
+      </div>
+    </div>
+  </section>
+
+  
+<!-- AUTOMATIC WARRANTY PDF -->
+  <dc-import name="WarrantyPDF" accent="#8b9a3a" heading="From factory test to installed warranty." product-name="ANDO" intro="Every ANDO panel carries a unique serial number and QR identity. During production, every eligible panel is flash-tested and its measured performance is linked to that individual panel. When the installer scans the panels during installation and maps them into EMON, and commissioning is approved, the buyer automatically receives a PDF with the proof for the exact panels on the roof — not a generic model statement. We are the only ones who do this, so your warranty is never in doubt." slot-id="ando-warranty-pdf" placeholder="Drop a sample ANDO warranty PDF page" contents="{{ andoContents }}" upload-labels="{{ andoUploadLabels }}" hint-size="100%,800px"></dc-import>
+  
+<!-- DEGRADATION TRACKING -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #E3E1DB;padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">EMON &#8212; performance monitoring</div>
+      <h3 style="margin:0 0 12px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);max-width:460px;">Your panel has a curve. You can see it.</h3>
+      <p style="margin:0 0 32px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:800px;">Every solar panel loses a small amount of output every year. This is not a defect &#8212; it is the gradual effect of UV exposure, temperature cycling and time on the silicon cell structure. With ANDO and EMON, you see that curve for your specific panels, from year one.</p>
+      <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:32px;--cg:32px;">
+        <div style="aspect-ratio:16/10;">
+          <image-slot id="ando-degradation-curve" shape="rounded" radius="12" placeholder="Drop the EMON output curve view"></image-slot>
+        </div>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">That curve is not invented for the warranty document. It is calculated from real production data &#8212; cell technology, polysilicon lot, encapsulant batch, manufacturing parameters &#8212; and specific to the article code and production batch of your panels, not an average across thousands of different panel types.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;">
+        <sc-for list="{{ curveScenarios }}" as="c" hint-placeholder-count="3">
+          <div data-stack="1" style="display:grid;grid-template-columns:1fr 2fr;gap:24px;padding:20px 0;border-top:1px solid #E3E1DB;">
+            <div style="font-size:14px;font-weight:400;">{{ c.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ c.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  
+</div>
+</sc-if>
+
+<sc-if value="{{ show_quality }}" hint-placeholder-val="{{ false }}">
+<div>
+<!-- QUALITY / CERTIFICATIONS -->
+  <section id="quality" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #E3E1DB;padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">Quality standards</div>
+      <h3 style="margin:0 0 8px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);max-width:500px;">Three standards that are not optional.</h3>
+      <p style="margin:0 0 32px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:800px;">Every ANDO module is manufactured and tested to three performance standards that apply across the full range without exception. None of these are upgrades. None require a premium variant. They are the baseline.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:56px;--cg:12px;">
+        <div style="padding:28px;background:#F4F4F4;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">Standard 01</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:16px;line-height:var(--web-h3-lh);">Positive power tolerance</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);margin-bottom:16px;">Every ANDO module is measured at STC before dispatch. The measured output is at or above the nominal rated power. No module ships below its nameplate value, confirmed by the flash test result linked to the serial number.</div>
+          <div style="width:32px;height:2px;background:#CDD62B;margin-bottom:16px;"></div>
+          <div style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">In practice this means yield calculations based on nominal power are conservative by default. Across a 40-module installation, the cumulative positive tolerance is a measurable contribution to actual yield from day one.</div>
+        </div>
+        <div style="padding:28px;background:#F4F4F4;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">Standard 02</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:16px;line-height:var(--web-h3-lh);">Low LCOE &#8212; Levelized Cost of Energy</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);margin-bottom:16px;">The purchase price per watt-peak is not the cost of solar energy. LCOE is the total investment divided by the total electricity produced over the full system lifetime — the correct metric for evaluating a 30-year asset.</div>
+          <div style="width:32px;height:2px;background:#CDD62B;margin-bottom:16px;"></div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-top:1px solid #E3E1DB;"><span style="color:#5F5E5E;">Positive power tolerance at dispatch</span><span style="color:#6b8f1f;">&#8593; actual output from day one</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-top:1px solid #E3E1DB;"><span style="color:#5F5E5E;">Guaranteed linear degradation 30yr</span><span style="color:#6b8f1f;">&#8593; verified output floor</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-top:1px solid #E3E1DB;"><span style="color:#5F5E5E;">EMON deviation monitoring</span><span style="color:#5F5E5E;">&#8595; undetected yield loss</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-top:1px solid #E3E1DB;"><span style="color:#4F4F4E;font-weight:400;">Result</span><span style="color:#6b8f1f;">Lower cost per kWh over 30 years</span></div>
+          </div>
+        </div>
+        <div style="padding:28px;background:#F4F4F4;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">Standard 03</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:16px;line-height:var(--web-h3-lh);">Triple tested &#8212; three points, per module</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);margin-bottom:16px;">Every ANDO module passes three separate test points during production. This is not a sampling approach. It applies to every unit.</div>
+          <div style="width:32px;height:2px;background:#CDD62B;margin-bottom:16px;"></div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <sc-for list="{{ tripleTests }}" as="t" hint-placeholder-count="3">
+              <div style="display:flex;gap:12px;border-top:1px solid #E3E1DB;padding-top:10px;">
+                <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#6b8f1f;flex:none;letter-spacing:var(--web-eyebrow-ls);">{{ t.n }}</span>
+                <span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">{{ t.desc }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin:0 0 8px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Certifications</h3>
+      <p style="margin:0 0 24px;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;max-width:700px;line-height:var(--web-small-lh);">Every ANDO panel is certified and verified before it leaves the factory. These are the standards behind that record.</p>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;--cg:12px;">
+        <sc-for list="{{ certifications }}" as="c" hint-placeholder-count="11">
+          <div style="padding:20px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:14px;font-weight:400;margin-bottom:8px;">{{ c.name }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);min-height:48px;">{{ c.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <a href="#downloads" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">Download certificates in the Documentation Hub <span><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></a>
+    </div>
+  </section>
+
+  
+</div>
+</sc-if>
+
+<sc-if value="{{ show_technical }}" hint-placeholder-val="{{ false }}">
+<div>
+<!-- TECHNICAL: construction / bifacial / anatomy / reliability -->
+  <section id="technical" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #E3E1DB;padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">How &#8212; performance</div>
+      <h3 style="margin:0 0 24px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);max-width:400px;">Output guaranteed. Degradation modelled.</h3>
+      <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;--cg:32px;">
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">Each module uses bifacial cell technology, capturing reflected irradiance from the rear surface to increase energy yield without additional footprint. Every module undergoes 100% electroluminescence inspection prior to dispatch, verifying cell integrity at unit level before shipment.</p>
+        <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;--cg:16px;">
+          <div style="background:#F4F4F4;border-radius:12px;padding:20px;">
+            <div style="font-size:var(--web-h2card-size);line-height:var(--web-h2card-lh);"><span style="font-weight:700;">99</span><span style="font-weight:300;">%</span></div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;margin-top:6px;line-height:var(--web-min-lh);">Power output guaranteed after year one</div>
+          </div>
+          <div style="background:#F4F4F4;border-radius:12px;padding:20px;">
+            <div style="font-size:var(--web-h2card-size);line-height:var(--web-h2card-lh);"><span style="font-weight:700;">80</span><span style="font-weight:300;">%</span></div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;margin-top:6px;line-height:var(--web-min-lh);">Power output guaranteed after 30 years</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+<!-- bifacial -->
+    <div style="border-top:1px solid #E3E1DB;padding:56px 0;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">How &#8212; bifacial technology</div>
+      <h3 style="margin:0 0 24px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);max-width:420px;">Both faces active. Both measured. Both monitored.</h3>
+      <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:32px;--cg:32px;">
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">A standard solar module generates electricity from the front face only. A bifacial module has active solar cells on both faces — the rear face captures reflected irradiance from the surface beneath the module and converts it into additional electricity.</p>
+        <div style="aspect-ratio:16/9;">
+          <image-slot id="ando-bifacial-diagram" shape="rounded" radius="12" placeholder="Drop a bifacial cross-section diagram"></image-slot>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;">
+        <div data-stack="1" style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:10px 0;border-top:1px solid #1E1E1E;">
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Surface below module</span>
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Albedo</span>
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Bifacial gain</span>
+        </div>
+        <sc-for list="{{ bifacialSurfaces }}" as="s" hint-placeholder-count="5">
+          <div data-stack="1" style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:14px 0;border-top:1px solid #E3E1DB;align-items:center;">
+            <span style="font-size:14px;font-weight:400;">{{ s.surface }}</span>
+            <span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ s.albedo }}</span>
+            <span style="font-size:var(--web-small-size);font-weight:300;color:#6b8f1f;line-height:var(--web-small-lh);">{{ s.gain }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    
+<!-- construction / anatomy -->
+    <div style="border-top:1px solid #E3E1DB;padding:56px 0;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">How &#8212; panel anatomy</div>
+      <h3 style="margin:0 0 24px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);max-width:420px;">Nine components. Each one matters.</h3>
+      <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;--cg:32px;">
+        <div style="aspect-ratio:3/4;">
+          <image-slot id="ando-anatomy-diagram" shape="rounded" radius="12" placeholder="Drop an exploded anatomy render"></image-slot>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ anatomy }}" as="a" hint-placeholder-count="9">
+            <div style="display:flex;gap:16px;padding:12px 0;border-top:1px solid #E3E1DB;">
+              <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#898989;width:20px;flex:none;letter-spacing:var(--web-eyebrow-ls);">{{ a.n }}</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;">{{ a.part }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    
+<!-- reliability -->
+    <div style="border-top:1px solid #E3E1DB;padding:56px 0;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">How &#8212; reliability</div>
+      <h3 style="margin:0 0 24px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);max-width:440px;">Rated for environments most panels avoid.</h3>
+      <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:32px;--cg:32px;">
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">ANDO modules carry resistance ratings for salt and ammonia exposure, making them suitable for coastal and agricultural installations. PID resistance and hot-spot protection are standard on all models.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ reliabilityBullets }}" as="r" hint-placeholder-count="5">
+            <div style="border-top:1px solid #E3E1DB;padding-top:10px;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ r }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;--cg:12px;">
+        <sc-for list="{{ reliabilitySpecs }}" as="grp" hint-placeholder-count="3">
+          <div style="padding:24px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">{{ grp.heading }}</div>
+            <sc-for list="{{ grp.rows }}" as="row" hint-placeholder-count="4">
+              <div style="display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid #E3E1DB;">
+                <span style="font-size:12px;font-weight:300;color:#5F5E5E;">{{ row.label }}</span>
+                <span style="font-size:12px;font-weight:400;">{{ row.value }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+  </section>
+
+
+  
+</div>
+</sc-if>
+
+<sc-if value="{{ show_docs }}" hint-placeholder-val="{{ false }}">
+<div>
+<!-- DOCUMENTATION HUB -->
+  <section id="downloads" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #E3E1DB;padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">Downloads</div>
+      <h3 style="margin:0 0 8px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);">Documentation Hub</h3>
+      <p style="margin:0 0 40px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:820px;">Everything you need before, during and after installation. All documents are available as PDF. Technical documents are open access. Warranty documentation requires a verified account.</p>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;--cg:12px;">
+        <sc-for list="{{ documents }}" as="d" hint-placeholder-count="8">
+          <div style="padding:24px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:16px;font-weight:400;margin-bottom:10px;">{{ d.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);margin-bottom:20px;min-height:64px;">{{ d.desc }}</div>
+            <span style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:10px 16px;border-radius:8px;border:1px solid {{ d.borderColor }};background:{{ d.bg }};color:{{ d.color }};" data-placeholder-link="true">{{ d.action }} {{ d.icon }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  
+</div>
+</sc-if>
+
+<sc-if value="{{ show_installers }}" hint-placeholder-val="{{ false }}">
+<div>
+<!-- FOR INSTALLERS (cluster) -->
+  <section style="max-width:1400px;margin:96px auto 0;padding:0 40px;">
+    <div style="border-top:2px solid #1E1E1E;padding-top:24px;display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+      <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">For installers</div>
+      <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;max-width:520px;line-height:var(--web-small-lh);">Network access, on-site registration, technical consultation and the answers the installation crew actually asks.</div>
+    </div>
+  </section>
+
+  
+<!-- INSTALLER NETWORK -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div data-stack="1" style="border-top:1px solid #E3E1DB;padding-top:40px;display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:40px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">Installer network</div>
+        <h3 style="margin:0;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);">Work with ANDO. Join the network.</h3>
+      </div>
+      <div>
+        <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">ANDO installations are carried out through a network of certified installers across Europe. We are actively expanding that network. If you are a professional installer and want to work with a traceable, well-documented product with full digital registration and manufacturer support, we would like to speak with you.</p>
+        <div style="width:40px;height:2px;background:#CDD62B;margin-bottom:24px;"></div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ networkBenefits }}" as="b" hint-placeholder-count="4">
+            <div style="padding:16px 0;border-top:1px solid #E3E1DB;display:grid;grid-template-columns:28px 1fr;gap:16px;">
+              <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#898989;letter-spacing:var(--web-eyebrow-ls);">{{ b.n }}</span>
+              <div>
+                <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:6px;">{{ b.title }}</div>
+                <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ b.desc }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
+          <span style="text-decoration:none;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Apply to join the network</span>
+          <span style="text-decoration:none;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);border:1px solid #E3E1DB;color:#4F4F4E;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Ask about installer conditions</span>
+        </div>
+      </div>
+      <div style="aspect-ratio:3/4;">
+        <image-slot id="ando-installer-photo" shape="rounded" radius="12" placeholder="Drop an installer with panel photo"></image-slot>
+      </div>
+    </div>
+  </section>
+
+
+  
+</div>
+</sc-if>
+
+<sc-if value="{{ show_faq }}" hint-placeholder-val="{{ false }}">
+<div>
+<!-- FAQ -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div data-stack="1" style="border-top:1px solid #E3E1DB;padding-top:40px;display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:40px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">FAQ</div>
+        <h3 style="margin:0;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);">Questions the installation crew actually asks.</h3>
+      </div>
+      <div>
+        <sc-for list="{{ crewFaqs }}" as="f" hint-placeholder-count="7">
+          <span style="text-decoration:none;display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-top:1px solid #E3E1DB;" data-placeholder-link="true">
+            <span style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;line-height:var(--web-small-lh);">{{ f }}</span>
+            <span style="color:#6b8f1f;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+          </span>
+        </sc-for>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:28px;">
+        <div style="width:80px;height:80px;border-radius:50%;background:#E3E1DB;margin-bottom:20px;"></div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:10px;">Independent technical support &#8212; since 2009</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:12px;line-height:var(--web-h3-lh);">Technical consultation. No sales.</div>
+        <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);max-width:760px;">Built on experience since 2009 across solar panel production, technical product development and on-site installation. This role exists strictly for technical consultation and carries no commercial sales purpose.</p>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:10px;">Available for</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+          <sc-for list="{{ consultTopics }}" as="topic" hint-placeholder-count="6">
+            <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:6px 12px;border-radius:8px;border:1px solid #E3E1DB;color:#5F5E5E;">{{ topic }}</span>
+          </sc-for>
+        </div>
+        <div style="font-size:var(--web-min-size);font-weight:300;color:#898989;margin-bottom:16px;line-height:var(--web-min-lh);">Installers &middot; Project developers &middot; Technical partners</div>
+        <span style="text-decoration:none;display:block;text-align:center;padding:14px;border-radius:8px;background:#1E1E1E;color:#FFFFFF;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.06em;text-transform:uppercase;" data-placeholder-link="true">Schedule via Calendly</span>
+      </div>
+    </div>
+  </section>
+
+
+  
+</div>
+</sc-if>
+
+<sc-if value="{{ show_sustain }}" hint-placeholder-val="{{ false }}">
+<div>
+<!-- SUSTAINABILITY & END-OF-LIFE (consolidated) -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #E3E1DB;padding-top:40px;">
+      <div data-stack="1" style="display:grid;grid-template-columns:1fr 1.6fr;gap:48px;margin-bottom:56px;">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">Sustainability &amp; end-of-life</div>
+          <h3 style="margin:0;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);">Built to last. Designed to end cleanly.</h3>
+        </div>
+        <div>
+          <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;max-width:760px;">Module materials are selected for end-of-life recyclability. ANDO operates a structured end-of-life programme, covering take-back and responsible processing of decommissioned panels. No per- or polyfluoroalkyl substances are used in manufacturing or encapsulation.</p>
+          <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid #CDD62B;--cg:0px;">
+            <sc-for list="{{ sustainabilityPoints }}" as="s" hint-placeholder-count="3">
+              <div style="padding:20px 20px 0 0;">
+                <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:10px;line-height:var(--web-small-lh);">{{ s.title }}</div>
+                <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ s.desc }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div data-stack="1" style="display:grid;grid-template-columns:1fr 1.6fr;gap:48px;margin-bottom:56px;">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">Packaging</div>
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Recyclable materials. Zero site waste.</h3>
+        </div>
+        <div>
+          <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;max-width:760px;">Every packaging material can be processed through standard recycling streams, and nothing remains on the installation site after the module has been placed that requires disposal as mixed waste.</p>
+          <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;--cg:12px;">
+            <sc-for list="{{ packaging }}" as="p" hint-placeholder-count="3">
+              <div style="padding:24px;background:#F4F4F4;border-radius:12px;border-top:3px solid #CDD62B;">
+                <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:12px;line-height:var(--web-small-lh);">{{ p.title }}</div>
+                <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ p.desc }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div data-stack="1" style="display:grid;grid-template-columns:1fr 1.6fr;gap:48px;">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">Compliance references</div>
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Documented and filed.</h3>
+        </div>
+        <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;--cg:12px;">
+          <div style="border-radius:12px;overflow:hidden;">
+            <div style="aspect-ratio:1/1;">
+              <image-slot id="ando-weee-photo" shape="rect" placeholder="Drop a WEEE compliance document photo"></image-slot>
+            </div>
+            <div style="background:#F5F5F5;padding:24px;">
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);margin-bottom:8px;">WEEE</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">End-of-life take-back handled through the relevant compliance structure.</div>
+            </div>
+          </div>
+          <div style="border-radius:12px;overflow:hidden;">
+            <div style="aspect-ratio:1/1;">
+              <image-slot id="ando-warranty-photo" shape="rect" placeholder="Drop a warranty document photo"></image-slot>
+            </div>
+            <div style="background:#F5F5F5;padding:24px;">
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);margin-bottom:8px;">Warranty</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">Defined terms, filed per installation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+</div>
+</sc-if>
+
+<sc-if value="{{ show_projects }}" hint-placeholder-val="{{ false }}">
+<div>
+<!-- PROJECTS / REFERENCES -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #E3E1DB;padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">Projects</div>
+      <h3 style="margin:0 0 8px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);">Installed. Documented. Monitored.</h3>
+      <p style="margin:0 0 40px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:700px;">A selection of completed ANDO installations. System sizes, locations and installer contacts are shown where permission has been granted.</p>
+
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px;--cg:16px;">
+        <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
+          <span style="text-decoration:none;background:#F5F5F5;" data-placeholder-link="true">
+            <div style="aspect-ratio:4/3;">
+              <image-slot id="{{ p.slotId }}" shape="rounded" radius="12" placeholder="Drop a project rooftop photo"></image-slot>
+            </div>
+            <div style="padding:18px;">
+              <div style="font-size:16px;font-weight:400;color:#4F4F4E;margin-bottom:8px;">{{ p.title }}</div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;">
+                <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:4px 8px;background:#E3E1DB;color:#5F5E5E;border-radius:8px;">{{ p.size }}</span>
+                <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:4px 8px;background:#E3E1DB;color:#5F5E5E;border-radius:8px;">{{ p.type }}</span>
+              </div>
+              <div style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">{{ p.meta }}</div>
+            </div>
+          </span>
+        </sc-for>
+      </div>
+
+      <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:56px;--cg:24px;">
+        <div style="padding:28px;background:#F4F4F4;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:10px;">Commercial / utility</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:10px;line-height:var(--web-h3-lh);">Documented projects, real numbers</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">A selection of completed ANDO installations. System sizes, locations and installer contacts are shown where permission has been granted. Suitable for project developers and procurement teams.</div>
+        </div>
+        <div style="padding:28px;background:#F4F4F4;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:10px;">Residential</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:10px;line-height:var(--web-h3-lh);">European pitched and flat roof installations</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">Residential references for home installers and building owners. EMON monitoring output is available for reference installations on request.</div>
+        </div>
+      </div>
+
+      <h4 style="margin:0 0 8px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">From our installations</h4>
+      <p style="margin:0 0 32px;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;max-width:700px;line-height:var(--web-small-lh);">ANDO panels are installed across Europe on residential rooftops, commercial buildings and utility-scale projects. These are some of the people who agreed to share their experience.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;--cg:24px;">
+        <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
+          <div style="border-top:1px solid #1E1E1E;padding-top:16px;">
+            <div style="font-size:14px;font-weight:300;line-height:1.6;color:#4F4F4E;margin-bottom:16px;">&#8220;{{ t.quote }}&#8221;</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">&#8212; {{ t.attribution }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  
+</div>
+</sc-if>
+
+<sc-if value="{{ show_news }}" hint-placeholder-val="{{ false }}">
+<div>
+<!-- SUPPORT & KNOWLEDGE / NEWS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #E3E1DB;padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">News</div>
+      <h3 style="margin:0 0 8px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);">Product updates. Technology. Projects.</h3>
+      <p style="margin:0 0 40px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:800px;">The solar panel market moves quickly. New cell technologies, changing efficiency benchmarks, evolving grid requirements. This is where ANDO communicates product changes, technology developments, and completed project milestones.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);margin-bottom:24px;gap:12px;--cg:12px;">
+        <sc-for list="{{ newsItems }}" as="n" hint-placeholder-count="3">
+          <span style="text-decoration:none;background:#F4F4F4;border-radius:12px;" data-placeholder-link="true">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6b8f1f;padding:16px 20px 0;">{{ n.tag }}</div>
+            <div style="aspect-ratio:16/10;margin:16px 20px;background:#F5F5F5;border-radius:8px;"></div>
+            <div style="padding:0 20px 20px;">
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;margin-bottom:10px;line-height:var(--web-h3-lh);">{{ n.title }}</div>
+              <div style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);margin-bottom:14px;">{{ n.desc }}</div>
+              <div style="font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">{{ n.meta }}</div>
+            </div>
+          </span>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">All news and technology updates</span>
+        <span style="text-decoration:none;padding:4px var(--cta-pad-x,32px);border:1px solid #E3E1DB;font-size:var(--cta-font,16px);font-weight:400;color:#4F4F4E;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Subscribe to updates</span>
+      </div>
+    </div>
+  </section>
+
+  
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900},&quot;show&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;technical&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const ANDO_PRODUCTS = [
+  { product:"AALTO Full Black", productSeries:"AALTO", application:"Residential", size:"Small", wp:"460 Wp", finish:"Full Black", variantType:"Framed · glass-glass · bifacial", note:"AND-N-AB-BI-BG-GG-460WP-V1" },
+  { product:"AALTO Transparent", productSeries:"AALTO", application:"Residential", size:"Small", wp:"470 Wp", finish:"Black frame, transparent rear", variantType:"Framed · glass-glass · bifacial", note:"AND-N-AB-BI-TRA-GG-470WP-V1" },
+  { product:"MIES Full Black", productSeries:"MIES", application:"Residential / Commercial", size:"Mid", wp:"500 Wp", finish:"Full Black", variantType:"Framed · glass-glass · bifacial", note:"AND-N-MI-BI-BG-GG-500WP-V1" },
+  { product:"MIES Transparent", productSeries:"MIES", application:"Residential / Commercial", size:"Mid", wp:"505 Wp", finish:"Black frame, transparent rear", variantType:"Framed · glass-glass · bifacial", note:"AND-N-MI-BI-TRA-GG-505WP-V1" },
+  { product:"FOSTER Full Black", productSeries:"FOSTER", application:"Commercial / Utility", size:"Large", wp:"600 Wp", finish:"Full Black", variantType:"Framed · glass-glass · bifacial", note:"AND-N-FO-BI-BG-GG-600WP-V1" },
+  { product:"FOSTER Transparent", productSeries:"FOSTER", application:"Commercial / Utility", size:"Large", wp:"620 Wp", finish:"Aluminium frame, transparent rear", variantType:"Framed · glass-glass · bifacial", note:"AND-N-FO-BI-TRA-GG-620WP-V1" },
+  { product:"NOUVEL L", productSeries:"NOUVEL", application:"Residential / Commercial", size:"Mid", wp:"460 Wp", finish:"Flexible, frameless", variantType:"Flexible · lightweight", note:"AND-N-NV-L-FL-FR-460WP-V1" },
+  { product:"NOUVEL XL", productSeries:"NOUVEL", application:"Residential / Commercial", size:"Large", wp:"555 Wp", finish:"Flexible, frameless", variantType:"Flexible · lightweight", note:"AND-N-NV-XL-FL-FR-555WP-V1" },
+];
+
+class Component extends DCLogic {
+  state = { application: "All", series: "All", size: "All", finish: "All", frame: 0 };
+
+  componentDidMount() {
+    const FRAMES = 6;
+    this._heroTimer = setInterval(() => {
+      this.setState(s => ({ frame: (s.frame + 1) % FRAMES }));
+    }, 3200);
+  }
+  componentWillUnmount() {
+    if (this._heroTimer) clearInterval(this._heroTimer);
+  }
+
+  _rv() {
+    const { application, series, size, finish } = this.state;
+    const filteredProducts = ANDO_PRODUCTS.filter(p => {
+      if (application !== "All" && !p.application.includes(application)) return false;
+      if (series !== "All" && p.productSeries !== series) return false;
+      if (size !== "All" && p.size !== size) return false;
+      if (finish !== "All" && p.finish !== finish) return false;
+      return true;
+    });
+    const heroFramesData = [
+      { src: "assets/ando-hero/1.png",  alt: "ANDO panel QR traceability label",       step: "01 · Identity",    text: "Every panel ships with a unique QR identity." },
+      { src: "assets/ando-hero/2.png",  alt: "Installer carrying an ANDO panel on a roof", step: "02 · Install",     text: "Installed by a certified ANDO partner." },
+      { src: "assets/ando-hero/3a.png", alt: "Installer scanning the QR sheet on site",   step: "03 · Scan",        text: "One scan registers the whole roof at once." },
+      { src: "assets/ando-hero/3b.png", alt: "EMON app showing a registered panel",       step: "04 · Register",    text: "Serial, position and warranty, logged in EMON." },
+      { src: "assets/ando-hero/4.png",  alt: "Laptop showing ANDO product documents",     step: "05 · Document",    text: "Flash test, wiring and records, per panel." },
+      { src: "assets/ando-hero/5.png",  alt: "Completed rooftop — registered, warranted, traceable", step: "06 · Proven", text: "Registered. Warranted. Traceable." },
+    ];
+    const frame = this.state.frame;
+    const ops = {};
+    heroFramesData.forEach((f, i) => { ops["op" + i] = i === frame ? 1 : 0; });
+    return {
+      ...ops,
+      heroCaptionStep: heroFramesData[frame].step,
+      heroCaptionText: heroFramesData[frame].text,
+      heroDots: heroFramesData.map((f, i) => ({ w: i === frame ? "22px" : "10px", bg: i === frame ? "#CDD62B" : "rgba(255,255,255,0.4)" })),
+      applicationOptions: ["All", "Residential", "Commercial", "Utility"],
+      seriesOptions: ["All", "AALTO", "MIES", "FOSTER", "Nouvel"],
+      sizeOptions: ["All", "Small", "Mid", "Large"],
+      finishOptions: ["All", "Full Black", "Black frame, transparent rear", "Aluminium frame, transparent rear", "Flexible, frameless"],
+      onApplicationChange: (e) => this.setState({ application: e.target.value }),
+      onSeriesChange: (e) => this.setState({ series: e.target.value }),
+      onSizeChange: (e) => this.setState({ size: e.target.value }),
+      onFinishChange: (e) => this.setState({ finish: e.target.value }),
+      filteredProducts,
+      noResults: filteredProducts.length === 0,
+      resultCount: filteredProducts.length,
+      resultLabel: filteredProducts.length === 1 ? "product" : "products",
+      audiences: [
+        { label:"Homeowner", context:"Residential rooftop and garden context.", step:"Start a roof scan", slotId:"ando-aud-home", dir:"ANDO_LANDING_FORWHOM_PHOTO_HOMEOWNER_01 · residential rooftop/garden context with ANDO panels · 4:3 · still · placeholder (P2)" },
+        { label:"Installer", context:"Installation crew positioning and commissioning.", step:"Become a partner", slotId:"ando-aud-installer", dir:"ANDO_LANDING_FORWHOM_PHOTO_INSTALLER_01 · installation crew positioning panels or commissioning, correct safety equipment · 4:3 · still · placeholder (P2)" },
+        { label:"Architect", context:"Technical drawing and roof/façade integration.", step:"See integration", slotId:"ando-aud-architect", dir:"ANDO_LANDING_FORWHOM_PHOTO_ARCHITECT_01 · technical drawing with façade/roof integration · 4:3 · still · placeholder (P3)" },
+        { label:"Engineer", context:"Structural or electrical design review.", step:"View technical data", slotId:"ando-aud-engineer", dir:"ANDO_LANDING_FORWHOM_PHOTO_ENGINEER_01 · structural/electrical design review · 4:3 · still · placeholder (P3)" },
+        { label:"Investor", context:"Large project with performance documentation.", step:"View references", slotId:"ando-aud-investor", dir:"ANDO_LANDING_FORWHOM_PHOTO_INVESTOR_01 · large commercial/utility project with performance documentation · 4:3 · still · placeholder (P3)" },
+        { label:"Reseller", context:"Warehouse, product range and logistics.", step:"Become a distributor", slotId:"ando-aud-reseller", dir:"ANDO_LANDING_FORWHOM_PHOTO_RESELLER_01 · warehouse, product range, logistics environment · 4:3 · still · placeholder (P3)" },
+        { label:"Developer", context:"Project layout, site plan and coordination.", step:"Develop a project", slotId:"ando-aud-developer", dir:"ANDO_LANDING_FORWHOM_PHOTO_DEVELOPER_01 · project layout, site plan, engineering coordination · 4:3 · still · placeholder (P3)" },
+      ],
+      scanIncludes: ["Preliminary panel layout","Estimated panel count","Preliminary yield calculation","Preliminary structural review","Indicative quotation","Certified-installer introduction"],
+      heroStats: [
+        { label: "Certified", desc: "Independent certification to international standards." },
+        { label: "Tested", desc: "Comprehensive type testing for long-term reliability." },
+        { label: "Traceable", desc: "Every module is traceable from production to delivery." },
+        { label: "Verified performance", desc: "Measured data from calibrated equipment, every time." },
+      ],
+      whoBadges: [
+        { title: "European-defined", desc: "Product and quality standards" },
+        { title: "Traceability-led", desc: "Panel-level identity and records" },
+        { title: "System-connected", desc: "Commissioning to warranty" },
+      ],
+      whyAndo: [
+        { n: "01", title: "Easy one-scan commissioning", desc: "A single QR scan in EMON registration links the serial number, defines panel position and orientation, and registers warranty and flash-test data. No manual entry." },
+        { n: "02", title: "Full panel-level traceability", desc: "Every panel is traceable by serial number from production to final installation. Flash-test data, shipment reference and installation registration are all linked to the same panel record." },
+        { n: "03", title: "Automatic warranty activation", desc: "Warranty is activated per individual panel at installation, not through a separate portal. Confirmation is linked to the installed panel set from day one." },
+        { n: "04", title: "System-linked performance", desc: "Connected to the MOEBIUS inverter and EMON environment: degradation visibility, installation-linked data, and bifacial performance insight where applicable." },
+        { n: "05", title: "Structured web-based ordering", desc: "Every order documented, trackable, and coordinated across European distribution. No email threads, no fragmented follow-up." },
+        { n: "06", title: "European-defined product", desc: "Product definition, engineering direction and quality assurance are managed from Europe, with EU certification in every active market." },
+      ],
+      proofPoints: [
+        { n: "01", title: "Long-term thinking and reliability", desc: "Built for sustained performance over time, with every decision made for lifetime use rather than short-term commercial positioning." },
+        { n: "02", title: "Production quality and three-step control", desc: "Verification runs at factory level, warehouse arrival and final installation — supported by flash-test reports and structured control points at each stage." },
+        { n: "03", title: "Safety, compliance and bankability", desc: "Built to recognised standards and supported by independent certification and third-party insurance backing." },
+      ],
+      supplyChain: [
+        { n: "01", name: "Glass", desc: "High-transmission tempered glass, anti-reflective coating applied at source." },
+        { n: "02", name: "Solar cells", desc: "Bifacial TOPCon / HJT cells, selected production facilities, certified at cell level." },
+        { n: "03", name: "Busbars", desc: "Multi-busbar architecture, reduces resistive losses between cells." },
+        { n: "04", name: "Polysilicon", desc: "High-purity polysilicon, supply chain audited for responsible sourcing." },
+        { n: "05", name: "Backsheet", desc: "PFAS-free backsheet material, or rear glass for the Glas-Glas variant." },
+        { n: "06", name: "Junction box", desc: "ANDO-specified IP68 junction box, selected for thermal stability and weatherproofing." },
+        { n: "07", name: "Aluminium frame", desc: "Proprietary anti-slip wave profile, structural integrity rated for European installation norms." },
+      ],
+      flashSteps: [
+        { n: "01", tag: "Factory", title: "Flash test performed", desc: "Module measured under STC. Full I-V curve recorded. Result confirmed above nominal power.", bg: "#FFFFFF", color: "#4F4F4E", labelColor: "#898989" },
+        { n: "02", tag: "QR code", title: "Result linked to serial number", desc: "Flash test data stored against the individual serial number and tied to the QR code affixed to the module.", bg: "#FFFFFF", color: "#4F4F4E", labelColor: "#898989" },
+        { n: "03", tag: "Installation", title: "QR scan on site", desc: "Installer scans the module QR code using EMON registration. No additional request required.", bg: "#FFFFFF", color: "#4F4F4E", labelColor: "#898989" },
+        { n: "04", tag: "EMON app", title: "Flash test results displayed automatically", desc: "The complete flash test record for that specific module is loaded and displayed at the moment of first scan. No portal. No PDF.", bg:"#4F4F4E", color: "#F4F4F4", labelColor: "#8BCF3F" },
+      ],
+      flashData: [
+        { label: "Peak power", value: "403 Wp", color: "#6b8f1f" },
+        { label: "Short-circuit current", value: "11,2 A", color: "#4F4F4E" },
+        { label: "Open-circuit voltage", value: "45,6 V", color: "#4F4F4E" },
+        { label: "Fill factor", value: "79.8 %", color: "#4F4F4E" },
+        { label: "Power tolerance", value: "+0.8 %", color: "#6b8f1f" },
+      ],
+      tripleTests: [
+        { n: "Test 01", desc: "Cell-level inspection before assembly — output, uniformity, structural integrity per cell." },
+        { n: "Test 02", desc: "100% electroluminescence inspection after assembly — micro-cracks, solder faults, cell fractures detected at unit level." },
+        { n: "Test 03", desc: "Flash test at dispatch — STC measurement per serial number, result linked to QR code, visible in EMON app at installation scan." },
+      ],
+      scanFields: [
+        { title: "Panel serial number", desc: "Unique identifier linked to production batch, cell lot and factory record." },
+        { title: "Roof position", desc: "Row and column — exact panel location on the roof surface." },
+        { title: "Panel orientation", desc: "Landscape or portrait, derived from the sheet window used." },
+        { title: "Roof type", desc: "Pitched or flat. Selected in the EMON app at scan time." },
+        { title: "E-W pair configuration", desc: "Column pairs define east-west panel pairs on flat roofs automatically." },
+        { title: "String diagram", desc: "Which panel connects to which MOEBIUS inverter input, generated automatically." },
+        { title: "MOEBIUS inverter assignment", desc: "Each inverter is linked to its panels using the same grid logic as the panel sheet." },
+        { title: "Warranty activated", desc: "Registration timestamp becomes the warranty start date. No separate registration required." },
+      ],
+      registrationFlow: [
+        { n: "01", title: "QR code removed from panel", desc: "Each panel ships with a QR code label. The installer peels it during placement." },
+        { n: "02", title: "Placed on EMON scan sheet", desc: "Each QR code goes into its numbered window. Row = roof height, column = horizontal position." },
+        { n: "03", title: "Single scan — EMON Smart Scan app", desc: "The installer photographs the complete sheet. The app reads all QR codes in one action." },
+        { n: "04", title: "String diagram generated", desc: "Panel positions map to a string diagram. Each panel is assigned to its MOEBIUS inverter." },
+        { n: "05", title: "EMON monitoring activated", desc: "Warranty is live. Output is tracked against the expected degradation curve from day one." },
+      ],
+      curveScenarios: [
+        { title: "Actual line follows the expected curve", desc: "The system is performing exactly as the data predicted. No action needed — the warranty is tracking as expected." },
+        { title: "Actual line stays above the expected curve", desc: "The panels are degrading more slowly than the model projected, typically due to favourable installation conditions. EMON flags it so you know." },
+        { title: "Actual line drops below the expected curve", desc: "The panels are degrading faster than the model projected. EMON flags this automatically, first as an informational alert, then as a warning if the deviation continues." },
+      ],
+      certifications: [
+        { name: "IEC 61215", desc: "International standard for crystalline silicon modules — design qualification and type approval." },
+        { name: "IEC 61730", desc: "Safety qualification — electrical, mechanical and fire safety requirements." },
+        { name: "TÜV Rheinland", desc: "Independent certification confirming ANDO panels meet the relevant IEC standards." },
+        { name: "VDE", desc: "German electrical safety certification, required for CE marking and European market access." },
+        { name: "PVEL Top Performer", desc: "Kiwa PVEL testing: thermal cycling, damp heat, UV and mechanical stress." },
+        { name: "Fire Class A", desc: "Highest fire classification for rooftop applications." },
+        { name: "PFAS-free", desc: "No per- or polyfluoroalkyl substances in panel construction." },
+        { name: "MCS (UK)", desc: "Microgeneration Certification Scheme, required for UK government incentive eligibility." },
+        { name: "Insurance", desc: "Product liability insurance. Installer warranty underwritten separately." },
+        { name: "Bankability", desc: "Tier 1 bankability rating, required for project finance in most European markets." },
+      ],
+      networkBenefits: [
+        { n: "01", title: "Full EMON access", desc: "Every installation you complete is registered and monitored through EMON. You retain access to the performance data for your installations and can use it for customer service and warranty documentation." },
+        { n: "02", title: "QR scan registration — no paperwork", desc: "The EMON scan sheet system means you register a full installation — serial numbers, positions, orientation, inverter assignment — in one photograph. No manual data entry on site." },
+        { n: "03", title: "Technical and sales support", desc: "Regional contacts across Europe. Access to technical documentation, system design support, and customer-facing materials for your projects." },
+        { n: "04", title: "Product warranty backed by the manufacturer", desc: "The 30-year product and power warranty is backed by Strohm.energy. You install. We stand behind the product." },
+      ],
+      bifacialSurfaces: [
+        { surface: "Dark roofing felt / bitumen", albedo: "0.05–0.10", gain: "+3–6%" },
+        { surface: "Gravel / grey concrete", albedo: "0.20–0.30", gain: "+8–12%" },
+        { surface: "White roofing membrane (TPO/PVC)", albedo: "0.60–0.75", gain: "+12–18%" },
+        { surface: "Ground-mounted / light soil or grass", albedo: "0.20–0.25", gain: "+10–15%" },
+        { surface: "Elevated installation / white surface or snow", albedo: "0.80+", gain: "up to +20%" },
+      ],
+      anatomy: [
+        { n: "01", part: "Aluminium frame" },
+        { n: "02", part: "Anti-reflective coating" },
+        { n: "03", part: "Tempered safety glass" },
+        { n: "04", part: "Solar cells" },
+        { n: "05", part: "Busbars" },
+        { n: "06", part: "Polysilicon" },
+        { n: "07", part: "Backsheet or rear glass" },
+        { n: "08", part: "EVA encapsulant" },
+        { n: "09", part: "Junction box and MC4 connectors" },
+      ],
+      reliabilityBullets: [
+        "Salt mist and ammonia resistance rated.",
+        "PID resistance, standard on all models.",
+        "Hot-spot protection built in.",
+        "Wind and snow load rated to European installation norms.",
+        "Suitable for coastal and agricultural applications.",
+      ],
+      reliabilitySpecs: [
+        { heading: "Electrical", rows: [
+          { label: "Peak power", value: "430–460 Wp" },
+          { label: "Efficiency", value: "22.1%" },
+          { label: "Technology", value: "TOPCon, bifacial" },
+          { label: "Tolerance", value: "+0 / −0 Wp" },
+        ]},
+        { heading: "Mechanical", rows: [
+          { label: "Frame", value: "Aluminium / Black" },
+          { label: "Junction box", value: "IP68" },
+          { label: "Connectors", value: "Stäubli MC4" },
+          { label: "Glass", value: "Tempered, AR coated" },
+        ]},
+        { heading: "Environmental", rows: [
+          { label: "Wind load", value: "2 400 Pa" },
+          { label: "Snow load", value: "5 400 Pa" },
+          { label: "Temperature", value: "−40 to +85 °C" },
+          { label: "Hail", value: "35 mm at 23 m/s" },
+        ]},
+      ],
+      andoUploadLabels: [
+        "Panel label / serial + QR",
+        "Roof array — full view",
+        "Whole house / building exterior",
+        "Inverter & meter cabinet",
+      ],
+      andoContents: [
+        "Individual panel serial numbers & QR identity",
+        "Factory flash-test result per panel",
+        "Measured Pmax, Vmp, Imp, Voc, Isc & power tolerance",
+        "Roof position, plane, row, orientation & inclination",
+        "String and MPPT assignment per panel",
+        "Inverter / microinverter assignment",
+        "Installation & commissioning dates, installer details",
+        "Product + 30-year performance warranty documents",
+      ],
+      roofMapSteps: [
+        { n: "01", title: "Two codes per panel", desc: "A permanent QR on the module rear, plus one detachable duplicate label." },
+        { n: "02", title: "Place on the roof plan", desc: "The installer sticks each duplicate label in the panel's real position on the printed plan." },
+        { n: "03", title: "One scan pass", desc: "Scan the completed plan into EMON — every panel is read and located at once." },
+        { n: "04", title: "Mapped forever", desc: "Position, string, MPPT and serial number stay linked to the physical panel." },
+      ],
+      roofMapRecords: [
+        "Exact position of each panel on the roof",
+        "String and MPPT assignment per panel",
+        "Microinverter or optimiser pairing, where fitted",
+        "Serial number and flash-test data per module",
+        "Orientation and inclination per roof plane",
+        "Warranty registration for every panel",
+        "Revision history when panels are added or replaced",
+      ],
+      scanSheetRows: [
+        { label: "Format", value: "A3 or A4, printed" },
+        { label: "Codes per panel", value: "1 permanent + 1 detachable" },
+        { label: "Scan", value: "Single pass into EMON" },
+        { label: "Builds", value: "Digital twin of the roof" },
+        { label: "Becomes", value: "Part of the technical file" },
+        { label: "Backup", value: "Human-readable, physical" },
+      ],
+      shareSteps: [
+        { n: "01", text: "Open EMON app" },
+        { n: "02", text: "Tap Share your installation" },
+        { n: "03", text: "Take or upload your photo" },
+        { n: "04", text: "Confirm consent" },
+        { n: "05", text: "Warranty extension confirmed by email" },
+      ],
+      productionFacts: [
+        { label: "Annual production capacity", value: "2,4 GW across certified manufacturing partners." },
+        { label: "Quality control", value: "100% flash test on every panel before shipment. High first-pass rate, verified per production run." },
+        { label: "Cell technology used", value: "TOPCon and HJT bifacial cells, selected per series." },
+        { label: "Material standard", value: "Tier 1 suppliers only. Full supply chain documented per serial number via EMON registration." },
+        { label: "Automation level", value: "High degree of automated production. Manual inspection retained at key checkpoints." },
+        { label: "Banking rating", value: "Tier 1 bankability rating. Required for project finance applications." },
+        { label: "Insurance", value: "Panels covered by product liability insurance. Installer warranty underwritten separately by the installer." },
+      ],
+      sustainabilityPoints: [
+        { title: "PFAS-free", desc: "All ANDO modules are PFAS-free. No per- or polyfluoroalkyl substances are used in manufacturing or encapsulation. No exceptions across the range." },
+        { title: "End-of-life programme", desc: "A structured take-back and processing programme covers decommissioned panels. Module materials are selected for end-of-life recyclability from the design stage." },
+        { title: "Zero waste packaging", desc: "Packaging is designed so that nothing is left behind on site after the module has been placed. All materials are fully recyclable. No residual waste at installation." },
+      ],
+      packaging: [
+        { title: "Pallets from recycled wood fibre", desc: "Shipping pallets are constructed from recycled wood fibre — no primary timber. Fully recyclable through wood waste processing streams at end of service life. Pallets are taken back from the installation site." },
+        { title: "Cardboard throughout — minimum plastic", desc: "Individual module protection is cardboard throughout. Plastic is used only where functionally unavoidable — to protect electrical connectors and the junction box from moisture during freight." },
+        { title: "Zero residual waste at installation", desc: "Nothing remains on site after the module is placed that cannot be processed through standard recycling. Cardboard goes to paper recycling. No foam, no non-recyclable film." },
+      ],
+      projects: [
+        { title: "Residential rooftop", size: "12,4 kWp", type: "Residential", meta: "Installed 2024 · location visible", slotId: "ando-proj-1" },
+        { title: "Ground-mounted farm", size: "38,0 kWp", type: "Agricultural", meta: "Installed 2023 · location visible", slotId: "ando-proj-2" },
+        { title: "Commercial rooftop", size: "24,8 kWp", type: "Commercial", meta: "Installed 2024 · location confidential", slotId: "ando-proj-3" },
+        { title: "Residential rooftop", size: "8,2 kWp", type: "Residential", meta: "Installed 2023 · location confidential", slotId: "ando-proj-4" },
+      ],
+      testimonials: [
+        { quote: "The installation took one day. The week after, I had a complete record of every panel on my roof — serial numbers, locations, output. I did not expect that level of detail.", attribution: "Building owner, Netherlands" },
+        { quote: "Documentation for the project sign-off took a fraction of the time it usually does. Every panel serial number was already logged against its position.", attribution: "Installer partner, Belgium" },
+        { quote: "We size EMON monitoring into every proposal now. Clients ask for it by name after seeing a reference installation.", attribution: "Installer partner, Germany" },
+      ],
+      crewFaqs: [
+        "What is the difference between product warranty and power warranty?",
+        "How does the QR registration system work exactly?",
+        "Do position and orientation on the roof affect the warranty?",
+        "What happens if the installer is not reachable after installation?",
+        "Are ANDO panels suitable for flat roofs and ground-mounted arrays?",
+        "Are ANDO panels PFAS-free?",
+        "What monitoring data does EMON show?",
+      ],
+      consultTopics: ["Roof plans", "Electrical layouts", "Mechanical layouts", "Product configuration", "Output & yield calculations", "Production techniques", "Installation methods"],
+      newsItems: [
+        { tag: "Product update", title: "TOPCon bifacial — updated efficiency specification", desc: "The ANDO SL-W and SL-B series receive updated cell efficiency specifications following the 2026 production run validation. Full datasheet update available on request.", meta: "ANDO · Product · 2026" },
+        { tag: "Technology", title: "Multi-busbar architecture — what it means for shade performance", desc: "A technical overview of how multi-busbar cell design reduces resistive losses and improves output in partially shaded conditions — relevant for residential pitched roof installations.", meta: "ANDO · Technology · 2026" },
+        { tag: "Project", title: "580 kWp commercial installation — documented case study available", desc: "A completed commercial rooftop installation with full EMON monitoring data. Output vs expected degradation curve shown after 12 months of operation.", meta: "ANDO · Project · 2026" },
+      ],
+      documents: [
+        { title: "Product Datasheet", desc: "Full technical specs for all ANDO series. Efficiency, dimensions, output, temperature data, certifications.", action: "Open PDF", icon: "↗", borderColor: "#E3E1DB", bg: "#FFFFFF", color: "#4F4F4E" },
+        { title: "Installation Manual", desc: "Step-by-step guide for certified installers. Mechanical mounting, string wiring, QR scan procedure.", action: "Open PDF", icon: "↗", borderColor: "#E3E1DB", bg: "#FFFFFF", color: "#4F4F4E" },
+        { title: "EMON Setup Guide", desc: "How to use the QR registration system. Pre-install scan, layout plan, string assignment, warranty confirmation.", action: "Open PDF", icon: "↗", borderColor: "#E3E1DB", bg: "#FFFFFF", color: "#4F4F4E" },
+        { title: "Wiring Diagram", desc: "Electrical schematic for the ANDO standard range. Series and parallel string configurations, MC4 connections.", action: "Open PDF", icon: "↗", borderColor: "#E3E1DB", bg: "#FFFFFF", color: "#4F4F4E" },
+        { title: "Warranty Document", desc: "Full warranty terms and conditions. Product and performance coverage, auto-registration process, claim procedure.", action: "Account required", icon: "", borderColor: "#E3E1DB", bg: "#FFFFFF", color: "#898989" },
+        { title: "Warranty Terms", desc: "Summary warranty terms per series. For project finance and insurance documentation.", action: "Account required", icon: "", borderColor: "#E3E1DB", bg: "#FFFFFF", color: "#898989" },
+        { title: "Certificates", desc: "IEC, TÜV, VDE and other certification documents. For project specifications and permit applications.", action: "Account required", icon: "", borderColor: "#E3E1DB", bg: "#FFFFFF", color: "#898989" },
+      ],
+      nextSteps: [
+        "Request ANDO product specification",
+        "Download full technical datasheet",
+        "Review warranty terms and conditions",
+        "Request case study documentation",
+        "Ask for project support and sizing",
+      ],
+    };
+  }
+  renderVals() {
+    const v = this._rv();
+    const s = String(this.props.show || "").split(",").map((x) => x.trim());
+    return { ...v, show_supply: s.includes("supply"), show_facts: s.includes("facts"), show_warranty: s.includes("warranty"), show_quality: s.includes("quality"), show_technical: s.includes("technical"), show_docs: s.includes("docs"), show_installers: s.includes("installers"), show_faq: s.includes("faq"), show_sustain: s.includes("sustain"), show_projects: s.includes("projects"), show_news: s.includes("news") };
+  }
+}
+
+</script>
+</body>
+</html>

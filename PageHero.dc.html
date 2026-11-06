@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="./image-slot.js"></script>
+<style>@media (max-width:1024px){ .ph-card{grid-template-columns:1fr !important;aspect-ratio:auto !important;} .ph-media{position:relative !important;aspect-ratio:4/3;grid-row:1 !important;} .ph-panel{grid-row:2 !important;grid-column:1 !important;padding:40px 32px !important;} } @media (max-width:720px){ .ph-card{width:calc(100% - 40px) !important;margin-top:20px !important;} .ph-panel{padding:28px 20px !important;} }</style>
+</helmet>
+<section class="ph-card" data-screen-label="{{ label }}" data-stack="1" style="position:relative;width:calc(100% - 2 * var(--web-side));max-width:var(--web-grid);margin:var(--web-hero-top) auto 0;aspect-ratio:2.1/1;border-radius:var(--web-hero-radius);overflow:hidden;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);font-family:var(--font-web);background:#EBECEC;">
+  <div class="ph-media" onMouseEnter="{{ pause }}" onMouseLeave="{{ resume }}" style="position:absolute;inset:0;grid-column:1 / -1;grid-row:1 / -1;min-width:0;">
+    <sc-if value="{{ hasVideo }}" hint-placeholder-val="{{ false }}">
+      <video src="{{ video }}" poster="{{ poster }}" muted="{{ true }}" autoPlay="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;"></video>
+    </sc-if>
+    <sc-if value="{{ noVideo }}" hint-placeholder-val="{{ true }}">
+      <image-slot id="{{ slot }}" src="{{ src }}" shape="rect" placeholder="{{ shot }}"></image-slot>
+    </sc-if>
+    <sc-if value="{{ hasSlides }}" hint-placeholder-val="{{ false }}">
+      <sc-for list="{{ slideList }}" as="s" hint-placeholder-count="1">
+        <div style="position:absolute;inset:0;opacity:{{ s.op }};pointer-events:{{ s.pe }};transition:opacity 1.2s ease;">
+          <image-slot id="{{ s.slot }}" src="{{ s.src }}" shape="rect" placeholder="{{ s.shot }}"></image-slot>
+        </div>
+      </sc-for>
+      <sc-if value="{{ showDots }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;right:16px;bottom:12px;z-index:2;display:flex;gap:4px;">
+          <sc-for list="{{ dots }}" as="d" hint-placeholder-count="2">
+            <button type="button" aria-label="{{ d.label }}" onClick="{{ d.go }}" style="width:32px;height:32px;padding:0;border:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <span style="width:10px;height:10px;border-radius:50%;box-sizing:border-box;background:{{ d.bg }};border:{{ d.bd }};"></span>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+    </sc-if>
+  </div>
+  <div class="ph-panel" style="grid-column:1;grid-row:1;position:relative;z-index:1;container-type:inline-size;min-width:0;box-sizing:border-box;padding:56px 48px;background:{{ panelBg }};color:#252525;display:flex;flex-direction:column;justify-content:center;gap:24px;">
+    <sc-if value="{{ hasEyebrow }}" hint-placeholder-val="{{ true }}">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#252525;">{{ eyebrow }}</div>
+    </sc-if>
+    <h1 style="margin:0;font-size:clamp(28px,8.4cqi,44px);font-weight:100;line-height:1.2;letter-spacing:0.01em;word-spacing:0.12em;color:#252525;text-transform:uppercase;text-wrap:balance;overflow-wrap:normal;hyphens:manual;">{{ title }}</h1>
+    <sc-if value="{{ hasIntro }}" hint-placeholder-val="{{ true }}">
+      <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#252525;text-wrap:pretty;max-width:440px;">{{ intro }}</p>
+    </sc-if>
+  </div>
+</section>
+<sc-if value="{{ hasRest }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;font-family:var(--font-web);">
+    <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ rest }}</p>
+  </section>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:760},&quot;brand&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ANDO&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;rgb&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;205,219,101&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;eyebrow&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ANDO · Asset Register&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Page title&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;intro&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;slot&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ando-asset-register-hero&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;shot&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Hero photo or short muted loop&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;video&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;poster&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;slides&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;{slot:string,src?:string,shot?:string}[]&quot;},&quot;interval&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:0,&quot;min&quot;:0,&quot;max&quot;:20,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  state = { idx: 0, fk: "" };
+  componentDidMount() { this._acc = 0; this._t = setInterval(() => this._tick(), 1000); this._tick(); }
+  componentWillUnmount() { clearInterval(this._t); }
+  _slides() { return Array.isArray(this.props.slides) && !this.props.video ? this.props.slides : []; }
+  _editable() { return !!(window.omelette && window.omelette.writeFile); }
+  _filled() { return this._slides().map(x => { const el = document.getElementById(x.slot); return !!(el && el.hasAttribute("data-filled")); }); }
+  _go(j) { this._acc = 0; if (j !== this.state.idx) this.setState({ idx: j }); }
+  _tick() {
+    const sl = this._slides(); if (!sl.length) return;
+    const f = this._filled(), fk = f.map(b => b ? "1" : "0").join("");
+    if (fk !== this.state.fk) this.setState({ fk });
+    const i = this.state.idx;
+    if (!f[i]) { if (!this._editable()) { const j = f.indexOf(true); if (j > -1) this._go(j); } return; }
+    const sec = Number(this.props.interval) || 0;
+    if (!sec || this._paused || (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) { this._acc = 0; return; }
+    if (++this._acc < sec) return;
+    this._acc = 0;
+    for (let k = 1; k <= sl.length; k++) { const j = (i + k) % sl.length; if (f[j]) { this._go(j); break; } }
+  }
+  renderVals() {
+    const p = this.props;
+    const RGB = {AGRIX:"107,142,78",AIRO:"0,131,187",ANDO:"205,214,43",CHILL:"107,192,176",DEPOT:"118,144,201",DODO:"229,183,59",EMON:"33,174,143",FEU:"237,112,76",FLUXX:"253,199,6",GLOW:"252,222,21",KALK:"196,177,200",KERN:"29,171,193",LINA:"181,198,74",MOEBIUS:"241,147,27",MOX:"216,57,44",MUKI:"223,85,12",NENDO:"27,139,154",OGO:"0,160,227",OZZY:"139,207,63",PACT:"214,153,14",PROP:"82,122,131",PUSH:"62,171,87",SHELTR:"91,101,146",SYNQ:"89,143,148",TOGU:"196,135,35",TRIBE:"104,154,178",WURK:"158,61,46",XOOM:"142,177,95",TERRIX:"107,117,95",PONTIX:"6,118,138",TECTIX:"74,91,115",PARX:"122,147,55"};
+    const brand = String(p.brand || "").toUpperCase();
+    const rgb = p.rgb || RGB[brand] || "200,200,200";
+    const video = p.video || "";
+    const raw = Array.isArray(p.intro) ? p.intro.join(" ") : String(p.intro || "");
+    let intro = raw, rest = "";
+    if (p.split) { const m = raw.match(/^(.+?[.!?])\s+(\S[\s\S]*)$/); if (m) { intro = m[1]; rest = m[2]; } }
+    return {
+      label: (p.brand ? p.brand + " — " : "") + "Hero",
+      title: p.title || "", intro, eyebrow: p.eyebrow || "", rest, hasRest: !!rest,
+      hasIntro: !!intro, hasEyebrow: !!p.eyebrow, src: p.src || "",
+      slot: p.slot || "page-hero", shot: p.shot || "Hero photo or short muted loop",
+      video, poster: p.poster || "", hasVideo: !!video, noVideo: !video && !this._slides().length,
+      ...(() => {
+        const sl = this._slides(), idx = this.state.idx, fk = this.state.fk, ed = this._editable();
+        const slideList = sl.map((x, i) => ({ slot: x.slot, src: x.src || "", shot: x.shot || p.shot || "Hero photo", op: i === idx ? 1 : 0, pe: i === idx ? "auto" : "none" }));
+        const dots = sl.map((x, i) => ({ i, filled: fk[i] === "1" })).filter(d => ed || d.filled).map(d => ({
+          label: "Show picture " + (d.i + 1), go: () => this._go(d.i),
+          bg: d.i === idx ? `rgb(${rgb})` : "#FFFFFF",
+          bd: d.i === idx ? `1px solid rgb(${rgb})` : (d.filled ? "1px solid #4F4F4E" : "1px dashed #4F4F4E"),
+        }));
+        return { hasSlides: sl.length > 0, slideList, dots, showDots: dots.length > 1, pause: () => { this._paused = true; }, resume: () => { this._paused = false; } };
+      })(),
+      panelBg: `linear-gradient(rgba(${rgb},0.3),rgba(${rgb},0.3)),rgba(255,255,255,0.6)`,
+    };
+  }
+}
+</script>
+</body>
+</html>

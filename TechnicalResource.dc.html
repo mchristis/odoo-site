@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<script src="./content-data.js"></script>
+<style> body { margin:0; background:#FFFFFF; } a { color:#1E1E1E; } a:hover { color:#5F5E5E; } </style>
+</helmet>
+<div style="font-family:var(--font-web);color:#4F4F4E;min-height:100vh;">
+  <dc-import name="NavBar" active="company" hint-size="100%,80px"></dc-import>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">For installers &amp; specifiers</div>
+    <h1 style="margin:0 0 20px;font-size:var(--web-h1-size);line-height:var(--web-h1-lh);font-weight:100;letter-spacing:-0.01em;max-width:760px;">Technical resources.</h1>
+    <p style="margin:0 0 48px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;max-width:680px;">Datasheets, installation manuals, grid certificates and engineering guides across every STRØHM.ENERGY brand, in one place.</p>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+    <div style="border-top:1px solid #D4D4D4;padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:24px;">By brand</div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:64px;--cg:12px;">
+        <sc-for list="{{ brandLinks }}" as="b" hint-placeholder-count="8">
+          <a href="{{ b.href }}" style="background:#F4F4F4;padding:22px;text-decoration:none;display:flex;flex-direction:column;gap:4px;border-radius:12px;" style-hover="background:#E3E3E3;">
+            <span style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;">{{ b.name }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">Product page &amp; downloads</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 96px;box-sizing:border-box;">
+    <div style="background:#F5F5F5;padding:48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;border-radius:12px;">
+      <div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:8px;line-height:var(--web-h3-lh);">Looking for the full Knowledge and Methods library?</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;max-width:520px;line-height:var(--web-small-lh);">Explainers, technical articles and engineering guides across every brand.</div>
+      </div>
+      <a href="STROHM.ENERGY - CONTENT - Knowledge - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius,8px);text-decoration:none;white-space:nowrap;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Open Knowledge and Methods</a>
+    </div>
+  </section>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const C = window.STROHM_CONTENT;
+    const hrefs = C ? C.pageHref : {};
+    return {
+      brandLinks: ["ANDO", "MOEBIUS", "FLUXX", "SYNQ", "MOX", "OZZY", "NENDO", "TOGU"].map((b) => ({ name: b, href: (hrefs && hrefs[b]) || "#" })),
+    };
+  }
+}
+</script>
+</body>
+</html>

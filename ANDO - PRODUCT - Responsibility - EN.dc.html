@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>ANDO Responsibility | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4F4F4E; text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+  <dc-import name="NavBar" active="products" hint-size="100%,65px"></dc-import>
+  <dc-import name="AndoNav" active="responsibility" hint-size="100%,57px"></dc-import>
+
+  <!-- 7.1 HERO (PageHero, DEPTH-858) -->
+<dc-import name="PageHero" brand="ANDO" rgb="205,214,43" eyebrow="Responsibility &amp; sustainability" title="Built for long service life. Managed with responsibility." intro="Durability, verified materials, audited management systems, low-waste packaging and a clean end-of-life route — recorded, not claimed." slot="ando-resp-hero" shot="ANDO_RESPONSIBILITY_HERO_BANNER_MATERIAL-LIFECYCLE_01 · strong material/lifecycle image — panel material detail, manufacturing, packaging, installed project or end-of-life recovery · no leaves-on-panel, no green icons · 21:9 / 4:5 mobile · still · placeholder (P1)" hint-size="100%,625px"></dc-import>
+
+  <!-- 7.2 DURABILITY -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Durability</div>
+      <h2 style="margin:0 0 28px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Glass-glass construction, <span style="color:#8E8E8E;">tested against real exposure.</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ durability }}" as="d" hint-placeholder-count="6">
+          <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+            <div style="aspect-ratio:4/3;background:var(--color-card-ando);"><image-slot id="{{ d.slotId }}" shape="rect" placeholder="{{ d.dir }}"></image-slot></div>
+            <div style="padding:16px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);">{{ d.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:20px 0 0;font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Only verified claims are shown. Comparison figures are dummy values until confirmed.</p>
+    </div>
+  </section>
+
+  <!-- 7.3 TOPCON + 7.4 PFAS-FREE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;--cg:48px;">
+      <div>
+        <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">TOPCon and materials</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Square TOPCon cells, <span style="color:#8E8E8E;">strictly.</span></h2>
+        <p style="margin:0 0 20px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">ANDO is TOPCon square-cell only. No HJT content. The material record is held at serial level.</p>
+        <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;"><div style="aspect-ratio:16/10;background:var(--color-card-ando);"><image-slot id="ando-resp-topcon" shape="rect" placeholder="ANDO_RESPONSIBILITY_TOPCON_MACRO_SQUARE-CELL_01 · square TOPCon cell macro, cell arrangement, conductive pathways, material stack · 16:10 · still · placeholder (P2)"></image-slot></div></div>
+      </div>
+      <div>
+        <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">PFAS-free</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">No fluorinated backsheet layer. <span style="color:#8E8E8E;">No hidden exception.</span></h2>
+        <p style="margin:0 0 20px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The material stack is documented layer by layer, with a declaration linked to batch or serial and a defined scope of application.</p>
+        <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;"><div style="aspect-ratio:16/10;background:var(--color-card-ando);"><image-slot id="ando-resp-pfas" shape="rect" placeholder="ANDO_RESPONSIBILITY_PFAS_DIAGRAM_MATERIAL-STACK_01 · material stack diagram identifying all main layers and materials + declaration preview with batch/serial linkage · no unexplained green badge · 16:10 · still · placeholder (P1)"></image-slot></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7.5 ISO MANAGEMENT -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">ISO management</div>
+      <h2 style="margin:0 0 28px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Three international management standards. <span style="color:#8E8E8E;">All held. All audited.</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ iso }}" as="i" hint-placeholder-count="3">
+          <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+            <div style="aspect-ratio:4/3;background:var(--color-card-ando);"><image-slot id="{{ i.slotId }}" shape="rect" placeholder="{{ i.dir }}"></image-slot></div>
+            <div style="padding:16px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:var(--color-text-primary);line-height:var(--web-h3-lh);">{{ i.code }}</div><div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ i.label }}</div></div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:20px 0 0;font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Certifications apply to all current manufacturing facilities. A product itself is not ISO certified.</p>
+    </div>
+  </section>
+
+  <!-- 7.6 PACKAGING -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Packaging</div>
+      <h2 style="margin:0 0 28px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Pallets. <span style="color:#8E8E8E;">Cardboard. Nothing left on site.</span></h2>
+      <div style="border:1px solid var(--color-divider);border-radius:24px;overflow:hidden;">
+        <div style="aspect-ratio:21/9;background:var(--color-text-primary);"><image-slot id="ando-resp-packaging-video" shape="rect" placeholder="ANDO_RESPONSIBILITY_PACKAGING_VIDEO_PALLET-SYSTEM_01 · factory packing → transport → site arrival → controlled unpacking → installation → packaging separation → pallet return → clean site · 30–45s · silent · 16:9 · placeholder (P2)"></image-slot></div>
+        <div style="padding:18px 20px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Recycled wood-fibre pallets, cardboard corner protection, minimal plastic, pallet take-back.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7.7 END OF LIFE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;--cg:48px;">
+      <div>
+        <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">End of life and WEEE</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Designed to <span style="color:#8E8E8E;">end cleanly.</span></h2>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ eolSteps }}" as="e" hint-placeholder-count="6">
+            <div style="display:flex;gap:12px;font-size:14px;font-weight:300;color:var(--color-text-primary);line-height:1.5;"><span style="color:var(--color-grey-70);font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);">{{ e.n }}</span>{{ e.label }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+        <div style="aspect-ratio:4/3;background:var(--color-card-ando);"><image-slot id="ando-resp-eol" shape="rect" placeholder="ANDO_RESPONSIBILITY_END-OF-LIFE_DIAGRAM_WEEE_01 · lifecycle diagram: in use → separate collection → approved treatment → material recovery (glass, aluminium, cells) → recycling record → closed ownership record + WEEE registration · no recycling-bin cliché · 4:3 · still · placeholder (P2)"></image-slot></div>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:64px;"></div>
+  <dc-import name="AndoSections" show="supply,facts,sustain" hint-size="100%,1200px"></dc-import>
+  <div style="height:32px;"></div>
+  <dc-import name="ContentSections" brand="ANDO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="ANDO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="ANDO" accent="var(--color-brand-ando)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:960}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      durability: [
+        { label:"Glass-glass cross-section", slotId:"ando-dur-section", dir:"ANDO_RESPONSIBILITY_DURABILITY_SECTION_GLASS-GLASS_01 · glass-glass cross-section, labelled · 4:3 · still · placeholder (P2)" },
+        { label:"Environmental testing", slotId:"ando-dur-env", dir:"ANDO_RESPONSIBILITY_DURABILITY_PHOTO_ENVIRONMENTAL-TEST_01 · module in environmental test chamber · 4:3 · still · placeholder (P2)" },
+        { label:"Frame and seal detail", slotId:"ando-dur-seal", dir:"ANDO_RESPONSIBILITY_DURABILITY_MACRO_FRAME-SEAL_01 · frame, corner and junction-box sealing detail · 4:3 · still · placeholder (P3)" },
+        { label:"Mechanical-load test", slotId:"ando-dur-load", dir:"ANDO_RESPONSIBILITY_DURABILITY_PHOTO_MECHANICAL-LOAD_01 · mechanical-load test setup · 4:3 · still · placeholder (P2)" },
+        { label:"Weather-exposure test", slotId:"ando-dur-weather", dir:"ANDO_RESPONSIBILITY_DURABILITY_PHOTO_WEATHER-EXPOSURE_01 · weather-exposure test · 4:3 · still · placeholder (P3)" },
+        { label:"Glass-glass vs single-glass", slotId:"ando-dur-compare", dir:"ANDO_RESPONSIBILITY_DURABILITY_DIAGRAM_COMPARISON_01 · glass-glass vs single-glass/polymer-backsheet comparison, verified claims only · 4:3 · still · placeholder (P2)" },
+      ],
+      iso: [
+        { code:"ISO 9001", label:"Quality management", slotId:"ando-iso-9001", dir:"ANDO_RESPONSIBILITY_ISO_PREVIEW_9001_01 · ISO 9001 certificate preview + factory quality process · 4:3 · still · placeholder (P2)" },
+        { code:"ISO 14001", label:"Environmental management", slotId:"ando-iso-14001", dir:"ANDO_RESPONSIBILITY_ISO_PREVIEW_14001_01 · ISO 14001 certificate preview + environmental controls · 4:3 · still · placeholder (P2)" },
+        { code:"ISO 45001", label:"Occupational health & safety", slotId:"ando-iso-45001", dir:"ANDO_RESPONSIBILITY_ISO_PREVIEW_45001_01 · ISO 45001 certificate preview + worker-safety process · 4:3 · still · placeholder (P2)" },
+      ],
+      eolSteps: [
+        { n:"1", label:"Product in use" },
+        { n:"2", label:"Separate collection" },
+        { n:"3", label:"Approved treatment" },
+        { n:"4", label:"Material recovery — glass, aluminium, cells and electronics" },
+        { n:"5", label:"Recycling record" },
+        { n:"6", label:"Closed ownership record" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

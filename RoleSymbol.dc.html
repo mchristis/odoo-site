@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="position:relative;width:100%;height:100%;">
+  <sc-if value="{{ s.founders.show }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;opacity:{{ s.founders.op }};transform:{{ s.founders.tf }};transition:{{ tr }};">
+    <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><circle cx="50" cy="50" r="50" fill="#F76801"></circle><rect x="28" y="28" width="44" height="44" fill="#FFFFFF"></rect><circle cx="50" cy="50" r="5.5" fill="#111111"></circle></svg>
+  </div></sc-if>
+  <sc-if value="{{ s.builders.show }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;opacity:{{ s.builders.op }};transform:{{ s.builders.tf }};transition:{{ tr }};">
+    <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><rect x="10" y="10" width="80" height="80" fill="none" stroke="#0083BB" stroke-width="16"></rect></svg>
+  </div></sc-if>
+  <sc-if value="{{ s.product.show }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;opacity:{{ s.product.op }};transform:{{ s.product.tf }};transition:{{ tr }};">
+    <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><polygon points="50,4 97,92 3,92" fill="#D8392C"></polygon></svg>
+  </div></sc-if>
+  <sc-if value="{{ s.system.show }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;opacity:{{ s.system.op }};transform:{{ s.system.tf }};transition:{{ tr }};">
+    <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><path d="M8 92 L8 8 A84 84 0 0 1 92 92 Z" fill="#1DABC1"></path><circle cx="8" cy="92" r="8" fill="#3F3F3F"></circle></svg>
+  </div></sc-if>
+  <sc-if value="{{ s.project.show }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;opacity:{{ s.project.op }};transform:{{ s.project.tf }};transition:{{ tr }};">
+    <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><path d="M8 58 A42 42 0 0 1 92 58 Z" fill="#5B6592"></path><rect x="8" y="70" width="84" height="16" fill="#5B6592"></rect></svg>
+  </div></sc-if>
+  <sc-if value="{{ s.webshop.show }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;opacity:{{ s.webshop.op }};transform:{{ s.webshop.tf }};transition:{{ tr }};">
+    <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><g fill="none" stroke="#FDC706" stroke-width="5"><circle cx="50" cy="50" r="45"></circle><circle cx="50" cy="50" r="31"></circle><circle cx="50" cy="50" r="17"></circle></g></svg>
+  </div></sc-if>
+  <sc-if value="{{ s.local.show }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;opacity:{{ s.local.op }};transform:{{ s.local.tf }};transition:{{ tr }};">
+    <svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true"><rect x="0" y="0" width="100" height="100" rx="16" fill="#F4F4F4"></rect><g fill="#DF550C"><path d="M50 50 L41.3 23.6 A14 14 0 1 0 23.6 41.3 Z"></path><path d="M50 50 L41.3 23.6 A14 14 0 1 0 23.6 41.3 Z" transform="rotate(90 50 50)"></path><path d="M50 50 L41.3 23.6 A14 14 0 1 0 23.6 41.3 Z" transform="rotate(180 50 50)"></path><path d="M50 50 L41.3 23.6 A14 14 0 1 0 23.6 41.3 Z" transform="rotate(270 50 50)"></path></g></svg>
+  </div></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:120,&quot;height&quot;:120},&quot;role&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;founders&quot;,&quot;builders&quot;,&quot;product&quot;,&quot;system&quot;,&quot;project&quot;,&quot;webshop&quot;,&quot;local&quot;],&quot;default&quot;:&quot;founders&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;reduced&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;morph&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const role = this.props.role || '';
+    const reduced = this.props.reduced || (typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const s = {};
+    ['founders', 'builders', 'product', 'system', 'project', 'webshop', 'local'].forEach((id) => {
+      const on = role === id || role === 'all';
+      s[id] = { show: !!this.props.morph || on, op: on ? 1 : 0, tf: on ? 'scale(1) rotate(0deg)' : (reduced ? 'none' : 'scale(0.4) rotate(-90deg)') };
+    });
+    return { s, tr: reduced ? 'opacity 200ms ease' : 'transform 560ms cubic-bezier(.34,1.56,.64,1), opacity 240ms ease' };
+  }
+}
+</script>
+</body>
+</html>

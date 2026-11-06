@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>OZZY Ask OZZY | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:#5a8a2a; }
+  @keyframes ozspin { to { transform:rotate(360deg); } }
+  textarea, input, select { font-family:var(--font-web); }
+  textarea:focus, input:focus, select:focus { outline:none; border-color:var(--color-brand-ozzy); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="OzzyNav" active="cases" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="OZZY" rgb="139,207,63" eyebrow="Ask OZZY" title="From a question to an installer-ready technical file." intro="Tell us about your building, your energy system and the equipment you want to measure or control." slot="ozzy-ask-ozzy-hero" shot="OZZY · Ask OZZY · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 8px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:700px;">OZZY prepares a preliminary recommendation. A STRØHM.ENERGY specialist can then review it with you and organise everything into one technical file for your local installer.</p>
+    <p style="margin:16px 0 0;font-size:var(--web-small-size);font-weight:300;color:#4d6b1f;max-width:700px;line-height:var(--web-small-lh);">STRØHM.ENERGY advises and prepares. The qualified local installer confirms, sells and installs.</p>
+  </section>
+
+  <!-- STEPPER -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:24px;display:flex;flex-wrap:wrap;gap:0;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+        <div style="display:flex;align-items:center;gap:10px;padding-right:22px;margin-right:22px;border-right:1px solid var(--color-divider);">
+          <span style="width:22px;height:22px;border-radius:50%;flex:none;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:{{ s.dotBg }};color:{{ s.dotColor }};border:1px solid {{ s.dotBorder }};">{{ s.num }}</span>
+          <span style="font-size:12px;font-weight:{{ s.weight }};letter-spacing:0.03em;color:{{ s.color }};white-space:nowrap;">{{ s.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- WIZARD -->
+  <section style="max-width:calc(920px + 2 * var(--web-side));margin:0 auto;padding:48px var(--web-side) 0;">
+
+    <!-- STEP: INTRO -->
+    <sc-if value="{{ isIntro }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <div style="margin-bottom:14px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Step 1 &#183; Ask OZZY</div>
+        <h2 style="margin:0 0 10px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">What would you like <span style="color:#8E8E8E;">to improve?</span></h2>
+        <p style="margin:0 0 20px;max-width:640px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Describe what you want to measure, control or reduce. We combine this with your building and energy-system details to prepare a preliminary recommendation.</p>
+        <textarea onInput="{{ onQuestion }}" placeholder="e.g. Our commercial kitchen has high electricity peaks around lunchtime." style="width:100%;box-sizing:border-box;min-height:96px;padding:16px;border:1px solid var(--color-divider);font-size:var(--web-input-size);font-weight:var(--web-input-weight);line-height:1.6;color:var(--color-text-primary);resize:vertical;border-radius:8px;">{{ question }}</textarea>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 32px;">
+          <sc-for list="{{ prompts }}" as="p" hint-placeholder-count="4">
+            <button onClick="{{ p.onClick }}" style="cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:300;text-align:left;padding:8px 14px;border:1px solid var(--color-divider);background:#F9FBF5;color:var(--color-text-primary);border-radius:8px;">{{ p.text }}</button>
+          </sc-for>
+        </div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">Who are you?</div>
+        <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:32px;--cg:12px;">
+          <sc-for list="{{ roleCards }}" as="r" hint-placeholder-count="6">
+            <button onClick="{{ r.onClick }}" style="cursor:pointer;font-family:inherit;text-align:left;font-size:14px;font-weight:400;padding:16px;border:1px solid {{ r.border }};background:{{ r.bg }};color:{{ r.color }};border-radius:12px;">{{ r.label }}</button>
+          </sc-for>
+        </div>
+        <div style="display:flex;justify-content:flex-end;">
+          <button onClick="{{ toBuilding }}" disabled="{{ introDisabled }}" style="cursor:{{ introCursor }};font-family:inherit;font-size:13px;font-weight:400;padding:14px 28px;background:{{ introBtnBg }};color:{{ introBtnColor }};border:none;border-radius:8px;">Continue<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></button>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- STEP: BUILDING -->
+    <sc-if value="{{ isBuilding }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="margin-bottom:14px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Step 2 &#183; Building</div>
+        <h2 style="margin:0 0 20px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">What type <span style="color:#8E8E8E;">of building?</span></h2>
+        <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:32px;--cg:12px;">
+          <sc-for list="{{ buildingCards }}" as="b" hint-placeholder-count="11">
+            <button onClick="{{ b.onClick }}" style="cursor:pointer;font-family:inherit;text-align:left;font-size:var(--web-btn-sm-size);font-weight:400;padding:16px;border:1px solid {{ b.border }};background:{{ b.bg }};color:{{ b.color }};border-radius:12px;">{{ b.label }}</button>
+          </sc-for>
+        </div>
+        <div style="display:flex;justify-content:space-between;">
+          <button onClick="{{ backToIntro }}" style="cursor:pointer;font-family:inherit;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#FFFFFF;color:var(--color-text-primary);border:1px solid var(--color-divider);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg>Back</button>
+          <button onClick="{{ toControl }}" disabled="{{ buildingDisabled }}" style="cursor:{{ buildingCursor }};font-family:inherit;font-size:13px;font-weight:400;padding:14px 28px;background:{{ buildingBtnBg }};color:{{ buildingBtnColor }};border:none;border-radius:8px;">Continue<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></button>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- STEP: CONTROL -->
+    <sc-if value="{{ isControl }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="margin-bottom:14px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Step 3 &#183; Loads</div>
+        <h2 style="margin:0 0 10px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">What do you want <span style="color:#8E8E8E;">to understand or control?</span></h2>
+        <p style="margin:0 0 20px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Select all that apply.</p>
+        <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:32px;--cg:10px;">
+          <sc-for list="{{ controlChips }}" as="c" hint-placeholder-count="12">
+            <button onClick="{{ c.onClick }}" style="cursor:pointer;font-family:inherit;text-align:left;font-size:var(--web-btn-sm-size);font-weight:400;padding:12px 14px;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.color }};border-radius:8px;">{{ c.label }}</button>
+          </sc-for>
+        </div>
+        <div style="display:flex;justify-content:space-between;">
+          <button onClick="{{ backToBuilding }}" style="cursor:pointer;font-family:inherit;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#FFFFFF;color:var(--color-text-primary);border:1px solid var(--color-divider);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg>Back</button>
+          <button onClick="{{ toDetails }}" disabled="{{ controlDisabled }}" style="cursor:{{ controlCursor }};font-family:inherit;font-size:13px;font-weight:400;padding:14px 28px;background:{{ controlBtnBg }};color:{{ controlBtnColor }};border:none;border-radius:8px;">Continue<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></button>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- STEP: DETAILS -->
+    <sc-if value="{{ isDetails }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="margin-bottom:14px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Step 4 &#183; Installation</div>
+        <h2 style="margin:0 0 10px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Tell us about <span style="color:#8E8E8E;">the installation.</span></h2>
+        <p style="margin:0 0 24px;max-width:640px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A few details make the recommendation more useful. Everything is optional &#8212; give what you know.</p>
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 24px;margin-bottom:24px;--cg:24px;">
+          <div>
+            <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:8px;">Supply</label>
+            <select onChange="{{ onPhase }}" style="width:100%;padding:12px 14px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-input-weight);">
+              <sc-for list="{{ phaseOptions }}" as="o" hint-placeholder-count="3"><option value="{{ o }}">{{ o }}</option></sc-for>
+            </select>
+          </div>
+          <div>
+            <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:8px;">Main connection rating</label>
+            <select onChange="{{ onRating }}" style="width:100%;padding:12px 14px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-input-weight);">
+              <sc-for list="{{ ratingOptions }}" as="o" hint-placeholder-count="5"><option value="{{ o }}">{{ o }}</option></sc-for>
+            </select>
+          </div>
+          <div>
+            <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:8px;">Smart-meter interface</label>
+            <select onChange="{{ onMeter }}" style="width:100%;padding:12px 14px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-input-weight);">
+              <sc-for list="{{ meterOptions }}" as="o" hint-placeholder-count="5"><option value="{{ o }}">{{ o }}</option></sc-for>
+            </select>
+          </div>
+          <div>
+            <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:8px;">Main objective</label>
+            <select onChange="{{ onObjective }}" style="width:100%;padding:12px 14px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-input-weight);">
+              <sc-for list="{{ objectiveOptions }}" as="o" hint-placeholder-count="6"><option value="{{ o }}">{{ o }}</option></sc-for>
+            </select>
+          </div>
+        </div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">What is already installed?</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;">
+          <sc-for list="{{ assetToggles }}" as="a" hint-placeholder-count="4">
+            <button onClick="{{ a.onClick }}" style="cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;padding:10px 16px;border:1px solid {{ a.border }};background:{{ a.bg }};color:{{ a.color }};border-radius:8px;">{{ a.label }}</button>
+          </sc-for>
+        </div>
+        <div style="border:1px dashed #C9CCCB;background:#F9FBF5;padding:18px 20px;margin-bottom:32px;border-radius:12px;">
+          <div style="font-size:12px;font-weight:400;color:var(--color-text-primary);margin-bottom:4px;">Optional uploads (helps the specialist)</div>
+          <div style="font-size:var(--web-min-size);font-weight:300;color:#8A8A89;line-height:var(--web-min-lh);">Electricity bill &#183; single-line diagram &#183; distribution-board photo &#183; appliance list &#183; floor plan</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;">
+          <button onClick="{{ backToControl }}" style="cursor:pointer;font-family:inherit;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#FFFFFF;color:var(--color-text-primary);border:1px solid var(--color-divider);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg>Back</button>
+          <button onClick="{{ toPrelim }}" style="cursor:pointer;font-family:inherit;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:var(--color-brand-ozzy);color:var(--color-text-primary);border:none;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">See my preliminary match<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></button>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- STEP: PRELIM + EMAIL GATE -->
+    <sc-if value="{{ isPrelim }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="margin-bottom:14px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Step 5 &#183; Preliminary match</div>
+        <h2 style="margin:0 0 10px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Your preliminary match <span style="color:#8E8E8E;">is ready.</span></h2>
+        <p style="margin:0 0 24px;max-width:660px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ prelim.summary }}</p>
+        <div style="margin-bottom:28px;background:#F4F4F4;border-radius:12px;">
+          <div style="padding:14px 20px;border-bottom:1px solid var(--color-divider);font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-primary);background:#F9FBF5;">Possible configuration</div>
+          <sc-for list="{{ prelim.config }}" as="c" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:16px;padding:14px 20px;border-bottom:1px solid var(--color-surface-card);align-items:center;">
+              <span style="font-size:var(--web-small-size);font-weight:300;color:#4d6b1f;line-height:var(--web-small-lh);">{{ c.product }}</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ c.role }}</span>
+              <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ c.tagColor }};white-space:nowrap;">{{ c.tag }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="background:var(--color-text-primary);color:#FFFFFF;padding:32px;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">Unlock the complete recommendation</div>
+          <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#D9D9D9;max-width:560px;">Enter your email to generate the full AI-assisted recommendation &#8212; measurement points, plug-and-play versus electrician-installed products, a preliminary control strategy, matching user cases and the questions to put to your local installer. This helps us protect the service from automated misuse and lets us send you the technical summary.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+            <input type="email" onInput="{{ onEmail }}" placeholder="you@example.com" value="{{ email }}" style="flex:1;min-width:240px;padding:14px 16px;border:1px solid var(--color-text-primary);background:#2A2A2A;color:#FFFFFF;font-size:var(--web-input-size);border-radius:8px;font-weight:var(--web-input-weight);">
+            <button onClick="{{ generate }}" disabled="{{ genDisabled }}" style="cursor:{{ genCursor }};font-family:inherit;font-size:13px;font-weight:400;padding:14px 28px;background:{{ genBtnBg }};color:{{ genBtnColor }};border:none;white-space:nowrap;border-radius:8px;">Generate recommendation</button>
+          </div>
+          <p style="margin:14px 0 0;font-size:var(--web-min-size);font-weight:300;color:#9A9A9A;max-width:760px;line-height:var(--web-min-lh);">Your details will not be passed to an installer without your permission.</p>
+        </div>
+        <div style="margin-top:20px;">
+          <button onClick="{{ backToDetails }}" style="cursor:pointer;font-family:inherit;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#FFFFFF;color:var(--color-text-primary);border:1px solid var(--color-divider);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg>Back</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- STEP: LOADING -->
+    <sc-if value="{{ isLoading }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:80px 0;text-align:center;">
+        <div style="width:36px;height:36px;margin:0 auto 20px;border:2px solid var(--color-divider);border-top-color:var(--color-brand-ozzy);border-radius:50%;animation:ozspin 0.9s linear infinite;"></div>
+        <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:6px;line-height:var(--web-small-lh);">Preparing your recommendation</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Matching your building, loads and objective to OZZY hardware.</div>
+      </div>
+    </sc-if>
+
+    <!-- STEP: RESULT -->
+    <sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="margin-bottom:14px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Your recommendation</div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ rec.headline }}</h2>
+        <div style="display:inline-block;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#c46e00;border:1px solid #EBD9C0;background:#FBF3E8;padding:6px 12px;margin-bottom:28px;border-radius:8px;">Preliminary &#8212; not an approved electrical design</div>
+
+        <!-- 1 what may be happening -->
+        <div style="border-top:1px solid var(--color-divider);padding:24px 0;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:10px;">1 &#183; What may be happening</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ rec.interpretation }}</p>
+        </div>
+        <!-- 2 what to measure -->
+        <div style="border-top:1px solid var(--color-divider);padding:24px 0;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:10px;">2 &#183; What should be measured</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ rec.measure }}</p>
+        </div>
+        <!-- 3 what OZZY could do -->
+        <div style="border-top:1px solid var(--color-divider);padding:24px 0;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:10px;">3 &#183; What OZZY could do</div>
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ rec.actions }}" as="a" hint-placeholder-count="3">
+              <div style="display:flex;gap:10px;padding:8px 0;">
+                <span style="color:var(--color-text-primary);font-size:12px;flex:none;">&#10003;</span>
+                <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ a }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <!-- 4 recommended setup -->
+        <div style="border-top:1px solid var(--color-divider);padding:24px 0;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">4 &#183; Recommended setup</div>
+          <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+            <sc-for list="{{ rec.setup }}" as="s" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:130px minmax(0,1fr) auto;gap:16px;padding:14px 18px;border-bottom:1px solid var(--color-surface-card);align-items:center;">
+                <span style="font-size:var(--web-small-size);font-weight:300;color:#4d6b1f;line-height:var(--web-small-lh);">{{ s.product }}</span>
+                <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ s.why }}</span>
+                <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ s.tagColor }};white-space:nowrap;">{{ s.tag }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <!-- 5 similar cases -->
+        <div style="border-top:1px solid var(--color-divider);padding:24px 0;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">5 &#183; Similar user cases</div>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;--cg:12px;">
+            <sc-for list="{{ rec.related }}" as="r" hint-placeholder-count="4">
+              <a href="OZZY - PRODUCT - Overview - EN.dc.html#cases" style="padding:16px;text-decoration:none;background:#F4F4F4;border-radius:12px;">
+                <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:6px;">{{ r.category }}</div>
+                <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:1.35;">{{ r.title }}</div>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- questions for installer -->
+        <div style="border-top:1px solid var(--color-divider);padding:24px 0;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">Questions for your local installer</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <sc-for list="{{ rec.installerQuestions }}" as="q" hint-placeholder-count="4">
+              <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:8px 14px;background:var(--color-card-ozzy);color:var(--color-text-primary);border-radius:8px;">{{ q }}</span>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- disclaimer -->
+        <div style="background:#FBF3E8;padding:16px 20px;margin:12px 0 32px;border-radius:12px;">
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">Recommendations are based on the information provided. Final product selection, switching capacity, protection and installation method must be confirmed by a qualified installer.</p>
+        </div>
+
+        <!-- CTAs -->
+        <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:16px;--cg:12px;">
+          <span style="text-align:center;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:16px;background:var(--color-text-primary);color:#FFFFFF;border-radius:8px;" data-placeholder-link="true">Request specialist review</span>
+          <span style="text-align:center;font-size:var(--web-small-size);font-weight:300;padding:16px;border:1px solid var(--color-text-primary);color:var(--color-text-primary);border-radius:8px;line-height:var(--web-small-lh);" data-placeholder-link="true">Book an online explanation</span>
+          <a href="OZZY - PRODUCT - Products - EN.dc.html#what" style="text-align:center;font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);padding:16px;border:1px solid var(--color-divider);color:var(--color-text-primary);border-radius:8px;">See recommended products</a>
+          <span style="text-align:center;font-size:var(--web-small-size);font-weight:300;padding:16px;border:1px solid var(--color-divider);color:var(--color-text-primary);border-radius:8px;line-height:var(--web-small-lh);" data-placeholder-link="true">Ask a local installer</span>
+        </div>
+        <p style="margin:0 0 20px;font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);max-width:760px;">A copy has been sent to <strong style="font-weight:400;color:var(--color-text-primary);">{{ email }}</strong>. Sales, site inspection, final quotation, installation and certification are completed by your qualified local installer.</p>
+        <button onClick="{{ reset }}" style="cursor:pointer;font-family:inherit;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#FFFFFF;color:var(--color-text-primary);border:1px solid var(--color-divider);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Start over</button>
+      </div>
+    </sc-if>
+
+  </section>
+
+  <!-- PLUG-AND-PLAY VS ELECTRICIAN -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Installation</div>
+      <h2 style="margin:0 0 24px;max-width:600px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Some OZZY products plug in. <span style="color:#8E8E8E;">Others belong in the installation.</span></h2>
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;--cg:24px;">
+        <div style="padding:28px;background:#F4F4F4;border-radius:12px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;"><span style="width:10px;height:10px;background:#3d8b40;flex:none;"></span><span style="font-size:var(--web-small-size);font-weight:300;color:#3d8b40;line-height:var(--web-small-lh);">Plug-and-play</span></div>
+          <p style="margin:0 0 14px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">NUBO, RUGO and OCTO connect to a suitable existing socket and commission through QR, NFC, Wi-Fi mesh and EMON &#8212; within the stated voltage, current and environmental limits.</p>
+          <div style="font-size:var(--web-min-size);font-weight:300;color:#8A8A89;line-height:var(--web-min-lh);">Washing machines &#183; dishwashers &#183; office equipment &#183; entertainment &#183; outdoor lighting &#183; small pumps. No change to fixed wiring.</div>
+        </div>
+        <div style="padding:28px;background:#F4F4F4;border-radius:12px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;"><span style="width:10px;height:10px;background:#c46e00;flex:none;"></span><span style="font-size:var(--web-small-size);font-weight:300;color:#c46e00;line-height:var(--web-small-lh);">Qualified electrician required</span></div>
+          <p style="margin:0 0 14px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">FLIP and other hardwired products are installed inside distribution boards and fixed circuits. Installation must be completed by a qualified electrician.</p>
+          <div style="font-size:var(--web-min-size);font-weight:300;color:#8A8A89;line-height:var(--web-min-lh);">Heat pumps &#183; boilers &#183; EV circuits &#183; pumps &#183; motors &#183; compressors &#183; HVAC &#183; commercial kitchens &#183; high-starting-current equipment.</div>
+        </div>
+      </div>
+      <div style="background:#F4F5F4;padding:24px 28px;margin-top:16px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;border-radius:12px;">
+        <div style="max-width:640px;">
+          <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:4px;">Install OZZY professionally.</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);max-width:760px;">Qualified electricians and energy professionals can register as STRØHM.ENERGY installation partners for technical data, EMON commissioning tools and, where eligible, local project introductions.</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="STROHM.ENERGY - SITE - Register - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Register as an installer</a>
+          <span style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);border:1px solid #C9CCCB;color:var(--color-text-primary);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Explore installer training</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="ContentSections" brand="OZZY" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="OZZY" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="OZZY" accent="var(--color-brand-ozzy)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const PP = { tag: "Plug-and-play", tagColor: "#3d8b40" };
+const EL = { tag: "Electrician", tagColor: "#c46e00" };
+const MEAS = { tag: "Metering", tagColor: "#5F7773" };
+const SOFT = { tag: "Software", tagColor: "#5F5E5E" };
+
+const ROLES = ["Homeowner", "Business owner", "Facility manager", "Installer", "Energy consultant", "Property manager"];
+const BUILDINGS = ["House", "Apartment", "Retail shop", "Restaurant", "Hotel", "Office", "School", "Warehouse", "Factory", "Farm", "Other"];
+const CONTROLS = ["Whole building", "Individual appliances", "Large fixed loads", "Outdoor equipment", "Plug-in devices", "EV charging", "Heat pump", "Boiler", "Pump", "Compressor", "HVAC / refrigeration", "Production machinery"];
+const ASSETS = ["Solar PV", "Battery", "EV charger", "Heat pump"];
+const PROMPTS = [
+  "My pool pump runs all day.",
+  "I want to charge my EV using excess solar.",
+  "Our restaurant creates high electricity peaks.",
+  "I want to know which appliance uses the most energy.",
+];
+
+const CASE_LIB = [
+  { category: "Residential · Pool", title: "Run filtration on solar energy", tags: ["Pump", "Plug-in devices", "Solar PV"] },
+  { category: "Residential · EV", title: "Charge the car on solar surplus", tags: ["EV charging", "Solar PV", "Large fixed loads"] },
+  { category: "Residential · Heating", title: "Boiler on the cheapest hours", tags: ["Boiler", "Large fixed loads", "Heat pump"] },
+  { category: "Commercial · Kitchen", title: "Commercial kitchen load coordination", tags: ["HVAC / refrigeration", "Large fixed loads", "Whole building"] },
+  { category: "Commercial · Retail", title: "Schedule lighting and signage", tags: ["Outdoor equipment", "Individual appliances"] },
+  { category: "Commercial · Peak", title: "Reduce simultaneous demand", tags: ["Whole building", "Large fixed loads", "Production machinery"] },
+  { category: "Facility · Portfolio", title: "Compare after-hours use across sites", tags: ["Whole building", "Individual appliances"] },
+  { category: "Industrial · Machinery", title: "Stagger machine start-up", tags: ["Production machinery", "Compressor", "Large fixed loads"] },
+  { category: "Facility · Refrigeration", title: "Monitor critical appliances", tags: ["HVAC / refrigeration", "Individual appliances"] },
+];
+
+class Component extends DCLogic {
+  state = {
+    step: "intro",
+    question: "",
+    role: "",
+    building: "",
+    controls: [],
+    phase: "Not sure",
+    rating: "Not sure",
+    meter: "Not sure",
+    objective: "Reduce energy costs",
+    assets: [],
+    email: "",
+    rec: null,
+  };
+
+  toggle(key, val) {
+    const arr = this.state[key];
+    const next = arr.includes(val) ? arr.filter(x => x !== val) : [...arr, val];
+    this.setState({ [key]: next });
+  }
+
+  buildPrelim() {
+    const st = this.state;
+    const config = [];
+    const has = v => st.controls.includes(v);
+    const wantsWhole = has("Whole building") || st.controls.length >= 3;
+    if (wantsWhole || st.assets.includes("Solar PV")) {
+      config.push({ product: "SYNQ", role: "Whole-building measurement of grid, solar and total load — the reference for every decision.", ...MEAS });
+    }
+    const heavy = has("Heat pump") || has("Boiler") || has("EV charging") || has("Pump") || has("Compressor") || has("HVAC / refrigeration") || has("Production machinery") || has("Large fixed loads");
+    if (heavy) {
+      config.push({ product: "OZZY FLIP", role: "Hardwired measurement and switching of the largest fixed loads, coordinated with the supply.", ...EL });
+    }
+    if (has("Plug-in devices") || has("Individual appliances")) {
+      config.push({ product: "OZZY NUBO / OCTO", role: "Plug-in measurement and switching for smaller appliances and standby loads.", ...PP });
+    }
+    if (has("Outdoor equipment")) {
+      config.push({ product: "OZZY RUGO", role: "Weatherproof IP44 switching for outdoor equipment.", ...PP });
+    }
+    if (config.length === 0) {
+      config.push({ product: "OZZY NUBO", role: "Start by measuring the load in question before deciding whether fixed control is justified.", ...PP });
+    }
+    config.push({ product: "EMON", role: "Turns the objective into control rules — priorities, tariffs, solar-surplus and peak limits — and shows what each action achieved.", ...SOFT });
+
+    const b = st.building && st.building !== "Other" ? st.building.toLowerCase() : "building";
+    const summary = `Based on your answers, your ${b} may benefit from whole-building measurement, separate measurement of your largest loads and EMON-controlled switching towards your goal to ${st.objective.toLowerCase()}.`;
+    return { summary, config };
+  }
+
+  matchCases() {
+    const st = this.state;
+    const scored = CASE_LIB.map(c => {
+      let s = 0;
+      c.tags.forEach(t => {
+        if (st.controls.includes(t)) s += 2;
+        if (st.assets.includes(t)) s += 1;
+      });
+      return { c, s };
+    });
+    scored.sort((a, b) => b.s - a.s);
+    let picks = scored.filter(x => x.s > 0).slice(0, 4).map(x => x.c);
+    if (picks.length < 4) {
+      for (const x of scored) { if (!picks.includes(x.c)) picks.push(x.c); if (picks.length === 4) break; }
+    }
+    return picks.map(c => ({ category: c.category, title: c.title }));
+  }
+
+  scriptedRec() {
+    const st = this.state;
+    const prelim = this.buildPrelim();
+    const q = st.question.trim();
+    return {
+      headline: q ? this.shorten(q) : `A measurement and control plan for your ${st.building.toLowerCase() || "installation"}`,
+      interpretation: q
+        ? `You described: "${q}" — this usually points to loads running longer than needed, several high-power devices operating together, or energy being drawn from the grid when it could come from solar.`
+        : `Your selected loads suggest energy is being used at times or from sources that could be improved, and that the source of any peak is not yet visible.`,
+      measure: `Start with whole-building measurement to see total demand and solar, then measure your largest loads separately so each one's pattern is visible rather than estimated.`,
+      actions: [
+        "Measure each relevant load separately — live power, current and consumption.",
+        "Switch flexible loads towards solar surplus or lower-price hours.",
+        "Coordinate heavy loads so they do not start together and raise the peak.",
+        "Explain every automated action — what happened and why.",
+      ],
+      setup: prelim.config.map(c => ({ product: c.product, why: c.role, tag: c.tag, tagColor: c.tagColor })),
+      related: this.matchCases(),
+      installerQuestions: [
+        "Supply type and main connection rating",
+        "Circuit protection and cable size for switched loads",
+        "Whether an external contactor is required",
+        "Product suitability for starting current",
+      ],
+    };
+  }
+
+  shorten(s) { return s.length > 68 ? s.slice(0, 65).trim() + "…" : s; }
+
+  async generate() {
+    const st = this.state;
+    if (!/\S+@\S+\.\S+/.test(st.email)) return;
+    this.setState({ step: "loading" });
+    const prelim = this.buildPrelim();
+    const productList = "OZZY NUBO (indoor plug-in, plug-and-play), OZZY RUGO (outdoor IP44 plug-in, plug-and-play), OZZY OCTO (plug-in power strip, plug-and-play), OZZY FLIP (hardwired inline switch 1P/3P up to 22 kW, electrician required), SYNQ (whole-building metering: P1 / CT / direct), EMON (energy management software: objectives, priorities, tariffs, solar-surplus, peak limits).";
+    const sys = "You are OZZY, an energy-advice assistant for the Strohm.energy smart-switching brand. Voice: Apple minimalism plus Braun precision — short, calm, honest, functional. Never use exclamation marks. Never invent monetary savings, percentages or payback figures; use measurable outcomes (fewer operating hours, reduced peak demand, more solar self-consumption). Recommend only from this catalogue: " + productList + " Mark each recommended product as plug-and-play, electrician or software. Output ONLY valid JSON, no prose, matching exactly this shape: {\"headline\":string (max 8 words),\"interpretation\":string (1-2 sentences),\"measure\":string (1-2 sentences),\"actions\":[3-4 strings],\"setup\":[{\"product\":string,\"why\":string,\"tag\":\"Plug-and-play\"|\"Electrician\"|\"Metering\"|\"Software\"}],\"installerQuestions\":[3-4 short strings]}";
+    const user = `Role: ${st.role || "unspecified"}\nBuilding: ${st.building || "unspecified"}\nWants to control/understand: ${st.controls.join(", ") || "unspecified"}\nAlready installed: ${st.assets.join(", ") || "none stated"}\nSupply: ${st.phase}\nMain rating: ${st.rating}\nMeter interface: ${st.meter}\nObjective: ${st.objective}\nFree-text problem: ${st.question || "(none)"}`;
+    let rec = null;
+    try {
+      const out = await window.claude.complete({ messages: [{ role: "user", content: user }], system: sys, max_tokens: 1024 });
+      const m = out.match(/\{[\s\S]*\}/);
+      const parsed = JSON.parse(m ? m[0] : out);
+      const tagColor = t => t === "Plug-and-play" ? "#3d8b40" : t === "Electrician" ? "#c46e00" : t === "Metering" ? "#5F7773" : "#5F5E5E";
+      rec = {
+        headline: parsed.headline || this.scriptedRec().headline,
+        interpretation: parsed.interpretation,
+        measure: parsed.measure,
+        actions: parsed.actions || [],
+        setup: (parsed.setup || []).map(s => ({ product: s.product, why: s.why, tag: s.tag, tagColor: tagColor(s.tag) })),
+        related: this.matchCases(),
+        installerQuestions: parsed.installerQuestions || [],
+      };
+      if (!rec.interpretation || !rec.setup.length) rec = null;
+    } catch (e) { rec = null; }
+    if (!rec) rec = this.scriptedRec();
+    this.setState({ rec, step: "result" });
+  }
+
+  renderVals() {
+    const st = this.state;
+    const order = ["intro", "building", "control", "details", "prelim", "result"];
+    const labels = { intro: "Ask", building: "Building", control: "Loads", details: "Installation", prelim: "Match", result: "Recommendation" };
+    const curIdx = order.indexOf(st.step === "loading" ? "prelim" : st.step);
+    const steps = order.map((k, i) => {
+      const done = i < curIdx, active = i === curIdx;
+      return {
+        num: String(i + 1), label: labels[k],
+        dotBg: active ? "var(--color-brand-ozzy)" : done ? "#4F4F4E" : "#FFFFFF",
+        dotColor: active ? "#1E1E1E" : done ? "#FFFFFF" : "#898989",
+        dotBorder: active ? "var(--color-brand-ozzy)" : done ? "#4F4F4E" : "#D4D4D4",
+        color: active || done ? "#4F4F4E" : "#898989",
+        weight: active ? 400 : 400,
+      };
+    });
+
+    const introReady = !!st.role;
+    const buildingReady = !!st.building;
+    const controlReady = st.controls.length > 0;
+    const emailReady = /\S+@\S+\.\S+/.test(st.email);
+
+    return {
+      steps,
+      isIntro: st.step === "intro",
+      isBuilding: st.step === "building",
+      isControl: st.step === "control",
+      isDetails: st.step === "details",
+      isPrelim: st.step === "prelim",
+      isLoading: st.step === "loading",
+      isResult: st.step === "result",
+
+      question: st.question,
+      onQuestion: (e) => this.setState({ question: e.target.value }),
+      prompts: PROMPTS.map(t => ({ text: t, onClick: () => this.setState({ question: t }) })),
+
+      roleCards: ROLES.map(r => ({ label: r, onClick: () => this.setState({ role: r }),
+        bg: st.role === r ? "#4F4F4E" : "#FFFFFF", color: st.role === r ? "#FFFFFF" : "#4F4F4E", border: st.role === r ? "#1E1E1E" : "#D4D4D4" })),
+      introDisabled: !introReady, introCursor: introReady ? "pointer" : "not-allowed",
+      introBtnBg: introReady ? "var(--color-brand-ozzy)" : "#F5F5F5", introBtnColor: introReady ? "#4F4F4E" : "#898989",
+      toBuilding: () => introReady && this.setState({ step: "building" }),
+
+      buildingCards: BUILDINGS.map(b => ({ label: b, onClick: () => this.setState({ building: b }),
+        bg: st.building === b ? "#4F4F4E" : "#FFFFFF", color: st.building === b ? "#FFFFFF" : "#4F4F4E", border: st.building === b ? "#4F4F4E" : "#D4D4D4" })),
+      buildingDisabled: !buildingReady, buildingCursor: buildingReady ? "pointer" : "not-allowed",
+      buildingBtnBg: buildingReady ? "var(--color-brand-ozzy)" : "#F5F5F5", buildingBtnColor: buildingReady ? "#4F4F4E" : "#898989",
+      backToIntro: () => this.setState({ step: "intro" }),
+      toControl: () => buildingReady && this.setState({ step: "control" }),
+
+      controlChips: CONTROLS.map(c => ({ label: c, onClick: () => this.toggle("controls", c),
+        bg: st.controls.includes(c) ? "var(--color-brand-ozzy)" : "#FFFFFF", color: st.controls.includes(c) ? "#4F4F4E" : "#5F5E5E", border: st.controls.includes(c) ? "var(--color-brand-ozzy)" : "#D4D4D4" })),
+      controlDisabled: !controlReady, controlCursor: controlReady ? "pointer" : "not-allowed",
+      controlBtnBg: controlReady ? "var(--color-brand-ozzy)" : "#F5F5F5", controlBtnColor: controlReady ? "#4F4F4E" : "#898989",
+      backToBuilding: () => this.setState({ step: "building" }),
+      toDetails: () => controlReady && this.setState({ step: "details" }),
+
+      phaseOptions: ["Not sure", "Single-phase", "Three-phase"],
+      ratingOptions: ["Not sure", "1×25 A", "1×35 A", "3×25 A", "3×35 A", "3×63 A", "Larger / commercial"],
+      meterOptions: ["Not sure", "P1 port", "TIC (Linky)", "Optical / pulse", "No smart meter"],
+      objectiveOptions: ["Reduce energy costs", "Use more solar energy", "Avoid peak demand", "Stop after-hours consumption", "Detect abnormal behaviour", "Automate schedules"],
+      onPhase: (e) => this.setState({ phase: e.target.value }),
+      onRating: (e) => this.setState({ rating: e.target.value }),
+      onMeter: (e) => this.setState({ meter: e.target.value }),
+      onObjective: (e) => this.setState({ objective: e.target.value }),
+      assetToggles: ASSETS.map(a => ({ label: a, onClick: () => this.toggle("assets", a),
+        bg: st.assets.includes(a) ? "var(--color-brand-ozzy)" : "#FFFFFF", color: st.assets.includes(a) ? "#4F4F4E" : "#5F5E5E", border: st.assets.includes(a) ? "var(--color-brand-ozzy)" : "#D4D4D4" })),
+      backToControl: () => this.setState({ step: "control" }),
+      toPrelim: () => this.setState({ step: "prelim" }),
+
+      prelim: this.buildPrelim(),
+      email: st.email,
+      onEmail: (e) => this.setState({ email: e.target.value }),
+      genDisabled: !emailReady, genCursor: emailReady ? "pointer" : "not-allowed",
+      genBtnBg: emailReady ? "var(--color-brand-ozzy)" : "#3A3A3A", genBtnColor: emailReady ? "#4F4F4E" : "#7A7A7A",
+      backToDetails: () => this.setState({ step: "details" }),
+      generate: () => this.generate(),
+
+      rec: st.rec || { headline: "", interpretation: "", measure: "", actions: [], setup: [], related: [], installerQuestions: [] },
+      reset: () => this.setState({ step: "intro", question: "", role: "", building: "", controls: [], assets: [], phase: "Not sure", rating: "Not sure", meter: "Not sure", objective: "Reduce energy costs", email: "", rec: null }),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>Financing Solutions | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#F7F7F5; } a { color:var(--color-text-primary); } a:hover { color:var(--color-text-primary); } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;">
+  <dc-import name="NavBar" active="finance" hint-size="100%,80px"></dc-import>
+
+  <dc-import name="BrandHero2" brand="FINANCE" rgb="200,200,200" dark="#4F4F4E" title="Financing solutions." intro="Flexible finance models for scalable solar infrastructure — from leasing your own system to investing in a portfolio of them." items="{{ heroItems }}" hint-size="100%,760px"></dc-import><section data-screen-label="Finance — Hero">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 72px;box-sizing:border-box;text-align:center;">
+      <p style="margin:0 auto 36px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#898989;max-width:640px;">Find the model that fits your project.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#models" style="text-decoration:none;height:var(--cta-height);padding:0 var(--cta-pad-x);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);letter-spacing:0.04em;border-radius:var(--cta-radius);">Explore models</a>
+        <a href="STROHM.ENERGY - FINANCE - LEASE - EN.dc.html#apply" style="text-decoration:none;height:48px;padding:0 28px;display:inline-flex;align-items:center;background:var(--color-surface-secondary);color:var(--color-text-primary);font-size:var(--cta-font);letter-spacing:0.04em;border-radius:8px;font-weight:var(--web-btn-weight);">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Finance — Why" style="background:#FFFFFF;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;text-align:center;">
+      <h2 style="margin:0 0 24px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Why <span style="color:#8E8E8E;">STRØHM.ENERGY Finance</span></h2>
+      <p style="margin:0 0 32px;max-width:760px;margin-left:auto;margin-right:auto;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">We bridge the gap between energy infrastructure and accessible capital. Modular financing options let homeowners, businesses and communities take part in the energy transition on their own terms — as a customer who leases, or as an investor who funds.</p>
+      <p style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.5;color:var(--color-text-primary);font-style:italic;max-width:640px;margin-left:auto;margin-right:auto;">"Making solar accessible through smart, transparent financial models."</p>
+    </div>
+  </section>
+
+  <section data-screen-label="Finance — Models" id="models">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+      <h2 style="margin:0 0 12px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Finance models</h2>
+      <p style="margin:0 0 48px;max-width:640px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">Choose the model that fits your role, your goals and your timeline.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;">
+        <sc-for list="{{ models }}" as="m" hint-placeholder-count="4">
+          <sc-if value="{{ m.live }}" hint-placeholder-val="{{ true }}">
+            <a href="{{ m.href }}" style="text-decoration:none;display:flex;flex-direction:column;gap:12px;background:#F4F4F4;border-radius:12px;padding:32px;min-height:200px;">
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:var(--color-text-primary);line-height:var(--web-h3-lh);">{{ m.title }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;flex:1;">{{ m.desc }}</div>
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Learn more<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></div>
+            </a>
+          </sc-if>
+          <sc-if value="{{ m.awaiting }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:12px;background:var(--color-card-strohm);border-radius:12px;padding:32px;min-height:200px;opacity:0.7;">
+              <div style="font-size:var(--web-h3-size);font-weight:400;color:var(--color-text-primary);">{{ m.title }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;flex:1;">{{ m.desc }}</div>
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#AEAEAE;">Page in preparation</div>
+            </div>
+          </sc-if>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Finance — Tools" style="background:var(--color-card-strohm);width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:24px auto;border-radius:24px;overflow:hidden;box-sizing:border-box;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <h2 style="margin:0 0 32px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Planning tools</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;">
+        <a href="STROHM.ENERGY - FINANCE - LEASE - EN.dc.html#calculator" style="text-decoration:none;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border-radius:12px;padding:28px;">
+          <div style="font-size:var(--web-body-size);font-weight:300;color:var(--color-text-primary);">Lease cost estimator</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;">Estimate a monthly lease fee from your system size.</div>
+        </a>
+        <div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border-radius:12px;padding:28px;opacity:0.6;">
+          <div style="font-size:var(--web-body-size);font-weight:400;color:var(--color-text-primary);">More planning tools</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;">A return calculator and a subsidy overview are in development.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Finance — Partners" style="background:#FFFFFF;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;">
+      <div style="max-width:640px;">
+        <h2 style="margin:0 0 16px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">For installers <span style="color:#8E8E8E;">and resellers</span></h2>
+        <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">Offer STRØHM.ENERGY financing to your own customers without becoming a lender yourself. STRØHM.ENERGY structures and carries the financing; you keep the installation and the customer relationship.</p>
+      </div>
+      <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="STROHM.ENERGY - FINANCE - LEASE - EN.dc.html#partner" style="text-decoration:none;height:var(--cta-height);padding:0 var(--cta-pad-x);display:flex;align-items:center;white-space:nowrap;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);letter-spacing:0.04em;border-radius:var(--cta-radius);">Become a partner</a>
+    </div>
+  </section>
+
+  <section data-screen-label="Finance — FAQ">
+    <div style="max-width:760px;margin:0 auto;padding:96px 40px;">
+      <h2 style="margin:0 0 40px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Frequently <span style="color:#8E8E8E;">asked questions</span></h2>
+      <sc-for list="{{ faq }}" as="q" hint-placeholder-count="5">
+        <div style="">
+          <button onClick="{{ q.onClick }}" style="font-family:inherit;cursor:pointer;width:100%;background:none;border:none;display:flex;justify-content:space-between;gap:16px;padding:24px 0;text-align:left;font-size:var(--web-body-size);font-weight:500;color:var(--color-text-primary);">{{ q.q }} <span>{{ q.sign }}</span></button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 0 24px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#898989;">{{ q.a }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <div style="height:48px;"></div>
+  <dc-import name="ReachSpecialist" brand="FINANCE" lead="Speak with the finance team to find the right model for your project." photo-slot-id="finance-specialist" hint-size="100%,420px"></dc-import>
+
+
+  <section data-screen-label="Finance — Disclaimer">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side);box-sizing:border-box;">
+      <p style="margin:0;font-size:var(--web-min-size);font-weight:300;color:#AEAEAE;line-height:var(--web-min-lh);max-width:760px;">This page describes general financing structures and is not a binding offer. Terms vary by jurisdiction, model and product, and are subject to approval. Strohm.energy does not provide financial advice.</p>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const MODELS = [
+  { title: "Lease and funds", desc: "Zero-upfront leasing for your own equipment, or a pooled fund for investors who want a diversified stake.", href: "STROHM.ENERGY - FINANCE - LEASE - EN.dc.html", live: true },
+  { title: "Cooperatives", desc: "Develop energy projects together — participate, offer a site, or bring your cooperative's project.", href: "STROHM.ENERGY - FINANCE - Cooperatives - EN.dc.html", live: true },
+  { title: "Invest", desc: "Submit a project for financing, or register as an investor to receive matched proposals.", href: "STROHM.ENERGY - FINANCE - Invest - EN.dc.html", live: true },
+  { title: "Product Angel", desc: "Fund product development. Participate in its results.", href: "STROHM.ENERGY - FINANCE - Product Angel - EN.dc.html", live: true },
+];
+const FAQ = [
+  ["Is my investment or lease insured?", "Physical assets financed through STRØHM.ENERGY are insured. Specific policy terms are confirmed per model and per contract."],
+  ["Can I exit or change my agreement early?", "Lease agreements run for a defined term. Investment models may offer an exit route after an initial period, subject to availability — terms are confirmed per model."],
+  ["What happens at the end of a lease term?", "You can renew, upgrade, or purchase the equipment at its residual value."],
+  ["How are investment returns calculated?", "Returns are tied to actual energy production and the financial structure of the specific project or fund, not a fixed promise."],
+  ["Who can apply as a financing partner?", "Certified STRØHM.ENERGY installers and resellers. See the installer partner section on the Lease and funds page."],
+];
+const HERO_ITEMS = [{"label":"Why STRØHM.ENERGY Finance","heading":"Why STRØHM.ENERGY Finance","sentence":"We bridge the gap between energy infrastructure and accessible capital. Modular financing options let homeowners, businesses and communities take part in the energy transition on their own terms — as a customer who leases, or as an investor who funds.","media":{"type":"slot","slot":"strohm-energy-overview-hero","alt":"FINANCE hero picture 1"}},{"label":"Finance models","heading":"Finance models","sentence":"TO CONFIRM","media":{"type":"slot","slot":"finance-hero-2","alt":"FINANCE hero picture 2"}},{"label":"Planning tools","heading":"Planning tools","sentence":"TO CONFIRM","media":{"type":"slot","slot":"finance-hero-3","alt":"FINANCE hero picture 3"}},{"label":"Installers and resellers","heading":"For installers and resellers","sentence":"Offer STRØHM.ENERGY financing to your own customers without becoming a lender yourself. STRØHM.ENERGY structures and carries the financing; you keep the installation and the customer relationship.","media":{"type":"slot","slot":"finance-hero-4","alt":"FINANCE hero picture 4"}}];
+class Component extends DCLogic {
+  renderVals() { return Object.assign({}, this._rvBase(), { heroItems: HERO_ITEMS }); }
+  state = { open: {} };
+  _rvBase() {
+    const o = this.state.open;
+    return {
+      models: MODELS,
+      faq: FAQ.map((f, i) => ({ q: f[0], a: f[1], open: !!o[i], sign: o[i] ? "\u2212" : "+", onClick: () => this.setState((s) => ({ open: { ...s.open, [i]: !s.open[i] } })) })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

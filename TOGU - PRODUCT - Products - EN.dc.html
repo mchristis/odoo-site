@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>TOGU Products | STRØHM.ENERGY</title>
+<script src="./image-slot.js"></script>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<style> body { margin:0; background:#FFFFFF; } a { color:#4F4F4E; text-decoration:none; } a:hover { color:#C48723; } html { scroll-behavior:smooth; } [id] { scroll-margin-top:96px; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="ToguNav" active="products" hint-size="100%,57px"></dc-import>
+  <dc-import name="PageHero" brand="TOGU" rgb="196,135,35" title="Every part the installation needs." intro="116 articles in four groups: solar cable, distribution, cable routing and consumables." slot="togu-products-hero" shot="Drop a TOGU range photo: solar cable, distribution box, cable tray and conduit" hint-size="100%,625px"></dc-import><section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#C48723;margin-bottom:16px;"><a href="TOGU - PRODUCT - Overview - EN.dc.html" style="color:#C48723;">TOGU</a> · Products</div>
+    
+    <div style="display:flex;gap:8px;flex-wrap:wrap;"><sc-for list="{{ jump }}" as="j" hint-placeholder-count="4"><a href="{{ j.href }}" style="font-size:var(--web-btn-sm-size);padding:8px 14px;border:1px solid #DDDDDD;border-radius:8px;color:#898989;font-weight:var(--web-btn-weight);">{{ j.label }}</a></sc-for></div>
+    
+  </section>
+  <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+    <section id="{{ g.id }}" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;">
+      <div style="border-top:1px solid #DDDDDD;padding-top:40px;">
+        <h2 style="margin:0 0 10px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ g.t }}</h2>
+        <p style="margin:0 0 32px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ g.i }}</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px;">
+          <sc-for list="{{ g.fams }}" as="f" hint-placeholder-count="3">
+            <div id="{{ f.anchor }}" style="background:var(--color-card-togu);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px;">
+              <div><div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ f.name }}</div><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#C48723;margin-top:4px;">{{ f.sub }}</div></div>
+              <sc-if value="{{ f.hasDesc }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ f.desc }}</div></sc-if>
+              <sc-for list="{{ f.cats }}" as="c" hint-placeholder-count="1">
+                <div style="display:flex;flex-direction:column;border-top:1px solid #DDDDDD;">
+                  <sc-if value="{{ c.showCat }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;padding:10px 0 2px;">{{ c.cat }}</div></sc-if>
+                  <sc-for list="{{ c.vars }}" as="v" hint-placeholder-count="3">
+                    <div style="display:flex;flex-direction:column;gap:2px;padding:8px 0;border-bottom:1px solid #EBEBEB;">
+                      <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ v.label }}</span>
+                      <span style="font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">{{ v.code }}{{ v.flagText }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-for>
+              <sc-if value="{{ f.hasLink }}" hint-placeholder-val="{{ false }}"><a href="{{ f.link }}" style="font-size:var(--web-link-size);margin-top:auto;font-weight:var(--web-link-weight);">{{ f.linkLabel }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a></sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;">
+    <div style="background:var(--color-card-togu);border-radius:12px;padding:28px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <div style="display:flex;flex-direction:column;gap:4px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Trade customer?</div><div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">Prices, stock and ordering are in the webshop after trade login.</div></div>
+      <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="TOGU - WEBSHOP - Shop - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Shop TOGU<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </section>
+  <!-- MODELS AND ARTICLE CODES (DEPTH-84) -->
+  <dc-import name="ToguModels" hint-size="100%,1400px"></dc-import>
+  <div style="height:80px;"></div>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <a href="TOGU - PRODUCT - Overview - EN.dc.html#project" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;border-top:1px solid var(--color-text-primary);border-bottom:1px solid var(--color-divider);padding:28px 0;color:var(--color-text-primary);" style-hover="color:var(--color-text-primary);">
+      <span style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Project request</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Send your site data and files to our engineers.</span></span>
+      <span style="font-size:var(--web-small-size);font-weight:300;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Start a project &#8250;</span>
+    </a>
+  </section>
+  <dc-import name="ContentSections" brand="TOGU" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="TOGU" photo-slot-id="togu-products-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="TOGU" accent="var(--color-brand-togu)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const GROUPS = [{"id":"solar-cable","t":"Solar cable","i":"Double-insulated DC solar cable and yellow/green grounding cable, in 100 m wrap, 100 m carton or 500 m drum.","fams":[{"name":"DC solar cable · DCA","sub":"H1Z2Z2-K · 1500 V DC · tinned copper, class 5","desc":"4 and 6 mm², black or red.","anchor":"dc-dca","cats":[{"cat":"DC Solar Cable – DCA – 4mm²","vars":[{"label":"DCA 4mm² black","code":"TO-DC-4-DCA-H1Z2Z2K-B-100-P","cat":"DC Solar Cable – DCA – 4mm²","flag":false},{"label":"DCA 4mm² black","code":"TO-DC-4-DCA-H1Z2Z2K-B-100-C","cat":"DC Solar Cable – DCA – 4mm²","flag":false},{"label":"DCA 4mm² black","code":"TO-DC-4-DCA-H1Z2Z2K-B-500-D","cat":"DC Solar Cable – DCA – 4mm²","flag":false},{"label":"DCA 4mm² red","code":"TO-DC-4-DCA-H1Z2Z2K-R-100-P","cat":"DC Solar Cable – DCA – 4mm²","flag":false},{"label":"DCA 4mm² red","code":"TO-DC-4-DCA-H1Z2Z2K-R-100-C","cat":"DC Solar Cable – DCA – 4mm²","flag":false},{"label":"DCA 4mm² red","code":"TO-DC-4-DCA-H1Z2Z2K-R-500-D","cat":"DC Solar Cable – DCA – 4mm²","flag":false}]},{"cat":"DC Solar Cable – DCA – 6mm²","vars":[{"label":"DCA 6mm² black","code":"TO-DC-6-DCA-H1Z2Z2K-B-100-P","cat":"DC Solar Cable – DCA – 6mm²","flag":false},{"label":"DCA 6mm² black","code":"TO-DC-6-DCA-H1Z2Z2K-B-100-C","cat":"DC Solar Cable – DCA – 6mm²","flag":false},{"label":"DCA 6mm² black","code":"TO-DC-6-DCA-H1Z2Z2K-B-500-D","cat":"DC Solar Cable – DCA – 6mm²","flag":false},{"label":"DCA 6mm² red","code":"TO-DC-6-DCA-H1Z2Z2K-R-100-P","cat":"DC Solar Cable – DCA – 6mm²","flag":false},{"label":"DCA 6mm² red","code":"TO-DC-6-DCA-H1Z2Z2K-R-100-C","cat":"DC Solar Cable – DCA – 6mm²","flag":false},{"label":"DCA 6mm² red","code":"TO-DC-6-DCA-H1Z2Z2K-R-500-D","cat":"DC Solar Cable – DCA – 6mm²","flag":false}]}],"link":"TOGU - PRODUCT - Solar Cable and CPR - EN.dc.html","linkLabel":"Dca and Cca explained"},{"name":"DC solar cable · CCA","sub":"H1Z2Z2-K · 1500 V DC · tinned copper, class 5","desc":"4 and 6 mm², black or red.","anchor":"dc-cca","cats":[{"cat":"DC Solar Cable – CCA – 4mm²","vars":[{"label":"CCA 4mm² black","code":"TO-DC-4-CCA-H1Z2Z2K-B-100-P","cat":"DC Solar Cable – CCA – 4mm²","flag":false},{"label":"CCA 4mm² black","code":"TO-DC-4-CCA-H1Z2Z2K-B-100-C","cat":"DC Solar Cable – CCA – 4mm²","flag":false},{"label":"CCA 4mm² black","code":"TO-DC-4-CCA-H1Z2Z2K-B-500-D","cat":"DC Solar Cable – CCA – 4mm²","flag":false},{"label":"CCA 4mm² red","code":"TO-DC-4-CCA-H1Z2Z2K-R-100-P","cat":"DC Solar Cable – CCA – 4mm²","flag":false},{"label":"CCA 4mm² red","code":"TO-DC-4-CCA-H1Z2Z2K-R-100-C","cat":"DC Solar Cable – CCA – 4mm²","flag":false},{"label":"CCA 4mm² red","code":"TO-DC-4-CCA-H1Z2Z2K-R-500-D","cat":"DC Solar Cable – CCA – 4mm²","flag":false}]},{"cat":"DC Solar Cable – CCA – 6mm²","vars":[{"label":"CCA 6mm² black","code":"TO-DC-6-CCA-H1Z2Z2K-B-100-P","cat":"DC Solar Cable – CCA – 6mm²","flag":false},{"label":"CCA 6mm² black","code":"TO-DC-6-CCA-H1Z2Z2K-B-100-C","cat":"DC Solar Cable – CCA – 6mm²","flag":false},{"label":"CCA 6mm² black","code":"TO-DC-6-CCA-H1Z2Z2K-B-500-D","cat":"DC Solar Cable – CCA – 6mm²","flag":false},{"label":"CCA 6mm² red","code":"TO-DC-6-CCA-H1Z2Z2K-R-100-P","cat":"DC Solar Cable – CCA – 6mm²","flag":false},{"label":"CCA 6mm² red","code":"TO-DC-6-CCA-H1Z2Z2K-R-100-C","cat":"DC Solar Cable – CCA – 6mm²","flag":false},{"label":"CCA 6mm² red","code":"TO-DC-6-CCA-H1Z2Z2K-R-500-D","cat":"DC Solar Cable – CCA – 6mm²","flag":false}]}],"link":"TOGU - PRODUCT - Solar Cable and CPR - EN.dc.html","linkLabel":"Dca and Cca explained"},{"name":"Grounding cable","sub":"H07Z1-K · 450/750 V · tinned copper","desc":"4 and 6 mm², yellow/green.","anchor":"ground","cats":[{"cat":"Grounding Cable – B2CA – 4mm²","vars":[{"label":"4mm² YG grounding","code":"TO-GR-4-B2CA-YG-100-P","cat":"Grounding Cable – B2CA – 4mm²","flag":false},{"label":"4mm² YG grounding","code":"TO-GR-4-B2CA-YG-100-C","cat":"Grounding Cable – B2CA – 4mm²","flag":false},{"label":"4mm² YG grounding","code":"TO-GR-4-B2CA-YG-500-D","cat":"Grounding Cable – B2CA – 4mm²","flag":false}]},{"cat":"Grounding Cable – B2CA – 6mm²","vars":[{"label":"6mm² YG grounding","code":"TO-GR-6-B2CA-YG-100-P","cat":"Grounding Cable – B2CA – 6mm²","flag":false},{"label":"6mm² YG grounding","code":"TO-GR-6-B2CA-YG-100-C","cat":"Grounding Cable – B2CA – 6mm²","flag":false},{"label":"6mm² YG grounding","code":"TO-GR-6-B2CA-YG-500-D","cat":"Grounding Cable – B2CA – 6mm²","flag":false}]}]}]},{"id":"distribution","t":"Distribution","i":"IP65 surface-mounted distribution boxes with a transparent cover and DIN rail.","fams":[{"name":"Distribution box","sub":"IP65 · surface-mounted · DIN rail","desc":"5, 8, 12, 18 and 24 ways.","anchor":"distribution-box","cats":[{"cat":"Distribution Box","vars":[{"label":"5-WAY IP65 surface-mounted","code":"TO-DBX-HT-SM-05W-IP65-V1","cat":"Distribution Box","flag":false},{"label":"8-WAY IP65 surface-mounted","code":"TO-DBX-HT-SM-08W-IP65-V1","cat":"Distribution Box","flag":false},{"label":"12-WAY IP65 surface-mounted","code":"TO-DBX-HT-SM-12W-IP65-V1","cat":"Distribution Box","flag":false},{"label":"18-WAY IP65 surface-mounted","code":"TO-DBX-HT-SM-18W-IP65-V1","cat":"Distribution Box","flag":false},{"label":"24-WAY IP65 surface-mounted","code":"TO-DBX-HT-SM-24W-IP65-V1","cat":"Distribution Box","flag":false}]}]}]},{"id":"routing","t":"Cable routing","i":"Trays, conduit and trunking to route cables across roofs, walls and inside buildings.","fams":[{"name":"Wire mesh tray","sub":"Galvanised steel","desc":"Straight trays, covers, couplings, mounting sets and RoofBlock.","anchor":"wire-mesh","cats":[],"link":"TOGU - PRODUCT - Cable Routing - EN.dc.html#wire-mesh","linkLabel":"19 articles"},{"name":"Metal cable tray","sub":"Steel with side rails","desc":"Straight sections, covers and splice plates in three sizes.","anchor":"metal-tray","cats":[],"link":"TOGU - PRODUCT - Cable Routing - EN.dc.html#metal-tray","linkLabel":"9 articles"},{"name":"PVC conduit","sub":"Rigid and flexible","desc":"Ø20, Ø32 and Ø40 mm pipe with couplings, tees, clamps and end caps.","anchor":"conduit","cats":[],"link":"TOGU - PRODUCT - Cable Routing - EN.dc.html#conduit","linkLabel":"18 articles"},{"name":"PVC trunking","sub":"Rectangular, off-white","desc":"Four sizes with a full set of fittings.","anchor":"trunking","cats":[],"link":"TOGU - PRODUCT - Cable Routing - EN.dc.html#trunking","linkLabel":"32 articles"}]},{"id":"consumables","t":"Consumables","i":"The small parts every installation needs.","fams":[{"name":"Cable ties","sub":"Nylon · black · 100 per pack","desc":"","anchor":"cable-ties","cats":[{"cat":"Cable Ties","vars":[{"label":"3.6×200 black 100pk","code":"TO-TIE-NYL-3K6X200-BLK-P100-V1","cat":"Cable Ties","flag":false},{"label":"4.8×300 black 100pk","code":"TO-TIE-NYL-4K8X300-BLK-P100-V1","cat":"Cable Ties","flag":false},{"label":"7.6×370 black 100pk","code":"TO-TIE-NYL-7K6X370-BLK-P100-V1","cat":"Cable Ties","flag":false}]}]}]}];
+class Component extends DCLogic {
+  renderVals() {
+    return { groups: GROUPS.map((g) => ({ ...g, fams: g.fams.map((f) => ({ ...f, hasDesc: !!f.desc, hasLink: !!f.link, cats: f.cats.map((c) => ({ ...c, showCat: f.cats.length > 1, vars: c.vars.map((v) => ({ ...v, flagText: v.flag ? " \u00b7 article code to be confirmed" : "" })) })) })) })), jump: GROUPS.map((g) => ({ label: g.t, href: "#" + g.id })) };
+  }
+}
+</script>
+</body>
+</html>

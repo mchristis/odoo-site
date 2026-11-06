@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>MOX Products | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>body { margin:0; }</style>
+</helmet>
+<dc-import name="StructureCategory"
+  category="Products"
+  eyebrow="MOX · Products"
+  heading="Architectural solar PV structures."
+  intro="MOX develops coordinated photovoltaic structures that solve the complete interface between the building, the frame, the modules, drainage, cabling, electrical equipment, installation, maintenance and digital documentation — from a façade awning to a building-integrated PV envelope."
+  hero-slot-id="mox-products-hero"
+  hero-placeholder="MOX · Products banner · awaiting upload"
+  products-heading="Nine products."
+  products="{{ products }}"
+  guidance-heading="Awning, entrance, room, boundary or envelope?"
+  guidance="{{ guidance }}"
+  engineering="{{ engineering }}"
+  hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const S = "#898989";
+    return {
+      products: [
+        { name: "OMBRAS", status: "View page", statusColor: "#4F4F4E", href: "MOX - PRODUCT - OMBRAS - EN.dc.html", tagline: "Photovoltaic awning", desc: "Wall-mounted cantilever awning above windows, doors and shopfronts. Generation, permanent shading and optional rain protection, with adjustable tilt." },
+        { name: "PORCH", status: "View page", statusColor: "#4F4F4E", href: "MOX - PRODUCT - PORCH - EN.dc.html", tagline: "Photovoltaic entrance structure", desc: "Compact PV canopy over an entrance, supported by posts and wall brackets. Six module layouts from 8 to 24 m² PV area." },
+        { name: "PERGOLA", status: "View page", statusColor: "#4F4F4E", href: "MOX - PRODUCT - PERGOLA - EN.dc.html", tagline: "Photovoltaic outdoor room", desc: "Freestanding structure whose roof is the energy system. Twelve layouts from 10 to 36 modules, approx. 4.5 to 16,2 kWp." },
+        { name: "BALCONY", status: "In preparation", statusColor: "#898989", href: "MOX - PRODUCT - BALCONY - EN.dc.html", tagline: "Balcony-integrated PV", desc: "PV modules as balustrade or balcony roof for apartments and terraced houses. Compact, plug-in ready where national rules allow." },
+        { name: "FENCE", status: "View page", statusColor: "#4F4F4E", href: "MOX - PRODUCT - FENCE - EN.dc.html", tagline: "Residential PV boundary", desc: "Modular boundary where PV modules form the fence panels. Three heights, landscape or portrait fields, matching posts for every position." },
+        { name: "FACADE", status: "In preparation", statusColor: "#898989", href: "MOX - PRODUCT - FACADE - EN.dc.html", tagline: "Façade-mounted PV", desc: "Ventilated PV outer skin for building walls where the roof is unavailable or insufficient. Higher winter yield from vertical surfaces." },
+        { name: "BIPV Curtain Wall", status: "In preparation", statusColor: "#898989", href: "MOX - PRODUCT - BIPV Curtain Wall - EN.dc.html", tagline: "Building-integrated curtain wall", desc: "Photovoltaic glass integrated into the curtain-wall envelope, forming part of the building fabric." },
+        { name: "BIPV Cladding", status: "In preparation", statusColor: "#898989", href: "MOX - PRODUCT - BIPV Cladding - EN.dc.html", tagline: "Building-integrated cladding", desc: "PV modules replacing façade cladding across opaque wall areas. Weather skin and electricity source in one layer." },
+        { name: "PROFILES", status: "View page", statusColor: "#4F4F4E", href: "MOX - PRODUCT - Profiles - EN.dc.html", tagline: "Profiles, base plates and connectors", desc: "Profiles, base plates and connectors to build your own structure." },
+      ],
+      guidance: [
+        { name: "OMBRAS vs PORCH vs PERGOLA", when: "OMBRAS is a façade awning; PORCH defines an entrance; PERGOLA is a freestanding occupied outdoor room. They look related but solve different architectural requirements." },
+        { name: "FENCE", when: "Choose when a property boundary or privacy screen is required anyway and can also become photovoltaic area &#8212; useful where roof space or orientation is limited." },
+        { name: "FACADE vs BIPV", when: "FACADE mounts modules to the wall plane; BIPV Curtain Wall and Cladding integrate the modules into the envelope itself, reading as building fabric." },
+      ],
+      engineering: [
+        { title: "Wall & anchor capacity", desc: "Anchors are selected for the actual substrate; there is no universal wall fixing." },
+        { title: "Wind pressure & suction", desc: "Projection, height and exposure drive the structural design." },
+        { title: "Open vs watertight roof", desc: "The open version must not be specified where guaranteed rain protection is required." },
+        { title: "Module compatibility", desc: "Dimensions, weight, frame geometry and approved clamping zones must be confirmed per module." },
+        { title: "Fire & façade rules", desc: "Façade and fire requirements are project- and country-specific." },
+        { title: "Corrosion environment", desc: "Coastal or aggressive environments require material verification." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

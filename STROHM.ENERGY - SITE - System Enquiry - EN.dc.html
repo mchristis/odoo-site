@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>Enquiry | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } input:focus, select:focus, textarea:focus { outline:none; border-color:#222222; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="systems" hint-size="100%,89px"></dc-import>
+  <dc-import name="BrandBar" brand="{{ brand }}" hint-size="100%,73px"></dc-import>
+  <dc-import name="PageHero" brand="STROHM.ENERGY" rgb="200,200,200" eyebrow="STROHM.ENERGY · System Enquiry" title="{{ title }}" intro="{{ lead }}" slot="strohm-energy-system-enquiry-hero" shot="STROHM.ENERGY · System Enquiry · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;align-items:flex-start;"><div style="display:inline-block;margin:0 0 28px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B07818;">Prototype. Enquiries are stored in this browser only.</div></section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;max-width:720px;">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="background:var(--color-card-strohm);border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:16px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">{{ confirmation }}</div>
+          <a href="{{ backHref }}" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#222222;" style-hover="color:#4F4F4E;">Back to {{ brand }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ open }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <sc-for list="{{ fields }}" as="f" hint-placeholder-count="6">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#4F4F4E;">
+              <span>{{ f.label }}</span>
+              <sc-if value="{{ f.isText }}" hint-placeholder-val="{{ true }}"><input type="{{ f.type }}" value="{{ f.value }}" onChange="{{ f.onChange }}" style="height:44px;box-sizing:border-box;padding:0 14px;border:1px solid #BBBBBB;border-radius:8px;font:inherit;font-weight:var(--web-input-weight);font-size:var(--web-input-size);color:#222222;background:#FFFFFF;"></input></sc-if>
+              <sc-if value="{{ f.isArea }}" hint-placeholder-val="{{ false }}"><textarea rows="4" value="{{ f.value }}" onChange="{{ f.onChange }}" style="box-sizing:border-box;padding:12px 14px;border:1px solid #BBBBBB;border-radius:8px;font:inherit;font-weight:var(--web-input-weight);font-size:var(--web-input-size);color:#222222;background:#FFFFFF;resize:vertical;"></textarea></sc-if>
+              <sc-if value="{{ f.isSelect }}" hint-placeholder-val="{{ false }}"><select value="{{ f.value }}" onChange="{{ f.onChange }}" style="height:44px;box-sizing:border-box;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font:inherit;font-weight:var(--web-input-weight);font-size:var(--web-input-size);color:#222222;background:#FFFFFF;"><sc-for list="{{ f.options }}" as="o" hint-placeholder-count="3"><option value="{{ o }}">{{ o }}</option></sc-for></select></sc-if>
+              <sc-if value="{{ f.isChecks }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-wrap:wrap;gap:8px;"><sc-for list="{{ f.checks }}" as="c" hint-placeholder-count="3"><span onClick="{{ c.toggle }}" style="cursor:pointer;height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:8px;font-size:14px;font-weight:500;background:{{ c.bg }};color:#222222;border:1px solid {{ c.border }};">{{ c.label }}</span></sc-for></div></sc-if>
+            </label>
+          </sc-for>
+          <label style="display:flex;gap:10px;align-items:flex-start;font-size:var(--web-label-size);line-height:1.5;color:#666666;font-weight:var(--web-label-weight);"><input type="checkbox" checked="{{ consent }}" onChange="{{ onConsent }}" style="margin-top:3px;accent-color:var(--color-brand-strohm);width:20px;height:20px;"></input><span>I agree to be contacted about this request.</span></label>
+          <sc-if value="{{ invalid }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-h3-size);color:#B07818;font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Name, a valid e-mail address and consent are required.</div></sc-if>
+          <div><button onClick="{{ submit }}" style="height:44px;padding:0 24px;border:0;border-radius:6px;background:{{ accent }};color:#222222;font:inherit;font-size:15px;font-weight:500;cursor:pointer;">{{ button }}</button></div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+  <div style="height:160px;"></div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { v: {}, consent: false, sent: false, invalid: false };
+  q() { const q = new URLSearchParams(typeof location !== "undefined" ? location.search : ""); return { brand: (q.get("brand") || "STROHM").toUpperCase(), topic: q.get("topic") || "Enquiry" }; }
+  defs(brand) {
+    const T = (key, label, type) => ({ key, label, kind: "text", type: type || "text" });
+    const S = (key, label, options) => ({ key, label, kind: "select", options });
+    const K = (key, label, options) => ({ key, label, kind: "checks", options });
+    if (brand === "KERN") return [T("company", "Company"), T("name", "Name"), T("email", "E-mail", "email"), T("phone", "Phone", "tel"), T("country", "Country"), T("installs", "Number of installations per year"), K("tech", "Technologies", ["PV", "Battery storage", "Heat pumps", "EV chargers", "Mounting systems"])];
+    if (brand === "TRIBE") return [S("who", "I represent", ["A community", "A municipality"]), S("type", "Community type", ["Residential street", "Apartment building", "Energy cooperative", "Housing association", "Municipality", "Other"]), T("country", "Country"), T("sites", "Approximate number of sites"), K("assets", "Existing equipment", ["Solar", "Batteries", "Meters"]), S("stage", "Project stage", ["Idea", "Planning", "Existing community", "Pilot"]), T("name", "Name"), T("email", "E-mail", "email"), T("phone", "Phone", "tel")];
+    return [T("name", "Name"), T("organisation", "Organisation"), T("email", "E-mail", "email"), T("phone", "Phone", "tel"), T("country", "Country"), { key: "message", label: "Message", kind: "area" }];
+  }
+  renderVals() {
+    const { brand, topic } = this.q(), s = this.state, defs = this.defs(brand);
+    const set = (k, val) => this.setState((st) => ({ v: Object.assign({}, st.v, { [k]: val }) }));
+    const fields = defs.map((d) => {
+      const cur = s.v[d.key] !== undefined ? s.v[d.key] : d.kind === "select" ? d.options[0] : d.kind === "checks" ? [] : "";
+      const o = { label: d.label, type: d.type || "text", value: d.kind === "checks" ? "" : cur, isText: d.kind === "text", isArea: d.kind === "area", isSelect: d.kind === "select", isChecks: d.kind === "checks", options: d.options || [], onChange: (e) => set(d.key, e.target.value) };
+      o.checks = d.kind === "checks" ? d.options.map((x) => { const on = cur.indexOf(x) > -1; return { label: x, bg: on ? "#F4F4F4" : "#FFFFFF", border: on ? "#222222" : "#BBBBBB", toggle: () => set(d.key, on ? cur.filter((y) => y !== x) : cur.concat([x])) }; }) : [];
+      return o;
+    });
+    const FB = { PUSH: "#3EAB57", TRIBE: "#689AB2", KERN: "#1DABC1", PACT: "#D6990E", DEPOT: "#7690C9" }; const accent = "var(--color-brand-" + brand.toLowerCase() + "," + (FB[brand] || "#898989") + ")";
+    const kern = brand === "KERN";
+    return {
+      brand, accent, title: topic, fields, sent: s.sent, open: !s.sent, invalid: s.invalid, consent: s.consent,
+      lead: kern ? "See KERN with your own workflow" : "Only the essential details.",
+      confirmation: kern ? "Request received. We will contact you to plan the demo." : "Request received. We will contact you.",
+      button: kern ? "Request a demo" : "Send request",
+      backHref: brand + " - SYSTEM - Overview - EN.dc.html",
+      onConsent: (e) => this.setState({ consent: e.target.checked }),
+      submit: () => {
+        const v = Object.assign({}, s.v); defs.forEach((d) => { if (d.kind === "select" && v[d.key] === undefined) v[d.key] = d.options[0]; }); const email = (v.email || "").trim();
+        if (!(v.name || "").trim() || !/.+@.+\..+/.test(email) || !s.consent) { this.setState({ invalid: true }); return; }
+        try { const k = "strohm-system-enquiries"; const a = JSON.parse(localStorage.getItem(k) || "[]"); a.push({ brand, topic, data: v, at: new Date().toISOString() }); localStorage.setItem(k, JSON.stringify(a)); } catch (e) {}
+        this.setState({ sent: true, invalid: false });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

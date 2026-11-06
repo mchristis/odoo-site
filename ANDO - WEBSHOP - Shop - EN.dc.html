@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>ANDO Shop | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./eu-numbers.js"></script>
+<script src="./image-slot.js"></script>
+<script src="./ando-shop-data.js"></script>
+<style>body{margin:0;background:#FFFFFF;} a{color:#252525;text-decoration:none;} a:hover{color:#4F4F4E;}</style>
+</helmet>
+<dc-import name="WebshopHeader" brand="ANDO" active="{{ activeKey }}" hint-size="100%,138px"></dc-import>
+<main data-screen-label="ANDO catalogue" style="max-width:calc(var(--web-grid,1312px) + 2 * var(--web-side));margin:0 auto;padding:24px var(--web-side) 96px;box-sizing:border-box;font-family:var(--font-web);color:#252525;">
+  <nav aria-label="Breadcrumb" style="display:flex;gap:8px;flex-wrap:wrap;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;margin-bottom:16px;">
+    <a href="WEBSHOP - SITE - Home - EN.dc.html" style="color:#5F5E5E;" style-hover="color:#252525;">Webshop</a><span aria-hidden="true">/</span>
+    <sc-if value="{{ noSeries }}" hint-placeholder-val="{{ true }}"><span aria-current="page" style="color:#252525;">ANDO</span></sc-if>
+    <sc-if value="{{ hasSeries }}" hint-placeholder-val="{{ false }}"><a href="ANDO - WEBSHOP - Shop - EN.dc.html" style="color:#5F5E5E;" style-hover="color:#252525;">ANDO</a><span aria-hidden="true">/</span><span aria-current="page" style="color:#252525;">{{ activeKey }}</span></sc-if>
+  </nav>
+
+  <div style="display:grid;grid-template-columns:{{ bCols }};grid-template-rows:{{ bRows }};border-radius:24px;overflow:hidden;aspect-ratio:{{ bAspect }};min-height:{{ bMin }};background:var(--color-ando-50,#E6EA95);">
+    <div style="display:flex;align-items:center;padding:clamp(20px,4vw,56px);"><img src="assets/logos/ANDO-logo-symbol-wordmark.svg" alt="ANDO" style="width:min(100%,240px);height:auto;display:block;"></div>
+    <img src="assets/ando-hero/2.png" alt="Installer carrying a solar module across a roof" style="width:100%;height:{{ imgH }};aspect-ratio:{{ imgAspect }};min-height:0;object-fit:cover;display:block;">
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 32px;margin-top:24px;">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:640px;">
+      <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Solar module catalogue. Warranty is a specification, not an add-on.</p>
+      <sc-if value="{{ hasSeriesLine }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#252525;text-wrap:pretty;"><span style="font-weight:500;">{{ seriesName }}</span> · {{ seriesLine }}</p>
+      </sc-if>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;">
+      <span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;background:#F4F4F4;border-radius:8px;padding:8px 12px;">Demonstration data. Stock, prices, dates and warehouses are examples.</span>
+      <div role="group" aria-label="Demo view" style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Demo view</span>
+        <div style="display:flex;background:#F4F4F4;border-radius:8px;padding:4px;gap:4px;">
+          <button type="button" onClick="{{ setOut }}" aria-pressed="{{ outPressed }}" style="min-height:44px;padding:0 12px;border:none;border-radius:6px;cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;background:{{ outBg }};color:{{ outFg }};">Logged out</button>
+          <button type="button" onClick="{{ setIn }}" aria-pressed="{{ inPressed }}" style="min-height:44px;padding:0 12px;border:none;border-radius:6px;cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;background:{{ inBg }};color:{{ inFg }};">Logged in</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:40px 64px;align-items:flex-start;margin-top:40px;">
+    <aside aria-label="Filters" style="flex:1 1 290px;max-width:290px;min-width:0;">
+      <div style="display:flex;justify-content:space-between;align-items:center;min-height:44px;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#252525;">Filter</span>
+        <button type="button" onClick="{{ clearAll }}" disabled="{{ noFilters }}" style="background:none;border:none;padding:0;min-height:44px;cursor:pointer;font-family:inherit;font-size:var(--web-small-size);font-weight:300;color:{{ clearFg }};text-decoration:underline;text-underline-offset:3px;">Clear all</button>
+      </div>
+      <sc-for list="{{ secs }}" as="s" hint-placeholder-count="10">
+        <div style="border-top:1px solid #DDDDDD;">
+          <button type="button" onClick="{{ s.toggle }}" aria-expanded="{{ s.open }}" style="width:100%;min-height:48px;display:flex;justify-content:space-between;align-items:center;gap:12px;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;text-align:left;font-size:var(--web-body-size);font-weight:300;color:#252525;">
+            <span>{{ s.label }}</span>
+            <span aria-hidden="true" style="width:24px;height:24px;border-radius:50%;background:#F4F4F4;display:flex;align-items:center;justify-content:center;font-size:var(--web-small-size);color:#4F4F4E;flex:none;">{{ s.sign }}</span>
+          </button>
+          <sc-if value="{{ s.showRange }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 0 16px;">
+              
+              <div onPointerDown="{{ s.onDown }}" onPointerMove="{{ s.onMove }}" onPointerUp="{{ s.onUp }}" style="position:relative;height:72px;touch-action:none;cursor:pointer;margin:0 10px;">
+                <span style="position:absolute;top:4px;left:{{ s.l }};transform:translateX({{ s.tMin }});background:#4F4F4E;color:#FFFFFF;border-radius:8px;padding:2px 8px;font-size:var(--web-min-size);font-weight:300;white-space:nowrap;">{{ s.lo }}</span>
+                <span style="position:absolute;top:4px;left:{{ s.r }};transform:translateX({{ s.tMax }});background:#4F4F4E;color:#FFFFFF;border-radius:8px;padding:2px 8px;font-size:var(--web-min-size);font-weight:300;white-space:nowrap;">{{ s.hi }}</span>
+                <div style="position:absolute;left:0;right:0;top:49px;height:2px;background:#DDDDDD;"></div>
+                <div style="position:absolute;top:48px;height:4px;border-radius:2px;background:var(--color-brand-ando,#CDD62B);left:{{ s.l }};width:{{ s.w }};"></div>
+                <div role="slider" tabindex="0" aria-label="{{ s.ariaMin }}" aria-valuemin="{{ s.dmin }}" aria-valuemax="{{ s.dmax }}" aria-valuenow="{{ s.vmin }}" onKeyDown="{{ s.keyMin }}" style="position:absolute;top:40px;left:{{ s.l }};width:20px;height:20px;margin-left:-10px;border-radius:50%;background:#FFFFFF;border:1px solid #4F4F4E;box-sizing:border-box;"></div>
+                <div role="slider" tabindex="0" aria-label="{{ s.ariaMax }}" aria-valuemin="{{ s.dmin }}" aria-valuemax="{{ s.dmax }}" aria-valuenow="{{ s.vmax }}" onKeyDown="{{ s.keyMax }}" style="position:absolute;top:40px;left:{{ s.r }};width:20px;height:20px;margin-left:-10px;border-radius:50%;background:#FFFFFF;border:1px solid #4F4F4E;box-sizing:border-box;"></div>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ s.showCheck }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 0 12px;">
+              <sc-for list="{{ s.opts }}" as="o" hint-placeholder-count="3">
+                <label style="display:flex;align-items:center;gap:12px;min-height:44px;cursor:pointer;font-size:var(--web-small-size);font-weight:300;color:#252525;">
+                  <input type="checkbox" checked="{{ o.checked }}" onChange="{{ o.onChange }}" style="appearance:none;width:16px;height:16px;margin:0;border:none;border-radius:4px;background:{{ o.box }};cursor:pointer;flex:none;">
+                  <span style="flex:1;">{{ o.v }}</span><span style="color:#5F5E5E;">{{ o.n }}</span>
+                </label>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+      <div style="border-top:1px solid #DDDDDD;"></div>
+    </aside>
+
+    <section aria-label="Products" style="flex:999 1 520px;min-width:0;">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px;min-height:44px;">
+        <span style="font-size:var(--web-small-size);font-weight:300;color:#252525;"><b style="font-weight:700;">{{ count }}</b> products</span>
+        <div ref="{{ sortRef }}" style="position:relative;">
+          <button type="button" onClick="{{ toggleSort }}" aria-haspopup="listbox" aria-expanded="{{ sortOpenStr }}" style="min-height:44px;padding:0 16px;display:flex;align-items:center;gap:12px;background:#F4F4F4;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-size:var(--web-small-size);font-weight:300;color:#252525;">{{ sortLabel }}<span aria-hidden="true" style="width:7px;height:7px;border-right:1px solid #4F4F4E;border-bottom:1px solid #4F4F4E;transform:{{ sortChev }};margin:{{ sortChevM }};"></span></button>
+          <sc-if value="{{ sortOpen }}" hint-placeholder-val="{{ false }}">
+            <div role="listbox" aria-label="Sort" style="position:absolute;right:0;top:calc(100% + 4px);z-index:20;min-width:100%;background:#F4F4F4;border-radius:8px;padding:4px;display:flex;flex-direction:column;box-sizing:border-box;">
+              <sc-for list="{{ sortOpts }}" as="o" hint-placeholder-count="3">
+                <button type="button" role="option" aria-selected="{{ o.sel }}" onClick="{{ o.pick }}" style="min-height:44px;padding:0 12px;text-align:left;white-space:nowrap;background:{{ o.bg }};border:none;border-radius:6px;cursor:pointer;font-family:inherit;font-size:var(--web-small-size);font-weight:{{ o.w }};color:#252525;">{{ o.l }}</button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+      <sc-if value="{{ hasChips }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+          <sc-for list="{{ chips }}" as="c" hint-placeholder-count="1">
+            <button type="button" onClick="{{ c.remove }}" aria-label="{{ c.aria }}" style="min-height:44px;padding:0 12px;display:flex;align-items:center;gap:8px;background:#F4F4F4;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-size:var(--web-small-size);font-weight:300;color:#252525;" style-hover="background:#E3E3E3;">{{ c.label }}<span aria-hidden="true">&#215;</span></button>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:24px;background:#F4F4F4;border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.25;">No modules match.</h3>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;">Widen a range or clear a filter.</p>
+          <button type="button" onClick="{{ clearAll }}" style="min-height:44px;padding:0 16px;background:#4F4F4E;color:#FFFFFF;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;">Clear all filters</button>
+        </div>
+      </sc-if>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(max(min(100%,300px),calc((100% - 24px) / 2)),1fr));gap:24px;margin-top:24px;">
+        <sc-for list="{{ cards }}" as="c" hint-placeholder-count="4">
+          <article onClick="{{ c.onCard }}" style="background:#F4F4F4;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:16px;min-width:0;cursor:pointer;">
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;"><image-slot id="{{ c.slotId }}" shape="rect" placeholder="{{ c.slotPh }}"></image-slot><a href="{{ c.href }}" tabindex="-1" aria-hidden="true" style="position:absolute;inset:0;"></a></div>
+              <div style="display:flex;justify-content:center;">
+                <sc-for list="{{ c.dots }}" as="d" hint-placeholder-count="4">
+                  <button type="button" onClick="{{ d.pick }}" aria-label="{{ d.aria }}" aria-pressed="{{ d.sel }}" style="width:24px;height:24px;padding:0;border:none;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;"><span style="width:8px;height:8px;border-radius:50%;background:{{ d.bg }};"></span></button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <a href="{{ c.dsHref }}" style="flex:1 1 0;min-height:40px;display:flex;align-items:center;justify-content:center;gap:6px;background:#FFFFFF;border-radius:8px;font-size:var(--web-btn-sm-size);font-weight:400;color:#252525;" style-hover="background:#E3E3E3;color:#252525;"><span aria-hidden="true">&#8595;</span>Datasheet</a>
+              <a href="{{ c.catHref }}" style="flex:1 1 0;min-height:40px;display:flex;align-items:center;justify-content:center;gap:6px;background:#FFFFFF;border-radius:8px;font-size:var(--web-btn-sm-size);font-weight:400;color:#252525;" style-hover="background:#E3E3E3;color:#252525;"><span aria-hidden="true">&#8595;</span>Catalogue</a>
+            </div>
+            <div style="border-top:1px solid #DDDDDD;"></div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <a href="{{ c.href }}" style="color:#252525;" style-hover="color:#4F4F4E;"><h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.25;">{{ c.title }}</h3></a>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;overflow-wrap:anywhere;">{{ c.sku }}</span>
+              <sc-if value="{{ c.prov }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;margin-top:4px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#4F4F4E;background:#FFFFFF;border-radius:8px;padding:4px 8px;">Provisional data</span></sc-if>
+            </div>
+            <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">
+              <sc-for list="{{ c.specs }}" as="s" hint-placeholder-count="4">
+                <span style="color:#5F5E5E;">{{ s.k }}</span><span style="color:#252525;">{{ s.v }}</span>
+              </sc-for>
+            </div>
+            <sc-if value="{{ c.showPrice }}" hint-placeholder-val="{{ false }}">
+              <span style="font-size:var(--web-small-size);font-weight:300;color:#252525;">From <b style="font-weight:700;">{{ c.from }}</b> per pc · {{ c.routes }}</span>
+            </sc-if>
+            <a href="{{ c.actionHref }}" style="margin-top:auto;min-height:48px;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 12px;background:#4F4F4E;color:#FFFFFF;border-radius:8px;font-size:var(--cta-font);font-weight:400;" style-hover="background:#5F5E5E;color:#FFFFFF;">{{ c.action }}</a>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+</main>
+<dc-import name="Footer" show-ebook="{{ false }}" hint-size="100%,400px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { ready: !!window.ANDO_SHOP, auth: false, rng: {}, chk: {}, open: {}, sort: "power-asc", sortOpen: false, cardView: {} };
+  sortRef = React.createRef();
+  componentDidMount() {
+    this._bw = () => this.setState((s) => ({ vw: window.innerWidth }));
+    window.addEventListener("resize", this._bw); window.addEventListener("load", this._bw); setTimeout(this._bw, 300);
+    if (window.ResizeObserver) { this._ro = new ResizeObserver(this._bw); this._ro.observe(document.documentElement); }
+    const go = () => { const D = window.ANDO_SHOP, s = new URLSearchParams(location.search).get("series"), ser = s && D.SERIES.includes(s.toUpperCase()) ? [s.toUpperCase()] : null;
+      this.setState((st) => ({ ready: true, auth: D.getAuth(), chk: ser ? Object.assign({}, st.chk, { series: ser }) : st.chk })); };
+    this._change = () => this.setState({ auth: window.ANDO_SHOP ? window.ANDO_SHOP.getAuth() : false });
+    window.addEventListener("ando-shop-change", this._change); window.addEventListener("storage", this._change);
+    if (window.ANDO_SHOP) go(); else this._t = setInterval(() => { if (window.ANDO_SHOP) { clearInterval(this._t); go(); } }, 50);
+    this._doc = (e) => { if (this.state.sortOpen && this.sortRef.current && !this.sortRef.current.contains(e.target)) this.setState({ sortOpen: false }); };
+    this._esc = (e) => { if (e.key === "Escape" && this.state.sortOpen) this.setState({ sortOpen: false }); };
+    document.addEventListener("mousedown", this._doc); document.addEventListener("keydown", this._esc);
+  }
+  componentWillUnmount() { window.removeEventListener("resize", this._bw); window.removeEventListener("load", this._bw); if (this._ro) this._ro.disconnect(); clearInterval(this._t); document.removeEventListener("mousedown", this._doc); document.removeEventListener("keydown", this._esc); window.removeEventListener("ando-shop-change", this._change); window.removeEventListener("storage", this._change); }
+  rangeDefs() { const D = window.ANDO_SHOP; return D.RANGES.concat([D.WARRANTY]); }
+  checkDefs() { const D = window.ANDO_SHOP; return this.state.auth ? D.CHECKS.concat([D.AVAIL]) : D.CHECKS; }
+  rv(d) {
+    const v = window.ANDO_SHOP.PRODUCTS.map((p) => p[d.key]), dmin = Math.min(...v), dmax = Math.max(...v), s = this.state.rng[d.key];
+    return { dmin, dmax, min: s ? Math.max(dmin, s.min) : dmin, max: s ? Math.min(dmax, s.max) : dmax };
+  }
+  passR(p) { return this.rangeDefs().every((d) => { const r = this.rv(d); return p[d.key] >= r.min - 1e-9 && p[d.key] <= r.max + 1e-9; }); }
+  passC(p, except) { return this.checkDefs().every((c) => { if (c.key === except) return true; const set = this.state.chk[c.key] || []; return !set.length || c.get(p).some((v) => set.includes(v)); }); }
+  setRange(d, which, v) {
+    const r = this.rv(d); v = +(Math.round(v / d.step) * d.step).toFixed(d.dec);
+    let min = r.min, max = r.max;
+    if (which === "min") min = Math.min(Math.max(v, r.dmin), max); else max = Math.max(Math.min(v, r.dmax), min);
+    this.setState((s) => ({ rng: Object.assign({}, s.rng, { [d.key]: { min, max } }) }));
+  }
+  fromX(d, e) { const rect = e.currentTarget.getBoundingClientRect(), r = this.rv(d); const f = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width)); return r.dmin + f * (r.dmax - r.dmin); }
+  toggleCheck(key, v) {
+    this.setState((s) => { const cur = (s.chk[key] || []).slice(); const i = cur.indexOf(v); if (i > -1) cur.splice(i, 1); else cur.push(v); return { chk: Object.assign({}, s.chk, { [key]: cur }) }; });
+  }
+  setAuth(v) { window.ANDO_SHOP.setAuth(v); this.setState((s) => ({ auth: v, chk: v ? s.chk : Object.assign({}, s.chk, { av: [] }), sort: v || !["speed", "price"].includes(s.sort) ? s.sort : "power-asc" })); }
+  renderVals() {
+    const D = window.ANDO_SHOP, st = this.state;
+    const ph = (window.innerWidth || document.documentElement.clientWidth || 1024) < 640;
+    const base = { bCols: ph ? "minmax(0,1fr)" : "minmax(0,1fr) minmax(0,2fr)", bRows: ph ? "auto auto" : "minmax(0,1fr)", bAspect: ph ? "auto" : "3/1", bMin: ph ? "0px" : "180px", imgH: ph ? "auto" : "100%", imgAspect: ph ? "16/9" : "auto", activeKey: "all", noSeries: true, hasSeries: false, setOut: () => this.setAuth(false), setIn: () => this.setAuth(true), outBg: st.auth ? "transparent" : "#4F4F4E", outFg: st.auth ? "#252525" : "#FFFFFF", inBg: st.auth ? "#4F4F4E" : "transparent", inFg: st.auth ? "#FFFFFF" : "#252525", outPressed: st.auth ? "false" : "true", inPressed: st.auth ? "true" : "false" };
+    if (!st.ready || !D) return Object.assign(base, { secs: [], cards: [], chips: [], sortOpts: [], count: "", noFilters: true, clearFg: "#5F5E5E", hasChips: false, empty: false });
+    const P = D.PRODUCTS, auth = st.auth;
+    const fmt = (d, v) => D.num(v, d.dec) + " " + d.unit;
+    const pct = (d, r, v) => (r.dmax === r.dmin ? 0 : ((v - r.dmin) / (r.dmax - r.dmin)) * 100) + "%";
+    const rangeSec = (d) => {
+      const r = this.rv(d), open = !!st.open[d.key];
+      return { key: d.key, label: d.label, open, sign: open ? "\u2212" : "+", toggle: () => this.setState((s) => ({ open: Object.assign({}, s.open, { [d.key]: !s.open[d.key] }) })),
+        showRange: open, showCheck: false, lo: fmt(d, r.min), hi: fmt(d, r.max), l: pct(d, r, r.min), r: pct(d, r, r.max), w: "calc(" + pct(d, r, r.max) + " - " + pct(d, r, r.min) + ")",
+        dmin: r.dmin, dmax: r.dmax, vmin: r.min, vmax: r.max, tMin: "-" + pct(d, r, r.min), tMax: "-" + pct(d, r, r.max), ariaMin: d.label + " minimum", ariaMax: d.label + " maximum",
+        onDown: (e) => { const v = this.fromX(d, e), rr = this.rv(d); const which = Math.abs(v - rr.min) < Math.abs(v - rr.max) || (v < rr.min) ? "min" : "max"; this._drag = { key: d.key, which }; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (x) {} this.setRange(d, which, v); },
+        onMove: (e) => { if (this._drag && this._drag.key === d.key) this.setRange(d, this._drag.which, this.fromX(d, e)); },
+        onUp: () => { this._drag = null; },
+        keyMin: (e) => this.key(d, "min", e), keyMax: (e) => this.key(d, "max", e) };
+    };
+    this.key = (d, which, e) => { const k = { ArrowLeft: -1, ArrowDown: -1, ArrowRight: 1, ArrowUp: 1 }[e.key]; if (!k) return; e.preventDefault(); const r = this.rv(d); this.setRange(d, which, (which === "min" ? r.min : r.max) + k * d.step); };
+    const checkSec = (c) => {
+      const open = !!st.open[c.key], set = st.chk[c.key] || [];
+      let vals = [...new Set(P.flatMap((p) => c.get(p)))]; vals.sort((a, b) => c.order.indexOf(a) - c.order.indexOf(b));
+      const opts = vals.map((v) => ({ v, n: P.filter((p) => this.passR(p) && this.passC(p, c.key) && c.get(p).includes(v)).length, checked: set.includes(v), box: set.includes(v) ? "var(--color-brand-ando,#CDD62B)" : "#E3E3E3", onChange: () => this.toggleCheck(c.key, v) })).filter((o) => o.n > 0 || o.checked);
+      return { key: c.key, label: c.label, open, sign: open ? "\u2212" : "+", toggle: () => this.setState((s) => ({ open: Object.assign({}, s.open, { [c.key]: !s.open[c.key] }) })), showRange: false, showCheck: open, opts };
+    };
+    const R = D.RANGES, C = D.CHECKS;
+    const secs = [rangeSec(R[0]), rangeSec(R[1]), rangeSec(R[2])].concat(C.map(checkSec), [rangeSec(D.WARRANTY)], auth ? [checkSec(D.AVAIL)] : []);
+    const chips = [];
+    this.rangeDefs().forEach((d) => { const r = this.rv(d); if (r.min > r.dmin || r.max < r.dmax) chips.push({ label: d.label + " " + D.num(r.min, d.dec) + "\u2013" + D.num(r.max, d.dec) + " " + d.unit, aria: "Remove filter " + d.label, remove: () => this.setState((s) => { const n = Object.assign({}, s.rng); delete n[d.key]; return { rng: n }; }) }); });
+    this.checkDefs().forEach((c) => (st.chk[c.key] || []).forEach((v) => chips.push({ label: c.label + ": " + v, aria: "Remove filter " + v, remove: () => this.toggleCheck(c.key, v) })));
+    const so = st.sort;
+    const list = P.filter((p) => this.passR(p) && this.passC(p, "__none__")).sort((x, y) => so === "power-desc" ? y.power - x.power : so === "eff-desc" ? y.efficiency - x.efficiency : so === "speed" ? D.bestRoute(x) - D.bestRoute(y) || x.power - y.power : so === "price" ? D.minPrice(x) - D.minPrice(y) : x.power - y.power);
+    const sortBase = [{ v: "power-asc", l: "Power, low to high" }, { v: "power-desc", l: "Power, high to low" }, { v: "eff-desc", l: "Efficiency, high to low" }].concat(auth ? [{ v: "speed", l: "Availability, fastest first" }, { v: "price", l: "Price, low to high" }] : []);
+    const sortOpts = sortBase.map((o) => ({ v: o.v, l: o.l, sel: o.v === so ? "true" : "false", bg: o.v === so ? "#E3E3E3" : "#F4F4F4", w: o.v === so ? 400 : 300, pick: () => this.setState({ sort: o.v, sortOpen: false }) }));
+    const sortCur = sortBase.find((o) => o.v === so) || sortBase[0];
+    const V = D.VIEWS;
+    const cards = list.map((p) => {
+      const t = D.title(p), href = D.productHref(p), n = D.ORDER.filter((r) => D.free(p, r) >= D.ROUTES[r].moq).length;
+      return { title: t, sku: p.art, href, prov: p.prov, slotId: "ando-shop-" + p.art + "-" + V[st.cardView[p.art] || 0][0], slotPh: t + " · " + V[st.cardView[p.art] || 0][1].toLowerCase() + " image",
+        dots: V.map(([k, l], i) => { const on = (st.cardView[p.art] || 0) === i; return { aria: t + ", image " + (i + 1) + " of " + V.length + ": " + l, sel: on ? "true" : "false", bg: on ? "#4F4F4E" : "#BBBBBB", pick: () => this.setState((s) => ({ cardView: Object.assign({}, s.cardView, { [p.art]: i }) })) }; }),
+        onCard: (e) => { if (e.target.closest && e.target.closest("a,button,input,label,select")) return; location.href = href; },
+        dsHref: D.docHref(p, "Datasheet"), catHref: D.docHref(p, "Catalogue"),
+        specs: [{ k: "Construction", v: p.construction }, { k: "Efficiency", v: D.num(p.efficiency, 1) + " %" }, { k: "Warranty", v: p.warranty + " yr" }, { k: "Power", v: p.power + " Wp" }],
+        showPrice: auth, from: D.eur(D.minPrice(p)), routes: n + (n === 1 ? " supply route open" : " supply routes open"),
+        action: auth ? "Order now" : "Log in to see prices and stock", actionHref: auth ? href + "#supply" : D.LOGIN };
+    });
+    const noFilters = !chips.length, serSel = st.chk.series || [], activeKey = serSel.length === 1 ? serSel[0] : "all";
+    const SERIES_LINE = { AALTO: "Residential. Full Black, or black frame with transparent rear.", MIES: "Residential and commercial rooftops.", FOSTER: "Commercial and utility.", NOUVEL: "Lightweight, flexible and frameless." };
+    return Object.assign(base, { activeKey, hasSeries: activeKey !== "all", noSeries: activeKey === "all", hasSeriesLine: !!SERIES_LINE[activeKey], seriesName: activeKey, seriesLine: SERIES_LINE[activeKey] || "", secs, chips, hasChips: chips.length > 0, cards, count: String(list.length), empty: list.length === 0, sortOpts, sort: so,
+      sortRef: this.sortRef, sortOpen: st.sortOpen, sortOpenStr: st.sortOpen ? "true" : "false", sortLabel: sortCur.l, sortChev: st.sortOpen ? "rotate(-135deg)" : "rotate(45deg)", sortChevM: st.sortOpen ? "4px 0 0" : "-4px 0 0",
+      toggleSort: () => this.setState((s) => ({ sortOpen: !s.sortOpen })), noFilters, clearFg: noFilters ? "#707070" : "#252525",
+      clearAll: () => this.setState({ rng: {}, chk: {} }) });
+  }
+}
+</script>
+</body>
+</html>

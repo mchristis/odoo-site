@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="font-family:var(--font-web);color:#4F4F4E;background:#F5F5F5;padding:24px;display:flex;flex-direction:column;gap:14px;border-radius:12px;">
+  <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;"><span style="font-size:14px;font-weight:700;">{{ title }}</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;text-transform:uppercase;">ILLUSTRATION</span></div>
+  <sc-if value="{{ isLine }}" hint-placeholder-val="{{ true }}">
+    <div style="display:grid;grid-template-columns:repeat({{ n }},minmax(0,1fr));gap:3px;align-items:end;height:160px;border-bottom:1px solid #1E1E1E;position:relative;">
+      <sc-for list="{{ bars }}" as="b" hint-placeholder-count="12">
+        <div style="height:100%;display:flex;align-items:flex-end;gap:2px;">
+          <div style="flex:1;height:{{ b.a }};background:#8A8A88;"></div>
+          <div style="flex:1;height:{{ b.b }};background:#1E1E1E;"></div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat({{ n }},minmax(0,1fr));gap:3px;"><sc-for list="{{ bars }}" as="b" hint-placeholder-count="12"><span style="font-size:var(--web-min-size);font-weight:300;color:#8A8A88;text-align:center;line-height:var(--web-min-lh);">{{ b.l }}</span></sc-for></div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;font-size:12px;font-weight:300;color:#5F5E5E;"><span style="display:flex;gap:6px;align-items:center;"><span style="width:12px;height:12px;background:#8A8A88;"></span>{{ legendA }}</span><span style="display:flex;gap:6px;align-items:center;"><span style="width:12px;height:12px;background:#1E1E1E;"></span>{{ legendB }}</span><span>{{ unit }}</span></div>
+  </sc-if>
+  <sc-if value="{{ isRows }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="5">
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(110px,160px) minmax(0,1fr);gap:12px;align-items:center;">
+          <span style="font-size:12px;font-weight:700;">{{ r.k }}</span>
+          <div style="display:flex;align-items:center;gap:8px;min-width:0;"><div style="flex:0 1 {{ r.w }};min-width:0;box-sizing:border-box;height:22px;background:{{ r.bg }};"></div><span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;white-space:nowrap;line-height:var(--web-min-lh);">{{ r.v }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+  <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;">{{ note }}</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:700,&quot;height&quot;:320},&quot;kind&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;bedroom&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;bedroom&quot;,&quot;shower&quot;,&quot;classroom&quot;,&quot;particles&quot;,&quot;airing&quot;]}}">
+const D = {
+  bedroom: { title: "CO₂ in a bedroom over one night", unit: "ppm, 2 people, door closed", a: "Windows closed", b: "With AIRO SHIFT", max: 2600,
+    pts: [["22", 650, 650], ["23", 1100, 780], ["00", 1500, 820], ["01", 1800, 840], ["02", 2000, 850], ["03", 2150, 850], ["04", 2250, 850], ["05", 2320, 850], ["06", 2380, 850], ["07", 2420, 850]],
+    note: "Without ventilation CO₂ keeps rising all night. With CO₂-controlled supply it levels off below about 900 ppm." },
+  shower: { title: "Humidity in a bathroom after a shower", unit: "% relative humidity", a: "No extract", b: "With humidity-controlled extract", max: 100,
+    pts: [["0", 55, 55], ["10", 92, 90], ["20", 88, 75], ["30", 84, 64], ["40", 81, 58], ["50", 78, 55], ["60", 76, 54], ["90", 72, 53]],
+    note: "Minutes after the shower. Without extract the air stays humid for hours and moisture settles on walls and ceilings." },
+  classroom: { title: "CO₂ in a classroom during a lesson", unit: "ppm, 28 pupils", a: "Windows closed", b: "With AIRO WAVE", max: 3200,
+    pts: [["0", 600, 600], ["5", 1100, 800], ["10", 1550, 920], ["15", 1900, 980], ["20", 2200, 1010], ["30", 2600, 1030], ["40", 2850, 1040], ["50", 3000, 1040]],
+    note: "Minutes into the lesson. In a closed classroom CO₂ passes 1.400 ppm within about ten minutes." },
+  particles: { title: "Particle sizes and what filters hold back", rows: [["Pollen", "10–100 µm", 100, "#E4E2E0"], ["Coarse dust", "2,5–10 µm (PM10)", 70, "#D4D4D4"], ["Fine dust, soot", "under 2,5 µm (PM2,5)", 45, "#8A8A88"], ["Ultrafine", "under 1 µm (PM1)", 25, "#5F5E5E"], ["Viruses on droplets", "about 0,1–1 µm", 12, "#4F4F4E"]],
+    note: "G3 filters stop pollen and coarse dust. F7 also captures most fine dust and soot. HEPA captures the finest particles. Bar length shows relative size, not to scale." },
+  airing: { title: "Winter: window airing vs heat recovery", rows: [["Window airing", "most of the heat leaves with the air", 100, "#8A8A88"], ["Mechanical, no recovery", "controlled, but the heat still leaves", 70, "#8A8A88"], ["Heat recovery", "most heat returns to the room", 18, "#4F4F4E"]],
+    note: "Bar length shows the heat lost with the ventilation air. Illustration; actual values depend on the unit and the weather." },
+};
+class Component extends DCLogic {
+  renderVals() {
+    const d = D[this.props.kind] || D.bedroom;
+    const isRows = !!d.rows;
+    return {
+      title: d.title, note: d.note, isLine: !isRows, isRows, unit: d.unit || "", legendA: d.a || "", legendB: d.b || "",
+      n: String((d.pts || []).length || 1),
+      bars: (d.pts || []).map(([l, a, b]) => ({ l, a: Math.round(a / d.max * 100) + "%", b: Math.round(b / d.max * 100) + "%" })),
+      rows: (d.rows || []).map(([k, v, w, bg]) => ({ k, v, w: w + "%", bg })),
+    };
+  }
+}
+</script>
+</body>
+</html>

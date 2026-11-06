@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>NENDO with EMON: Functions | STRØHM.ENERGY</title>
+<meta name="robots" content="noindex">
+<script src="nendo-emon-functions.js"></script>
+<script src="image-slot.js"></script>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } html { scroll-behavior:smooth; } [id] { scroll-margin-top:130px; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,64px"></dc-import>
+  <dc-import name="NendoNav" active="products" hint-size="100%,57px"></dc-import>
+  <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:16px var(--web-side);box-sizing:border-box;font-size:12px;font-weight:700;letter-spacing:0.08em;color:#B07818;border-bottom:1px solid var(--color-divider);">DRAFT. Text from NENDO × EMON Function explainers v1 (2026-09-26). Confidence tags [Likely] and [Guessing] are kept until confirmed. Hidden from search engines.</div>
+
+  <dc-import name="PageHero" brand="NENDO" rgb="27,139,154" title="NENDO with EMON." slot="nendo-emon-hero-range" shot="NENDO_EMON_HERO_RANGE_01 · NENDO range on concrete · 3:1" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;display:flex;gap:6px;"><a href="NENDO - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">NENDO</a><span>&#8250;</span><a href="NENDO - PRODUCT - Products - EN.dc.html" style="color:var(--color-grey-70);">PRODUCTS</a><span>&#8250;</span><span style="color:var(--color-text-primary);">EMON FUNCTIONS</span></div>
+    
+    <p style="margin:0 0 40px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;text-wrap:pretty;">{{ intro }}</p>
+    
+    <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);margin-bottom:48px;line-height:var(--web-min-lh);">The NENDO range. Every unit is controlled as one system by EMON.</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px;align-items:center;margin-bottom:56px;">
+      <div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:var(--color-card-nendo);"><image-slot id="nendo-emon-system" src="assets/nendo/nendo-system-diagram-01.png" shape="rounded" radius="12" placeholder="NENDO_EMON_SYSTEM_DIAGRAM_01 · house section with all devices and EMON · 4:3"></image-slot></div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">The system</div>
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One plan <span style="color:#8E8E8E;">for every device in the house.</span></h2>
+        <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">AERO outdoor unit, FLOW hydraulics, VESSEL DHW hot-water tank and RAY solar connection, together with the home battery, EV charger and grid meter. Solid lines carry power, heat and water. Dotted lines are EMON and RAY communication.</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));border-top:1px solid var(--color-text-primary);">
+      <sc-for list="{{ index }}" as="x" hint-placeholder-count="13">
+        <a href="{{ x.href }}" style="display:flex;gap:12px;padding:12px 12px 12px 0;border-bottom:1px solid var(--color-divider);font-size:var(--web-small-size);line-height:var(--web-small-lh);" style-hover="color:var(--color-text-primary);"><span style="font-weight:var(--web-eyebrow-weight);color:var(--color-grey-70);min-width:24px;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);">{{ x.num }}</span><span style="font-weight:400;">{{ x.title }}</span></a>
+      </sc-for>
+    </div>
+  </section>
+
+  <sc-for list="{{ fns }}" as="f" hint-placeholder-count="3">
+    <section id="{{ f.id }}" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+      <div style="border-top:1px solid var(--color-text-primary);padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:16px;min-width:0;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">{{ f.num }} / Function</div>
+          <h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ f.title }}</h2>
+          <sc-if value="{{ f.lead }}" hint-placeholder-val="{{ true }}"><p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ f.lead }}</p></sc-if>
+          <div style="background:var(--color-card-nendo);border-radius:12px;padding:20px;font-size:14px;font-weight:400;line-height:1.6;">{{ f.tile }}</div>
+          <div style="aspect-ratio:9/16;max-width:280px;width:100%;border-radius:12px;overflow:hidden;background:var(--color-card-nendo);"><image-slot id="{{ f.slotId }}" src="{{ f.slotSrc }}" shape="rounded" radius="12" placeholder="{{ f.slotLabel }}"></image-slot></div>
+          <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);">App screen: {{ f.screenName }}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;min-width:0;">
+          <sc-if value="{{ f.hasFig }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px;">
+              <div style="aspect-ratio:{{ f.figRatio }};border-radius:12px;overflow:hidden;background:var(--color-surface-card);"><image-slot id="{{ f.figId }}" src="{{ f.figSrc }}" shape="rounded" radius="12" placeholder="{{ f.figCaption }}"></image-slot></div>
+              <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-min-lh);">{{ f.figCaption }}</div>
+            </div>
+          </sc-if>
+          <sc-for list="{{ f.blocks }}" as="b" hint-placeholder-count="3">
+            <sc-if value="{{ b.isH }}" hint-placeholder-val="{{ false }}"><h3 style="margin:16px 0 0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">{{ b.text }}</h3></sc-if>
+            <sc-if value="{{ b.isP }}" hint-placeholder-val="{{ true }}"><p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);text-wrap:pretty;max-width:760px;">{{ b.text }}</p></sc-if>
+            <sc-if value="{{ b.isLi }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);"><span style="font-weight:700;color:var(--color-text-primary);">{{ b.mark }}</span><span>{{ b.text }}</span></div></sc-if>
+            <sc-if value="{{ b.isTable }}" hint-placeholder-val="{{ false }}">
+              <div style="overflow-x:auto;border-top:1px solid var(--color-text-primary);">
+                <div data-stack="1" style="display:grid;grid-template-columns:repeat(3,minmax(140px,1fr));min-width:420px;">
+                  <sc-for list="{{ b.head }}" as="h" hint-placeholder-count="3"><div style="padding:10px 12px 10px 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);">{{ h }}</div></sc-for>
+                  <sc-for list="{{ b.flat }}" as="c" hint-placeholder-count="6"><div style="padding:10px 12px 10px 0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);border-bottom:1px solid var(--color-divider);">{{ c }}</div></sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </sc-for>
+          <sc-if value="{{ f.hasAdv }}" hint-placeholder-val="{{ true }}">
+            <details open="open" style="margin-top:16px;border-top:1px solid var(--color-text-primary);">
+              <summary style="padding:14px 0;font-size:var(--web-body-size);font-weight:500;cursor:pointer;">Advantages with EMON and AI ({{ f.advCount }})</summary>
+              <div style="display:flex;flex-direction:column;">
+                <sc-for list="{{ f.adv }}" as="a" hint-placeholder-count="4">
+                  <div style="padding:14px 0;border-top:1px solid var(--color-divider);display:flex;flex-direction:column;gap:6px;"><span style="font-size:14px;font-weight:700;">{{ a.t }}</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ a.d }}</span></div>
+                </sc-for>
+              </div>
+            </details>
+          </sc-if>
+          <sc-if value="{{ f.hasSources }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12px;font-weight:300;color:var(--color-grey-70);padding-top:8px;"><span>Sources:</span>
+              <sc-for list="{{ f.sources }}" as="s" hint-placeholder-count="1"><a href="{{ s.url }}" target="_blank" rel="noopener" style="color:var(--color-text-primary);text-decoration:underline;">{{ s.label }}</a></sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 64px;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-text-primary);padding-top:24px;display:flex;gap:24px;flex-wrap:wrap;">
+      <a href="NENDO - PRODUCT - Products - EN.dc.html" style="font-size:14px;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">NENDO products &#8250;</a>
+      <a href="EMON - SYSTEM - Overview - EN.dc.html" style="font-size:14px;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">EMON energy management &#8250;</a>
+      <a href="FLUXX - PRODUCT - FLUXX with EMON - EN.dc.html" style="font-size:14px;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Works with FLUXX batteries &#8250;</a>
+      <a href="NENDO - WEBSHOP - Shop - EN.dc.html" style="font-size:14px;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Shop NENDO &#8250;</a>
+    </div>
+  </section>
+  <dc-import name="ContentSections" brand="NENDO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="NENDO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="NENDO" accent="var(--color-brand-nendo)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const SCREEN_NAME = { TodaysPlan: "Today's plan", Schedule: "Schedule", SolarToHeat: "Solar to heat", Storage: "Storage", EnergyEfficiency: "Energy and Efficiency", HotWater: "Hot water", Home: "Home", InstallerPortal: "Installer portal" };
+const SCREEN_SRC = { Home: "assets/nendo/nendo-emon-app-home-01.png" };
+const FIG = {
+  "ai-and-vpp": { src: "assets/nendo/nendo-system-diagram-01.png", ratio: "4/3", caption: "EMON coordinates heat pump, PV, battery, EV charger and grid meter with one plan." },
+  "pre-heating": { src: "assets/nendo/nendo-dynamic-tariff-diagram-01.png", ratio: "16/10", caption: "Illustration: heat stored in low-price and solar hours, room temperature stays inside the comfort band." },
+  "solar-surplus": { src: "assets/nendo/nendo-system-diagram-01.png", ratio: "4/3", caption: "Solar surplus goes to NENDO through RAY and EMON before it is exported." },
+  "dynamic-tariff": { src: "assets/nendo/nendo-dynamic-tariff-diagram-01.png", ratio: "16/10", caption: "Illustration: 24-hour price curve with the heat pump running in the cheapest and solar hours." },
+  "frost-protection": { src: "assets/nendo/nendo-aero-roof-01.png", ratio: "16/10", caption: "AERO outdoor unit. Frost protection runs locally in the NENDO controller." },
+};
+class Component extends DCLogic {
+  componentDidMount() { const tick = () => { if (window.NENDO_EMON_FUNCTIONS) this.forceUpdate(); else this.t = setTimeout(tick, 100); }; tick(); }
+  componentWillUnmount() { clearTimeout(this.t); }
+  renderVals() {
+    const src = window.NENDO_EMON_FUNCTIONS || [];
+    const num = (n) => String(n - 1).padStart(2, "0");
+    return {
+      intro: src[0] ? src[0].lead : "",
+      index: src.map(f => ({ num: num(f.n), title: f.title, href: "#" + f.id })),
+      fns: src.map(f => ({
+        id: f.id, num: num(f.n), title: f.title, lead: f.lead, tile: f.tile,
+        slotId: "nendo-emon-screen-" + f.screen.toLowerCase(),
+        slotLabel: `NENDO_EMON_AppScreen_${f.screen}_v1 · 9:16 · see visual prompts PDF`,
+        screenName: SCREEN_NAME[f.screen], slotSrc: SCREEN_SRC[f.screen] || "",
+        hasFig: !!FIG[f.id], figId: "nendo-emon-fig-" + f.id, figSrc: FIG[f.id]?.src || "", figRatio: FIG[f.id]?.ratio || "16/10", figCaption: FIG[f.id]?.caption || "",
+        blocks: f.blocks.map(b => ({ ...b, isH: b.kind === "h", isP: b.kind === "p", isLi: b.kind === "li", isTable: b.kind === "table", mark: b.num ? b.num + "." : "·", flat: b.kind === "table" ? b.rows.flatMap(r => r.cells) : [] })),
+        adv: f.adv, hasAdv: f.adv.length > 0, advCount: f.adv.length,
+        sources: f.sources, hasSources: f.sources.length > 0,
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

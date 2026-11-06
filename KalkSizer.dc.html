@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<script src="./kalk-sizer-data.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>.leaflet-container{background:#E3E3E3;font-family:inherit;}</style>
+<style data-q4-reflow>/* Q4 grid reflow (DEPTH-897, user 26 Oct 2026). Desktop above 1024px unchanged.
+   data-cols="N": equal 2–6 column grids reflow by available width, cards at least 240px, never more than N columns.
+   data-stack: mixed-width grids stack to one column below 720px. Charts (7+ columns) and label/value rows are not marked. */
+@media (max-width:1024px){
+ [data-cols="2"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 1 * var(--cg,0px)) / 2 - 1px))),1fr)) !important}
+ [data-cols="3"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 2 * var(--cg,0px)) / 3 - 1px))),1fr)) !important}
+ [data-cols="4"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 3 * var(--cg,0px)) / 4 - 1px))),1fr)) !important}
+ [data-cols="5"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 4 * var(--cg,0px)) / 5 - 1px))),1fr)) !important}
+ [data-cols="6"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 5 * var(--cg,0px)) / 6 - 1px))),1fr)) !important}
+ [data-cols]>[style*="grid-column:span"],[data-cols]>[style*="grid-column: span"]{grid-column:1/-1 !important}
+}
+@media (max-width:720px){
+ [data-stack]{grid-template-columns:minmax(0,1fr) !important}
+ [data-stack]>*{grid-column:auto !important;grid-row:auto !important}
+}</style>
+</helmet>
+<div data-screen-label="KALK sizer" style="position:relative;width:calc(100% - 2 * var(--web-side, clamp(20px,5.8vw,84px)));max-width:1312px;margin:24px auto 48px;height:clamp(600px,calc(100vh - 160px),820px);border-radius:24px;overflow:hidden;background:#FFFFFF;box-sizing:border-box;font-family:var(--font-web);">
+  <sc-if value="{{ mapLayout }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ mapRef }}" style="position:absolute;inset:0;background:#E3E3E3;"></div>
+  </sc-if>
+  <sc-if value="{{ plainLayout }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;left:0;top:0;bottom:0;width:50%;background:#F4F4F4;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;box-sizing:border-box;">
+      <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#5F5E5E;">{{ visualLabel }}</div>
+      <div style="width:100%;display:flex;justify-content:center;">{{ visual }}</div>
+    </div>
+  </sc-if>
+  <div style="position:absolute;right:{{ panelInset }};top:{{ panelInset }};bottom:{{ panelInset }};z-index:500;width:{{ panelWidth }};background:#FFFFFF;border-radius:{{ panelRadius }};padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:16px;box-sizing:border-box;overflow:auto;">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+      <div style="display:flex;align-items:center;gap:8px;font-size:15px;color:#252525;">{{ brand }} by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:20px;width:auto;display:block;filter:brightness(0);"></div>
+      <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:#5F5E5E;"><div style="width:64px;height:4px;border-radius:2px;background:#E3E3E3;overflow:hidden;"><div style="height:4px;width:{{ progressPct }};background:{{ color }};"></div></div><span>{{ progressLabel }}</span></div>
+    </div>
+
+    <sc-if value="{{ isForm }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="display:flex;flex-direction:column;gap:8px;"><span style="font-size:13px;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:#5F5E5E;">{{ toolLabel }}</span><h1 style="margin:0;font-size:32px;font-weight:200;line-height:1.1;color:#252525;">{{ stepTitle }}</h1></div>
+        <sc-if value="{{ isFirst }}" hint-placeholder-val="{{ true }}"><p style="margin:0;font-size:15px;font-weight:300;line-height:1.5;color:#5F5E5E;">{{ intro }}</p></sc-if>
+        <sc-for list="{{ fields }}" as="f" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <sc-if value="{{ f.isSelect }}" hint-placeholder-val="{{ false }}"><label style="display:flex;flex-direction:column;gap:6px;font-size:14px;color:#252525;">{{ f.label }}<select value="{{ f.value }}" onChange="{{ f.onInput }}" style="min-height:44px;padding:0 10px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:15px;"><sc-for list="{{ f.opts }}" as="o" hint-placeholder-count="3"><option value="{{ o.v }}">{{ o.label }}</option></sc-for></select></label></sc-if>
+            <sc-if value="{{ f.isNumber }}" hint-placeholder-val="{{ false }}"><label style="display:flex;align-items:center;gap:12px;background:#F4F4F4;border-radius:8px;padding:10px 12px;font-size:14px;color:#252525;"><span style="flex:1;">{{ f.label }}</span><input type="number" min="0" value="{{ f.value }}" onChange="{{ f.onInput }}" style="width:90px;min-height:36px;padding:0 8px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);"><span style="min-width:24px;font-weight:300;">{{ f.unit }}</span></label></sc-if>
+            <sc-if value="{{ f.isChoice }}" hint-placeholder-val="{{ true }}">
+              <div style="font-size:14px;color:#252525;">{{ f.label }}</div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px;">
+                <sc-for list="{{ f.opts }}" as="o" hint-placeholder-count="2"><button onClick="{{ o.pick }}" style="min-height:48px;padding:8px 10px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:14px;color:#252525;cursor:pointer;"><b>{{ o.label }}</b><br><span style="font-weight:300;font-size:13px;">{{ o.sub }}</span></button></sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ f.isText }}" hint-placeholder-val="{{ false }}"><label style="display:flex;flex-direction:column;gap:6px;font-size:14px;color:#252525;">{{ f.label }}<input value="{{ f.value }}" onChange="{{ f.onInput }}" placeholder="{{ f.sub }}" style="min-height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:15px;"></label></sc-if>
+            <sc-if value="{{ f.isPhoto }}" hint-placeholder-val="{{ false }}">
+              <label style="display:flex;flex-direction:column;gap:8px;padding:14px 16px;border:1px dashed #BBBBBB;border-radius:8px;font-size:14px;color:#252525;cursor:pointer;"><b>{{ f.label }}</b><span style="font-weight:300;color:#5F5E5E;">{{ f.sub }}</span><input type="file" accept="image/*,application/pdf" onChange="{{ f.onFile }}" style="font-family:var(--font-web);font-size:13px;"></label>
+              <span style="font-size:13px;font-weight:300;color:#5F5E5E;">{{ f.fileName }}</span>
+            </sc-if>
+          </div>
+        </sc-for>
+        <sc-if value="{{ isMap }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <input value="{{ query }}" onChange="{{ onQuery }}" placeholder="Search an address or place" style="min-height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:15px;">
+            <sc-for list="{{ results }}" as="r" hint-placeholder-count="0"><button onClick="{{ r.pick }}" style="text-align:left;padding:10px 12px;border:0;border-radius:8px;background:#F4F4F4;font-family:var(--font-web);font-size:13px;color:#252525;cursor:pointer;">{{ r.label }}</button></sc-for>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#F4F4F4;border-radius:8px;padding:10px 12px;font-size:14px;color:#252525;"><span>{{ mapLine }}</span><button onClick="{{ clearMap }}" style="min-height:36px;padding:0 12px;border:0;border-radius:8px;background:#FFFFFF;font-family:var(--font-web);font-size:13px;color:#252525;cursor:pointer;">Clear</button></div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Your {{ brand }} set</h2>
+        <sc-for list="{{ items }}" as="i" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:8px;background:{{ tint }};font-size:14px;color:#252525;"><b>{{ i.qty }} × {{ i.name }}</b><span style="font-weight:300;">{{ i.why }}</span><span style="font-size:12px;font-weight:300;color:#5F5E5E;">{{ i.code }}</span></div>
+        </sc-for>
+        <p style="margin:0;font-size:13px;line-height:1.5;color:#252525;">{{ sparky }}</p>
+        <sc-for list="{{ notes }}" as="n" hint-placeholder-count="1"><p style="margin:0;font-size:12px;font-weight:300;line-height:1.5;color:#5F5E5E;">{{ n.t }}</p></sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Price from your local distributor</h2>
+        <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:#5F5E5E;">{{ contactText }}</p>
+        <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+          <input placeholder="First name" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+          <input placeholder="Last name" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+          <input placeholder="Email" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+          <input placeholder="Phone" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+        </div>
+        <label style="display:flex;gap:12px;align-items:flex-start;font-size:13px;line-height:1.5;color:#252525;"><input type="checkbox" checked="{{ consent }}" onChange="{{ toggleConsent }}" style="margin-top:3px;"><span>I agree that STRØHM.ENERGY uses these details to send my {{ brand }} set and passes them to a local distributor for the price. Required. <a href="#" style="color:#4F4F4E;">Privacy policy</a></span></label>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Sent</h2>
+        <p style="margin:0;font-size:16px;font-weight:300;line-height:1.5;color:#5F5E5E;">{{ doneText }}</p>
+        <a href="{{ backHref }}" style="font-size:14px;color:#4F4F4E;">Back to {{ brand }} &#8250;</a>
+      </div>
+    </sc-if>
+
+    <div style="margin-top:auto;display:flex;justify-content:space-between;gap:12px;">
+      <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}"><button onClick="{{ back }}" style="min-height:48px;padding:0 20px;border:0;border-radius:8px;background:#F4F4F4;font-family:var(--font-web);font-size:16px;color:#252525;cursor:pointer;">&#8249; Back</button></sc-if>
+      <sc-if value="{{ showNext }}" hint-placeholder-val="{{ true }}"><button onClick="{{ next }}" disabled="{{ nextDisabled }}" style="margin-left:auto;min-height:48px;padding:0 24px;border:0;border-radius:8px;background:{{ nextBg }};font-family:var(--font-web);font-size:16px;color:#252525;cursor:pointer;">{{ nextLabel }} &#8250;</button></sc-if>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1360,&quot;height&quot;:860},&quot;brand&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;NENDO&quot;,&quot;FEU&quot;,&quot;XOOM&quot;,&quot;AIRO&quot;,&quot;GLOW&quot;],&quot;default&quot;:&quot;NENDO&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { step: 0, v: null, files: {}, consent: false, ready: !!window.STROHM_KALK_SIZER };
+  componentDidMount() { setTimeout(() => this.ensureMap(), 0); if (!this.state.ready) this._i = setInterval(() => { if (window.STROHM_KALK_SIZER) { clearInterval(this._i); this.setState({ ready: true }); } }, 100); }
+  componentWillUnmount() { clearInterval(this._i); clearInterval(this._m); if (this.map) this.map.remove(); }
+  mapRef = React.createRef();
+  componentDidUpdate() { this.ensureMap(); }
+  ensureMap() {
+    const el = this.mapRef.current; if (!el) return;
+    if (this.map && this.map.getContainer() === el) return;
+    if (!window.L) { clearInterval(this._m); this._m = setInterval(() => { if (window.L) { clearInterval(this._m); this.ensureMap(); } }, 150); return; }
+    if (this.map) { this.map.remove(); this.map = null; }
+    const L = window.L; this.map = L.map(el, { zoomControl: false, maxZoom: 20 }).setView(this.state.center || [46.5, 8], this.state.center ? 16 : 4);
+    L.control.zoom({ position: "bottomleft" }).addTo(this.map);
+    L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", { maxNativeZoom: 19, maxZoom: 20, attribution: "Imagery Esri" }).addTo(this.map);
+    this.draw = L.layerGroup().addTo(this.map);
+    [0, 300, 1000].forEach((ms) => setTimeout(() => this.map && this.map.invalidateSize(), ms));
+    this.map.on("click", (e) => { if (!this._drawOn) return; const q = [e.latlng.lat, e.latlng.lng]; this.setState((s) => ({ pts: this._mode === "pin" ? [q] : (s.pts || []).concat([q]) }), () => this.redraw()); });
+    this.redraw();
+  }
+  redraw() {
+    const L = window.L; if (!this.draw || !L) return; this.draw.clearLayers(); const p = this.state.pts || [], c = ((window.STROHM_KALK_SIZER || {})[this.props.brand] || {}).color || "#F76801";
+    const md = this._mode || "area";
+    if (md === "line" && p.length > 1) L.polyline(p, { color: c, weight: 5 }).addTo(this.draw);
+    else if ((md === "area" || md === "perimeter") && p.length > 1) (p.length > 2 ? L.polygon(p, { color: "#FFFFFF", weight: 2, fillColor: c, fillOpacity: 0.45 }) : L.polyline(p, { color: "#FFFFFF", weight: 2 })).addTo(this.draw);
+    p.forEach((q) => L.circleMarker(q, { radius: 5, color: "#FFFFFF", weight: 2, fillColor: c, fillOpacity: 1 }).addTo(this.draw));
+  }
+  lenM(p) { let d = 0; for (let i = 1; i < (p || []).length; i++) { const R = 6371000, r = Math.PI / 180, a = p[i - 1], b = p[i], x = (b[1] - a[1]) * r * Math.cos((a[0] + b[0]) / 2 * r), y = (b[0] - a[0]) * r; d += Math.sqrt(x * x + y * y) * R; } return d; }
+  areaM2(p) { if (!p || p.length < 3) return 0; const R = 6378137, lat0 = p.reduce((a, q) => a + q[0], 0) / p.length * Math.PI / 180, xy = p.map((q) => [q[1] * Math.PI / 180 * R * Math.cos(lat0), q[0] * Math.PI / 180 * R]); let a = 0; for (let i = 0; i < xy.length; i++) { const j = (i + 1) % xy.length; a += xy[i][0] * xy[j][1] - xy[j][0] * xy[i][1]; } return Math.abs(a / 2); }
+  onQuery(v, country) {
+    this.setState({ query: v }); clearTimeout(this._q); if (v.trim().length < 3) { this.setState({ results: [] }); return; }
+    const CC = { Belgium: "be", Netherlands: "nl", Germany: "de", France: "fr", Luxembourg: "lu", Austria: "at", Switzerland: "ch", Denmark: "dk", Sweden: "se", Norway: "no", Finland: "fi", Poland: "pl", Czechia: "cz", Spain: "es", Portugal: "pt", Italy: "it", Greece: "gr", "United Kingdom": "gb", Ireland: "ie" }, cc = CC[country];
+    this._q = setTimeout(() => { fetch("https://nominatim.openstreetmap.org/search?format=json&limit=5" + (cc ? "&countrycodes=" + cc : "") + "&q=" + encodeURIComponent(v)).then((r) => r.json()).then((list) => this.setState({ results: (list || []).map((x) => ({ label: x.display_name, lat: +x.lat, lon: +x.lon })) })).catch(() => this.setState({ results: [] })); }, 400);
+  }
+  renderVals() {
+    const b = this.props.brand || "NENDO", C = (window.STROHM_KALK_SIZER || {})[b];
+    if (!C) return { brand: b, isForm: false, isResult: false, isContact: false, isDone: false, showNext: false, canBack: false, fields: [], items: [], notes: [] };
+    const s = this.state, v = s.v || Object.assign({}, C.start), set = (k, x) => this.setState({ v: Object.assign({}, v, { [k]: x }) });
+    const steps = C.steps.filter((st) => !st.show || st.show(v)), total = steps.length + 3, cur = Math.min(s.step, total - 1);
+    const isForm = cur < steps.length, isResult = cur === steps.length, isContact = cur === steps.length + 1, isDone = cur === steps.length + 2;
+    const r = C.result(v), st = isForm ? steps[cur] : null;
+    const fields = st ? st.fields.map((f) => ({
+      label: f.label, unit: f.unit || "", sub: f.sub || "", value: v[f.key] == null ? "" : v[f.key],
+      isSelect: f.type === "select", isNumber: f.type === "number", isChoice: f.type === "choice" || f.type === "multi", isPhoto: f.type === "photo", isText: f.type === "text",
+      onInput: (e) => set(f.key, f.type === "number" ? Math.max(0, +e.target.value || 0) : e.target.value),
+      onFile: (e) => { const x = e.target.files && e.target.files[0]; if (x) this.setState({ files: Object.assign({}, s.files, { [f.key]: x.name }) }); },
+      fileName: s.files[f.key] ? "Added: " + s.files[f.key] : "",
+      opts: (f.options || []).map(([ov, ol, osub]) => { const on = f.type === "multi" ? !!(v[f.key] || {})[ov] : v[f.key] === ov; return { v: ov, label: ol, sub: osub || "", bg: on ? C.color : "#F4F4F4", pick: () => set(f.key, f.type === "multi" ? Object.assign({}, v[f.key] || {}, { [ov]: !on }) : ov) }; })
+    })) : [];
+    const e = React.createElement, shapes = C.visual(v, s.step > 0 ? r.items : []);
+    let visual = e("svg", { width: "100%", viewBox: "0 0 470 430", style: { maxWidth: 470, fontFamily: "inherit" }, "aria-label": "Line drawing of the " + b + " set" }, shapes.map((x, i) => e(x[0], Object.assign({ key: i }, x[1]), x[2])));
+    if (st && (st.house || st.fields.some((f) => f.key === "type" && (f.options || []).some((o) => o[0] === "flat")))) { const H = { bed: [60, 170, 150, 95, "Bedrooms"], bath: [210, 170, 150, 95, "Bathroom"], living: [60, 265, 150, 95, "Living room"], kitchen: [210, 265, 150, 95, "Kitchen"], garage: [360, 250, 95, 110, "Garage"], terrace: [60, 362, 150, 22, "Terrace"], drive: [360, 362, 95, 22, "Driveway"], garden: [0, 296, 56, 64, "Garden"] }; const offered = st.house ? st.fields[0].options.map((o) => o[0]) : [], pl = v.places || {}; const ln = (x1, y1, x2, y2, i) => e("line", { key: "l" + i, x1, y1, x2, y2, stroke: "#252525", strokeWidth: 1 });
+      const flat = v.type === "flat", parts = flat ? [e("rect", { key: "bld", x: 40, y: 90, width: 400, height: 280, fill: "none", stroke: "#252525", strokeWidth: 1 }), e("line", { key: "fl", x1: 40, y1: 90, x2: 440, y2: 90, stroke: "#252525", strokeWidth: 2 }), e("rect", { key: "door", x: 218, y: 335, width: 34, height: 35, fill: "none", stroke: "#BBBBBB", strokeWidth: 1 }), e("text", { key: "ft", x: 240, y: 76, textAnchor: "middle", fontSize: 12, fill: "#8F8F8F" }, "Your apartment, one floor of the building")] : [e("polygon", { key: "roof", points: "50,170 210,70 370,170", fill: "none", stroke: "#252525", strokeWidth: 1 }), ln(360, 250, 455, 250, 1), ln(0, 360, 470, 360, 2), e("circle", { key: "tree", cx: 28, cy: 336, r: 14, fill: "none", stroke: "#BBBBBB", strokeWidth: 1 })];
+      if (flat) { H.bed = [60, 110, 170, 110, "Bedrooms"]; H.bath = [230, 110, 190, 110, "Bathroom"]; H.living = [60, 220, 190, 110, "Living room"]; H.kitchen = [250, 220, 170, 110, "Kitchen"]; ["garage", "terrace", "drive", "garden"].forEach((x) => { delete H[x]; }); }
+      Object.keys(H).forEach((id) => { const [x, y, w, h, lab] = H[id], on = offered.indexOf(id) >= 0, sel = !!pl[id];
+        parts.push(e("g", { key: id, onClick: on ? () => set("places", Object.assign({}, pl, { [id]: !sel })) : undefined, style: { cursor: on ? "pointer" : "default" } }, e("rect", { x, y, width: w, height: h, rx: 0, fill: sel ? C.tint : on ? "#FFFFFF" : "none", stroke: sel ? C.color : on ? "#252525" : "#DDDDDD", strokeWidth: sel ? 2 : 1 }), e("text", { x: x + w / 2, y: y + (h > 40 ? h / 2 : h / 2 + 4) - (id === "garden" ? 12 : 0), textAnchor: "middle", fontSize: h > 40 ? 13 : 12, fill: on ? "#252525" : "#BBBBBB", style: { pointerEvents: "none" } }, lab))); });
+      visual = e("svg", { width: "100%", viewBox: "0 0 470 430", style: { maxWidth: 470, fontFamily: "inherit" }, "aria-label": flat ? "Line drawing of an apartment, click the rooms" : "Line drawing of a house, click the places" }, parts); }
+    const mapCfg = C.map, mp = st && st.map, md = (mp && mp.mode) || "area"; this._drawOn = !!mp; this._mode = md;
+    const m2 = this.areaM2(s.pts), pp = s.pts || [], raw = md === "line" ? this.lenM(pp) : md === "perimeter" ? (pp.length > 2 ? this.lenM(pp.concat([pp[0]])) : 0) : md === "pins" ? pp.length : md === "pin" ? (pp.length ? 1 : 0) : m2;
+    const mapVal = !mp ? 0 : md === "pin" || md === "pins" ? raw : md === "perimeter" ? (mp.to ? mp.to(raw, m2) : Math.round(raw)) : mp.unit === "ha" ? Math.round(raw / 1000) / 10 : mp.to ? mp.to(raw) : Math.round(raw);
+    if (mp && mapVal > 0 && v[mp.key] !== mapVal) setTimeout(() => this.setState({ v: Object.assign({}, v, { [mp.key]: mapVal }) }), 0);
+    const can = isContact ? s.consent : !isDone && (!isResult || r.items.length > 0) && (!mp || mapVal > 0 || n0(v[mp.key]) > 0);
+    function n0(x) { return +x || 0; }
+    return {
+      brand: b, color: C.color, tint: C.tint, visualLabel: st && (st.house || st.fields.some((f) => f.key === "type" && (f.options || []).some((o) => o[0] === "flat"))) ? (v.type === "flat" ? "Your apartment" : "Your home") : C.visualLabel, visual, intro: C.intro, headTitle: b + " by KALK", toolLabel: C.tool ? C.tool.charAt(0).toUpperCase() + C.tool.slice(1) : "", stepTitle: st ? st.title : "", isFirst: cur === 0,
+      progressPct: Math.round(cur / (total - 1) * 100) + "%", progressLabel: (cur + 1) + " of " + total,
+      isForm, isResult, isContact, isDone, fields,
+      isMap: !!mp, mapRef: this.mapRef, query: s.query || "", onQuery: (e) => this.onQuery(e.target.value, v.country),
+      results: (s.results || []).map((x) => ({ label: x.label, pick: () => this.setState({ results: [], query: x.label.split(",").slice(0, 3).join(","), center: [x.lat, x.lon] }, () => this.map && this.map.setView([x.lat, x.lon], 17)) })),
+      mapLine: md === "pins" ? (pp.length ? pp.length + " location" + (pp.length > 1 ? "s" : "") + " set. Click to add more." : "Click every place where you want one.") : md === "perimeter" ? (pp.length < 3 ? "Click the corners of your " + ((mp && mp.what) || "panel field") + "." : "Edge: " + Math.round(raw) + " m, area " + Math.round(m2) + " m²") : md === "pin" ? ((s.pts || []).length ? "Location set." : "Click where you want to place it.") : md === "line" ? ((s.pts || []).length < 2 ? "Click along the line of your " + ((mp && mp.what) || "fence") + "." : "Length: " + Math.round(raw) + " m") : ((s.pts || []).length < 3 ? "Click the corners of your " + ((mp && mp.what) || "site") + " on the map." : "Area: " + String(mp && mp.unit === "ha" ? mapVal : Math.round(m2)).replace(".", ",") + " " + (mp && mp.unit === "ha" ? "ha" : "m²")),
+      mapLayout: !!mapCfg, plainLayout: !mapCfg, panelInset: mapCfg ? "16px" : "0px", panelWidth: mapCfg ? "min(440px, calc(100% - 32px))" : "50%", panelRadius: mapCfg ? "12px" : "0px",
+      clearMap: () => this.setState({ pts: [] }, () => this.redraw()),
+      _clr: (this._lastMode !== md && mp ? (this._lastMode = md, setTimeout(() => this.setState({ pts: [] }, () => this.redraw()), 0)) : 0),
+      items: r.items, sparky: r.sparky, notes: (r.notes || []).map((t) => ({ t })),
+      contactText: "The " + b + " " + (v.project ? "list for project " + v.project : "set") + " and the drawing are sent as a PDF. " + (C.offer ? "Your local distributor sends an offer with price and lead time." : "Your local distributor sends the price.") + " A TRIBE installer contacts you.",
+      doneText: (v.project ? "Project " + v.project + ": your " + b + " list" : "Your " + b + " set") + " is on its way as a PDF. " + (C.offer ? "Your local distributor sends an offer with price and lead time." : "Your local distributor sends the price."),
+      consent: s.consent, toggleConsent: () => this.setState({ consent: !s.consent }),
+      backHref: b + " - PRODUCT - Overview - EN.dc.html",
+      canBack: cur > 0 && !isDone, back: () => this.setState({ step: cur - 1 }),
+      showNext: !isDone, nextLabel: isContact ? "Send" : isResult ? "Price from your local distributor" : cur === steps.length - 1 ? "See your set" : "Next",
+      nextDisabled: !can, nextBg: can ? C.color : "#E3E3E3", next: () => { if (can) this.setState({ step: cur + 1 }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

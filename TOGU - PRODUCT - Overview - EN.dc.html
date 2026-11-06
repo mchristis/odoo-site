@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>TOGU Overview | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style> @media (max-width:720px){ .hero-card{width:calc(100% - 40px) !important;margin-top:20px !important;min-height:calc((100vw - 40px) * 1.25) !important;align-items:flex-end !important;} .hero-card-panel{width:100% !important;align-self:auto !important;padding:28px 20px !important;} } 
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  select:focus { outline:none; border-color:var(--color-brand-togu); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="ToguNav" active="range" hint-size="100%,57px"></dc-import>
+  <!-- HERO -->
+  <dc-import name="BrandHero2" brand="TOGU" rgb="196,135,35" dark="#6E4A12" title="Everything that connects, protects, supports, identifies and organises an energy system." intro="TOGU supplies more than cable by the metre. Grounding, cables, connectors, trays, conduit, enclosures, DIN systems, protection, glands, labels and consumables — the parts every installation needs and every quotation forgets, from one coordinated range." items="{{ toguSix }}" hint-size="100%,760px"></dc-import>
+  <!-- DEPTH-1261: shared range block (ANDO layout); former block archived in _ARCHIVE/DEPTH-1261 range block/ -->
+  <dc-import name="RangeBlock" hide-tool="1" brand="TOGU" hint-size="100%,900px"></dc-import>
+  <!-- KALK CHECK (DEPTH-1354) -->
+  <section id="kalk-check" data-screen-label="KALK check" data-stack="1" style="position:relative;width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:72px auto 0;min-height:max(380px,calc(min(100vw - 2 * var(--web-side),1312px) / 3.2));border-radius:24px;overflow:hidden;background:#4F4F4E;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);box-sizing:border-box;">
+    
+    <div style="grid-column:span 1;background:#FFFFFF;padding:clamp(24px,2.6vw,36px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:12px;">
+      <div style="display:flex;align-items:center;gap:8px;font-size:15px;color:#252525;">TOGU by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:20px;width:auto;display:block;filter:brightness(0);"></div>
+      <h2 style="margin:0;font-size:clamp(28px,2.6vw,38px);font-weight:200;line-height:1.1;letter-spacing:-0.5px;color:#252525;text-wrap:balance;">Size your cabling</h2>
+      
+      <p style="margin:0;font-size:15px;font-weight:300;line-height:1.45;color:#5F5E5E;text-wrap:pretty;">Tell KALK the system, the power and the cable length. KALK suggests the TOGU cable cross-section, protection and routing. Your local distributor sends the price.</p>
+      <a href="KALK - Cabling TOGU - EN.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:8px;background:#C48723;color:#252525;font-size:16px;text-decoration:none;" style-hover="background:#252525;color:#FFFFFF;">Start the cable check &#8250;</a>
+      <a href="KERN - SYSTEM - Overview - EN.dc.html" style="align-self:flex-start;font-size:14px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #BBBBBB;padding-bottom:2px;" style-hover="color:#252525;border-bottom-color:#252525;">Professional project team? Deliver with KERN &#8250;</a>
+      
+    </div>
+    <div style="grid-column:span 1;position:relative;min-height:240px;"><div style="position:absolute;inset:0;background:#FFFFFF;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;border-left:1px solid #E3E3E3;"><img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="" style="width:40%;max-width:220px;filter:brightness(0);opacity:0.12;"></div></div>
+  </section>
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;"><p style="margin:0 0 16px;max-width:760px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#4F4F4E;"></p><div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0;"><a style-hover="background:#5F5E5E;color:#F4F4F4;" href="TOGU - PRODUCT - Products - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;white-space:nowrap;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Explore the range<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a><a href="TOGU - PRODUCT - Products - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;white-space:nowrap;background:#FFFFFF;color:#4F4F4E;border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">See all products</a><!-- DEPTH-1264: catalogue removed (no product catalogues) --></div></section>
+  <section id="complete" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Installation Complete</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Choose what you install. <span style="color:#8E8E8E;">TOGU supplies everything around it.</span></h2>
+      <p style="margin:0 0 28px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">TOGU supplies in bulk: the cables, boxes, trays, conduit, trunking and consumables around every STRØHM.ENERGY product you install. <a href="TOGU - PRODUCT - Products - EN.dc.html">See all TOGU products<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a></p>
+<sc-if value="{{ showForecast }}" hint-placeholder-val="{{ false }}"><div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;">
+        <sc-for list="{{ bundleTabs }}" as="b" hint-placeholder-count="5">
+          <button onClick="{{ b.onClick }}" style="cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;padding:14px 20px;border:1px solid {{ b.border }};background:{{ b.bg }};color:{{ b.color }};border-radius:8px;">{{ b.label }}</button>
+        </sc-for>
+      </div>
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 32px;max-width:720px;margin-bottom:28px;--cg:32px;">
+        <div>
+          <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:8px;">Installations per month</label>
+          <div style="display:flex;align-items:center;border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+            <button onClick="{{ decMonth }}" style="cursor:pointer;font-family:inherit;width:44px;min-height:var(--cta-height,56px);border:none;background:var(--color-card-togu);font-size:var(--cta-font,16px);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">&#8722;</button>
+            <input type="number" value="{{ perMonth }}" onInput="{{ onMonth }}" style="flex:1;min-width:0;height:48px;border:none;text-align:center;font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);color:var(--color-text-primary);">
+            <button onClick="{{ incMonth }}" style="cursor:pointer;font-family:inherit;width:44px;min-height:var(--cta-height,56px);border:none;background:var(--color-card-togu);font-size:var(--cta-font,16px);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">+</button>
+          </div>
+        </div>
+        <div>
+          <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:8px;">Average system size</label>
+          <select onChange="{{ onSize }}" style="width:100%;height:48px;padding:0 14px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-input-weight);">
+            <sc-for list="{{ sizeOptions }}" as="o" hint-placeholder-count="3"><option value="{{ o.value }}" selected="{{ o.selected }}">{{ o.label }}</option></sc-for>
+          </select>
+        </div>
+      </div>
+      <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+        <div style="padding:20px 24px;border-bottom:1px solid var(--color-divider);background:var(--color-card-togu);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
+          <div>
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Monthly demand &#183; {{ perMonth }} &#215; {{ bundle.label }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ bundle.count }} line items &#183; {{ sizeLabel }} average</div>
+          </div>
+          <button onClick="{{ addAll }}" style="cursor:pointer;font-family:inherit;font-size:12px;font-weight:400;letter-spacing:0.04em;text-transform:uppercase;padding:12px 20px;border:none;background:{{ addBtnBg }};color:{{ addBtnColor }};">{{ addLabel }}</button>
+        </div>
+        <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));--cg:0px;">
+          <sc-for list="{{ bundle.items }}" as="i" hint-placeholder-count="16">
+            <div style="display:flex;gap:10px;align-items:center;justify-content:space-between;padding:13px 20px;border-right:1px solid var(--color-surface-card);border-bottom:1px solid var(--color-surface-card);">
+              <div style="display:flex;gap:8px;align-items:center;min-width:0;">
+                <span style="color:{{ i.color }};font-size:12px;flex:none;">{{ i.mark }}</span>
+                <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ i.label }}</span>
+              </div>
+              <span style="font-size:var(--web-small-size);font-weight:700;color:var(--color-text-primary);white-space:nowrap;line-height:var(--web-small-lh);">{{ i.qty }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Indicative bulk forecast per month. Final quantities and specifications depend on the installation, distances and local rules, and are confirmed with the installer.</p>
+    </div></sc-if></div>
+  </section>
+  
+  <!-- WHO IT IS FOR (DEPTH-1329) -->
+  <dc-import name="AudienceTiles" brand="TOGU" rgb="196,135,35" hint-size="100%,640px"></dc-import>
+  <!-- DEPTH-1265: BRAND with EMON block under the range -->
+  <dc-import name="EmonBlock" brand="TOGU" hint-size="100%,860px"></dc-import>
+  <dc-import name="PlanningOperation" brand="TOGU" hint-size="100%,760px"></dc-import>
+  <!-- DEPTH-1345: empty Facts block removed (no items left after DEPTH-1333) -->
+  
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;">
+
+    
+    <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--color-text-primary);--cg:0px;">
+      <sc-for list="{{ heroStats }}" as="s" hint-placeholder-count="4">
+        <div style="padding:20px 20px 20px 0;border-right:1px solid var(--color-divider);">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:2px;line-height:var(--web-h3-lh);">{{ s.value }}</div>
+          <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ s.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+    </section>
+  <!-- LAST 10% -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">The last 10%</div>
+      <h2 style="margin:0 0 16px;max-width:700px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">A missing &#8364;2 component can delay an <span style="color:#8E8E8E;">installation worth thousands.</span></h2>
+      <p style="margin:0 0 40px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The panels, the inverter and the battery arrive &#8212; then the job stops because someone forgot the glands, the DIN enclosure or the earthing cable. When ordering from the Strohm.energy ecosystem, installers add the required TOGU materials to the same order. One supplier. One shipment. One technical partner.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--color-divider);--cg:0px;">
+        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="3">
+          <div style="padding:28px 24px 28px 0;border-bottom:1px solid var(--color-divider);">
+            <div style="font-size:18px;font-weight:400;margin-bottom:10px;">{{ p.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ p.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <!-- MORE CHAPTERS behind Read more (DEPTH-1329) -->
+  <details data-screen-label="More about TOGU" style="margin:0;padding:0;"><summary style="list-style:none;cursor:pointer;max-width:calc(1312px + 2 * var(--web-side));margin:48px auto 0;padding:0 var(--web-side);box-sizing:border-box;min-height:44px;display:flex;align-items:center;font-family:var(--font-web);font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;"><span style="border-bottom:1px solid #4F4F4E;padding-bottom:2px;">Read more about TOGU (5)</span></summary>
+  <!-- THE RANGE -->
+  <!-- INSTALLATION COMPLETE (bundle helper) -->
+  
+  <!-- PREWIRED BOARDS -->
+  <section id="boards" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;--cg:48px;">
+        <div>
+          <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">DIN rail enclosures</div>
+          <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The enclosure every <span style="color:#8E8E8E;">installation needs.</span></h2>
+          <p style="margin:0 0 20px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Almost every installation contains a DIN rail enclosure &#8212; for solar, battery, heat-pump, EV or metering protection. TOGU manufactures them at scale, designed as part of the same product family as MOEBIUS, FLUXX and OGO, so they can be ordered on the same quotation and the electrical room looks coordinated rather than assembled from unrelated boxes.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            <sc-for list="{{ boardItems }}" as="b" hint-placeholder-count="7">
+              <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:6px 12px;background:var(--color-card-togu);color:var(--color-text-primary);border-radius:8px;">{{ b }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div style="aspect-ratio:4/3;">
+          <image-slot id="togu-board" shape="rounded" radius="12" placeholder="Drop a DIN rail enclosure render"></image-slot>
+        </div>
+      </div>
+      <div style="margin-top:32px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Empty enclosures, or factory-prepared assemblies</div>
+        <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;--cg:12px;">
+          <sc-for list="{{ boxTypes }}" as="x" hint-placeholder-count="4">
+            <div style="padding:22px 20px;background:#F4F4F4;border-radius:12px;">
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">{{ x.name }}</div>
+              <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ x.desc }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:14px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Enclosures accept standard DIN rail components (MCBs, RCDs, SPDs, fuse holders, meters, terminals). Factory assembly and functional check are optional.</p>
+      </div>
+    </div>
+  </section>
+  <!-- INSTALLER TOOLS & GUARANTEES -->
+  
+  <!-- INSTALLATION DNA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="background:var(--color-text-primary);color:#FFFFFF;padding:48px 40px;border-radius:12px;">
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">TOGU Installation DNA</div>
+        <h2 style="margin:0 0 16px;max-width:760px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Ten years later, <span style="color:#8E8E8E;">one QR code explains the whole installation.</span></h2>
+        <p style="margin:0 0 28px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#D9D9D9;text-wrap:pretty;">When a project is finished, every infrastructure component becomes part of one digital installation record &#8212; every cable, tray, gland, connector, enclosure, isolator, label and earth conductor. A service engineer scans one code and knows what was installed, where, from which batch, with which accessories, which revisions and which factory and commissioning tests were carried out.</p>
+        <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #3A3A3A;--cg:0px;">
+          <sc-for list="{{ dna }}" as="d" hint-placeholder-count="8">
+            <div style="padding:16px 16px 16px 0;border-right:1px solid #3A3A3A;font-size:var(--web-small-size);font-weight:300;color:#D9D9D9;line-height:var(--web-small-lh);">{{ d }}</div>
+          </sc-for>
+        </div>
+        <p style="margin:24px 0 0;font-size:var(--web-small-size);font-weight:300;font-style:italic;color:#9DB4CB;max-width:720px;line-height:var(--web-small-lh);">Only possible because TOGU controls the wider Strohm.energy ecosystem and the EMON platform. That ecosystem-level traceability is the strongest long-term advantage.</p>
+      </div>
+    </div>
+  </section>
+  <!-- ROOFTOP TRAYS teaser -->
+  <section id="trays" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Flat-roof cable management</div>
+      <h2 style="margin:0 0 12px;max-width:600px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">A flat roof is not <span style="color:#8E8E8E;">a cable shelf.</span></h2>
+      <p style="margin:0 0 24px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Open, ventilated or fully covered &#8212; the correct rooftop system depends on the country, roof, cable route and maintenance access. The TOGU selector gives a preliminary recommendation and sizes the tray, cover, supports and accessories. We never reduce this to one generic rule.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;">
+        <div style="border:1px solid var(--color-divider);padding:8px 14px;font-size:12px;font-weight:300;color:var(--color-text-primary);border-radius:8px;">Compliance status: <strong style="font-weight:700;color:#c46e00;">Must be verified</strong></div>
+        <div style="border:1px solid var(--color-divider);padding:8px 14px;font-size:12px;font-weight:300;color:var(--color-text-primary);border-radius:8px;">Engineering recommendation: <strong style="font-weight:700;color:var(--color-text-primary);">per project</strong></div>
+      </div>
+      <a href="TOGU - PRODUCT - Finder - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;white-space:nowrap;background:var(--color-brand-togu);color:#FFFFFF;border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Open the rooftop-tray selector<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </section>
+  <!-- ENGINEERING & MANUFACTURING -->
+  
+  <!-- PRODUCTION PLANNING -->
+  
+  <div style="height:64px;"></div>
+  <!-- CABLE QUALITY EXPLAINER (DEPTH-76, DRAFT) -->
+  <section id="why-quality" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;">
+      <div style="display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Why quality matters</div><h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The cheapest part carries <span style="color:#8E8E8E;">all the power.</span></h2><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;text-transform:uppercase;">DRAFT</span></div>
+      <div style="grid-column:span 2;min-width:0;display:flex;flex-direction:column;">
+        <p style="margin:0 0 12px;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Every kilowatt-hour from the panels passes through cables and connectors before it reaches the inverter, the battery or the grid. Undersized cable, a poor crimp or two connectors from different makers are small savings with large consequences.</p>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Losses</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Cable that is too thin for the current and the length turns part of the solar yield into heat, every day for 25 years.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Heat</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">High resistance at a joint or a loose terminal warms up under load. Heat ages insulation and loosens the connection further.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Fire risk</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Most electrical fires in solar systems start at connectors and joints, not in panels. Cable fire class and correct installation limit the risk inside buildings.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Mismatched connectors</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Connectors from different manufacturers may look alike but are not tested together. Only mate connectors of the same type and maker.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">UV and weather</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Solar cable is made for sun, rain, frost and ozone for decades. Ordinary installation cable is not.</span></div>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:14px;font-weight:700;">Documentation</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Cable type, cross-section and fire class belong in the installation record, so an inspector or insurer can check them later.</span></div>
+        <div style="display:flex;gap:24px;flex-wrap:wrap;padding-top:18px;"><a href="TOGU - PRODUCT - Solar Cable and CPR - EN.dc.html" style="font-size:14px;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Solar cable and CPR fire classes &#8250;</a><a href="TOGU - PRODUCT - Cable Routing - EN.dc.html" style="font-size:14px;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Cable routing &#8250;</a></div>
+        <p style="margin:14px 0 0;font-size:var(--web-min-size);font-weight:300;color:#B07818;max-width:760px;line-height:var(--web-min-lh);">[TO CONFIRM] Cross-sections, voltage drop limits and connector compatibility per product, from TOGU datasheets.</p>
+      </div>
+    </div>
+  </section>
+  </details>
+  <!-- ENGINEERING AND MANUFACTURING LINK (DEPTH-77) -->
+  
+  <section id="tools" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Installer tools &amp; guarantees</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">What only the manufacturer <span style="color:#8E8E8E;">can offer.</span></h2>
+      <p style="margin:0 0 28px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Because TOGU makes the products and controls the wider Strohm.energy ecosystem, it can offer things a wholesaler or rebrander cannot &#8212; real value for installers, not marketing slogans.</p>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ tools }}" as="t" hint-placeholder-count="8">
+          <div style="padding:22px 20px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">{{ t.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ t.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:20px;margin-top:24px;">
+        <sc-for list="{{ colours }}" as="c" hint-placeholder-count="5">
+          <div style="display:flex;align-items:center;gap:8px;"><span style="width:14px;height:14px;flex:none;background:{{ c.hex }};border:1px solid var(--color-divider);"></span><span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ c.label }}</span></div>
+        </sc-for>
+        <span style="font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);line-height:var(--web-min-lh);">One colour code across the whole ecosystem.</span>
+      </div>
+    </div>
+  </section>
+  <section id="system" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Engineering &amp; manufacturing</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Designed in Europe. <span style="color:#8E8E8E;">Manufactured by us. Trade prices, shown after login.</span></h2>
+      <p style="margin:0 0 20px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The objective is to manufacture products installers trust. Quality is controlled from specification to final inspection. Trade prices are shown in the <a href="TOGU - WEBSHOP - Shop - EN.dc.html">TOGU webshop</a> after login.</p>
+      <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:720px;">Designed by installers, product designers and manufacturers &#8212; not by a marketing department.</p>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:24px;gap:12px;--cg:12px;">
+        <sc-for list="{{ engineering }}" as="e" hint-placeholder-count="8">
+          <div style="padding:22px 20px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">{{ e.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ e.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;--cg:24px;">
+        <div style="padding:20px 28px;background:var(--color-card-togu);border-radius:12px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Transparent copper pricing</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);max-width:760px;">Copper is a large part of cable cost. Project quotations can separate manufacturing, copper, connector, assembly, packaging and logistics &#8212; predictable pricing, with no hidden material changes when copper prices move.</p>
+        </div>
+        <div style="padding:20px 28px;background:var(--color-card-togu);border-radius:12px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Digital Product Passport</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);max-width:760px;">Selected products carry a QR code linking production batch, material batch, factory inspection, revision, certificates, warranty and installation history. Years after installation, the correct product can still be identified.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;">
+        <sc-for list="{{ standards }}" as="s" hint-placeholder-count="9">
+          <span style="font-size:12px;font-weight:400;padding:8px 14px;border:1px solid var(--color-divider);color:var(--color-text-primary);border-radius:8px;">{{ s }}</span>
+        </sc-for>
+      </div>
+      <p style="margin:14px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Applicable standards are shown per product. The standards listed depend on the specific product category.</p>
+    </div>
+  </section>
+  <sc-if value="{{ showSchedule }}" hint-placeholder-val="{{ false }}"><section id="production" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Production planning &amp; logistics</div>
+      <h2 style="margin:0 0 12px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Built to your schedule, <span style="color:#8E8E8E;">not to warehouse shelves.</span></h2>
+      <p style="margin:0 0 32px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Most commercial and utility projects are built in phases over months. TOGU keeps strategic raw-material and semi-finished stock, produces many project-specific products shortly before they are required, and delivers in planned phases &#8212; fresher inventory, less site storage and a more competitive total project cost, without long custom lead times.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--color-divider);margin-bottom:32px;--cg:0px;">
+        <sc-for list="{{ planning }}" as="p" hint-placeholder-count="3">
+          <div style="padding:28px 24px 28px 0;border-bottom:1px solid var(--color-divider);">
+            <div style="font-size:18px;font-weight:400;margin-bottom:10px;">{{ p.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ p.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Production matched to construction</div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ phases }}" as="ph" hint-placeholder-count="3">
+          <div style="padding:24px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:10px;line-height:var(--web-small-lh);">{{ ph.name }}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <sc-for list="{{ ph.items }}" as="it" hint-placeholder-count="3">
+                <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:5px 10px;background:var(--color-card-togu);color:var(--color-text-primary);border-radius:8px;">{{ it }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:20px 0 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);max-width:720px;">For larger projects, customers can reserve manufacturing capacity in advance for priority scheduling, coordinated deliveries and more predictable execution &#8212; production aligned with the construction programme instead of filling warehouses.</p>
+      <div style="padding:20px 28px;background:var(--color-card-togu);margin-top:24px;max-width:820px;border-radius:12px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Project Price Lock</div>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);max-width:760px;">After technical approval and an agreed deposit or framework agreement, TOGU can reserve production capacity and, where commercially agreed, secure the pricing of the manufacturing portion of the order &#8212; while transparently managing raw-material elements such as copper through an agreed mechanism. Predictable budgeting for project developers, without warehousing months of finished inventory.</p>
+      </div>
+    </div>
+  </section></sc-if>
+  <!-- MANUFACTURING (DEPTH-1230) -->
+  <section id="manufacturing" data-screen-label="Manufacturing" style="scroll-margin-top:156px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:40px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px 72px;align-items:center;">
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Manufacturing</h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">TOGU combines cable production, metal forming, polymer processing and electrical component manufacture with controlled harness and enclosure assembly. Products are inspected and tested to their own requirements, identified by article and batch, and packed as bulk supplies or coordinated project kits. Approved assemblies keep their factory test records through installation and service.</p>
+        <a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="align-self:flex-start;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;" style-hover="color:#F76801;border-bottom-color:#F76801;">Explore the manufacturing process &#8250;</a>
+      </div>
+      <div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="togu-manufacturing-photo" shape="rounded" radius="12" placeholder="TOGU manufacturing photo, 4:3: production line or test station"></image-slot></div>
+    </div>
+    <details style="border-top:1px solid #DDDDDD;padding-top:16px;">
+      <summary style="cursor:pointer;list-style:none;display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;">Read more</summary>
+      <div style="display:flex;flex-direction:column;gap:16px;padding-top:24px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Production · 17 stages</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px;">
+        <a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">01</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Copper drawing and stranding</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">02</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Cable extrusion</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">03</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Grounding</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">04</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Connectors</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">05</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Harness assembly</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">06</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Trays and ladders</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">07</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Conduit and trunking</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">08</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">FIX and MOUNT</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">09</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Enclosures</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">10</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Glands</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">11</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Terminals</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">12</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Switches</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">13</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Protection</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">14</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Labels</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">15</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Prepared boxes</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">16</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Packing</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - TOGU - EN.dc.html#em-togu-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-togu,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">17</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">From factory to site</span></a></div>
+      </div>
+    </details>
+    <div data-editor-only="" style="display:flex;flex-direction:column;gap:8px;border:1px dashed #BBBBBB;border-radius:12px;padding:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Earlier titles · editor only</div>
+      <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">01 Copper conductors · 02 DC solar cable extrusion · 03 Housings and contacts · 04 Trays, conduit and trunking · 05 Distribution enclosures · 06 Checks and qualification · 07 Packing and traceability</p>
+    </div>
+  </section>
+  <div style="height:96px;"></div>
+  <dc-import name="ProjectRequest" brand="TOGU" hint-size="100%,1400px"></dc-import>
+  <dc-import name="ContentSections" brand="TOGU" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="TOGU" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="TOGU" accent="#C48723" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;range&quot;, &quot;tsType&quot;: &quot;string&quot;}}">
+const GROUPS = ["All", "Cable & connect", "Route & support", "Protect & switch", "Enclose & mount", "Identify", "Consumables"];
+
+const FAMILIES = [
+  { name: "GROUND", group: "Cable & connect", isNew: false, desc: "Complete grounding, not just a green-yellow cable.", items: ["Earth cable", "Earth rods", "Clamps", "Bonding"] },
+  { name: "DC Solar Cable", group: "Cable & connect", isNew: false, desc: "H1Z2Z2-K solar cable, Dca and Cca fire classes, tinned Class 5 copper.", items: ["Dca", "Cca", "UV-resistant", "Double-insulated"] },
+  { name: "TOGU CONNECT", group: "Cable & connect", isNew: true, desc: "Connectors and pre-assembled harnesses for solar, battery and comms.", items: ["MC4", "Battery", "Waterproof", "Harnesses"] },
+  { name: "Wire-mesh Tray", group: "Route & support", isNew: false, desc: "Ventilated, lightweight tray installers love — fast to modify and inspect.", items: ["Factories", "Battery rooms", "Data rooms"] },
+  { name: "Metal Cable Tray", group: "Route & support", isNew: false, desc: "Perforated, ladder, solid-bottom and covered, in steel, aluminium or stainless.", items: ["Perforated", "Ladder", "Covered", "Stainless"] },
+  { name: "PVC Conduit", group: "Route & support", isNew: false, desc: "Protect cables in walls, floors and ceilings — and replace them tomorrow.", items: ["Rigid", "Flexible", "Heavy-duty", "UV"] },
+  { name: "PVC Trunking", group: "Route & support", isNew: false, desc: "Clean, accessible cable routing for technical rooms and renovation.", items: ["Corners", "Tees", "Covers", "Halogen-free"] },
+  { name: "TOGU FIX", group: "Route & support", isNew: true, desc: "Clips, roof supports, clamps and stand-offs that hold the route in place.", items: ["Cable clips", "Roof clips", "Clamps", "Spacers"] },
+  { name: "Distribution Boxes", group: "Enclose & mount", isNew: false, desc: "PV combiner, battery, EV, heat-pump, metering and outdoor service boxes.", items: ["PV combiner", "Battery", "EV", "Outdoor"] },
+  { name: "TOGU MOUNT", group: "Enclose & mount", isNew: true, desc: "DIN rails, accessories, mounting and back plates, rail supports.", items: ["DIN rails", "Plates", "End stops"] },
+  { name: "TOGU ENTRY", group: "Enclose & mount", isNew: true, desc: "Cable glands and entries — standard, multi-entry, fire and EMC.", items: ["Glands", "Multi-entry", "Fire", "EMC"] },
+  { name: "TOGU TERMINAL", group: "Enclose & mount", isNew: true, desc: "Terminal, earth, neutral, fuse, disconnect and spring terminals.", items: ["Terminal blocks", "Earth", "Fuse", "Spring"] },
+  { name: "TOGU SWITCH", group: "Protect & switch", isNew: true, desc: "DC and AC isolators, battery disconnects, emergency stops.", items: ["DC isolator", "AC isolator", "Disconnect", "E-stop"] },
+  { name: "TOGU PROTECT", group: "Protect & switch", isNew: true, desc: "Fuse holders, DC/AC fuses, SPD and string protection.", items: ["DC fuses", "SPD", "String", "Holders"] },
+  { name: "TOGU LABEL", group: "Identify", isNew: true, desc: "QR, cable, warning, circuit and project labels — laser and heat-shrink.", items: ["QR", "Cable", "Warning", "Circuit"] },
+  { name: "Installation Consumables", group: "Consumables", isNew: false, desc: "The everyday parts every quotation forgets, expanded into a full range.", items: ["Ties", "Ferrules", "Lugs", "Heat shrink", "Firestop"] },
+];
+
+// per-install base quantity at the "medium" size; m = per-metre, pcs = pieces. mult = how it scales with size step.
+const BUNDLES = {
+  moebius: { label: "MOEBIUS inverter installation",
+    items: [
+      { label: "AC cable", base: 12, unit: "m", scale: true }, { label: "DC cable", base: 40, unit: "m", scale: true },
+      { label: "Battery cable", base: 6, unit: "m", scale: true }, { label: "Communication cable", base: 15, unit: "m", scale: true },
+      { label: "Earthing cable", base: 10, unit: "m", scale: true }, { label: "PVC conduit", base: 8, unit: "m", scale: true },
+      { label: "Cable trunking", base: 6, unit: "m", scale: true }, { label: "Cable tray", base: 5, unit: "m", scale: true },
+      { label: "DIN enclosure", base: 1, unit: "pcs" }, { label: "DC isolator", base: 1, unit: "pcs" },
+      { label: "Cable glands", base: 8, unit: "pcs" }, { label: "Labels", base: 20, unit: "pcs" },
+      { label: "MC4 connectors", base: 12, unit: "pcs", scale: true }, { label: "Cable clips", base: 40, unit: "pcs", scale: true },
+      { label: "Junction box", base: 1, unit: "pcs" }, { label: "Heat shrink", base: 15, unit: "pcs" }, { label: "Ferrules", base: 30, unit: "pcs" },
+    ] },
+  fluxx: { label: "FLUXX battery installation",
+    items: [
+      { label: "Battery cable", base: 8, unit: "m", scale: true }, { label: "Earthing cable", base: 6, unit: "m", scale: true },
+      { label: "DC isolator", base: 1, unit: "pcs" }, { label: "Distribution box", base: 1, unit: "pcs" },
+      { label: "Cable glands", base: 6, unit: "pcs" }, { label: "Warning labels", base: 12, unit: "pcs" },
+      { label: "Cable clips", base: 25, unit: "pcs" }, { label: "Heat shrink", base: 10, unit: "pcs" },
+      { label: "Ferrules", base: 20, unit: "pcs" }, { label: "Terminal blocks", base: 8, unit: "pcs" },
+    ] },
+  nendo: { label: "NENDO heat-pump installation",
+    items: [
+      { label: "AC cable", base: 15, unit: "m", scale: true }, { label: "Earthing cable", base: 10, unit: "m", scale: true },
+      { label: "PVC conduit", base: 10, unit: "m", scale: true }, { label: "Cable trunking", base: 6, unit: "m", scale: true },
+      { label: "DIN enclosure", base: 1, unit: "pcs" }, { label: "AC isolator", base: 1, unit: "pcs" },
+      { label: "Cable glands", base: 6, unit: "pcs" }, { label: "Cable clips", base: 30, unit: "pcs" },
+      { label: "Labels", base: 12, unit: "pcs" }, { label: "Condensate-safe fixings", base: 6, unit: "pcs" },
+    ] },
+  xoom: { label: "XOOM EV-charger installation",
+    items: [
+      { label: "AC cable", base: 18, unit: "m", scale: true }, { label: "Earthing cable", base: 12, unit: "m", scale: true },
+      { label: "PVC conduit", base: 12, unit: "m", scale: true }, { label: "DIN enclosure", base: 1, unit: "pcs" },
+      { label: "AC isolator", base: 1, unit: "pcs" }, { label: "SPD", base: 1, unit: "pcs" },
+      { label: "Cable glands", base: 5, unit: "pcs" }, { label: "Labels", base: 10, unit: "pcs" },
+      { label: "Cable clips", base: 30, unit: "pcs" }, { label: "Ferrules", base: 16, unit: "pcs" },
+    ] },
+  ando: { label: "ANDO solar-array installation",
+    items: [
+      { label: "DC solar cable", base: 60, unit: "m", scale: true }, { label: "MC4 connectors", base: 16, unit: "pcs", scale: true },
+      { label: "Y-splitters", base: 4, unit: "pcs", scale: true }, { label: "Earthing cable", base: 15, unit: "m", scale: true },
+      { label: "Roof clips", base: 50, unit: "pcs", scale: true }, { label: "Cable tray", base: 8, unit: "m", scale: true },
+      { label: "Labels", base: 20, unit: "pcs" }, { label: "Ferrules", base: 24, unit: "pcs" }, { label: "Cable ties (UV)", base: 80, unit: "pcs", scale: true },
+    ] },
+};
+const SIZES = [
+  { value: "s", label: "Small / residential", factor: 0.6 },
+  { value: "m", label: "Medium / large home", factor: 1 },
+  { value: "l", label: "Large / light-commercial", factor: 1.8 },
+  { value: "xl", label: "Commercial / multi-unit", factor: 3.2 },
+];
+
+class Component extends DCLogic {
+  state = { frame: 0,  group: "All", bundle: "moebius", added: false, perMonth: 20, size: "m" };
+
+  fmt(n) { return n >= 1000 ? Math.round(n / 10) / 100 + "\u00A0k" : String(n); }
+
+  componentDidMount() {
+    if (!(window.omelette && window.omelette.writeFile)) document.querySelectorAll('[data-editor-only]').forEach((el) => { el.style.display = 'none'; });  }
+  componentWillUnmount() { if (this._heroTimer) clearInterval(this._heroTimer); }
+  heroVals() { const fr = this.state.frame || 0, hv = {}; for (let i = 0; i < 6; i++) { hv["op" + i] = i === fr ? 1 : 0; hv["pe" + i] = i === fr ? "auto" : "none"; } hv.heroDots = [0, 1, 2, 3, 4, 5].map(i => ({ w: i === fr ? "22px" : "10px", bg: i === fr ? "#C48723" : "rgba(255,255,255,0.4)" })); return hv; }
+  renderVals() { return { toguSix: [{"label":"Range","heading":"More than cable by the metre.","sentence":"TOGU supplies in bulk: the cables, boxes, trays, conduit, trunking and consumables around every STRØHM.ENERGY product you install.","media":{"type":"slot","slot":"togu-hero","alt":"TOGU · Range · drop a photo or video"}},{"label":"Installation","heading":"The last 10%.","sentence":"The panels, the inverter and the battery arrive — then the job stops because someone forgot the glands, the DIN enclosure or the earthing cable.","media":{"type":"slot","slot":"togu-hero-2","alt":"TOGU · Installation · drop a photo or video"}},{"label":"QR record","heading":"One QR code explains it all.","sentence":"When a project is finished, every infrastructure component becomes part of one digital installation record.","media":{"type":"slot","slot":"togu-hero-3","alt":"TOGU · QR record · drop a photo or video"}},{"label":"Enclosures","heading":"DIN enclosures made at scale.","sentence":"Almost every installation contains a DIN rail enclosure — for solar, battery, heat-pump, EV or metering protection.","media":{"type":"slot","slot":"togu-hero-4","alt":"TOGU · Enclosures · drop a photo or video"}},{"label":"Colour code","heading":"One colour code across the ecosystem.","sentence":"One colour code across the whole ecosystem.","media":{"type":"slot","slot":"togu-hero-5","alt":"TOGU · Colour code · drop a photo or video"}},{"label":"Made by us","heading":"Manufactured by us.","sentence":"Quality is controlled from specification to final inspection.","media":{"type":"slot","slot":"togu-hero-6","alt":"TOGU · Made by us · drop a photo or video"}}], ...this.heroVals(), ...this._rv() }; }
+  _rv() {
+    const st = this.state;
+    const fams = st.group === "All" ? FAMILIES : FAMILIES.filter(f => f.group === st.group);
+    const b = BUNDLES[st.bundle];
+    const bundleTabList = [
+      { key: "moebius", label: "MOEBIUS inverter" },
+      { key: "fluxx", label: "FLUXX battery" },
+      { key: "nendo", label: "NENDO heat pump" },
+      { key: "xoom", label: "XOOM EV charger" },
+      { key: "ando", label: "ANDO solar" },
+    ];
+    return {
+      heroStats: [
+        { value: "16", label: "Product families, one range" },
+        { value: "1", label: "Supplier, one shipment" },
+        { value: "0", label: "Forgotten accessories" },
+        { value: "QR", label: "Digital Product Passport" },
+      ],
+      pillars: [
+        { title: "Add to the same order", desc: "Required TOGU materials go on the same Strohm.energy quotation — everything arrives together." },
+        { title: "Coordinated by design", desc: "Cable, protection, enclosure, glands and labels are specified to work as one system." },
+        { title: "Nothing forgotten", desc: "The bundle helper lists every accessory an installation needs before the van leaves." },
+      ],
+      groupTabs: GROUPS.map(g => ({ label: g, onClick: () => this.setState({ group: g }),
+        bg: st.group === g ? "#4F4F4E" : "#FFFFFF", color: st.group === g ? "#FFFFFF" : "#5F5E5E", border: st.group === g ? "#1E1E1E" : "#D4D4D4" })),
+      families: fams,
+      bundleTabs: bundleTabList.map(t => ({ label: t.label, onClick: () => this.setState({ bundle: t.key, added: false }),
+        bg: st.bundle === t.key ? "#4E6E8E" : "#FFFFFF", color: st.bundle === t.key ? "#FFFFFF" : "#4F4F4E", border: st.bundle === t.key ? "#4E6E8E" : "#D4D4D4" })),
+      perMonth: st.perMonth,
+      onMonth: (e) => { const v = Math.max(1, Math.min(9999, parseInt(e.target.value, 10) || 1)); this.setState({ perMonth: v }); },
+      incMonth: () => this.setState({ perMonth: Math.min(9999, st.perMonth + 1) }),
+      decMonth: () => this.setState({ perMonth: Math.max(1, st.perMonth - 1) }),
+      sizeOptions: SIZES.map(s => ({ value: s.value, label: s.label, selected: s.value === st.size })),
+      onSize: (e) => this.setState({ size: e.target.value }),
+      sizeLabel: (SIZES.find(s => s.value === st.size) || SIZES[1]).label,
+      bundle: {
+        label: b.label, count: b.items.length,
+        items: b.items.map(i => {
+          const factor = (SIZES.find(s => s.value === st.size) || SIZES[1]).factor;
+          const perInstall = i.scale ? i.base * factor : i.base;
+          const total = Math.round(perInstall * st.perMonth);
+          return {
+      showSchedule: false, // Q62c: delivery is handled in the webshop; section preserved
+
+      showForecast: false, // Q62a C: forecasting not offered yet; tool preserved
+ label: i.label, qty: this.fmt(total) + " " + i.unit + "/mo", mark: st.added ? "\u2713" : "+", color: st.added ? "#3d8b40" : "#4E6E8E" };
+        }),
+      },
+      addAll: () => this.setState({ added: !st.added }),
+      addLabel: st.added ? "Added — clear forecast" : "Add forecast to bulk order",
+      addBtnBg: st.added ? "#3d8b40" : "#4F4F4E", addBtnColor: "#FFFFFF",
+      boardItems: ["SPD", "Isolator", "Fuses", "Terminal blocks", "DIN rail", "Labels", "QR code"],
+      engineering: [
+        { title: "European engineering", desc: "Specified for European practice: safety, service life, easy installation, compliance." },
+        { title: "Quality control", desc: "Supplier qualification, incoming inspection, batch verification and final inspection." },
+        { title: "Correct materials", desc: "High-conductivity and tinned copper, UV and flame-retardant compounds, stainless and galvanised steel." },
+        { title: "Factory testing", desc: "Conductor resistance, HV, insulation, pull-force, connector and visual checks." },
+        { title: "Full traceability", desc: "Production and material batch, date, revision, serial and QR on important products." },
+        { title: "Mass-production ready", desc: "Standardised work instructions, process control and calibrated equipment." },
+        { title: "Fast project delivery", desc: "Factory stock, regional stock and project production, with phased deliveries." },
+        { title: "Sustainable packaging", desc: "Recyclable cartons, returnable drums and reusable transport boxes, per project." },
+      ],
+      tools: [
+        { title: "Project Ready", desc: "One click adds the complete installation package to the Strohm.energy order — nothing forgotten." },
+        { title: "Smart BOM generator", desc: "Upload a single-line diagram or roof plan; get a full bill of materials, cable and tray schedule." },
+        { title: "Guaranteed compatibility", desc: "Every TOGU product is guaranteed to fit every Strohm.energy product. No guessing." },
+        { title: "Live copper index", desc: "Each quotation shows copper today versus copper when quoted — transparent, predictable pricing." },
+        { title: "Torque database", desc: "Correct torque, tool and a short video for every terminal, connector, gland and lug." },
+        { title: "Lifetime spare parts", desc: "Critical accessories stay available for at least 10–15 years after purchase." },
+        { title: "Installer Academy", desc: "Short five-minute videos: MC4, cable tray, grounding, DIN, torque, CPR, glands." },
+        { title: "Confidence Programme", desc: "Assemblies are factory-tested, identified, documented and warranted with compatible products." },
+      ],
+      colours: [
+        { label: "Solar DC", hex: "#E08A2E" },
+        { label: "Battery", hex: "#E9C93B" },
+        { label: "AC", hex: "#8A8A89" },
+        { label: "Communication", hex: "#4E6E8E" },
+        { label: "Earth", hex: "#3d8b40" },
+      ],
+      dna: ["What was installed", "Where it is located", "Which batch it came from", "Which accessories were used", "Which revisions were made", "Which spare parts fit", "Factory test records", "Commissioning results"],
+      standards: ["CPR", "CE", "RoHS", "REACH", "IEC", "EN", "Low Voltage Directive", "EMC", "WEEE"],
+      planning: [
+        { title: "Manufacture when needed", desc: "Strategic raw-material and semi-finished stock is turned into project-specific products close to the installation date." },
+        { title: "Lower inventory, better value", desc: "Producing shortly before use cuts warehousing, financing, ageing and obsolescence — a more competitive project cost." },
+        { title: "Short lead times", desc: "Standard platforms, semi-finished stock and automated production keep customised products within the construction programme." },
+      ],
+      phases: [
+        { name: "Phase 1 · Roof & route", items: ["Cable trays", "Supports", "Roof accessories"] },
+        { name: "Phase 2 · Generation", items: ["Solar cables", "Communication cables", "Earthing materials"] },
+        { name: "Phase 3 · Connect & commission", items: ["Battery cables", "Distribution boxes", "Labels", "Commissioning accessories"] },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

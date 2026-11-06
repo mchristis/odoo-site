@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>TOGU Responsibility | STRØHM.ENERGY</title>
+<meta name="robots" content="noindex">
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:#C48723; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="ToguNav" active="responsibility" hint-size="100%,49px"></dc-import>
+  <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:16px var(--web-side);box-sizing:border-box;font-size:12px;font-weight:700;letter-spacing:0.08em;color:#B07818;border-bottom:1px solid var(--color-divider);">DRAFT. Temporary text written without a TOGU source. Standards are named as applicable, not as held. Replace before publishing.</div>
+  <dc-import name="BrandResponsibility" brand="TOGU" unit="installation component" intro="{{ intro }}" durability="{{ durability }}" materials="{{ materials }}" certs="{{ certs }}" packaging="{{ packaging }}" eol="{{ eol }}" hint-size="100%,2400px"></dc-import>
+  <dc-import name="ContentSections" brand="TOGU" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="TOGU" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="TOGU" accent="var(--color-brand-togu)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const TC = (w) => `[TO CONFIRM: ${w}]`;
+    return {
+      intro: "Tested cables and connectors, declared fire classes, restricted substances and a documented route for offcuts and end-of-life material. Every claim on this page is linked to a document.",
+      durability: [
+        { test: "Solar cable for PV systems", standard: "EN 50618 (applicable)", result: TC("result per cable type") },
+        { test: "Reaction-to-fire class of cables", standard: "EN 50575 under the CPR, class per EN 13501-6 (applicable)", result: TC("Eca / Dca / Cca class per cable") },
+        { test: "Connectors for DC in PV systems", standard: "EN IEC 62852 (applicable)", result: TC("result per connector type") },
+        { test: "Installation of PV power supply systems", standard: "IEC 60364-7-712 (installation rule, applicable)", result: "Applied by the installer" },
+      ],
+      materials: [
+        { label: "Insulation", headline: "Halogen-free where it matters.", value: TC("halogen-free and low-smoke insulation per cable type"), dir: "TOGU_RESPONSIBILITY_MATERIALS_CABLE_01 · cable cross-section detail · 16:10 · placeholder (P2)" },
+        { label: "Declarations", headline: "Substances declared, not assumed.", value: "RoHS and REACH declarations per product; declaration of performance (DoP) per CPR cable. " + TC("which declarations exist"), dir: "TOGU_RESPONSIBILITY_MATERIALS_DOP_01 · declaration of performance preview · 16:10 · placeholder (P2)" },
+      ],
+      certs: [
+        { code: "CE", label: "CE marking under the applicable directives and the CPR " + TC("per product") },
+        { code: "ISO 9001", label: "Quality management " + TC("held for TOGU production") },
+        { code: "ISO 14001", label: "Environmental management " + TC("held for TOGU production") },
+      ],
+      packaging: TC("drum and reel return, packaging materials and pallet take-back"),
+      eol: ["Component in use", "Offcuts collected on site", "Copper and aluminium recovered", "Electrical parts collected under the WEEE Directive 2012/19/EU where applicable", "Recycling record", "Closed ownership record"],
+    };
+  }
+}
+</script>
+</body>
+</html>

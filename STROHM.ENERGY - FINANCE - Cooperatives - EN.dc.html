@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>Energy Cooperatives | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#F7F7F5; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } html { scroll-behavior:smooth; } [id] { scroll-margin-top:120px; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;color:var(--color-text-primary);min-height:100vh;">
+  <dc-import name="NavBar" active="finance" hint-size="100%,80px"></dc-import>
+
+  <dc-import name="BrandHero2" brand="FINANCE" rgb="200,200,200" dark="#4F4F4E" title="Develop energy projects together." intro="" items="{{ heroItems }}" hint-size="100%,760px"></dc-import><div style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);">
+    <section style="padding:88px 0 64px;">
+      <div style="display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:48px;"><span style="font-size:var(--web-h1-size);font-weight:100;letter-spacing:0.15em;text-transform:uppercase;">Finance</span><span style="font-size:var(--web-lead-size);font-weight:100;color:#898989;">Cooperatives</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:end;">
+        
+        <div style="max-width:640px;justify-self:end;display:flex;flex-direction:column;gap:24px;">
+          <p style="margin:0;font-size:var(--web-h3-size);line-height:1.6;font-weight:300;color:#898989;">Bring people, suitable locations and energy technology together through a cooperative approach. STRØHM.ENERGY welcomes enquiries from people interested in participating, owners with a potential project location and cooperatives seeking a technical partner.</p>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;"><a href="#enquiry" style="display:inline-flex;align-items:center;height:var(--cta-height);padding:0 var(--cta-pad-x);border-radius:var(--cta-radius);font-size:var(--cta-font);font-weight:400;background:#4F4F4E;color:#F4F4F4;" style-hover="background:#5F5E5E;color:#F4F4F4;">Register your interest</a><a href="#enquiry" style="display:inline-flex;align-items:center;height:48px;padding:0 24px;border-radius:8px;font-size:var(--web-body-size);font-weight:400;background:var(--color-surface-secondary);color:#898989;" style-hover="background:var(--color-divider);">Submit a project or site</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roles" style="display:flex;flex-wrap:wrap;gap:40px;padding:120px 0 0;">
+      <div style="flex:1 1 0;min-width:min(100%,240px);font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">01 / Find your role</div>
+      <div style="flex:3 1 0;min-width:min(100%,480px);">
+        <h2 style="margin:0 0 32px;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">An energy cooperative gives<br>members a way to participate.</h2>
+        <p style="margin:0 0 40px;font-size:var(--web-body-size);line-height:1.6;font-weight:300;color:#898989;max-width:760px;">Depending on the project structure, the benefits can include renewable electricity, income from operating installations and reinvestment in further community projects.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;">
+          <sc-for list="{{ roles }}" as="r" hint-placeholder-count="3">
+            <div style="background:{{ r.bg }};border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:16px;">
+              <div style="font-size:var(--web-lead-size);line-height:1.2;font-weight:100;">{{ r.title }}</div>
+              <div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#898989;flex:1;">{{ r.body }}</div>
+              <a href="#enquiry" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);">{{ r.cta }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:40px;padding:120px 0 0;">
+      <div style="flex:1 1 0;min-width:min(100%,240px);font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">02 / Project types</div>
+      <div style="flex:3 1 0;min-width:min(100%,480px);">
+        <h2 style="margin:0 0 32px;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">What collective<br>projects can include.</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;">
+          <sc-for list="{{ projectTypes }}" as="r" hint-placeholder-count="6">
+            <div style="background:{{ r.bg }};border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:12px;">
+              <div style="font-size:var(--web-body-size);font-weight:400;">{{ r.k }}</div>
+              <div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#898989;">{{ r.v }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:24px 0 0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">Technology follows the needs of the project. Storage, charging or additional equipment should have a defined purpose within the technical and financial assessment.</p>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:40px;padding:120px 0 0;">
+      <div style="flex:1 1 0;min-width:min(100%,240px);font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">03 / The model</div>
+      <div style="flex:3 1 0;min-width:min(100%,480px);">
+        <h2 style="margin:0 0 32px;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">How the cooperative<br>model works.</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;margin-bottom:24px;">
+          <sc-for list="{{ modelSteps }}" as="m" hint-placeholder-count="4">
+            <div style="background:{{ m.bg }};border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:10px;">
+              <div style="font-size:var(--web-body-size);font-weight:400;">{{ m.title }}</div>
+              <div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#898989;">{{ m.body }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">Membership does not automatically include electricity supply, a fixed dividend or immediate access to invested capital.</p>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:40px;padding:120px 0 0;">
+      <div style="flex:1 1 0;min-width:min(100%,240px);font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">04 / Roles</div>
+      <div style="flex:3 1 0;min-width:min(100%,480px);">
+        <h2 style="margin:0 0 32px;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Who <span style="color:#8E8E8E;">does what?</span></h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;">
+          <sc-for list="{{ whoDoesWhat }}" as="r" hint-placeholder-count="6">
+            <div style="background:{{ r.bg }};border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:12px;">
+              <div style="font-size:var(--web-body-size);font-weight:400;">{{ r.k }}</div>
+              <div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#898989;">{{ r.v }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:24px 0 0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">The cooperative's governance and the project's commercial contracts should make these responsibilities clear.</p>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:40px;padding:120px 0 0;">
+      <div style="flex:1 1 0;min-width:min(100%,240px);font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">05 / Value</div>
+      <div style="flex:3 1 0;min-width:min(100%,480px);">
+        <h2 style="margin:0 0 32px;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Understand where<br>the value comes from.</h2>
+        <p style="margin:0 0 32px;font-size:var(--web-body-size);line-height:1.6;font-weight:300;color:#898989;max-width:760px;">An energy project can create different benefits for different participants.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;">
+          <sc-for list="{{ valueTable }}" as="r" hint-placeholder-count="5">
+            <div style="background:{{ r.bg }};border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:12px;">
+              <div style="font-size:var(--web-body-size);font-weight:400;">{{ r.k }}</div>
+              <div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#898989;">{{ r.v }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:24px 0 16px;font-size:var(--web-small-size);font-weight:300;color:#898989;max-width:760px;line-height:var(--web-small-lh);">These benefits are not interchangeable. Savings for the building user are not automatically income for the cooperative, and project revenue is not the same as distributable profit.</p>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;color:#898989;max-width:760px;line-height:var(--web-small-lh);">The financial assessment should identify who receives each benefit and which costs they bear.</p>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:40px;padding:120px 0 0;">
+      <div style="flex:1 1 0;min-width:min(100%,240px);font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">06 / Process</div>
+      <div style="flex:3 1 0;min-width:min(100%,480px);">
+        <h2 style="margin:0 0 32px;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">From an initial idea to<br>an operating project.</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:24px;">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="6">
+            <div style="padding-top:16px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#AEAEAE;margin-bottom:10px;letter-spacing:var(--web-eyebrow-ls);">{{ s.n }}</div>
+              <div style="font-size:var(--web-body-size);font-weight:300;margin-bottom:8px;">{{ s.title }}</div>
+              <div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#898989;">{{ s.body }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:40px;padding:120px 0 0;">
+      <div style="flex:1 1 0;min-width:min(100%,240px);font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">07 / Before you participate</div>
+      <div style="flex:3 1 0;min-width:min(100%,480px);">
+        <h2 style="margin:0 0 32px;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Information to review<br>before participating.</h2>
+        <p style="margin:0 0 32px;font-size:var(--web-body-size);line-height:1.6;font-weight:300;color:#898989;max-width:760px;">Each opportunity should explain:</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;">
+          <sc-for list="{{ reviewTable }}" as="r" hint-placeholder-count="8">
+            <div style="background:{{ r.bg }};border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:12px;">
+              <div style="font-size:var(--web-body-size);font-weight:400;">{{ r.k }}</div>
+              <div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#898989;">{{ r.v }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:24px 0 0;font-size:var(--web-small-size);font-weight:300;color:#898989;max-width:760px;line-height:var(--web-small-lh);">Any forecast should identify its assumptions and show how changes in generation, costs or electricity prices could affect the outcome.</p>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:40px;padding:120px 0 0;">
+      <div style="flex:1 1 0;min-width:min(100%,240px);font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">08 / Questions</div>
+      <div style="flex:3 1 0;min-width:min(100%,480px);">
+        <h2 style="margin:0 0 32px;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Frequently asked<br>questions.</h2>
+        <sc-for list="{{ faq }}" as="q" hint-placeholder-count="7">
+          <div style="">
+            <button onClick="{{ q.onClick }}" style="font-family:inherit;cursor:pointer;width:100%;background:none;border:none;display:flex;justify-content:space-between;gap:16px;padding:24px 0;text-align:left;font-size:var(--web-body-size);font-weight:500;color:var(--color-text-primary);">{{ q.q }} <span>{{ q.sign }}</span></button>
+            <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}"><div style="padding:0 0 24px;font-size:var(--web-body-size);line-height:var(--web-body-lh);font-weight:300;color:#898989;max-width:760px;">{{ q.a }}</div></sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="enquiry" style="display:flex;flex-wrap:wrap;gap:40px;padding:120px 0 0;">
+      <div style="flex:1 1 0;min-width:min(100%,240px);font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">09 / Enquiry</div>
+      <div style="flex:3 1 0;min-width:min(100%,480px);">
+        <h2 style="margin:0 0 32px;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Start a cooperative<br>project conversation.</h2>
+        <p style="margin:0 0 40px;font-size:var(--web-body-size);line-height:1.6;font-weight:300;color:#898989;max-width:760px;">Tell us how you would like to be involved.</p>
+
+        <sc-if value="{{ !submitted }}" hint-placeholder-val="{{ true }}">
+          <div style="background:var(--color-card-strohm);border-radius:12px;padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px;">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Name<input type="text" placeholder="Full name" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Organisation (if applicable)<input type="text" placeholder="Organisation name" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Email address<input type="email" placeholder="you@company.com" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Country and region<input type="text" placeholder="Country and region" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Participation option<select style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"><option>I would like to participate in a cooperative project.</option><option>I have a potential project location.</option><option>I represent an existing cooperative.</option><option>I would like to explore establishing a cooperative project.</option></select></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Project location (if available)<input type="text" placeholder="Address or area" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Technology or project interests<input type="text" placeholder="e.g. rooftop solar, storage, wind" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Indicative budget in euros (if known)<input type="text" placeholder="€" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);grid-column:1/-1;">Message<textarea placeholder="Tell us more" rows="3" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:12px 16px;resize:vertical;"></textarea></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);grid-column:1/-1;">Optional drawings or project documents<input type="file" multiple="true" style="font-family:inherit;font-size:var(--web-small-size);font-weight:300;color:#898989;"></label>
+            <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:16px;">
+              <button onClick="{{ submit }}" style="font-family:inherit;cursor:pointer;height:var(--cta-height);padding:0 var(--cta-pad-x);border:none;border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);align-self:flex-start;" style-hover="background:#5F5E5E;color:#F4F4F4;">Discuss a cooperative project</button>
+              <p style="margin:0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:#AEAEAE;line-height:var(--web-min-lh);">This page invites enquiries. It does not present a specific investment offer. Any participation is subject to the relevant project documents, eligibility conditions and agreements.</p>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="background:var(--color-card-strohm);border-radius:12px;padding:40px;font-size:var(--web-body-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-body-lh);">Received. We will review your enquiry and get in touch about how to proceed.</div>
+        </sc-if>
+      </div>
+    </section>
+  </div>
+
+  <div style="height:96px;"></div>
+  <div style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 32px;">
+    <div style="background:var(--color-card-strohm);border-radius:12px;padding:28px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Looking for a different financing model?</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">Lease equipment, invest in the diversified fund, submit a project, or fund product development directly.</div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="STROHM.ENERGY - FINANCE - LEASE - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Lease and funds</a>
+        <a href="STROHM.ENERGY - FINANCE - Invest - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#FFFFFF;color:var(--color-text-primary);border:1px solid var(--color-divider);border-radius:var(--cta-radius);">Invest</a>
+        <a href="STROHM.ENERGY - FINANCE - Product Angel - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#FFFFFF;color:var(--color-text-primary);border:1px solid var(--color-divider);border-radius:var(--cta-radius);">Product Angel</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:48px;"></div>
+  <dc-import name="ReachSpecialist" brand="FINANCE" lead="Speak with the finance team to find the right model for your project." photo-slot-id="finance-specialist" hint-size="100%,420px"></dc-import>
+
+  <div style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 32px;">
+    <p style="margin:0;font-size:var(--web-min-size);font-weight:300;color:#AEAEAE;line-height:var(--web-min-lh);max-width:760px;">This page invites enquiries about cooperative energy projects and is not investment advice. Terms, eligibility and governance are set by each cooperative and its own documents.</p>
+  </div>
+
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const BG = ["#F4F4F4", "#E3E3E3"];
+const ROLES = [
+  { title: "I want to participate", body: "Interested in supporting an energy project without installing equipment on your own property? Register your interest in cooperative opportunities. When a suitable opportunity is available, review the project, membership conditions, financial assumptions and risks before deciding whether to participate.", cta: "Explore participation" },
+  { title: "I have a roof, land or building", body: "A suitable location can be the starting point for a collective energy project. Tell us about your property, its electricity consumption and your objectives. Potential arrangements may include use of the generated electricity, a site agreement or participation in the project itself. The appropriate model depends on the location, technical feasibility and the agreements between the parties.", cta: "Offer a project location" },
+  { title: "We represent a cooperative", body: "Planning your first installation, expanding an existing portfolio or considering storage? Discuss your project's technical requirements with STROHM.ENERGY. The potential scope can include equipment selection, system integration, energy management and coordination with installation partners. Responsibilities and services are defined for each project.", cta: "Discuss your cooperative's project" },
+];
+const PROJECT_TYPES = [
+  ["Solar on commercial roofs", "Roof suitability, electricity demand and the site agreement"],
+  ["Solar on community buildings", "Building use, ownership and participation objectives"],
+  ["Solar carports", "Parking layout, construction requirements and electricity use"],
+  ["Solar with battery storage", "Generation profile, demand, connection limits and operating strategy"],
+  ["Shared charging infrastructure", "Expected use, connection capacity and operating responsibilities"],
+  ["Wind energy", "Site resources, permissions, connection and project scale"],
+];
+const MODEL_STEPS = [
+  { title: "Members contribute", body: "Members provide capital under the cooperative's participation terms. Those terms explain eligibility, contribution requirements, member rights and how withdrawal or transfer requests are handled." },
+  { title: "The cooperative organises ownership", body: "The cooperative holds the agreed ownership interest in the installation or project entity. Its governing documents establish how decisions are made, who manages operations and how members exercise their rights." },
+  { title: "The project generates energy and income", body: "Electricity may be used at the project location, sold under an agreement or shared through an eligible arrangement. The available options depend on the project and local requirements." },
+  { title: "Income supports operation and member benefits", body: "Project income must cover the agreed costs and obligations. Any available surplus can then be retained, reinvested or distributed according to the cooperative's rules and decisions." },
+];
+const WHO_DOES_WHAT = [
+  ["Members", "Contribute capital and participate in cooperative governance"],
+  ["Cooperative", "Represent members, organise ownership and oversee the project"],
+  ["Site owner", "Provide agreed access and rights to use the location"],
+  ["STROHM.ENERGY", "Provide the equipment and technical services expressly included in its contract"],
+  ["Installation and operating partners", "Deliver, commission and maintain the installation within their agreed scope"],
+  ["Specialist advisers", "Address legal structure, accounting and other professional requirements"],
+];
+const VALUE_TABLE = [
+  ["Electricity savings", "A site user consumes generation that replaces purchased electricity"],
+  ["Electricity sales", "The project receives payment under an electricity sales agreement"],
+  ["Site income", "A property owner receives an agreed payment for use of the location"],
+  ["Member distributions", "The cooperative distributes an available surplus under its rules"],
+  ["Reinvestment", "Funds are retained for maintenance, replacements or further projects"],
+];
+const STEPS = [
+  { n: "01", title: "Define the objective", body: "Establish what the participants want to achieve: local generation, collective ownership, electricity supply, a potential financial return or a combination of these." },
+  { n: "02", title: "Assess the location", body: "Review the site, ownership, electricity demand, available connection capacity and technical constraints." },
+  { n: "03", title: "Develop the project plan", body: "Prepare the proposed system, estimated generation, investment budget, operating costs and development schedule." },
+  { n: "04", title: "Establish the structure", body: "Define membership, ownership, governance, site rights, contractual responsibilities and the proposed use of income." },
+  { n: "05", title: "Confirm funding and delivery", body: "Proceed when the necessary agreements, funding and project conditions are in place." },
+  { n: "06", title: "Operate and report", body: "Monitor the installation and report on its technical performance, financial results and relevant cooperative decisions." },
+];
+const REVIEW_TABLE = [
+  ["Organisation", "The cooperative's identity, management and governing documents"],
+  ["Project", "Location, technology, ownership and development stage"],
+  ["Funding", "Required capital, other financing and use of funds"],
+  ["Economics", "Revenue assumptions, operating costs, fees and reserves"],
+  ["Member rights", "Voting, information access and participation conditions"],
+  ["Distributions", "How any payment is determined and approved"],
+  ["Exit", "Withdrawal, transfer and repayment conditions"],
+  ["Risks", "Development, operating, market and financial uncertainties"],
+];
+const FAQ = [
+  ["Do I need my own roof?", "Not necessarily. A cooperative project can use a location provided by another member, a business or a public organisation. Eligibility depends on the particular cooperative."],
+  ["Will I receive electricity from the project?", "Only where an appropriate supply or sharing arrangement is available and agreed. Investment participation and electricity supply are separate arrangements."],
+  ["How much can I invest?", "Minimum and maximum contributions are defined for each opportunity. Registering interest does not require you to commit an amount."],
+  ["Is a return guaranteed?", "No. Financial results depend on project performance, costs, financing and other conditions. Distributions may be reduced or unavailable, and invested capital may be lost."],
+  ["Can I withdraw whenever I want?", "Withdrawal and transfer depend on the cooperative's rules and financial position. Participation should not be treated as money that is immediately accessible."],
+  ["Does STROHM.ENERGY operate the cooperative?", "The role of STRØHM.ENERGY is established for each project. Equipment supply or technical support does not itself make STRØHM.ENERGY the cooperative's operator or investment issuer."],
+  ["Can an existing cooperative work with STROHM.ENERGY?", "We welcome enquiries from existing cooperatives seeking equipment or technical support for a new installation or an expansion."],
+];
+const HERO_ITEMS = [{"label":"Participation","heading":"An energy cooperative gives members a way to participate.","sentence":"Depending on the project structure, the benefits can include renewable electricity, income from operating installations and reinvestment in further community projects.","media":{"type":"slot","slot":"strohm-energy-cooperatives-hero","alt":"FINANCE hero picture 1"}},{"label":"Collective projects","heading":"What collective projects can include.","sentence":"Technology follows the needs of the project. Storage, charging or additional equipment should have a defined purpose within the technical and financial assessment.","media":{"type":"slot","slot":"finance-coop-hero-2","alt":"FINANCE hero picture 2"}},{"label":"Cooperative model","heading":"How the cooperative model works.","sentence":"Membership does not automatically include electricity supply, a fixed dividend or immediate access to invested capital.","media":{"type":"slot","slot":"finance-coop-hero-3","alt":"FINANCE hero picture 3"}},{"label":"Who does what","heading":"Who does what?","sentence":"The cooperative's governance and the project's commercial contracts should make these responsibilities clear.","media":{"type":"slot","slot":"finance-coop-hero-4","alt":"FINANCE hero picture 4"}},{"label":"Where the value comes from","heading":"Understand where the value comes from.","sentence":"An energy project can create different benefits for different participants.","media":{"type":"slot","slot":"finance-coop-hero-5","alt":"FINANCE hero picture 5"}},{"label":"Idea to operation","heading":"From an initial idea to an operating project.","sentence":"TO CONFIRM","media":{"type":"slot","slot":"finance-coop-hero-6","alt":"FINANCE hero picture 6"}}];
+class Component extends DCLogic {
+  renderVals() { return Object.assign({}, this._rvBase(), { heroItems: HERO_ITEMS }); }
+  state = { open: {}, submitted: false };
+  _rvBase() {
+    const o = this.state.open;
+    const bg = (arr) => arr.map((r, i) => ({ k: r[0], v: r[1], bg: BG[i % 2] }));
+    return {
+      roles: ROLES.map((r, i) => ({ ...r, bg: BG[i % 2] })),
+      projectTypes: bg(PROJECT_TYPES),
+      modelSteps: MODEL_STEPS.map((m, i) => ({ ...m, bg: BG[i % 2] })),
+      whoDoesWhat: bg(WHO_DOES_WHAT),
+      valueTable: bg(VALUE_TABLE),
+      steps: STEPS,
+      reviewTable: bg(REVIEW_TABLE),
+      faq: FAQ.map((f, i) => ({ q: f[0], a: f[1], open: !!o[i], sign: o[i] ? "\u2212" : "+", onClick: () => this.setState((s) => ({ open: { ...s.open, [i]: !s.open[i] } })) })),
+      submitted: this.state.submitted,
+      submit: () => this.setState({ submitted: true }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

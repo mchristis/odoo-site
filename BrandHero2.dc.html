@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<style>@media (min-width:861px) and (max-width:1100px){ .bh2-intro{padding:40px 28px 0 !important;} .bh2-explain{padding:24px 28px 32px !important;} } @media (max-width:860px){ .bh2-card{grid-template-columns:1fr !important;grid-template-rows:auto auto auto !important;aspect-ratio:auto !important;min-height:0 !important;background:#EEF0D6 !important;} .bh2-tint{display:none !important;} .bh2-intro{grid-column:1 !important;grid-row:1 !important;padding:32px 32px 28px !important;} .bh2-media{grid-column:1 !important;grid-row:2 !important;aspect-ratio:4/3;} .bh2-explain{grid-column:1 !important;grid-row:3 !important;padding:28px 32px 28px !important;} .bh2-topics{grid-template-columns:repeat(3,minmax(0,1fr)) !important;} } @media (max-width:720px){ .bh2-card{width:calc(100% - 40px) !important;margin-top:20px !important;} .bh2-intro{padding:28px 20px 24px !important;} .bh2-explain{padding:24px 20px 20px !important;} .bh2-topics{grid-template-columns:repeat(2,minmax(0,1fr)) !important;} } @media (prefers-reduced-motion:reduce){ .bh2-media *{transition:none !important;} }</style>
+</helmet>
+<section class="bh2-card" tabindex="0" aria-roledescription="carousel" aria-label="{{ brand }}" onKeyDown="{{ onKey }}" data-stack="1" style="position:relative;width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:83px auto 0;min-height:max({{ minH }},calc(min(100vw - 2 * var(--web-side),1312px) / {{ ratioN }}));border-radius:24px;overflow:hidden;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);grid-template-rows:1fr auto;outline:none;background:#EBECEC;font-family:var(--font-web);">
+  <div class="bh2-media" onTouchStart="{{ onTouchStart }}" onTouchEnd="{{ onTouchEnd }}" style="position:relative;min-width:0;background:#EBECEC;grid-column:1 / -1;grid-row:1 / -1;">
+    <sc-for list="{{ slides }}" as="m" hint-placeholder-count="1">
+      <div aria-hidden="{{ m.hidden }}" style="position:absolute;inset:0;opacity:{{ m.op }};transition:opacity 0.6s ease;pointer-events:{{ m.pe }};">
+        <sc-if value="{{ m.isSlot }}" hint-placeholder-val="{{ false }}"><image-slot id="{{ m.slot }}" shape="rect" placeholder="{{ m.alt }}"></image-slot></sc-if>
+        {{ m.el }}
+      </div>
+    </sc-for>
+    <button type="button" onClick="{{ togglePause }}" aria-label="{{ pauseLabel }}" style="position:absolute;right:20px;bottom:20px;width:56px;height:56px;border:none;background:transparent;color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" style="display:block;"><path d="{{ pauseIcon }}" fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linejoin="round"></path></svg></button>
+  </div>
+  <div class="bh2-tint" aria-hidden="true" style="position:relative;z-index:1;grid-column:1;grid-row:1 / -1;background:{{ tint }};pointer-events:none;"></div>
+  <div class="bh2-intro" style="grid-column:1;grid-row:1;position:relative;z-index:2;container-type:inline-size;min-width:0;box-sizing:border-box;padding:56px 48px 0;color:#252525;display:flex;flex-direction:column;gap:24px;">
+    <h1 style="margin:0;font-size:clamp(28px,8.4cqi,44px);font-weight:100;line-height:1.2;letter-spacing:0.01em;word-spacing:0.12em;color:#252525;text-transform:uppercase;text-wrap:balance;overflow-wrap:normal;hyphens:manual;">{{ title }}</h1>
+    <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#252525;text-wrap:pretty;max-width:440px;">{{ intro }}</p>
+  </div>
+  <div class="bh2-explain" style="grid-column:1;grid-row:2;position:relative;z-index:2;min-width:0;box-sizing:border-box;padding:32px 48px 40px;color:#252525;display:flex;flex-direction:column;gap:12px;">
+    <div aria-live="polite" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;font-variant-numeric:tabular-nums;">{{ eyebrow }}</div>
+      <h2 style="margin:0;font-size:var(--web-sub-size);font-weight:var(--web-sub-weight);line-height:var(--web-sub-lh);color:#252525;">{{ heading }}</h2>
+      <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#252525;text-wrap:pretty;max-width:440px;">{{ sentence }}</p>
+    </div>
+    <div style="display:flex;align-items:center;gap:{{ rowGap }};margin-top:20px;justify-content:{{ rowJustify }};max-width:{{ rowMax }};">
+      <button type="button" onClick="{{ prev }}" aria-label="Previous slide" style-hover="color:#000000;" style="width:44px;height:44px;border:none;background:transparent;color:#252525;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;margin-left:{{ prevML }};"><svg width="{{ arrowW }}" height="{{ arrowH }}" viewBox="0 0 12 24" aria-hidden="true" style="display:block;"><polyline points="11,1 1,12 11,23" fill="none" stroke="currentColor" stroke-width="1"></polyline></svg></button>
+      <sc-if value="{{ showCount }}" hint-placeholder-val="{{ true }}"><span aria-label="{{ countLabel }}" style="font-size:var(--web-nav-size);font-weight:var(--web-nav-weight);font-variant-numeric:tabular-nums;min-width:56px;text-align:center;">{{ count }}</span></sc-if>
+      <sc-if value="{{ showDots }}" hint-placeholder-val="{{ false }}"><div role="group" aria-label="{{ countLabel }}" style="display:flex;align-items:center;gap:0;"><sc-for list="{{ dots }}" as="d" hint-placeholder-count="6"><button type="button" onClick="{{ d.onClick }}" aria-label="{{ d.label }}" aria-current="{{ d.current }}" style="width:20px;height:44px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;"><sc-if value="{{ d.on }}" hint-placeholder-val="{{ false }}"><span style="width:10px;height:10px;border-radius:50%;background:{{ d.ring }};display:block;"></span></sc-if><sc-if value="{{ d.off }}" hint-placeholder-val="{{ true }}"><span style="width:6px;height:6px;border-radius:50%;background:{{ d.light }};display:block;"></span></sc-if></button></sc-for></div></sc-if>
+      <button type="button" onClick="{{ next }}" aria-label="Next slide" style-hover="color:#000000;" style="width:44px;height:44px;border:none;background:transparent;color:#252525;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;margin-right:{{ nextMR }};"><svg width="{{ arrowW }}" height="{{ arrowH }}" viewBox="0 0 12 24" aria-hidden="true" style="display:block;"><polyline points="1,1 11,12 1,23" fill="none" stroke="currentColor" stroke-width="1"></polyline></svg></button>
+    </div>
+  </div>
+</section>
+<nav aria-label="{{ brand }} topics" style="max-width:1312px;width:calc(100% - 2 * var(--web-side));margin:0 auto;padding:32px 0 0;box-sizing:border-box;font-family:var(--font-web);">
+  <div class="bh2-topics" style="display:grid;grid-template-columns:repeat({{ topicCols }},minmax(0,1fr));gap:8px;">
+    <sc-for list="{{ topics }}" as="t" hint-placeholder-count="6">
+      <button type="button" onClick="{{ t.onClick }}" aria-current="{{ t.current }}" style="display:flex;align-items:center;justify-content:center;gap:10px;min-height:44px;padding:0 8px;border:none;background:transparent;cursor:pointer;font-family:var(--font-web);font-size:var(--web-nav-size);font-weight:{{ t.weight }};color:{{ t.color }};transition:color 0.3s ease;"><span style="width:8px;height:8px;border-radius:50%;background:{{ t.dot }};flex:none;"></span><span>{{ t.label }}</span></button>
+    </sc-for>
+  </div>
+</nav>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:760},&quot;brand&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;LINA&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;rgb&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;181,198,74&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;dark&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#4F5C12&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Vertical solar for flat roofs.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;intro&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;items&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;{label:string,heading:string,sentence:string,media?:{type:'img'|'video'|'slot',src?:string,slot?:string,alt?:string}}[]&quot;}}">
+class Component extends DCLogic {
+  state = { frame: 0, paused: false };
+  _vids = {};
+  items() { return this.props.items || []; }
+  componentDidMount() {
+    this._rm = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+    if ((this._rm && this._rm.matches) || this.props.pace === "still") this.setState({ paused: true });
+    this._schedule();
+  }
+  componentWillUnmount() { clearTimeout(this._t); }
+  _go(i) { const n = this.items().length || 1; this.setState({ frame: (i + n) % n }, () => this._schedule()); }
+  _togglePause() {
+    const p = !this.state.paused;
+    this.setState({ paused: p }, () => { const v = this._vids[this.state.frame]; if (p) { clearTimeout(this._t); if (v) v.pause(); } else this._schedule(); });
+  }
+  _schedule() {
+    clearTimeout(this._t);
+    const it = this.items(), cur = it[this.state.frame];
+    Object.keys(this._vids).forEach(k => { const v = this._vids[k]; if (v && +k !== this.state.frame) v.pause(); });
+    if (!cur || this.state.paused) return;
+    if (cur.media && cur.media.type === "video") { const v = this._vids[this.state.frame]; if (v) { v.currentTime = 0; v.play().catch(() => {}); } return; }
+    if (it.length > 1) this._t = setTimeout(() => this._go(this.state.frame + 1), this.props.pace === "lively" ? 4000 : 7000);
+  }
+  renderVals() {
+    const it = this.items(), f = this.state.frame, N = it.length || 1, pad = (n) => String(n).padStart(2, "0");
+    const rgb = this.props.rgb || "205,214,43", dark = this.props.dark || "#3F5A0E";
+    const fill = { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" };
+    const slides = it.map((x, i) => {
+      const m = x.media || { type: "slot", slot: (this.props.brand || "brand").toLowerCase() + "-hero-" + (i + 1), alt: (this.props.brand || "") + " hero picture " + (i + 1) };
+      const on = i === f;
+      let el = null;
+      if (m.type === "img") el = React.createElement("img", { src: m.src, alt: m.alt || "", style: fill });
+      if (m.type === "video") el = React.createElement("video", { ref: (v) => { if (this._vids) this._vids[i] = v; }, src: m.src, muted: true, playsInline: true, preload: "metadata", "aria-label": (m.alt || "Video") + " (click to pause or play)", onClick: (e) => { const v = e.currentTarget; v.paused ? v.play().catch(() => {}) : v.pause(); }, onEnded: () => { if (!this.state.paused) this._go(this.state.frame + 1); }, style: { ...fill, cursor: "pointer" } });
+      return { isSlot: m.type === "slot", slot: m.slot, alt: m.alt, el, op: on ? 1 : 0, pe: on ? "auto" : "none", hidden: on ? "false" : "true" };
+    });
+    const cur = it[f] || {};
+    const topics = it.map((x, i) => { const on = i === f; return { label: x.label || x.title || "", current: on ? "true" : "false", weight: on ? 500 : 300, color: on ? dark : "#4F4F4E", dot: on ? dark : "transparent", onClick: () => { this._go(i); if (x.onPick) { x.onPick(); return; } if (x.href) { const el = document.getElementById(String(x.href).replace(/^#/, "")); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 24, behavior: "smooth" }); } } }; });
+    const stg = { cinematic: ["2.4/1", "560px", 2.4], tall: ["1.7/1", "720px", 1.7] }[this.props.stage] || ["2.1/1", "600px", 2.1];
+    return {
+      ratio: stg[0], minH: stg[1], ratioN: stg[2],
+      brand: this.props.brand || "", title: this.props.title || "", intro: this.props.intro || "",
+      tint: "linear-gradient(rgba(" + rgb + ",0.3),rgba(" + rgb + ",0.3)),rgba(255,255,255,0.6)",
+      slides, topics, topicCols: it.length || 6,
+      eyebrow: (cur.label || cur.title || "") /* DEPTH-1106: number only in the counter */, heading: cur.heading || "", sentence: cur.sentence || "",
+      showDots: this.props.counter !== "count", rowJustify: "flex-start", rowMax: "none", arrowW: this.props.counter !== "count" ? 8 : 12, arrowH: this.props.counter !== "count" ? 16 : 24, prevML: this.props.counter !== "count" ? "-18px" : "-14px", nextMR: "0px", rowGap: this.props.counter !== "count" ? "0px" : "8px", showCount: this.props.counter === "count",
+      dots: it.map((x, i) => ({ size: i === f ? "10px" : "6px", on: i === f, off: i !== f, ring: "rgb(" + rgb + ")", light: "rgb(" + rgb.split(",").map(v => Math.round((+v + 255) / 2)).join(",") + ")", current: i === f ? "true" : "false", label: "Slide " + (i + 1) + " of " + N + (x.label ? ": " + x.label : ""), onClick: () => this._go(i) })),
+      count: pad(f + 1) + " / " + pad(N), countLabel: "Slide " + (f + 1) + " of " + N,
+      prev: () => this._go(f - 1), next: () => this._go(f + 1),
+      togglePause: () => this._togglePause(),
+      pauseLabel: this.state.paused ? "Play slideshow" : "Pause slideshow",
+      pauseIcon: this.state.paused ? "M10 6 L26 16 L10 26 Z" : "M9 6 H12 V26 H9 Z M20 6 H23 V26 H20 Z",
+      onKey: (e) => { if (e.key === "ArrowLeft") { e.preventDefault(); this._go(f - 1); } if (e.key === "ArrowRight") { e.preventDefault(); this._go(f + 1); } },
+      onTouchStart: (e) => { this._tx = e.touches[0].clientX; },
+      onTouchEnd: (e) => { if (this._tx == null) return; const dx = e.changedTouches[0].clientX - this._tx; this._tx = null; if (Math.abs(dx) > 40) this._go(f + (dx < 0 ? 1 : -1)); }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<title>FLUXX Operating boundaries and firmware | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } html { scroll-behavior:smooth; } [id] { scroll-margin-top:120px; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="FluxxNav" active="support" hint-size="100%,57px"></dc-import>
+  <dc-import name="PageHero" brand="FLUXX" rgb="253,199,6" eyebrow="FLUXX · Operating boundaries and firmware" title="The battery stays inside the limits you set." intro="Backup reserve, minimum and maximum state of charge, charge rate and export limit are set at commissioning." slot="fluxx-operating-boundaries-hero" shot="FLUXX · Operating boundaries · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;">
+      <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Limits <span style="color:#8E8E8E;">you set.</span></h2>
+      <p style="margin:0 0 32px;max-width:760px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#4F4F4E;">EMON charges, holds or discharges within these limits and shows why it acted.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ limits }}" as="l" hint-placeholder-count="5">
+          <div style="background:var(--color-card-fluxx, #F1EFE9);border-radius:12px;padding:20px 20px 24px;display:flex;flex-direction:column;gap:6px;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">{{ l.n }}</span>
+            <span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">{{ l.title }}</span>
+            <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ l.body }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:24px 0 0;max-width:760px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">Figures per model are given on the product pages. Backup support depends on the model.</p>
+    </div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:flex;gap:24px;flex-wrap:wrap;">
+      <a href="FLUXX - SUPPORT - Commissioning - EN.dc.html" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Commissioning &#8250;</a>
+      <a href="FLUXX - PRODUCT - FLUXX with EMON - EN.dc.html" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">FLUXX with EMON &#8250;</a>
+      <a href="FLUXX - SUPPORT - No Screen Needed - EN.dc.html" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">No screen needed &#8250;</a>
+    </div>
+  </section>
+  <div style="height:64px;"></div>
+  <dc-import name="ContentSections" brand="FLUXX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="FLUXX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="FLUXX" accent="var(--color-brand-fluxx)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const L = [
+      ["Backup reserve", "The share of the battery kept for a power cut."],
+      ["Minimum state of charge", "The level the battery does not discharge below."],
+      ["Maximum state of charge", "The level the battery does not charge above."],
+      ["Charge rate", "How fast the battery charges."],
+      ["Export limit", "How much the system sends to the grid."],
+    ];
+    return { limits: L.map(([title, body], i) => ({ n: String(i + 1).padStart(2, "0"), title, body })) };
+  }
+}
+</script>
+</body>
+</html>

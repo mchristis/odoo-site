@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>FLUXX Knowledge | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style> body { margin:0; } </style>
+</helmet>
+<dc-import name="ContentArchive" brand="FLUXX" section="knowledge" hint-size="100%,100%">
+<section id="how" data-screen-label="How it works" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 56px;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;margin-bottom:16px;">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 8px;">
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">How battery <span style="color:#8E8E8E;">storage works</span></h2>
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;border:1px solid #DDDDDD;border-radius:8px;padding:2px 6px;">Draft</span>
+      </div>
+      <p style="margin:0 0 32px;max-width:700px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A battery moves solar energy from the hours you make it to the hours you use it. EMON decides when to charge and when to discharge.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;">
+      <div style="background:var(--color-card-fluxx);border-radius:12px;padding:26px;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;background:var(--color-brand-fluxx);flex:none;"></span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#8E8E8E;">01</span></div>
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Charge from solar</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Solar power the home doesn't use right away goes into the battery.</div>
+      </div>
+      <div style="background:var(--color-card-fluxx);border-radius:12px;padding:26px;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;background:var(--color-brand-fluxx);flex:none;"></span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#8E8E8E;">02</span></div>
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Store</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">The battery holds the energy until it's needed. The system keeps a reserve you set.</div>
+      </div>
+      <div style="background:var(--color-card-fluxx);border-radius:12px;padding:26px;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;background:var(--color-brand-fluxx);flex:none;"></span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#8E8E8E;">03</span></div>
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Use at night</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">In the evening and at night, the home runs on stored energy first.</div>
+      </div>
+      <div style="background:var(--color-card-fluxx);border-radius:12px;padding:26px;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;background:var(--color-brand-fluxx);flex:none;"></span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#8E8E8E;">04</span></div>
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Grid as backup</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">When the battery reaches its reserve, the grid takes over.</div>
+      </div>
+      <div style="background:var(--color-card-fluxx);border-radius:12px;padding:26px;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;background:var(--color-brand-fluxx);flex:none;"></span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#8E8E8E;">05</span></div>
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Buy low, use high</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">With a dynamic tariff, EMON charges the battery from the grid when the price is low and powers the home from the battery when the price is high.</div>
+      </div>
+    </div>
+    <a href="FLUXX - PRODUCT - Find Your Battery - EN.dc.html#sizing" style="display:inline-flex;margin-top:20px;font-size:14px;font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Size your battery &#8250;</a>
+    <a href="FLUXX - PRODUCT - FLUXX with EMON - EN.dc.html" style="display:inline-flex;margin:20px 0 0 20px;font-size:14px;font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">FLUXX with EMON &#8250;</a>
+  </section>
+<section id="architecture" data-screen-label="Architecture" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 56px;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;margin-bottom:16px;">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 8px;">
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Why storage <span style="color:#8E8E8E;">architecture matters</span></h2>
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;border:1px solid #DDDDDD;border-radius:8px;padding:2px 6px;">Draft</span>
+      </div>
+      <p style="margin:0 0 32px;max-width:700px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The battery is one part of the system. How it connects to solar, the inverter and the home decides what the system can do later: retrofit, expansion and backup.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;align-items:start;">
+      <div style="background:var(--color-card-fluxx);border-radius:12px;padding:26px;display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8E8E8E;">Connection</div>
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">AC-coupled</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">The battery has its own inverter and connects on the AC side of the home, next to the solar inverter.</div>
+        <details style="border-top:1px solid var(--color-divider);"><summary style="cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);" style-focus="outline:1px solid #4F4F4E;outline-offset:2px;"><span>Read more</span><span aria-hidden="true" style="font-size:16px;font-weight:300;">+</span></summary><div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:8px 12px;font-size:var(--web-small-size);line-height:var(--web-small-lh);padding:0 0 8px;">
+          <span style="font-weight:400;">Retrofit</span><span style="font-weight:300;color:var(--color-text-primary);">Works alongside an existing solar system.</span>
+          <span style="font-weight:400;">Expansion</span><span style="font-weight:300;color:var(--color-text-primary);">Add storage without changing the solar inverter.</span>
+          <span style="font-weight:400;">Backup</span><span style="font-weight:300;color:var(--color-text-primary);">Handled by the battery inverter, where supported.</span>
+        </div></details>
+      </div>
+      <div style="background:var(--color-card-fluxx);border-radius:12px;padding:26px;display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8E8E8E;">Connection</div>
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">DC-coupled</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">The battery shares a hybrid inverter with the solar panels. Solar charges the battery before conversion to AC.</div>
+        <details style="border-top:1px solid var(--color-divider);"><summary style="cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);" style-focus="outline:1px solid #4F4F4E;outline-offset:2px;"><span>Read more</span><span aria-hidden="true" style="font-size:16px;font-weight:300;">+</span></summary><div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:8px 12px;font-size:var(--web-small-size);line-height:var(--web-small-lh);padding:0 0 8px;">
+          <span style="font-weight:400;">Retrofit</span><span style="font-weight:300;color:var(--color-text-primary);">Usually needs a hybrid inverter.</span>
+          <span style="font-weight:400;">Expansion</span><span style="font-weight:300;color:var(--color-text-primary);">Limited by the inverter's battery input.</span>
+          <span style="font-weight:400;">Backup</span><span style="font-weight:300;color:var(--color-text-primary);">Handled by the hybrid inverter, where supported.</span>
+        </div></details>
+      </div>
+      <div style="background:var(--color-card-fluxx);border-radius:12px;padding:26px;display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8E8E8E;">Build</div>
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">All-in-one</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Battery, inverter and control in one housing.</div>
+        <details style="border-top:1px solid var(--color-divider);"><summary style="cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);" style-focus="outline:1px solid #4F4F4E;outline-offset:2px;"><span>Read more</span><span aria-hidden="true" style="font-size:16px;font-weight:300;">+</span></summary><div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:8px 12px;font-size:var(--web-small-size);line-height:var(--web-small-lh);padding:0 0 8px;">
+          <span style="font-weight:400;">Retrofit</span><span style="font-weight:300;color:var(--color-text-primary);">One unit to place and connect.</span>
+          <span style="font-weight:400;">Expansion</span><span style="font-weight:300;color:var(--color-text-primary);">Within the limits of the family.</span>
+          <span style="font-weight:400;">Backup</span><span style="font-weight:300;color:var(--color-text-primary);">Built in, where the model supports it.</span>
+        </div></details>
+      </div>
+      <div style="background:var(--color-card-fluxx);border-radius:12px;padding:26px;display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8E8E8E;">Build</div>
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Modular</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Separate battery modules stack or sit in a cabinet, with a separate or shared inverter.</div>
+        <details style="border-top:1px solid var(--color-divider);"><summary style="cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);" style-focus="outline:1px solid #4F4F4E;outline-offset:2px;"><span>Read more</span><span aria-hidden="true" style="font-size:16px;font-weight:300;">+</span></summary><div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:8px 12px;font-size:var(--web-small-size);line-height:var(--web-small-lh);padding:0 0 8px;">
+          <span style="font-weight:400;">Retrofit</span><span style="font-weight:300;color:var(--color-text-primary);">Plan the space for the final size.</span>
+          <span style="font-weight:400;">Expansion</span><span style="font-weight:300;color:var(--color-text-primary);">Add modules as needs grow.</span>
+          <span style="font-weight:400;">Backup</span><span style="font-weight:300;color:var(--color-text-primary);">Depends on the inverter chosen.</span>
+        </div></details>
+      </div>
+    </div>
+    <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;color:#8E8E8E;max-width:760px;line-height:var(--web-min-lh);">General explanation. Check the specific FLUXX product for what is confirmed.</p>
+    <a href="FLUXX - PRODUCT - Find Your Battery - EN.dc.html#configurator" style="display:inline-flex;margin-top:20px;font-size:14px;font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Configure a system &#8250;</a>
+  </section>
+<section id="at-a-glance" data-screen-label="All formats" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">All formats at <span style="color:#8E8E8E;">a glance</span></h2>
+    <div style="display:flex;flex-direction:column;background:#F4F4F4;border-radius:12px;padding:12px;">
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:16px;padding:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);"><span>Format</span><span>Coupling</span><span>Voltage class</span><span>Inverter included</span></div>
+      <a href="FLUXX - PRODUCT - Products - EN.dc.html#plug-and-play" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:16px;padding:14px 12px;border-top:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);"><span style="font-weight:500;color:var(--color-text-primary);">Plug and Play</span><span>AC</span><span>LV</span><span>Per model: combined or separate</span></a>
+      <a href="FLUXX - PRODUCT - Products - EN.dc.html#monobloc" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:16px;padding:14px 12px;border-top:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);"><span style="font-weight:500;color:var(--color-text-primary);">Monobloc</span><span>AC or hybrid</span><span>LV or HV per model</span><span>Yes, combined</span></a>
+      <a href="FLUXX - PRODUCT - Products - EN.dc.html#stackable" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:16px;padding:14px 12px;border-top:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);"><span style="font-weight:500;color:var(--color-text-primary);">Stackable</span><span>DC</span><span>LV or HV</span><span>No, paired inverter</span></a>
+      <a href="FLUXX - PRODUCT - Products - EN.dc.html#cabinet" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:16px;padding:14px 12px;border-top:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);"><span style="font-weight:500;color:var(--color-text-primary);">Cabinet</span><span>DC, AC optional per model</span><span>HV</span><span>Per system</span></a>
+      <a href="FLUXX - PRODUCT - Products - EN.dc.html#container" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:16px;padding:14px 12px;border-top:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);"><span style="font-weight:500;color:var(--color-text-primary);">Container</span><span>DC, AC optional per model</span><span>HV</span><span>Per system</span></a>
+      <a href="FLUXX - PRODUCT - Products - EN.dc.html#portable" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:16px;padding:14px 12px;border-top:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);"><span style="font-weight:500;color:var(--color-text-primary);">Portable power stations</span><span>AC</span><span>LV</span><span>Yes, self-contained</span></a>
+      <a href="FLUXX - PRODUCT - Products - EN.dc.html#modular" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:16px;padding:14px 12px;border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);"><span style="font-weight:500;color:var(--color-text-primary);">Modular inverters and power modules</span><span>DC, AC optional per model</span><span>LV or HV</span><span>Inverter only</span></a>
+    </div>
+  </section>
+<section id="storage-terms" data-screen-label="Storage terms" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;margin-bottom:16px;">
+      <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Storage terms, <span style="color:#8E8E8E;">explained</span></h2>
+      <p style="margin:0 0 32px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);max-width:700px;line-height:var(--web-small-lh);">General explanations of how storage is built and connected. Not every FLUXX family carries every feature described here — check the specific product for what's confirmed.</p>
+    </div>
+    <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:20px;--cg:12px;">
+      <div style="background:#F4F4F4;border-radius:12px;padding:26px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Portable power station</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">A self-contained, carry-anywhere battery for temporary or off-grid power. Example families: PICO, BOLT, NODE, TORQ, DOCK, WORK.</div>
+      </div>
+      <div style="background:#F4F4F4;border-radius:12px;padding:26px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Plug &amp; play storage</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">A pre-configured system, installed but not custom-engineered. Documented connection method and installation requirements vary by country — check the product before assuming any model can connect to an ordinary socket. Example families: KUBUZ, POUF, OTTO, BENCH, TURA, BOWI.</div>
+      </div>
+      <div style="background:#F4F4F4;border-radius:12px;padding:26px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Monobloc battery</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">A single fixed-capacity unit. Some monoblocs (BOWI, TRIFFID) include an inverter; others (BLOQ) are battery only and need one paired separately. Fit is confirmed by documented pairing, not by voltage match alone.</div>
+      </div>
+      <div style="background:#F4F4F4;border-radius:12px;padding:26px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Stackable / modular battery</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Built from repeatable modules, so capacity scales with the number of modules used. STAQ and KYUZ are modular; expansion limits are set per product and are not unlimited.</div>
+      </div>
+      <div style="background:#F4F4F4;border-radius:12px;padding:26px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Cabinet &amp; container storage</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Larger commercial and C&amp;I formats. SILO is a cabinet, KOFR is a separate all-in-one enclosure, and DOKK is the container range. Not every unit includes PCS or transformer equipment — check the specific product.</div>
+      </div>
+      <div style="background:#F4F4F4;border-radius:12px;padding:26px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Battery only vs. complete system</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">A battery-only product (BLOQ, STAQ) stores energy but needs an inverter to use it. A complete system (BOWI, TRIFFID, POUF/OTTO/BENCH) already includes one.</div>
+      </div>
+    </div>
+    <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:56px;--cg:12px;">
+      <div style="background:#F4F4F4;border-radius:12px;padding:26px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">AC-coupled vs. DC-coupled</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">AC-coupled storage connects on the AC side, alongside an existing solar inverter. DC-coupled storage (LINEA, KYUZ) shares the DC bus with solar before conversion — typically more efficient, but tied to a specific inverter pairing.</div>
+      </div>
+      <div style="background:#F4F4F4;border-radius:12px;padding:26px;">
+        <div style="font-size:16px;font-weight:400;margin-bottom:8px;">LV vs. HV</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Low-voltage (LV) and high-voltage (HV) describe the battery's internal architecture. STAQ batteries and the MOEBIUS inverters ALVIX and LUNOX come in matching LV/HV pairs — an LV battery pairs with an LV inverter, not an HV one.</div>
+      </div>
+      <div style="background:#F4F4F4;border-radius:12px;padding:26px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Inverter, PCS, BMS &amp; energy management</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">The inverter (or PCS, in larger systems) converts between AC and DC. The BMS protects and manages the battery cells. Energy management software decides when to charge and discharge.</div>
+      </div>
+      <div style="background:#F4F4F4;border-radius:12px;padding:26px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">kWh, kW and kVA</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">kWh is stored energy (capacity). kVA is apparent power; kW is real power — they aren't the same and FLUXX specifications are kept in the unit as documented, not converted.</div>
+      </div>
+      <div style="background:#F4F4F4;border-radius:12px;padding:26px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Nominal vs. usable capacity</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Nominal capacity is the battery's rated size. Usable capacity — what you can actually draw — is typically lower and is confirmed per product where published.</div>
+      </div>
+      <div style="background:#F4F4F4;border-radius:12px;padding:26px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Backup vs. grid-connected operation</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Grid-connected operation optimises normal daily use. Backup capability — keeping the lights on during an outage — is a separate, confirmed-per-product feature, not assumed by default.</div>
+      </div>
+    </div>
+  </section>
+</dc-import>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>Partner Programme | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style> body { margin:0; background:#FFFFFF; } a { color:#1E1E1E; text-decoration:none; } a:hover { color:#5F5E5E; } summary::-webkit-details-marker { display:none; } details:not([open]) [data-rm-less], details[open] [data-rm-more] { display:none; } [data-rm-arrow] { transition:transform 200ms ease; } details[open] [data-rm-arrow] { transform:rotate(-90deg); } </style>
+</helmet>
+<div style="font-family:var(--font-web);color:#4F4F4E;min-height:100vh;">
+  <dc-import name="NavBar" active="company" hint-size="100%,80px"></dc-import>
+  <dc-import name="PageHero" brand="STROHM.ENERGY" rgb="200,200,200" eyebrow="For installers &amp; specifiers" title="One partner for the whole installation." intro="Whether the project is a single home, a commercial building or a utility site: project support, system design, technical training and documentation across every brand — with a single order, a single technical file and installer pricing." slot="partner-hero" shot="Drop an installer/partner network photo" hint-size="100%,625px"></dc-import>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+    <div style="border-top:1px solid #D4D4D4;padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:24px;">What partnership includes</div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:64px;--cg:12px;">
+        <sc-for list="{{ benefits }}" as="b" hint-placeholder-count="4">
+          <div style="background:#F4F4F4;padding:28px;border-radius:12px;">
+            <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:10px;line-height:var(--web-small-lh);">{{ b.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ b.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <section id="network" style="scroll-margin-top:120px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 96px;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:24px;">Network</div>
+    <h2 style="margin:0 0 48px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Built with partners, <span style="color:#8E8E8E;">not alone.</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;">
+        <article style="background:#F4F4F4;border-radius:12px;padding:20px 20px 24px;display:flex;flex-direction:column;gap:16px;min-width:0;">
+          <div style="aspect-ratio:4 / 3;border-radius:12px;overflow:hidden;background:#E3E3E3;"><image-slot id="where-net-1" shape="rounded" radius="16" placeholder="Photo · Installer network" style="display:block;width:100%;height:100%;"></image-slot></div>
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Installer <span style="color:#8E8E8E;">network</span></h3>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Certified installers across Europe, with connected documentation, faster commissioning and remote system insight.<span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;margin-left:8px;text-transform:uppercase;">TO VERIFY</span></p>
+          
+          <p style="margin:auto 0 0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">Completing your profile opens a full trade account and free STRØHM.ENERGY leads after approval.</p>
+          <div style="display:flex;flex-direction:column;border-top:1px solid #E0E0E0;"><a href="STROHM.ENERGY - SITE - Register - EN.dc.html" style="display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;border-bottom:1px solid #E0E0E0;font-size:14px;font-weight:300;color:#4F4F4E;" style-hover="color:#252525;"><span>Become a certified installer</span><svg aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1" style="flex:none;"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg></a><a href="STROHM.ENERGY - SITE - Login - EN.dc.html" style="display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;border-bottom:1px solid #E0E0E0;font-size:14px;font-weight:300;color:#4F4F4E;" style-hover="color:#252525;"><span>Log in</span><svg aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1" style="flex:none;"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg></a></div>
+        </article>
+        <article style="background:#F4F4F4;border-radius:12px;padding:20px 20px 24px;display:flex;flex-direction:column;gap:16px;min-width:0;">
+          <div style="aspect-ratio:4 / 3;border-radius:12px;overflow:hidden;background:#E3E3E3;"><image-slot id="where-net-2" shape="rounded" radius="16" placeholder="Photo · Distribution partners" style="display:block;width:100%;height:100%;"></image-slot></div>
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Distribution <span style="color:#8E8E8E;">partners</span></h3>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A structured product family, consistent data and a scalable commercial platform for distributors and resellers.</p>
+          <details><summary style="cursor:pointer;display:flex;justify-content:flex-end;align-items:center;gap:8px;list-style:none;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#5F5E5E;"><svg data-rm-arrow="" aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg><span data-rm-more="">Read more</span><span data-rm-less="">Read less</span></summary><div style="display:flex;flex-direction:column;gap:12px;margin-top:12px;"><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Just six fields. We check your VAT against VIES straight away and a real person reviews the account within a few hours.</p><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Registration takes a few minutes. Your account opens live stock and net pricing once approved.</p></div></details>
+          <p style="margin:auto 0 0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">Product categories are open to everyone. Quick registration opens live stock and your net prices.</p>
+          <div style="display:flex;flex-direction:column;border-top:1px solid #E0E0E0;"><a href="STROHM.ENERGY - SITE - Register - EN.dc.html" style="display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;border-bottom:1px solid #E0E0E0;font-size:14px;font-weight:300;color:#4F4F4E;" style-hover="color:#252525;"><span>Open a trade account</span><svg aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1" style="flex:none;"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg></a><a href="STROHM.ENERGY - SITE - Login - EN.dc.html" style="display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;border-bottom:1px solid #E0E0E0;font-size:14px;font-weight:300;color:#4F4F4E;" style-hover="color:#252525;"><span>Log in to the webshop</span><svg aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1" style="flex:none;"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg></a><a href="WEBSHOP - SITE - Home - EN.dc.html" style="display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;border-bottom:1px solid #E0E0E0;font-size:14px;font-weight:300;color:#4F4F4E;" style-hover="color:#252525;"><span>Go to the webshop</span><svg aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1" style="flex:none;"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg></a></div>
+        </article>
+        <article style="background:#F4F4F4;border-radius:12px;padding:20px 20px 24px;display:flex;flex-direction:column;gap:16px;min-width:0;">
+          <div style="aspect-ratio:4 / 3;border-radius:12px;overflow:hidden;background:#E3E3E3;"><image-slot id="where-net-3" shape="rounded" radius="16" placeholder="Photo · Production network" style="display:block;width:100%;height:100%;"></image-slot></div>
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Own <span style="color:#8E8E8E;">production</span></h3>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">We design and manufacture our products ourselves. Specialist component and material suppliers support our production.</p>
+          <details><summary style="cursor:pointer;display:flex;justify-content:flex-end;align-items:center;gap:8px;list-style:none;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#5F5E5E;"><svg data-rm-arrow="" aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg><span data-rm-more="">Read more</span><span data-rm-less="">Read less</span></summary><div style="display:flex;flex-direction:column;gap:12px;margin-top:12px;"><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Selection considers technical compliance, commercial competitiveness and availability.</p></div></details>
+          <p style="margin:auto 0 0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">Verified manufacturers and distributors can participate in purchasing campaigns, maintain catalogue data and submit quotations.</p>
+          <div style="display:flex;flex-direction:column;border-top:1px solid #E0E0E0;"><a href="STROHM.ENERGY - SITE - System Enquiry - EN.dc.html?brand=PACT&amp;topic=Apply%20as%20a%20supplier" style="display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;border-bottom:1px solid #E0E0E0;font-size:14px;font-weight:300;color:#4F4F4E;" style-hover="color:#252525;"><span>Apply as a supplier</span><svg aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1" style="flex:none;"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg></a><a href="PACT - SYSTEM - For Suppliers - EN.dc.html" style="display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;border-bottom:1px solid #E0E0E0;font-size:14px;font-weight:300;color:#4F4F4E;" style-hover="color:#252525;"><span>About PACT</span><svg aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1" style="flex:none;"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg></a></div>
+        </article>
+        <article style="background:#F4F4F4;border-radius:12px;padding:20px 20px 24px;display:flex;flex-direction:column;gap:16px;min-width:0;">
+          <div style="aspect-ratio:4 / 3;border-radius:12px;overflow:hidden;background:#E3E3E3;"><image-slot id="where-net-4" shape="rounded" radius="16" placeholder="Photo · Stock partners" style="display:block;width:100%;height:100%;"></image-slot></div>
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Stock <span style="color:#8E8E8E;">partners</span></h3>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Approved Stock Partners purchase STRØHM.ENERGY factory stock in higher quantities at our lowest available partner price.</p>
+          <details><summary style="cursor:pointer;display:flex;justify-content:flex-end;align-items:center;gap:8px;list-style:none;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#5F5E5E;"><svg data-rm-arrow="" aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg><span data-rm-more="">Read more</span><span data-rm-less="">Read less</span></summary><div style="display:flex;flex-direction:column;gap:12px;margin-top:12px;"><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">When an installer needs a smaller quantity from European stock, STRØHM.ENERGY buys the required units back at a pre-agreed higher price. You are paid before you release the goods, and you ship directly to the installer.</p><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">STRØHM.ENERGY manages the installer sale, pricing, allocation, invoicing, payment collection, documentation and communication. You provide secure local storage, accurate stock reporting and fast dispatch — giving installers low-MOQ European stock without you building a sales and admin operation.</p></div></details>
+          <p style="margin:auto 0 0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">The API connection must be tested and approved before any stock is activated for installer orders.</p>
+          <div style="display:flex;flex-direction:column;border-top:1px solid #E0E0E0;"><a href="DEPOT - SYSTEM - Overview - EN.dc.html" style="display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;border-bottom:1px solid #E0E0E0;font-size:14px;font-weight:300;color:#4F4F4E;" style-hover="color:#252525;"><span>Become a stock partner</span><svg aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1" style="flex:none;"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg></a><a href="STROHM.ENERGY - SITE - Login - EN.dc.html" style="display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;border-bottom:1px solid #E0E0E0;font-size:14px;font-weight:300;color:#4F4F4E;" style-hover="color:#252525;"><span>Log in</span><svg aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1" style="flex:none;"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg></a></div>
+        </article>
+    </div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 96px;box-sizing:border-box;">
+    <div style="background:#F5F5F5;padding:48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;border-radius:12px;">
+      <div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:8px;line-height:var(--web-h3-lh);">Ready to become a partner?</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;max-width:520px;line-height:var(--web-small-lh);">Registration takes a few minutes. Your account opens live stock and net pricing once approved.</div>
+      </div>
+      <a href="STROHM.ENERGY - SITE - Register - EN.dc.html" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius,8px);text-decoration:none;white-space:nowrap;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Register as a partner</a>
+    </div>
+  </section>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      benefits: [
+        { title: "Project support", desc: "Sizing, system design and technical review across every STRØHM.ENERGY brand." },
+        { title: "Technical training", desc: "Product training, commissioning guidance and installer certification paths." },
+        { title: "Documentation", desc: "One technical file across generation, storage and conversion — not per brand." },
+        { title: "Installer pricing", desc: "A single order, net pricing and stock routing built for trade accounts." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

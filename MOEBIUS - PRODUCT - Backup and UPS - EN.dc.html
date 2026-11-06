@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>MOEBIUS Backup and UPS | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoebiusNav" active="backup" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="MOEBIUS" rgb="241,147,27" eyebrow="Backup power &amp; UPS" title="Backup is not the same as normal grid operation." intro="For safety, a standard on-grid inverter must stop when the grid fails." slot="moebius-backup-and-ups-hero" shot="MOEBIUS · Backup and UPS · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:680px;">A MOEBIUS HYBRID or OFFGRID system can create a separate backup supply &#8212; but only when correctly designed, sized and installed by a qualified professional.</p>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:24px;">Backup versus UPS</div>
+      <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;--cg:24px;">
+        <div style="background:#F4F4F4;border-radius:12px;padding:28px;">
+          <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:10px;line-height:var(--web-h3-lh);">Backup</div>
+          <p style="margin:0 0 12px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">Restores or maintains power to selected circuits during an outage. A short transfer time is normal &#8212; equipment briefly loses power before backup takes over.</p>
+          <div style="font-size:var(--web-min-size);font-weight:300;color:#8E8E8E;line-height:var(--web-min-lh);">Suitable for lighting, refrigeration, pumps, heating controls and general essential loads.</div>
+        </div>
+        <div style="background:#F4F4F4;border-radius:12px;padding:28px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:10px;line-height:var(--web-h3-lh);">UPS</div>
+          <p style="margin:0 0 12px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">Protects sensitive equipment with a very short or zero interruption. Whether a MOEBIUS configuration is UPS-suitable depends on transfer time, load type, earthing and neutral switching.</p>
+          <div style="font-size:var(--web-min-size);font-weight:300;color:#8E8E8E;line-height:var(--web-min-lh);">IT, communications and medical equipment must be assessed individually by a qualified professional.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">What can be backed up</div>
+      <p style="margin:0 0 24px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">Backup can be configured for selected critical circuits or a complete distribution board, depending on the system design.</p>
+      <div data-cols="5" style="display:grid;gap:12px;grid-template-columns:repeat(5,1fr);--cg:12px;">
+        <sc-for list="{{ loads }}" as="l" hint-placeholder-count="10">
+          <div style="border-radius:12px;background:#F4F4F4;padding:16px 18px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:var(--color-text-primary);">{{ l }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">What the design must consider</div>
+      <div data-cols="4" style="display:grid;gap:12px;grid-template-columns:repeat(4,1fr);--cg:12px;">
+        <sc-for list="{{ design }}" as="d" hint-placeholder-count="8">
+          <div style="border-radius:12px;background:#F4F4F4;padding:20px;">
+            <div style="font-size:14px;font-weight:400;margin-bottom:6px;">{{ d.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ d.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">A system designed for occasional backup is different from one intended to run independently for several days. Critical and UPS-type installations must be designed and verified by a qualified electrical professional.</p>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Generator integration</div>
+      <p style="margin:0 0 24px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">MOEBIUS OFFGRID and selected HYBRID configurations can work with a generator to support large loads, recharge the battery or reduce the required battery capacity. A poorly matched generator can run inefficiently or create unstable power.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <sc-for list="{{ generator }}" as="g" hint-placeholder-count="6">
+          <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:8px 14px;border-radius:8px;background:var(--color-card-moebius);color:var(--color-text-primary);">{{ g }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="MOEBIUS - SUPPORT - Install and Commission - EN.dc.html#design" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:var(--color-card-moebius);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">System design<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <a href="MOEBIUS - PRODUCT - Products - EN.dc.html#range-hybrid" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:var(--color-card-moebius);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Hybrid inverters<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <a href="MOEBIUS - PRODUCT - Responsibility - EN.dc.html#t=protection" style="font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:var(--color-card-moebius);min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Grid compliance<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="ContentSections" brand="MOEBIUS" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOEBIUS" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MOEBIUS" accent="var(--color-brand-moebius)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      loads: ["Selected critical circuits", "Complete residential board", "Commercial essential loads", "IT & communications", "Refrigeration", "Lighting", "Pumps", "Security systems", "Medical equipment", "Industrial control"],
+      design: [
+        { title: "Maximum load", desc: "Total demand the backup supply must carry." },
+        { title: "Starting current", desc: "Motors and compressors draw a surge at start." },
+        { title: "Battery capacity", desc: "Determines how much energy is available." },
+        { title: "Required autonomy", desc: "Minutes of cover, or several days off-grid." },
+        { title: "Phase configuration", desc: "Single-phase or three-phase backup." },
+        { title: "Transfer time", desc: "How quickly backup takes over the load." },
+        { title: "Generator availability", desc: "Whether a generator supports the system." },
+        { title: "Load priority", desc: "Which circuits are kept and which are shed." },
+      ],
+      generator: ["Generator power rating", "Minimum stable load", "Voltage & frequency stability", "Automatic start / stop", "Warm-up & cool-down", "Battery charge current"],
+    };
+  }
+}
+</script>
+</body>
+</html>

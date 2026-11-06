@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>FEU Products | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<style> body { margin:0; background:#FFFFFF; } a { color:#4F4F4E; text-decoration:none; } a:hover { color:var(--color-text-primary); } html { scroll-behavior:smooth; } [id] { scroll-margin-top:96px; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="FeuNav" active="products" hint-size="100%,57px"></dc-import>
+  <dc-import name="PageHero" brand="FEU" rgb="237,112,76" title="Find the heater for the space you use." intro="Ten families of infrared heating panels and terrace heaters, with controls and accessories." slot="feu-products-hero" shot="FEU · Products · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;"><a href="FEU - PRODUCT - Overview - EN.dc.html" style="color:var(--color-text-primary);">FEU</a> · Products</div>
+    <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#898989;max-width:680px;">Every panel connects to the smart app over Wi-Fi mesh.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4"><a href="#{{ g.id }}" style="font-size:var(--web-btn-sm-size);padding:8px 14px;border:1px solid #DDDDDD;border-radius:8px;color:#898989;font-weight:var(--web-btn-weight);">{{ g.t }}</a></sc-for>
+    </div>
+  </section>
+  <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+    <section id="{{ g.id }}" style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;">
+      <div style="border-top:1px solid #DDDDDD;padding-top:40px;">
+        <h2 style="margin:0 0 10px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ g.t }}</h2>
+        <p style="margin:0 0 32px;max-width:680px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ g.i }}</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;">
+          <sc-for list="{{ g.fams }}" as="f" hint-placeholder-count="3">
+            <div id="{{ f.anchor }}" style="background:var(--color-card-feu);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;">
+              <div role="img" aria-label="Product image: FEU {{ f.name }}" data-slot="feu-{{ f.anchor }}-image" style="aspect-ratio:4/3;background:#E3E3E3;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:300;color:#898989;"><span>Image · {{ f.name }}</span></div>
+              <div style="padding:20px;display:flex;flex-direction:column;gap:10px;">
+                <div style="font-size:20px;font-weight:700;">{{ f.name }}</div>
+                <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ f.cat }}</div>
+                <div style="display:flex;flex-direction:column;border-top:1px solid #DDDDDD;">
+                  <sc-for list="{{ f.vars }}" as="v" hint-placeholder-count="2">
+                    <div style="display:flex;flex-direction:column;gap:2px;padding:9px 0;border-bottom:1px solid #EBEBEB;">
+                      <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ v.label }}</span>
+                      <span style="font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">{{ v.code }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;">
+    <div style="background:var(--color-card-feu);border-radius:12px;padding:28px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <div style="display:flex;flex-direction:column;gap:4px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Trade customer?</div><div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">Prices, stock and ordering are in the webshop after trade login. Homeowners buy through an installer.</div></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;"><a style-hover="background:#5F5E5E;color:#F4F4F4;" href="FEU - WEBSHOP - Shop - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Shop FEU<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a><a href="FEU - SUPPORT - Talk to an Expert - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;background:#EBECEC;color:#4F4F4E;border-radius:8px;font-weight:var(--web-btn-weight);">Contact a specialist</a></div>
+    </div>
+  </section>
+  <div id="specialist" style="height:80px;"></div>
+  <div style="height:32px;"></div>
+  <dc-import name="ContentSections" brand="FEU" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="FEU" photo-slot-id="feu-products-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="FEU" accent="var(--color-brand-feu)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const GROUPS = [{"id":"terrace","t":"Terrace heaters","i":"Freestanding infrared heaters with Wi-Fi and integrated LED lighting.","fams":[{"name":"VERTI","anchor":"verti","cat":"Terrace Heater (Freestanding)","vars":[{"label":"3 × 900 W","code":"FE-VERTI-3X900W-V1"}]},{"name":"FOLD","anchor":"fold","cat":"Terrace Heater (Freestanding)","vars":[{"label":"2200 W","code":"FE-FOLD-2200W-V1"}]}]},{"id":"wall","t":"Wall and ceiling panels","i":"Infrared heating panels in metal, glass, mirror and paintable ceramic, controlled through the smart app over Wi-Fi mesh.","fams":[{"name":"RADIUS","anchor":"radius","cat":"IR Panel – Metal/Alu","vars":[{"label":"500 × 24 × 500 mm · 350 W","code":"FE-RAD-IRP-MA-WC-MSH-500X24X500-350W-V1"},{"label":"800 × 24 × 500 mm · 500 W","code":"FE-RAD-IRP-MA-WC-MSH-800X24X500-500W-V1"},{"label":"1200 × 24 × 500 mm · 800 W","code":"FE-RAD-IRP-MA-WC-MSH-1200X24X500-800W-V1"},{"label":"520 × 89 × 434 mm · 1000 W","code":"FE-RAD-IRP-MA-WC-MSH-520X89X434-1000W-V1"},{"label":"650 × 89 × 434 mm · 1500 W","code":"FE-RAD-IRP-MA-WC-MSH-650X89X434-1500W-V1"},{"label":"820 × 89 × 434 mm · 2000 W","code":"FE-RAD-IRP-MA-WC-MSH-820X89X434-2000W-V1"}]},{"name":"GLASS","anchor":"glass","cat":"IR Panel – Glass","vars":[{"label":"1200 × 600 × 20 mm · 700 W","code":"FE-GLS-IRP-GL-WC-MSH-1200X600X20-700W-V1"},{"label":"600 × 600 × 20 mm · 300 W","code":"FE-GLS-IRP-GL-WC-MSH-600X600X20-300W-V1"}]},{"name":"GLASS+","anchor":"glass-plus","cat":"IR Panel – Glass","vars":[{"label":"1200 × 600 × 50 mm · 900 W","code":"FE-GLSPLUS-IRP-GL-WC-MSH-1200X600X50-900W-V1"},{"label":"600 × 600 × 50 mm · 450 W","code":"FE-GLSPLUS-IRP-GL-WC-MSH-600X600X50-450W-V1"}]},{"name":"MIRROR","anchor":"mirror","cat":"IR Panel – Mirror","vars":[{"label":"600 × 800 mm · 450 W","code":"FE-MIR-IRP-GL-WL-MSH-600X800-450W-V1"},{"label":"600 × 1200 mm · 680 W","code":"FE-MIR-IRP-GL-WL-MSH-600X1200-680W-V1"}]},{"name":"CERAMIC","anchor":"ceramic","cat":"IR Panel – Ceramic (paintable)","vars":[{"label":"600 × 600 × 20 mm · 300 W","code":"FE-CER-IRP-CP-WL-MSH-600X600X20-300W-V1"},{"label":"1200 × 600 × 20 mm · 700 W","code":"FE-CER-IRP-CP-WL-MSH-1200X600X20-700W-V1"}]}]},{"id":"ceiling","t":"Ceiling panels","i":"Built-in and multi-facet ceiling panels with a grain texture finish.","fams":[{"name":"GRAIN","anchor":"grain","cat":"IR Panel – Grain Texture (ceiling)","vars":[{"label":"600 × 600 × 20 mm · 300 W","code":"FE-GRN-IRP-AM-CB-MSH-600X600X20-300W-V1"},{"label":"1200 × 600 × 20 mm · 600 W","code":"FE-GRN-IRP-AM-CB-MSH-1200X600X20-600W-V1"}]},{"name":"PYRAMID","anchor":"pyramid","cat":"IR Panel – Multi-facet (ceiling)","vars":[{"label":"60 × 60 × 10 cm · 500 W","code":"FE-PYRAMID-MFIP-GTX-ALM-CBI-WFM-60X60X10-500W-V1"},{"label":"120 × 60 × 10 cm · 1000 W","code":"FE-PYRAMID-MFIP-GTX-ALM-CBI-WFM-120X60X10-1000W-V1"}]},{"name":"DOME","anchor":"dome","cat":"IR Panel – Multi-facet (ceiling)","vars":[{"label":"60 × 60 × 10 cm · 500 W","code":"FE-DOME-MFIP-GTX-ALM-CBI-WFM-60X60X10-500W-V1"},{"label":"120 × 60 × 10 cm · 1000 W","code":"FE-DOME-MFIP-GTX-ALM-CBI-WFM-120X60X10-1000W-V1"}]}]},{"id":"controls","t":"Controls and accessories","i":"Thermostat socket, ceiling suspension and standing feet.","fams":[{"name":"Controls and accessories","anchor":"acc","cat":"Controls & Accessories","vars":[{"label":"Thermo Plug","code":"FE-ACC-THPLUG-TS-MSH-V1"},{"label":"Ceiling Suspension Set","code":"FE-ACC-CEILSUS-4C-2M-V1"},{"label":"Standing Feet Set","code":"FE-ACC-STFEET-25KG-60MM-V1"}]}]}];
+class Component extends DCLogic {
+  renderVals() { return { groups: GROUPS }; }
+}
+</script>
+</body>
+</html>

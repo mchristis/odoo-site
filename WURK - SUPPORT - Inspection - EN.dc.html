@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>WURK Inspection | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  input:focus { outline:none; border-color:var(--color-brand-wurk); }
+  .wk-mod:hover { border-color:var(--color-brand-wurk) !important; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="WurkNav" active="inspection" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO + SCAN -->
+  <dc-import name="PageHero" brand="WURK" rgb="158,61,46" eyebrow="WURK product record" title="The product record stays with the product." intro="Scan the WURK QR code to open the exact information for that tool, tester, tower, trolley or safety component." slot="wurk-inspection-hero" shot="WURK · Inspection · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.1fr) 360px;gap:48px;align-items:center;">
+      
+      <div style="padding:28px;background:#F4F4F4;border-radius:12px;">
+        <div data-cols="5" style="width:120px;height:120px;margin:0 auto 20px;background:var(--color-card-wurk);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(5,1fr);gap:3px;padding:14px;border-radius:8px;--cg:3px;">
+          <sc-for list="{{ qrCells }}" as="c" hint-placeholder-count="25"><span style="background:{{ c }};"></span></sc-for>
+        </div>
+        <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;text-align:center;">Or enter product code</label>
+        <input type="text" placeholder="e.g. WURK-PRB-CLMP-000123" style="width:100%;box-sizing:border-box;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);margin-bottom:12px;text-align:center;border-radius:8px;font-weight:var(--web-input-weight);">
+        <a href="#modules" style="font-size:var(--cta-font,16px);min-height:var(--cta-height,56px);display:flex;align-items:center;justify-content:center;background:var(--color-brand-wurk);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);box-sizing:border-box;">Scan or enter product code</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATUS LABELS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;display:flex;flex-wrap:wrap;gap:12px;">
+      <sc-for list="{{ statusLabels }}" as="s" hint-placeholder-count="5">
+        <div style="border-left:3px solid {{ s.color }};padding:12px 18px;display:flex;flex-direction:column;gap:3px;min-width:170px;background:#F4F4F4;border-radius:12px;">
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ s.label }}</span>
+          <span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);">{{ s.desc }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- RECORD MODULES -->
+  <section id="modules" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:36px;">
+      <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Everything about the product, <span style="color:#8E8E8E;">in one record.</span></h2>
+      <p style="margin:0 0 28px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">The digital record supports product control. It does not replace competent inspection, employer duties or legally required records.</p>
+      <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ modules }}" as="m" hint-placeholder-count="10">
+          <div class="wk-mod" style="padding:22px 24px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;align-items:start;background:#F4F4F4;border-radius:12px;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);padding-top:2px;letter-spacing:var(--web-eyebrow-ls);">{{ m.n }}</span>
+            <div>
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;margin-bottom:5px;">{{ m.t }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ m.d }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 96px;box-sizing:border-box;">
+    <div style="background:var(--color-text-primary);padding:56px;color:#FFFFFF;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;border-radius:12px;">
+      <div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#FFFFFF;text-wrap:balance;">One scan. <span style="color:#B2B3B3;">The whole history.</span></h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);color:#B8B8B5;max-width:560px;line-height:var(--web-body-lh);">Manuals, inspection, calibration, parts and warranty stay connected to the exact model and serial.</p>
+      </div>
+      <a href="WURK - SUPPORT - Ownership and Support - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-wurk);color:var(--color-text-primary);font-weight:400;white-space:nowrap;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Open WURK support</a>
+    </div>
+  </section>
+
+  <dc-import name="AndoPattern" brand="WURK" items="trace,scansheet" hint-size="100%,600px"></dc-import>
+  <dc-import name="ContentSections" brand="WURK" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="WURK" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="WURK" accent="var(--color-brand-wurk)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    const pattern = [1,1,1,0,1, 1,0,1,1,0, 0,1,1,0,1, 1,1,0,1,1, 1,0,1,0,1];
+    return {
+      qrCells: pattern.map(v => v ? "#4F4F4E" : "#FFFFFF"),
+      statusLabels: [
+        { label: "Ready", color: "#4CAF50", desc: "No open record issue shown." },
+        { label: "Check due", color: "var(--color-brand-wurk)", desc: "A defined inspection is approaching." },
+        { label: "Calibration due", color: "#F1931B", desc: "Calibration date approaching or passed." },
+        { label: "Service required", color: "#5F5E5E", desc: "A service action is open." },
+        { label: "Do not use", color: "#D8392C", desc: "Damaged, expired, incomplete or removed from service." },
+      ],
+      modules: [
+        { n: "01", t: "Product identity", d: "Model, article code, serial number, production date and current owner or crew." },
+        { n: "02", t: "Documents", d: "Manual, datasheet, conformity documents, assembly instructions and country information." },
+        { n: "03", t: "Pre-use check", d: "A product-specific checklist with pass, attention or remove-from-service result." },
+        { n: "04", t: "Periodic inspection", d: "Inspection history, responsible person, evidence and next action." },
+        { n: "05", t: "Calibration", d: "Calibration status, certificate, due date and booking." },
+        { n: "06", t: "Service", d: "Service actions, parts replaced and open technical issues." },
+        { n: "07", t: "Parts", d: "Approved replacement parts linked to the exact model and revision." },
+        { n: "08", t: "Warranty", d: "Registration, warranty period, claim status and exclusions." },
+        { n: "09", t: "Training", d: "Product-specific training and acknowledgement where used." },
+        { n: "10", t: "Retirement", d: "Reason, date, evidence and instruction to prevent further use." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

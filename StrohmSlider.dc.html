@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div role="group" aria-label="{{ groupLabel }}" onKeyDown="{{ onKey }}" style="display:flex;align-items:center;gap:0;">
+  <sc-for list="{{ dots }}" as="d" hint-placeholder-count="5">
+    <button type="button" aria-label="{{ d.label }}" aria-current="{{ d.current }}" onClick="{{ d.onClick }}" style="width:44px;height:44px;margin:0;padding:0;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;outline-offset:-10px;">
+      <span style="display:block;width:14px;height:14px;border-radius:50%;background:{{ d.bg }};transform:scale({{ d.scale }});transition:{{ d.transition }};"></span>
+    </button>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:320,&quot;height&quot;:80},&quot;count&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5,&quot;tsType&quot;:&quot;number&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:0,&quot;tsType&quot;:&quot;number&quot;},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Slides&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;onSelect&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(i: number) =&gt; void&quot;}}">
+// STROHM-SLIDER-01 · shared slide control. Tokens are fixed here on purpose: pages cannot override the active colour.
+const SLIDER = { inactive: "#858585", active: "#F36D1C", base: 14, small: 7, ms: 220, maxDesktop: 7, maxMobile: 5 };
+class Component extends DCLogic {
+  componentDidMount() {
+    this._mq = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+    this._mw = window.matchMedia ? window.matchMedia("(max-width: 720px)") : null;
+    this._h = () => this.forceUpdate();
+    [this._mq, this._mw].forEach(m => m && m.addEventListener && m.addEventListener("change", this._h));
+    this.forceUpdate();
+  }
+  componentWillUnmount() { [this._mq, this._mw].forEach(m => m && m.removeEventListener && m.removeEventListener("change", this._h)); }
+  renderVals() {
+    const count = Math.max(0, this.props.count ?? 0), active = this.props.active ?? 0, sel = this.props.onSelect || (() => {});
+    const reduce = !!(this._mq && this._mq.matches), max = this._mw && this._mw.matches ? SLIDER.maxMobile : SLIDER.maxDesktop;
+    let start = 0; if (count > max) start = Math.min(Math.max(0, active - Math.floor(max / 2)), count - max);
+    const idx = Array.from({ length: Math.min(count, max) }, (_, k) => start + k);
+    const tr = reduce ? "none" : "transform " + SLIDER.ms + "ms ease-out, background-color " + SLIDER.ms + "ms ease-out";
+    return {
+      groupLabel: this.props.label ?? "Slides",
+      onKey: (e) => { if (e.key === "ArrowRight") { e.preventDefault(); sel((active + 1) % count); } if (e.key === "ArrowLeft") { e.preventDefault(); sel((active - 1 + count) % count); } },
+      dots: idx.map(i => ({ label: "Go to slide " + (i + 1) + " of " + count, current: i === active ? "true" : "false", onClick: () => sel(i), bg: i === active ? (this.props.color || SLIDER.active) : SLIDER.inactive, scale: i === active ? 1 : SLIDER.small / SLIDER.base, transition: tr }))
+    };
+  }
+}
+</script>
+</body>
+</html>

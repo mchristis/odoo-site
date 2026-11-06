@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>FLUXX Products | STRØHM.ENERGY</title>
+<script src="./image-slot.js"></script>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } html { scroll-behavior:smooth; } [id] { scroll-margin-top:130px; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="FluxxNav" active="range" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="FLUXX" rgb="253,199,6" title="Where will the battery go?" slot="fluxx-segment-residential" shot="Drop a small residential visual (home with battery)" hint-size="100%,625px"></dc-import><section data-screen-label="Products" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;box-sizing:border-box;padding-left:var(--web-side);padding-right:var(--web-side);padding-top:40px;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:24px;display:flex;gap:6px;"><a href="FLUXX - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">FLUXX</a><span>&#8250;</span><span style="color:var(--color-text-primary);">PRODUCTS</span></div>
+    <div id="groups" style="display:flex;flex-wrap:wrap;gap:8px 32px;border-bottom:1px solid var(--color-divider);">
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+        <button type="button" onClick="{{ g.pick }}" aria-pressed="{{ g.on }}" style="display:flex;align-items:center;gap:10px;min-height:56px;padding:0;border:none;border-bottom:2px solid {{ g.line }};margin-bottom:-1px;background:transparent;font-family:var(--font-web);cursor:pointer;font-size:var(--web-h3-size);font-weight:{{ g.weight }};line-height:1.1;color:{{ g.color }};"><span style="width:9px;height:9px;background:{{ g.dot }};flex:none;"></span><span>{{ g.label }}</span></button>
+      </sc-for>
+    </div>
+    <p style="margin:20px 0 0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ groupSentence }}</p>
+    <div id="formats" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;">
+      <sc-for list="{{ formats }}" as="f" hint-placeholder-count="5">
+        <button type="button" onClick="{{ f.pick }}" aria-pressed="{{ f.on }}" style="min-height:44px;padding:0 20px;border-radius:8px;border:1px solid {{ f.border }};background:{{ f.bg }};font-family:var(--font-web);cursor:pointer;font-size:var(--web-nav-size);font-weight:{{ f.weight }};color:#252525;">{{ f.label }}</button>
+      </sc-for>
+    </div>
+  </section>
+  <section id="stage" data-screen-label="Format" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;box-sizing:border-box;padding-left:var(--web-side);padding-right:var(--web-side);padding-top:24px;">
+    <div style="position:relative;width:100%;aspect-ratio:16/9;max-height:640px;border-radius:24px;overflow:hidden;background:#EBECEC;">{{ stageMedia }}</div>
+    <div id="models" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
+      <sc-for list="{{ models }}" as="m" hint-placeholder-count="3">
+        <button type="button" onClick="{{ m.pick }}" aria-pressed="{{ m.on }}" style="display:flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border-radius:8px;border:1px solid {{ m.border }};background:{{ m.bg }};font-family:var(--font-web);cursor:pointer;font-size:var(--web-nav-size);font-weight:{{ m.weight }};color:#252525;"><span style="width:8px;height:8px;border-radius:50%;background:{{ m.dot }};flex:none;"></span><span>{{ m.label }}</span></button>
+      </sc-for>
+    </div>
+    <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px 40px;align-items:start;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">{{ eyebrow }}</div>
+        <h2 style="margin:0;font-size:var(--web-sub-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ modelName }}</h2>
+        <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ modelLine }}</div>
+        <a href="{{ modelHref }}" style="display:{{ modelHrefShow }};align-self:flex-start;font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Product page &#8250;</a>
+      </div>
+      <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ intro }}</p>
+    </div>
+    <details style="margin-top:32px;border-top:1px solid var(--color-divider);">
+      <summary style="list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;min-height:56px;font-size:var(--web-small-size);font-weight:400;color:var(--color-text-primary);">Read more: technical data<span data-editor-only="" style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;text-transform:uppercase;">{{ draftNote }}</span></summary>
+      <div style="padding-bottom:16px;">
+        <sc-for list="{{ rows }}" as="r" hint-placeholder-count="2">
+          <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);border-top:1px solid var(--color-divider);"><span style="padding:12px;font-size:var(--web-small-size);font-weight:500;">{{ r.k }}</span><span style="padding:12px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ r.v }}</span></div>
+        </sc-for>
+        <div data-stack="1" style="margin-top:8px;border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);">
+          <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1.6fr) minmax(0,1.4fr);"><span style="padding:10px 12px;font-size:var(--web-small-size);font-weight:500;">Model</span><span style="padding:10px 12px;font-size:var(--web-small-size);font-weight:500;">Capacity</span><span style="padding:10px 12px;font-size:var(--web-small-size);font-weight:500;">Power</span></div>
+          <sc-for list="{{ table }}" as="t" hint-placeholder-count="3">
+            <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1.6fr) minmax(0,1.4fr);border-top:1px solid var(--color-divider);"><span style="padding:10px 12px;font-size:var(--web-small-size);font-weight:400;"><a href="{{ t.href }}" style="border-bottom:1px solid {{ t.under }};">{{ t.name }}</a></span><span style="padding:10px 12px;font-size:var(--web-small-size);font-weight:300;">{{ t.cap }}</span><span style="padding:10px 12px;font-size:var(--web-small-size);font-weight:300;">{{ t.power }}</span></div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:20px;">
+          <sc-for list="{{ links }}" as="l" hint-placeholder-count="2"><a href="{{ l.href }}" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">{{ l.label }} &#8250;</a></sc-for>
+        </div>
+      </div>
+    </details>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:24px;"><span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;">Not sure?</span><a href="FLUXX - PRODUCT - Find Your Battery - EN.dc.html" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Find your battery &#8250;</a><a href="FLUXX - PRODUCT - Compare - EN.dc.html" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Compare families &#8250;</a></div>
+  </section>
+  <section id="architecture" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:48px var(--web-side) 0;box-sizing:border-box;"><div style="border-top:1px solid var(--color-divider);padding-top:24px;display:flex;gap:24px;flex-wrap:wrap;align-items:center;"><span style="font-size:var(--web-body-size);font-weight:300;color:#5F5E5E;">AC or DC coupled, all-in-one or modular: what decides what the system can do later.</span><a href="FLUXX - CONTENT - Knowledge - EN.dc.html#architecture" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Why storage architecture matters &#8250;</a><a href="FLUXX - CONTENT - Knowledge - EN.dc.html#at-a-glance" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">All formats at a glance &#8250;</a></div></section>
+
+
+
+  <section id="modular" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:24px var(--web-side) 0;box-sizing:border-box;"><div style="background:#F4F4F4;border-radius:12px;padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;">
+    <div><div style="margin-bottom:10px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">All segments / Also in the range</div><h2 style="margin:0 0 10px;font-size:var(--web-sub-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Modular inverters <span style="color:#8E8E8E;">and power modules</span></h2><span data-editor-only="" style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;text-transform:uppercase;">DRAFT</span></div>
+    <div>
+      <p style="margin:0 0 20px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Hybrid inverters and power modules that pair with the Stackable format. Fit is by documented pairing, not inferred from voltage alone.</p>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);border-top:1px solid var(--color-divider);"><span style="padding:12px;font-size:var(--web-small-size);font-weight:500;">When to use</span><span style="padding:12px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Residential and commercial, 1-phase or 3-phase</span></div>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider);"><span style="padding:12px;font-size:var(--web-small-size);font-weight:500;">Pairs with</span><span style="padding:12px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Stackable format, LV or HV</span></div>
+      <a href="FLUXX - WEBSHOP - Shop - EN.dc.html" style="display:inline-flex;margin-top:20px;font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">View this family in the catalogue &#8250;</a><a href="MOEBIUS - PRODUCT - Products - EN.dc.html" style="display:inline-flex;margin:20px 0 0 20px;font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Hybrid inverters (ALVIX, LUNOX, VYRA, SYRA) at MOEBIUS &#8250;</a>
+    </div>
+  </div></section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 64px;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-text-primary);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));">
+      <div style="padding:24px 24px 24px 0;border-bottom:1px solid var(--color-divider);"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:10px;">Downloads</div><div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:10px;line-height:var(--web-small-lh);">Datasheets, manuals and declarations are on each product in the catalogue.</div><a href="FLUXX - WEBSHOP - Shop - EN.dc.html" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Documents in the catalogue &#8250;</a></div>
+      <div style="padding:24px 24px 24px 0;border-bottom:1px solid var(--color-divider);"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:10px;">Installation</div><a href="FLUXX - SUPPORT - Installation - EN.dc.html" style="display:inline-flex;font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Installation guide &#8250;</a></div>
+      <div style="padding:24px 24px 24px 0;border-bottom:1px solid var(--color-divider);"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:10px;">Shop</div><a href="FLUXX - WEBSHOP - Shop - EN.dc.html" style="font-size:var(--web-small-size);font-weight:400;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Shop FLUXX &#8250;</a></div>
+    </div>
+  </section>
+
+  <dc-import name="ContentSections" brand="FLUXX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="FLUXX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="FLUXX" accent="#4F4F4E" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const GROUPS = [{"id":"res","label":"Residential","sent":"Storage for homes on a single-phase connection, from a portable unit to a stacked system.","eyebrow":"Residential"},{"id":"com","label":"Commercial","sent":"Storage for businesses and commercial and industrial sites on a 3-phase connection. These systems go through a technical assessment before ordering.","eyebrow":"Commercial"},{"id":"uti","label":"Utility","sent":"DOKK container storage for large sites and grid-scale projects. Sized per project after a technical assessment.","eyebrow":"Utility"}];
+const FORMATS = [{"id":"portable","group":"res","label":"Portable","eyebrow":"Residential / Format","title":"Portable power stations","draft":true,"intro":"Self-contained, carry-anywhere batteries. Use where power is needed away from a fixed installation, or as a mobile backup. No installation into the building's electrical system.","rows":[["When to use","Mobile use, temporary sites, backup"],["Capacity stated as","kWh per model, in the catalogue"]],"links":[["View this family in the catalogue","FLUXX - WEBSHOP - Shop - EN.dc.html?form=Portable"]],"models":[{"name":"PICO","cap":"2.56 kWh","power":"—","href":"","short":"PICO","slot":"fluxx-vid-portable-pico"},{"name":"BOLT","cap":"2.56 kWh","power":"—","href":"","short":"BOLT","slot":"fluxx-vid-portable-bolt"},{"name":"NODE","cap":"5.12 kWh","power":"—","href":"","short":"NODE","slot":"fluxx-vid-portable-node"},{"name":"TORQ","cap":"5.12 kWh","power":"—","href":"","short":"TORQ","slot":"fluxx-vid-portable-torq"},{"name":"DOCK","cap":"10.24 kWh","power":"—","href":"","short":"DOCK","slot":"fluxx-vid-portable-dock"},{"name":"WORK","cap":"10.24 kWh","power":"—","href":"","short":"WORK","slot":"fluxx-vid-portable-work"}]},{"id":"objects","group":"res","label":"Objects","eyebrow":"Residential / Format","title":"Objects","draft":false,"intro":"Plug into a wall socket, scan once, and EMON takes over. Battery and inverter are inside every piece, quiet enough for the bedroom.","rows":[["Shapes","Footstool, ottoman, bench and wall panel"],["Mounting","Floor-standing, KUBUZ wall-mounted"]],"links":[["Objects","FLUXX - PRODUCT - Objects - EN.dc.html"]],"models":[{"name":"POUF","cap":"2.56 kWh","power":"2.5 kVA","href":"FLUXX - PRODUCT - POUF - EN.dc.html","short":"POUF","slot":"fluxx-vid-objects-pouf"},{"name":"OTTO","cap":"5.12 kWh","power":"2.5 kVA","href":"FLUXX - PRODUCT - OTTO - EN.dc.html","short":"OTTO","slot":"fluxx-vid-objects-otto"},{"name":"BENCH","cap":"10.24 kWh","power":"2.5 kVA","href":"FLUXX - PRODUCT - BENCH - EN.dc.html","short":"BENCH","slot":"fluxx-vid-objects-bench"},{"name":"KUBUZ","cap":"2.56 kWh batteries, six finishes","power":"2.5 kVA inverter","href":"FLUXX - PRODUCT - KUBUZ - EN.dc.html","short":"KUBUZ","slot":"fluxx-vid-objects-kubuz"}]},{"id":"plug-and-play","group":"res","label":"Plug and play","eyebrow":"Residential / Format","title":"Plug and Play","draft":true,"intro":"Wall or floor-standing systems that connect on the AC side. Use to add storage to a home with an existing solar system. Connection method and permission depend on the country: check before connecting to an ordinary socket.","rows":[["When to use","Residential retrofit, 1-phase"],["Mounting","Wall or floor-standing, per model"],["Finish","Colour is a finish option, not a separate product"]],"links":[["BOWI product page","FLUXX - PRODUCT - BOWI PNP - EN.dc.html"],["View this family in the catalogue","FLUXX - WEBSHOP - Shop - EN.dc.html?cat=Plug-and-play"]],"models":[{"name":"BOWI BLOCK, all-in-one","cap":"2 to 16 kWh","power":"1.5 to 3.6 kVA","href":"FLUXX - PRODUCT - BOWI PNP - EN.dc.html","short":"BOWI BLOCK","slot":"fluxx-vid-plug-and-play-bowi-block"},{"name":"BOWI STACK 2.5","cap":"2.5 kWh battery","power":"2.5 or 3.6 kVA inverter","href":"FLUXX - PRODUCT - BOWI PNP - EN.dc.html","short":"BOWI STACK 2.5","slot":"fluxx-vid-plug-and-play-bowi-stack-2-5"},{"name":"BOWI STACK 5","cap":"5.12 kWh battery","power":"2.5 or 3.6 kVA inverter","href":"FLUXX - PRODUCT - BOWI PNP - EN.dc.html","short":"BOWI STACK 5","slot":"fluxx-vid-plug-and-play-bowi-stack-5"}]},{"id":"monobloc","group":"res","label":"Monobloc","eyebrow":"Residential / Format","title":"Monobloc","draft":true,"intro":"Inverter and battery combined in one floor-standing unit. Use when one product should cover conversion and storage, with a single installation point.","rows":[["When to use","Residential, new or retrofit, 1-phase"],["Variants","Plug and play, pro and hybrid versions"]],"links":[["MUBI","FLUXX - PRODUCT - MUBI - EN.dc.html"],["View this family in the catalogue","FLUXX - WEBSHOP - Shop - EN.dc.html?form=Monobloc"]],"models":[{"name":"MUBI","cap":"5.12, 10.24 or 16.08 kWh","power":"2.5 kVA","href":"FLUXX - PRODUCT - MUBI - EN.dc.html","short":"MUBI","slot":"fluxx-vid-monobloc-mubi"},{"name":"MUBI Pro","cap":"16.08 or 32.16 kWh","power":"3.6 or 4.6 kVA","href":"FLUXX - PRODUCT - MUBI - EN.dc.html","short":"MUBI Pro","slot":"fluxx-vid-monobloc-mubi-pro"},{"name":"TRIFFID, flex on-grid","cap":"1.28 to 32.12 kWh","power":"0.8 to 11 kVA","href":"","short":"TRIFFID","slot":"fluxx-vid-monobloc-triffid"},{"name":"BLOQ, battery only","cap":"5.12 to 32.12 kWh","power":"—","href":"","short":"BLOQ","slot":"fluxx-vid-monobloc-bloq"}]},{"id":"stackable","group":"res","label":"Stackable","eyebrow":"Residential / Format","title":"Stackable","draft":true,"intro":"DC battery modules without an inverter that stack into one system. Use with a documented, paired inverter from the modular family. A matching voltage or physical fit alone does not confirm compatibility.","rows":[["When to use","Systems designed around a separate inverter"],["Requires","Paired inverter: LV with LV, HV with HV"],["Capacity","Depends on number of modules"],["Single battery-only modules","Belong to Stackable: one module, paired with a separate inverter"]],"links":[["View this family in the catalogue","FLUXX - WEBSHOP - Shop - EN.dc.html?form=Stackable"]],"models":[{"name":"TURA","cap":"2.56 kWh battery","power":"2.5 kVA inverter","href":"","short":"TURA","slot":"fluxx-vid-stackable-tura"},{"name":"STAQ, LV and HV","cap":"2.56 or 5.12 kWh modules, with BMS and frame","power":"—","href":"","short":"STAQ","slot":"fluxx-vid-stackable-staq"},{"name":"LINEA, smart stack","cap":"5.12 kWh battery","power":"3 to 12 kVA power modules, 1-phase and 3-phase","href":"","short":"LINEA","slot":"fluxx-vid-stackable-linea"},{"name":"BOWI STACK","cap":"see Plug and Play","power":"","href":"","short":"BOWI STACK","slot":"fluxx-vid-stackable-bowi-stack"}]},{"id":"stackable-commercial","group":"com","label":"Modular stack","eyebrow":"Commercial / Format","title":"Stackable","draft":false,"intro":"KYUZ modular smart stacks for commercial sites, with a same-series power module. DC-coupled, AC coupling optional.","rows":[["Products","KYUZ 12,06 kWh modules with KYUZ power modules (50 to 125 kVA each, parallel up to MW scale)"],["Also fits","BLOQ LV for smaller 3-phase sites (main listing under Residential › Stackable)"],["Grid connection","3-phase"]],"links":[["KYUZ","FLUXX - PRODUCT - KYUZ - EN.dc.html"],["Configure a system","FLUXX - PRODUCT - Find Your Battery - EN.dc.html"]],"models":[{"name":"KYUZ","cap":"12.06 kWh modules","power":"50 to 125 kVA power modules","href":"FLUXX - PRODUCT - KYUZ - EN.dc.html","short":"KYUZ","slot":"fluxx-vid-stackable-commercial-kyuz"}]},{"id":"cabinet","group":"com","label":"Cabinet","eyebrow":"Commercial / Format","title":"Cabinet","draft":true,"intro":"SILO outdoor storage cabinets, 144 to 241 kWh. These systems go through a technical assessment before ordering.","rows":[["When to use","Commercial and industrial, 3-phase"],["Cooling","Air-cooled"],["Ordering","After technical assessment"]],"links":[["SILO","FLUXX - PRODUCT - SILO - EN.dc.html"],["View this family in the catalogue","FLUXX - WEBSHOP - Shop - EN.dc.html?form=Cabinet"]],"models":[{"name":"SILO","cap":"144, 176, 208 or 241 kWh","power":"—","href":"FLUXX - PRODUCT - SILO - EN.dc.html","short":"SILO","slot":"fluxx-vid-cabinet-silo"}]},{"id":"container","group":"uti","label":"Container","eyebrow":"Utility / Format","title":"Container","draft":true,"intro":"Storage containers for large sites and grid-scale projects: DOKK, and KOFR all-in-one units with the inverter built in, 128 kWh plus extensions. These systems go through a technical assessment before ordering.","rows":[["When to use","Utility and large sites, grid-scale projects"],["Cooling","DOKK liquid-cooled, KOFR air-cooled"],["Ordering","After technical assessment"]],"links":[["DOKK container storage","FLUXX - PRODUCT - DOKK - EN.dc.html"],["KOFR","FLUXX - PRODUCT - KOFR - EN.dc.html"],["View this family in the catalogue","FLUXX - PRODUCT - DOKK - EN.dc.html"]],"models":[{"name":"DOKK, liquid-cooled","cap":"5016 kWh","power":"2.5 MW","href":"FLUXX - PRODUCT - DOKK - EN.dc.html","short":"DOKK","slot":"fluxx-vid-container-dokk"},{"name":"KOFR, air-cooled, all-in-one","cap":"128 kWh plus extensions","power":"30 to 80 kVA","href":"FLUXX - PRODUCT - KOFR - EN.dc.html","short":"KOFR","slot":"fluxx-vid-container-kofr"}]}];
+class Component extends DCLogic {
+  state = { group: "res", fmt: "portable", model: 0 };
+  componentDidMount() { this.edVis(); this._t = setInterval(() => this.edVis(), 1500); this._h = () => this.fromHash(); window.addEventListener("hashchange", this._h); this.fromHash(); }
+  componentWillUnmount() { clearInterval(this._t); window.removeEventListener("hashchange", this._h); }
+  componentDidUpdate() { this.edVis(); }
+  edVis() { const ed = !!(window.omelette && window.omelette.writeFile); document.querySelectorAll("[data-editor-only]").forEach((el) => { const want = ed ? "" : "none"; if (el.style.display !== want) el.style.display = want; }); }
+  fromHash() {
+    const id = decodeURIComponent((location.hash || "").slice(1)); if (!id) return;
+    const gmap = { residential: "res", commercial: "com", utility: "uti" };
+    if (gmap[id]) { this.setGroup(gmap[id], true); return; }
+    const f = FORMATS.find((x) => x.id === id); if (f) this.setFmt(f.id, true);
+  }
+  scroll(id) { setTimeout(() => { const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 130, behavior: "smooth" }); }, 60); }
+  setGroup(g, sc) { const f = FORMATS.find((x) => x.group === g); this.setState({ group: g, fmt: f.id, model: 0 }); if (sc) this.scroll("groups"); }
+  setFmt(id, sc) { const f = FORMATS.find((x) => x.id === id); this.setState({ group: f.group, fmt: id, model: 0 }); if (sc) this.scroll("groups"); }
+  renderVals() {
+    const st = this.state, g = GROUPS.find((x) => x.id === st.group), fm = FORMATS.find((x) => x.id === st.fmt), m = fm.models[st.model] || fm.models[0];
+    const box = (on) => ({ border: on ? "#252525" : "#DDDDDD", bg: on ? "#F4F4F4" : "#FFFFFF", weight: on ? 500 : 300 });
+    const media = m.video
+      ? React.createElement("video", { key: m.slot, src: m.video, autoPlay: true, muted: true, loop: true, playsInline: true, "aria-label": fm.title + " " + m.short, style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" } })
+      : React.createElement("image-slot", { key: m.slot, id: m.slot, shape: "rect", placeholder: "FLUXX · " + fm.title + " · " + m.short + " · video or photo, 16:9" });
+    const eu = (s) => typeof s === "string" ? s.replace(/(\d)\.(\d)/g, "$1,$2") : s;
+    const line = eu([m.cap && m.cap !== "—" ? m.cap : "", m.power && m.power !== "—" ? m.power : ""].filter(Boolean).join(" · "));
+    return {
+      groups: GROUPS.map((x) => ({ label: x.label, on: String(x.id === st.group), line: x.id === st.group ? "#252525" : "transparent", weight: x.id === st.group ? 400 : 200, color: x.id === st.group ? "#252525" : "#8E8E8E", dot: x.id === st.group ? "var(--color-brand-fluxx)" : "#DDDDDD", pick: () => this.setGroup(x.id) })),
+      groupSentence: g.sent,
+      formats: FORMATS.filter((x) => x.group === st.group).map((x) => ({ label: x.label, on: String(x.id === st.fmt), ...box(x.id === st.fmt), pick: () => this.setFmt(x.id) })),
+      stageMedia: media,
+      models: fm.models.map((x, i) => ({ label: x.short, on: String(i === st.model), dot: i === st.model ? "var(--color-brand-fluxx)" : "transparent", ...box(i === st.model), pick: () => this.setState({ model: i }) })),
+      eyebrow: fm.eyebrow, modelName: m.name, modelLine: line, modelHref: m.href || "#", modelHrefShow: m.href ? "inline-block" : "none",
+      intro: fm.intro, draftNote: fm.draft ? "Draft" : "",
+      rows: fm.rows.map((r) => ({ k: r[0], v: eu(r[1]) })),
+      table: fm.models.map((x) => ({ name: x.name, cap: eu(x.cap), power: eu(x.power), href: x.href || "#", under: x.href ? "#252525" : "transparent" })),
+      links: fm.links.map((l) => ({ label: l[0], href: l[1] }))
+    };
+  }
+}
+</script>
+</body>
+</html>

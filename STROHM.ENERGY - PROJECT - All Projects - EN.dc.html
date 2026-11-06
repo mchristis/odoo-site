@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>All Projects | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./project-data.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4F4F4E; text-decoration:none; }
+  a:hover { color:#1E1E1E; }
+  input, select, textarea { font-family:var(--font-web); }
+  .pj-chips { scrollbar-width:none; } .pj-chips::-webkit-scrollbar { display:none; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+  <dc-import name="NavBar" active="projects" hint-size="100%,80px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="BrandHero2" brand="PROJECTS" rgb="200,200,200" dark="#4F4F4E" title="From first question to a buildable energy project." intro="STRØHM.ENERGY develops and manufactures the products, engineers the systems and coordinates the right local partners." items="{{ heroItems }}" hint-size="100%,760px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 24px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;max-width:760px;">Choose the project route that matches your site, scale and technical requirements.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px;">
+      <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#routes" style="min-height:var(--cta-height,56px);padding:0 28px;display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);letter-spacing:0.04em;border-radius:8px;">Choose your project type</a>
+      <a href="STROHM.ENERGY - PROJECT - Residential - EN.dc.html" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:#F5F5F5;border:1px solid #D4D4D4;color:#4F4F4E;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">Start a project</a>
+    </div>
+    <div style="background:#F4F4F4;height:var(--web-hero-h);border-radius:var(--web-hero-radius);overflow:hidden;">
+      <image-slot id="projects-hero" shape="rounded" radius="24" placeholder="IMG/VID-STRØHM-PROJECTS-HERO-01 · 3:1 · residential + commercial + utility scales combined without collage · products 5–15% · V3-R3"></image-slot>
+    </div>
+  </section>
+
+  <!-- CHOOSE YOUR ROUTE -->
+  <section id="routes" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="padding-top:28px;">
+      <h2 style="margin:0 0 24px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Choose your <span style="color:#898989;">project route</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ routeCards }}" as="r" hint-placeholder-count="3">
+          <a href="{{ r.href }}" style="background:#F5F5F5;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;" style-hover="border-color:#5F5E5E;">
+            <div style="aspect-ratio:16/10;"><image-slot id="{{ r.slotId }}" shape="rect" placeholder="{{ r.imageDir }}"></image-slot></div>
+            <div style="padding:28px;display:flex;flex-direction:column;flex:1;">
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;margin-bottom:6px;line-height:var(--web-h3-lh);">{{ r.title }}</div>
+              <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#4F4F4E;margin-bottom:14px;">{{ r.subtitle }}</div>
+              <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;max-width:760px;">{{ r.body }}</p>
+              <span style="margin-top:auto;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#4F4F4E;">{{ r.cta }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREE LEVELS OF SUPPORT -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="padding-top:28px;">
+      <h2 style="margin:0 0 6px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One manufacturer. <span style="color:#898989;">Three levels of project support.</span></h2>
+      <p style="margin:0 0 24px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">The correct process depends on technical complexity, available information and scale. STRØHM.ENERGY uses a different workflow for each route.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ supportLevels }}" as="s" hint-placeholder-count="3">
+          <div style="background:#F4F4F4;padding:28px;border-radius:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:8px;">{{ s.cat }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;margin-bottom:10px;line-height:var(--web-h3-lh);">{{ s.title }}</div>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;max-width:760px;">{{ s.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT STROHM DOES -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div data-stack="1" style="padding-top:28px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;align-items:center;">
+      <div>
+        <h2 style="margin:0 0 16px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">We manufacture the products <span style="color:#898989;">and help define how they become a project.</span></h2>
+        <p style="margin:0 0 20px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">STRØHM.ENERGY is a product manufacturer and engineering partner. We do not present ourselves as the local installer for every project. We develop and supply the products, define how they work together and prepare the technical information required for reliable installation and commissioning.</p>
+        <p style="margin:0 0 24px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;max-width:760px;">Residential installations are completed by qualified local partners. Commercial projects may be reviewed and calculated by STRØHM.ENERGY before transfer to an installer or engineering partner. Utility and infrastructure projects can be developed as complete technical and supply packages.</p>
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="STROHM.ENERGY - PROJECT - Engineering - EN.dc.html" style="min-height:var(--cta-height,56px);padding:0 24px;display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);border-radius:8px;">See how we engineer projects</a>
+      </div>
+      <div style="background:#F4F4F4;aspect-ratio:4/3;border-radius:12px;overflow:hidden;"><image-slot id="projects-what" shape="rounded" radius="20" placeholder="IMG-STRØHM-PROJECTS-ENGINEERING-01 · engineer with product drawings, schematics and samples · V3-R3"></image-slot></div>
+    </div>
+  </section>
+
+  <!-- STATUS TRANSPARENCY -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="padding-top:28px;">
+      <h2 style="margin:0 0 6px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">See what has been built, <span style="color:#898989;">proposed or developed.</span></h2>
+      <p style="margin:0 0 24px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">Not every useful example is a completed installation. STRØHM.ENERGY clearly labels the status of each project. A visualisation or concept is never shown as a completed project.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ statusCards }}" as="s" hint-placeholder-count="3">
+          <div style="background:#F5F5F5;border-radius:12px;padding:24px;">
+            <span style="display:inline-block;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#FFFFFF;background:{{ s.colour }};padding:5px 10px;border-radius:8px;margin-bottom:12px;">{{ s.label }}</span>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;max-width:760px;">{{ s.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS TO SYSTEMS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="padding-top:28px;">
+      <h2 style="margin:0 0 6px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Products designed <span style="color:#898989;">to work together.</span></h2>
+      <p style="margin:0 0 20px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">A project may combine generation, structures, conversion, storage, heating, charging, measurement, control and software. STRØHM.ENERGY helps define the complete architecture instead of leaving the team to combine unrelated components.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
+        <sc-for list="{{ systemBrands }}" as="b" hint-placeholder-count="11">
+          <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#4F4F4E;background:#F5F5F5;padding:9px 15px;border-radius:18px;">{{ b }}</span>
+        </sc-for>
+      </div>
+      <a href="EMON - SYSTEM - System - EN.dc.html" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#4F4F4E;">Explore STRØHM.ENERGY systems<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="padding-top:28px;">
+      <h2 style="margin:0 0 24px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">A clear route <span style="color:#898989;">from enquiry to documentation.</span></h2>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ processSteps }}" as="p" hint-placeholder-count="8">
+          <div style="background:#F4F4F4;padding:22px;border-radius:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#898989;margin-bottom:8px;letter-spacing:var(--web-eyebrow-ls);">{{ p.n }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;line-height:1.35;">{{ p.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="padding-top:28px;">
+      <div data-stack="1" style="background:#4F4F4E;border-radius:12px;padding:48px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px;align-items:center;">
+        <div>
+          <h3 style="margin:0 0 12px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#FFFFFF;">Not sure which project route you need?</h3>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#D9DADA;max-width:640px;">Start with the information you already have. We will determine whether the project needs an installer referral, an initial technical calculation or a complete engineering package.</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="STROHM.ENERGY - PROJECT - Residential - EN.dc.html" style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:#FFFFFF;color:#4F4F4E;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">Start a project</a>
+          <a style-hover="background:#F4F4F4;color:#4F4F4E;" href="STROHM.ENERGY - PROJECT - Engineering - EN.dc.html#review" style="border:1px solid #4F4F4E;box-sizing:border-box;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:transparent;color:#4F4F4E;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">Speak with the project team</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <div style="height:48px;"></div>
+  <dc-import name="ReachSpecialist" brand="PROJECTS" lead="TO CONFIRM" photo-slot-id="projects-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1480,&quot;height&quot;:960}}">
+const HERO_ITEMS = [{"label":"Project route","heading":"Choose your project route","sentence":"TO CONFIRM","media":{"type":"slot","slot":"strohm-energy-all-projects-hero","alt":"PROJECTS hero picture 1"}},{"label":"Three levels","heading":"One manufacturer. Three levels of project support.","sentence":"The correct process depends on technical complexity, available information and scale.","media":{"type":"slot","slot":"project-all-hero-2","alt":"PROJECTS hero picture 2"}},{"label":"Our role","heading":"We manufacture the products and help define how they become a project.","sentence":"STRØHM.ENERGY is a product manufacturer and engineering partner.","media":{"type":"slot","slot":"project-all-hero-3","alt":"PROJECTS hero picture 3"}},{"label":"Built or proposed","heading":"See what has been built, proposed or developed.","sentence":"Not every useful example is a completed installation.","media":{"type":"slot","slot":"project-all-hero-4","alt":"PROJECTS hero picture 4"}},{"label":"Products together","heading":"Products designed to work together.","sentence":"A project may combine generation, structures, conversion, storage, heating, charging, measurement, control and software.","media":{"type":"slot","slot":"project-all-hero-5","alt":"PROJECTS hero picture 5"}},{"label":"Enquiry to documentation","heading":"A clear route from enquiry to documentation.","sentence":"Start with the information you already have.","media":{"type":"slot","slot":"project-all-hero-6","alt":"PROJECTS hero picture 6"}}];
+class Component extends DCLogic {
+  renderVals() { return Object.assign({}, this._rvBase(), { heroItems: HERO_ITEMS }); }
+  state = { cat: "residential", status: "All", developed: false };
+
+  componentDidMount() {
+    const h = (location.hash || "").replace("#", "");
+    const cat = h.split("-")[0];
+    if (["residential", "commercial", "utility"].includes(cat)) this.setState({ cat });
+    if (!window.STROHM_PROJECTS) {
+      this._t = setInterval(() => { if (window.STROHM_PROJECTS) { clearInterval(this._t); this.forceUpdate(); } }, 60);
+    }
+  }
+  componentWillUnmount() { if (this._t) clearInterval(this._t); }
+
+  _rvBase() {
+    const PJ = window.STROHM_PROJECTS;
+    const st = this.state;
+    const cat = st.cat;
+    const catObj = PJ ? PJ.category(cat) : { label: "Residential" };
+    const proven = PJ ? PJ.getProjects(cat, { status: st.status, limit: 6 }) : [];
+    const apps = PJ ? (PJ.applications[cat] || []) : [];
+    const partners = PJ ? PJ.getPartners(cat, {}) : [];
+
+    const catTabs = (PJ ? PJ.categories : []).map((c) => ({
+      label: c.label, subtitle: c.subtitle,
+      onClick: () => this.setState({ cat: c.key, status: "All" }),
+      bg: cat === c.key ? "#4F4F4E" : "#FFFFFF",
+      titleColor: cat === c.key ? "#FFFFFF" : "#4F4F4E",
+      border: cat === c.key ? "#1E1E1E" : "#D4D4D4",
+    }));
+
+    const statuses = ["All"].concat(PJ ? PJ.statuses : []);
+    const statusChips = statuses.map((s) => ({
+      label: s, onClick: () => this.setState({ status: s }),
+      bg: st.status === s ? "#4F4F4E" : "#FFFFFF",
+      color: st.status === s ? "#FFFFFF" : "#5F5E5E",
+      border: st.status === s ? "#4F4F4E" : "#D4D4D4",
+    }));
+
+    // location aggregation
+    const byCountry = {};
+    (PJ ? PJ.getProjects(cat, {}) : []).forEach((p) => { byCountry[p.country] = (byCountry[p.country] || 0) + 1; });
+    const locationRows = Object.keys(byCountry).map((c, i) => ({ country: c, count: byCountry[c], statusColour: "#1F8A5B" }));
+
+    return {
+      catTabs,
+      catLabelLower: (catObj.label || "").toLowerCase(),
+      statusChips,
+      provenCards: proven.map((p) => ({
+        href: p.href || "#", slotId: "pv-" + p.id, imageDir: p.imageDir,
+        status: p.status, statusColour: p.statusColour, application: p.application,
+        capacity: p.capacity, country: p.country, title: p.title, summary: p.summary,
+      })),
+      applications: apps.map((a) => ({ label: a, count: 3, href: "#type" })),
+      developResult: ["Initial system suggestion", "Indicative bill of materials", "Preliminary capacity estimate", "Downloadable project summary and technical-review request"],
+      submitDevelop: () => this.setState({ developed: true }),
+      developBtn: st.developed ? "Enquiry prepared. A specialist will follow up." : "Create project enquiry",
+      partners: partners.slice(0, 6),
+      locationRows,
+    };
+  }
+}
+</script>
+</body>
+</html>

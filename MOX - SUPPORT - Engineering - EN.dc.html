@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>MOX Engineering | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  input, textarea, select { font-family:var(--font-web); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoxNav" active="engineering" hint-size="100%,57px"></dc-import>
+
+  <!-- HEADER -->
+  <dc-import name="PageHero" brand="MOX" rgb="216,57,44" eyebrow="Engineering support for every MOX project" title="A product choice is not yet a project. We make it buildable." intro="MOX is not only a mounting-product supplier." slot="mox-eng-hero" shot="BNR-MOX-ENG-01 · 21:9 · engineering team at work: structural model on screen, MOX profile samples, drawing set; product 10–20%, negative space left · awaiting upload" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;"><a href="MOX - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">MOX</a> &#8250; <span style="color:var(--color-text-primary);">ENGINEERING</span></div>
+    <p style="margin:0 0 24px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:820px;">More than 20 mechanical, structural, product and manufacturing specialists turn a product choice into a buildable, documented and commercially realistic project &#8212; controlled, traceable and adapted to the scale and risk of the work.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:44px;">
+      <a href="#intake" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;white-space:nowrap;background:var(--color-brand-mox);color:#FFFFFF;border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Submit your project<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <a href="#procedure" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;white-space:nowrap;background:var(--color-card-mox);color:var(--color-text-primary);border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">See the procedure</a>
+    </div>
+    
+    <div style="font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);line-height:var(--web-min-lh);">We support investors, installers, developers, buyers, architects, contractors and private customers.</div>
+  </section>
+
+  <!-- WHO / WHAT SCALE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">One controlled method, many project types</div>
+      <div data-cols="5" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ projectTypes }}" as="t" hint-placeholder-count="5">
+          <div style="background:#F4F4F4;padding:22px;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">{{ t.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ t.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIGITAL INTAKE -->
+  <section id="intake" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start;--cg:48px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">From first information to a complete technical file</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Every project begins <span style="color:#8E8E8E;">with a structured digital intake.</span></h2>
+        <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">The ERP system creates a unique project record and assigns the relevant engineering tasks. Missing information, revisions, drawings, calculations, quotations and approvals stay connected to the same file &#8212; not scattered across emails, messaging apps and unrelated document versions.</p>
+      </div>
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:14px;">Project information we collect</div>
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;--cg:8px;">
+          <sc-for list="{{ intake }}" as="i" hint-placeholder-count="11">
+            <div style="font-size:12px;font-weight:300;color:var(--color-text-primary);line-height:1.5;display:flex;gap:8px;padding:6px 0;border-top:1px solid var(--color-surface-card);"><span style="color:var(--color-text-primary);flex:none;">&#8226;</span>{{ i }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8-STEP PROCEDURE -->
+  <section id="procedure" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:8px;">The MOX engineering procedure</div>
+      <h2 style="margin:0 0 24px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Eight controlled steps, <span style="color:#8E8E8E;">from intake to production follow-up.</span></h2>
+      <div style="background:#F4F4F4;border-radius:12px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="8">
+          <div style="display:grid;grid-template-columns:64px minmax(0,1fr) minmax(0,1.2fr);border-top:{{ s.border }};">
+            <div style="padding:24px 20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);letter-spacing:var(--web-eyebrow-ls);">{{ s.n }}</div>
+            <div style="padding:24px 20px 24px 0;">
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ s.title }}</div>
+            </div>
+            <div style="padding:24px 24px 24px 0;">
+              <p style="margin:0 0 10px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);max-width:760px;">{{ s.desc }}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                <sc-for list="{{ s.tags }}" as="t" hint-placeholder-count="4">
+                  <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:5px 10px;background:var(--color-card-mox);color:var(--color-text-primary);border-radius:8px;">{{ t }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL FILE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:8px;">The project technical file</div>
+      <h2 style="margin:0 0 24px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Scaled to the project. <span style="color:#8E8E8E;">A carport is not documented like a multi-megawatt agricultural structure &#8212; both stay controlled and understandable.</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;--cg:8px;">
+        <sc-for list="{{ techFile }}" as="d" hint-placeholder-count="18">
+          <div style="font-size:12px;font-weight:300;color:var(--color-text-primary);line-height:1.5;display:flex;gap:8px;padding:8px 0;border-top:1px solid var(--color-surface-card);"><span style="color:var(--color-grey-70);flex:none;">&#8212;</span>{{ d }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT SCALES -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">One process for small and large projects</div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ scales }}" as="s" hint-placeholder-count="3">
+          <div style="padding:28px;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">{{ s.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--color-surface-card);">{{ s.desc }}</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <sc-for list="{{ s.items }}" as="i" hint-placeholder-count="7">
+                <div style="font-size:12px;font-weight:300;color:var(--color-text-primary);line-height:1.5;display:flex;gap:8px;"><span style="color:var(--color-text-primary);flex:none;">&#8226;</span>{{ i }}</div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANUFACTURING REALITY -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;--cg:48px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Designed with manufacturing reality in mind</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The aim is the simplest structure <span style="color:#8E8E8E;">that safely meets the requirement.</span></h2>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">The engineering team does not work separately from production. By combining structural engineering with manufacturing knowledge, MOX can identify where a project should use a standard component, where a component must be adapted, and where a completely project-specific solution is justified &#8212; not the most complicated technical file.</p>
+      </div>
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:14px;">Structural decisions influence</div>
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;--cg:8px;">
+          <sc-for list="{{ manufacturing }}" as="m" hint-placeholder-count="10">
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);padding:6px 0;border-top:1px solid var(--color-surface-card);">{{ m }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ERP -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:8px;">Automated project control through ERP</div>
+      <h2 style="margin:0 0 24px;max-width:720px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Automation does not replace the engineer. <span style="color:#8E8E8E;">It prevents the engineer from working from an outdated drawing.</span></h2>
+      <div style="display:flex;flex-wrap:wrap;gap:1px;background:var(--color-divider);border-radius:12px;">
+        <sc-for list="{{ erp }}" as="e" hint-placeholder-count="15">
+          <div style="background:#FFFFFF;padding:14px 18px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:var(--color-text-primary);flex:1 1 auto;text-align:center;min-width:140px;">{{ e }}</div>
+        </sc-for>
+      </div>
+      <p style="margin:20px 0 0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:820px;">Automatic reminders and task assignments help ensure that missing information, approvals and revisions are followed up, and the system keeps a clear history of the decisions made &#8212; especially important when several companies and technical teams are involved.</p>
+    </div>
+  </section>
+
+  <!-- LIMITATION -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="background:#FBECEC;padding:32px 36px;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B33;margin-bottom:10px;">Important engineering limitation</div>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#8A3030;max-width:960px;">MOX can prepare project calculations, drawings and technical files according to the agreed scope. Local statutory approval, building permits, geotechnical validation and final sign-off by a locally authorised structural engineer may still be required. The exact responsibility must be defined before engineering begins.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARED MOX BLOCKS (DEPTH-38) -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;">
+      <div><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Commissioning and record</div><p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Eligible MOX structures carry QR and NFC identity. At commissioning, configuration, components, tests and photographs are recorded against the project in EMON, and a PDF handover record is generated.</p></div>
+      <div><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Engineering note</div><p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Values marked "to be confirmed" come from approved MOX engineering documentation and per-site studies. Final structural suitability depends on approved engineering for the site.</p></div>
+    </div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Downloads</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;">
+      <div style="background:#F4F4F4;padding:16px;display:flex;justify-content:space-between;gap:12px;border-radius:12px;"><span style="font-size:var(--web-small-size);font-weight:300;">Product overview</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);">In prep</span></div>
+      <div style="background:#F4F4F4;padding:16px;display:flex;justify-content:space-between;gap:12px;border-radius:12px;"><span style="font-size:var(--web-small-size);font-weight:300;">Technical datasheet</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);">In prep</span></div>
+      <div style="background:#F4F4F4;padding:16px;display:flex;justify-content:space-between;gap:12px;border-radius:12px;"><span style="font-size:var(--web-small-size);font-weight:300;">Structural drawings</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);">In prep</span></div>
+      <div style="background:#F4F4F4;padding:16px;display:flex;justify-content:space-between;gap:12px;border-radius:12px;"><span style="font-size:var(--web-small-size);font-weight:300;">Installation manual</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);">In prep</span></div>
+      <div style="background:#F4F4F4;padding:16px;display:flex;justify-content:space-between;gap:12px;border-radius:12px;"><span style="font-size:var(--web-small-size);font-weight:300;">Commissioning checklist</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);">In prep</span></div>
+      <div style="background:#F4F4F4;padding:16px;display:flex;justify-content:space-between;gap:12px;border-radius:12px;"><span style="font-size:var(--web-small-size);font-weight:300;">Warranty conditions</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);">In prep</span></div>
+    </div>
+  </section>
+
+  <!-- CTAs -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Start the engineering conversation</div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ ctas }}" as="c" hint-placeholder-count="4">
+          <a href="{{ c.href }}" style="padding:28px 24px;display:flex;flex-direction:column;gap:10px;min-height:180px;background:#F4F4F4;border-radius:12px;" style-hover="border-color:var(--color-brand-mox);">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);letter-spacing:var(--web-eyebrow-ls);">{{ c.n }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ c.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ c.desc }}</div>
+            <div style="margin-top:auto;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ c.action }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="ContentSections" brand="MOX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MOX" accent="var(--color-brand-mox)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    const steps = [
+      { title: "Project intake &amp; feasibility review", desc: "We check whether the submitted information is sufficient and whether the proposed MOX system suits the application, then return a clear list of what is still needed before detailed calculations begin.", tags: ["Missing dimensions", "Structural constraints", "Unusual spans / loads", "Module\u2013structure fit", "Standard vs. project-specific"] },
+      { title: "Product &amp; system configuration", desc: "The appropriate MOX structure is selected and configured around the actual project \u2014 practical to manufacture, transport, assemble and maintain, not only strong enough on paper.", tags: ["Rails, clamps, hooks", "Carport & pergola frames", "Solar-fence", "Foundations & anchoring", "Drainage & cable management", "Finish & corrosion protection"] },
+      { title: "Structural &amp; static calculations", desc: "Where required, we assess the relevant loads and load combinations. The method depends on location, structure type and applicable standards \u2014 and on receiving correct site data.", tags: ["Dead, wind & snow loads", "Uneven accumulation", "Seismic where relevant", "Foundation & anchor forces", "Deflection limits", "Fastener & buckling checks"] },
+      { title: "Manufacturing review", desc: "The design is reviewed with manufacturing knowledge so it can be produced repeatedly and efficiently. A structure may be theoretically correct but too complex, expensive or slow to build.", tags: ["Profile tolerances", "Repeatable connections", "Efficient machining", "Packable without damage", "Fewer custom parts", "Scalable for quantity"] },
+      { title: "Technical-file preparation", desc: "The project technical file is assembled and scaled to the scope \u2014 identification, drawings, details, calculations, bill of materials, installation and commissioning information.", tags: ["Drawings & details", "Structural calculations", "Bill of materials", "Installation sequence", "Inspection checklist", "Certificates & declarations"] },
+      { title: "Review with customer &amp; installer", desc: "The proposed file is shared through the project workflow. Investor, installer, buyer or project manager review the documents and submit comments; revisions are recorded inside the ERP process.", tags: ["Current version", "Who requested a change", "Documents affected", "Price / lead-time impact", "Outstanding approvals"] },
+      { title: "Approval &amp; release for production", desc: "Production is released only after the required technical and commercial information is confirmed. Late changes affect price, production time and calculations, so approval status stays clear.", tags: ["Final drawings", "Final quantities", "Material & finish", "Customer approvals", "Delivery sequence", "Project labels"] },
+      { title: "Production, quality control &amp; follow-up", desc: "Once production begins the project stays linked to the engineering file, so the team remains connected after the drawings are issued.", tags: ["Material preparation", "Manufacturing status", "Quality inspections", "Shipment planning", "Replacement components", "Site questions"] },
+    ];
+    return {
+      projectTypes: [
+        { title: "Residential", desc: "A single solar carport or pergola for a homeowner or local installer." },
+        { title: "Commercial", desc: "Commercial canopies and building-integrated canopy systems." },
+        { title: "Solar fences", desc: "Vertical solar-fence posts, rails and boundary systems." },
+        { title: "Agricultural PV", desc: "Large agricultural PV structures with long spans and machinery access." },
+      ],
+      intake: [
+        "Project address and site coordinates", "Building, roof, ground or foundation information", "Layout drawings and available dimensions", "Module type and module dimensions", "Orientation, inclination and row spacing", "Wind, snow and environmental conditions", "Ground or soil information where relevant", "Corrosion environment and required finish", "Local design standards and approvals", "Photographs, drone images or existing drawings", "Target installation date and expected volume",
+      ],
+      steps: steps.map((s, i) => Object.assign({}, s, { n: String(i + 1).padStart(2, "0"), border: i === 0 ? "none" : "1px solid var(--color-divider)" })),
+      techFile: [
+        "Project identification and revision status", "System description", "Product and component list", "General-arrangement drawings", "Layout drawings", "Structural details", "Connection details", "Foundation or anchoring information", "Module interface details", "Material specifications", "Surface-treatment specifications", "Structural calculations", "Assumptions and design criteria", "Bill of materials", "Packing or delivery breakdown", "Installation sequence and manual", "Inspection and commissioning checklist", "Certificates, warranty and maintenance",
+      ],
+      scales: [
+        { title: "Residential carports &amp; pergolas", desc: "Understandable and proportionate \u2014 the customer should not manage an industrial procedure for a small structure.", items: ["Available dimensions", "Vehicle clearance", "Module layout", "Drainage", "Foundation type", "Cable routing", "Local appearance requirements"] },
+        { title: "Commercial &amp; industrial", desc: "For installers, EPC companies and commercial buyers with multiple variants and site work.", items: ["Multiple structural variants", "Site-specific calculations", "Detailed bills of materials", "Delivery by installation zone", "Installation sequencing", "Project-specific packaging", "Support during construction"] },
+        { title: "Large agricultural PV", desc: "Early engineering involvement prevents expensive redesign after procurement or site work.", items: ["Long spans, elevated structures", "Machinery clearances", "Irregular ground conditions", "Complex wind & snow exposure", "Foundation optimisation", "Repeated structural bays", "Phased deliveries & coordination"] },
+      ],
+      manufacturing: ["Material use", "Tooling", "Machining time", "Welding", "Surface treatment", "Packaging volume", "Transport cost", "Installation labour", "Replacement-part availability", "Future scalability"],
+      erp: ["Customer information", "Site data", "Product configuration", "Engineering tasks", "Calculations", "Drawings", "Quotations", "Approvals", "Revisions", "Production", "Quality control", "Packaging", "Shipment", "Installation support", "Final documentation"],
+      ctas: [
+        { n: "01", title: "Submit your project", desc: "Upload drawings, dimensions, module information and site photographs.", action: "Start intake", href: "#intake" },
+        { n: "02", title: "Talk to a MOX engineer", desc: "Discuss feasibility, structural requirements and the most suitable system.", action: "Book a meeting", href: "#intake" },
+        { n: "03", title: "Request a technical file", desc: "Receive the proposed scope, required input data and engineering procedure.", action: "Request scope", href: "#intake" },
+        { n: "04", title: "Become a MOX installer", desc: "Access product training, technical documentation and project support.", action: "Apply", href: "STROHM.ENERGY - SITE - Find an Installer - EN.dc.html" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

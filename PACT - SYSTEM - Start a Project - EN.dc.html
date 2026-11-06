@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>Prepare a PACT project | STRØHM.ENERGY</title>
+<meta name="description" content="Prepare a collective energy purchasing project with PACT: organiser, participants, location, solutions, demand, timing and campaign explanation, then submit it for review.">
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } input:focus, select:focus, textarea:focus { outline:none; border-color:#222222; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="systems" hint-size="100%,89px"></dc-import>
+  <dc-import name="BrandBar" brand="PACT" hint-size="100%,73px"></dc-import>
+  <dc-import name="PageHero" brand="PACT" rgb="214,153,14" eyebrow="PACT · Start a Project" title="Prepare a project." intro="Define who the campaign is for, which energy solutions it covers and where participants are located." slot="pact-start-project-hero" shot="PACT · Start a Project · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import>
+
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;align-items:flex-start;">
+    <div style="display:inline-block;margin:0 0 12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B07818;">Proposed, to confirm. Prototype: entries are stored in this browser only. Nothing is sent.</div>
+    <p style="margin:0;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#666666;text-wrap:pretty;">Submitting a project does not publish it, place an order or guarantee a discount. Campaign conditions must be reviewed and confirmed before launch.</p>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:40px 64px;align-items:start;">
+
+      <nav aria-label="Project steps" style="display:flex;flex-direction:column;gap:4px;max-width:360px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="10">
+          <button type="button" onClick="{{ s.go }}" style="font-family:inherit;text-align:left;background:{{ s.bg }};border:none;border-radius:8px;padding:12px 16px;min-height:44px;cursor:pointer;display:flex;align-items:center;gap:12px;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#4F4F4E;font-weight:{{ s.weight }};">
+            <span style="width:28px;flex:none;font-variant-numeric:tabular-nums;color:#898989;">{{ s.n }}</span>
+            <span style="flex:1;">{{ s.label }}</span>
+            <span style="font-size:var(--web-min-size);color:{{ s.markColor }};">{{ s.mark }}</span>
+          </button>
+        </sc-for>
+      </nav>
+
+      <div style="display:flex;flex-direction:column;gap:24px;min-width:0;max-width:720px;">
+
+        <sc-if value="{{ isForm }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:24px;">
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Step {{ stepNo }} of 8</div>
+              <h2 style="margin:0;font-size:var(--web-h2card-size);font-weight:300;line-height:1.15;color:#252525;">{{ stepTitle }}</h2>
+              <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#666666;text-wrap:pretty;">{{ stepHelp }}</p>
+            </div>
+            <sc-for list="{{ fields }}" as="f" hint-placeholder-count="4">
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:var(--web-label-size);color:#4F4F4E;">
+                  <span>{{ f.label }}</span><span style="font-size:var(--web-min-size);color:{{ f.reqColor }};">{{ f.req }}</span>
+                </div>
+                <sc-if value="{{ f.isInput }}" hint-placeholder-val="{{ true }}">
+                  <input type="{{ f.type }}" value="{{ f.value }}" onChange="{{ f.onChange }}" disabled="{{ f.disabled }}" style="height:44px;box-sizing:border-box;padding:0 14px;border:1px solid #BBBBBB;border-radius:8px;font:inherit;font-size:var(--web-input-size);color:#222222;background:{{ f.inputBg }};"></input>
+                </sc-if>
+                <sc-if value="{{ f.isArea }}" hint-placeholder-val="{{ false }}">
+                  <textarea value="{{ f.value }}" onChange="{{ f.onChange }}" rows="4" style="box-sizing:border-box;padding:12px 14px;border:1px solid #BBBBBB;border-radius:8px;font:inherit;font-size:var(--web-input-size);line-height:1.5;color:#222222;background:#FFFFFF;resize:vertical;"></textarea>
+                </sc-if>
+                <sc-if value="{{ f.isChoice }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                    <sc-for list="{{ f.options }}" as="o" hint-placeholder-count="4">
+                      <button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.pressed }}" style="font-family:inherit;min-height:44px;padding:0 18px;border-radius:8px;font-size:var(--web-small-size);color:#222222;background:{{ o.bg }};border:1px solid {{ o.border }};cursor:pointer;">{{ o.label }}</button>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ f.hasUnknown }}" hint-placeholder-val="{{ false }}">
+                  <label style="display:flex;gap:10px;align-items:center;font-size:var(--web-small-size);color:#666666;cursor:pointer;min-height:32px;"><input type="checkbox" checked="{{ f.unknown }}" onChange="{{ f.toggleUnknown }}"></input>Not known yet</label>
+                </sc-if>
+              </div>
+            </sc-for>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;border-top:1px solid #DDDDDD;padding-top:24px;">
+              <sc-if value="{{ hasBack }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ back }}" style="font-family:inherit;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border-radius:var(--cta-radius,8px);font-size:var(--cta-font,16px);background:#FFFFFF;color:#222222;border:1px solid #BBBBBB;cursor:pointer;">Back</button></sc-if>
+              <button type="button" onClick="{{ next }}" style="font-family:inherit;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border-radius:var(--cta-radius,8px);font-size:var(--cta-font,16px);background:#4F4F4E;color:#F4F4F4;border:none;cursor:pointer;">{{ nextLabel }}</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isReview }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:24px;">
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Step 8 of 8</div>
+              <h2 style="margin:0;font-size:var(--web-h2card-size);font-weight:300;line-height:1.15;color:#252525;">Review</h2>
+              <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#666666;">Summary, missing information and unresolved conditions.</p>
+            </div>
+            <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:4px;">
+              <sc-for list="{{ summary }}" as="r" hint-placeholder-count="8">
+                <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:10px 0;border-bottom:1px solid #DDDDDD;font-size:var(--web-small-size);line-height:var(--web-small-lh);">
+                  <span style="color:#898989;">{{ r.k }}</span><span style="color:{{ r.color }};">{{ r.v }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <sc-if value="{{ hasMissing }}" hint-placeholder-val="{{ false }}">
+              <div style="border:1px solid #BBBBBB;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;">
+                <div style="font-size:var(--web-h3-size);font-weight:300;color:#4F4F4E;">Missing required information</div>
+                <sc-for list="{{ missing }}" as="m" hint-placeholder-count="2"><button type="button" onClick="{{ m.go }}" style="font-family:inherit;text-align:left;background:none;border:none;padding:6px 0;min-height:32px;cursor:pointer;font-size:var(--web-small-size);color:#4F4F4E;text-decoration:underline;text-underline-offset:3px;">{{ m.label }}</button></sc-for>
+              </div>
+            </sc-if>
+            <div style="border:1px solid #DDDDDD;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;">
+              <div style="font-size:var(--web-h3-size);font-weight:300;color:#4F4F4E;">Unresolved conditions</div>
+              <p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#666666;">Marked as pending in the private draft. Essential conditions are resolved with STRØHM.ENERGY before public launch.</p>
+              <sc-for list="{{ pending }}" as="p" hint-placeholder-count="4"><div style="display:flex;gap:12px;align-items:baseline;font-size:var(--web-small-size);color:#4F4F4E;padding:4px 0;"><span style="width:8px;height:8px;border-radius:50%;background:#FFEB9E;flex:none;"></span>{{ p }}</div></sc-for>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;border-top:1px solid #DDDDDD;padding-top:24px;">
+              <button type="button" onClick="{{ back }}" style="font-family:inherit;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border-radius:var(--cta-radius,8px);font-size:var(--cta-font,16px);background:#FFFFFF;color:#222222;border:1px solid #BBBBBB;cursor:pointer;">Back</button>
+              <button type="button" onClick="{{ showDraft }}" style="font-family:inherit;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border-radius:var(--cta-radius,8px);font-size:var(--cta-font,16px);background:#FFFFFF;color:#222222;border:1px solid #222222;cursor:pointer;">View draft campaign page</button>
+              <button type="button" onClick="{{ submit }}" disabled="{{ cannotSubmit }}" style="font-family:inherit;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border-radius:var(--cta-radius,8px);font-size:var(--cta-font,16px);background:{{ submitBg }};color:#F4F4F4;border:none;cursor:{{ submitCursor }};">Submit for review</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isDraft }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:24px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B07818;">Private draft · not published</div>
+            <div style="background:#F4F4F4;border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:16px;">
+              <h2 style="margin:0;font-size:var(--web-h2card-size);font-weight:300;line-height:1.15;color:#252525;">{{ draftTitle }}</h2>
+              <div style="font-size:var(--web-small-size);color:#666666;">Organised by {{ draftOrganiser }} · Status: {{ draftStatus }}</div>
+              <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#4F4F4E;white-space:pre-wrap;">{{ draftInvite }}</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <sc-for list="{{ draftRows }}" as="r" hint-placeholder-count="9">
+                <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;padding:12px 0;border-bottom:1px solid #DDDDDD;font-size:var(--web-small-size);line-height:var(--web-small-lh);">
+                  <span style="color:#898989;">{{ r.k }}</span><span style="color:{{ r.color }};">{{ r.v }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <button type="button" onClick="{{ toReview }}" style="font-family:inherit;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border-radius:var(--cta-radius,8px);font-size:var(--cta-font,16px);background:#FFFFFF;color:#222222;border:1px solid #BBBBBB;cursor:pointer;">Back to review</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:24px;">
+            <div style="background:#F4F4F4;border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:12px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B07818;">Prototype · nothing was sent</div>
+              <div style="font-size:var(--web-h3-size);font-weight:300;color:#4F4F4E;line-height:var(--web-h3-lh);">Submitted for review.</div>
+              <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#666666;">In a working service, this project would now wait for review by STRØHM.ENERGY. It is not published, no order is placed and no discount is guaranteed.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0;">
+              <sc-for list="{{ nextSteps }}" as="n" hint-placeholder-count="4">
+                <div style="display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;padding:16px 0;border-bottom:1px solid #DDDDDD;">
+                  <span style="font-size:var(--web-small-size);color:#898989;font-variant-numeric:tabular-nums;">{{ n.n }}</span>
+                  <div style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-small-size);font-weight:700;color:#4F4F4E;">{{ n.t }}</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#666666;">{{ n.d }}</span></div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <button type="button" onClick="{{ reopen }}" style="font-family:inherit;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border-radius:var(--cta-radius,8px);font-size:var(--cta-font,16px);background:#FFFFFF;color:#222222;border:1px solid #BBBBBB;cursor:pointer;">Back to the project</button>
+              <button type="button" onClick="{{ reset }}" style="font-family:inherit;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border-radius:var(--cta-radius,8px);font-size:var(--cta-font,16px);background:#FFFFFF;color:#222222;border:1px solid #BBBBBB;cursor:pointer;">Clear this prototype</button>
+            </div>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="ReachSpecialist" brand="PACT" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="system" brand="PACT" accent="#222222" hint-size="100%,520px"></dc-import>
+  <div style="height:48px;"></div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const KEY = "pact-start-project-prototype-v1";
+const STEPS = [
+  { title: "Organiser", help: "Identified project contact.", fields: [
+    ["name", "Name", "text", true], ["org", "Organisation, where applicable", "text", false], ["email", "E-mail", "email", true], ["phone", "Telephone", "tel", false],
+    ["otype", "Organiser type", "choice", true, ["Resident", "Association", "Company", "Municipality", "Other"], false] ] },
+  { title: "Participants", help: "Clear participant eligibility.", fields: [
+    ["audience", "Who can take part", "choice", true, ["Households", "Businesses", "Association members", "Another defined audience"], true], ["audNote", "Describe the audience, if needed", "area", false] ] },
+  { title: "Location", help: "Campaign coverage.", fields: [
+    ["country", "Country", "text", true], ["municipality", "Municipality", "text", false], ["area", "Postcodes or defined area", "area", false] ] },
+  { title: "Solutions", help: "Proposed purchasing scope. Technical systems per participant are not needed here.", fields: [
+    ["solutions", "Energy solutions", "choice", true, ["Solar", "Batteries", "EV charging", "Heating", "Other supported category"], true] ] },
+  { title: "Demand", help: "Initial demand estimate.", fields: [
+    ["count", "Estimated number of participants", "number", false, null, false, true], ["reqs", "Known requirements", "area", false] ] },
+  { title: "Timing", help: "Draft schedule.", fields: [
+    ["regFrom", "Registration opens", "date", false, null, false, true], ["regTo", "Registration closes", "date", false, null, false, true], ["delivery", "Preferred delivery or installation period", "text", false, null, false, true] ] },
+  { title: "Campaign explanation", help: "Draft public description.", fields: [
+    ["title", "Project title", "text", true], ["purpose", "Purpose", "area", true], ["invite", "Invitation text", "area", false] ] },
+];
+const PENDING = ["Prices and conditions: confirmed before launch", "Supplier and installer selection", "How technical proposals will be prepared", "What happens if the campaign does not proceed"];
+const ALL = STEPS.flatMap((s, i) => s.fields.map((f) => ({ key: f[0], label: f[1], req: f[3], step: i })));
+
+class Component extends DCLogic {
+  state = { step: 0, view: "form", v: {}, unknown: {}, status: "Draft" };
+  componentDidMount() { try { const s = JSON.parse(localStorage.getItem(KEY) || "null"); if (s) this.setState(s); } catch (e) {} }
+  save(patch) { if (this.state.status === "Submitted for review" && (patch.v || patch.unknown)) return; this.setState(patch, () => { try { const { step, view, v, unknown, status } = this.state; localStorage.setItem(KEY, JSON.stringify({ step, view, v, unknown, status })); } catch (e) {} }); }
+  val(k) { return this.state.v[k]; }
+  filled(k) { const x = this.val(k); return Array.isArray(x) ? x.length > 0 : !!(x && String(x).trim()); }
+  show(k) { if (this.state.unknown[k]) return "Not known yet"; const x = this.val(k); return Array.isArray(x) ? x.join(", ") : (x || ""); }
+  stepDone(i) { return STEPS[i].fields.every((f) => !f[3] || this.filled(f[0])); }
+  renderVals() {
+    const s = this.state, view = s.view, st = s.step;
+    const missing = ALL.filter((f) => f.req && !this.filled(f.key));
+    const go = (i) => () => this.save({ step: i, view: i === 7 ? "review" : "form" });
+    const touched = (i) => STEPS[i].fields.some((f) => this.filled(f[0]) || s.unknown[f[0]]);
+    const steps = STEPS.map((x, i) => ({ n: String(i + 1).padStart(2, "0"), label: x.title, go: go(i),
+      bg: view === "form" && st === i ? "#F4F4F4" : "#FFFFFF", weight: view === "form" && st === i ? 700 : 400,
+      mark: this.stepDone(i) && touched(i) ? "Complete" : (touched(i) ? "In progress" : ""), markColor: "#898989" }))
+      .concat([{ n: "08", label: "Review", go: go(7), bg: view !== "form" ? "#F4F4F4" : "#FFFFFF", weight: view !== "form" ? 700 : 400, mark: s.status === "Submitted for review" ? "Submitted" : "", markColor: "#898989" }]);
+    const cur = STEPS[Math.min(st, 6)];
+    const fields = cur.fields.map((f) => {
+      const [key, label, type, req, opts, multi, unk] = f; const unknown = !!s.unknown[key]; const value = this.val(key);
+      return { label, req: req ? "Required" : "Can be supplied later", reqColor: req ? "#4F4F4E" : "#898989",
+        isInput: !["area", "choice"].includes(type), isArea: type === "area", isChoice: type === "choice", type,
+        value: unknown ? "" : (value || ""), disabled: unknown, inputBg: unknown ? "#F4F4F4" : "#FFFFFF",
+        onChange: (e) => this.save({ v: { ...s.v, [key]: e.target.value } }),
+        hasUnknown: !!unk, unknown, toggleUnknown: () => this.save({ unknown: { ...s.unknown, [key]: !unknown } }),
+        options: (opts || []).map((o) => { const sel = multi ? (value || []).includes(o) : value === o;
+          return { label: o, pressed: sel ? "true" : "false", bg: sel ? "#F4F4F4" : "#FFFFFF", border: sel ? "#222222" : "#BBBBBB",
+            pick: () => { const nv = multi ? (sel ? value.filter((x) => x !== o) : [...(value || []), o]) : o; this.save({ v: { ...s.v, [key]: nv } }); } }; }) };
+    });
+    const row = (k, v, req) => ({ k, v: v || (req ? "Missing" : "Not provided"), color: v ? "#4F4F4E" : (req ? "#B07818" : "#898989") });
+    const summary = [
+      row("Organiser", [this.show("name"), this.show("org"), this.show("otype")].filter(Boolean).join(" · "), true),
+      row("Contact", [this.show("email"), this.show("phone")].filter(Boolean).join(" · "), true),
+      row("Participants", this.show("audience"), true), row("Location", [this.show("country"), this.show("municipality"), this.show("area")].filter(Boolean).join(" · "), true),
+      row("Solutions", this.show("solutions"), true), row("Estimated participants", this.show("count"), false),
+      row("Registration period", [this.show("regFrom"), this.show("regTo")].filter(Boolean).join(" to "), false), row("Delivery or installation", this.show("delivery"), false),
+      row("Project title", this.show("title"), true), row("Purpose", this.show("purpose"), true) ];
+    const P = "Pending";
+    const draftRows = [
+      row("Eligible participants", this.show("audience"), true), row("Coverage", [this.show("country"), this.show("municipality"), this.show("area")].filter(Boolean).join(" · "), true),
+      row("Product categories", this.show("solutions"), true), row("Registration dates", [this.show("regFrom"), this.show("regTo")].filter(Boolean).join(" to "), false),
+      { k: "How participation works", v: "Register interest. A personal proposal follows. Accepting a proposal and confirming an order are separate steps.", color: "#4F4F4E" },
+      { k: "Technical proposals", v: P, color: "#B07818" }, { k: "Prices and conditions", v: P + ": confirmed before launch", color: "#B07818" },
+      { k: "If the campaign does not proceed", v: P, color: "#B07818" },
+      { k: "Contact route", v: this.show("email") || "Missing", color: this.show("email") ? "#4F4F4E" : "#B07818" }, { k: "Campaign status", v: s.status, color: "#4F4F4E" } ];
+    const canSubmit = missing.length === 0;
+    return {
+      steps, fields, stepNo: st + 1, stepTitle: cur.title, stepHelp: cur.help,
+      isForm: view === "form", isReview: view === "review", isDraft: view === "draft", isDone: view === "done",
+      hasBack: st > 0, back: () => view === "review" ? this.save({ view: "form", step: 6 }) : this.save({ step: Math.max(0, st - 1) }),
+      next: () => st >= 6 ? this.save({ view: "review", step: 7 }) : this.save({ step: st + 1 }), nextLabel: st >= 6 ? "Review project" : "Next",
+      summary, missing: missing.map((m) => ({ label: STEPS[m.step].title + ": " + m.label, go: go(m.step) })), hasMissing: missing.length > 0, pending: PENDING,
+      showDraft: () => this.save({ view: "draft" }), toReview: () => this.save({ view: "review" }),
+      cannotSubmit: !canSubmit, submitBg: canSubmit ? "#4F4F4E" : "#BBBBBB", submitCursor: canSubmit ? "pointer" : "not-allowed",
+      submit: () => { if (canSubmit) this.save({ view: "done", status: "Submitted for review" }); },
+      draftTitle: this.show("title") || "Project title missing", draftOrganiser: this.show("org") || this.show("name") || "organiser missing", draftStatus: s.status, draftInvite: this.show("invite") || this.show("purpose") || "",
+      draftRows,
+      nextSteps: [
+        { n: "01", t: "Review", d: "STRØHM.ENERGY reviews the project and its conditions." },
+        { n: "02", t: "Changes required, if needed", d: "You can edit the project while it is in Draft or Changes required." },
+        { n: "03", t: "Approved for launch", d: "Only STRØHM.ENERGY approves publication. Essential conditions are resolved first." },
+        { n: "04", t: "Open for registration", d: "Participants register interest. Interest, proposal acceptance and order confirmation are separate events." } ],
+      reopen: () => this.save({ view: "review" }),
+      reset: () => { try { localStorage.removeItem(KEY); } catch (e) {} this.setState({ step: 0, view: "form", v: {}, unknown: {}, status: "Draft" }); },
+    };
+  }
+}
+</script>
+</body>
+</html>

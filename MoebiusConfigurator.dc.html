@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="moebius-configurator-data.js"></script>
+<style> input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible { outline:2px solid var(--color-text-primary); outline-offset:2px; } </style>
+</helmet>
+<div style="font-family:var(--font-web);color:var(--color-text-primary);">
+<!-- DEPTH-1118: body of the System Configurator page, unchanged -->
+<section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 24px;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:16px;display:flex;gap:6px;flex-wrap:wrap;"><a href="MOEBIUS - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">MOEBIUS</a><span>&#8250;</span><a href="MOEBIUS - PRODUCT - Products - EN.dc.html" style="color:var(--color-grey-70);">PRODUCTS</a><span>&#8250;</span><span style="color:var(--color-text-primary);">SYSTEM CONFIGURATOR</span></div>
+    <a href="KALK - SYSTEM - Overview - EN.dc.html" style="display:inline-flex;align-items:center;gap:6px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:12px;" style-hover="color:#8E6F93;">Powered by KALK</a>
+    <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;text-wrap:pretty;">Every limit that was checked is shown with the result.</p>
+    <div style="display:flex;gap:10px;align-items:flex-start;max-width:760px;background:#FFFFFF;border-radius:8px;padding:12px 16px;font-size:12px;font-weight:300;line-height:1.5;">
+      <span style="width:10px;height:10px;border-radius:5px;background:var(--color-brand-moebius);flex:none;margin-top:3px;"></span>
+      <span>PROTOTYPE. Maximum DC voltage, MPPT voltage range, input and short-circuit current, battery power and ANDO electrical values are not yet in the product data. Those checks show "Technical value requires confirmation." and no design is marked validated until the datasheets are added.</span>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 16px;box-sizing:border-box;">
+    <div style="display:flex;gap:4px;overflow-x:auto;padding-bottom:4px;" role="list" aria-label="Progress">
+      <sc-for list="{{ progress }}" as="p" hint-placeholder-count="12">
+        <button type="button" role="listitem" onClick="{{ p.go }}" disabled="{{ p.locked }}" aria-current="{{ p.current }}" style="flex:1 0 72px;display:flex;flex-direction:column;gap:6px;padding:0;border:none;background:none;cursor:pointer;text-align:left;font-family:inherit;">
+          <span style="display:block;height:2px;width:100%;background:{{ p.bar }};"></span>
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ p.color }};white-space:nowrap;">{{ p.label }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:16px var(--web-side) 80px;box-sizing:border-box;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;">
+    <div style="flex:3 1 560px;min-width:0;display:flex;flex-direction:column;gap:16px;">
+
+      <sc-if value="{{ isQuestion }}" hint-placeholder-val="{{ true }}">
+        <div style="background:#FFFFFF;border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:28px;">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Step {{ stepNum }} of {{ stepCount }}</div>
+            <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ stepTitle }}</h2>
+            <sc-if value="{{ stepSub }}" hint-placeholder-val="{{ false }}"><p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ stepSub }}</p></sc-if>
+          </div>
+
+          <sc-if value="{{ isModule }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;">
+              <sc-for list="{{ andoCards }}" as="c" hint-placeholder-count="8">
+                <button type="button" onClick="{{ c.pick }}" aria-pressed="{{ c.sel }}" style="font-family:inherit;text-align:left;padding:16px;border-radius:8px;border:1px solid {{ c.border }};background:{{ c.bg }};color:var(--color-text-primary);cursor:pointer;display:flex;flex-direction:column;gap:8px;">
+                  <span style="font-size:14px;font-weight:700;">{{ c.model }}</span>
+                  <span style="font-size:20px;"><span style="font-weight:700;">{{ c.wp }}</span> <span style="font-weight:300;">Wp</span></span>
+                  <span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-grey-70);">Voc, Vmp, Isc, Imp, TC Voc, efficiency, dimensions: technical value requires confirmation.</span>
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isLayout }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <sc-for list="{{ groupRows }}" as="g" hint-placeholder-count="2">
+                <div style="background:var(--color-card-moebius);border-radius:8px;padding:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;align-items:end;">
+                  <div style="grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:12px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Group {{ g.num }}</span><sc-if value="{{ g.canRemove }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ g.remove }}" style="font-family:inherit;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);border:none;background:none;color:var(--color-text-primary);cursor:pointer;text-decoration:underline;padding:0;">Remove</button></sc-if></div>
+                  <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Panels<input type="number" min="1" value="{{ g.n }}" onChange="{{ g.onN }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 12px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input></label>
+                  <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Orientation<select value="{{ g.orient }}" onChange="{{ g.onOrient }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 8px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);font-weight:var(--web-input-weight);"><sc-for list="{{ orientOpts }}" as="o" hint-placeholder-count="11"><option value="{{ o }}">{{ o }}</option></sc-for></select></label>
+                  <sc-if value="{{ g.isCustomAz }}" hint-placeholder-val="{{ false }}"><label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Azimuth (°)<input type="number" min="-180" max="180" value="{{ g.az }}" onChange="{{ g.onAz }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 12px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input></label></sc-if>
+                  <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Tilt<select value="{{ g.tilt }}" onChange="{{ g.onTilt }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 8px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);font-weight:var(--web-input-weight);"><sc-for list="{{ tiltOpts }}" as="o" hint-placeholder-count="11"><option value="{{ o }}">{{ o }}</option></sc-for></select></label>
+                  <sc-if value="{{ g.isCustomTilt }}" hint-placeholder-val="{{ false }}"><label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Tilt (°)<input type="number" min="0" max="90" value="{{ g.tiltC }}" onChange="{{ g.onTiltC }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 12px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input></label></sc-if>
+                  <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Shading<select value="{{ g.shade }}" onChange="{{ g.onShade }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 8px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);font-weight:var(--web-input-weight);"><sc-for list="{{ shadeOpts }}" as="o" hint-placeholder-count="5"><option value="{{ o }}">{{ o }}</option></sc-for></select></label>
+                </div>
+              </sc-for>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+                <button type="button" onClick="{{ addGroup }}" style="font-family:inherit;font-size:var(--cta-font);height:var(--cta-height);padding:0 var(--cta-pad-x);border:1px solid var(--color-grey-40);border-radius:var(--cta-radius);background:#FFFFFF;color:var(--color-text-primary);cursor:pointer;" style-hover="border-color:var(--color-text-primary);">Add roof surface</button>
+                <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Assigned <span style="font-weight:700;">{{ groupSum }}</span> of <span style="font-weight:700;">{{ totalPanels }}</span> panels</span>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-for list="{{ blocks }}" as="b" hint-placeholder-count="2">
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <sc-if value="{{ b.title }}" hint-placeholder-val="{{ true }}"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ b.title }}</div></sc-if>
+              <sc-if value="{{ b.isChoice }}" hint-placeholder-val="{{ true }}">
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;">
+                  <sc-for list="{{ b.options }}" as="o" hint-placeholder-count="6">
+                    <button type="button" onClick="{{ o.onClick }}" aria-pressed="{{ o.sel }}" style="font-family:inherit;text-align:left;min-height:48px;padding:12px 16px;border-radius:8px;border:1px solid {{ o.border }};background:{{ o.bg }};color:var(--color-text-primary);font-size:14px;font-weight:{{ o.weight }};line-height:1.35;cursor:pointer;display:flex;gap:10px;align-items:center;">
+                      <span style="width:14px;height:14px;flex:none;border:1px solid var(--color-text-primary);border-radius:{{ o.radius }};background:{{ o.dot }};box-sizing:border-box;"></span><span>{{ o.label }}</span>
+                    </button>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ b.isInput }}" hint-placeholder-val="{{ false }}">
+                <label style="display:flex;gap:8px;align-items:center;max-width:360px;">
+                  <input type="{{ b.inputType }}" value="{{ b.value }}" onChange="{{ b.onChange }}" placeholder="{{ b.placeholder }}" aria-label="{{ b.title }}" step="any" style="flex:1;min-width:0;font-family:inherit;font-size:var(--web-input-size);height:48px;padding:0 16px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);box-sizing:border-box;font-weight:var(--web-input-weight);"></input>
+                  <sc-if value="{{ b.unit }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-small-size);font-weight:300;min-width:40px;line-height:var(--web-small-lh);">{{ b.unit }}</span></sc-if>
+                </label>
+              </sc-if>
+              <sc-if value="{{ b.isFile }}" hint-placeholder-val="{{ false }}">
+                <input type="file" accept=".pdf,.jpg,.jpeg,.png" onChange="{{ b.onChange }}" aria-label="Datasheet" style="font-family:inherit;font-size:14px;"></input>
+              </sc-if>
+              <sc-if value="{{ b.isFields }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;">
+                  <sc-for list="{{ b.fields }}" as="x" hint-placeholder-count="12">
+                    <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);"><span>{{ x.label }} <span style="font-weight:700;color:{{ x.flagColor }};">{{ x.flag }}</span></span><input type="{{ x.type }}" step="any" value="{{ x.value }}" onChange="{{ x.onChange }}" placeholder="{{ x.ph }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 12px;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input></label>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ b.isNote }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;gap:10px;align-items:flex-start;background:var(--color-card-moebius);border-radius:8px;padding:12px 16px;font-size:13px;font-weight:300;line-height:1.5;"><span style="width:10px;height:10px;border-radius:5px;background:{{ b.color }};flex:none;margin-top:4px;"></span><span>{{ b.text }}</span></div>
+              </sc-if>
+            </div>
+          </sc-for>
+
+          <div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--color-divider);padding-top:20px;flex-wrap:wrap;">
+            <button type="button" onClick="{{ back }}" disabled="{{ noBack }}" style="font-family:inherit;font-size:var(--cta-font);height:var(--cta-height);padding:0 var(--cta-pad-x);border:1px solid var(--color-grey-40);border-radius:var(--cta-radius);background:#FFFFFF;color:var(--color-text-primary);cursor:pointer;" style-hover="border-color:var(--color-text-primary);">Back</button>
+            <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+              <sc-if value="{{ nextHint }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);">{{ nextHint }}</span></sc-if>
+              <button type="button" onClick="{{ next }}" disabled="{{ noNext }}" style="font-family:inherit;font-size:var(--cta-font);height:48px;padding:0 32px;border:none;border-radius:8px;background:{{ nextBg }};color:#FFFFFF;cursor:pointer;font-weight:var(--web-btn-weight);" style-hover="background:#F1931B;">{{ nextLabel }}</button>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="background:#FFFFFF;border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:20px;">
+            <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Best match</div>
+                <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;"><span style="font-weight:300;">MOEBIUS</span> <span style="font-weight:700;">{{ best.name }}</span></h2>
+                <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ best.line }}</div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:center;background:var(--color-card-moebius);border-radius:8px;padding:10px 14px;"><span style="width:12px;height:12px;border-radius:6px;background:{{ overall.color }};"></span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ overall.label }}</span></div>
+            </div>
+            <sc-if value="{{ noMatch }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ noMatchText }}</div></sc-if>
+            <div>
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;margin-bottom:8px;">Why it works</div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+                <sc-for list="{{ why }}" as="w" hint-placeholder-count="10">
+                  <div style="background:#F4F4F4;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);">{{ w.k }}</span><span style="font-size:15px;font-weight:700;color:{{ w.color }};">{{ w.v }}</span></div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#FFFFFF;border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Technical limits checked</div>
+            <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:12px;font-weight:300;"><span style="display:flex;gap:6px;align-items:center;"><span style="width:10px;height:10px;border-radius:5px;background:#3D8B40;"></span>Technically validated</span><span style="display:flex;gap:6px;align-items:center;"><span style="width:10px;height:10px;border-radius:5px;background:var(--color-brand-moebius);"></span>Attention or requires confirmation</span><span style="display:flex;gap:6px;align-items:center;"><span style="width:10px;height:10px;border-radius:5px;background:#C43C3C;"></span>Technically incompatible</span></div>
+            <div style="display:flex;flex-direction:column;border-top:1px solid var(--color-divider);">
+              <sc-for list="{{ checks }}" as="c" hint-placeholder-count="12">
+                <div style="display:grid;grid-template-columns:16px minmax(0,1fr) minmax(0,1.4fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--color-divider);align-items:start;">
+                  <span style="width:10px;height:10px;border-radius:5px;background:{{ c.color }};margin-top:4px;"></span>
+                  <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ c.label }}</span>
+                  <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ c.detail }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="background:#FFFFFF;border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:16px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">String design</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;">
+              <sc-for list="{{ diagram }}" as="d" hint-placeholder-count="2">
+                <div style="display:flex;flex-direction:column;align-items:stretch;gap:0;">
+                  <div style="border:1px solid var(--color-text-primary);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">{{ d.roof }}</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ d.panels }}</span></div>
+                  <div style="height:16px;width:1px;background:var(--color-text-primary);margin:0 auto;"></div>
+                  <div style="border:1px solid var(--color-grey-40);border-radius:8px;padding:10px 12px;font-size:var(--web-small-size);font-weight:300;text-align:center;line-height:var(--web-small-lh);">{{ d.string }}</div>
+                  <div style="height:16px;width:1px;background:var(--color-text-primary);margin:0 auto;"></div>
+                  <div style="border:1px solid var(--color-grey-40);border-radius:8px;padding:10px 12px;font-size:var(--web-small-size);font-weight:700;text-align:center;color:{{ d.mpptColor }};line-height:var(--web-small-lh);">{{ d.mppt }}</div>
+                  <div style="height:16px;width:1px;background:var(--color-text-primary);margin:0 auto;"></div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+              <div style="width:100%;border:1px solid var(--color-text-primary);border-radius:8px;padding:14px;text-align:center;font-size:14px;"><span style="font-weight:300;">MOEBIUS</span> <span style="font-weight:700;">{{ best.name }}</span></div>
+              <sc-if value="{{ bat.show }}" hint-placeholder-val="{{ false }}">
+                <div style="height:16px;width:1px;background:var(--color-text-primary);"></div>
+                <div style="width:100%;border:1px solid var(--color-grey-40);border-radius:8px;padding:12px;text-align:center;font-size:14px;"><span style="font-weight:300;">FLUXX</span> <span style="font-weight:700;">{{ bat.best.name }}</span></div>
+              </sc-if>
+              <div style="height:16px;width:1px;background:var(--color-text-primary);"></div>
+              <div data-cols="3" style="width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;--cg:8px;">
+                <div style="border:1px solid var(--color-grey-40);border-radius:8px;padding:10px;text-align:center;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Grid</div>
+                <div style="border:1px solid var(--color-grey-40);border-radius:8px;padding:10px;text-align:center;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">House</div>
+                <div style="border:1px solid var(--color-grey-40);border-radius:8px;padding:10px;text-align:center;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">EMON</div>
+              </div>
+            </div>
+          </div>
+
+          <sc-if value="{{ bat.show }}" hint-placeholder-val="{{ false }}">
+            <div style="background:#FFFFFF;border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:16px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">FLUXX battery</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Target usable capacity <span style="font-weight:700;">{{ bat.targetTxt }}</span>. {{ bat.basis }}</div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;">
+                <sc-for list="{{ bat.cards }}" as="k" hint-placeholder-count="3">
+                  <div style="background:{{ k.bg }};border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:10px;">
+                    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">{{ k.role }}</div>
+                    <div style="font-size:18px;"><span style="font-weight:300;">FLUXX</span> <span style="font-weight:700;">{{ k.name }}</span></div>
+                    <sc-for list="{{ k.rows }}" as="r" hint-placeholder-count="7">
+                      <div style="display:flex;justify-content:space-between;gap:12px;font-size:12px;border-top:1px solid var(--color-divider);padding-top:6px;"><span style="font-weight:300;">{{ r.k }}</span><span style="font-weight:700;text-align:right;color:{{ r.color }};">{{ r.v }}</span></div>
+                    </sc-for>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ hasAlts }}" hint-placeholder-val="{{ false }}">
+            <div style="background:#FFFFFF;border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:12px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Alternative inverters</div>
+              <sc-for list="{{ alts }}" as="x" hint-placeholder-count="3">
+                <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr) auto;gap:16px;padding:14px 0;border-top:1px solid var(--color-divider);align-items:center;">
+                  <span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);"><span style="font-weight:300;">MOEBIUS</span> <span style="font-weight:700;">{{ x.name }}</span></span>
+                  <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ x.diff }}</span>
+                  <button type="button" onClick="{{ x.use }}" style="font-family:inherit;font-size:var(--cta-font);height:var(--cta-height);padding:0 var(--cta-pad-x);border:1px solid var(--color-grey-40);border-radius:var(--cta-radius);background:#FFFFFF;color:var(--color-text-primary);cursor:pointer;" style-hover="border-color:var(--color-text-primary);">Compare</button>
+                </div>
+              </sc-for>
+              <sc-if value="{{ altPicked }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ clearAlt }}" style="font-family:inherit;font-size:var(--web-tag-size);border:none;background:none;color:var(--color-text-primary);cursor:pointer;text-decoration:underline;padding:0;align-self:flex-start;font-weight:var(--web-tag-weight);">Back to best match</button></sc-if>
+            </div>
+          </sc-if>
+
+          <div style="background:#FFFFFF;border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Project summary</div>
+            <div style="display:flex;flex-direction:column;border-top:1px solid var(--color-divider);">
+              <sc-for list="{{ summary }}" as="s" hint-placeholder-count="10">
+                <div data-stack="1" style="display:grid;grid-template-columns:minmax(120px,0.6fr) minmax(0,1.4fr);gap:16px;padding:10px 0;border-bottom:1px solid var(--color-divider);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">{{ s.k }}</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);white-space:pre-line;">{{ s.v }}</span></div>
+              </sc-for>
+            </div>
+            <details style="margin-top:8px;">
+              <summary style="font-size:var(--web-body-size);font-weight:500;cursor:pointer;padding:8px 0;">Show technical calculations</summary>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:8px;">
+                <sc-for list="{{ calc }}" as="c" hint-placeholder-count="18">
+                  <div style="background:#F4F4F4;border-radius:8px;padding:10px 12px;display:flex;justify-content:space-between;gap:12px;"><span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);">{{ c.k }}</span><span style="font-size:12px;font-weight:700;text-align:right;color:{{ c.color }};">{{ c.v }}</span></div>
+                </sc-for>
+              </div>
+              <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);margin-top:8px;">{{ assumptions }}</div>
+            </details>
+          </div>
+
+          <div style="background:#FFFFFF;border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:12px;">
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;">
+              <a href="{{ quoteHref }}" style="display:flex;align-items:center;justify-content:center;height:var(--cta-height);border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);padding:0 var(--cta-pad-x);" style-hover="background:#5F5E5E;color:#F4F4F4;">Request quotation</a>
+              <button type="button" onClick="{{ onPdf }}" style="font-family:inherit;font-size:var(--cta-font);height:var(--cta-height);border:1px solid var(--color-grey-40);border-radius:var(--cta-radius);background:#FFFFFF;color:var(--color-text-primary);cursor:pointer;padding:0 var(--cta-pad-x);" style-hover="border-color:var(--color-text-primary);">Download configuration</button>
+              <a href="{{ mailHref }}" style="display:flex;align-items:center;justify-content:center;height:var(--cta-height);border:1px solid var(--color-grey-40);border-radius:var(--cta-radius);font-size:var(--cta-font);box-sizing:border-box;padding:0 var(--cta-pad-x);" style-hover="border-color:var(--color-text-primary);">Email configuration</a>
+              <button type="button" onClick="{{ onSave }}" style="font-family:inherit;font-size:var(--cta-font);height:var(--cta-height);border:1px solid var(--color-grey-40);border-radius:var(--cta-radius);background:#FFFFFF;color:var(--color-text-primary);cursor:pointer;padding:0 var(--cta-pad-x);" style-hover="border-color:var(--color-text-primary);">Save project</button>
+              <a href="STROHM.ENERGY - SITE - Find an Installer - EN.dc.html" style="display:flex;align-items:center;justify-content:center;height:var(--cta-height);border:1px solid var(--color-grey-40);border-radius:var(--cta-radius);font-size:var(--cta-font);box-sizing:border-box;padding:0 var(--cta-pad-x);" style-hover="border-color:var(--color-text-primary);">Find installer</a>
+            </div>
+            <div style="display:flex;gap:20px;flex-wrap:wrap;padding-top:8px;">
+              <button type="button" onClick="{{ goAlts }}" style="font-family:inherit;font-size:var(--web-tag-size);border:none;background:none;color:var(--color-text-primary);cursor:pointer;text-decoration:underline;padding:0;font-weight:var(--web-tag-weight);">Compare another inverter</button>
+              <button type="button" onClick="{{ goModule }}" style="font-family:inherit;font-size:var(--web-tag-size);border:none;background:none;color:var(--color-text-primary);cursor:pointer;text-decoration:underline;padding:0;font-weight:var(--web-tag-weight);">Change PV panel</button>
+              <button type="button" onClick="{{ goBattery }}" style="font-family:inherit;font-size:var(--web-tag-size);border:none;background:none;color:var(--color-text-primary);cursor:pointer;text-decoration:underline;padding:0;font-weight:var(--web-tag-weight);">Change battery</button>
+              <button type="button" onClick="{{ restart }}" style="font-family:inherit;font-size:var(--web-tag-size);border:none;background:none;color:var(--color-text-primary);cursor:pointer;text-decoration:underline;padding:0;font-weight:var(--web-tag-weight);">Start again</button>
+            </div>
+            <sc-if value="{{ msg }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ msg }}</div></sc-if>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+
+    <aside style="flex:1 1 260px;background:var(--color-card-moebius);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0;position:sticky;top:128px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Live summary</div>
+      <sc-for list="{{ live }}" as="l" hint-placeholder-count="8">
+        <div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--color-divider);padding-top:8px;"><span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);">{{ l.k }}</span><span style="font-size:var(--web-small-size);font-weight:700;text-align:right;line-height:var(--web-small-lh);">{{ l.v }}</span></div>
+      </sc-for>
+    </aside>
+  </section>
+
+  
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const TBC = "Technical value requires confirmation.";
+const G = "#3D8B40", O = "var(--color-brand-moebius)", R = "#C43C3C", ACC = "#F1931B";
+const SAMPLE_YIELD = 900, DCAC = 1.2, DCAC_HIGH = 1.5, NIGHT_SHARE = 0.6;
+const PROJECT = ["Residential solar system", "Residential solar + battery", "Commercial solar system", "Commercial solar + battery", "Off-grid system", "Backup / EPS system", "Retrofit battery to existing PV", "Replace existing inverter", "Expand an existing PV system", "Not sure"];
+const USAGE = ["Grid-connected solar only", "Solar + battery", "Backup during grid failure", "Whole-home backup", "Essential-load backup", "Off-grid operation", "Charge battery from grid", "Charge battery from solar", "Zero export", "Export to grid", "Dynamic tariff optimisation", "Peak shaving", "Self-consumption optimisation", "EV integration", "Heat-pump integration", "EMON energy management", "Generator integration", "Future battery addition", "Future PV expansion", "Not sure"];
+const ORIENT = ["North", "North-east", "East", "South-east", "South", "South-west", "West", "North-west", "Flat roof", "East-west flat roof", "Custom azimuth"];
+const TILT = ["0°", "5°", "10°", "15°", "20°", "25°", "30°", "35°", "40°", "45°", "Custom"];
+const SHADE = ["None", "Light", "Moderate", "Heavy", "Unknown"];
+const CONN = { "1 × 25 A": [1, 25], "1 × 40 A": [1, 40], "3 × 25 A": [3, 25], "3 × 40 A": [3, 40], "3 × 63 A": [3, 63] };
+const LABELS = { project: "Project", grid: "Grid", module: "Module", count: "Panels", layout: "Layout", strings: "Strings", temp: "Temperature", usage: "Use", existing: "Installation", load: "Load", backup: "Backup", battery: "Battery", result: "Result" };
+const blank = () => ({ project: null, country: "", phase: null, conn: null, connA: "", moduleSrc: null, ando: null, fileName: "", manualOk: null,
+  m: { manufacturer: "", model: "", wp: "", voc: "", vmp: "", isc: "", imp: "", tcVoc: "", tcPmax: "", vsys: "", face: "", dims: "" },
+  total: 18, groups: [{ n: 18, orient: "South", az: "", tilt: "35°", tiltC: "", shade: "None" }], stringMode: null, ms: {}, tmin: -10,
+  usage: [], install: null, ex: { inv: "", ac: "", pv: "", batt: "", meter: "" }, loadMode: null, annual: "", loads: [], peak: "",
+  bLoads: [], bHours: null, bKw: "", offDaily: "", offPeak: "", offSeason: null, gen: null, autonomy: "", battery: null, goals: [] });
+const num = (v) => { if (v === "" || v == null) return null; const n = +String(v).replace(",", "."); return isFinite(n) ? n : null; };
+const f = (n, d = 1) => n == null || !isFinite(n) ? "–" : n.toLocaleString("de-DE", { minimumFractionDigits: d, maximumFractionDigits: d });
+
+class Component extends DCLogic {
+  state = (() => { let s = null; try { s = JSON.parse(localStorage.getItem("moebius-configurator-project") || "null"); } catch (e) {} return { a: s?.a || blank(), step: 0, seen: s?.seen || 0, alt: null, msg: "" }; })();
+  componentDidMount() { const t = () => { if (window.MOEBIUS_CONFIG_DATA) this.forceUpdate(); else this.t = setTimeout(t, 100); }; t(); }
+  componentWillUnmount() { clearTimeout(this.t); }
+  set(path, v) { this.setState(s => { const a = JSON.parse(JSON.stringify(s.a)); const k = path.split("."); let o = a; k.slice(0, -1).forEach(x => { if (o[x] == null) o[x] = {}; o = o[x]; }); o[k[k.length - 1]] = v; return { a, alt: null, msg: "" }; }); }
+  toggle(key, v) { const cur = this.state.a[key] || []; this.set(key, cur.includes(v) ? cur.filter(x => x !== v) : [...cur, v]); }
+  steps() {
+    const a = this.state.a;
+    const backup = ["Off-grid system", "Backup / EPS system"].includes(a.project) || a.usage.some(u => /backup|Off-grid/i.test(u));
+    return ["project", "grid", "module", "count", "layout", "strings", "temp", "usage", "existing", "load", backup && "backup", "battery", "result"].filter(Boolean);
+  }
+  module() {
+    const a = this.state.a, D = window.MOEBIUS_CONFIG_DATA;
+    if (a.moduleSrc === "ando" && D && a.ando != null) return { ...D.modules[a.ando], src: "ANDO product data" };
+    if (a.moduleSrc === "upload") { const m = a.m; return { model: [m.manufacturer, m.model].filter(Boolean).join(" ") || "Uploaded module", wp: num(m.wp), voc: num(m.voc), vmp: num(m.vmp), isc: num(m.isc), imp: num(m.imp), tcVoc: num(m.tcVoc), tcPmax: num(m.tcPmax), vsys: num(m.vsys), src: "User-entered values from datasheet (not verified)" }; }
+    return null;
+  }
+  compute() {
+    const a = this.state.a, D = window.MOEBIUS_CONFIG_DATA; if (!D) return null;
+    const mod = this.module(), wp = mod?.wp ?? null;
+    const groups = a.groups.map((g, i) => ({ ...g, n: Math.max(0, Math.floor(num(g.n) || 0)), i }));
+    const panels = groups.reduce((s, g) => s + g.n, 0);
+    const kwp = wp ? panels * wp / 1000 : null;
+    const nGroups = groups.filter(g => g.n > 0).length;
+    const manual = a.stringMode === "Advanced manual configuration";
+    const layout = groups.filter(g => g.n > 0).map(g => { const ms = a.ms[g.i] || {}; const strings = manual ? Math.max(1, Math.floor(num(ms.strings) || 1)) : 1; return { ...g, strings, perString: Math.floor(g.n / strings), rest: g.n % strings, mppt: manual ? Math.max(1, Math.floor(num(ms.mppt) || g.i + 1)) : null }; });
+    let mpptNeed = manual ? new Set(layout.map(l => l.mppt)).size : nGroups;
+    // category
+    const offgrid = a.project === "Off-grid system" || a.usage.includes("Off-grid operation") || a.phase === "No grid / off-grid";
+    const wantsBatt = /battery/i.test(a.project || "") || ["Yes", "Maybe"].includes(a.battery) || a.usage.some(u => /battery|backup|Peak shaving|Dynamic tariff|Zero export/i.test(u)) || a.project === "Backup / EPS system";
+    const types = offgrid ? ["Off-grid", "Off-grid hybrid"] : wantsBatt ? ["Hybrid"] : ["String", "Hybrid"];
+    const commercial = /Commercial/.test(a.project || "");
+    const phases = a.phase === "Single phase" ? ["1P"] : a.phase === "Three phase" ? ["3P"] : ["1P", "3P"];
+    const conn = CONN[a.conn] || (a.conn === "Other" && num(a.connA) ? [a.phase === "Three phase" ? 3 : 1, num(a.connA)] : null);
+    const gridKva = conn ? conn[0] * conn[1] * 230 / 1000 : null;
+    let acTarget = kwp ? kwp / DCAC : null;
+    if (acTarget && gridKva) acTarget = Math.min(acTarget, gridKva);
+    const heavyShade = groups.some(g => g.shade === "Heavy");
+    const pool = D.inverters.filter(x => types.includes(x.type) || (heavyShade && x.type === "Micro" && !wantsBatt));
+    const scored = pool.map(x => {
+      const reasons = [];
+      if (!phases.includes(x.phase)) reasons.push("phase");
+      if (commercial ? !/Commercial|Utility/.test(x.app) : /Utility/.test(x.app)) reasons.push("application");
+      if (x.type !== "Micro") { if (x.mpptMax == null) reasons.push("mppt-unknown"); else if (x.mpptMax < mpptNeed) reasons.push("mppt"); }
+      let fit = 0;
+      if (x.type === "Micro") fit = 0.5;
+      else if (x.range && acTarget) { if (acTarget >= x.range[0] - 1e-6 && acTarget <= x.range[1] + 1e-6) fit = 1; else fit = -Math.min(Math.abs(acTarget - x.range[0]), Math.abs(acTarget - x.range[1])); }
+      else if (!x.range) reasons.push("range-unknown");
+      const hard = reasons.filter(r => ["phase", "application", "mppt"].includes(r));
+      return { x, reasons, hard, fit, score: (hard.length ? -1000 : 0) + (fit === 1 ? 100 : fit * 10) - (x.mpptMax ? (x.mpptMax - mpptNeed) : 5) + (x.status === "Available" ? 3 : 0) + (x.type === "Micro" ? -20 : 0) };
+    }).sort((p, q) => q.score - p.score);
+    const compatible = scored.filter(s => !s.hard.length && !s.reasons.includes("range-unknown"));
+    let best = compatible[0] || null;
+    if (this.state.alt) best = scored.find(s => s.x.name === this.state.alt) || best;
+    const bx = best?.x;
+    // electrical
+    const tmin = num(a.tmin) ?? -10;
+    const has = (k) => mod && mod[k] != null;
+    const maxPerString = layout.length ? Math.max(...layout.map(l => l.perString + (l.rest ? 1 : 0))) : 0;
+    const minPerString = layout.length ? Math.min(...layout.map(l => l.perString)) : 0;
+    const coldVoc = has("voc") && has("tcVoc") ? maxPerString * mod.voc * (1 + mod.tcVoc / 100 * (tmin - 25)) : null;
+    const strVmp = has("vmp") ? minPerString * mod.vmp : null;
+    const perMppt = {}; layout.forEach(l => { const k = manual ? l.mppt : l.i + 1; perMppt[k] = (perMppt[k] || 0) + l.strings; });
+    const maxParallel = Math.max(1, ...Object.values(perMppt));
+    const iscM = has("isc") ? maxParallel * mod.isc : null, impM = has("imp") ? maxParallel * mod.imp : null;
+    const acMid = bx?.range && acTarget ? Math.min(Math.max(acTarget, bx.range[0]), bx.range[1]) : null;
+    const ratio = kwp && acMid ? kwp / acMid : null;
+    // battery
+    const annual = num(a.annual);
+    const daily = annual ? annual / 365 : null;
+    const pvDaily = kwp ? kwp * SAMPLE_YIELD / 365 : null;
+    const selfC = daily && pvDaily ? Math.max(0, Math.min(daily * NIGHT_SHARE, pvDaily - daily * (1 - NIGHT_SHARE))) : null;
+    const bH = num((a.bHours || "").replace(/[^0-9]/g, "")) || null, bKw = num(a.bKw);
+    const backupKwh = bH && bKw ? bH * bKw : null;
+    const offKwh = num(a.offDaily) && num(a.autonomy) ? num(a.offDaily) * num(a.autonomy) : null;
+    const target = Math.max(selfC || 0, backupKwh || 0, offKwh || 0) || null;
+    const showBatt = ["Yes", "Maybe"].includes(a.battery) || /battery/i.test(a.project || "");
+    return { a, mod, wp, groups, layout, panels, kwp, nGroups, mpptNeed, manual, offgrid, wantsBatt, types, phases, gridKva, acTarget, scored, compatible, best, bx, tmin, coldVoc, strVmp, iscM, impM, perMppt, maxParallel, maxPerString, minPerString, ratio, acMid, daily, pvDaily, selfC, backupKwh, offKwh, target, showBatt, bKw, heavyShade };
+  }
+  checks(c) {
+    const out = [], a = c.a, x = c.bx, m = c.mod;
+    const add = (label, color, detail) => out.push({ label, color, detail });
+    const modMissing = !m ? ["all"] : ["voc", "vmp", "isc", "imp", "tcVoc"].filter(k => m[k] == null);
+    add("Module electrical data", modMissing.length ? O : G, modMissing.length ? "Datasheet information incomplete: " + (m ? modMissing.join(", ").replace("tcVoc", "TC Voc") : "no module") + ". " + TBC : m.src + ".");
+    if (!x) { add("Inverter", R, "No MOEBIUS inverter passes the hard filters for this phase, application and MPPT count."); return out; }
+    add("Phase", c.phases.includes(x.phase) ? G : R, `Grid ${a.phase || "not given"}, inverter ${x.phase}.`);
+    add("MPPT count", x.mpptMax == null ? O : x.mpptMax >= c.mpptNeed ? G : R, x.mpptMax == null ? TBC : `${c.mpptNeed} orientation or MPPT group(s) needed, ${x.mpptLabel} available.`);
+    add("String Voc at minimum temperature", O, (c.coldVoc != null ? `${f(c.coldVoc)} V at ${f(c.tmin, 0)} °C. ` : "") + "Inverter maximum DC voltage: " + TBC);
+    add("String Vmp in MPPT range", O, (c.strVmp != null ? `${f(c.strVmp)} V at STC. ` : "") + "MPPT voltage range: " + TBC);
+    add("Input current per MPPT", O, (c.impM != null ? `${f(c.impM, 2)} A. ` : "") + "Maximum input current: " + TBC);
+    add("Short-circuit current per MPPT", O, (c.iscM != null ? `${f(c.iscM, 2)} A. ` : "") + "Maximum short-circuit current: " + TBC);
+    add("Strings per MPPT", O, `${c.maxParallel} string(s) on the busiest MPPT. Permitted strings per MPPT: ` + TBC);
+    add("Maximum PV power", O, (c.kwp ? `${f(c.kwp, 2)} kWp array. ` : "") + "Inverter maximum PV input power: " + TBC);
+    if (x.range && c.acTarget) add("AC power range", c.acTarget >= x.range[0] && c.acTarget <= x.range[1] ? G : O, `Target ${f(c.acTarget, 2)} kVA, family range ${x.rangeLabel}. Exact model in the range: ` + TBC);
+    add("DC/AC ratio", c.ratio == null ? O : c.ratio > DCAC_HIGH ? O : G, c.ratio == null ? TBC : `${f(c.ratio, 2)}. ${c.ratio > DCAC_HIGH ? "DC array significantly oversized for this AC size." : `Design ratio ${f(DCAC, 1)} used (assumption, TO CONFIRM).`}`);
+    add("Grid connection", c.gridKva == null ? O : x.range && x.range[0] > c.gridKva ? R : G, c.gridKva == null ? "Main connection unknown. Inverter AC power may be limited by the grid connection." : `${f(c.gridKva, 1)} kVA available (${a.conn === "Other" ? a.connA + " A" : a.conn}).${x.range && x.range[0] > c.gridKva ? " Smallest model in this family exceeds the connection." : ""}`);
+    if (c.showBatt || c.wantsBatt) {
+      add("Battery support", x.batt ? G : R, x.batt ? `${x.batt === "Battery" ? "Battery-ready" : x.batt + " battery"} inverter.` : "This inverter family has no battery input.");
+      add("Battery voltage pairing", O, "FLUXX battery voltage and MOEBIUS battery voltage range: " + TBC);
+      add("Battery charge and discharge power", O, (c.bKw ? `${f(c.bKw, 1)} kW backup load requested. ` : "") + TBC);
+    }
+    if (a.usage.some(u => /backup/i.test(u)) || a.project === "Backup / EPS system") add("Backup / EPS capability", O, TBC);
+    if (a.usage.includes("Zero export")) add("Zero export", O, TBC);
+    if (a.usage.includes("Generator integration")) add("Generator input", O, TBC);
+    add("EMON compatibility", O, TBC);
+    if (c.nGroups > (x.mpptMax || 0) && x.mpptMax) add("Orientation", O, "PV orientation would benefit from an additional MPPT.");
+    if (c.heavyShade) add("Shading", O, "Heavy shading on at least one surface. Module-level electronics (PIXIE) may suit that surface.");
+    if (c.groups.reduce((s, g) => s + (num(g.n) || 0), 0) !== (num(a.total) || 0)) add("Panel count", O, `Layout has ${c.panels} panels, step 4 has ${a.total}.`);
+    if (a.install && a.install !== "New installation") add("Existing equipment", O, "Existing equipment compatibility not confirmed.");
+    if (a.moduleSrc === "upload") add("Uploaded values", O, "Values entered by hand from the datasheet. Automatic reading follows later.");
+    add("Certification", O, `Required certification depends on country${a.country ? " (" + a.country + ")" : ""}.`);
+    return out;
+  }
+  battery(c) {
+    const D = window.MOEBIUS_CONFIG_DATA, t = c.target;
+    const commercial = /Commercial/.test(c.a.project || "") || (t && t > 32.12);
+    const pv = c.bx?.batt;
+    const card = (role, name, nominal, bg) => ({ role, name, bg, rows: [
+      { k: "Nominal capacity", v: nominal, color: "#4F4F4E" },
+      { k: "Usable capacity", v: TBC, color: O }, { k: "Maximum charge power", v: TBC, color: O }, { k: "Maximum discharge power", v: TBC, color: O },
+      { k: "Backup duration", v: c.bKw ? TBC : "Not calculable", color: O },
+      { k: "Compatible MOEBIUS", v: c.bx ? `${c.bx.name}: ${TBC}` : "–", color: O },
+      { k: "Expandable", v: name.startsWith("STAQ") || name.startsWith("KYUZ") ? "Stackable modules" : TBC, color: "#4F4F4E" } ] });
+    let cards;
+    if (commercial) { const n = Math.max(1, Math.ceil((t || 12.06) / 12.06)); cards = [card("Smaller alternative", `KYUZ ${Math.max(1, n - 1)} × 12,06 kWh`, f(Math.max(1, n - 1) * 12.06, 2) + " kWh", "#F4F4F4"), card("Best fit", `KYUZ ${n} × 12,06 kWh`, f(n * 12.06, 2) + " kWh", "#E3E3E3"), card("Larger alternative", `KYUZ ${n + 1} × 12,06 kWh`, f((n + 1) * 12.06, 2) + " kWh", "#F4F4F4")]; }
+    else { const n = Math.max(1, Math.ceil((t || 5.12) / 5.12)); cards = [card("Smaller alternative", n > 1 ? `STAQ ${n - 1} × 5,12 kWh` : "STAQ 1 × 2,56 kWh", f(n > 1 ? (n - 1) * 5.12 : 2.56, 2) + " kWh", "#F4F4F4"), card("Best fit", `STAQ ${n} × 5,12 kWh`, f(n * 5.12, 2) + " kWh", "#E3E3E3"), card("Larger alternative", `STAQ ${n + 1} × 5,12 kWh`, f((n + 1) * 5.12, 2) + " kWh", "#F4F4F4")]; }
+    const parts = []; if (c.selfC) parts.push(`self-consumption ${f(c.selfC)} kWh/day`); if (c.backupKwh) parts.push(`backup ${f(c.backupKwh)} kWh`); if (c.offKwh) parts.push(`autonomy ${f(c.offKwh)} kWh`);
+    return { show: c.showBatt, best: cards[1], cards, targetTxt: t ? f(t) + " kWh" : "not calculable", basis: (parts.length ? "Largest of " + parts.join(", ") + ". " : "Enter annual consumption, backup load or autonomy for a target. ") + "Sized on nominal capacity; the usable share is not yet in the FLUXX data. BLOQ (fixed, 5,12 – 32,12 kWh) is an alternative to stacked modules." + (pv && pv !== "Battery" ? ` Inverter is ${pv}.` : "") };
+  }
+  blocks(key) {
+    const a = this.state.a;
+    const single = (title, k, opts) => ({ title, isChoice: true, options: opts.map(o => { const sel = a[k] === o; return { label: o, sel, onClick: () => this.set(k, o), bg: sel ? "#F4F4F4" : "#FFFFFF", border: sel ? "#4F4F4E" : "#DDDDDD", weight: sel ? 300 : 300, dot: sel ? "#4F4F4E" : "#FFFFFF", radius: "7px" }; }) });
+    const multi = (title, k, opts) => ({ title, isChoice: true, options: opts.map(o => { const sel = (a[k] || []).includes(o); return { label: o, sel, onClick: () => this.toggle(k, o), bg: sel ? "#F4F4F4" : "#FFFFFF", border: sel ? "#4F4F4E" : "#DDDDDD", weight: sel ? 300 : 300, dot: sel ? "#4F4F4E" : "#FFFFFF", radius: "2px" }; }) });
+    const input = (title, path, unit, ph, type = "number") => ({ title, isInput: true, inputType: type, unit, placeholder: ph || "", value: path.split(".").reduce((o, x) => o?.[x], a) ?? "", onChange: (e) => this.set(path, e.target.value) });
+    const note = (text, color = O) => ({ isNote: true, text, color });
+    const c = this.compute();
+    switch (key) {
+      case "project": return [single(null, "project", PROJECT), a.project === "Not sure" ? note("The next questions narrow it down.", "#8A8A88") : null];
+      case "grid": return [input("Country", "country", null, "e.g. Netherlands", "text"), single("Grid connection type", "phase", ["Single phase", "Three phase", "No grid / off-grid", "Not sure"]), a.phase !== "No grid / off-grid" ? single("Main connection / grid capacity", "conn", ["1 × 25 A", "1 × 40 A", "3 × 25 A", "3 × 40 A", "3 × 63 A", "Other", "Unknown"]) : null, a.conn === "Other" ? input("Current per phase", "connA", "A") : null];
+      case "module": {
+        const b = [single(null, "moduleSrc", ["ando", "upload"])];
+        b[0].options[0].label = "Choose an ANDO solar module"; b[0].options[1].label = "Upload your own datasheet";
+        if (a.moduleSrc === "upload") {
+          const F = [["manufacturer", "Manufacturer", "text"], ["model", "Model", "text"], ["wp", "Rated power Pmax (Wp)"], ["voc", "Voc (V)", null, 1], ["vmp", "Vmp (V)", null, 1], ["isc", "Isc (A)", null, 1], ["imp", "Imp (A)", null, 1], ["tcVoc", "TC Voc (%/°C)", null, 1], ["tcPmax", "TC Pmax (%/°C)"], ["vsys", "Maximum system voltage (V)"], ["face", "Bifacial or monofacial", "text"], ["dims", "Dimensions (mm)", "text"]];
+          b.push({ title: "Datasheet (PDF, JPG, PNG)", isFile: true, onChange: (e) => this.set("fileName", e.target.files?.[0]?.name || "") });
+          b.push(note((a.fileName ? a.fileName + " attached. " : "") + "PROTOTYPE: values are not read automatically yet. Enter them from the datasheet."));
+          b.push({ title: "Extracted values", isFields: true, fields: F.map(([k, l, t, crit]) => { const v = a.m[k]; const miss = crit && (v === "" || v == null); return { label: l, type: t || "number", value: v, ph: t ? "" : "0", onChange: (e) => this.set("m." + k, e.target.value), flag: miss ? "required" : "", flagColor: O }; }) });
+          const missing = ["voc", "vmp", "isc", "imp", "tcVoc", "wp"].filter(k => a.m[k] === "" || a.m[k] == null);
+          if (missing.length) b.push(note("Critical electrical values missing: " + missing.join(", ").replace("tcVoc", "TC Voc").replace("wp", "Pmax") + ". The result will show these checks as requiring confirmation.", R));
+          b.push(single("Are these values correct?", "manualOk", ["Yes", "Edit values", "Upload another datasheet"]));
+        }
+        return b;
+      }
+      case "count": return [input("Number of panels", "total", "panels"), c && c.wp ? note(`${a.total || 0} × ${c.wp} Wp = ${f((num(a.total) || 0) * c.wp / 1000, 2)} kWp`, "#4F4F4E") : note("Module power not known yet.", O)];
+      case "layout": return [];
+      case "strings": {
+        const b = [single(null, "stringMode", ["Yes — optimise automatically", "Advanced manual configuration"])];
+        if (a.stringMode === "Advanced manual configuration") a.groups.forEach((g, i) => { b.push(input(`Group ${i + 1} (${g.n} panels, ${g.orient}): strings`, `ms.${i}.strings`, "strings", "1")); b.push(input(`Group ${i + 1}: MPPT number`, `ms.${i}.mppt`, "MPPT", String(i + 1))); });
+        else if (a.stringMode) b.push(note("One string per roof surface, one MPPT per string. Panels per string are limited by the inverter maximum DC voltage: " + TBC));
+        return b;
+      }
+      case "temp": return [input("Design minimum temperature", "tmin", "°C"), note("Starting value -10 °C is TO CONFIRM for the project location."), c && c.coldVoc != null ? note(`Cold Voc for the longest string: ${f(c.coldVoc)} V`, "#4F4F4E") : note("Cold Voc needs the module Voc and TC Voc. " + TBC)];
+      case "usage": return [multi(null, "usage", USAGE)];
+      case "existing": {
+        const b = [single(null, "install", ["New installation", "Existing PV", "Existing inverter", "Existing battery", "Existing PV + battery"])];
+        if (a.install && a.install !== "New installation") b.push(input("Existing inverter manufacturer and model", "ex.inv", null, "", "text"), input("Existing inverter AC power", "ex.ac", "kW"), input("Existing PV capacity", "ex.pv", "kWp"), input("Existing battery", "ex.batt", null, "", "text"), input("Existing meter or energy-management system", "ex.meter", null, "", "text"), note("Existing equipment compatibility is checked by a specialist."));
+        return b;
+      }
+      case "load": return [single(null, "loadMode", ["Enter annual consumption in kWh", "Upload electricity bill", "I don't know"]), a.loadMode === "Enter annual consumption in kWh" ? input("Annual consumption", "annual", "kWh") : null, a.loadMode === "Upload electricity bill" ? note("PROTOTYPE: bill reading follows later. Enter the annual kWh from the bill.") : null, a.loadMode === "Upload electricity bill" ? input("Annual consumption from the bill", "annual", "kWh") : null, multi("Major loads", "loads", ["Heat pump", "EV charger", "Electric boiler", "Air conditioning", "Induction cooking", "Pool", "Electric heating", "Workshop machinery", "Other"]), input("Known peak load (optional)", "peak", "kW")];
+      case "backup": {
+        const b = [multi("What should continue operating during a power outage?", "bLoads", ["Lighting", "Fridge/freezer", "Internet", "Sockets", "Heat pump", "EV charger", "Cooking", "Whole home", "Custom loads"]), single("Required backup duration", "bHours", ["1 hour", "2 hours", "4 hours", "8 hours", "12 hours", "24 hours", "More than 24 hours", "Not sure"]), input("Estimated backup load", "bKw", "kW", "e.g. 1,5")];
+        if (a.project === "Off-grid system" || a.usage.includes("Off-grid operation")) b.push(input("Daily consumption", "offDaily", "kWh"), input("Maximum simultaneous load", "offPeak", "kW"), single("Seasonal usage", "offSeason", ["Year-round", "Summer only", "Winter only", "Occasional"]), single("Generator available", "gen", ["Yes", "No"]), input("Required autonomy", "autonomy", "days"));
+        return b;
+      }
+      case "battery": return [single("Do you want a battery?", "battery", ["Yes", "Maybe", "No"]), ["Yes", "Maybe"].includes(a.battery) ? multi("Main objective", "goals", ["Increase self-consumption", "Store solar surplus", "Dynamic electricity tariffs", "Backup", "Peak shaving", "Off-grid autonomy", "VPP participation", "Combination"]) : null];
+    }
+    return [];
+  }
+  canNext(key) {
+    const a = this.state.a;
+    if (key === "project") return !!a.project;
+    if (key === "grid") return !!a.phase;
+    if (key === "module") return (a.moduleSrc === "ando" && a.ando != null) || (a.moduleSrc === "upload" && a.manualOk === "Yes");
+    if (key === "count") return (num(a.total) || 0) > 0;
+    if (key === "layout") return a.groups.some(g => (num(g.n) || 0) > 0);
+    if (key === "strings") return !!a.stringMode;
+    if (key === "usage") return a.usage.length > 0;
+    if (key === "existing") return !!a.install;
+    if (key === "load") return !!a.loadMode;
+    if (key === "battery") return !!a.battery;
+    return true;
+  }
+  go(i) { this.setState(s => ({ step: i, seen: Math.max(s.seen, i), msg: "" })); window.scrollTo({ top: 0, behavior: "smooth" }); }
+  text(c, checks, overall, bat) {
+    const L = [`MOEBIUS System Configurator`, ``, `PV module: ${c.mod?.model || "–"}`, `PV array: ${c.panels} modules, ${f(c.kwp, 2)} kWp`, ...c.layout.map(l => `  ${l.orient}: ${l.n} modules, ${l.strings} string(s)`), `MOEBIUS: ${c.bx?.name || "no match"}`, `Grid: ${c.a.phase || "–"}`, bat.show ? `FLUXX: ${bat.best.name}` : `FLUXX: none`, `Status: ${overall.label}`, ``, `Checks:`, ...checks.map(k => `- ${k.label}: ${k.detail}`)];
+    return L.join("\n");
+  }
+  renderVals() {
+    const s = this.state, a = s.a, steps = this.steps(), step = Math.min(s.step, steps.length - 1), key = steps[step];
+    const D = window.MOEBIUS_CONFIG_DATA, c = this.compute();
+    const progress = steps.map((k, i) => ({ label: LABELS[k], go: () => this.go(i), locked: i > s.seen, current: i === step ? "step" : undefined, bar: i <= step ? "#4F4F4E" : i <= s.seen ? "#BBBBBB" : "#DDDDDD", color: i === step ? "#4F4F4E" : i <= s.seen ? "#4F4F4E" : "#8A8A88", weight: i === step ? 300 : 300 }));
+    const TITLES = { project: ["What are you designing?"], grid: ["Country and grid", "Used to keep inverter power within the grid connection."], module: ["Select solar module"], count: ["How many solar panels will be installed?"], layout: ["How are the panels divided?", "One group per roof surface or orientation."], strings: ["Do you want us to calculate the string configuration automatically?"], temp: ["Temperature validation", "The coldest morning gives the highest string voltage."], usage: ["What should the inverter do?", "Select all that apply."], existing: ["Is this a new installation or retrofit?"], load: ["What is the approximate electricity consumption?"], backup: ["Backup requirement"], battery: ["Battery preference"] };
+    const ok = this.canNext(key);
+    const checks = c && key === "result" ? this.checks(c) : [];
+    const red = checks.some(k => k.color === R), orange = checks.some(k => k.color === O);
+    const overall = !c?.bx ? { label: "Technically incompatible", color: R } : red ? { label: "Technically incompatible", color: R } : orange ? { label: "Requires confirmation", color: O } : { label: "Technically validated", color: G };
+    const bat = c && key === "result" ? this.battery(c) : { show: false, best: { name: "" }, cards: [] };
+    const bx = c?.bx;
+    const alts = c && bx ? c.compatible.filter(z => z.x.name !== bx.name).slice(0, 3).map(z => { const y = z.x, d = []; if (y.range && bx.range) { if (y.range[1] < bx.range[1]) d.push(`Lower AC power (${y.rangeLabel}). Suitable if export is limited.`); else if (y.range[0] > bx.range[0]) d.push(`Higher AC power (${y.rangeLabel}). Room for future PV expansion.`); } if ((y.mpptMax || 0) > (bx.mpptMax || 0)) d.push(`More MPPTs (${y.mpptLabel}). Better for more roof orientations.`); if (y.batt !== bx.batt) d.push(y.batt ? `Battery: ${y.batt}.` : "No battery input."); if (y.status !== "Available") d.push(`Status: ${y.status}.`); if (!d.length) d.push(`${y.type}, ${y.phase}, ${y.mpptLabel} MPPT, ${y.rangeLabel}.`); return { name: y.name, diff: d.join(" "), use: () => this.setState({ alt: y.name }) }; }) : [];
+    const summary = c ? [
+      { k: "PV module", v: c.mod ? `${c.mod.model}${c.wp ? ", " + c.wp + " Wp" : ""}` : "–" },
+      { k: "PV array", v: `${c.panels} modules, ${f(c.kwp, 2)} kWp` },
+      { k: "Orientations", v: c.layout.map(l => `${l.orient} ${l.n} modules`).join("\n") || "–" },
+      { k: "MOEBIUS", v: bx ? `${bx.name} (${bx.type}, ${bx.rangeLabel})` : "No compatible model" },
+      { k: "String design", v: c.layout.map((l, i) => `MPPT ${c.manual ? l.mppt : i + 1}: ${l.strings} × ${l.perString} ${l.orient}${l.rest ? ` (+${l.rest} to divide)` : ""}`).join("\n") || "–" },
+      { k: "FLUXX", v: bat.show ? bat.best.name : "No battery" },
+      { k: "Grid", v: a.phase || "–" },
+      { k: "Operating mode", v: c.offgrid ? "Off-grid" : bx?.type === "Hybrid" ? (a.usage.some(u => /backup/i.test(u)) ? "Hybrid + backup" : "Hybrid") : "Grid-connected" },
+      { k: "EMON", v: a.usage.filter(u => /EMON|Dynamic|Peak|Self-consumption|EV|Heat-pump|Zero export/.test(u)).join(", ") + (a.usage.length ? ". " : "") + TBC },
+      { k: "Technical status", v: overall.label } ] : [];
+    const tcV = (v, u, d = 1) => v == null ? { v: TBC, color: O } : { v: `${f(v, d)} ${u}`, color: "#4F4F4E" };
+    const calc = c ? [
+      ["Module Voc", tcV(c.mod?.voc, "V", 2)], ["Temperature-corrected Voc", tcV(c.mod?.voc != null && c.mod?.tcVoc != null ? c.mod.voc * (1 + c.mod.tcVoc / 100 * (c.tmin - 25)) : null, "V", 2)], ["Module Vmp", tcV(c.mod?.vmp, "V", 2)],
+      ["String Voc (cold)", tcV(c.coldVoc, "V")], ["String Vmp (STC)", tcV(c.strVmp, "V")], ["String Isc", tcV(c.mod?.isc, "A", 2)], ["String Imp", tcV(c.mod?.imp, "A", 2)],
+      ["Number of strings", { v: String(c.layout.reduce((s2, l) => s2 + l.strings, 0)), color: "#4F4F4E" }], ["Parallel string current", tcV(c.iscM, "A", 2)], ["MPPT current (Imp)", tcV(c.impM, "A", 2)],
+      ["Maximum input current", { v: TBC, color: O }], ["DC/AC ratio", tcV(c.ratio, "", 2)], ["Total DC capacity", tcV(c.kwp, "kWp", 2)], ["Total AC capacity", tcV(c.acMid, "kVA", 2)],
+      ["Battery voltage", { v: bx?.batt ? `${bx.batt}: ${TBC}` : TBC, color: O }], ["Battery charge/discharge power", { v: TBC, color: O }], ["Battery/inverter ratio", { v: TBC, color: O }],
+      ["Grid assumption", { v: c.gridKva ? `${f(c.gridKva, 1)} kVA at 230 V` : "Unknown", color: c.gridKva ? "#4F4F4E" : O }] ].map(([k, v]) => ({ k, ...v })) : [];
+    const why = c && bx ? [
+      { k: "PV array", v: `${f(c.kwp, 2)} kWp` }, { k: "Inverter AC power", v: bx.rangeLabel }, { k: "DC/AC ratio", v: c.ratio ? f(c.ratio, 2) : "–" },
+      ...c.layout.map((l, i) => ({ k: `MPPT ${c.manual ? l.mppt : i + 1}`, v: `${l.n} modules ${l.orient}` })),
+      { k: "String Voc at design temperature", v: c.coldVoc != null ? `${f(c.coldVoc)} V` : "Requires confirmation", color: c.coldVoc != null ? "#4F4F4E" : O },
+      { k: "Inverter maximum DC voltage", v: "Requires confirmation", color: O }, { k: "MPPT operating voltage", v: "Requires confirmation", color: O },
+      { k: "Calculated string Vmp", v: c.strVmp != null ? `${f(c.strVmp)} V` : "Requires confirmation", color: c.strVmp != null ? "#4F4F4E" : O },
+      { k: "Input current", v: c.impM != null ? `${f(c.impM, 2)} A` : "Requires confirmation", color: c.impM != null ? "#4F4F4E" : O },
+      { k: "Maximum permitted input current", v: "Requires confirmation", color: O },
+      { k: "Grid", v: a.phase || "–" }, { k: "Operating mode", v: summary[7]?.v || "–" }, { k: "Battery", v: bat.show ? `FLUXX ${bat.best.name}` : "None" },
+      { k: "Status", v: overall.label, color: overall.color } ].map(w => ({ color: "#4F4F4E", ...w })) : [];
+    const diagram = c ? c.layout.map((l, i) => ({ roof: `Roof ${l.orient}`, panels: `${l.n} × ${c.mod?.model || "module"}${c.wp ? " " + c.wp + " Wp" : ""}`, string: l.strings > 1 ? `${l.strings} strings × ${l.perString}` : `String ${i + 1}`, mppt: `MPPT ${c.manual ? l.mppt : i + 1}`, mpptColor: bx?.mpptMax && (c.manual ? l.mppt : i + 1) > bx.mpptMax ? R : "#4F4F4E" })) : [];
+    const txt = c ? this.text(c, checks, overall, bat) : "";
+    const live = c ? [
+      { k: "Project", v: a.project || "–" }, { k: "Grid", v: a.phase || "–" }, { k: "Module", v: c.mod ? c.mod.model : "–" },
+      { k: "Array", v: c.kwp ? `${f(c.kwp, 2)} kWp` : "–" }, { k: "Surfaces", v: String(c.nGroups) }, { k: "Min. temperature", v: `${f(c.tmin, 0)} °C` },
+      { k: "Category", v: c.types.join(" / ") }, { k: "Battery", v: a.battery || "–" } ] : [];
+    const cards = D ? D.modules.map((m, i) => { const sel = a.moduleSrc === "ando" && a.ando === i; return { model: m.model, wp: m.wp, sel, pick: () => this.set("ando", i), bg: sel ? "#F4F4F4" : "#FFFFFF", border: sel ? "#4F4F4E" : "#DDDDDD" }; }) : [];
+    const groupRows = a.groups.map((g, i) => ({ num: i + 1, n: g.n, orient: g.orient, az: g.az, tilt: g.tilt, tiltC: g.tiltC, shade: g.shade, isCustomAz: g.orient === "Custom azimuth", isCustomTilt: g.tilt === "Custom", canRemove: a.groups.length > 1,
+      onN: (e) => this.set(`groups.${i}.n`, e.target.value), onOrient: (e) => this.set(`groups.${i}.orient`, e.target.value), onAz: (e) => this.set(`groups.${i}.az`, e.target.value), onTilt: (e) => this.set(`groups.${i}.tilt`, e.target.value), onTiltC: (e) => this.set(`groups.${i}.tiltC`, e.target.value), onShade: (e) => this.set(`groups.${i}.shade`, e.target.value),
+      remove: () => this.set("groups", a.groups.filter((_, j) => j !== i)) }));
+    return {
+      progress, stepNum: step + 1, stepCount: steps.length, stepTitle: TITLES[key]?.[0] || "", stepSub: TITLES[key]?.[1] || "",
+      isQuestion: key !== "result", isResult: key === "result", isModule: key === "module" && a.moduleSrc === "ando", isLayout: key === "layout",
+      blocks: key === "result" ? [] : this.blocks(key).filter(Boolean).map(b => ({ isChoice: false, isInput: false, isFile: false, isFields: false, isNote: false, title: null, ...b })),
+      andoCards: cards, groupRows, orientOpts: ORIENT, tiltOpts: TILT, shadeOpts: SHADE,
+      addGroup: () => this.set("groups", [...a.groups, { n: 0, orient: "West", az: "", tilt: "35°", tiltC: "", shade: "None" }]),
+      groupSum: a.groups.reduce((x, g) => x + (num(g.n) || 0), 0), totalPanels: a.total,
+      back: () => this.go(Math.max(0, step - 1)), noBack: step === 0,
+      next: () => { if (ok) { if (key === "count" && a.groups.length === 1) this.set("groups.0.n", a.total); this.go(step + 1); } }, noNext: !ok, nextBg: ok ? "#4F4F4E" : "#BBBBBB",
+      nextLabel: steps[step + 1] === "result" ? "Show result" : "Next", nextHint: ok ? "" : "Select an option to continue.",
+      best: bx ? { name: bx.name, line: `${bx.type} · ${bx.phase} · ${bx.mpptLabel} MPPT · ${bx.rangeLabel}${s.alt ? " · compared alternative" : ""}` } : { name: "–", line: "" },
+      noMatch: !bx, noMatchText: c && !bx ? (c.offgrid ? "MOEBIUS off-grid models are listed as \"model to follow\". A specialist confirms the off-grid design." : "No MOEBIUS family matches phase, application and MPPT count with a published power range. Change the grid, layout or operating mode, or ask a specialist.") : "",
+      overall, why, checks, diagram, bat, alts, hasAlts: alts.length > 0, altPicked: !!s.alt, clearAlt: () => this.setState({ alt: null }),
+      summary, calc, live,
+      assumptions: `Assumptions (TO CONFIRM): design DC/AC ratio ${f(DCAC, 1)}; oversizing flagged above ${f(DCAC_HIGH, 1)}; SAMPLE yield ${SAMPLE_YIELD} kWh per kWp per year (not PVGIS); ${Math.round(NIGHT_SHARE * 100)}% of consumption in evening and night; grid capacity = phases × current × 230 V. Inverter data: family power ranges and MPPT counts from the MOEBIUS range. FLUXX: nominal capacities only.`,
+      quoteHref: "MOEBIUS - WEBSHOP - Shop - EN.dc.html", mailHref: "mailto:?subject=" + encodeURIComponent("MOEBIUS system configuration") + "&body=" + encodeURIComponent(txt),
+      onPdf: () => { const w = window.open("", "_blank"); if (!w) return; w.document.write(`<html><head><title>MOEBIUS configuration</title></head><body style="font-family:var(--font-web);color:var(--color-text-primary);padding:40px;max-width:720px;white-space:pre-wrap;font-size:13px;line-height:1.6">${txt.replace(/</g, "&lt;")}</body></html>`); w.document.close(); w.focus(); w.print(); },
+      onSave: () => { try { localStorage.setItem("moebius-configurator-project", JSON.stringify({ a, seen: s.seen, saved: new Date().toISOString() })); this.setState({ msg: "Saved. The project is filed and sitting up straight. Portal sync follows later." }); } catch (e) { this.setState({ msg: "Couldn't save. The browser seems to be keeping its drawers shut." }); } },
+      goAlts: () => this.setState({ msg: alts.length ? "Use Compare on an alternative above." : "No other compatible MOEBIUS family for this design." }),
+      goModule: () => this.go(steps.indexOf("module")), goBattery: () => this.go(steps.indexOf("battery")),
+      restart: () => this.setState({ a: blank(), step: 0, seen: 0, alt: null, msg: "" }), msg: s.msg,
+    };
+  }
+}
+</script>
+</body>
+</html>

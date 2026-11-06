@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>CHILL Street Furniture | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>body { margin:0; }</style>
+</helmet>
+<dc-import name="StructureCategory"
+  brand="CHILL"
+  category="Street furniture"
+  eyebrow="CHILL · Street furniture"
+  heading="TO CONFIRM"
+  intro="Benches, tables, lounge seating, charging totems and modular city elements with solar built in. Content TO CONFIRM."
+  body="TO CONFIRM"
+  hero-slot-id="chill-street-hero"
+  hero-placeholder="BNR-CHILL-STREET-01 · 21:9 · street furniture in a public square · awaiting upload"
+  products-heading="Five street furniture products."
+  products="{{ products }}"
+  guidance-heading="Route, movement or waiting?"
+  guidance="{{ guidance }}"
+  engineering="{{ engineering }}"
+  hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const S = "#898989";
+    return {
+      products: [
+        { name: "CORE Bench", status: "In preparation", statusColor: "#898989", href: "CHILL - PRODUCT - CORE Bench - EN.dc.html", tagline: "Solar smart bench", desc: "TO CONFIRM" },
+        { name: "CORE Table", status: "In preparation", statusColor: "#898989", href: "CHILL - PRODUCT - CORE Table - EN.dc.html", tagline: "Solar smart table", desc: "TO CONFIRM" },
+        { name: "LOUNGE", status: "In preparation", statusColor: "#898989", href: "CHILL - PRODUCT - LOUNGE - EN.dc.html", tagline: "Solar lounge seating", desc: "TO CONFIRM" },
+        { name: "TOTEM", status: "In preparation", statusColor: "#898989", href: "CHILL - PRODUCT - TOTEM - EN.dc.html", tagline: "Solar charging totem", desc: "TO CONFIRM" },
+        { name: "CITY Modules", status: "In preparation", statusColor: "#898989", href: "CHILL - PRODUCT - CITY Modules - EN.dc.html", tagline: "Modular street furniture", desc: "TO CONFIRM" },
+      ],
+      guidance: [],
+      engineering: [],
+    };
+  }
+}
+</script>
+</body>
+</html>

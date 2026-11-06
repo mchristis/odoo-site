@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>EMON Commercial | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  .em-card:hover { border-color:var(--color-brand-emon) !important; }
+  .em-seg:hover { color:var(--color-text-primary) !important; }
+  .em-brand:hover { border-color:var(--color-brand-emon) !important; }
+  .em-brand:hover .em-brand-t { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="systems" hint-size="100%,80px"></dc-import>
+  <dc-import name="EmonNav" active="commercial" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="EMON" rgb="33,174,143" title="Coordinate the whole site." slot="emon-comm-hero" shot="Commercial energy dashboard: multi-asset site with solar, storage, EV, HVAC and grid limit. Grey background, var(--color-brand-emon) highlights." hint-size="100%,625px"></dc-import><section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;">
+    
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);line-height:1.3;text-transform:uppercase;color:#666666;margin:0 0 20px;">For commercial sites</div>
+    <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:820px;">Solar, storage, EV charging, heating and controllable loads on one connection. EMON keeps the site inside its grid limit, cuts the demand peaks that drive the bill and reports what happened.</p>
+    
+    
+  </section>
+
+  <!-- VALUE PROPS -->
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;">
+    <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;--cg:16px;">
+      <sc-for list="{{ valueProps }}" as="v" hint-placeholder-count="4">
+        <div class="em-card" style="border:1px solid transparent;padding:28px 24px;display:flex;flex-direction:column;gap:12px;min-height:200px;background:#F4F4F4;border-radius:12px;overflow:hidden;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ v.title }}</div>
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ v.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- SITE TYPES (interactive) -->
+  <section style="margin-top:96px;">
+    <div style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">By site type</div>
+      <h2 style="margin:0 0 28px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Different buildings. <span style="color:#8E8E8E;">The same coordinated logic.</span></h2>
+      <div style="display:inline-flex;background:#F4F4F4;margin-bottom:24px;flex-wrap:wrap;border-radius:12px;overflow:hidden;">
+        <sc-for list="{{ sites }}" as="s" hint-placeholder-count="4">
+          <button class="em-seg" onClick="{{ s.onClick }}" style="cursor:pointer;font-family:inherit;border:none;background:{{ s.bg }};color:{{ s.color }};font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;padding:12px 22px;border-radius:8px;">{{ s.label }}</button>
+        </sc-for>
+      </div>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:start;">
+        <div style="background:#F4F4F4;padding:32px;border-radius:12px;overflow:hidden;">
+          <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:12px;line-height:var(--web-h3-lh);">{{ activeSite.title }}</div>
+          <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);">{{ activeSite.desc }}</p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <sc-for list="{{ activeSite.actions }}" as="a" hint-placeholder-count="3">
+              <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);display:flex;gap:10px;align-items:baseline;"><span style="color:var(--color-text-primary);font-size:9px;">&#9679;</span>{{ a }}</div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background:#F4F4F4;padding:28px;border-radius:12px;overflow:hidden;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Typical result</div>
+          <sc-for list="{{ activeSite.readout }}" as="r" hint-placeholder-count="3">
+            <div style="padding:12px 0;border-bottom:1px solid var(--color-surface-card);display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
+              <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ r.k }}</span>
+              <span style="font-size:var(--web-small-size);color:var(--color-text-primary);line-height:var(--web-small-lh);"><span style="font-weight:700;">{{ r.v }}</span> <span style="font-weight:300;">{{ r.u }}</span></span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">What EMON coordinates</div>
+      <h2 style="margin:0 0 32px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One connection, <span style="color:#8E8E8E;">managed as one system.</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ functions }}" as="f" hint-placeholder-count="6">
+          <div style="background:#F4F4F4;padding:26px 24px;display:flex;flex-direction:column;gap:8px;min-height:150px;border-radius:12px;overflow:hidden;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ f.tag }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ f.title }}</div>
+            <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ f.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS -->
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Commercial hardware</div>
+      <h2 style="margin:0 0 28px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The STRØHM.ENERGY products on <span style="color:#8E8E8E;">a commercial site.</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;--cg:14px;">
+        <sc-for list="{{ brands }}" as="b" hint-placeholder-count="6">
+          <div class="em-brand" style="background:#F4F4F4;padding:20px;display:flex;flex-direction:column;gap:10px;min-height:150px;border-radius:12px;overflow:hidden;">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+              <div class="em-brand-t" style="font-size:var(--web-h3-size);font-weight:300;letter-spacing:-0.02em;line-height:var(--web-h3-lh);">{{ b.brand }}</div>
+              <span style="font-size:var(--web-eyebrow-size);text-transform:uppercase;letter-spacing:var(--web-eyebrow-ls);color:var(--color-grey-70);font-weight:var(--web-eyebrow-weight);">{{ b.role }}</span>
+            </div>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ b.note }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE / PRICING -->
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;">
+    <div data-cols="2" style="border-top:1px solid #D9D9D9;padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;--cg:48px;">
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Dashboards &amp; service</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Reporting a facilities team <span style="color:#8E8E8E;">can act on.</span></h2>
+        <p style="margin:0 0 16px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Site dashboards, energy reports and alerts, with service handled by your authorised installer through the same passport. EMS modules stay capped at &#8364;25 a month; market and service tiers sit outside the cap.</p>
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="EMON - SYSTEM - Overview - EN.dc.html#support" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Check country availability</a>
+      </div>
+      <div style="background:#F4F4F4;padding:32px;border-radius:12px;overflow:hidden;">
+        <sc-for list="{{ priceRows }}" as="p" hint-placeholder-count="4">
+          <div style="padding:14px 0;border-bottom:1px solid var(--color-surface-card);display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
+            <span style="font-size:14px;font-weight:400;color:var(--color-text-primary);">{{ p.k }}</span>
+            <span style="font-size:14px;font-weight:700;color:var(--color-text-primary);">{{ p.v }}</span>
+          </div>
+        </sc-for>
+        <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);line-height:var(--web-min-lh);">Working basis only. Pricing may vary by country, partner, hardware and energy-market availability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);">
+    <div style="background:var(--color-brand-emon);padding:64px 56px;color:#FFFFFF;border-radius:12px;">
+      <div style="margin-bottom:20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">One site. One connection. One system.</div>
+      <h2 style="margin:0 0 20px;max-width:760px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#FFFFFF;text-wrap:balance;">Cut the peaks. <span style="color:#B2B3B3;">Coordinate the assets. Report the result.</span></h2>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;">
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="EMON - SYSTEM - Overview - EN.dc.html#define" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Define your needs</a>
+        <a href="EMON - SYSTEM - Overview - EN.dc.html#specialist" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:transparent;border:1px solid #FFFFFF;color:#FFFFFF;font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Contact a specialist</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Footer" show-ebook="{{ true }}" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+const SITES = [
+  { key:"office", label:"Office", title:"Office", desc:"Predictable working hours, heavy HVAC and a growing EV fleet. EMON shifts charging and pre-conditioning into solar-rich and cheap hours and shaves the afternoon peak.",
+    actions:["Fleet charging spread across the solar day","HVAC pre-conditioned before the price peak","Battery covers the late-afternoon demand spike"],
+    readout:[{k:"Peak demand",v:"\u221219",u:"%"},{k:"Solar self-use",v:"78",u:"%"},{k:"EV points",v:"12",u:""}] },
+  { key:"retail", label:"Retail", title:"Retail", desc:"Long trading hours, refrigeration and lighting loads. EMON protects critical cooling while trimming the controllable loads that push the demand charge.",
+    actions:["Refrigeration protected at all times","Lighting and non-critical loads shifted","Storage covers opening and closing peaks"],
+    readout:[{k:"Demand charge",v:"\u221214",u:"%"},{k:"Solar self-use",v:"71",u:"%"},{k:"Uptime",v:"100",u:"%"}] },
+  { key:"warehouse", label:"Warehouse", title:"Warehouse & logistics", desc:"Large roof, forklift and truck charging, few staff. A big solar array feeds storage and charging, with EMON holding the site inside its connection limit.",
+    actions:["Roof solar sized to on-site demand","Truck and forklift charging queued to solar","Grid connection never exceeded"],
+    readout:[{k:"Self-generation",v:"64",u:"%"},{k:"Grid limit",v:"Within",u:""},{k:"Export",v:"Managed",u:""}] },
+  { key:"hospitality", label:"Hospitality", title:"Hospitality", desc:"Round-the-clock comfort, hot water and kitchen loads. EMON keeps guest comfort untouched while timing water heating and storage around price.",
+    actions:["Guest comfort never compromised","Hot water heated on cheap and solar hours","Storage smooths evening kitchen peaks"],
+    readout:[{k:"Energy cost",v:"\u221217",u:"%"},{k:"Comfort",v:"Held",u:""},{k:"Solar self-use",v:"69",u:"%"}] },
+];
+
+class Component extends DCLogic {
+  state = { site: 0 };
+  renderVals() {
+    const st = this.state;
+    return {
+      valueProps: [
+        { title:"Coordinate every asset", body:"Solar, storage, EV, HVAC and controllable loads managed as one system." },
+        { title:"Cut demand peaks", body:"EMON trims the peaks that set the demand charge, without disrupting operations." },
+        { title:"Stay inside the grid limit", body:"Charging and loads are held within the site connection automatically." },
+        { title:"Report and prove it", body:"Site dashboards and energy reports show exactly what happened and why." },
+      ],
+      sites: SITES.map((s,i)=>({
+        label:s.label,
+        onClick:()=>this.setState({site:i}),
+        bg: st.site===i ? "var(--color-brand-emon)" : "#FFFFFF",
+        color: st.site===i ? "#FFFFFF" : "#5F5E5E",
+      })),
+      activeSite: SITES[st.site],
+      functions: [
+        { tag:"Monitor", title:"Whole-site view", body:"Live flow and history across every meter, asset and circuit on the connection." },
+        { tag:"Control", title:"Load coordination", body:"EV, HVAC, storage and switchable loads sequenced to demand and price." },
+        { tag:"Optimise", title:"Peak shaving", body:"Storage and flexible loads shift to hold the site below its demand threshold." },
+        { tag:"Markets", title:"Tariff & flexibility", body:"Dynamic tariffs and, where allowed, VPP and grid-balancing participation." },
+        { tag:"Commission", title:"Documented once", body:"Every asset commissioned and mapped into a single site passport." },
+        { tag:"Support", title:"Service through TRIBE", body:"Your authorised installer supports the site remotely with full context." },
+      ],
+      brands: [
+        { brand:"MOEBIUS", role:"C&I inverter", note:"Three-phase and C&I inverters with grid interaction and string mapping." },
+        { brand:"FLUXX", role:"C&I storage", note:"Commercial storage for peak shaving, backup reserve and market services." },
+        { brand:"XOOM", role:"Workplace EV", note:"Workplace and fleet charging coordinated to solar, price and site limits." },
+        { brand:"NENDO", role:"HVAC", note:"Heat pumps and HVAC pre-conditioned around price and demand." },
+        { brand:"SYNQ", role:"Metering", note:"Circuit-level measurement \u2014 the verified foundation for reporting." },
+        { brand:"OZZY", role:"Switching", note:"Controllable loads turned into measurable, schedulable assets." },
+      ],
+      priceRows: [
+        { k:"EMON Basic + tariff engine", v:"Free" },
+        { k:"EMS modules together", v:"Capped at \u20ac25/mo" },
+        { k:"Grid Balancing / DSO mode", v:"\u20ac9,90/mo" },
+        { k:"Full Service / Energy Watcher", v:"\u20ac9,90/mo" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

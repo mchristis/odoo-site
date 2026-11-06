@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>SYNQ Products | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  html { scroll-behavior:smooth; }
+  section[id] { scroll-margin-top:96px; }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="SynqNav" active="products" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="SYNQ" rgb="89,143,148" title="Find the meter your installation needs." intro="Ten product lines for reading, measuring and coordinating energy." slot="synq-products-hero" shot="SYNQ · Products · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;"><a href="SYNQ - PRODUCT - Overview - EN.dc.html" style="color:var(--color-text-primary);">SYNQ</a> · Products</div>
+    <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#898989;max-width:680px;">From a plug-in reader for an existing smart meter to a three-phase energy hub for commercial sites.</p>
+    <div style="margin-bottom:24px;"><!-- DEPTH-1264: catalogue removed (no product catalogues) --></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <sc-for list="{{ jump }}" as="j" hint-placeholder-count="5">
+        <a href="{{ j.href }}" style="font-size:var(--web-btn-sm-size);padding:8px 14px;border:1px solid var(--color-divider);border-radius:8px;color:#898989;font-weight:var(--web-btn-weight);">{{ j.label }}</a>
+      </sc-for>
+    </div>
+  </section>
+
+  <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+    <section id="{{ g.id }}" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+      <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+        <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">{{ g.eyebrow }}</div>
+        <h2 style="margin:0 0 10px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ g.title }}</h2>
+        <p style="margin:0 0 32px;max-width:640px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ g.intro }}</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px;">
+          <sc-for list="{{ g.series }}" as="s" hint-placeholder-count="3">
+            <div id="{{ s.anchor }}" style="background:var(--color-card-synq);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;">
+              <div role="img" aria-label="{{ s.imgAria }}" data-slot="{{ s.slot }}" style="aspect-ratio:4/3;background:var(--color-surface-card-mid);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;">
+                <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);background:#FFFFFF;padding:3px 8px;border-radius:4px;">Image</span>
+                <span style="font-size:var(--web-min-size);font-weight:300;color:#AEAEAE;line-height:var(--web-min-lh);">4:3 · {{ s.slot }}</span>
+              </div>
+              <div style="padding:22px 22px 24px;display:flex;flex-direction:column;gap:12px;flex:1;">
+                <div>
+                  <div style="font-size:var(--web-h3-size);font-weight:300;letter-spacing:-0.01em;line-height:var(--web-h3-lh);">{{ s.name }}</div>
+                  <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-top:4px;">{{ s.category }}</div>
+                </div>
+                <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ s.desc }}</div>
+                <div style="display:flex;flex-direction:column;border-top:1px solid var(--color-divider);">
+                  <sc-for list="{{ s.specs }}" as="p" hint-placeholder-count="3">
+                    <div style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;padding:9px 0;border-bottom:1px solid var(--color-divider);font-size:12.5px;line-height:1.45;">
+                      <span style="font-weight:700;color:var(--color-text-primary);">{{ p.k }}</span>
+                      <span style="font-weight:300;color:#898989;">{{ p.v }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ s.hasNote }}" hint-placeholder-val="{{ false }}">
+                  <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#898989;">{{ s.note }}</div>
+                </sc-if>
+                <sc-if value="{{ s.hasLink }}" hint-placeholder-val="{{ false }}">
+                  <a href="{{ s.link }}" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);margin-top:auto;">{{ s.linkLabel }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+                </sc-if>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+
+  <section id="connections" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Protocols and connections</div>
+      <h2 style="margin:0 0 10px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">However the building speaks, <span style="font-weight:300;">SYNQ listens.</span></h2>
+      <p style="margin:0 0 32px;max-width:640px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">SYNQ reads the common smart-meter ports and the standard field buses, then carries everything into one EMON record over the connection that fits the site.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;">
+        <div>
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Reading the meter</div>
+          <sc-for list="{{ reading }}" as="r" hint-placeholder-count="6">
+            <div data-stack="1" style="display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px;padding:14px 0;border-top:1px solid var(--color-divider);">
+              <div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ r.name }}</div><div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);margin-top:2px;line-height:var(--web-min-lh);">{{ r.series }}</div></div>
+              <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;">{{ r.desc }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div>
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Carrying the data</div>
+          <sc-for list="{{ transport }}" as="t" hint-placeholder-count="5">
+            <div data-stack="1" style="display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px;padding:14px 0;border-top:1px solid var(--color-divider);">
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ t.name }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;">{{ t.desc }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mesh" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Integrated Wi-Fi mesh</div>
+      <h2 style="margin:0 0 10px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">SYNQ does not just join the router. <span style="font-weight:300;">It builds the network.</span></h2>
+      <p style="margin:0 0 32px;max-width:680px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">CINCH, TALLY and LEDGER carry integrated Wi-Fi mesh. Compatible devices discover each other and form one local network, which grows as the installation grows.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:28px 40px;">
+        <sc-for list="{{ mesh }}" as="m" hint-placeholder-count="6">
+          <div style="border-top:1px solid var(--color-divider);padding-top:16px;display:flex;flex-direction:column;gap:4px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ m.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;">{{ m.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="local-first" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="background:var(--color-card-synq);border-radius:12px;padding:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;">
+      <div>
+        <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Local first</div>
+        <h2 style="margin:0 0 12px;font-size:var(--web-sub-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Local first. <span style="font-weight:300;">Internet optional.</span></h2>
+        <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Measurement, communication and automation run on site. Only cloud services need the internet. When the connection returns, everything synchronises automatically.</p>
+      </div>
+      <div>
+        <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;line-height:var(--web-small-lh);">Without internet, this continues</div>
+        <sc-for list="{{ stays }}" as="s" hint-placeholder-count="4">
+          <div style="padding:10px 0;border-top:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ s }}</div>
+        </sc-for>
+      </div>
+      <div>
+        <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;line-height:var(--web-small-lh);">Paused until it returns</div>
+        <sc-for list="{{ paused }}" as="p" hint-placeholder-count="4">
+          <div style="padding:10px 0;border-top:1px solid var(--color-divider);font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">{{ p }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="trade" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="background:var(--color-card-synq);border-radius:12px;padding:28px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Trade customer?</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">Prices, stock and ordering are in the webshop after trade login. Homeowners buy through an installer.</div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="SYNQ - WEBSHOP - Shop - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Shop SYNQ<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+        <a href="SYNQ - SUPPORT - Talk to an Expert - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;background:#FFFFFF;color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-btn-weight);">Contact a specialist</a>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:88px;"></div>
+
+  <div style="height:32px;"></div>
+  <dc-import name="ContentSections" brand="SYNQ" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="SYNQ" photo-slot-id="synq-products-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="SYNQ" accent="var(--color-brand-synq)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const GROUPS = [
+  { id: "read", eyebrow: "Read an existing meter", title: "Start with the meter already on the wall.",
+    intro: "Readers for the ports and signals of installed utility meters. No change to the meter itself.",
+    series: [
+      { name: "PIP", category: "Energy metering interface", slot: "synq-pip-image",
+        desc: "A plug-in reader for the P1 port of a digital smart meter, connected over Wi-Fi.",
+        specs: [ { k: "Connection", v: "RJ12 plug-in dongle" }, { k: "Network", v: "Wi-Fi" }, { k: "Pass-through", v: "2-port splitter, up to 2 extra P1 devices" }, { k: "Use", v: "Residential, light commercial" }, { k: "Article", v: "SY-P1-RJ12-WIFI-PT2-V1" } ],
+        note: "Specification provisional, from the datasheet." },
+      { name: "LINQ", category: "TIC smart meter reader (Linky)", slot: "synq-linq-image",
+        desc: "Plugs into the TIC port of a Linky meter.",
+        specs: [ { k: "Connection", v: "TIC port plug-in" }, { k: "Power", v: "USB-C" }, { k: "Interface", v: "RS485" }, { k: "Markets", v: "France, Belgium" }, { k: "Article", v: "SY-TIC-V1" } ] },
+      { name: "IRIS", category: "Energy metering sensor", slot: "synq-iris-image",
+        desc: "An optical probe that reads the LED pulse of a utility meter. No wiring change.",
+        specs: [ { k: "Type", v: "Optical LED-pulse reader" }, { k: "Mounting", v: "Clip-on or adhesive" }, { k: "Works with", v: "PIP and/or LEDGER" }, { k: "Use", v: "Residential, commercial" }, { k: "Article", v: "SY-PROBE-OPT-V1" } ] },
+    ] },
+  { id: "measure", eyebrow: "Measure in the distribution board", title: "DIN-rail meters and CT clamps.",
+    intro: "Bidirectional measurement of import and export at the grid connection and on individual circuits.",
+    series: [
+      { name: "CINCH 2-channel", category: "Smart energy meter · single-phase · CT-based", slot: "synq-cinch-2ch-image",
+        desc: "A DIN-rail meter with two CT channels: the main connection plus one extra circuit.",
+        specs: [ { k: "Phase", v: "Single-phase, 1P2W" }, { k: "Channels", v: "Main + 1 extra, 1 split-core CT per channel" }, { k: "CT ratings", v: "100 A · 250 A · 600 A" }, { k: "Interfaces", v: "Modbus RS485, Wi-Fi mesh" }, { k: "Use", v: "Residential, light commercial" } ] },
+      { name: "CINCH 3-channel", category: "Smart energy meter · three-phase · CT-based", slot: "synq-cinch-3ch-image",
+        desc: "A DIN-rail meter with three CT channels: the main connection plus two extra circuits.",
+        specs: [ { k: "Phase", v: "Three-phase, 3P4W / 3P3W" }, { k: "Channels", v: "Main + 2 extra, 3 split-core CTs per channel" }, { k: "CT ratings", v: "100 A · 250 A · 600 A (residential, light commercial) · 1.000 A · 3.000 A (commercial, industrial)" }, { k: "Interfaces", v: "Modbus RS485, Wi-Fi mesh" } ] },
+      { name: "TALLY", category: "Smart energy meter · direct connection", slot: "synq-tally-image",
+        desc: "A DIN-rail meter the conductor passes through. MID-certified versions are available for billing.",
+        specs: [ { k: "Phase", v: "Single-phase 1P2W or three-phase 3P4W / 3P3W" }, { k: "Max current", v: "100 A" }, { k: "Certification", v: "MID or non-MID" }, { k: "Interfaces", v: "Modbus RS485, Wi-Fi mesh" }, { k: "Use", v: "Residential, light commercial" } ] },
+      { name: "HALO", category: "Current transformer clamp", slot: "synq-halo-image",
+        desc: "A split-core clamp around a live conductor. Measures current without breaking the circuit.",
+        specs: [ { k: "Type", v: "Split core, 40 mA output" }, { k: "Ratings", v: "100 A (24 mm) · 250 A (36 mm) · 600 A (36 mm) · 1.000 A (50 mm) · 3.000 A (120 mm)" }, { k: "Use", v: "100–600 A residential, light commercial · 1.000–3.000 A commercial, industrial" } ] },
+    ] },
+  { id: "coordinate", eyebrow: "Coordinate and log", title: "Hubs and data loggers.",
+    intro: "Bring many devices into one connection to EMON, and coordinate the complete energy system.",
+    series: [
+      { name: "NEXUS", category: "Energy management hub", slot: "synq-nexus-image",
+        desc: "The wall-mounted hub where the complete energy system is coordinated. Three tiers.",
+        specs: [ { k: "Essential", v: "1P 12 kW · 3P 30 kW" }, { k: "Pro", v: "1P 12 kW · 1P 22 kW · 1P 22 kW with 100 A main breaker · 3P 30 kW" }, { k: "Max", v: "1P 22/23/24 kW · 3P 50/52,6 kW" }, { k: "Mounting", v: "Wall-mounted" } ],
+        link: "SYNQ - PRODUCT - NEXUS - EN.dc.html", linkLabel: "About NEXUS" },
+      { name: "NEXUS BOWI · Coming", category: "Energy management hub · grid and backup", slot: "synq-nexus-bowi-image",
+        desc: "The grid and backup connection unit for FLUXX BOWI systems.",
+        specs: [ { k: "Phase", v: "Single-phase or three-phase" }, { k: "Mounting", v: "Wall-mounted" }, { k: "Power", v: "To be confirmed" } ],
+        note: "Coming. Not yet available to order; article codes to be confirmed." },
+      { name: "LEDGER", category: "Energy data logger", slot: "synq-ledger-image",
+        desc: "Aggregates devices and protocols into one connection to EMON.",
+        specs: [ { k: "Capacity", v: "Single device, or up to 24 devices" }, { k: "Interfaces", v: "RS485, Ethernet, Wi-Fi mesh, 4G, 5G" }, { k: "Mounting", v: "Surface or wall" }, { k: "Finish", v: "Brushed aluminium, white frame" } ] },
+    ] },
+];
+const READING = [
+  { name: "P1", series: "PIP", desc: "The digital port on modern smart meters. The fastest way to read consumption and production." },
+  { name: "TIC (Linky)", series: "LINQ", desc: "The information port of French and Belgian Linky meters, read directly." },
+  { name: "Optical pulse", series: "IRIS", desc: "An optical sensor reads the LED pulse of an existing utility meter. No wiring change." },
+  { name: "CT clamp", series: "CINCH · HALO", desc: "A split core around a live conductor measures current without breaking the circuit." },
+  { name: "Direct DIN meter", series: "TALLY", desc: "The conductor passes through the meter. MID-certified versions for billing." },
+  { name: "Data logger", series: "LEDGER", desc: "Aggregates many devices and protocols into one connection to EMON." },
+];
+const TRANSPORT = [
+  { name: "Wi-Fi mesh", desc: "Integrated in CINCH, TALLY and LEDGER. Self-organising, no gateway." },
+  { name: "Wi-Fi", desc: "PIP connects to the local Wi-Fi network." },
+  { name: "RS485 / Modbus", desc: "Wired device bus on CINCH, TALLY, LEDGER and LINQ." },
+  { name: "Ethernet", desc: "Fixed-line building connection on LEDGER." },
+  { name: "4G / 5G", desc: "Cellular on LEDGER, where no local network exists." },
+];
+const MESH = [
+  { title: "Automatic device discovery", desc: "Compatible SYNQ devices find each other and appear in EMON without manual pairing." },
+  { title: "Automatic routing", desc: "Data moves device to device along the best available path." },
+  { title: "Better coverage", desc: "Each device extends the range, so a distant distribution board still reports." },
+  { title: "No extra gateway", desc: "No separate hub to buy, power, mount or maintain." },
+  { title: "Simple expansion", desc: "A new device joins the existing network." },
+  { title: "Local communication", desc: "Devices keep communicating without an internet connection." },
+];
+const STAYS = ["Measurements continue", "Devices keep communicating", "EMON keeps working locally", "Data remains available"];
+const PAUSED = ["Remote access", "New tariff data", "Weather updates", "Cloud services and remote support"];
+
+class Component extends DCLogic {
+  renderVals() {
+    const groups = GROUPS.map((g) => ({
+      ...g,
+      series: g.series.map((s) => ({
+        ...s,
+        anchor: "p-" + s.slot.replace("synq-", "").replace("-image", ""),
+        imgAria: "Product image: SYNQ " + s.name,
+        hasNote: !!s.note, hasLink: !!s.link,
+      })),
+    }));
+    return {
+      jump: GROUPS.map((g) => ({ label: g.eyebrow, href: "#" + g.id })).concat([{ label: "Protocols and connections", href: "#connections" }]),
+      groups, reading: READING, transport: TRANSPORT, mesh: MESH, stays: STAYS, paused: PAUSED,
+    };
+  }
+}
+</script>
+</body>
+</html>

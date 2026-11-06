@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>Account | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  ::placeholder { color:#6F6F6D; opacity:1; }
+  input:disabled, select:disabled, textarea:disabled { color:#C8C7C3; }
+  body { margin:0; background:#FFFFFF; }
+  a { text-decoration:none; color:#1E1E1E; }
+  a:hover { color:#5F5E5E; }
+  input, select, button { font-family:var(--font-web); }
+  input:focus, select:focus { outline:2px solid #1E1E1E; outline-offset:-1px; }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;font-weight:300;">
+
+  <dc-import name="NavBar" active="" hint-size="100%,80px"></dc-import>
+  <dc-import name="WebshopNav" active="why" hint-size="100%,57px"></dc-import>
+
+  <!-- WELCOME -->
+  <section style="background:#1E1E1E;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side);box-sizing:border-box;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:12px;">Welcome back</div>
+      <h1 style="margin:0;font-size:var(--web-h1-size);font-weight:100;line-height:var(--web-h1-lh);letter-spacing:-0.02em;color:#FFFFFF;">Good to see you, {{ company }}</h1>
+      <p style="margin:16px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#898989;max-width:60ch;">Your account is <span style="color:#FFFFFF;">{{ level }}</span>. Here's your starting point — order, invite your team, and see what applies in {{ country }}.</p>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px;--cg:12px;">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+          <div style="background:#1E1E1E;padding:20px;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#FFFFFF;margin-bottom:4px;line-height:var(--web-h3-lh);">{{ s.big }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:#9A9A98;line-height:var(--web-min-lh);">{{ s.small }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK ACTIONS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:48px var(--web-side);box-sizing:border-box;border-bottom:1px solid #D4D4D4;">
+    <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;--cg:16px;">
+      <sc-for list="{{ actions }}" as="a" hint-placeholder-count="4">
+        <a href="{{ a.href }}" style="background:#F5F5F5;border:1px solid #D4D4D4;border-radius:12px;padding:24px;display:block;">
+          <div style="font-size:17px;font-weight:400;color:#4F4F4E;margin-bottom:6px;">{{ a.t }}</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ a.d }}</div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- LOCAL MARKET WELCOME -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side);box-sizing:border-box;border-bottom:1px solid #D4D4D4;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:28px;">
+      <div style="max-width:60ch;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:14px;">Your market</div>
+        <h2 style="margin:0;font-size:var(--web-sub-size);font-weight:var(--web-sub-weight);line-height:var(--web-sub-lh);letter-spacing:-0.02em;color:#4F4F4E;">What applies in {{ country }}</h2>
+        <p style="margin:12px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;max-width:760px;">Logistics, certification, VAT and support set up for your country. Change it if you operate elsewhere.</p>
+      </div>
+      <select value="{{ country }}" onChange="{{ onCountry }}" style="height:44px;min-width:220px;box-sizing:border-box;border:1px solid #D4D4D4;border-radius:8px;background:#FFFFFF;font-size:var(--web-input-size);color:#4F4F4E;padding:0 12px;font-weight:var(--web-input-weight);">
+        <sc-for list="{{ countryList }}" as="c" hint-placeholder-count="4"><option>{{ c }}</option></sc-for>
+      </select>
+    </div>
+    <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;--cg:16px;">
+      <sc-for list="{{ marketCards }}" as="m" hint-placeholder-count="4">
+        <div style="background:#F5F5F5;border-radius:12px;padding:24px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:10px;">{{ m.k }}</div>
+          <div style="font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#4F4F4E;">{{ m.v }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- INVITE THE TEAM -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side);box-sizing:border-box;border-bottom:1px solid #D4D4D4;">
+    <div style="max-width:60ch;margin-bottom:28px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:14px;">Your team</div>
+      <h2 style="margin:0;font-size:var(--web-sub-size);font-weight:var(--web-sub-weight);line-height:var(--web-sub-lh);letter-spacing:-0.02em;color:#4F4F4E;">Invite your team</h2>
+      <p style="margin:12px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;max-width:760px;">Add the people who work with the webshop. Each role gets its own short introduction — not the same generic welcome — so everyone lands where they need to be.</p>
+    </div>
+    <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;--cg:24px;">
+      <div style="background:#F5F5F5;border:1px solid #D4D4D4;border-radius:12px;padding:24px;">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;">
+          <sc-for list="{{ roleChips }}" as="r" hint-placeholder-count="6">
+            <button onClick="{{ r.onClick }}" style="font-size:var(--web-btn-sm-size);padding:8px 14px;border-radius:12px;cursor:pointer;border:1px solid {{ r.border }};background:{{ r.bg }};color:{{ r.color }};font-weight:var(--web-btn-weight);">{{ r.label }}</button>
+          </sc-for>
+        </div>
+        <div style="background:#F5F5F5;border-radius:12px;padding:16px 18px;margin-bottom:18px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:6px;">{{ role }} will see</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;">{{ roleIntro }}</div>
+        </div>
+        <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#5F5E5E;margin-bottom:8px;">Email address</label>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <input value="{{ newEmail }}" onInput="{{ onEmail }}" placeholder="name@company.com" style="flex:1;min-width:200px;height:46px;box-sizing:border-box;border:1px solid #D4D4D4;border-radius:8px;padding:0 12px;font-size:var(--web-input-size);color:#4F4F4E;font-weight:var(--web-input-weight);" />
+          <button onClick="{{ onInvite }}" style="height:var(--cta-height);padding:0 var(--cta-pad-x);background:#4F4F4E;color:#F4F4F4;border:none;border-radius:var(--cta-radius);font-size:var(--cta-font);cursor:pointer;white-space:nowrap;">Send invite</button>
+        </div>
+      </div>
+      <div style="background:#F5F5F5;border:1px solid #D4D4D4;border-radius:12px;padding:24px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:14px;">Invited ({{ inviteCount }})</div>
+        <sc-if value="{{ hasInvites }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ invites }}" as="i" hint-placeholder-count="2">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid #D9D9D9;">
+                <div>
+                  <div style="font-size:var(--web-small-size);color:#4F4F4E;line-height:var(--web-small-lh);">{{ i.email }}</div>
+                  <div style="font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">{{ i.role }} · invite sent</div>
+                </div>
+                <button onClick="{{ i.onRemove }}" style="background:none;border:0;color:#B3261E;font-size:var(--web-small-size);cursor:pointer;line-height:var(--web-small-lh);">Remove</button>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ noInvites }}" hint-placeholder-val="{{ true }}">
+          <p style="margin:0;font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);max-width:760px;">No one invited yet. Pick a role, add an email, and send — they'll get a role-specific welcome.</p>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPERATING AGREEMENT -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 80px;box-sizing:border-box;">
+    <div style="max-width:60ch;margin-bottom:28px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:14px;">How we work together</div>
+      <h2 style="margin:0;font-size:var(--web-sub-size);font-weight:var(--web-sub-weight);line-height:var(--web-sub-lh);letter-spacing:-0.02em;color:#4F4F4E;">Your operating agreement</h2>
+      <p style="margin:12px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;max-width:760px;">A one-page summary of how STRØHM.ENERGY and your company work together, in plain language — separate from the legal terms.</p>
+    </div>
+    <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;--cg:16px;">
+      <div style="background:#F5F5F5;border-radius:12px;padding:28px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;margin-bottom:16px;line-height:var(--web-h3-lh);">STRØHM.ENERGY commits to</div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ strohmCommits }}" as="c" hint-placeholder-count="4">
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;padding:12px 0;border-top:1px solid #E0E0E0;">{{ c }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:28px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;margin-bottom:16px;line-height:var(--web-h3-lh);">You commit to</div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ youCommit }}" as="c" hint-placeholder-count="4">
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;padding:12px 0;border-top:1px solid #E0E0E0;">{{ c }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;">
+      <span style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Download the one-pager</span>
+      <span style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:#F5F5F5;border:1px solid #D4D4D4;color:#4F4F4E;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Read the legal terms</span>
+    </div>
+  </section>
+
+  <dc-import name="Footer" show-ebook="{{ false }}" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:960},&quot;company&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;your company&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;level&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;a verified trade account&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const MARKET = {
+  Belgium: { logistics: "EU Stock, next working day when ordered before 13:00. Tail-lift on request.", cert: "RESCert PV; AREI / RGIE inspection after install.", vat: "Domestic 21% or intra-EU reverse charge on valid VAT.", support: "Dutch & French support, Mon–Fri 08:30–17:00; webshop 24/7." },
+  Netherlands: { logistics: "EU Stock, next working day before 13:00. Pallet & tail-lift options.", cert: "InstallQ / QBISnl; grid feed-in registration.", vat: "Domestic 21% or intra-EU reverse charge on valid VAT.", support: "Dutch support, Mon–Fri 08:30–17:00; webshop 24/7." },
+  Germany: { logistics: "EU / Factory Stock; export routing available.", cert: "Licensed craft / Meister; electrical trade registration.", vat: "Reverse charge on valid intra-EU VAT.", support: "German & English support; webshop 24/7." },
+  France: { logistics: "EU / Factory Stock; project logistics on request.", cert: "RGE QualiPV for grant eligibility.", vat: "Reverse charge on valid intra-EU VAT.", support: "French & English support; webshop 24/7." },
+};
+const ROLES = {
+  Purchaser: "Prices, stock and the four order routes, order history, reordering, and invoices — everything to place and track orders.",
+  Installer: "Product documents, installation guides, serial/QR registration, and the leads assigned to your area.",
+  Engineer: "Technical datasheets, single-line diagrams, commissioning and EMON setup for the systems you build.",
+  "Warehouse contact": "Deliveries, pallet and tail-lift options, delivery windows and goods-receiving notifications.",
+  Accountant: "Invoices, statements, VAT and payment terms — no product ordering.",
+  Manager: "A full overview: team, orders, leads, account level and the operating agreement.",
+};
+const ROLE_KEYS = Object.keys(ROLES);
+const STROHM_COMMITS = [
+  "Confirm and ship orders to agreed lead times and routes",
+  "Keep documents, warranty and RMA correct per product line",
+  "Hand over qualified local leads within your exclusive area",
+  "Provide training, technical guidance and ongoing support",
+];
+const YOU_COMMIT = [
+  "Keep company, team and delivery data correct and up to date",
+  "Follow up on the leads we hand over, promptly and professionally",
+  "Record commissioning and register systems by serial / QR",
+  "Represent our products and approach to the agreed standard",
+];
+class Component extends DCLogic {
+  state = { country: "Belgium", role: "Purchaser", newEmail: "", invites: [], seq: 0 };
+  onInvite() {
+    const email = this.state.newEmail.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+    this.setState((s) => ({ invites: [...s.invites, { id: s.seq + 1, email, role: s.role }], seq: s.seq + 1, newEmail: "" }));
+  }
+  renderVals() {
+    const st = this.state;
+    const info = MARKET[st.country] || MARKET.Belgium;
+    return {
+      company: this.props.company || "your company",
+      level: this.props.level || "a verified trade account",
+      country: st.country,
+      countryList: Object.keys(MARKET),
+      onCountry: (e) => this.setState({ country: e.target.value }),
+      stats: [
+        { big: "24 / 7", small: "Webshop open, weekends included" },
+        { big: "Before 13:00", small: "Next working day delivery" },
+        { big: "4 routes", small: "EU · Floating · Factory · Manufacturing" },
+        { big: st.invites.length, small: "Team members invited" },
+      ],
+      actions: [
+        { t: "Browse & order", d: "Live stock and your net prices.", href: "WEBSHOP - SITE - Home - EN.dc.html#lines" },
+        { t: "Order history", d: "Reorder and track deliveries.", href: "Content Pending.dc.html?brand=WEBSHOP&topic=Order%20history" },
+        { t: "Knowledge", d: "How to order, logistics, VAT, RMA.", href: "WEBSHOP - CONTENT - Knowledge - EN.dc.html" },
+        { t: "Your leads", d: "Qualified projects in your area.", href: "PUSH - SYSTEM - Overview - EN.dc.html" },
+      ],
+      marketCards: [
+        { k: "Logistics", v: info.logistics },
+        { k: "Certification", v: info.cert },
+        { k: "VAT", v: info.vat },
+        { k: "Support", v: info.support },
+      ],
+      role: st.role, roleIntro: ROLES[st.role],
+      roleChips: ROLE_KEYS.map((r) => { const on = r === st.role; return { label: r, onClick: () => this.setState({ role: r }), bg: on ? "#1E1E1E" : "#FFFFFF", color: on ? "#FFFFFF" : "#5F5E5E", border: on ? "#1E1E1E" : "#D4D4D4" }; }),
+      newEmail: st.newEmail,
+      onEmail: (e) => this.setState({ newEmail: e.target.value }),
+      onInvite: () => this.onInvite(),
+      invites: st.invites.map((i) => ({ email: i.email, role: i.role, onRemove: () => this.setState((s) => ({ invites: s.invites.filter((x) => x.id !== i.id) })) })),
+      inviteCount: st.invites.length, hasInvites: st.invites.length > 0, noInvites: st.invites.length === 0,
+      strohmCommits: STROHM_COMMITS, youCommit: YOU_COMMIT,
+    };
+  }
+}
+</script>
+</body>
+</html>

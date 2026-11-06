@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="strohm-type.css"><script src="airo-families.js"></script></helmet>
+<div style="font-family:var(--font-web);color:#4F4F4E;">
+  <sc-for list="{{ fams }}" as="f" hint-placeholder-count="7">
+    <section id="{{ f.id }}" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #D4D4D4;padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;">
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">{{ f.num }} / Family</div>
+          <h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">AIRO {{ f.code }}</h2>
+          <div style="font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;">{{ f.headline }}</div>
+        </div>
+        <div style="grid-column:span 2;min-width:0;display:flex;flex-direction:column;gap:14px;">
+          <sc-for list="{{ f.blocks }}" as="b" hint-placeholder-count="1"><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;max-width:820px;">{{ b.t }}</p></sc-for>
+          <sc-if value="{{ f.limit }}" hint-placeholder-val="{{ false }}"><div style="background:#F5F5F5;padding:16px 18px;display:flex;flex-direction:column;gap:4px;border-radius:12px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Main limitation</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ f.limit }}</span></div></sc-if>
+          <div id="{{ f.techId }}" data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);border-top:1px solid #1E1E1E;">
+            <span style="padding:12px 12px 12px 0;font-size:var(--web-small-size);font-weight:300;border-bottom:1px solid #E4E2E0;line-height:var(--web-small-lh);">Standard</span><span style="padding:12px 0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;border-bottom:1px solid #E4E2E0;">{{ f.std }}</span>
+            <span style="padding:12px 12px 12px 0;font-size:var(--web-small-size);font-weight:300;border-bottom:1px solid #E4E2E0;line-height:var(--web-small-lh);">Optional</span><span style="padding:12px 0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;border-bottom:1px solid #E4E2E0;">{{ f.opt }}</span>
+          </div>
+          <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#B07818;">[TO CONFIRM] {{ f.risk }}</div>
+          <sc-if value="{{ f.hasCta }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="AIRO - PRODUCT - Ventilation Sizing - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">{{ f.cta1 }}</a>
+            <a href="{{ f.techHref }}" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#F5F5F5;color:#4F4F4E;border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">{{ f.cta2 }}</a>
+          </div></sc-if>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+
+  <section id="emon-control" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D4D4D4;padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;">
+      <div style="display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">EMON and control</div><h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One interface. <span style="color:#8E8E8E;">Local control always available.</span></h2></div>
+      <div style="grid-column:span 2;min-width:0;display:flex;flex-direction:column;gap:14px;">
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;max-width:820px;">EMON is the preferred AIRO user interface. Which measurements and control functions are supported is stated per product and configuration. Essential control stays available on the device or wall control without cloud access.</p>
+        <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);border-top:1px solid #1E1E1E;">
+          <sc-for list="{{ layers }}" as="c" hint-placeholder-count="8"><span style="padding:12px 12px 12px 0;font-size:13px;font-weight:{{ c.w }};line-height:1.5;color:{{ c.fg }};border-bottom:1px solid #E4E2E0;">{{ c.v }}</span></sc-for>
+        </div>
+        <div style="font-size:var(--web-min-size);font-weight:300;color:#B07818;line-height:var(--web-min-lh);">[TO CONFIRM] EMON integration and supported functions per family and model.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="spare-parts" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D4D4D4;padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;">
+      <div style="display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Spare parts and repairability</div><h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Replace the part, <span style="color:#8E8E8E;">not the unit.</span></h2></div>
+      <div style="grid-column:span 2;min-width:0;display:flex;flex-direction:column;gap:14px;">
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;max-width:820px;">Every AIRO model gets an exploded diagram with numbered parts, so installers can identify the part they need instead of replacing the complete unit.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;"><sc-for list="{{ parts }}" as="p" hint-placeholder-count="9"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:#F5F5F5;padding:8px 12px;border-radius:8px;">{{ p }}</span></sc-for></div>
+        <div style="font-size:var(--web-min-size);font-weight:300;color:#B07818;line-height:var(--web-min-lh);">[TO CONFIRM] Exploded diagrams and part numbers per model.</div>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() { const t = () => { if (window.AIRO_FAMILIES) this.forceUpdate(); else this.t = setTimeout(t, 100); }; t(); }
+  componentWillUnmount() { clearTimeout(this.t); }
+  renderVals() {
+    const F = window.AIRO_FAMILIES || [], E = window.AIRO_EMON || [];
+    const tbl = E.find(i => i.k === "table");
+    return {
+      fams: F.map((f, i) => ({ ...f, num: String(i + 1).padStart(2, "0"), std: f.matrix?.standard || "", opt: f.matrix?.optional || "", risk: f.matrix?.risk || "", hasCta: f.ctas.length > 0, cta1: f.ctas[0] || "", cta2: f.ctas[1] || "", techId: f.id + "-tech", techHref: f.id === "shift" ? "AIRO - PRODUCT - SHIFT - EN.dc.html" : "#" + f.id + "-tech" })),
+      layers: [{ v: "Layer", w: 700, fg: "#5F5E5E" }, { v: "Role", w: 700, fg: "#5F5E5E" }, ...(tbl ? tbl.rows.flatMap(r => [{ v: r[0], w: 700, fg: "#4F4F4E" }, { v: r[1], w: 300, fg: "#5F5E5E" }]) : [])],
+      parts: ["Filters", "Fans", "Heat exchangers", "Sensors", "Control boards", "Bypass parts", "Panels", "Condensate parts", "Mounting components"],
+    };
+  }
+}
+</script>
+</body>
+</html>

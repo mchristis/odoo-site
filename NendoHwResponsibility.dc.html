@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Body of OGO - PRODUCT - Responsibility - EN.dc.html for NENDO Read more (DEPTH-970). Content unchanged. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>NENDO Responsibility | STRØHM.ENERGY</title>
+<meta name="robots" content="noindex">
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-brand-nendo); } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:16px var(--web-side);box-sizing:border-box;font-size:12px;font-weight:700;letter-spacing:0.08em;color:#B07818;border-bottom:1px solid var(--color-surface-card-mid);">DRAFT. Temporary text written without a NENDO source. Standards are named as applicable, not as held. Replace before publishing.</div>
+  <dc-import name="BrandResponsibility" brand="NENDO" unit="water heater" intro="{{ intro }}" durability="{{ durability }}" materials="{{ materials }}" certs="{{ certs }}" packaging="{{ packaging }}" eol="{{ eol }}" hint-size="100%,2400px"></dc-import>
+  <dc-import name="ContentSections" brand="NENDO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="NENDO" photo-slot-id="ogo-overview-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="NENDO" accent="var(--color-brand-nendo)" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const TC = (w) => `[TO CONFIRM: ${w}]`;
+    return {
+      intro: "Declared efficiency, tested tanks, restricted substances and a documented end-of-life route. Every claim on this page is linked to a document.",
+      durability: [
+        { test: "Electrical safety of storage water heaters", standard: "EN 60335-2-21 (applicable)", result: TC("result per model") },
+        { test: "Standing heat loss of the tank", standard: "EN 12897 (applicable)", result: TC("kWh per 24 h per model") },
+        { test: "Water heating efficiency", standard: "Ecodesign Regulation (EU) 814/2013 (applicable)", result: TC("efficiency class per model") },
+        { test: "Energy label", standard: "Energy Labelling Regulation (EU) 812/2013 (applicable)", result: TC("label per model") },
+      ],
+      materials: [
+        { label: "Tank", headline: "Tank material and corrosion protection.", value: TC("tank material, lining and anode type per model"), dir: "OGO_RESPONSIBILITY_MATERIALS_TANK_01 · tank cutaway detail · 16:10 · placeholder (P2)" },
+        { label: "Declarations", headline: "Substances declared, not assumed.", value: "REACH and RoHS declarations per model. Materials in contact with drinking water per national approval. " + TC("which declarations and approvals exist"), dir: "OGO_RESPONSIBILITY_MATERIALS_DECLARATION_01 · declaration document preview · 16:10 · placeholder (P2)" },
+      ],
+      certs: [
+        { code: "CE", label: "CE marking under the applicable directives " + TC("per model") },
+        { code: "ISO 9001", label: "Quality management " + TC("held for NENDO production") },
+        { code: "ISO 14001", label: "Environmental management " + TC("held for NENDO production") },
+      ],
+      packaging: TC("packaging materials and pallet take-back"),
+      eol: ["Water heater in use", "Drained and disconnected by an installer", "Separate collection under the WEEE Directive 2012/19/EU", "Approved treatment and material recovery", "Recycling record", "Closed ownership record"],
+    };
+  }
+}
+</script>
+</body>
+</html>

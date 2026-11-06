@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="nav-data.js"></script>
+<script src="webshop-data.js"></script>
+</helmet>
+<div style="font-family:var(--font-web);color:#4F4F4E;">
+  <sc-for list="{{ groups }}" as="g" hint-placeholder-count="0">
+    <div style="padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;font-weight:var(--web-eyebrow-weight);margin-bottom:16px;">{{ g.title }}</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:16px;">
+        <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="0">
+          <a href="{{ it.href }}" aria-label="{{ it.aria }}" style="display:flex;flex-direction:column;gap:16px;min-height:160px;padding:24px;box-sizing:border-box;background:#FFFFFF;border:1px solid #DDDDDD;border-radius:var(--radius-card,12px);color:#4F4F4E;text-decoration:none;" style-hover="border-color:{{ it.colour }};">
+            <div style="height:44px;display:flex;align-items:center;"><sc-if value="{{ it.logo }}" hint-placeholder-val="{{ false }}"><img src="{{ it.logo }}" alt="{{ it.name }}" style="height:40px;width:auto;max-width:100%;display:block;"></sc-if></div>
+            <div style="font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);flex:1;">{{ it.subtitle }}</div>
+            <div style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:400;color:{{ it.ctaColor }};">{{ it.cta }} &#8250;</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    if (!window.STROHM_NAV || !window.STROHM_WEBSHOP) this._t = setInterval(() => { if (window.STROHM_NAV && window.STROHM_WEBSHOP) { clearInterval(this._t); this.forceUpdate(); } }, 100);
+  }
+  componentWillUnmount() { clearInterval(this._t); }
+  renderVals() {
+    const N = window.STROHM_NAV, W = window.STROHM_WEBSHOP;
+    if (!N || !W) return { groups: [] };
+    const groups = N.menu("products").groups.map((g) => ({
+      title: g.title,
+      items: g.items.concat(W.EXTRA[g.title] || []).map((x) => {
+        const code = x.name || x.code, shop = W.SHOPS[code];
+        return { name: code, logo: W.LOGOS[code] || "", subtitle: x.subtitle, colour: N.COLOUR[code] || "#4F4F4E",
+          href: shop || N.HREF[code] || "#", cta: shop ? "Open shop" : "Shop in preparation", ctaColor: shop ? "#4F4F4E" : "#898989",
+          aria: shop ? code + " shop" : code + ", shop in preparation, brand page" };
+      }),
+    }));
+    return { groups };
+  }
+}
+</script>
+</body>
+</html>

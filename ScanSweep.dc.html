@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+</helmet>
+<section ref="{{ rootRef }}" data-screen-label="Scan sweep" style="width:calc(100% - 2 * var(--web-side));max-width:var(--web-grid);margin:64px auto 0;box-sizing:border-box;font-family:var(--font-web);color:var(--color-text-primary);">
+  <div style="background:#F4F4F4;border-radius:12px;padding:24px 24px 16px;overflow-x:auto;">
+    <svg viewBox="0 0 1100 380" role="img" aria-label="Example: a phone scans the label, the serial number is linked in EMON" style="display:block;width:100%;min-width:720px;height:auto;font-family:var(--font-web);" fill="#4F4F4E">
+      <rect x="80" y="60" width="240" height="260" rx="8" fill="#FFFFFF"></rect>
+      <text x="100" y="92" font-size="18" font-weight="700" letter-spacing="1">{{ brand }}</text>
+      <text x="300" y="92" font-size="13" font-weight="300" text-anchor="end">NFC · QR</text>
+      <g transform="translate(100 108)" shape-rendering="crispEdges">
+        <sc-for list="{{ cells }}" as="c" hint-placeholder-count="17">
+          <rect x="{{ c.x }}" y="{{ c.y }}" width="{{ c.w }}" height="{{ c.w }}" fill="{{ c.f }}"></rect>
+        </sc-for>
+      </g>
+      <rect x="100" y="108" width="200" height="2" fill="{{ accent }}" style="transform:{{ scanT }};opacity:{{ scanO }};transition:transform 900ms cubic-bezier(.77,0,.175,1),opacity 200ms ease-out;"></rect>
+      <g fill="none" stroke="{{ accent }}" stroke-width="3" style="opacity:{{ lockO }};transform:{{ lockT }};transform-box:fill-box;transform-origin:center;transition:opacity 200ms ease-out,transform 300ms cubic-bezier(.23,1,.32,1);">
+        <path d="M92 130 V100 H122"></path><path d="M278 100 H308 V130"></path><path d="M92 286 V316 H122"></path><path d="M278 316 H308 V286"></path>
+      </g>
+      <g style="opacity:{{ phoneO }};transform:{{ phoneT }};transition:opacity 300ms ease-out,transform 500ms cubic-bezier(.23,1,.32,1);">
+        <rect x="52" y="24" width="296" height="332" rx="28" fill="none" stroke="#4F4F4E" stroke-width="1.5"></rect>
+        <line x1="170" y1="40" x2="230" y2="40" stroke="#4F4F4E" stroke-width="1.5" stroke-linecap="round"></line>
+      </g>
+      <line x1="348" y1="190" x2="690" y2="190" stroke="{{ accent }}" stroke-width="2" stroke-dasharray="342" stroke-dashoffset="{{ lineOff }}" style="transition:stroke-dashoffset 500ms cubic-bezier(.77,0,.175,1);"></line>
+      <circle cx="690" cy="190" r="6" fill="{{ accent }}" style="opacity:{{ lineEnd }};transition:opacity 200ms ease;"></circle>
+      <g style="opacity:{{ cardO }};transition:opacity 300ms ease-out;">
+        <rect x="700" y="60" width="320" height="260" rx="8" fill="#FFFFFF"></rect>
+        <text x="724" y="98" font-size="13" font-weight="300" letter-spacing="1.5">EMON · ASSET RECORD</text>
+        <text x="996" y="98" font-size="13" font-weight="300" text-anchor="end">Example</text>
+        <line x1="724" y1="116" x2="996" y2="116" stroke="#DDDDDD"></line>
+      </g>
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="3">
+        <g style="opacity:{{ r.op }};transform:{{ r.tr }};transition:opacity 300ms ease-out,transform 300ms cubic-bezier(.23,1,.32,1);">
+          <circle cx="732" cy="{{ r.cy }}" r="6" fill="{{ r.dot }}"></circle>
+          <text x="754" y="{{ r.y }}" font-size="22"><tspan font-weight="700">{{ r.a }}</tspan><tspan font-weight="300"> {{ r.b }}</tspan></text>
+          <line x1="724" y1="{{ r.ly }}" x2="996" y2="{{ r.ly }}" stroke="#DDDDDD"></line>
+        </g>
+      </sc-for>
+    </svg>
+    <div style="display:flex;justify-content:flex-end;padding-top:8px;">
+      <button type="button" onClick="{{ replay }}" style="height:40px;padding:0 20px;border:1px solid #BBBBBB;border-radius:8px;background:transparent;font-family:inherit;font-size:15px;font-weight:300;color:var(--color-text-primary);cursor:pointer;" style-hover="border-color:#4F4F4E;">Replay</button>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:480},&quot;brand&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ANDO&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#CDDB65&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { p: 0, n: 0 };
+  rootRef = React.createRef();
+  timers = [];
+  componentDidMount() {
+    const el = this.rootRef.current;
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { this.setState({ p: 5, n: 3 }); return; }
+    if (!('IntersectionObserver' in window) || !el) { this.run(); return; }
+    this.io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { this.io.disconnect(); this.run(); } }, { threshold: 0.5 });
+    this.io.observe(el);
+  }
+  componentWillUnmount() { this.clear(); this.io && this.io.disconnect(); }
+  clear() { this.timers.forEach(clearTimeout); this.timers = []; }
+  at(ms, fn) { this.timers.push(setTimeout(fn, ms)); }
+  run() {
+    this.clear();
+    this.setState({ p: 0, n: 0 });
+    this.at(60, () => this.setState({ p: 1 }));
+    this.at(560, () => this.setState({ p: 2 }));
+    this.at(1500, () => this.setState({ p: 3 }));
+    this.at(1800, () => this.setState({ p: 4 }));
+    this.at(2300, () => this.setState({ p: 5, n: 1 }));
+    this.at(2390, () => this.setState({ n: 2 }));
+    this.at(2480, () => this.setState({ n: 3 }));
+  }
+  renderVals() {
+    const brand = String(this.props.brand || 'BRAND').toUpperCase();
+    const accent = String(this.props.accent || ('var(--color-brand-' + brand.toLowerCase() + ', #898989)'));
+    let h = 7; for (const ch of brand) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+    const rnd = () => { h = (h * 1664525 + 1013904223) >>> 0; return h / 4294967296; };
+    const N = 17, w = 200 / N, cells = [], blocks = [[0, 0], [12, 0], [0, 12]];
+    for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+      let on = null;
+      for (const [bx, by] of blocks) {
+        const dx = x - bx, dy = y - by;
+        if (dx >= -1 && dx <= 5 && dy >= -1 && dy <= 5) { const d = Math.max(Math.abs(dx - 2), Math.abs(dy - 2)); on = dx >= 0 && dx <= 4 && dy >= 0 && dy <= 4 && (d === 2 || d === 0); }
+      }
+      if (on === null) on = rnd() > 0.5;
+      if (on) cells.push({ x: +(x * w).toFixed(2), y: +(y * w).toFixed(2), w: +(w + 0.2).toFixed(2), f: '#4F4F4E' });
+    }
+    const s = this.state;
+    const data = [['EX-0000-0000', 'serial number'], [brand, 'product'], ['Linked', 'in EMON']];
+    const rows = data.map((d, i) => ({ a: d[0], b: d[1], cy: 154 + i * 56, y: 161 + i * 56, ly: 178 + i * 56, op: s.n > i ? 1 : 0, tr: s.n > i ? 'translateY(0px)' : 'translateY(8px)', dot: i === 2 ? accent : '#4F4F4E' }));
+    return {
+      brand, accent, cells, rows,
+      phoneO: s.p >= 1 ? 1 : 0, phoneT: s.p >= 1 ? 'translateY(0px)' : 'translateY(40px)',
+      scanT: s.p >= 2 ? 'translateY(198px)' : 'translateY(0px)', scanO: s.p === 2 ? 1 : 0,
+      lockO: s.p >= 3 ? 1 : 0, lockT: s.p >= 3 ? 'scale(1)' : 'scale(1.08)',
+      lineOff: s.p >= 4 ? 0 : 342, lineEnd: s.p >= 5 ? 1 : 0,
+      cardO: s.p >= 4 ? 1 : 0.35,
+      replay: () => this.run()
+    };
+  }
+}
+</script>
+</body>
+</html>

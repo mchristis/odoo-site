@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="./doc-page.js"></script>
+<style>
+  doc-page:not(:defined){visibility:hidden}
+  body { margin:0; }
+  a { color:#5F5E5E; } a:hover { color:#1E1E1E; }
+  [data-nb], [data-cn] { display:none !important; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  * { animation-delay: -99s !important; animation-duration: .001s !important; animation-iteration-count: 1 !important; animation-fill-mode: both !important; animation-play-state: running !important; transition-duration: 0s !important; }
+  img, iframe, image-slot { break-inside: avoid; }
+</style>
+</helmet>
+<doc-page margin="0.5in">
+  <dc-import name="STROHM.ENERGY - SITE - Homepage - EN" hint-size="100%,2000px"></dc-import>
+</doc-page>
+</x-dc>
+</body>
+</html>

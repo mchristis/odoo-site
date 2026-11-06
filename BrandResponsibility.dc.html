@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="strohm-type.css">
+<script src="./image-slot.js"></script>
+<style> a { color:#4F4F4E; text-decoration:none; } a:hover { color:#1E1E1E; } </style>
+</helmet>
+<div style="font-family:var(--font-web);color:#4F4F4E;background:#FFFFFF;">
+  <dc-import name="PageHero" brand="{{ brand }}" eyebrow="Responsibility" title="Recorded, not claimed." intro="{{ intro }}" split="{{ true }}" slot="{{ heroSlot }}" shot="{{ heroDir }}" hint-size="100%,625px"></dc-import>
+
+  <sc-if value="{{ showDurability }}" hint-placeholder-val="{{ true }}">
+    <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #E3E1DB;padding-top:40px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A88;margin-bottom:12px;">Durability and testing</div>
+        <h2 style="margin:0 0 28px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Tested against <span style="color:#8E8E8E;">real exposure.</span></h2>
+        <sc-if value="{{ durabilityCards }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;">
+            <sc-for list="{{ durability }}" as="d" hint-placeholder-count="6">
+              <div style="border:1px solid #E3E1DB;border-radius:12px;overflow:hidden;">
+                <div style="aspect-ratio:4/3;background:#F5F5F5;"><image-slot id="{{ d.slotId }}" shape="rect" placeholder="{{ d.dir }}"></image-slot></div>
+                <div style="padding:16px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;">{{ d.test }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ durabilityTable }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;">
+          <div data-cols="3" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:16px;padding:0 12px 12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A88;--cg:16px;"><span>Test</span><span>Standard</span><span>Result</span></div>
+          <sc-for list="{{ durability }}" as="d" hint-placeholder-count="3">
+            <div data-cols="3" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:16px;padding:14px 12px;border-top:1px solid #E3E1DB;background:{{ d.bg }};font-size:13px;font-weight:300;color:{{ d.color }};--cg:16px;"><span style="font-weight:400;color:#4F4F4E;">{{ d.test }}</span><span>{{ d.standard }}</span><span>{{ d.result }}</span></div>
+          </sc-for>
+        </div>
+        </sc-if>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showMaterialBlocks }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #E3E1DB;padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;">
+        <sc-for list="{{ materials }}" as="m" hint-placeholder-count="2">
+          <div>
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A88;margin-bottom:12px;">{{ m.label }}</div>
+            <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ m.headline }}</h2>
+            <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">{{ m.value }}</p>
+            <div style="border:1px solid #E3E1DB;border-radius:12px;overflow:hidden;"><div style="aspect-ratio:16/10;background:#F5F5F5;"><image-slot id="{{ m.slotId }}" shape="rect" placeholder="{{ m.dir }}"></image-slot></div></div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+  <sc-if value="{{ showMaterials }}" hint-placeholder-val="{{ true }}">
+    <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #E3E1DB;padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start;">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A88;margin-bottom:12px;">Materials</div>
+          <h2 style="margin:0 0 20px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Declared layer <span style="color:#8E8E8E;">by layer.</span></h2>
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ materials }}" as="m" hint-placeholder-count="3">
+              <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:24px;padding:14px 12px;border-top:1px solid #E3E1DB;background:{{ m.bg }};"><span style="font-size:14px;font-weight:700;color:#4F4F4E;">{{ m.label }}</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:{{ m.color }};">{{ m.value }}</span></div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="border:1px solid #E3E1DB;border-radius:12px;overflow:hidden;">
+          <div style="aspect-ratio:16/10;background:#F5F5F5;"><image-slot id="{{ materialsSlot }}" shape="rect" placeholder="{{ materialsDir }}"></image-slot></div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showCerts }}" hint-placeholder-val="{{ true }}">
+    <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #E3E1DB;padding-top:40px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A88;margin-bottom:12px;">Management systems</div>
+        <h2 style="margin:0 0 28px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Held <span style="color:#8E8E8E;">and audited.</span></h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;">
+          <sc-for list="{{ certs }}" as="c" hint-placeholder-count="3">
+            <div style="border:1px solid #E3E1DB;border-radius:12px;overflow:hidden;">
+              <div style="aspect-ratio:4/3;background:#F5F5F5;"><image-slot id="{{ c.slotId }}" shape="rect" placeholder="{{ c.dir }}"></image-slot></div>
+              <div style="padding:16px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:{{ c.color }};line-height:var(--web-h3-lh);">{{ c.code }}</div><div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ c.label }}</div></div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:20px 0 0;font-size:var(--web-min-size);font-weight:300;color:#8A8A88;max-width:760px;line-height:var(--web-min-lh);">Management certificates apply to facilities, not to the product itself.</p>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showPackaging }}" hint-placeholder-val="{{ true }}">
+    <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #E3E1DB;padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:center;">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A88;margin-bottom:12px;">Packaging</div>
+          <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">What arrives <span style="color:#8E8E8E;">on site.</span></h2>
+          <p style="margin:0;font-size:14px;font-weight:300;line-height:1.7;color:{{ packagingColor }};max-width:760px;">{{ packaging }}</p>
+        </div>
+        <div style="border:1px solid #E3E1DB;border-radius:12px;overflow:hidden;">
+          <div style="aspect-ratio:16/10;background:#F5F5F5;"><image-slot id="{{ packagingSlot }}" shape="rect" placeholder="{{ packagingDir }}"></image-slot></div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ showEol }}" hint-placeholder-val="{{ true }}">
+    <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+      <div style="border-top:1px solid #E3E1DB;padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:center;">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A88;margin-bottom:12px;">End of life and WEEE</div>
+          <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Designed to <span style="color:#8E8E8E;">end cleanly.</span></h2>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <sc-for list="{{ eol }}" as="e" hint-placeholder-count="5">
+              <div style="display:flex;gap:12px;font-size:14px;font-weight:300;color:{{ e.color }};line-height:1.5;"><span style="color:#8A8A88;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);">{{ e.n }}</span>{{ e.label }}</div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="border:1px solid #E3E1DB;border-radius:12px;overflow:hidden;">
+          <div style="aspect-ratio:4/3;background:#F5F5F5;"><image-slot id="{{ eolSlot }}" shape="rect" placeholder="{{ eolDir }}"></image-slot></div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+  <div style="height:64px;"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:960},&quot;brand&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;BRAND&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;unit&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;product&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;intro&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;durability&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;{test:string,standard:string,result:string}[]&quot;},&quot;materials&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;{label:string,value:string}[]&quot;},&quot;certs&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;{code:string,label:string}[]&quot;},&quot;packaging&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;eol&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string[]&quot;},&quot;noSource&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;('durability'|'materials'|'certs'|'packaging'|'eol')[]&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    const b = (p.brand || "BRAND").toUpperCase();
+    const k = b.toLowerCase();
+    const unit = p.unit || "product";
+    const noSource = p.noSource || [];
+    const TC = (what) => `[TO CONFIRM: ${what}]`;
+    const tc = "#B07818", body = "#5F5E5E";
+    const zebra = (i) => (i % 2 ? "#F5F5F5" : "#FFFFFF");
+    const has = (a) => Array.isArray(a) && a.length > 0;
+    const durability = has(p.durability) ? p.durability.map((d, i) => ({ ...d, bg: zebra(i), color: body }))
+      : [{ test: TC("tests"), standard: TC("standards"), result: TC("results"), bg: "#FFFFFF", color: tc }];
+    const durabilityCards = has(p.durability) && p.durability.every((d) => !d.standard && !d.result);
+    if (durabilityCards) durability.forEach((d, i) => { d.slotId = `${k}-resp-dur-${i + 1}`; d.dir = d.dir || `${b}_RESPONSIBILITY_DURABILITY_${i + 1}_01 · ${d.test} · 4:3 · placeholder (P2)`; });
+    const materialBlocks = has(p.materials) && p.materials.every((m) => m.headline);
+    const materials = has(p.materials) ? p.materials.map((m, i) => ({ ...m, bg: zebra(i), color: body, slotId: `${k}-resp-mat-${i + 1}`, dir: m.dir || `${b}_RESPONSIBILITY_MATERIALS_${i + 1}_01 · ${m.label} · 16:10 · placeholder (P2)` }))
+      : [{ label: "Material declaration", value: TC(`${b} material stack and declarations`), bg: "#FFFFFF", color: tc }];
+    const certs = (has(p.certs) ? p.certs : [{ code: TC("certificate"), label: TC(`${b} management certificates held`) }])
+      .map((c, i) => ({ ...c, color: has(p.certs) ? "#4F4F4E" : tc, slotId: `${k}-resp-cert-${i + 1}`, dir: `${b}_RESPONSIBILITY_CERT_PREVIEW-${i + 1}_01 · certificate preview · 4:3 · placeholder (P2)` }));
+    const eol = (has(p.eol) ? p.eol : [TC(`${b} end-of-life route and WEEE registration`)])
+      .map((l, i) => ({ n: String(i + 1), label: l, color: has(p.eol) ? body : tc }));
+    return {
+      intro: p.intro || TC(`${b} responsibility intro, max 60 words`), introColor: p.intro ? body : tc,
+      heroSlot: `${k}-resp-hero`, heroDir: `${b}_RESPONSIBILITY_HERO_BANNER_01 · material or lifecycle image of the ${unit}, no greenwash imagery · 21:9 · placeholder (P1)`,
+      showDurability: !noSource.includes("durability"), durability, durabilityCards, durabilityTable: !durabilityCards,
+      showMaterials: !noSource.includes("materials") && !materialBlocks, showMaterialBlocks: !noSource.includes("materials") && materialBlocks, materials,
+      materialsSlot: `${k}-resp-materials`, materialsDir: `${b}_RESPONSIBILITY_MATERIALS_DIAGRAM_01 · material stack diagram with declaration preview · 16:10 · placeholder (P1)`,
+      showCerts: !noSource.includes("certs"), certs,
+      showPackaging: !noSource.includes("packaging"),
+      packaging: p.packaging || TC(`${b} packaging materials and take-back`), packagingColor: p.packaging ? body : tc,
+      packagingSlot: `${k}-resp-packaging`, packagingDir: p.packagingDir || `${b}_RESPONSIBILITY_PACKAGING_01 · packaging as delivered on site · 16:10 · placeholder (P2)`,
+      showEol: !noSource.includes("eol"), eol,
+      eolSlot: `${k}-resp-eol`, eolDir: `${b}_RESPONSIBILITY_END-OF-LIFE_DIAGRAM_01 · collection, treatment, recovery, record · 4:3 · placeholder (P2)`,
+    };
+  }
+}
+</script>
+</body>
+</html>

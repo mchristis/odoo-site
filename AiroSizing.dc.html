@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="font-family:var(--font-web);color:#4F4F4E;">
+  <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;">
+    <div style="flex:3 1 460px;min-width:0;background:#F5F5F5;padding:28px;display:flex;flex-direction:column;gap:16px;border-radius:12px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Building</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;">
+        <sc-for list="{{ fields }}" as="f" hint-placeholder-count="12">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">{{ f.label }}
+            <sc-if value="{{ f.isNum }}" hint-placeholder-val="{{ true }}"><input type="number" step="any" min="0" value="{{ f.value }}" onChange="{{ f.onChange }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;color:#4F4F4E;box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input></sc-if>
+            <sc-if value="{{ f.isSel }}" hint-placeholder-val="{{ false }}"><select value="{{ f.value }}" onChange="{{ f.onChange }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 8px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;color:#4F4F4E;font-weight:var(--web-input-weight);"><sc-for list="{{ f.options }}" as="o" hint-placeholder-count="3"><option value="{{ o.v }}">{{ o.l }}</option></sc-for></select></sc-if>
+          </label>
+        </sc-for>
+      </div>
+      <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#B07818;">EXAMPLE values. Required airflow follows national rules and a design by a ventilation engineer. The result is a first indication, not a design.</div>
+    </div>
+    <div style="flex:2 1 300px;min-width:0;display:flex;flex-direction:column;gap:12px;">
+      <div style="background:#F5F5F5;padding:28px;display:flex;flex-direction:column;gap:10px;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Result</div>
+        <sc-for list="{{ res }}" as="r" hint-placeholder-count="5">
+          <div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid #DDDDDD;padding-top:8px;"><span style="font-size:13px;font-weight:{{ r.w }};">{{ r.k }}</span><span style="font-size:var(--web-small-size);text-align:right;line-height:var(--web-small-lh);"><span style="font-weight:700;">{{ r.v }}</span> <span style="font-weight:300;">{{ r.u }}</span></span></div>
+        </sc-for>
+        <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ why }}</div>
+        <a href="{{ famHref }}" style="align-self:flex-start;font-size:14px;border-bottom:1px solid #1E1E1E;padding-bottom:2px;">About AIRO {{ fam }} &#8250;</a>
+      </div>
+      <div style="background:#F5F5F5;padding:28px;display:flex;flex-direction:column;gap:10px;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Heat recovery</div>
+        <sc-for list="{{ hr }}" as="r" hint-placeholder-count="4">
+          <div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid #DDDDDD;padding-top:8px;"><span style="font-size:13px;font-weight:{{ r.w }};">{{ r.k }}</span><span style="font-size:var(--web-small-size);text-align:right;line-height:var(--web-small-lh);"><span style="font-weight:700;">{{ r.v }}</span> <span style="font-weight:300;">{{ r.u }}</span></span></div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ leadClosed }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ openLead }}" style="font-family:inherit;font-size:var(--cta-font);height:var(--cta-height);border:none;border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;cursor:pointer;padding:0 var(--cta-pad-x);">Get my result as PDF</button></sc-if>
+      <sc-if value="{{ leadOpen }}" hint-placeholder-val="{{ false }}">
+        <form onSubmit="{{ onLead }}" style="background:#F4F4F4;padding:24px;display:flex;flex-direction:column;gap:14px;border-radius:12px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Where should we send it?</div>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Email address<input type="email" required="required" autoComplete="email" value="{{ leadEmail }}" onChange="{{ onLeadEmail }}" style="font-family:inherit;font-size:var(--web-input-size);height:48px;padding:0 14px;border:1px solid #BBBBBB;border-radius:8px;box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">WhatsApp number<input type="tel" required="required" autoComplete="tel" placeholder="+31 6 12345678" value="{{ leadWa }}" onChange="{{ onLeadWa }}" style="font-family:inherit;font-size:var(--web-input-size);height:48px;padding:0 14px;border:1px solid #BBBBBB;border-radius:8px;box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input></label>
+          <label style="display:flex;gap:10px;align-items:flex-start;font-size:var(--web-label-size);font-weight:var(--web-label-weight);line-height:1.5;cursor:pointer;"><input type="checkbox" checked="{{ leadConsent }}" onChange="{{ onLeadConsent }}" style="margin-top:3px;"></input><span>Yes, AIRO and STRØHM.ENERGY may send me product news and offers by email and WhatsApp. I can unsubscribe at any time.</span></label>
+          <button type="submit" style="font-family:inherit;font-size:var(--cta-font);height:var(--cta-height);border:none;border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;cursor:pointer;padding:0 var(--cta-pad-x);">Download PDF</button>
+          <sc-if value="{{ leadMsg }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ leadMsg }}</div></sc-if>
+          <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#8A8A88;">Your email and number are needed to send the result. Marketing only with the box ticked. See the <a href="STROHM.ENERGY - SITE - Privacy - EN.dc.html" style="text-decoration:underline;">Privacy Policy</a>.</div>
+          <div style="font-size:var(--web-min-size);font-weight:300;color:#B07818;line-height:var(--web-min-lh);">PROTOTYPE: details are stored in this browser only, nothing is sent yet.</div>
+        </form>
+      </sc-if>
+    </div>
+  </div>
+  <details style="border-top:1px solid #D4D4D4;padding-top:12px;margin-top:24px;"><summary style="font-size:var(--web-body-size);cursor:pointer;font-weight:500;">How it is calculated</summary>
+    <div style="margin-top:10px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:900px;">Airflow = the larger of people × airflow per person and room volume × air change rate. Ventilation heat loss = airflow × 0,34 Wh/(m³·K) × average indoor-outdoor difference × heating hours. Heat recovery saves that loss × recovery efficiency, valued at your heat price. Fan electricity = fan power × 8760 h × electricity price. Family suggestion: one room<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg> SHIFT; whole home without ducts<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg> SWAP; whole home with ducts<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg> FLOW; large room or commercial<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg> WAVE; air also heated, cooled or dehumidified<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg> GUST.</div>
+  </details>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900}}">
+const F = [
+  ["space", "What are you ventilating?", "home", [["home", "A whole home"], ["room", "One room"], ["large", "A large room or commercial space"]]],
+  ["ducts", "Can ducts be installed?", "yes", [["yes", "Yes"], ["no", "No"]]], ["condition", "Also heat, cool or dehumidify the air?", "no", [["no", "No"], ["yes", "Yes"]]],
+  ["area", "Floor area (m²)", 120], ["height", "Ceiling height (m)", 2.6], ["people", "People", 4],
+  ["perPerson", "Airflow per person (m³/h)", 30], ["ach", "Air changes per hour", 0.5], ["dT", "Average indoor-outdoor difference (K)", 12],
+  ["hours", "Heating hours per year", 5000], ["eff", "Heat recovery efficiency (%)", 85], ["heatPrice", "Heat price (€/kWh)", 0.12], ["fanW", "Fan power (W)", 40], ["elec", "Electricity price (€/kWh)", 0.30],
+];
+const eur = (n) => "€ " + Math.round(n).toLocaleString("de-DE");
+const nl = (n, d = 0) => n.toLocaleString("de-DE", { minimumFractionDigits: d, maximumFractionDigits: d });
+class Component extends DCLogic {
+  state = { v: {}, leadOpen: false, leadEmail: "", leadWa: "", leadConsent: false, leadMsg: "" };
+  lead(ev) {
+    ev.preventDefault();
+    const { leadEmail: em, leadWa: wa, leadConsent: ok } = this.state;
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { this.setState({ leadMsg: "That email address looks slightly imaginary." }); return; }
+    if (wa.replace(/[^0-9]/g, "").length < 8) { this.setState({ leadMsg: "The WhatsApp number seems a few digits short." }); return; }
+    const v = this.renderVals();
+    try { const L = JSON.parse(localStorage.getItem("airo-calculator-leads") || "[]"); L.push({ email: em, whatsapp: wa, marketingConsent: ok, at: new Date().toISOString(), family: v.fam, result: v.res.concat(v.hr).map(r => r.k + ": " + r.v + " " + r.u) }); localStorage.setItem("airo-calculator-leads", JSON.stringify(L)); } catch (e) {}
+    const w = window.open("", "_blank"); if (!w) { this.setState({ leadMsg: "The PDF window was blocked. Allow pop-ups and try again." }); return; }
+    const row = (a, b) => '<tr><td style="padding:8px 0;border-bottom:1px solid #DDD;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);">' + a + '</td><td style="padding:8px 0;border-bottom:1px solid #DDD;font-weight:300;text-align:right;font-size:var(--web-small-size);line-height:var(--web-small-lh);">' + b + '</td></tr>';
+    w.document.write('<html><head><title>AIRO ventilation sizing</title></head><body style="font-family:var(--font-web);color:#4F4F4E;padding:40px;max-width:680px"><div style="font-size:11px;font-weight:700;letter-spacing:.1em">AIRO · STRØHM.ENERGY</div><h1 style="font-size:var(--web-h1-size);margin:8px 0 24px;font-weight:100;line-height:var(--web-h1-lh);">Your ventilation indication</h1><table style="width:100%;border-collapse:collapse;font-size:14px">' + v.res.map(r => row(r.k, r.v + " " + r.u)).join("") + '</table><p style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">' + v.why + '</p><h2 style="font-size:15px;margin:24px 0 6px">Heat recovery</h2><table style="width:100%;border-collapse:collapse;font-size:14px">' + v.hr.map(r => row(r.k, r.v + " " + r.u)).join("") + '</table><h2 style="font-size:15px;margin:24px 0 6px">Your inputs</h2><table style="width:100%;border-collapse:collapse;font-size:13px">' + v.fields.map(f => row(f.label, f.isSel ? f.options.find(o => o.v === String(f.value))?.l || f.value : f.value)).join("") + '</table><p style="font-size:var(--web-min-size);font-weight:300;margin-top:24px;line-height:var(--web-min-lh);">First indication based on example values. Not a ventilation design. Prepared for ' + em + '.</p></body></html>');
+    w.document.close(); w.focus(); w.print();
+    this.setState({ leadMsg: "Done. The air has been accounted for.", leadOpen: false });
+  }
+  renderVals() {
+    const s = this.state;
+    const fields = F.map(([k, label, d, opts]) => ({ label, value: s.v[k] ?? d, isNum: !opts, isSel: !!opts, options: (opts || []).map(([v, l]) => ({ v, l })), onChange: (e) => { const val = e.target.value; this.setState(st => ({ v: { ...st.v, [k]: val } })); } }));
+    const raw = (k) => s.v[k] ?? F.find(x => x[0] === k)[2];
+    const g = (k) => { const n = +String(raw(k)).replace(",", "."); return isFinite(n) ? n : 0; };
+    const vol = g("area") * g("height");
+    const q = Math.max(g("people") * g("perPerson"), vol * g("ach"));
+    const space = raw("space"), ducts = raw("ducts") === "yes", cond = raw("condition") === "yes";
+    let fam = "FLOW", why = "A whole home with room for ducts: one central unit with heat recovery supplies every room.", units = 1;
+    if (cond) { fam = "GUST"; why = "The incoming air should also be heated, cooled or dehumidified: GUST combines ventilation, heat recovery and an inverter heat pump."; }
+    else if (space === "room") { fam = "SHIFT"; why = "One room, no duct network: SHIFT ventilates through the external wall. Two coordinated units give a more balanced result."; units = 2; }
+    else if (space === "large") { fam = "WAVE"; why = "A large room or commercial space: WAVE covers 350 to 750 m³/h."; units = Math.max(1, Math.ceil(q / 750)); }
+    else if (!ducts) { fam = "SWAP"; why = "A whole home where conventional ductwork does not fit: decentral SWAP units of 60, 80 or 100 m³/h, one per main room."; units = Math.max(1, Math.ceil(q / 100)); }
+    const loss = q * 0.34 * g("dT") * g("hours") / 1000;
+    const saved = loss * Math.min(100, g("eff")) / 100;
+    const fanKwh = g("fanW") * 8760 / 1000;
+    return {
+      fields,
+      res: [
+        { k: "Room volume", v: nl(vol), u: "m³", w: 300 },
+        { k: "Required airflow", v: nl(q), u: "m³/h", w: 700 },
+        { k: "Suggested family", v: "AIRO " + fam, u: "", w: 700 },
+        { k: "Indicative number of units", v: String(units), u: "", w: 300 },
+      ],
+      why, fam, famHref: "AIRO - PRODUCT - Products - EN.dc.html#" + fam.toLowerCase(),
+      hr: [
+        { k: "Ventilation heat loss without recovery", v: nl(loss), u: "kWh/year", w: 300 },
+        { k: "Heat recovered", v: nl(saved), u: "kWh/year", w: 300 },
+        { k: "Heat saving", v: eur(saved * g("heatPrice")), u: "/ year", w: 700 },
+        { k: "Fan electricity", v: eur(fanKwh * g("elec")), u: "/ year", w: 300 },
+        { k: "Net saving", v: eur(saved * g("heatPrice") - fanKwh * g("elec")), u: "/ year", w: 700 },
+      ],
+      leadOpen: s.leadOpen, leadClosed: !s.leadOpen, leadEmail: s.leadEmail, leadWa: s.leadWa, leadConsent: s.leadConsent, leadMsg: s.leadMsg,
+      openLead: () => this.setState({ leadOpen: true, leadMsg: "" }), onLead: (ev) => this.lead(ev),
+      onLeadEmail: (ev) => this.setState({ leadEmail: ev.target.value }), onLeadWa: (ev) => this.setState({ leadWa: ev.target.value }), onLeadConsent: (ev) => this.setState({ leadConsent: ev.target.checked }),
+    };
+  }
+}
+</script>
+</body>
+</html>

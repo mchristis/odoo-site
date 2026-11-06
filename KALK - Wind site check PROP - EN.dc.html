@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>:root{--web-side:clamp(20px,5.8vw,84px);}body{margin:0;background:#F7F7F5;font-family:var(--font-web);}a{color:#4F4F4E;}a:hover{color:#527A83;}.leaflet-container{background:#E3E3E3;font-family:var(--font-web);}</style>
+<style data-q4-reflow>/* Q4 grid reflow (DEPTH-897, user 26 Oct 2026). Desktop above 1024px unchanged.
+   data-cols="N": equal 2–6 column grids reflow by available width, cards at least 240px, never more than N columns.
+   data-stack: mixed-width grids stack to one column below 720px. Charts (7+ columns) and label/value rows are not marked. */
+@media (max-width:1024px){
+ [data-cols="2"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 1 * var(--cg,0px)) / 2 - 1px))),1fr)) !important}
+ [data-cols="3"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 2 * var(--cg,0px)) / 3 - 1px))),1fr)) !important}
+ [data-cols="4"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 3 * var(--cg,0px)) / 4 - 1px))),1fr)) !important}
+ [data-cols="5"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 4 * var(--cg,0px)) / 5 - 1px))),1fr)) !important}
+ [data-cols="6"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 5 * var(--cg,0px)) / 6 - 1px))),1fr)) !important}
+ [data-cols]>[style*="grid-column:span"],[data-cols]>[style*="grid-column: span"]{grid-column:1/-1 !important}
+}
+@media (max-width:720px){
+ [data-stack]{grid-template-columns:minmax(0,1fr) !important}
+ [data-stack]>*{grid-column:auto !important;grid-row:auto !important}
+}</style>
+</helmet>
+<div data-screen-label="KALK Wind site check" style="display:flex;flex-direction:column;min-height:100vh;">
+  <dc-import name="NavBar" active="systems" hint-size="100%,80px"></dc-import>
+  <div style="position:relative;width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:24px auto 48px;height:clamp(600px,calc(100vh - 160px),820px);border-radius:24px;overflow:hidden;box-sizing:border-box;">
+    <div ref="{{ mapRef }}" style="position:absolute;inset:0;"></div>
+    <div style="position:absolute;right:16px;top:16px;bottom:16px;z-index:500;width:min(420px,calc(100% - 32px));display:flex;flex-direction:column;justify-content:flex-end;pointer-events:none;">
+      <div style="pointer-events:auto;background:#FFFFFF;border-radius:12px;padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px;max-height:100%;overflow:auto;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:15px;color:#252525;">PROP by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:20px;width:auto;display:block;filter:brightness(0);"></div>
+          <sc-if value="{{ showProgress }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:#5F5E5E;">
+              <div style="width:64px;height:4px;border-radius:2px;background:#E3E3E3;overflow:hidden;"><div style="height:4px;width:{{ progressPct }};background:#527A83;"></div></div>
+              <span>{{ progressLabel }}</span>
+            </div>
+          </sc-if>
+        </div>
+
+        <sc-if value="{{ isStart }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <h1 style="margin:0;font-size:36px;font-weight:200;line-height:1.1;letter-spacing:-0.5px;color:#252525;text-wrap:balance;">Free wind site check</h1>
+            <p style="margin:0;font-size:16px;font-weight:300;line-height:1.5;color:#5F5E5E;text-wrap:pretty;">Place the turbine on the map, choose the mast and describe what stands around it. KALK estimates the wind at hub height and which PROP turbine fits. The financial calculation follows by email.</p>
+            <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+              <div style="background:#F4F4F4;border-radius:8px;padding:12px;font-size:14px;color:#252525;">01 Place the turbine</div>
+              <div style="background:#F4F4F4;border-radius:8px;padding:12px;font-size:14px;color:#252525;">02 Mounting and height</div>
+              <div style="background:#F4F4F4;border-radius:8px;padding:12px;font-size:14px;color:#252525;">03 Surroundings</div>
+              <div style="background:#F4F4F4;border-radius:8px;padding:12px;font-size:14px;color:#252525;">04 Wind and turbine</div>
+            </div>
+            <p style="margin:0;font-size:12px;font-weight:300;color:#5F5E5E;">Available across Europe. Professional projects: KALK Pro with login, projects kept in KERN.</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isAddress }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Find the site</h2>
+            <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:#5F5E5E;">Enter the address, then click the map where the turbine would stand.</p>
+            <input value="{{ query }}" onChange="{{ onQuery }}" placeholder="Street, number, town, country" style="min-height:48px;padding:0 16px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:16px;color:#252525;outline:none;" style-focus="border-color:#527A83;">
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <sc-for list="{{ results }}" as="r" hint-placeholder-count="0">
+                <button onClick="{{ r.pick }}" style="text-align:left;min-height:44px;padding:8px 12px;border:0;border-radius:8px;background:#F4F4F4;font-family:var(--font-web);font-size:14px;color:#252525;cursor:pointer;" style-hover="background:#E3E3E3;">{{ r.label }}</button>
+              </sc-for>
+            </div>
+            <sc-if value="{{ hasPin }}" hint-placeholder-val="{{ false }}"><div style="display:flex;justify-content:space-between;background:#F4F4F4;border-radius:8px;padding:12px 16px;font-size:14px;color:#252525;"><span>Turbine position</span><b>{{ pinTxt }}</b></div></sc-if>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isMount }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Mounting and hub height</h2>
+            <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;--cg:8px;">
+              <sc-for list="{{ mounts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.pick }}" style="min-height:48px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.fg }};font-family:var(--font-web);font-size:14px;cursor:pointer;">{{ o.label }}</button></sc-for>
+            </div>
+            <div style="font-size:14px;color:#252525;">Hub height above ground</div>
+            <div data-cols="5" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;--cg:8px;">
+              <sc-for list="{{ heights }}" as="o" hint-placeholder-count="5"><button onClick="{{ o.pick }}" style="min-height:44px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.fg }};font-family:var(--font-web);font-size:14px;cursor:pointer;">{{ o.label }}</button></sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isSurround }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Surroundings</h2>
+            <div style="font-size:14px;color:#252525;">Landscape around the site</div>
+            <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+              <sc-for list="{{ terrains }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.pick }}" style="min-height:48px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.fg }};font-family:var(--font-web);font-size:14px;cursor:pointer;">{{ o.label }}</button></sc-for>
+            </div>
+            <div style="font-size:14px;color:#252525;">Highest building or tree within 100 m</div>
+            <div data-cols="5" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;--cg:8px;">
+              <sc-for list="{{ obstacles }}" as="o" hint-placeholder-count="5"><button onClick="{{ o.pick }}" style="min-height:44px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.fg }};font-family:var(--font-web);font-size:14px;cursor:pointer;">{{ o.label }}</button></sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Wind at your site</h2>
+            <div style="background:{{ classBg }};border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:4px;color:#252525;">
+              <span style="font-size:14px;">Wind class</span>
+              <span style="font-size:28px;"><b>{{ windClass }}</b></span>
+              <span style="font-size:14px;font-weight:300;">{{ classNote }}</span>
+            </div>
+            <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+              <sc-for list="{{ figures }}" as="f" hint-placeholder-count="4">
+                <div style="background:#F4F4F4;border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:4px;">
+                  <span style="font-size:12px;color:#5F5E5E;">{{ f.label }}</span>
+                  <span style="font-size:18px;color:#252525;"><b>{{ f.value }}</b> <span style="font-weight:300;">{{ f.unit }}</span></span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="font-size:14px;color:#252525;">PROP turbines for this site</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <sc-for list="{{ turbines }}" as="t" hint-placeholder-count="5">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px;border-radius:8px;background:{{ t.bg }};font-size:14px;color:#252525;"><span><b>{{ t.name }}</b> · {{ t.kw }} kW</span><span>{{ t.kwh }} kWh/year</span></div>
+              </sc-for>
+            </div>
+            <p style="margin:0;font-size:12px;font-weight:300;line-height:1.5;color:#5F5E5E;">Example values: wind data estimated from location, terrain and obstacles (Global Wind Atlas to be connected); PROP power curves and mast heights invented for the prototype, TO CONFIRM.</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Financial calculation by email</h2>
+            <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:#5F5E5E;">Yield, savings, payback and an indicative price are sent as a PDF report. A TRIBE installer checks the site, the mast foundation and the permits.</p>
+            <div style="font-size:14px;color:#252525;">Average monthly electricity bill</div>
+            <div style="display:flex;align-items:center;border:1px solid #BBBBBB;border-radius:8px;overflow:hidden;"><span style="padding:0 16px;font-size:16px;color:#5F5E5E;">€</span><input type="number" value="{{ bill }}" onChange="{{ onBill }}" style="flex:1;min-height:48px;border:0;font-family:var(--font-web);font-size:16px;color:#252525;outline:none;"></div>
+            <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+              <input placeholder="First name" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+              <input placeholder="Last name" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+              <input placeholder="Email" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+              <input placeholder="Phone" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+            </div>
+            <label style="display:flex;gap:12px;align-items:flex-start;font-size:13px;line-height:1.5;color:#252525;"><input type="checkbox" checked="{{ consent }}" onChange="{{ toggleConsent }}" style="margin-top:3px;accent-color:#527A83;"><span>I agree that STRØHM.ENERGY uses these details to send my site check and passes them to a local distributor for the price. Required. <a href="#">Privacy policy</a></span></label>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Sent</h2>
+            <p style="margin:0;font-size:16px;font-weight:300;line-height:1.5;color:#5F5E5E;">Your wind site check and the financial calculation are on their way as a PDF. A TRIBE installer will contact you.</p>
+            <a href="PROP - PRODUCT - Overview - EN.dc.html" style="font-size:14px;color:#4F4F4E;">Back to PROP &#8250;</a>
+          </div>
+        </sc-if>
+
+        <div style="display:flex;justify-content:space-between;gap:12px;">
+          <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ back }}" style="min-height:48px;padding:0 20px;border:0;border-radius:8px;background:#F4F4F4;font-family:var(--font-web);font-size:16px;color:#252525;cursor:pointer;">&#8249; Back</button>
+          </sc-if>
+          <sc-if value="{{ showNext }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ next }}" disabled="{{ nextDisabled }}" style="margin-left:auto;min-height:48px;padding:0 24px;border:0;border-radius:8px;background:{{ nextBg }};font-family:var(--font-web);font-size:16px;color:#FFFFFF;cursor:pointer;">{{ nextLabel }} &#8250;</button>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const TURB = [
+  { name: "CALLA", kw: 1, d: 2.2, vin: 2.5, vr: 11, vout: 25, h: [6, 10, 12] },
+  { name: "IRIS", kw: 3, d: 3.6, vin: 2.8, vr: 11, vout: 25, h: [10, 12, 15] },
+  { name: "REED", kw: 5, d: 5, vin: 3, vr: 11.5, vout: 25, h: [12, 15, 18] },
+  { name: "TULIP", kw: 10, d: 7, vin: 3, vr: 12, vout: 25, h: [15, 18, 24] },
+  { name: "ROSE", kw: 20, d: 10, vin: 3, vr: 12, vout: 25, h: [18, 24, 30] }
+];
+class Component extends DCLogic {
+  state = { step: 0, query: "", results: [], pin: null, mount: "mast", hub: 12, terrain: "rural", obst: 5, bill: 150, consent: false };
+  mapRef = React.createRef();
+  componentDidMount() { this._w = setInterval(() => { if (window.L && this.mapRef.current && !this.map) { clearInterval(this._w); this.init(); } }, 100); }
+  componentWillUnmount() { clearInterval(this._w); if (this._ro) this._ro.disconnect(); if (this.map) this.map.remove(); }
+  init() {
+    const L = window.L;
+    this.map = L.map(this.mapRef.current, { zoomControl: false, maxZoom: 20 }).setView([50.5, 9], 4);
+    L.control.zoom({ position: "bottomleft" }).addTo(this.map);
+    L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", { maxNativeZoom: 19, maxZoom: 20, attribution: "Imagery Esri" }).addTo(this.map);
+    this.g = L.layerGroup().addTo(this.map);
+    [0, 300, 1000].forEach((ms) => setTimeout(() => this.map && this.map.invalidateSize(), ms));
+    if (window.ResizeObserver) { this._ro = new ResizeObserver(() => this.map && this.map.invalidateSize()); this._ro.observe(this.mapRef.current); }
+    this.map.on("click", (e) => { if (this.state.step === 1) this.setState({ pin: [e.latlng.lat, e.latlng.lng] }, () => this.draw()); });
+  }
+  draw() {
+    const L = window.L; if (!this.g) return; this.g.clearLayers(); const p = this.state.pin; if (!p) return;
+    L.circle(p, { radius: 100, color: "#FFFFFF", weight: 1, dashArray: "4 4", fillOpacity: 0 }).addTo(this.g);
+    L.circleMarker(p, { radius: 8, color: "#FFFFFF", weight: 2, fillColor: "#527A83", fillOpacity: 1 }).addTo(this.g);
+  }
+  onQuery(v) {
+    this.setState({ query: v }); clearTimeout(this._q); if (v.trim().length < 3) { this.setState({ results: [] }); return; }
+    this._q = setTimeout(() => fetch("https://nominatim.openstreetmap.org/search?format=json&limit=5&viewbox=-25,72,45,34&bounded=1&q=" + encodeURIComponent(v)).then((r) => r.json()).then((l) => this.setState({ results: (l || []).map((x) => ({ label: x.display_name, lat: +x.lat, lon: +x.lon })) })).catch(() => this.setState({ results: [] })), 400);
+  }
+  pick(r) { this.setState({ results: [], query: r.label.split(",").slice(0, 3).join(","), pin: [r.lat, r.lon] }, () => { if (this.map) this.map.setView([r.lat, r.lon], 17); this.draw(); }); }
+  wind() {
+    const s = this.state, p = s.pin || [50.5, 4.5], lat = p[0], lon = p[1];
+    const coast = Math.max(0, 1 - Math.min(Math.abs(lon - 3), Math.abs(lat - 53)) / 6);
+    const v100 = Math.max(4.5, Math.min(9, 5.2 + 0.07 * (lat - 45) + 1.4 * coast));
+    const z0 = { open: 0.03, rural: 0.1, suburban: 0.4, urban: 1.0 }[s.terrain];
+    const hub = s.hub + (s.mount === "roof" ? 6 : 0);
+    let v = v100 * Math.log(hub / z0) / Math.log(100 / z0);
+    const clear = hub - s.obst; if (clear < 10) v *= Math.max(0.55, 0.65 + clear * 0.035);
+    return { v: Math.max(1.5, v), v100, hub, clear };
+  }
+  aep(t, vm) {
+    const A = Math.PI * t.d * t.d / 4, k = Math.PI / 4 / (vm * vm); let e = 0;
+    for (let v = 0.25; v < 30; v += 0.5) { const f = 2 * k * v * Math.exp(-k * v * v) * 0.5; let P = 0; if (v >= t.vin && v < t.vr) P = Math.min(t.kw, 0.5 * 1.225 * A * 0.33 * v * v * v / 1000); else if (v >= t.vr && v <= t.vout) P = t.kw; e += P * f * 8760; }
+    return e * 0.9;
+  }
+  renderVals() {
+    const s = this.state, fmt = (v, d) => Number(v || 0).toLocaleString("nl-BE", { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 });
+    const opt = (list, key) => list.map(([v, l]) => ({ label: l, bg: s[key] === v ? "#527A83" : "#F4F4F4", fg: s[key] === v ? "#FFFFFF" : "#252525", pick: () => this.setState({ [key]: v }) }));
+    const w = s.step >= 4 ? this.wind() : null;
+    const tl = w ? TURB.map((t) => ({ t, kwh: this.aep(t, w.v), fits: t.h.some((h) => Math.abs(h - s.hub) <= 3) })) : [];
+    const cls = !w ? "" : w.v >= 5.5 ? "Good" : w.v >= 4.2 ? "Possible" : "Poor";
+    const best = cls === "Poor" ? null : tl.filter((x) => x.fits).sort((a, b) => b.kwh / b.t.kw - a.kwh / a.t.kw)[0];
+    const can = [true, !!s.pin, true, true, true, s.consent, false][s.step];
+    return {
+      mapRef: this.mapRef,
+      isStart: s.step === 0, isAddress: s.step === 1, isMount: s.step === 2, isSurround: s.step === 3, isResult: s.step === 4, isContact: s.step === 5, isDone: s.step === 6,
+      showProgress: s.step > 0 && s.step < 6, progressPct: Math.round(s.step / 5 * 100) + "%", progressLabel: s.step + " of 5",
+      query: s.query, onQuery: (e) => this.onQuery(e.target.value), results: s.results.map((x) => ({ label: x.label, pick: () => this.pick(x) })),
+      hasPin: !!s.pin, pinTxt: s.pin ? s.pin[0].toFixed(4) + ", " + s.pin[1].toFixed(4) : "",
+      mounts: opt([["roof", "On a roof"], ["mast", "Garden mast"], ["free", "Freestanding mast"]], "mount"),
+      heights: opt([[6, "6 m"], [10, "10 m"], [12, "12 m"], [18, "18 m"], [24, "24 m"]], "hub"),
+      terrains: opt([["open", "Open fields or coast"], ["rural", "Farmland with hedges"], ["suburban", "Village or suburb"], ["urban", "Town or forest"]], "terrain"),
+      obstacles: opt([[0, "None"], [5, "5 m"], [8, "8 m"], [12, "12 m"], [20, "20 m"]], "obst"),
+      windClass: cls, classBg: cls === "Good" ? "#C9D8DB" : cls === "Possible" ? "#FFEB9E" : "#F4F4F4",
+      classNote: !w ? "" : [w.clear < 10 ? "The rotor is less than 10 m above the highest obstacle. A higher mast gives much more wind." : "", cls === "Poor" ? "Small wind is not recommended here. Consider solar with ANDO." : (w.clear < 10 ? "" : "This site is suitable for a small wind turbine.")].filter(Boolean).join(" "),
+      figures: w ? [{ label: "Mean wind at hub", value: fmt(w.v, 1), unit: "m/s" }, { label: "Hub height", value: fmt(w.hub), unit: "m" }, { label: "Above obstacles", value: fmt(w.clear), unit: "m" }, { label: "Wind at 100 m", value: fmt(w.v100, 1), unit: "m/s" }] : [],
+      turbines: tl.map((x) => ({ name: x.t.name + (x === best ? " (recommended)" : x.fits ? "" : " (other mast height)"), kw: x.t.kw, kwh: fmt(Math.round(x.kwh / 50) * 50), bg: x === best ? "#C9D8DB" : "#F4F4F4" })),
+      bill: s.bill, onBill: (e) => this.setState({ bill: e.target.value }), consent: s.consent, toggleConsent: () => this.setState({ consent: !s.consent }),
+      canBack: s.step > 0 && s.step < 6, back: () => this.setState({ step: s.step - 1 }),
+      showNext: s.step < 6, nextLabel: ["Start the site check", "Next", "Next", "See the wind", "Financial calculation by email", "Send", ""][s.step], nextDisabled: !can, nextBg: can ? "#527A83" : "#BBBBBB",
+      next: () => { if (can) this.setState({ step: s.step + 1 }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

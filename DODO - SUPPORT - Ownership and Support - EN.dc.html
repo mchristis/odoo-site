@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>DODO Ownership and Support | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  ::placeholder { color:var(--color-grey-70); opacity:1; }
+  input:disabled, select:disabled, textarea:disabled { color:var(--color-grey-40); }
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  input:focus, select:focus { outline:none; border-color:var(--color-grey-70); }
+  .dodo-route:hover { border-color:var(--color-grey-70) !important; }
+  .dodo-route:hover .dodo-route-t { color:var(--color-text-primary); }
+  .dodo-doc:hover { background:var(--color-surface-card) !important; }
+  .dodo-doc:hover .dodo-doc-n { color:var(--color-text-primary); }
+  .dodo-fchip:hover { border-color:var(--color-text-primary) !important; color:var(--color-text-primary) !important; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="DodoNav" active="support" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="DODO" rgb="229,183,59" title="Everything needed before, during and after installation." intro="Choose the QUILL, install it correctly, commission it in EMON and keep the record and warranty for the life of the roof." slot="dodo-ownership-and-support-hero" shot="DODO · Ownership and Support · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:20px;">DODO &#183; <span style="color:var(--color-text-primary);">Support &amp; downloads</span></div>
+    
+  </section>
+
+  <!-- SUPPORT ROUTES -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+    <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;--cg:20px;">
+      <sc-for list="{{ routes }}" as="r" hint-placeholder-count="6">
+        <a class="emon-card dodo-route" href="{{ r.href }}" style="padding:28px 24px;display:flex;flex-direction:column;gap:10px;min-height:150px;justify-content:space-between;">
+          <div>
+            <div class="dodo-route-t" style="font-size:var(--web-h3-size);font-weight:300;letter-spacing:-0.01em;margin-bottom:8px;line-height:var(--web-h3-lh);">{{ r.t }}</div>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ r.d }}</p>
+          </div>
+          <span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">{{ r.cta }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- DOWNLOADS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Downloads</div>
+      <h2 style="margin:0 0 24px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Documents by product <span style="color:#8E8E8E;">and type.</span></h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+          <span class="dodo-fchip" style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.04em;text-transform:uppercase;color:{{ f.color }};border:1px solid {{ f.border }};background:{{ f.bg }};padding:6px 13px;cursor:pointer;border-radius:8px;">{{ f.label }}</span>
+        </sc-for>
+      </div>
+      <div class="emon-card"  style="">
+        <div style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr) minmax(0,0.8fr) minmax(0,0.7fr) auto;gap:16px;padding:14px 24px;background:var(--color-card-dodo);border-bottom:1px solid var(--color-divider);">
+          <sc-for list="{{ docHeaders }}" as="h" hint-placeholder-count="6"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ h }}</span></sc-for>
+        </div>
+        <sc-for list="{{ documents }}" as="d" hint-placeholder-count="9">
+          <div class="dodo-doc" style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr) minmax(0,0.8fr) minmax(0,0.7fr) auto;gap:16px;padding:16px 24px;border-bottom:1px solid var(--color-surface-card);align-items:center;">
+            <span class="dodo-doc-n" style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ d.name }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ d.product }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ d.type }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ d.lang }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ d.rev }}</span>
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);white-space:nowrap;" data-placeholder-link="true">{{ d.file }} &#8595;</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- GET HELP -->
+  <section style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:48px;align-items:start;">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Get help</div>
+          <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Technical support <span style="color:#8E8E8E;">for homeowners and installers.</span></h2>
+          <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Reach the DODO team by form, telephone or email, or route your question through your approved installer.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <sc-for list="{{ contactChannels }}" as="c" hint-placeholder-count="3"><span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);display:flex;gap:8px;align-items:baseline;line-height:var(--web-small-lh);"><span style="color:var(--color-grey-70);font-size:9px;">&#9679;</span>{{ c }}</span></sc-for>
+          </div>
+        </div>
+        <div class="emon-card"  style="background:var(--color-card-dodo);padding:32px;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:20px;">Technical support form</div>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;--cg:16px;">
+            <sc-for list="{{ formFields }}" as="f" hint-placeholder-count="6">
+              <div style="grid-column:{{ f.span }};">
+                <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">{{ f.label }}</label>
+                <input type="text" placeholder="{{ f.ph }}" class="emon-input" style="width:100%;box-sizing:border-box;height:42px;padding:0 12px;font-family:var(--font-web);;font-size:var(--web-input-size);font-weight:var(--web-input-weight);">
+              </div>
+            </sc-for>
+          </div>
+          <span style="margin-top:22px;font-size:var(--web-tag-size);padding:0 24px;height:46px;display:inline-flex;align-items:center;background:#3D3D3B;color:#FFFFFF;border-radius:var(--radius-btn);font-weight:var(--web-tag-weight);letter-spacing:0.03em;" data-placeholder-link="true">Submit support request</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+    <div style="background:var(--color-surface-secondary);border-radius:12px;padding:56px;color:var(--color-text-primary);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;">
+      <div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Have the carton <span style="color:#8E8E8E;">in front of you?</span></h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);color:var(--color-text-primary);max-width:560px;line-height:var(--web-body-lh);">Scan the QR code to open the product record, documents and warranty status directly.</p>
+      </div>
+      <a href="DODO - SUPPORT - Commissioning - EN.dc.html" style="font-size:var(--cta-font,16px);padding:0 26px;min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--radius-btn);font-weight:700;white-space:nowrap;">Open commissioning</a>
+    </div>
+  </section>
+
+  <dc-import name="AndoPattern" brand="DODO" items="ownership" hint-size="100%,600px"></dc-import>
+  <dc-import name="ContentSections" brand="DODO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="DODO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="DODO" accent="var(--color-brand-dodo)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    const filterLabels = ["All", "Datasheets", "Manuals", "Declarations", "Warranty", "Material"];
+    return {
+      routes: [
+        { t: "Choose QUILL", d: "Height guide, roof compatibility and the calculator.", cta: "Choose QUILL", href: "DODO - PRODUCT - Calculator - EN.dc.html" },
+        { t: "Install", d: "Manual, corner cuts, Aqua fitting and cable guidance.", cta: "Installation help", href: "DODO - SUPPORT - Install Faster - EN.dc.html" },
+        { t: "Commission", d: "EMON scan, photo checklist and warranty activation.", cta: "Commissioning flow", href: "DODO - SUPPORT - Commissioning - EN.dc.html" },
+        { t: "Bird guidance", d: "Seasonal inspection and country-specific contacts.", cta: "Bird guidance", href: "DODO - PRODUCT - Protect Birds - EN.dc.html" },
+        { t: "Documents", d: "Datasheets, declarations, warranty and material information.", cta: "Downloads", href: "DODO - CONTENT - Knowledge - EN.dc.html" },
+        { t: "Get help", d: "Technical form, telephone, email and approved-installer support.", cta: "Get in touch", href: "STROHM.ENERGY - SITE - System Enquiry - EN.dc.html?brand=DODO" },
+      ],
+      filters: filterLabels.map((label, i) => ({
+        label,
+        color: i === 0 ? "#4F4F4E" : "#4F4F4E",
+        border: i === 0 ? "var(--color-brand-dodo)" : "#DDDDDD",
+        bg: i === 0 ? "#F4F4F4" : "#FFFFFF",
+      })),
+      docHeaders: ["Document", "Product", "Type", "Language", "Revision", ""],
+      documents: [
+        { name: "DODO QUILL datasheet", product: "QUILL range", type: "Datasheet", lang: "EN", rev: "v1.0", file: "PDF" },
+        { name: "QUILL 90 / 130 / 210 spec sheet", product: "QUILL range", type: "Datasheet", lang: "EN", rev: "v1.0", file: "PDF" },
+        { name: "Installation manual", product: "QUILL range", type: "Manual", lang: "EN", rev: "v1.0", file: "PDF" },
+        { name: "Aqua clip fitting guide", product: "Aqua", type: "Manual", lang: "EN", rev: "v1.0", file: "PDF" },
+        { name: "Cable-guidance guide", product: "QUILL range", type: "Manual", lang: "EN", rev: "v1.0", file: "PDF" },
+        { name: "Ten-step method card", product: "QUILL range", type: "Manual", lang: "EN", rev: "v1.0", file: "PDF" },
+        { name: "Declaration of performance", product: "QUILL range", type: "Declaration", lang: "EN", rev: "v1.0", file: "PDF" },
+        { name: "Warranty terms", product: "QUILL range", type: "Warranty", lang: "EN", rev: "v1.0", file: "PDF" },
+        { name: "Material information", product: "QUILL range", type: "Material", lang: "EN", rev: "Draft", file: "PDF" },
+      ],
+      contactChannels: ["Technical support form with photographs", "Telephone and email support", "Support through your approved installer"],
+      formFields: [
+        { label: "Name", ph: "Full name", span: "auto" },
+        { label: "Email", ph: "you@email.com", span: "auto" },
+        { label: "Product", ph: "QUILL 90 / 130 / 210", span: "auto" },
+        { label: "Carton / batch", ph: "From the QR label", span: "auto" },
+        { label: "Question", ph: "Describe your question", span: "1 / -1" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

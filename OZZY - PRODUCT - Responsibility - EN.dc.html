@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>OZZY Responsibility | STRØHM.ENERGY</title>
+<meta name="robots" content="noindex">
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:#5a8a2a; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="OzzyNav" active="responsibility" hint-size="100%,57px"></dc-import>
+  <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:16px var(--web-side);box-sizing:border-box;font-size:12px;font-weight:700;letter-spacing:0.08em;color:#B07818;border-bottom:1px solid var(--color-divider);">DRAFT. Temporary text written without an OZZY source. Standards are named as applicable, not as held. Replace before publishing.</div>
+  <dc-import name="BrandResponsibility" brand="OZZY" unit="smart plug or switch" intro="{{ intro }}" durability="{{ durability }}" materials="{{ materials }}" certs="{{ certs }}" packaging="{{ packaging }}" eol="{{ eol }}" hint-size="100%,2400px"></dc-import>
+  <dc-import name="ContentSections" brand="OZZY" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="OZZY" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="OZZY" accent="var(--color-brand-ozzy)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const TC = (w) => `[TO CONFIRM: ${w}]`;
+    return {
+      intro: "Declared conformity, restricted substances, a documented radio module and a clear end-of-life route. Every claim on this page is linked to a document.",
+      durability: [
+        { test: "Electrical safety of plugs and sockets", standard: "IEC 60884 / BS 1363 (applicable)", result: TC("result per model") },
+        { test: "Radio equipment", standard: "Radio Equipment Directive 2014/53/EU (applicable)", result: TC("declaration per model") },
+        { test: "Electromagnetic compatibility", standard: "EN 301 489 series (applicable)", result: TC("result per model") },
+        { test: "Ingress protection, RUGO", standard: "IEC 60529, IP44", result: TC("test report") },
+      ],
+      materials: [
+        { label: "Substances", headline: "Substances declared, not assumed.", value: "RoHS Directive 2011/65/EU and REACH apply. " + TC("declarations per model"), dir: "OZZY_RESPONSIBILITY_MATERIALS_DECLARATION_01 · declaration document preview · 16:10 · placeholder (P2)" },
+        { label: "Housing", headline: "Housing material per series.", value: TC("housing material and flame rating per series"), dir: "OZZY_RESPONSIBILITY_MATERIALS_HOUSING_01 · device housing detail · 16:10 · placeholder (P2)" },
+      ],
+      certs: [
+        { code: "CE", label: "CE marking under the applicable directives " + TC("per model") },
+        { code: "UKCA", label: "UKCA marking for UK versions " + TC("per model") },
+        { code: "ISO 9001", label: "Quality management " + TC("held for OZZY production") },
+      ],
+      packaging: TC("packaging materials and recycled content"),
+      eol: ["Device in use", "Removed from the socket or disconnected by an electrician (FLIP)", "Separate collection under the WEEE Directive 2012/19/EU", "Approved treatment and material recovery", "Recycling record", "Closed ownership record"],
+    };
+  }
+}
+</script>
+</body>
+</html>

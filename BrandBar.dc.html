@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="strohm-type.css">
+<script src="./section-nav-data.js"></script>
+<script src="./brandbar-data.js"></script>
+<style>
+  [data-bb] a:focus, [data-bb] button:focus { outline: none; }
+  [data-bb] a:focus-visible, [data-bb] button:focus-visible { outline: 2px solid #222222; outline-offset: 4px; }
+</style>
+</helmet>
+<div data-bb="" ref="{{ rootRef }}" style="height:57px;font-family:var(--font-web);">
+<div ref="{{ barRef }}" style="position:{{ barPosition }};top:{{ barTop }};left:0;right:0;z-index:900;background:#FFFFFF;">
+  <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;height:56px;box-sizing:border-box;display:flex;align-items:center;gap:clamp(12px,2.5vw,32px);padding:0 var(--web-side);">
+    <button type="button" aria-expanded="{{ brandExpanded }}" onClick="{{ toggleBrand }}" style="flex:none;min-width:{{ brandMin }};width:{{ brandW }};box-sizing:border-box;cursor:pointer;background:none;border:none;padding:0;display:flex;align-items:baseline;gap:10px;font-family:inherit;white-space:nowrap;">
+      <sc-if value="{{ noLogo }}" hint-placeholder-val="{{ true }}"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">{{ code }}</span></sc-if><sc-if value="{{ hasLogo }}" hint-placeholder-val="{{ false }}"><span style="flex:none;display:flex;align-items:center;width:{{ logoW }};height:52px;"><img src="{{ logoSrc }}" alt="{{ code }}" style="display:block;max-width:100%;max-height:52px;width:auto;height:auto;object-fit:contain;object-position:left center;"></span></sc-if>
+      <svg aria-hidden="true" width="18" height="9" viewBox="0 0 22 11" fill="none" stroke="{{ shopDot }}" stroke-width="1.2" style="flex:none;align-self:center;transition:transform .2s ease;transform:rotate({{ brandRot }});"><polyline points="1.5,1.5 11,9.5 20.5,1.5"></polyline></svg>
+      <sc-if value="{{ showDesc }}" hint-placeholder-val="{{ true }}"><span style="font-size:var(--web-nav-size);font-weight:300;color:#666666;line-height:var(--web-small-lh);">· {{ category }}</span></sc-if>
+    </button>
+    <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="{{ navLabel }}" style="flex:1 1 auto;min-width:0;display:flex;align-items:center;gap:32px;height:56px;">
+        <sc-for list="{{ slots }}" as="s" hint-placeholder-count="4">
+          <div ref="{{ s.ref }}" onMouseEnter="{{ s.onEnter }}" onMouseLeave="{{ hoverOut }}" style="flex:none;display:flex;align-items:center;gap:6px;height:56px;box-sizing:border-box;border-bottom:4px solid {{ s.underline }};">
+            <a href="{{ s.href }}" aria-current="{{ s.ariaCurrent }}" style="text-decoration:none;font-size:var(--web-nav-size);font-weight:{{ s.weight }};color:{{ s.color }};white-space:nowrap;" style-hover="color:#222222;">{{ s.label }}</a>
+            <button type="button" aria-label="{{ s.menuLabel }}" aria-expanded="{{ s.expanded }}" onClick="{{ s.onToggle }}" style="cursor:pointer;background:none;border:none;padding:0;width:1px;height:28px;overflow:hidden;opacity:0;margin-left:-6px;display:flex;align-items:center;justify-content:center;color:{{ s.color }};" style-hover="color:#222222;">
+              <svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="{{ chevW }}" style="transition:transform .2s ease;transform:rotate({{ s.rot }});"><polyline points="2,4 6,8 10,4"></polyline></svg>
+            </button>
+          </div>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isNarrow }}" hint-placeholder-val="{{ false }}"><div style="flex:1 1 auto;"></div></sc-if>
+    <sc-if value="{{ showTool }}" hint-placeholder-val="{{ false }}">
+      <a href="{{ toolHref }}" aria-current="{{ toolCurrent }}" style="flex:none;text-decoration:none;font-size:16px;font-weight:{{ toolWeight }};color:#666666;white-space:nowrap;" style-hover="color:#222222;">{{ toolLabel }}</a>
+    </sc-if>
+    <sc-if value="{{ showProject }}" hint-placeholder-val="{{ false }}"><a href="{{ projectHref }}" style="flex:none;margin-left:auto;text-decoration:none;display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 4px;font-family:var(--font-web);font-size:var(--web-nav-size);font-weight:300;color:#4F4F4E;white-space:nowrap;" style-hover="color:#222222;"><svg aria-hidden="true" width="9" height="18" viewBox="0 0 11 22" fill="none" stroke="{{ shopDot }}" stroke-width="1.2" style="flex:none;"><polyline points="1.5,1.5 9.5,11 1.5,20.5"></polyline></svg>Start a project</a></sc-if>
+    <sc-if value="{{ showShopArrow }}" hint-placeholder-val="{{ false }}"><a href="{{ shopHref }}" style="flex:0 1 auto;min-width:0;overflow:hidden;margin-left:auto;text-decoration:none;display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 4px;font-family:var(--font-web);font-size:var(--web-nav-size);font-weight:300;color:#4F4F4E;white-space:nowrap;" style-hover="color:#222222;"><svg aria-hidden="true" width="9" height="18" viewBox="0 0 11 22" fill="none" stroke="{{ shopDot }}" stroke-width="1.2" style="flex:none;"><polyline points="1.5,1.5 9.5,11 1.5,20.5"></polyline></svg>{{ shopLabel }}</a></sc-if>
+<sc-if value="{{ showShopBtn }}" hint-placeholder-val="{{ true }}"><a href="{{ shopHref }}" style="flex:0 1 220px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box;width:auto;min-width:0;max-width:220px;overflow:hidden;text-overflow:ellipsis;height:56px;padding:0 16px;margin-left:auto;background:#4F4F4E;color:#F4F4F4;font-family:var(--font-web);font-size:19px;font-weight:300;line-height:1;border-radius:12px;white-space:nowrap;transform:none;" style-hover="background:#5F5E5E;"><span aria-hidden="true" style="flex:none;width:9px;height:9px;border-radius:50%;background:{{ shopDot }};"></span>{{ shopLabel }}</a></sc-if>
+    <sc-if value="{{ isNarrow }}" hint-placeholder-val="{{ false }}">
+      <button type="button" aria-label="Menu" aria-expanded="{{ menuExpanded }}" onClick="{{ toggleMenu }}" style="flex:none;cursor:pointer;background:none;border:none;padding:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#666666;">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="{{ chevW }}"><line x1="3" y1="6" x2="19" y2="6"></line><line x1="3" y1="11" x2="19" y2="11"></line><line x1="3" y1="16" x2="19" y2="16"></line></svg>
+      </button>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ brandOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;top:100%;left:0;right:0;background:#FFFFFF;border-bottom:1px solid #D9D9D9;max-height:calc(100vh - 140px);overflow-y:auto;">
+      <dc-import name="ProductsPanel" kind="{{ panelKind }}" current="{{ code }}" mobile="{{ isNarrow }}" hint-size="100%,380px"></dc-import>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ ddOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="region" aria-label="{{ ddLabel }}" onMouseEnter="{{ hoverIn }}" onMouseLeave="{{ hoverOut }}" style="position:absolute;top:100%;left:{{ ddLeft }};max-width:calc(100vw - 32px);background:#FFFFFF;border:1px solid #D9D9D9;border-top:none;padding:8px 0;box-sizing:border-box;column-count:{{ ddCols }};column-gap:0;">
+      <sc-for list="{{ ddItems }}" as="d" hint-placeholder-count="3">
+        <sc-if value="{{ d.isHead }}" hint-placeholder-val="{{ false }}"><div style="break-inside:avoid;break-after:avoid;padding:{{ d.pad }} 20px 6px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;white-space:nowrap;">{{ d.label }}</div></sc-if>
+        <sc-if value="{{ d.isLink }}" hint-placeholder-val="{{ true }}"><a href="{{ d.href }}" aria-current="{{ d.ariaCurrent }}" style="break-inside:avoid;text-decoration:none;display:flex;align-items:center;min-height:40px;min-width:220px;padding:0 20px;box-sizing:border-box;font-size:var(--web-nav-size);font-weight:{{ d.weight }};color:{{ d.color }};white-space:nowrap;" style-hover="color:#222222;background:#F4F4F4;">{{ d.label }}</a></sc-if>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;top:100%;left:0;right:0;background:#FFFFFF;border-bottom:1px solid #D9D9D9;max-height:calc(100vh - 140px);overflow-y:auto;padding:8px 16px 16px;box-sizing:border-box;">
+      <sc-for list="{{ menuGroups }}" as="g" hint-placeholder-count="4">
+        <div style="padding:12px 0;border-bottom:1px solid #D9D9D9;">
+          <a href="{{ g.href }}" style="text-decoration:none;display:flex;align-items:center;min-height:44px;font-size:15px;font-weight:500;color:#222222;">{{ g.label }}</a>
+          <sc-for list="{{ g.items }}" as="i" hint-placeholder-count="2">
+            <a href="{{ i.href }}" style="text-decoration:none;display:flex;align-items:center;min-height:44px;padding-left:16px;font-size:var(--web-nav-size);font-weight:300;color:#666666;">{{ i.label }}</a>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:120},&quot;brand&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ANDO&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const NAV_H = 81, WIDE = 1280, NARROW = 768;
+const SLOTS = [["O", "Overview"], ["P", "Products"], ["I", "Installation"], ["S", "Support"]];
+const CAT = { MOEBIUS: "Inverters", MOX: "Architectural PV", SYNQ: "Smart metering", OZZY: "Energy switching", DODO: "Bird protection", AGRIX: "Agri-PV structures", TERRIX: "Utility PV mounting", PONTIX: "Floating PV mounting", TECTIX: "Roof PV mounting", PARX: "Solar parking", SHELTR: "Asset protection", MUKI: "Energy sets", WURK: "Installation equipment", EMON: "Energy management", FLUXX: "Energy storage", NENDO: "Thermal systems" };
+
+const BB_LOGO_TEST = { ANDO: "assets/logos/ANDO-logo.svg", LINA: "assets/logos/LINA-logo-bar.png", PROP: "assets/logos/PROP-logo.svg", MOEBIUS: "assets/logos/MOEBIUS-logo.svg", FLUXX: "assets/logos/FLUXX-logo.svg", NENDO: "assets/logos/NENDO-logo.svg", OGO: "assets/logos/OGO-logo.svg", FEU: "assets/logos/FEU-logo.svg", XOOM: "assets/logos/XOOM-logo.svg", AIRO: "assets/logos/AIRO-logo.svg", GLOW: "assets/logos/GLOW-logo.svg", SYNQ: "assets/logos/SYNQ-logo.svg", OZZY: "assets/logos/OZZY-logo.svg", MOX: "assets/logos/MOX-logo.svg", AGRIX: "assets/logos/AGRIX-logo-bar.png", TERRIX: "assets/logos/TERRIX-logo-bar.png", TECTIX: "assets/logos/TECTIX-logo-bar.png", PARX: "assets/logos/PARX-logo-bar.png", CHILL: "assets/logos/CHILL-logo.svg", PONTIX: "assets/logos/PONTIX-logo-bar.png", TOGU: "assets/logos/TOGU-logo.svg", DODO: "assets/logos/DODO-logo.svg", SHELTR: "assets/logos/SHELTR-logo.svg", MUKI: "assets/logos/MUKI-logo.svg", WURK: "assets/logos/WURK-logo.svg", EMON: "assets/logos/EMON-logo.svg", KALK: "assets/logos/KALK-logo.svg", TRIBE: "assets/logos/TRIBE-logo.svg", KERN: "assets/logos/KERN-logo.svg", PUSH: "assets/logos/PUSH-logo.svg", PACT: "assets/logos/PACT-logo.svg", DEPOT: "assets/logos/DEPOT-logo.svg" }; /* DEPTH-578: full logo in brand bar, all brands */
+const BB_LOGOS = { AGRIX: "assets/logos/AGRIX-wordmark-sm.png", TERRIX: "assets/logos/TERRIX-wordmark-sm.png", PARX: "assets/logos/PARX-wordmark-sm.png", PONTIX: "assets/logos/PONTIX-wordmark-sm.png", TECTIX: "assets/logos/TECTIX-wordmark-sm.png", LINA: "assets/logos/LINA-wordmark.png", AIRO: "assets/logos/AIRO-wordmark.svg", ANDO: "assets/logos/ANDO-wordmark.svg", CHILL: "assets/logos/CHILL-wordmark.svg", DEPOT: "assets/logos/DEPOT-wordmark.svg", DODO: "assets/logos/DODO-wordmark.svg", EMON: "assets/logos/EMON-wordmark-2026.svg", FEU: "assets/logos/FEU-wordmark.svg", FLUXX: "assets/logos/FLUXX-wordmark.svg", GLOW: "assets/logos/GLOW-wordmark.svg", KALK: "assets/logos/KALK-wordmark.svg", KERN: "assets/logos/KERN-wordmark.svg", MOEBIUS: "assets/logos/MOEBIUS-wordmark.svg", MOX: "assets/logos/MOX-wordmark-2026.svg", MUKI: "assets/logos/MUKI-wordmark.svg", NENDO: "assets/logos/NENDO-wordmark-2026.svg", OGO: "assets/logos/OGO-wordmark.svg", OZZY: "assets/logos/OZZY-wordmark.svg", PACT: "assets/logos/PACT-wordmark.svg", PROP: "assets/logos/PROP-wordmark.svg", PUSH: "assets/logos/PUSH-wordmark.svg", SHELTR: "assets/logos/SHELTR-wordmark.svg", SYNQ: "assets/logos/SYNQ-wordmark.svg", TOGU: "assets/logos/TOGU-wordmark.svg", TRIBE: "assets/logos/TRIBE-wordmark.svg", WURK: "assets/logos/WURK-wordmark.svg", XOOM: "assets/logos/XOOM-wordmark.svg" }; /* DEPTH-365: add a brand here when its logo file arrives */
+class Component extends DCLogic {
+  state = { panel: null, left: 0, pinned: false, w: typeof window !== "undefined" ? window.innerWidth : 1280 };
+  _els = {};
+
+  componentDidMount() { this._swm = () => { const el = document.querySelector('img[alt="STRØHM.ENERGY"]'); const w = el ? Math.round(el.getBoundingClientRect().width) : 0; const up = {}; if (w && w !== (this.state && this.state.sw)) up.sw = w; const main = document.querySelector('nav[aria-label="Main"] a, nav[aria-label="Main"] button'); const root = this._root; const bn = root && root.querySelector('nav'); const btn = root && root.querySelector('button'); if (main && bn && btn) { const first = bn.querySelector('a') || bn; const d = Math.round(main.getBoundingClientRect().left - first.getBoundingClientRect().left); const cur = Math.round(btn.getBoundingClientRect().width); const bw = cur + d; if (Math.abs(d) > 1 && bw > 60 && bw !== (this.state && this.state.bw)) up.bw = bw; } if (Object.keys(up).length) this.setState(up); }; /* DEPTH-579: section nav starts under PRODUCTS */ this._swt = setInterval(this._swm, 500); window.addEventListener("resize", this._swm); /* DEPTH-578: brand logo + chevron = STRØHM logo width */
+    if (!document.getElementById("bb-one-shop")) { const s = document.createElement("style"); s.id = "bb-one-shop"; s.textContent = "[data-nb-shop]{display:none !important}"; document.head.appendChild(s); }
+    this._poll = setInterval(() => { if (window.STROHM_SECTIONNAV && window.STROHM_BRANDBAR) { window.STROHM_BRANDBAR.derive(); clearInterval(this._poll); this.forceUpdate(); } }, 40);
+    this._onScroll = () => {
+      if (this.state.w < WIDE && this.state.w < NARROW) { if (this.state.pinned) this.setState({ pinned: false }); return; }
+      if (!this._root) return;
+      this._navH = document.querySelector("[data-nb]") ? NAV_H : 0;
+      const p = this._root.getBoundingClientRect().top <= this._navH;
+      if (p !== this.state.pinned) this.setState({ pinned: p });
+    };
+    this._onResize = () => { const w = window.innerWidth; if (w !== this.state.w) this.setState({ w, panel: null }); this._onScroll(); };
+    this._onKey = (e) => { if (e.key === "Escape" && this.state.panel) this.setState({ panel: null }); };
+    this._onDown = (e) => { if (this.state.panel && this._bar && !this._bar.contains(e.target)) this.setState({ panel: null }); };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    window.addEventListener("resize", this._onResize);
+    document.addEventListener("keydown", this._onKey);
+    document.addEventListener("mousedown", this._onDown);
+    this._onResize();
+  }
+  componentWillUnmount() { clearInterval(this._swt); window.removeEventListener("resize", this._swm);
+    clearInterval(this._poll);
+    window.removeEventListener("scroll", this._onScroll);
+    window.removeEventListener("resize", this._onResize);
+    document.removeEventListener("keydown", this._onKey);
+    document.removeEventListener("mousedown", this._onDown);
+  }
+
+  toggle(key) {
+    if (this.state.panel === key) { this.setState({ panel: null }); return; }
+    const el = this._els[key], bar = this._bar;
+    const left = el && bar ? Math.max(8, el.getBoundingClientRect().left - bar.getBoundingClientRect().left - 12) : 0;
+    this.setState({ panel: key, left });
+  }
+
+  renderVals() {
+    const st = this.state, code = String(this.props.brand || "ANDO").toUpperCase();
+    const BB = window.STROHM_BRANDBAR && window.STROHM_BRANDBAR.BRANDS;
+    const d = BB && BB[code];
+    const page = (() => { try { return decodeURIComponent(location.pathname.split("/").pop() || ""); } catch (e) { return ""; } })();
+    const onPage = (h) => !!h && h !== "#" && h.split("#")[0] === page;
+    const wide = st.w >= WIDE, narrow = st.w < NARROW;
+    const many = !!(d && d.tabs && d.tabs.length > 5), compact = st.w < (many ? 1600 : (d && d.tabs && d.tabs.length >= 5 ? 1100 : NARROW));
+    const defs = d && d.tabs ? d.tabs.map((x, i) => ["T" + i, x.label]) : SLOTS;
+    const TEST_ACT = true; /* DEPTH-557: all brands */ const brandText = "color-mix(in oklch, var(--color-brand-" + code.toLowerCase().replace(/[^a-z]/g, "") + ", #4F4F4E) 55%, #000)"; /* DEPTH-556b: ≥4.5:1 on white */ /* DEPTH-556 test: no underline, brand-colour text, arrow up */
+    const ink = "#4F4F4E", mute = "#666666", brandLine = "color-mix(in oklch, var(--color-brand-" + code.toLowerCase().replace(/[^a-z]/g, "") + ", #4F4F4E) 78%, #000)"; /* DEPTH-555: darker, 4px */ /* DEPTH-360 */
+    const slotItems = (k) => {
+      let items = d ? d[k] || [] : [];
+      if (k === "O" && !wide && !narrow && d && d.tool && !d.noToolInO) items = items.concat([d.tool]); /* DEPTH-1121: noToolInO */
+      return items;
+    };
+    const activeSlot = d ? (defs.find(([k]) => (d[k] || []).some((i) => onPage(i[1])) ) || [])[0] : null;
+    const toolOn = !!(d && d.tool && onPage(d.tool[1]) && !activeSlot);
+    const slots = defs.filter(([k]) => !d || slotItems(k).length > 0).map(([k, base]) => {
+      const label = (d && d.labels && d.labels[k]) || base;
+      const act = activeSlot === k, open = st.panel === k;
+      return {
+        label, href: d ? d.head[k] : "#",
+        ref: (el) => { if (el) this._els[k] = el; },
+        weight: act ? 500 : 300, color: act ? (TEST_ACT ? brandText : ink) : mute, underline: act && !TEST_ACT ? brandLine : "transparent",
+        ariaCurrent: act ? "page" : "false", expanded: open ? "true" : "false", rot: open ? "180deg" : "0deg",
+        menuLabel: "More in " + label, onToggle: () => this.toggle(k), onEnter: () => { clearTimeout(this._ht); if (this.state.panel !== k) this.toggle(k); },
+      };
+    });
+    const hashOk = (h) => { const x = String(h || ""); if (!x.includes("#")) return true; let cur = ""; try { cur = decodeURIComponent(location.hash || ""); } catch (e) {} return cur === "#" + x.split("#")[1]; }; /* DEPTH-1136: an anchor item is current only when its anchor is open */
+    const linkRow = (i) => { const a = onPage(i[1]) && hashOk(i[1]); return { isLink: true, isHead: false, label: i[0], href: i[1], weight: a ? 500 : 300, color: a ? ink : mute, ariaCurrent: a ? "page" : "false" }; };
+    /* DEPTH-1121: optional grouped dropdowns (d.groups[slot] = [[heading, [labels]]]); items not in a group follow at the end, nothing is dropped */
+    const ddItems = st.panel && defs.some(([k]) => k === st.panel) ? (() => {
+      const items = slotItems(st.panel), G = d && d.groups && d.groups[st.panel];
+      if (!G) return items.map(linkRow);
+      const used = new Set(), out = [];
+      G.forEach(([h, labels], gi) => { const rows = labels.map((l) => items.find((i) => i[0] === l)).filter(Boolean); if (!rows.length) return; out.push({ isLink: false, isHead: true, label: h, pad: gi ? "16px" : "10px", href: "#" }); rows.forEach((r) => { used.add(r); out.push(linkRow(r)); }); });
+      items.filter((i) => !used.has(i)).forEach((i) => out.push(linkRow(i)));
+      return out;
+    })() : [];
+    const menuGroups = compact && d ? defs.filter(([k]) => (d[k] || []).length > 0).map(([k, base]) => ({ label: (d.labels && d.labels[k]) || base, href: d.head[k], items: (d[k] || []).map((i) => ({ label: i[0], href: i[1] })) })).concat(d.tool ? [{ label: d.tool[0], href: d.tool[1], items: [] }] : []) : [];
+    return {
+      rootRef: (el) => { this._root = el; },
+      barRef: (el) => { this._bar = el; },
+      barPosition: st.pinned && !narrow ? "fixed" : "relative",
+      barTop: st.pinned && !narrow ? (this._navH ?? NAV_H) + "px" : "0px",
+      hasLogo: !!(BB_LOGO_TEST[code] || BB_LOGOS[code]), noLogo: !(BB_LOGO_TEST[code] || BB_LOGOS[code]), logoSrc: BB_LOGO_TEST[code] || BB_LOGOS[code] || "", logoH: BB_LOGO_TEST[code] ? "auto" : "24px", logoW: BB_LOGO_TEST[code] ? ((this.state && this.state.sw) ? Math.max(80, this.state.sw) + "px" : "clamp(140px,13vw,190px)") : "auto",
+      code, category: (d && d.category) || CAT[code] || "", showDesc: st.w >= 1280 && !many, showShopArrow: !!(d && d.shop), showShopBtn: false, shopLabelUp: (d && d.shop ? d.shop[0] : "").toUpperCase(), chevW: "1", /* DEPTH-585 test */ shopDot: "var(--color-brand-" + code.toLowerCase().replace(/[^a-z]/g, "") + ", #F36D1C)", hoverIn: () => clearTimeout(this._ht), hoverOut: () => { clearTimeout(this._ht); this._ht = setTimeout(() => { if (this.state.panel) this.toggle(this.state.panel); }, 200); }, brandW: (this.state && this.state.bw && !narrow) ? this.state.bw + "px" : "auto", brandMin: compact ? (narrow ? "0px" : "190px") : (many ? "220px" : (wide ? "360px" : "190px")),
+      navLabel: code + " sections",
+      isWide: !compact, isNarrow: compact, panelKind: d && d.system ? "systems" : "products", showShop: !!(d && d.shop), showProject: ["MOX","AGRIX","TERRIX","PONTIX","TECTIX","PARX","CHILL","TOGU"].includes(code) && st.w >= 1280, projectHref: code + " - PRODUCT - Overview - EN.dc.html#project",
+      brandOpen: st.panel === "brand", brandExpanded: st.panel === "brand" ? "true" : "false", brandRot: st.panel === "brand" ? "180deg" : "0deg",
+      toggleBrand: () => this.setState((s) => ({ panel: s.panel === "brand" ? null : "brand" })),
+      slots,
+      showTool: !!(d && d.tool) && wide, toolLabel: d && d.tool ? d.tool[0] : "", toolHref: d && d.tool ? d.tool[1] : "#",
+      toolWeight: toolOn ? 500 : 300, toolCurrent: toolOn ? "page" : "false",
+      shopLabel: d && d.shop ? d.shop[0] : "", shopHref: d && d.shop ? d.shop[1] : "#",
+      ddOpen: ddItems.length > 0, ddItems, ddLabel: (defs.find(([k]) => k === st.panel) || [0, ""])[1] + " pages",
+      ddLeft: st.left + "px", ddCols: Math.min(3, Math.max(1, Math.ceil(ddItems.length / 9))),
+      menuOpen: st.panel === "menu" && compact, menuExpanded: st.panel === "menu" ? "true" : "false",
+      toggleMenu: () => this.setState((s) => ({ panel: s.panel === "menu" ? null : "menu" })),
+      menuGroups,
+    };
+  }
+}
+</script>
+</body>
+</html>

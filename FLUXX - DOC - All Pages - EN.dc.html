@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>FLUXX All Pages | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; font-family:var(--font-web); }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:#FDC706; }
+  doc-page:not(:defined) { visibility:hidden; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  * { animation-delay: -99s !important; animation-duration: .001s !important; animation-iteration-count: 1 !important; animation-fill-mode: both !important; animation-play-state: running !important; transition-duration: 0s !important; }
+  [style*="position: fixed"], [style*="position: sticky"] { position: static !important; }
+</style>
+</helmet>
+<doc-page orientation="landscape" margin="0.4in">
+  <section data-screen-label="00 Cover" style="min-height:6.5in;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;padding:0 0 40px;">
+    <div style="font-size:11px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:#9A9A98;">STRØHM.ENERGY</div>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <span style="width:14px;height:14px;background:#FDC706;flex:none;"></span>
+      <h1 style="margin:0;font-size:64px;font-weight:700;letter-spacing:-0.01em;color:var(--color-text-primary);">FLUXX</h1>
+    </div>
+    <p style="margin:0;font-size:20px;font-weight:300;color:var(--color-text-primary);">Website pages · EN · 28 September 2026</p>
+    <ol style="margin:24px 0 0;padding:0 0 0 20px;font-size:14px;font-weight:300;line-height:1.9;color:var(--color-text-primary);columns:2;">
+      <li>Overview</li><li>Products</li><li>Find Your Battery</li><li>Compare</li><li>Engineering and Manufacturing</li><li>Responsibility</li><li>Ownership and Support</li><li>Shop</li><li>Knowledge</li><li>News</li><li>References</li>
+    </ol>
+  </section>
+  <div data-screen-label="01 Overview" style="break-before:page;"><dc-import name="FLUXX - PRODUCT - Overview - EN" hint-size="100%,1200px"></dc-import></div>
+  <div data-screen-label="02 Products" style="break-before:page;"><dc-import name="FLUXX - PRODUCT - Products - EN" hint-size="100%,1200px"></dc-import></div>
+  <div data-screen-label="03 Find Your Battery" style="break-before:page;"><dc-import name="FLUXX - PRODUCT - Find Your Battery - EN" hint-size="100%,1200px"></dc-import></div>
+  <div data-screen-label="04 Compare" style="break-before:page;"><dc-import name="FLUXX - PRODUCT - Compare - EN" hint-size="100%,1200px"></dc-import></div>
+  <div data-screen-label="05 Engineering and Manufacturing" style="break-before:page;"><dc-import name="FLUXX - PRODUCT - Engineering and Manufacturing - EN" hint-size="100%,1200px"></dc-import></div>
+  <div data-screen-label="06 Responsibility" style="break-before:page;"><dc-import name="FLUXX - PRODUCT - Responsibility - EN" hint-size="100%,1200px"></dc-import></div>
+  <div data-screen-label="07 Ownership and Support" style="break-before:page;"><dc-import name="FLUXX - SUPPORT - Ownership and Support - EN" hint-size="100%,1200px"></dc-import></div>
+  <div data-screen-label="08 Shop" style="break-before:page;"><dc-import name="FLUXX - WEBSHOP - Shop - EN" hint-size="100%,1200px"></dc-import></div>
+  <div data-screen-label="09 Knowledge" style="break-before:page;"><dc-import name="FLUXX - CONTENT - Knowledge - EN" hint-size="100%,1200px"></dc-import></div>
+  <div data-screen-label="10 News" style="break-before:page;"><dc-import name="FLUXX - CONTENT - News - EN" hint-size="100%,1200px"></dc-import></div>
+  <div data-screen-label="11 References" style="break-before:page;"><dc-import name="FLUXX - CONTENT - References - EN" hint-size="100%,1200px"></dc-import></div>
+</doc-page>
+</x-dc>
+</body>
+</html>

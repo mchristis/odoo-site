@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>Content pending | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,89px"></dc-import>
+  <dc-import name="BrandBar" brand="{{ brand }}" hint-size="100%,73px"></dc-import>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 160px;box-sizing:border-box;">
+    <h1 style="margin:0 0 18px;font-size:var(--web-h1-size);line-height:var(--web-h1-lh);font-weight:100;letter-spacing:-0.01em;">{{ title }}</h1>
+    <a href="{{ homeHref }}" style="font-size:var(--web-small-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-small-lh);">{{ homeLabel }}</a>
+  </section>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const HOME = { ANDO: "ANDO - PRODUCT - Overview - EN.dc.html" };
+class Component extends DCLogic {
+  renderVals() {
+    const q = new URLSearchParams(typeof location !== "undefined" ? location.search : "");
+    if (typeof location !== "undefined" && !q.get("brand")) { location.replace("STROHM.ENERGY - SITE - Homepage - EN.dc.html"); }
+    const brand = (q.get("brand") || "STROHM").toUpperCase(), topic = q.get("topic") || "";
+    return { brand, title: /Portal$/.test(topic) ? brand + " Portal. No portal is available yet." : brand + " " + topic + ", content pending", homeHref: brand === "EMON" ? "EMON - SYSTEM - Overview - EN.dc.html" : ["KALK","TRIBE","PUSH","PACT","KERN","DEPOT"].indexOf(brand) > -1 ? brand + " - SYSTEM - Overview - EN.dc.html" : brand + " - PRODUCT - Overview - EN.dc.html", homeLabel: "Back to " + brand };
+  }
+}
+</script>
+</body>
+</html>

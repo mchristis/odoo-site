@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>MOEBIUS Ownership Feature | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4F4F4E; text-decoration:none; }
+  a:hover { color:#F1931B; }
+  html { scroll-behavior:smooth; }
+  section[id] { scroll-margin-top:100px; }
+  @keyframes bwPulse { 0%,100% { opacity:0.35; } 50% { opacity:1; } }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoebiusNav" hint-size="100%,73px"></dc-import>
+
+  <dc-import name="PageHero" brand="MOEBIUS" rgb="241,147,27" title="Your phone is the screen." intro="Live production, consumption, storage and grid flow — with essential local LED status always available, even without the app." slot="moebius-ownership-feature-hero" shot="MOEBIUS · Ownership Feature · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import>
+  <!-- DEPTH-1114: main places for these topics -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:24px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:flex;flex-wrap:wrap;gap:12px 32px;font-family:var(--font-web);">
+      <a href="MOEBIUS - SUPPORT - Ownership - EN.dc.html" style="font-size:var(--web-small-size);font-weight:300;color:#252525;text-decoration:underline;text-underline-offset:3px;" style-hover="color:#4F4F4E;">Ownership<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <a href="MOEBIUS - SUPPORT - Your Phone Is The Screen - EN.dc.html" style="font-size:var(--web-small-size);font-weight:300;color:#252525;text-decoration:underline;text-underline-offset:3px;" style-hover="color:#4F4F4E;">Your phone is the screen<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </section><section id="monitor" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#F1931B;margin-bottom:16px;"><a href="MOEBIUS - PRODUCT - Overview - EN.dc.html" style="color:#F1931B;">MOEBIUS</a> · Ownership</div>
+    
+
+    <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.05fr) 400px;gap:56px;align-items:start;">
+      <div>
+        <div style="border-top:2px solid #DDDDDD;padding-top:24px;margin-bottom:40px;">
+          <h2 style="margin:0 0 14px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">No screen. No buttons. <span style="font-weight:300;">No weak point.</span></h2>
+          <p style="margin:0 0 24px;max-width:520px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The weakest point of most inverters is the screen and the buttons. They are the parts that wear, crack and fail first. MOEBIUS has neither, so the electronics stay sealed and protected.</p>
+          <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;--cg:12px;">
+            <sc-for list="{{ proof }}" as="p" hint-placeholder-count="3">
+              <div style="background:{{ p.bg }};border-radius:12px;padding:20px 18px;">
+                <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:{{ p.numColor }};line-height:var(--web-h3-lh);margin-bottom:8px;">{{ p.num }}</div>
+                <div style="font-size:12px;font-weight:300;line-height:1.4;color:{{ p.txtColor }};">{{ p.label }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:28px 40px;">
+          <sc-for list="{{ monitor }}" as="o" hint-placeholder-count="5">
+            <button onClick="{{ o.onClick }}" style="cursor:pointer;font-family:inherit;text-align:left;background:transparent;border:none;border-top:1px solid #DDDDDD;padding:16px 0 0;display:flex;flex-direction:column;gap:4px;">
+              <span style="font-size:14px;font-weight:400;color:#252525;">{{ o.label }}</span>
+              <span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;">{{ o.desc }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+
+      <!-- BAUHAUS PHONE DEMO -->
+      <div style="position:relative;">
+        
+        
+        
+        <svg viewBox="0 0 32 30" style="position:absolute;bottom:-6px;right:16px;width:52px;height:48px;z-index:0;" aria-hidden="true"><path d="M16 29 L4 17 A7 7 0 0 1 16 7 A7 7 0 0 1 28 17 Z" fill="#F1931B"></path></svg>
+
+        <div style="position:relative;z-index:1;width:300px;margin:0 auto;background:#F4F4F4;border-radius:24px;padding:12px;box-shadow:none;">
+          <div style="background:#FFFFFF;border-radius:24px;overflow:hidden;min-height:560px;display:flex;flex-direction:column;">
+            <div style="padding:22px 22px 0;display:flex;align-items:center;justify-content:space-between;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="width:10px;height:10px;border-radius:50%;background:#F1931B;"></span>
+                <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#252525;">EMON</span>
+              </div>
+              <span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">MOEBIUS · live</span>
+            </div>
+
+            <div style="flex:1;padding:20px 22px;">
+              <sc-if value="{{ isLive }}" hint-placeholder-val="{{ true }}">
+                <div>
+                  <div style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;margin-bottom:4px;line-height:var(--web-min-lh);">Solar generation now</div>
+                  <div style="margin-bottom:22px;"><span style="font-size:var(--web-h2-size);font-weight:400;letter-spacing:-0.02em;color:#252525;">3,42</span> <span style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#252525;line-height:var(--web-h3-lh);">kW</span></div>
+                  <div style="display:flex;flex-direction:column;gap:2px;">
+                    <sc-for list="{{ flows }}" as="f" hint-placeholder-count="4">
+                      <div style="display:flex;align-items:center;gap:12px;padding:13px 0;border-top:1px solid #DDDDDD;">
+                        <span style="width:16px;height:16px;flex:none;background:{{ f.shapeBg }};border-radius:{{ f.shapeRadius }};"></span>
+                        <span style="flex:1;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ f.label }}</span>
+                        <span style="font-size:14px;color:#252525;"><span style="font-weight:400;">{{ f.val }}</span> <span style="font-weight:300;">{{ f.unit }}</span></span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ isHistory }}" hint-placeholder-val="{{ false }}">
+                <div>
+                  <div style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;margin-bottom:4px;line-height:var(--web-min-lh);">Produced today</div>
+                  <div style="margin-bottom:26px;"><span style="font-size:var(--web-h2-size);font-weight:400;letter-spacing:-0.02em;color:#252525;">18,4</span> <span style="font-size:var(--web-h3-size);font-weight:300;color:#252525;line-height:var(--web-h3-lh);">kWh</span></div>
+                  <div style="display:flex;align-items:flex-end;gap:8px;height:200px;">
+                    <sc-for list="{{ bars }}" as="b" hint-placeholder-count="7">
+                      <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;">
+                        
+                        <span style="font-size:11px;font-weight:300;color:#5F5E5E;">{{ b.day }}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ isAlerts }}" hint-placeholder-val="{{ false }}">
+                <div>
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;">
+                    <span style="width:10px;height:10px;border-radius:50%;background:#4CAF50;animation:bwPulse 2s ease-in-out infinite;"></span>
+                    <span style="font-size:14px;font-weight:400;color:#252525;">All systems nominal</span>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:10px;">
+                    <sc-for list="{{ alerts }}" as="a" hint-placeholder-count="3">
+                      <div style="background:{{ a.bg }};border-radius:12px;padding:14px 16px;">
+                        <div style="font-size:var(--web-small-size);font-weight:300;color:#252525;margin-bottom:3px;line-height:var(--web-small-lh);">{{ a.title }}</div>
+                        <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;">{{ a.body }}</div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+
+            <div style="display:flex;gap:6px;padding:14px 16px;border-top:1px solid #DDDDDD;">
+              <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+                <button onClick="{{ t.onClick }}" style="flex:1;cursor:pointer;font-family:inherit;border:none;border-radius:12px;padding:11px 4px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;background:{{ t.bg }};color:{{ t.color }};">{{ t.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <p style="position:relative;z-index:1;margin:22px auto 0;max-width:300px;text-align:center;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;">Tap a function. The phone is the display — nothing on the inverter to press or break.</p>
+      </div>
+    </div>
+    <div style="border-top:2px solid #DDDDDD;margin-top:72px;padding-top:24px;">
+      <h2 style="margin:0 0 14px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Bauhaus figures on the front. <span style="font-weight:300;">Then scan to your phone.</span></h2>
+      <p style="margin:0 0 40px;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Five indicators — SOC, Flow, Health, Link and Care — drawn as plain geometric marks in a locked colour palette. Tap one to read what it means, then scan the QR or tap NFC to open the full picture in EMON.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:56px;align-items:center;">
+
+        <!-- INTERACTIVE INVERTER FRONT -->
+        <div style="flex:1 1 300px;min-width:0;position:relative;">
+          
+          
+
+          <div style="position:relative;z-index:1;background:#F4F4F4;border-radius:18px;padding:26px 24px 22px;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:26px;">
+              <span style="font-size:14px;font-weight:400;letter-spacing:0.14em;color:#252525;">MOEBIUS</span>
+              <span style="font-size:11px;font-weight:300;letter-spacing:0.08em;color:#5F5E5E;">M2 · 5 kW</span>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:26px;">
+              <sc-for list="{{ leds }}" as="l" hint-placeholder-count="5">
+                <button onClick="{{ l.onClick }}" style="cursor:pointer;font-family:inherit;text-align:left;background:{{ l.rowBg }};border:none;border-radius:12px;padding:11px 12px;display:flex;align-items:center;gap:14px;">
+                  <span style="width:16px;flex:none;text-align:center;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:{{ l.dot }};text-shadow:{{ l.glow }};animation:{{ l.anim }};">{{ l.glyph }}</span>
+                  <span style="flex:1;font-size:11px;font-weight:400;letter-spacing:0.12em;color:{{ l.labelColor }};">{{ l.label }}</span>
+                  <span style="font-size:var(--web-min-size);font-weight:300;color:{{ l.stateColor }};line-height:var(--web-min-lh);">{{ l.state }}</span>
+                </button>
+              </sc-for>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:14px;border-top:1px solid #DDDDDD;padding-top:20px;">
+              <svg width="46" height="46" viewBox="0 0 44 44" aria-hidden="true" style="flex:none;"><rect width="44" height="44" rx="6" fill="#FFFFFF"></rect><g fill="#252525"><rect x="6" y="6" width="10" height="10"></rect><rect x="28" y="6" width="10" height="10"></rect><rect x="6" y="28" width="10" height="10"></rect></g><g fill="#FFFFFF"><rect x="8" y="8" width="6" height="6"></rect><rect x="30" y="8" width="6" height="6"></rect><rect x="8" y="30" width="6" height="6"></rect></g><g fill="#252525"><rect x="9" y="9" width="4" height="4"></rect><rect x="31" y="9" width="4" height="4"></rect><rect x="9" y="31" width="4" height="4"></rect><rect x="22" y="8" width="4" height="4"></rect><rect x="22" y="16" width="4" height="4"></rect><rect x="20" y="22" width="4" height="4"></rect><rect x="28" y="22" width="4" height="4"></rect><rect x="22" y="28" width="4" height="4"></rect><rect x="30" y="30" width="4" height="4"></rect><rect x="22" y="36" width="4" height="4"></rect><rect x="30" y="36" width="4" height="4"></rect></g></svg>
+              <div style="flex:1;">
+                <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#252525;margin-bottom:3px;text-transform:uppercase;">SCAN TO READ</div>
+                <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#8E8E8E;">QR or NFC — opens this exact unit.</div>
+              </div>
+              <svg width="26" height="34" viewBox="0 0 30 40" fill="none" stroke="#F1931B" stroke-width="3" stroke-linecap="round" aria-hidden="true" style="flex:none;"><path d="M10 8 a 16 16 0 0 1 0 24"></path><path d="M16 4 a 22 22 0 0 1 0 32"></path><circle cx="6" cy="20" r="1.8" fill="#F1931B" stroke="none"></circle></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- SELECTED LED DETAIL -->
+        <div style="flex:999 1 min(100%,400px);min-width:0;display:flex;flex-direction:column;gap:28px;">
+          <div style="display:flex;align-items:flex-start;gap:18px;">
+            <span style="width:26px;flex:none;text-align:center;font-size:var(--web-h3-size);line-height:var(--web-h3-lh);margin-top:2px;color:{{ ledDetail.dot }};text-shadow:{{ ledDetail.glow }};font-weight:var(--web-h3-weight);">{{ ledDetail.glyph }}</span>
+            <div>
+              <div style="font-size:11px;font-weight:400;letter-spacing:0.1em;color:#F1931B;margin-bottom:8px;">{{ ledDetail.label }}</div>
+              <div style="font-size:clamp(22px,2vw,28px);font-weight:200;line-height:1.15;color:#252525;margin-bottom:10px;">{{ ledDetail.reading }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:420px;">{{ ledDetail.body }}</div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px;">
+            <div style="background:#F4F4F4;border-radius:12px;padding:20px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#F1931B;margin-bottom:6px;">Scan the QR or tap NFC</div>
+              <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;">No manual serial entry. The phone finds the exact unit and opens straight to it.</div>
+            </div>
+            <div style="background:#F4F4F4;border-radius:12px;padding:20px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#F1931B;margin-bottom:6px;">Live read</div>
+              <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;">Production, storage and grid flow — live on your phone.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="support" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #E3E3E3;padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#F1931B;">Support &amp; lifecycle</div>
+      <h2 style="margin:0 0 12px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Owned for the <span style="font-weight:300;">long term.</span></h2>
+      <p style="margin:0 0 40px;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Every subject of ownership — how you watch the system and how it is supported over its whole life — is dealt with here. Choose a subject to read it.</p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:48px;align-items:start;">
+
+        <!-- INDEX -->
+        <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:32px;">
+          <div>
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:10px;">Monitor &amp; control</div>
+            <div style="display:flex;flex-direction:column;">
+              <sc-for list="{{ monIndex }}" as="m" hint-placeholder-count="5">
+                <button onClick="{{ m.onClick }}" style="cursor:pointer;font-family:inherit;text-align:left;background:{{ m.rowBg }};border:none;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;">
+                  <span style="width:8px;height:8px;flex:none;border-radius:50%;background:{{ m.accent }};"></span>
+                  <span style="flex:1;font-size:14px;font-weight:400;color:{{ m.labelColor }};">{{ m.label }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:10px;">Support &amp; lifecycle</div>
+            <div style="display:flex;flex-direction:column;">
+              <sc-for list="{{ supIndex }}" as="s" hint-placeholder-count="6">
+                <button onClick="{{ s.onClick }}" style="cursor:pointer;font-family:inherit;text-align:left;background:{{ s.rowBg }};border:none;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;">
+                  <span style="width:8px;height:8px;flex:none;border-radius:50%;background:{{ s.accent }};"></span>
+                  <span style="flex:1;font-size:14px;font-weight:400;color:{{ s.labelColor }};">{{ s.label }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <!-- DETAIL -->
+        <div style="flex:999 1 min(100%,400px);min-width:0;background:#FFFFFF;border-radius:12px;padding:44px 44px 40px;min-height:420px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#F1931B;margin-bottom:14px;">{{ topic.group }}</div>
+          <h3 style="margin:0 0 16px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">{{ topic.label }}</h3>
+          <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;max-width:600px;">{{ topic.intro }}</p>
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ topic.points }}" as="pt" hint-placeholder-count="3">
+              <div style="display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;border-top:1px solid #DDDDDD;">
+                <div style="flex:1 1 200px;min-width:0;font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#252525;line-height:var(--web-h3-lh);">{{ pt.t }}</div>
+                <div style="flex:999 1 min(100%,400px);min-width:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ pt.d }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;margin-top:32px;">
+            <div role="img" aria-label="Image placeholder for {{ topic.label }}" data-slot="{{ topic.imgSlot }}" style="aspect-ratio:16/10;border:none;border-radius:12px;background:#EBECEC;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;padding:14px;">
+              <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#F1931B;background:#FFFFFF;padding:3px 9px;border-radius:8px;">Image</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ topic.label }}</span>
+              <span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">16:10 · {{ topic.imgSlot }}</span>
+            </div>
+            <div role="img" aria-label="Video placeholder for {{ topic.label }}" data-slot="{{ topic.vidSlot }}" style="aspect-ratio:16/9;border:none;border-radius:12px;background:#EBECEC;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;padding:14px;">
+              <span style="display:flex;align-items:center;gap:7px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#F1931B;background:#FFFFFF;padding:3px 9px;border-radius:8px;">Video</span><svg width="20" height="20" viewBox="0 0 24 24" fill="#F1931B" aria-hidden="true"><path d="M9 7l9 5-9 5z"></path></svg></span>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ topic.label }}</span>
+              <span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">16:9 · muted loop · {{ topic.vidSlot }}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="WarrantyPhoto" brand="MOEBIUS" accent="#F1931B" slot-id="m2-warranty-photo-upload" hint-size="100%,480px"></dc-import>
+
+  <div style="height:64px;"></div>
+
+
+  <div style="border-top:1px solid #E3E3E3;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side);box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">MOEBIUS · engineered &amp; manufactured by STRØHM.ENERGY</div>
+      <div style="font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">en-GB · European by design</div>
+    </div>
+  </div>
+
+  <div style="height:32px;"></div>
+  <dc-import name="ContentSections" brand="MOEBIUS" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOEBIUS" photo-slot-id="moebius2-ownership-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MOEBIUS" accent="var(--color-brand-moebius)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const MONITOR = [
+  { id: "monitoring", label: "Monitoring & control", desc: "Live production, consumption, storage and grid flow." },
+  { id: "alerts", label: "Alerts & system health", desc: "Clear warnings — what happened and who acts." },
+  { id: "history", label: "Energy history", desc: "Daily, monthly and annual performance." },
+  { id: "smart", label: "Smart energy control", desc: "Tariffs, forecasts and system priorities." },
+  { id: "phone", label: "Your phone is the screen", desc: "System status without a large local display." },
+];
+const SUPPORT = [
+  { id: "remote", label: "Remote support", desc: "Permission-based diagnostics; the owner controls access." },
+  { id: "documents", label: "Documents", desc: "Commissioning record, manuals and certificates by serial." },
+  { id: "warranty", label: "Warranty", desc: "Standard cover, extended with an installation photo." },
+  { id: "software", label: "Software & firmware", desc: "Versions, updates and compatibility; history kept visible." },
+  { id: "access", label: "Access & permissions", desc: "Owner, household, installer and service roles." },
+  { id: "transfer", label: "Service & transfer", desc: "RMA tracking and ownership transfer keep the record intact." },
+];
+const TOPICS = {
+  monitoring: { group: "Monitor & control", label: "Monitoring & control",
+    intro: "Every flow in the system, live and in one place — what the panels make, what the home uses, what the battery holds and what moves to or from the grid.",
+    points: [
+      { t: "Live power", d: "Production, consumption, storage and grid shown together in kW, updated continuously." },
+      { t: "Direct control", d: "Set battery reserve, export limits and priorities without calling anyone." },
+      { t: "One home, one view", d: "Solar, battery and grid on a single screen — no separate app per device." },
+    ] },
+  alerts: { group: "Monitor & control", label: "Alerts & system health",
+    intro: "If something needs attention, EMON says what happened, how serious it is and who should act — in plain language.",
+    points: [
+      { t: "Severity, not noise", d: "Info, warning and fault are separated, so a minor notice never reads like an emergency." },
+      { t: "What and who", d: "Each alert names the cause and whether it is for you, the household or the installer." },
+      { t: "History kept", d: "Every event stays on record, so a pattern is visible instead of a one-off surprise." },
+    ] },
+  history: { group: "Monitor & control", label: "Energy history",
+    intro: "Performance over time — by day, month and year — so you can see how the system behaves across the seasons.",
+    points: [
+      { t: "Daily to annual", d: "Production and consumption from a single day out to a full year." },
+      { t: "Compare periods", d: "This month against last, this year against the year before." },
+      { t: "Export", d: "Figures export for your own records or your energy supplier." },
+    ] },
+  smart: { group: "Monitor & control", label: "Smart energy control",
+    intro: "The system acts on tariffs, forecasts and your priorities — charging and discharging when it makes the most sense.",
+    points: [
+      { t: "Dynamic tariffs", d: "Charge the battery in the cheapest hours and hold it for the expensive ones." },
+      { t: "Solar forecast", d: "Tomorrow's expected generation shapes today's decisions." },
+      { t: "Your priorities", d: "Choose self-use, backup reserve or grid earnings — the system follows the order you set." },
+    ] },
+  phone: { group: "Monitor & control", label: "Your phone is the screen",
+    intro: "There is no display on the inverter to age or fail. The front carries essential LED status; the full picture lives on your phone.",
+    points: [
+      { t: "Local at a glance", d: "Five front figures — SOC, Flow, Health, Link and Care — read the system without the app." },
+      { t: "Scan to open", d: "QR or NFC opens the exact unit in EMON, with no serial to type." },
+      { t: "Nothing to break", d: "No screen and no buttons, so fewer parts can fail over the system's life." },
+    ] },
+  remote: { group: "Support & lifecycle", label: "Remote support",
+    intro: "Diagnostics and assistance happen remotely, but only with your permission — you grant and revoke access, and you can see when it was used.",
+    points: [
+      { t: "Permission-based", d: "Support sees the system only after you allow it, for as long as you allow it." },
+      { t: "You stay in control", d: "Access is logged and can be withdrawn at any time." },
+      { t: "Faster resolution", d: "Most issues are read and resolved without a site visit." },
+    ] },
+  documents: { group: "Support & lifecycle", label: "Documents",
+    intro: "Every document tied to your unit, filed by serial number — from the day it was commissioned onward.",
+    points: [
+      { t: "Commissioning record", d: "The install, settings and sign-off, kept as first registered." },
+      { t: "Manuals & certificates", d: "Product manuals, compliance and warranty certificates in one place." },
+      { t: "Bound to the serial", d: "Everything is tied to the unit, so it travels with the hardware." },
+    ] },
+  warranty: { group: "Support & lifecycle", label: "Warranty",
+    intro: "Activation, status, extension and claims, visible and handled in one place.",
+    points: [
+      { t: "Activation & status", d: "Cover starts at successful commissioning. See the start date and remaining term at any time." },
+      { t: "Standard and extended", d: "Both terms depend on the model and on residential, commercial or utility use." },
+      { t: "Photo extends cover", d: "Upload a photo of the finished installation within 60 days of commissioning. It must show the whole unit, readable labels and visible cabling. The extension is recorded against the serial." },
+      { t: "Claims", d: "Open and track a claim without paper; the commissioning record supports it." },
+    ] },
+  software: { group: "Support & lifecycle", label: "Software & firmware",
+    intro: "Versions, updates and compatibility are visible, and every change is kept on record.",
+    points: [
+      { t: "Version visible", d: "The current firmware and app versions are always shown." },
+      { t: "Consent-based updates", d: "Applied with your consent; nothing changes silently." },
+      { t: "Compatibility", d: "What works with which version, so an update never surprises the system." },
+    ] },
+  access: { group: "Support & lifecycle", label: "Access & permissions",
+    intro: "Owner, household, installer and service each get the right level of access — and you decide who holds which role.",
+    points: [
+      { t: "Roles", d: "Owner controls everything; household sees and uses; installer and service get scoped access." },
+      { t: "Grant and revoke", d: "Add or remove people at any time; changes take effect immediately." },
+      { t: "Auditable", d: "Who has access, and what they did, stays visible." },
+    ] },
+  transfer: { group: "Support & lifecycle", label: "Service & transfer",
+    intro: "Service events and a change of owner keep the record intact — the history stays with the hardware, not the person.",
+    points: [
+      { t: "RMA tracking", d: "Any replacement or repair is logged against the serial." },
+      { t: "Ownership transfer", d: "Hand the system to a new owner with its full history attached." },
+      { t: "Nothing lost", d: "Documents, warranty and settings survive the handover." },
+    ] },
+};
+const PROOF = [
+  { num: "0", label: "physical buttons to wear out", bg: "#252525", numColor: "#F1931B", txtColor: "#898989" },
+  { num: "0", label: "screens to crack or fail", bg: "#F4F4F4", numColor: "#F1931B", txtColor: "#5F5E5E" },
+  { num: "60", label: "days to extend your warranty with one photo", bg: "#F4F4F4", numColor: "#252525", txtColor: "#5F5E5E" },
+];
+const FLOWS = [
+  { label: "To the home", val: "1,90", unit: "kW", shapeBg: "#F1931B", shapeRadius: "50%" },
+  { label: "To the battery", val: "1,24", unit: "kW", shapeBg: "#252525", shapeRadius: "3px" },
+  { label: "Battery charge", val: "82", unit: "%", shapeBg: "#F1931B", shapeRadius: "3px" },
+  { label: "Grid import", val: "0,28", unit: "kW", shapeBg: "#E3E3E3", shapeRadius: "50%" },
+];
+const BARS = [
+  { day: "M", h: "84px", bg: "#E3E3E3" },
+  { day: "T", h: "116px", bg: "#E3E3E3" },
+  { day: "W", h: "100px", bg: "#E3E3E3" },
+  { day: "T", h: "148px", bg: "#F1931B" },
+  { day: "F", h: "128px", bg: "#E3E3E3" },
+  { day: "S", h: "184px", bg: "#F1931B" },
+  { day: "S", h: "156px", bg: "#E3E3E3" },
+];
+const ALERTS = [
+  { title: "Firmware updated.", body: "Everything lined up politely.", bg: "#F4F4F4" },
+  { title: "Dynamic pricing active.", body: "Charging scheduled for the cheapest hours.", bg: "#F4F4F4" },
+  { title: "Grid export within limit.", body: "0 W injection holding as configured.", bg: "#F4F4F4" },
+];
+
+const LEDS = [
+  { key: "soc",    label: "SOC",    glyph: "▮", dot: "#FB8C00", state: "82 %",    reading: "Charge · 82 %",  body: "State of charge, shown as an amber strip that fills as the battery stores surplus solar — so the household runs on stored energy after dark." },
+  { key: "flow",   label: "FLOW",   glyph: "▲", dot: "#4CAF50", state: "out",     reading: "Exporting",      body: "Energy direction — blue coming in, green going out, an amber pulse for peak protection. Right now the system is sending surplus out." },
+  { key: "health", label: "HEALTH", glyph: "●", dot: "#FB8C00", state: "nominal", reading: "All nominal",    body: "Technical product health. Off when everything is normal, amber for a warning, red for a critical fault — the detail waits in EMON." },
+  { key: "link",   label: "LINK",   glyph: "■", dot: "#8E8E8E", state: "linked",  reading: "Connected",      body: "The communication chain. Blue-grey means connected; it dims for local-only, turns amber while reconnecting and red if the link is lost." },
+  { key: "care",   label: "CARE",   glyph: "♥", dot: "#D8392C", state: "—",       reading: "No action due",  body: "User action and lifecycle care — not a technical fault. Amber for a care task, muted rose when it is urgent. Hidden at night." },
+];
+
+class Component extends DCLogic {
+  state = { view: "live", led: "flow", topic: "monitoring" };
+  componentDidMount() {
+    const m = (location.hash || "").match(/^#t=(.+)$/);
+    if (m && TOPICS[m[1]]) {
+      this.setState({ topic: m[1] });
+      setTimeout(() => { const el = document.getElementById("support"); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 90, behavior: "smooth" }); }, 80);
+    }
+  }
+  openTopic = (id) => () => {
+    this.setState({ topic: id });
+    const el = document.getElementById("support");
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 90, behavior: "smooth" });
+  };
+  renderVals() {
+    const view = this.state.view;
+    const setView = (v) => () => this.setState({ view: v });
+    const tab = (key, label) => ({
+      label, onClick: setView(key),
+      bg: view === key ? "#4F4F4E" : "#E3E3E3",
+      color: view === key ? "#FFFFFF" : "#5F5E5E",
+    });
+
+    const sel = this.state.led;
+    const leds = LEDS.map((l) => {
+      const active = l.key === sel;
+      const pulse = l.key === "flow" || l.key === "health" || l.key === "care";
+      return {
+        ...l,
+        onClick: () => this.setState({ led: l.key }),
+        rowBg: active ? "#252525" : "transparent",
+        labelColor: active ? "#FFFFFF" : "#8E8E8E",
+        stateColor: active ? l.dot : "#5F5E5E",
+        glow: `0 0 10px ${l.dot}`,
+        anim: pulse ? "bwPulse 2.6s ease-in-out infinite" : "none",
+      };
+    });
+    const d = LEDS.find((l) => l.key === sel) || LEDS[0];
+
+    const t = this.state.topic;
+    const idx = (list) => list.map((o) => {
+      const active = o.id === t;
+      return {
+        ...o,
+        onClick: () => this.setState({ topic: o.id }),
+        accent: active ? "#F1931B" : "#E3E3E3",
+        rowBg: active ? "#FFFFFF" : "transparent",
+        labelColor: active ? "#252525" : "#5F5E5E",
+      };
+    });
+    const monitor = MONITOR.map((o) => ({ ...o, onClick: this.openTopic(o.id) }));
+    const topic = TOPICS[t] || TOPICS.monitoring;
+    const topicMedia = { ...topic, imgSlot: "m2o-" + t + "-image", vidSlot: "m2o-" + t + "-video" };
+
+    return {
+      monitor, support: SUPPORT, proof: PROOF,
+      flows: FLOWS, bars: BARS, alerts: ALERTS,
+      isLive: view === "live", isHistory: view === "history", isAlerts: view === "alerts",
+      tabs: [tab("live", "Live"), tab("history", "History"), tab("alerts", "Alerts")],
+      leds,
+      ledDetail: { label: d.label, reading: d.reading, body: d.body, dot: d.dot, glyph: d.glyph, glow: `0 0 14px ${d.dot}` },
+      monIndex: idx(MONITOR), supIndex: idx(SUPPORT), topic: topicMedia,
+    };
+  }
+}
+</script>
+</body>
+</html>

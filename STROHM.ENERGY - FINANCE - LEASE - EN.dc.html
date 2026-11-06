@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet data-dc-atomics>
+<title>LEASE | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#F7F7F5; }
+  a { color:#4F4F4E; }
+  a:hover { color:#4F4F4E; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;">
+
+  <dc-import name="NavBar" active="finance" hint-size="100%,80px"></dc-import>
+
+  <dc-import name="BrandHero2" brand="FINANCE" rgb="200,200,200" dark="#4F4F4E" title="Renewable energy asset leasing" intro="For businesses and homeowners who want the equipment without the upfront cost." items="{{ heroItems }}" hint-size="100%,760px"></dc-import><section data-screen-label="LEASE — Hero">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 72px;box-sizing:border-box;text-align:center;">
+      
+      <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#apply" style="text-decoration:none;height:var(--cta-height);padding:0 var(--cta-pad-x);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);letter-spacing:0.04em;border-radius:var(--cta-radius);">Book a consultation</a>
+    </div>
+  </section>
+
+  <section data-screen-label="LEASE — Model explained" style="background:#FFFFFF;">
+    <div data-cols="2" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;--cg:56px;">
+      <div>
+        <h2 style="margin:0 0 20px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">How <span style="color:#8E8E8E;">it works</span></h2>
+        <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">Strohm.energy retains ownership of the hardware. You pay a fixed monthly fee that covers equipment, monitoring and maintenance. At the end of the term, you can renew, upgrade or purchase the equipment at its residual value.</p>
+      </div>
+      <div>
+        <h2 style="margin:0 0 20px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Who it <span style="color:#8E8E8E;">is for</span></h2>
+        <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">Homeowners and businesses installing solar, storage or heat pump systems who prefer predictable monthly cost over upfront capital expenditure. Eligible products: ANDO, FLUXX, NENDO, MOEBIUS.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="LEASE — Process">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+      <h2 style="margin:0 0 48px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Process</h2>
+      <div data-cols="5" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;--cg:20px;">
+        <sc-for list="{{ steps }}" as="step" hint-placeholder-count="5">
+          <div style="padding-top:16px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#AEAEAE;margin-bottom:10px;letter-spacing:var(--web-eyebrow-ls);">{{ step.n }} · {{ step.time }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;">{{ step.title }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="LEASE — Eligibility" style="background:var(--color-card-strohm);width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:24px auto;border-radius:24px;overflow:hidden;box-sizing:border-box;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+      <h2 style="margin:0 0 40px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Eligibility</h2>
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;max-width:760px;--cg:16px;">
+        <sc-for list="{{ eligibility }}" as="e" hint-placeholder-count="4">
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <span style="width:18px;height:18px;border-radius:8px;background:#4F4F4E;flex:none;margin-top:2px;"></span>
+            <span style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;line-height:var(--web-small-lh);">{{ e }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="calculator" data-screen-label="LEASE — Calculator" style="background:#FFFFFF;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);">
+      <h2 style="margin:0 0 8px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Estimate a <span style="color:#8E8E8E;">monthly cost</span></h2>
+      <p style="margin:0 0 32px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">Not a commitment. Final terms are confirmed during consultation.</p>
+      <div data-cols="2" style="background:var(--color-card-strohm);border-radius:12px;padding:32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:end;--cg:24px;">
+        <div>
+          <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#898989;margin-bottom:8px;">System size</label>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <input type="range" min="3" max="20" value="{{ systemSize }}" onChange="{{ onSizeChange }}" style="flex:1;min-width:0;" />
+            <span style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;width:60px;">{{ systemSize }} kWp</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#AEAEAE;margin-bottom:6px;">Estimated monthly fee</div>
+          <div style="font-size:var(--web-h3-size);font-weight:500;color:#4F4F4E;line-height:var(--web-h3-lh);">{{ monthlyFee }}<span style="font-size:inherit;font-weight:300;"> € / month</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="LEASE — Fund" id="fund" style="background:var(--color-card-strohm);width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:24px auto;border-radius:24px;overflow:hidden;box-sizing:border-box;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+      <div style="margin-bottom:20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Finance · Fund</div>
+      <h2 style="margin:0 0 24px;max-width:640px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">A pooled investment, <span style="color:#8E8E8E;">not a stake in one system.</span></h2>
+      <p style="margin:0 0 48px;max-width:640px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">The Fund model pools capital across a diversified portfolio of STRØHM.ENERGY energy assets, for investors who want exposure to renewable energy without financing or managing a single project directly.</p>
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;max-width:760px;margin-bottom:32px;--cg:16px;">
+        <sc-for list="{{ fundFeatures }}" as="e" hint-placeholder-count="4">
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <span style="width:18px;height:18px;border-radius:8px;background:#4F4F4E;flex:none;margin-top:2px;"></span>
+            <span style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;line-height:var(--web-small-lh);">{{ e }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:0 0 32px;font-size:var(--web-min-size);font-weight:300;color:#AEAEAE;line-height:var(--web-min-lh);max-width:640px;">Minimum commitment, distribution frequency and target return are confirmed once the fund structure is finalised — not yet published.</p>
+      <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#apply" style="text-decoration:none;height:var(--cta-height);padding:0 var(--cta-pad-x);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);letter-spacing:0.04em;border-radius:var(--cta-radius);">Ask about the Fund</a>
+    </div>
+  </section>
+
+  <section data-screen-label="LEASE — Partner programme" id="partner" style="background:#FFFFFF;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+      <div style="margin-bottom:20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">For installers and resellers</div>
+      <h2 style="margin:0 0 24px;max-width:640px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Offer STRØHM.ENERGY financing without <span style="color:#8E8E8E;">becoming a lender.</span></h2>
+      <p style="margin:0 0 40px;max-width:640px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">Certified STRØHM.ENERGY installers and resellers can offer the Lease and Fund models directly to their customers. STRØHM.ENERGY structures and carries the financing; you handle the installation, the customer relationship and the warranty work you already do.</p>
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;max-width:760px;margin-bottom:32px;--cg:16px;">
+        <sc-for list="{{ partnerFeatures }}" as="e" hint-placeholder-count="4">
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <span style="width:18px;height:18px;border-radius:8px;background:#4F4F4E;flex:none;margin-top:2px;"></span>
+            <span style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;line-height:var(--web-small-lh);">{{ e }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <a href="#apply" style="text-decoration:none;height:44px;padding:0 24px;display:inline-flex;align-items:center;background:#F4F4F4;color:#4F4F4E;font-size:var(--cta-font);letter-spacing:0.04em;border-radius:8px;font-weight:var(--web-btn-weight);">Apply as a partner</a>
+    </div>
+  </section>
+
+  <div style="height:48px;"></div>
+  <dc-import name="ReachSpecialist" brand="FINANCE" lead="Speak with the finance team before you commit to anything." photo-slot-id="finance-specialist" hint-size="100%,420px"></dc-import>
+
+
+  <section data-screen-label="LEASE — Disclaimer">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side);box-sizing:border-box;">
+      <p style="margin:0;font-size:var(--web-min-size);font-weight:300;color:#AEAEAE;line-height:var(--web-min-lh);max-width:760px;">This page describes a general leasing structure and is not a binding offer. Terms vary by jurisdiction and are subject to credit approval. Strohm.energy does not provide financial advice. Consult the general conditions before entering an agreement.</p>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+const HERO_ITEMS = [{"label":"How it works","heading":"How it works","sentence":"Strohm.energy retains ownership of the hardware. You pay a fixed monthly fee that covers equipment, monitoring and maintenance. At the end of the term, you can renew, upgrade or purchase the equipment at its residual value.","media":{"type":"slot","slot":"strohm-energy-lease-hero","alt":"FINANCE hero picture 1"}},{"label":"Who it is for","heading":"Who it is for","sentence":"Homeowners and businesses installing solar, storage or heat pump systems who prefer predictable monthly cost over upfront capital expenditure. Eligible products: ANDO, FLUXX, NENDO, MOEBIUS.","media":{"type":"slot","slot":"finance-lease-hero-2","alt":"FINANCE hero picture 2"}},{"label":"Process","heading":"Process","sentence":"TO CONFIRM","media":{"type":"slot","slot":"finance-lease-hero-3","alt":"FINANCE hero picture 3"}},{"label":"Monthly cost","heading":"Estimate a monthly cost","sentence":"Not a commitment. Final terms are confirmed during consultation.","media":{"type":"slot","slot":"finance-lease-hero-4","alt":"FINANCE hero picture 4"}},{"label":"Fund","heading":"A pooled investment, not a stake in one system.","sentence":"The Fund model pools capital across a diversified portfolio of STRØHM.ENERGY energy assets, for investors who want exposure to renewable energy without financing or managing a single project directly.","media":{"type":"slot","slot":"finance-lease-hero-5","alt":"FINANCE hero picture 5"}},{"label":"Installers and resellers","heading":"Offer STRØHM.ENERGY financing without becoming a lender.","sentence":"Certified STRØHM.ENERGY installers and resellers can offer the Lease and Fund models directly to their customers. STRØHM.ENERGY structures and carries the financing; you handle the installation, the customer relationship and the warranty work you already do.","media":{"type":"slot","slot":"finance-lease-hero-6","alt":"FINANCE hero picture 6"}}];
+class Component extends DCLogic {
+  renderVals() { return Object.assign({}, this._rvBase(), { heroItems: HERO_ITEMS }); }
+  state = { systemSize: 8 };
+
+  _rvBase() {
+    const size = this.state.systemSize;
+    const fee = Math.round(size * 11.5);
+    return {
+      steps: [
+        { n: "01", time: "Day 1", title: "Site assessment" },
+        { n: "02", time: "Day 3", title: "System proposal" },
+        { n: "03", time: "Day 7", title: "Credit check" },
+        { n: "04", time: "Week 3", title: "Installation" },
+        { n: "05", time: "Ongoing", title: "Monitoring via EMON" },
+      ],
+      eligibility: [
+        "Property owner or registered business",
+        "Minimum system size: 3 kWp",
+        "Available in Netherlands, Belgium, Germany",
+        "Standard credit approval required",
+      ],
+      fundFeatures: [
+        "Diversified portfolio across multiple sites and technologies",
+        "Distributions tied to actual portfolio performance",
+        "Institutional-style reporting and governance",
+        "Reserve allowance for maintenance and performance shortfalls",
+      ],
+      partnerFeatures: [
+        "No cost to join the programme",
+        "You keep your own products, pricing and customer relationships",
+        "Commission structure confirmed during onboarding — not yet published",
+        "Insurance and workmanship requirements confirmed in the partner agreement",
+      ],
+      systemSize: size,
+      monthlyFee: fee.toString(),
+      onSizeChange: (e) => this.setState({ systemSize: Number(e.target.value) }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>Product Angel | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#F7F7F5; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } html { scroll-behavior:smooth; } [id] { scroll-margin-top:120px; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;color:var(--color-text-primary);min-height:100vh;">
+  <dc-import name="NavBar" active="finance" hint-size="100%,80px"></dc-import>
+
+  <dc-import name="BrandHero2" brand="FINANCE" rgb="200,200,200" dark="#4F4F4E" title="Fund product development. Participate in its results." intro="" items="{{ heroItems }}" hint-size="100%,760px"></dc-import><div style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);">
+    <section style="padding:88px 0 64px;">
+      <div style="display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:48px;"><span style="font-size:var(--web-h1-size);font-weight:100;letter-spacing:0.15em;text-transform:uppercase;">Finance</span><span style="font-size:var(--web-lead-size);font-weight:100;color:#898989;">Product Angel</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:end;">
+        
+        <div style="max-width:640px;justify-self:end;display:flex;flex-direction:column;gap:24px;">
+          <p style="margin:0;font-size:var(--web-h3-size);line-height:1.6;font-weight:300;color:#898989;">Product Angel is the STRØHM.ENERGY financing model for investors who want to support the development of a specific product range — with a contractual share of the profits it generates in return.</p>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;"><a href="#opportunities" style="display:inline-flex;align-items:center;height:var(--cta-height);padding:0 var(--cta-pad-x);border-radius:var(--cta-radius);font-size:var(--cta-font);font-weight:400;background:#4F4F4E;color:#F4F4F4;" style-hover="background:#5F5E5E;color:#F4F4F4;">Explore development opportunities</a><a href="#enquiry" style="display:inline-flex;align-items:center;height:48px;padding:0 24px;border-radius:8px;font-size:var(--web-body-size);font-weight:400;background:var(--color-surface-secondary);color:#898989;" style-hover="background:var(--color-divider);">Discuss an opportunity</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="opportunities" style="display:flex;flex-wrap:wrap;gap:40px;padding:120px 0 0;">
+      <div style="flex:1 1 0;min-width:min(100%,240px);font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">01 / Discover</div>
+      <div style="flex:3 1 0;min-width:min(100%,480px);">
+        <h2 style="margin:0 0 32px;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Discover what<br>is in development.</h2>
+        <p style="margin:0 0 24px;font-size:var(--web-body-size);line-height:1.6;font-weight:300;color:#898989;max-width:760px;">You can request information about product ranges currently in development and open to investment.</p>
+        <p style="margin:0 0 24px;font-size:var(--web-body-size);line-height:var(--web-body-lh);font-weight:var(--web-body-weight);color:#898989;max-width:760px;">For suitable opportunities, we share the product's intended application, current development stage, remaining work, funding requirement and proposed commercial approach. Confidential technical or commercial information may be shared under a confidentiality agreement.</p>
+        <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);font-weight:var(--web-body-weight);color:#898989;max-width:760px;">STRØHM.ENERGY reviews each enquiry individually. Participation depends on the suitability of the investor, the project's funding needs and agreement on the terms.</p>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:40px;padding:120px 0 0;">
+      <div style="flex:1 1 0;min-width:min(100%,240px);font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">02 / What it funds</div>
+      <div style="flex:3 1 0;min-width:min(100%,480px);">
+        <h2 style="margin:0 0 32px;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">What your <span style="color:#8E8E8E;">investment funds.</span></h2>
+        <p style="margin:0 0 32px;font-size:var(--web-body-size);line-height:1.6;font-weight:300;color:#898989;max-width:760px;">The development scope determines how the investment will be used.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;">
+          <sc-for list="{{ fundsTable }}" as="r" hint-placeholder-count="6">
+            <div style="background:{{ r.bg }};border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:12px;">
+              <div style="font-size:var(--web-body-size);font-weight:400;">{{ r.k }}</div>
+              <div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#898989;">{{ r.v }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:24px 0 0;font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">The agreed budget identifies the funded activities, expected milestones and responsibilities.</p>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:40px;padding:120px 0 0;">
+      <div style="flex:1 1 0;min-width:min(100%,240px);font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">03 / Process</div>
+      <div style="flex:3 1 0;min-width:min(100%,480px);">
+        <h2 style="margin:0 0 32px;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">From enquiry<br>to participation.</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:24px;">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+            <div style="padding-top:16px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#AEAEAE;margin-bottom:10px;letter-spacing:var(--web-eyebrow-ls);">{{ s.n }}</div>
+              <div style="font-size:var(--web-body-size);font-weight:300;margin-bottom:8px;">{{ s.title }}</div>
+              <div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#898989;">{{ s.body }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:40px;padding:120px 0 0;">
+      <div style="flex:1 1 0;min-width:min(100%,240px);font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">04 / Agreement scope</div>
+      <div style="flex:3 1 0;min-width:min(100%,480px);">
+        <h2 style="margin:0 0 32px;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Defined around a<br>specific product range.</h2>
+        <p style="margin:0 0 32px;font-size:var(--web-body-size);line-height:1.6;font-weight:300;color:#898989;max-width:760px;">Each arrangement identifies exactly which products and commercial results are covered.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;">
+          <sc-for list="{{ agreementTable }}" as="r" hint-placeholder-count="9">
+            <div style="background:{{ r.bg }};border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:12px;">
+              <div style="font-size:var(--web-body-size);font-weight:400;">{{ r.k }}</div>
+              <div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#898989;">{{ r.v }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:24px 0 0;font-size:var(--web-small-size);font-weight:300;color:#898989;max-width:760px;line-height:var(--web-small-lh);">Profit participation does not automatically provide company shares or intellectual property ownership. Any additional rights must be expressly included in the agreement.</p>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-wrap:wrap;gap:40px;padding:120px 0 0;">
+      <div style="flex:1 1 0;min-width:min(100%,240px);font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">05 / Risk</div>
+      <div style="flex:3 1 0;min-width:min(100%,480px);">
+        <h2 style="margin:0 0 32px;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Investment considerations.</h2>
+        <p style="margin:0 0 24px;font-size:var(--web-body-size);line-height:1.6;font-weight:300;color:#898989;max-width:760px;">Product development carries technical and commercial risk. Costs and timelines may change, a product may not reach production, and sales may not generate a profit.</p>
+        <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);font-weight:var(--web-body-weight);color:#898989;max-width:760px;">Returns and repayment of invested capital are not guaranteed. Some or all of the investment may be lost. Review the project information and proposed agreement carefully before committing.</p>
+      </div>
+    </section>
+
+    <section id="enquiry" style="display:flex;flex-wrap:wrap;gap:40px;padding:120px 0 0;">
+      <div style="flex:1 1 0;min-width:min(100%,240px);font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">06 / Enquiry</div>
+      <div style="flex:3 1 0;min-width:min(100%,480px);">
+        <h2 style="margin:0 0 32px;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Discuss a Product<br>Angel opportunity.</h2>
+        <p style="margin:0 0 16px;font-size:var(--web-body-size);line-height:1.6;font-weight:300;color:#898989;max-width:760px;">Request an overview of the product ranges currently available for development investment.</p>
+        <p style="margin:0 0 40px;font-size:var(--web-body-size);line-height:var(--web-body-lh);font-weight:var(--web-body-weight);color:#898989;max-width:760px;">Tell us what interests you and the scale of participation you are considering. We will review your enquiry and discuss suitable opportunities where available.</p>
+
+        <sc-if value="{{ !submitted }}" hint-placeholder-val="{{ true }}">
+          <div style="background:var(--color-card-strohm);border-radius:12px;padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px;">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Name<input type="text" placeholder="Full name" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Company (if applicable)<input type="text" placeholder="Company name" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Email<input type="email" placeholder="you@company.com" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Country<input type="text" placeholder="Country of residence" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Product interests<input type="text" placeholder="Technologies or product categories" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Investment amount<input type="text" placeholder="Indicative budget in euros" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);height:48px;box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:0 16px;"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);grid-column:1/-1;">Experience<textarea placeholder="Relevant technical, commercial or investment background" rows="3" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:12px 16px;resize:vertical;"></textarea></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);grid-column:1/-1;">Message<textarea placeholder="Questions and objectives" rows="3" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);box-sizing:border-box;border:1px solid var(--color-grey-40);border-radius:8px;background:#FFFFFF;color:var(--color-text-primary);padding:12px 16px;resize:vertical;"></textarea></label>
+            <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:16px;">
+              <button onClick="{{ submit }}" style="font-family:inherit;cursor:pointer;height:var(--cta-height);padding:0 var(--cta-pad-x);border:none;border-radius:var(--cta-radius);background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font);align-self:flex-start;" style-hover="background:#5F5E5E;color:#F4F4F4;">Request development opportunities</button>
+              <p style="margin:0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:#AEAEAE;line-height:var(--web-min-lh);">An enquiry is not an investment commitment. Participation requires acceptance by both parties and a signed agreement.</p>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="background:var(--color-card-strohm);border-radius:12px;padding:40px;font-size:var(--web-body-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-body-lh);">Received. We will review your enquiry and discuss suitable opportunities where available.</div>
+        </sc-if>
+      </div>
+    </section>
+  </div>
+
+  <div style="height:96px;"></div>
+  <div style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 32px;">
+    <div style="background:var(--color-card-strohm);border-radius:12px;padding:28px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Looking for a different financing model?</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">Lease equipment, invest in the diversified fund, or submit and finance a specific project.</div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="STROHM.ENERGY - FINANCE - LEASE - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Lease and funds</a>
+        <a href="STROHM.ENERGY - FINANCE - Invest - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#FFFFFF;color:var(--color-text-primary);border:1px solid var(--color-divider);border-radius:var(--cta-radius);">Invest</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:48px;"></div>
+  <dc-import name="ReachSpecialist" brand="FINANCE" lead="Speak with the finance team to find the right model for your project." photo-slot-id="finance-specialist" hint-size="100%,420px"></dc-import>
+
+  <div style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 32px;">
+    <p style="margin:0;font-size:var(--web-min-size);font-weight:300;color:#AEAEAE;line-height:var(--web-min-lh);max-width:760px;">Product Angel is a profit-participation financing arrangement, not a share offering, and is not investment advice. Terms are agreed individually per product range and per investor.</p>
+  </div>
+
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const FUNDS_TABLE = [
+  ["Engineering", "Mechanical, electrical and system design"],
+  ["Prototyping", "Prototype manufacturing, assembly and evaluation"],
+  ["Software", "Embedded software, controls and connectivity"],
+  ["Validation", "Performance, reliability and safety testing"],
+  ["Certification", "Assessments, laboratory testing and technical documentation"],
+  ["Production preparation", "Tooling, manufacturing processes and pilot production"],
+];
+const STEPS = [
+  { n: "01", title: "Share your interests", body: "Tell us which product categories interest you, your indicative investment amount and any relevant technical or commercial experience." },
+  { n: "02", title: "Review an opportunity", body: "We discuss suitable product ranges and provide the available development and commercial information for your assessment." },
+  { n: "03", title: "Agree the structure", body: "Before accepting funds, both parties agree on the investment amount, development scope, reporting arrangements and profit participation." },
+  { n: "04", title: "Support development", body: "Funding follows the agreed payment schedule. Where appropriate, payments are linked to defined milestones." },
+  { n: "05", title: "Participate in profits", body: "If the selected product range generates profits eligible for distribution under the agreement, you receive your agreed share for the specified participation period." },
+];
+const AGREEMENT_TABLE = [
+  ["Product scope", "Included products, models, variants and relevant markets"],
+  ["Funding", "Investment amount, payment schedule and permitted use"],
+  ["Development programme", "Milestones, responsibilities and progress reporting"],
+  ["Profit calculation", "Relevant revenue, deductible costs and treatment of losses"],
+  ["Investor participation", "Profit percentage, participation period and any agreed cap"],
+  ["Payments", "Distribution frequency, conditions and supporting statements"],
+  ["Intellectual property", "Ownership and any rights granted to the investor"],
+  ["Project changes", "Treatment of delays, additional funding needs or discontinuation"],
+  ["End of participation", "Expiry, termination and any agreed buyout arrangements"],
+];
+const BG = ["#F4F4F4", "#E3E3E3"];
+const HERO_ITEMS = [{"label":"In development","heading":"Discover what is in development.","sentence":"You can request information about product ranges currently in development and open to investment.","media":{"type":"slot","slot":"strohm-energy-product-angel-hero","alt":"FINANCE hero picture 1"}},{"label":"What it funds","heading":"What your investment funds.","sentence":"The development scope determines how the investment will be used.","media":{"type":"slot","slot":"finance-angel-hero-2","alt":"FINANCE hero picture 2"}},{"label":"Enquiry to participation","heading":"From enquiry to participation.","sentence":"TO CONFIRM","media":{"type":"slot","slot":"finance-angel-hero-3","alt":"FINANCE hero picture 3"}},{"label":"Defined product range","heading":"Defined around a specific product range.","sentence":"Each arrangement identifies exactly which products and commercial results are covered.","media":{"type":"slot","slot":"finance-angel-hero-4","alt":"FINANCE hero picture 4"}},{"label":"Considerations","heading":"Investment considerations.","sentence":"Product development carries technical and commercial risk. Costs and timelines may change, a product may not reach production, and sales may not generate a profit.","media":{"type":"slot","slot":"finance-angel-hero-5","alt":"FINANCE hero picture 5"}}];
+class Component extends DCLogic {
+  renderVals() { return Object.assign({}, this._rvBase(), { heroItems: HERO_ITEMS }); }
+  state = { submitted: false };
+  _rvBase() {
+    return {
+      fundsTable: FUNDS_TABLE.map((r, i) => ({ k: r[0], v: r[1], bg: BG[i % 2] })),
+      steps: STEPS,
+      agreementTable: AGREEMENT_TABLE.map((r, i) => ({ k: r[0], v: r[1], bg: BG[i % 2] })),
+      submitted: this.state.submitted,
+      submit: () => this.setState({ submitted: true }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

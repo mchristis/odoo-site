@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>ANDO Visual Asset Register | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4F4F4E; text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  .ar-chips { scrollbar-width:none; } .ar-chips::-webkit-scrollbar { display:none; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Visual-asset register</div>
+    <h1 style="margin:0 0 16px;font-size:clamp(30px,4vw,44px);line-height:1.1;font-weight:700;letter-spacing:-0.02em;color:var(--color-text-primary);max-width:720px;">Every banner, photo, video and diagram — briefed and tracked.</h1>
+    <p style="margin:0 0 32px;font-size:15px;font-weight:300;line-height:1.6;color:var(--color-text-primary);max-width:680px;">One register for the ANDO site. Each slot in the pages carries its full brief; this page is the summary index and totals. Priority: P1 required for launch, P2 strongly recommended, P3 can follow.</p>
+  </section>
+
+  <!-- TOTALS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:8px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1px;background:var(--color-divider);border:1px solid var(--color-divider);">
+      <sc-for list="{{ totals }}" as="t" hint-placeholder-count="8">
+        <div style="background:#FFFFFF;padding:20px;">
+          <div style="font-size:28px;font-weight:700;color:var(--color-text-primary);">{{ t.n }}</div>
+          <div style="font-size:12px;font-weight:300;color:var(--color-text-primary);">{{ t.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- FILTER -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div class="ar-chips" style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:20px;">
+      <sc-for list="{{ pageChips }}" as="c" hint-placeholder-count="5">
+        <button onClick="{{ c.onClick }}" style="cursor:pointer;font-family:inherit;white-space:nowrap;font-size:12px;font-weight:400;padding:8px 14px;border-radius:16px;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.color }};">{{ c.label }}</button>
+      </sc-for>
+    </div>
+
+    <!-- TABLE -->
+    <div style="border:1px solid var(--color-divider);border-radius:var(--radius-card);overflow:hidden;">
+      <div style="display:grid;grid-template-columns:1.6fr 0.7fr 0.7fr 2fr 0.5fr;background:var(--color-surface-card);">
+        <sc-for list="{{ headers }}" as="h" hint-placeholder-count="5">
+          <div style="padding:12px 16px;font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#4F4F4E;">{{ h }}</div>
+        </sc-for>
+      </div>
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="12">
+        <div style="display:grid;grid-template-columns:1.6fr 0.7fr 0.7fr 2fr 0.5fr;border-top:1px solid var(--color-divider);">
+          <div style="padding:14px 16px;font-size:12px;font-weight:700;color:var(--color-text-primary);word-break:break-word;">{{ r.id }}</div>
+          <div style="padding:14px 16px;font-size:12px;font-weight:300;color:var(--color-text-primary);">{{ r.page }}</div>
+          <div style="padding:14px 16px;font-size:12px;font-weight:300;color:var(--color-text-primary);">{{ r.type }}</div>
+          <div style="padding:14px 16px;font-size:12px;font-weight:300;color:var(--color-text-primary);line-height:1.45;">{{ r.subject }}</div>
+          <div style="padding:14px 16px;"><span style="font-size:11px;font-weight:700;color:#FFFFFF;background:{{ r.prColour }};border-radius:4px;padding:3px 8px;">{{ r.priority }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:20px 0 0;font-size:12px;font-weight:300;color:var(--color-grey-70);max-width:760px;">Every asset is a placeholder until the final photograph, render, diagram or video is supplied. No slot uses vague labels — each carries subject, composition, product visibility, crop and format in the page itself.</p>
+  </section>
+
+  <!-- MISSING + CONFIRM -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+      <div>
+        <h2 style="margin:0 0 16px;font-size:18px;font-weight:700;color:var(--color-text-primary);">Missing assets (all — none final yet)</h2>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <sc-for list="{{ missing }}" as="m" hint-placeholder-count="5">
+            <div style="font-size:13px;font-weight:300;color:var(--color-text-primary);line-height:1.5;display:flex;gap:10px;"><span style="color:var(--color-text-primary);font-weight:700;">&#8226;</span>{{ m }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <h2 style="margin:0 0 16px;font-size:18px;font-weight:700;color:var(--color-text-primary);">Content requiring confirmation before launch</h2>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <sc-for list="{{ confirm }}" as="c" hint-placeholder-count="5">
+            <div style="font-size:13px;font-weight:300;color:var(--color-text-primary);line-height:1.5;display:flex;gap:10px;"><span style="color:#DA5E70;font-weight:700;">&#8226;</span>{{ c }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:80px;"></div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+const PR = { P1:"#1F8A5B", P2:"#B07818", P3:"#8A8A88" };
+const ROWS = [
+  ["ANDO_LANDING_HERO_BANNER_LONG-LIFE-PANEL_01","Landing","Banner","ANDO panels on refined contemporary building, product 25–45%","P1"],
+  ["ANDO_LANDING_WHO_PHOTO_MODULE-EXAM_01","Landing","Photo","Engineer examining a module, clean engineering environment","P2"],
+  ["ANDO_LANDING_WHAT_TRIPTYCH_APPLICATIONS_01","Landing","Composite","Residential / commercial / utility application triptych","P1"],
+  ["ANDO_LANDING_HOW_SEQUENCE_SIX-STEP_01","Landing","Diagram/Photo","Six-step commissioning-to-European sequence","P1"],
+  ["ANDO_LANDING_HOW_VIDEO_FACTORY-TO-PROOF_01","Landing","Video","45–75s process film, factory test to installed proof","P2"],
+  ["ANDO_LANDING_PRINCIPLE_BANNER_ENGINEERING-PAUSE_01","Landing","Banner","Transition banner, engineering environment, minimal text","P2"],
+  ["ANDO_LANDING_FORWHOM_PHOTO_x7","Landing","Photo","Seven audience-card context images","P2"],
+  ["ANDO_LANDING_ROOF-SCAN_SPLIT_UPLOAD-TO-LAYOUT_01","Landing","Split/Anim","Roof photo → digital layout with panels + yield","P1"],
+  ["ANDO_PRODUCTS_HERO_BANNER_FOUR-FAMILIES_01","Products","Banner","Four families at true relative scale","P1"],
+  ["ANDO_PRODUCTS_[FAMILY]_PRODUCT-CARD_x8","Products","Render","Eight product-card front views, accurate finish","P1"],
+  ["ANDO_PRODUCTS_TECHNOLOGY_MACRO/SECTION_x6","Products","Diagram/Macro","TOPCon, bifacial, glass-glass, NOUVEL, degradation, junction","P2"],
+  ["ANDO_PRODUCTS_TECHNOLOGY_VIDEO_NINE-COMPONENTS_01","Products","Video","45–60s exploded module build, two constructions","P2"],
+  ["ANDO_PRODUCTS_FLASH-TEST_BANNER_FACTORY_01","Products","Banner","Module in flash-test equipment, test screen visible","P1"],
+  ["ANDO_PRODUCTS_FLASH-TEST_DIAGRAM_RECORD-CHAIN_01","Products","Diagram","Factory identity → EMON monitoring record chain","P1"],
+  ["ANDO_OWNERSHIP_HERO_BANNER_EMON-RECORD_01","Ownership","Banner","Installed array with EMON registration overlay","P1"],
+  ["ANDO_OWNERSHIP_WARRANTY_CHART_EXPECTED-VS-MEASURED_01","Ownership","Chart","Expected vs measured vs threshold, dummy values","P1"],
+  ["ANDO_OWNERSHIP_REGISTRATION_x3","Ownership","Photo","QR scan, owner upload, EMON record — three steps","P1"],
+  ["ANDO_OWNERSHIP_DOCUMENT_PDF-PREVIEW_01","Ownership","Doc preview","Full ownership PDF preview, no real personal data","P1"],
+  ["ANDO_OWNERSHIP_SHARING_INTERFACE_PERMISSION_01","Ownership","Interface","Private record vs public reference permission","P2"],
+  ["ANDO_RESPONSIBILITY_HERO_BANNER_MATERIAL-LIFECYCLE_01","Responsibility","Banner","Material / lifecycle image, no greenwash","P1"],
+  ["ANDO_RESPONSIBILITY_DURABILITY_x6","Responsibility","Diagram/Photo","Section, environmental, seal, load, weather, comparison","P2"],
+  ["ANDO_RESPONSIBILITY_TOPCON_MACRO_SQUARE-CELL_01","Responsibility","Macro","Square TOPCon cell, material stack","P2"],
+  ["ANDO_RESPONSIBILITY_PFAS_DIAGRAM_MATERIAL-STACK_01","Responsibility","Diagram","Layer-by-layer stack + declaration preview","P1"],
+  ["ANDO_RESPONSIBILITY_ISO_PREVIEW_x3","Responsibility","Doc preview","ISO 9001 / 14001 / 45001 certificate previews","P2"],
+  ["ANDO_RESPONSIBILITY_PACKAGING_VIDEO_PALLET-SYSTEM_01","Responsibility","Video","30–45s factory pack to clean site","P2"],
+  ["ANDO_RESPONSIBILITY_END-OF-LIFE_DIAGRAM_WEEE_01","Responsibility","Diagram","Use → collection → recovery → WEEE record","P2"],
+  ["ANDO_OWNERSHIP_LAYOUT-PLAN_A4-APPROVED-PLAN_01","Commissioning","Photo","A4 approved layout plan on work surface, project QR","P1"],
+  ["ANDO_EMON_COMMISSIONING_SCAN-SEQUENCE_x8","Commissioning","Interface/Photo","Eight-frame plan→scan→as-built→strings→evidence→docs","P1"],
+  ["ANDO_EMON_REPORTING_PLANNED-VS-AS-BUILT_01","Commissioning","Diagram","Planned rev A vs final as-built layout compare","P1"],
+  ["ANDO_EMON_REPORTING_STRING-DIAGRAM_01","Commissioning","Diagram","Usable single-line string diagram, MPPT assignment","P1"],
+  ["ANDO_EMON_REPORTING_AUTOMATIC-DOCUMENT-SET_x3","Commissioning","Doc preview","Commissioning, ownership, warranty confirmation PDFs","P1"],
+  ["ANDO_EMON_MONITORING_DEGRADATION-CURVE_01","Commissioning","Chart","Per-panel expected vs actual vs warranted curve (live)","P1"],
+  ["ANDO_EMON_COMMISSIONING_VIDEO_LAYOUT-TO-RECORD_01","Commissioning","Video","75–100s plan-to-lifetime-record, captions, no VO","P2"],
+];
+
+class Component extends DCLogic {
+  state = { page: "All" };
+  renderVals() {
+    const pages = ["All","Landing","Products","Ownership","Commissioning","Responsibility"];
+    const filtered = this.state.page === "All" ? ROWS : ROWS.filter(r => r[1] === this.state.page);
+    return {
+      totals: [
+        { n:"6", label:"Banners" }, { n:"9+", label:"Product renders" }, { n:"7", label:"Project/context photos" },
+        { n:"9", label:"Technical diagrams" }, { n:"4", label:"Interface / doc previews" }, { n:"4", label:"Videos" },
+        { n:"1", label:"Animation (roof scan)" }, { n:"26", label:"Register lines" },
+      ],
+      pageChips: pages.map(p => ({
+        label: p, onClick: () => this.setState({ page: p }),
+        bg: this.state.page === p ? "#4F4F4E" : "#FFFFFF",
+        color: this.state.page === p ? "#FFFFFF" : "#5F5E5E",
+        border: this.state.page === p ? "#4F4F4E" : "#D4D4D4",
+      })),
+      headers: ["Asset ID","Page","Type","Subject","Pr."],
+      rows: filtered.map(r => ({ id:r[0], page:r[1], type:r[2], subject:r[3], priority:r[4], prColour: PR[r[4]] })),
+      missing: [
+        "All photography — no final ANDO project or product photography supplied yet.",
+        "All four process/technical videos (landing, technology, flash-test, packaging).",
+        "Product-card renders for all 8 models at accurate proportions and finishes.",
+        "Certificate and declaration document previews (ISO, PFAS, warranty).",
+        "Roof-scan split visual / animation.",
+      ],
+      confirm: [
+        "Warranty figures — all values dummy until legal figures confirmed.",
+        "Sharing benefits — not promised; marked to be confirmed.",
+        "ISO scope wording — confirm applies to all current facilities.",
+        "Degradation / performance curve values — dummy until verified.",
+        "PFAS declaration scope and batch/serial linkage detail.",
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

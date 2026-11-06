@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>SHELTR Installation | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  .sh-step:hover { border-color:var(--color-brand-sheltr) !important; }
+  .sh-step:hover .sh-step-t { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="SheltrNav" active="install" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="SHELTR" rgb="91,101,146" eyebrow="Install &amp; register" title="Install it once. Keep the record for its complete life." intro="Each SHELTR installation is linked to its product and project record." slot="sheltr-reg-hero" shot="Installer scanning SHELTR product identity, tablet showing the installation record" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 40px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:740px;">The installer scans the identity, confirms the configuration, records the protected equipment, uploads photographs and completes the handover through EMON.</p>
+    
+  </section>
+
+  <!-- WORKFLOW -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">The workflow</div>
+      <h2 style="margin:0 0 32px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Scan, confirm, document, <span style="color:#8E8E8E;">hand over.</span></h2>
+      <div data-cols="5" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+          <div class="sh-step" style="border-top:3px solid var(--color-brand-sheltr);padding:22px 18px;display:flex;flex-direction:column;gap:10px;min-height:170px;background:#F4F4F4;border-radius:12px;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);letter-spacing:var(--web-eyebrow-ls);">{{ s.n }}</span>
+            <span class="sh-step-t" style="font-size:15px;font-weight:700;letter-spacing:0.01em;">{{ s.t }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);">{{ s.d }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE RECORD FILE -->
+  <section style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center;">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">The resulting file</div>
+          <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One record proves the installation, <span style="color:#8E8E8E;">for its whole life.</span></h2>
+          <p style="margin:0 0 16px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">The file stays with the product and the building &#8212; useful for warranty, inspection, service and future equipment replacement.</p>
+          <a href="SHELTR - PRODUCT - Overview - EN.dc.html#selector" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-sheltr);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Find your SHELTR</a>
+        </div>
+        <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;--cg:12px;">
+          <sc-for list="{{ recordFile }}" as="r" hint-placeholder-count="10">
+            <div style="background:#F4F4F4;padding:14px 16px;font-size:12px;font-weight:300;color:var(--color-text-primary);display:flex;gap:8px;align-items:baseline;border-radius:12px;"><span style="color:var(--color-text-primary);font-size:8px;">&#9679;</span>{{ r }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+    <div style="background:var(--color-text-primary);padding:56px;color:#FFFFFF;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;border-radius:12px;">
+      <div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#FFFFFF;text-wrap:balance;">Register a <span style="color:#B2B3B3;">completed installation.</span></h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);color:#B8B8B5;max-width:560px;line-height:var(--web-body-lh);">Link the product, protected equipment and photographs into one warranty-activating record.</p>
+      </div>
+      <span style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-sheltr);color:var(--color-text-primary);font-weight:400;white-space:nowrap;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Register an installation</span>
+    </div>
+  </section>
+
+  <dc-import name="ContentSections" brand="SHELTR" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="SHELTR" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="SHELTR" accent="var(--color-brand-sheltr)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      steps: [
+        { n: "01", t: "Scan identity", d: "Scan the SHELTR product or project identity to open the record." },
+        { n: "02", t: "Confirm configuration", d: "Confirm the installed configuration and mounting or ballast arrangement." },
+        { n: "03", t: "Record equipment", d: "Record the protected equipment details and installation location." },
+        { n: "04", t: "Upload photographs", d: "Upload the required photographic evidence with on-screen guidance." },
+        { n: "05", t: "Hand over", d: "Complete the installer declaration and generate the PDF record in EMON." },
+      ],
+      recordFile: ["SHELTR product & serial identity", "Protected equipment details", "Mounting or ballast confirmation", "Installation location", "Required clearances", "Photographic evidence", "Engineering-file reference", "Warranty confirmation", "Manuals & drawings", "Inspection & service history"],
+    };
+  }
+}
+</script>
+</body>
+</html>

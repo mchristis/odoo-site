@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="strohm-type.css">
+<script src="./nav-data.js"></script>
+<style>
+  [data-ft-title]:focus { outline: none; }
+  [data-ft-title]:focus-visible { outline: 2px solid #3A3A3A; outline-offset: 0; }
+  .ft-logo { position: relative; display: inline-block; line-height: 0; transform-origin: left center; transition: transform 140ms ease-out; }
+  .ft-logo img { display: block; height: 18px; width: auto; visibility: hidden; }
+  .ft-logo .ft-mono { position: absolute; inset: 0; background: #6E6E6E; -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: left center; mask-position: left center; }
+  .ft-item:hover .ft-logo, .ft-item:focus-visible .ft-logo { transform: scale(1.12); }
+  .ft-item:hover .ft-logo img, .ft-item:focus-visible .ft-logo img { visibility: visible; }
+  .ft-item:hover .ft-logo .ft-mono, .ft-item:focus-visible .ft-logo .ft-mono { visibility: hidden; }
+  @media (prefers-reduced-motion: reduce) { .ft-logo { transition: none; } .ft-item:hover .ft-logo { transform: none; } }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);">
+
+  <!-- EBOOK EMAIL-GATE (EMON only) -->
+  <sc-if value="{{ showEbook }}" hint-placeholder-val="{{ false }}">
+  <div style="background:#4F4F4E;color:#D9DADA;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:48px var(--web-side);box-sizing:border-box;display:flex;flex-wrap:wrap;gap:48px;align-items:center;">
+      <div style="flex:1.2 1 0;min-width:min(100%,360px);">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#21AE8F;margin-bottom:12px;">Free ebook</div>
+        <h2 style="margin:0 0 10px;font-size:clamp(22px,2.4vw,28px);font-weight:400;line-height:1.2;color:#FFFFFF;">The complete guide to EMON energy management.</h2>
+        <p style="margin:0;font-size:var(--web-nav-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;max-width:520px;">How EMON runs solar, storage, dynamic tariffs and commissioning &#8212; for homes, commercial buildings and utility-scale systems. Enter your email and we&#8217;ll send the download.</p>
+      </div>
+      <div style="flex:1 1 0;min-width:min(100%,360px);">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="border:1px solid #21AE8F;background:#141414;padding:24px;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#FFFFFF;margin-bottom:6px;line-height:var(--web-h3-lh);">Sent. The guide is on its way.</div>
+            <p style="margin:0 0 16px;font-size:var(--web-nav-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);max-width:760px;">A copy is on its way to <span style="color:#21AE8F;">{{ email }}</span>.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <input type="email" required="true" value="{{ email }}" onInput="{{ onInput }}" placeholder="you@example.com" style="flex:1;min-width:min(100%,220px);box-sizing:border-box;height:48px;padding:0 14px;border:1px solid #3A3A38;background:#141414;color:#FFFFFF;font-size:var(--web-input-size);font-family:inherit;border-radius:8px;font-weight:var(--web-input-weight);">
+              <button type="submit" style="cursor:pointer;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border:none;background:#21AE8F;color:#FFFFFF;font-size:var(--cta-font,16px);font-weight:400;font-family:inherit;border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Send me the ebook</button>
+            </div>
+            <sc-if value="{{ invalid }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:var(--web-min-size);font-weight:300;color:#E08A7A;line-height:var(--web-min-lh);">Enter a valid email address.</div>
+            </sc-if>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:#6B6B69;line-height:var(--web-min-lh);">We use your email only to send the ebook and occasional product updates. Unsubscribe anytime.</div>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <footer style="background:#F4F4F4;border-top:1px solid #DDDDDD;color:#3A3A3A;">
+
+    <!-- NEWSLETTER ROW -->
+    <sc-if value="{{ showNewsletter }}" hint-placeholder-val="{{ true }}">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;box-sizing:border-box;padding:{{ rowPad }};border-bottom:1px solid #DDDDDD;display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px;">
+      <div style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#3A3A3A;">Be part of what's next</div>
+        <p style="margin:0;font-size:var(--web-nav-size);font-weight:300;line-height:1.5;color:#6E6E6E;white-space:{{ newsWrap }};max-width:760px;">Subscribe for updates on innovation, new products, company milestones, events, and the future of energy.</p>
+      </div>
+      <div style="flex:0 1 420px;min-width:260px;display:flex;justify-content:flex-end;">
+        <sc-if value="{{ newsSent }}" hint-placeholder-val="{{ false }}">
+          <div style="height:40px;display:flex;align-items:center;font-size:var(--web-nav-size);font-weight:var(--web-nav-weight);color:#3A3A3A;">Thanks — you're subscribed.</div>
+        </sc-if>
+        <sc-if value="{{ newsNotSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onNewsSubmit }}" style="display:flex;gap:8px;width:100%;">
+            <label for="ft-news-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Email address</label>
+            <input id="ft-news-email" type="email" required="true" value="{{ newsEmail }}" onInput="{{ onNewsInput }}" placeholder="Email address" style="flex:1;min-width:0;box-sizing:border-box;height:40px;padding:0 14px;border:1px solid #CFCFCF;border-radius:8px;background:#FFFFFF;color:#4F4F4E;font-size:var(--web-input-size);font-weight:var(--web-input-weight);font-family:inherit;">
+            <button type="submit" style="cursor:pointer;flex:none;height:40px;padding:0 20px;border:none;border-radius:8px;background:#4F4F4E;color:#F4F4F4;font-size:var(--web-nav-size);font-weight:var(--web-nav-weight);font-family:inherit;white-space:nowrap;" style-hover="background:#5F5E5E;color:#F4F4F4;">Subscribe</button>
+          </form>
+        </sc-if>
+      </div>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <a style="display:flex;flex-direction:row;align-items:center;gap:10px;text-decoration:none;" title="EMON app (link to follow)"><svg width="56" height="56" viewBox="-2 -2 25 25" role="img" aria-label="QR code placeholder for the EMON app" style="display:block;background:#FFFFFF;border-radius:8px;"><g transform="translate(0.5 0.5)"><rect x="0" y="0" width="7" height="7" fill="none" stroke="#222222" stroke-width="1"></rect><rect x="2" y="2" width="3" height="3" fill="#222222"></rect><rect x="13.5" y="0" width="7" height="7" fill="none" stroke="#222222" stroke-width="1"></rect><rect x="15.5" y="2" width="3" height="3" fill="#222222"></rect><rect x="0" y="13.5" width="7" height="7" fill="none" stroke="#222222" stroke-width="1"></rect><rect x="2" y="15.5" width="3" height="3" fill="#222222"></rect></g><rect x="9" y="0" width="1" height="1" fill="#222222"></rect><rect x="10" y="1" width="1" height="1" fill="#222222"></rect><rect x="11" y="1" width="1" height="1" fill="#222222"></rect><rect x="9" y="2" width="1" height="1" fill="#222222"></rect><rect x="10" y="2" width="1" height="1" fill="#222222"></rect><rect x="9" y="3" width="1" height="1" fill="#222222"></rect><rect x="11" y="3" width="1" height="1" fill="#222222"></rect><rect x="10" y="4" width="1" height="1" fill="#222222"></rect><rect x="11" y="4" width="1" height="1" fill="#222222"></rect><rect x="9" y="5" width="1" height="1" fill="#222222"></rect><rect x="12" y="5" width="1" height="1" fill="#222222"></rect><rect x="8" y="6" width="1" height="1" fill="#222222"></rect><rect x="11" y="6" width="1" height="1" fill="#222222"></rect><rect x="12" y="7" width="1" height="1" fill="#222222"></rect><rect x="3" y="8" width="1" height="1" fill="#222222"></rect><rect x="5" y="8" width="1" height="1" fill="#222222"></rect><rect x="8" y="8" width="1" height="1" fill="#222222"></rect><rect x="10" y="8" width="1" height="1" fill="#222222"></rect><rect x="11" y="8" width="1" height="1" fill="#222222"></rect><rect x="18" y="8" width="1" height="1" fill="#222222"></rect><rect x="19" y="8" width="1" height="1" fill="#222222"></rect><rect x="20" y="8" width="1" height="1" fill="#222222"></rect><rect x="4" y="9" width="1" height="1" fill="#222222"></rect><rect x="9" y="9" width="1" height="1" fill="#222222"></rect><rect x="12" y="9" width="1" height="1" fill="#222222"></rect><rect x="13" y="9" width="1" height="1" fill="#222222"></rect><rect x="14" y="9" width="1" height="1" fill="#222222"></rect><rect x="15" y="9" width="1" height="1" fill="#222222"></rect><rect x="16" y="9" width="1" height="1" fill="#222222"></rect><rect x="17" y="9" width="1" height="1" fill="#222222"></rect><rect x="18" y="9" width="1" height="1" fill="#222222"></rect><rect x="19" y="9" width="1" height="1" fill="#222222"></rect><rect x="4" y="10" width="1" height="1" fill="#222222"></rect><rect x="5" y="10" width="1" height="1" fill="#222222"></rect><rect x="7" y="10" width="1" height="1" fill="#222222"></rect><rect x="10" y="10" width="1" height="1" fill="#222222"></rect><rect x="13" y="10" width="1" height="1" fill="#222222"></rect><rect x="15" y="10" width="1" height="1" fill="#222222"></rect><rect x="16" y="10" width="1" height="1" fill="#222222"></rect><rect x="19" y="10" width="1" height="1" fill="#222222"></rect><rect x="20" y="10" width="1" height="1" fill="#222222"></rect><rect x="3" y="11" width="1" height="1" fill="#222222"></rect><rect x="4" y="11" width="1" height="1" fill="#222222"></rect><rect x="5" y="11" width="1" height="1" fill="#222222"></rect><rect x="6" y="11" width="1" height="1" fill="#222222"></rect><rect x="8" y="11" width="1" height="1" fill="#222222"></rect><rect x="14" y="11" width="1" height="1" fill="#222222"></rect><rect x="15" y="11" width="1" height="1" fill="#222222"></rect><rect x="4" y="12" width="1" height="1" fill="#222222"></rect><rect x="8" y="12" width="1" height="1" fill="#222222"></rect><rect x="15" y="12" width="1" height="1" fill="#222222"></rect><rect x="17" y="12" width="1" height="1" fill="#222222"></rect><rect x="19" y="12" width="1" height="1" fill="#222222"></rect><rect x="20" y="12" width="1" height="1" fill="#222222"></rect><rect x="8" y="13" width="1" height="1" fill="#222222"></rect><rect x="12" y="13" width="1" height="1" fill="#222222"></rect><rect x="18" y="13" width="1" height="1" fill="#222222"></rect><rect x="9" y="14" width="1" height="1" fill="#222222"></rect><rect x="13" y="14" width="1" height="1" fill="#222222"></rect><rect x="14" y="14" width="1" height="1" fill="#222222"></rect><rect x="16" y="14" width="1" height="1" fill="#222222"></rect><rect x="17" y="14" width="1" height="1" fill="#222222"></rect><rect x="19" y="14" width="1" height="1" fill="#222222"></rect><rect x="20" y="14" width="1" height="1" fill="#222222"></rect><rect x="10" y="15" width="1" height="1" fill="#222222"></rect><rect x="11" y="15" width="1" height="1" fill="#222222"></rect><rect x="12" y="15" width="1" height="1" fill="#222222"></rect><rect x="14" y="15" width="1" height="1" fill="#222222"></rect><rect x="15" y="15" width="1" height="1" fill="#222222"></rect><rect x="16" y="15" width="1" height="1" fill="#222222"></rect><rect x="19" y="15" width="1" height="1" fill="#222222"></rect><rect x="20" y="15" width="1" height="1" fill="#222222"></rect><rect x="8" y="16" width="1" height="1" fill="#222222"></rect><rect x="10" y="16" width="1" height="1" fill="#222222"></rect><rect x="11" y="16" width="1" height="1" fill="#222222"></rect><rect x="14" y="16" width="1" height="1" fill="#222222"></rect><rect x="15" y="16" width="1" height="1" fill="#222222"></rect><rect x="19" y="16" width="1" height="1" fill="#222222"></rect><rect x="20" y="16" width="1" height="1" fill="#222222"></rect><rect x="9" y="17" width="1" height="1" fill="#222222"></rect><rect x="15" y="17" width="1" height="1" fill="#222222"></rect><rect x="20" y="17" width="1" height="1" fill="#222222"></rect><rect x="9" y="18" width="1" height="1" fill="#222222"></rect><rect x="11" y="18" width="1" height="1" fill="#222222"></rect><rect x="12" y="18" width="1" height="1" fill="#222222"></rect><rect x="14" y="18" width="1" height="1" fill="#222222"></rect><rect x="18" y="18" width="1" height="1" fill="#222222"></rect><rect x="19" y="18" width="1" height="1" fill="#222222"></rect><rect x="16" y="19" width="1" height="1" fill="#222222"></rect><rect x="18" y="19" width="1" height="1" fill="#222222"></rect><rect x="19" y="19" width="1" height="1" fill="#222222"></rect><rect x="13" y="20" width="1" height="1" fill="#222222"></rect><rect x="14" y="20" width="1" height="1" fill="#222222"></rect><rect x="20" y="20" width="1" height="1" fill="#222222"></rect></svg><span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#6E6E6E;max-width:72px;">Scan to get the EMON app</span></a>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-min-size);font-weight:300;color:#6E6E6E;line-height:var(--web-min-lh);">Get the EMON app</div><div style="display:flex;gap:20px;"><a style="font-size:12px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;">App Store</a><a style="font-size:12px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;">Google Play</a></div></div>
+      </sc-if>
+    </div>
+    </sc-if>
+
+    <!-- LINK TITLES — DESKTOP: one row + one panel -->
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+      <div style="display:grid;grid-template-columns:minmax(0,1.4fr) repeat(4,minmax(0,1fr)) auto auto;gap:0 24px;align-items:center;min-height:72px;">
+        <a href="STROHM.ENERGY - SITE - Homepage - EN.dc.html" style="text-decoration:none;display:flex;align-self:center;"><img src="assets/logos/STROHM-ENERGY-horizontal-screen.svg" alt="STRØHM.ENERGY" style="width:150px;height:auto;display:block;flex-shrink:0;object-fit:contain;"></img></a>
+        
+        <sc-for list="{{ columns }}" as="col" hint-placeholder-count="5">
+          <button type="button" data-ft-title="" id="{{ col.btnId }}" aria-expanded="{{ col.expanded }}" aria-controls="{{ col.panelId }}" onClick="{{ col.onToggle }}" style="cursor:pointer;background:none;border:none;padding:4px;margin:20px 0 20px -4px;justify-self:{{ col.justify }};display:flex;align-items:center;gap:8px;font-family:inherit;font-size:var(--web-eyebrow-size);line-height:1;font-weight:{{ col.titleWeight }};letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ col.titleColor }};text-align:left;" style-hover="color:#222222;">
+            <span style="white-space:nowrap;">{{ col.heading }}</span>
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.2" style="flex:none;transition:transform .2s ease;transform:rotate({{ col.chevRot }});"><polyline points="2,3.5 5,6.5 8,3.5"></polyline></svg>
+          </button>
+        </sc-for>
+        <div style="display:flex;align-items:center;gap:12px;justify-self:end;line-height:1;"><sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><span style="font-size:var(--web-min-size);font-weight:300;color:#6E6E6E;white-space:nowrap;line-height:var(--web-min-lh);">Follow us on</span></sc-if><div style="display:flex;align-items:center;gap:12px;"><a aria-label="STRØHM.ENERGY on Instagram" title="Instagram" style="display:flex;color:#666666;" style-hover="color:#222222;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"></circle></svg></a><a aria-label="STRØHM.ENERGY on Facebook" title="Facebook" style="display:flex;color:#666666;" style-hover="color:#222222;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M13.2 20.5v-7h2.3l.4-2.6h-2.7V9.3c0-.8.3-1.3 1.4-1.3h1.4V5.7c-.3 0-1.1-.1-2-.1-2 0-3.3 1.2-3.3 3.4v1.9H8.4v2.6h2.3v7"></path></svg></a><a aria-label="STRØHM.ENERGY on TikTok" title="TikTok" style="display:flex;color:#666666;" style-hover="color:#222222;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3.5v11.2a3.3 3.3 0 1 1-3.3-3.3"></path><path d="M14 3.5c.4 2.4 2 4 4.5 4.3"></path></svg></a><a aria-label="STRØHM.ENERGY on X" title="X" style="display:flex;color:#666666;" style-hover="color:#222222;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 4.5l15 15M19.5 4.5l-15 15"></path></svg></a><a aria-label="STRØHM.ENERGY on Threads" title="Threads" style="display:flex;color:#666666;" style-hover="color:#222222;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M16.6 11.2c-.5-2.4-2.2-3.6-4.4-3.6-2.8 0-4.5 2-4.5 4.6 0 2.9 1.8 4.9 4.8 4.9 2.4 0 4-1.4 4-3.2 0-1.8-1.6-2.8-3.6-2.8-1.6 0-2.7.8-2.7 1.9s.9 1.6 2 1.6c1.6 0 2.6-1.2 2.6-3.6"></path><circle cx="12" cy="12" r="8.5"></circle></svg></a><a aria-label="STRØHM.ENERGY on YouTube" title="YouTube" style="display:flex;color:#666666;" style-hover="color:#222222;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="3.5"></rect><path d="M10.5 9.5v5l4.2-2.5z"></path></svg></a><a aria-label="STRØHM.ENERGY on LinkedIn" title="LinkedIn" style="display:flex;color:#666666;" style-hover="color:#222222;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"></rect><path d="M8 10.5v6M8 7.6v.1M11.5 16.5v-6M11.5 13c0-1.5 1-2.5 2.3-2.5s2.2.9 2.2 2.5v3.5"></path></svg></a></div></div>
+      </div>
+      <sc-for list="{{ columns }}" as="col" hint-placeholder-count="0">
+        <div id="{{ col.panelId }}" role="region" aria-labelledby="{{ col.btnId }}" style="display:{{ col.panelDisplay }};border-top:1px solid #DDDDDD;padding:28px 0 36px;">
+          <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.4fr) repeat(4,minmax(0,1fr));gap:0 24px;">
+            <div></div>
+            <div style="grid-column:2 / span 4;columns:4;column-gap:24px;">
+              <sc-for list="{{ col.groups }}" as="grp" hint-placeholder-count="2"><div style="break-inside:avoid;padding:0 0 22px;"><sc-if value="{{ grp.showTitle }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6E6E6E;margin:0 0 12px;">{{ grp.title }}</div></sc-if><div style="display:flex;flex-direction:column;gap:12px;">
+              <sc-for list="{{ grp.links }}" as="link" hint-placeholder-count="5">
+                <sc-if value="{{ link.isIcon }}" hint-placeholder-val="{{ false }}"><a class="ft-item" href="{{ link.href }}" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-size:var(--web-nav-size);font-weight:300;color:#6E6E6E;" style-hover="color:#3A3A3A;"><span class="ft-logo"><img src="{{ link.iconSrc }}" alt=""><span class="ft-mono" style="-webkit-mask-image:url('{{ link.iconSrc }}');mask-image:url('{{ link.iconSrc }}');"></span></span><span>{{ link.label }}</span></a></sc-if><sc-if value="{{ link.isLogo }}" hint-placeholder-val="{{ false }}"><a class="ft-item" href="{{ link.href }}" aria-label="{{ link.label }}" style="text-decoration:none;display:inline-flex;align-items:center;align-self:flex-start;"><span class="ft-logo"><img src="{{ link.logoSrc }}" alt="{{ link.label }}"><span class="ft-mono" style="-webkit-mask-image:url('{{ link.logoSrc }}');mask-image:url('{{ link.logoSrc }}');"></span></span></a></sc-if><sc-if value="{{ link.isLink }}" hint-placeholder-val="{{ true }}"><a href="{{ link.href }}" style="text-decoration:none;font-size:var(--web-nav-size);font-weight:300;color:#6E6E6E;" style-hover="color:#4F4F4E;">{{ link.label }}</a></sc-if><sc-if value="{{ link.isText }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-nav-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">{{ link.label }}</span></sc-if><sc-if value="{{ link.isContact }}" hint-placeholder-val="{{ false }}"><button type="button" data-ft-title="" onClick="{{ link.onClick }}" style="cursor:pointer;background:none;border:none;padding:0;text-align:left;font-family:inherit;font-size:var(--web-nav-size);font-weight:300;color:#6E6E6E;" style-hover="color:#4F4F4E;">{{ link.label }}</button></sc-if>
+              </sc-for></div></div></sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    </sc-if>
+
+    <!-- LINK TITLES — MOBILE: accordion -->
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:0 var(--web-side);">
+      <div style="padding:24px 0 8px;">
+        <a href="STROHM.ENERGY - SITE - Homepage - EN.dc.html" style="text-decoration:none;display:inline-flex;">
+          <img src="assets/logos/STROHM-ENERGY-horizontal-screen.svg" alt="STRØHM.ENERGY" style="width:100px;height:auto;display:block;flex-shrink:0;object-fit:contain;"></img>
+        </a>
+      </div>
+      <sc-for list="{{ columns }}" as="col" hint-placeholder-count="5">
+        <div style="border-bottom:1px solid #DDDDDD;">
+          <button type="button" data-ft-title="" id="{{ col.mBtnId }}" aria-expanded="{{ col.mExpanded }}" aria-controls="{{ col.mPanelId }}" onClick="{{ col.onMToggle }}" style="cursor:pointer;width:100%;min-height:52px;background:none;border:none;padding:0;display:flex;align-items:center;justify-content:space-between;font-family:inherit;font-size:var(--web-eyebrow-size);font-weight:{{ col.mTitleWeight }};letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ col.mTitleColor }};text-align:left;" style-hover="color:#222222;">
+            <span>{{ col.heading }}</span>
+            <svg width="12" height="12" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.2" style="flex:none;transition:transform .2s ease;transform:rotate({{ col.mChevRot }});"><polyline points="2,3.5 5,6.5 8,3.5"></polyline></svg>
+          </button>
+          <div id="{{ col.mPanelId }}" role="region" aria-labelledby="{{ col.mBtnId }}" style="display:{{ col.mPanelDisplay }};padding:0 0 20px;">
+            <div style="display:flex;flex-direction:column;gap:20px;">
+              <sc-for list="{{ col.groups }}" as="grp" hint-placeholder-count="2"><div><sc-if value="{{ grp.showTitle }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6E6E6E;margin:0 0 12px;">{{ grp.title }}</div></sc-if><div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px;--cg:16px;">
+              <sc-for list="{{ grp.links }}" as="link" hint-placeholder-count="5">
+                <sc-if value="{{ link.isIcon }}" hint-placeholder-val="{{ false }}"><a class="ft-item" href="{{ link.href }}" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;min-height:24px;font-size:var(--web-nav-size);font-weight:300;color:#6E6E6E;" style-hover="color:#3A3A3A;"><span class="ft-logo"><img src="{{ link.iconSrc }}" alt=""><span class="ft-mono" style="-webkit-mask-image:url('{{ link.iconSrc }}');mask-image:url('{{ link.iconSrc }}');"></span></span><span>{{ link.label }}</span></a></sc-if><sc-if value="{{ link.isLogo }}" hint-placeholder-val="{{ false }}"><a class="ft-item" href="{{ link.href }}" aria-label="{{ link.label }}" style="text-decoration:none;display:inline-flex;align-items:center;align-self:flex-start;min-height:24px;"><span class="ft-logo"><img src="{{ link.logoSrc }}" alt="{{ link.label }}"><span class="ft-mono" style="-webkit-mask-image:url('{{ link.logoSrc }}');mask-image:url('{{ link.logoSrc }}');"></span></span></a></sc-if><sc-if value="{{ link.isLink }}" hint-placeholder-val="{{ true }}"><a href="{{ link.href }}" style="text-decoration:none;font-size:var(--web-nav-size);font-weight:300;color:#6E6E6E;min-height:24px;">{{ link.label }}</a></sc-if><sc-if value="{{ link.isText }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-nav-size);font-weight:300;color:#898989;min-height:24px;line-height:var(--web-small-lh);">{{ link.label }}</span></sc-if><sc-if value="{{ link.isContact }}" hint-placeholder-val="{{ false }}"><button type="button" data-ft-title="" onClick="{{ link.onClick }}" style="cursor:pointer;background:none;border:none;padding:0;min-height:24px;text-align:left;font-family:inherit;font-size:var(--web-nav-size);font-weight:300;color:#6E6E6E;">{{ link.label }}</button></sc-if>
+              </sc-for></div></div></sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><div style="padding:16px var(--web-side);border-top:1px solid #DDDDDD;display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;"><span style="font-size:var(--web-min-size);font-weight:300;color:#6E6E6E;line-height:var(--web-min-lh);">Follow us on</span><a aria-label="STRØHM.ENERGY on Instagram" title="Instagram" style="display:flex;color:#666666;" style-hover="color:#222222;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"></circle></svg></a><a aria-label="STRØHM.ENERGY on Facebook" title="Facebook" style="display:flex;color:#666666;" style-hover="color:#222222;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M13.2 20.5v-7h2.3l.4-2.6h-2.7V9.3c0-.8.3-1.3 1.4-1.3h1.4V5.7c-.3 0-1.1-.1-2-.1-2 0-3.3 1.2-3.3 3.4v1.9H8.4v2.6h2.3v7"></path></svg></a><a aria-label="STRØHM.ENERGY on TikTok" title="TikTok" style="display:flex;color:#666666;" style-hover="color:#222222;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3.5v11.2a3.3 3.3 0 1 1-3.3-3.3"></path><path d="M14 3.5c.4 2.4 2 4 4.5 4.3"></path></svg></a><a aria-label="STRØHM.ENERGY on X" title="X" style="display:flex;color:#666666;" style-hover="color:#222222;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 4.5l15 15M19.5 4.5l-15 15"></path></svg></a><a aria-label="STRØHM.ENERGY on Threads" title="Threads" style="display:flex;color:#666666;" style-hover="color:#222222;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M16.6 11.2c-.5-2.4-2.2-3.6-4.4-3.6-2.8 0-4.5 2-4.5 4.6 0 2.9 1.8 4.9 4.8 4.9 2.4 0 4-1.4 4-3.2 0-1.8-1.6-2.8-3.6-2.8-1.6 0-2.7.8-2.7 1.9s.9 1.6 2 1.6c1.6 0 2.6-1.2 2.6-3.6"></path><circle cx="12" cy="12" r="8.5"></circle></svg></a><a aria-label="STRØHM.ENERGY on YouTube" title="YouTube" style="display:flex;color:#666666;" style-hover="color:#222222;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="3.5"></rect><path d="M10.5 9.5v5l4.2-2.5z"></path></svg></a><a aria-label="STRØHM.ENERGY on LinkedIn" title="LinkedIn" style="display:flex;color:#666666;" style-hover="color:#222222;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"></rect><path d="M8 10.5v6M8 7.6v.1M11.5 16.5v-6M11.5 13c0-1.5 1-2.5 2.3-2.5s2.2.9 2.2 2.5v3.5"></path></svg></a></div></sc-if>
+
+    <!-- BOTTOM BAR -->
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;box-sizing:border-box;padding:{{ barPad }};border-top:1px solid #DDDDDD;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px 24px;">
+      <div style="font-size:var(--web-min-size);font-weight:300;color:#6E6E6E;line-height:var(--web-min-lh);">© 2026 STRØHM.ENERGY LIMITED. All rights reserved.</div>
+      <nav aria-label="Legal" style="display:flex;gap:8px 20px;flex-wrap:wrap;">
+        <a href="STROHM.ENERGY - SITE - Privacy - EN.dc.html" style="text-decoration:none;font-size:var(--web-min-size);font-weight:300;color:#6E6E6E;line-height:var(--web-min-lh);" style-hover="color:#4F4F4E;">Privacy Policy</a>
+        <a href="STROHM.ENERGY - SITE - Cookie Policy - EN.dc.html" style="text-decoration:none;font-size:var(--web-min-size);font-weight:300;color:#6E6E6E;line-height:var(--web-min-lh);" style-hover="color:#4F4F4E;">Cookie Policy</a>
+        <a href="STROHM.ENERGY - SITE - Terms - EN.dc.html" style="text-decoration:none;font-size:var(--web-min-size);font-weight:300;color:#6E6E6E;line-height:var(--web-min-lh);" style-hover="color:#4F4F4E;">Terms of Use</a>
+        <a href="STROHM.ENERGY - SITE - Legal Notice - EN.dc.html" style="text-decoration:none;font-size:var(--web-min-size);font-weight:300;color:#6E6E6E;line-height:var(--web-min-lh);" style-hover="color:#4F4F4E;">Legal Notice</a>
+        <a href="STROHM.ENERGY - SITE - Accessibility - EN.dc.html" style="text-decoration:none;font-size:var(--web-min-size);font-weight:300;color:#6E6E6E;line-height:var(--web-min-lh);" style-hover="color:#4F4F4E;">Accessibility</a>
+        <a href="STROHM.ENERGY - SITE - Cookie Policy - EN.dc.html" style="text-decoration:none;font-size:var(--web-min-size);font-weight:300;color:#6E6E6E;line-height:var(--web-min-lh);" style-hover="color:#4F4F4E;">Cookie Preferences</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+<dc-import name="ContactModal" open="{{ contactOpen }}" on-close="{{ closeContact }}" hint-size="0,0"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+// Mirrors NavBar's live data. PH-1: null = no page yet (plain text, not clickable); "contact" = opens ContactModal.
+const FT_ICONS = { "STRØHM LAB": "assets/icons/strohm-lab-symbol.svg", "STRØHM ENGINEERING": "assets/icons/strohm-engineering-symbol.svg" };
+const FT_LOGOS = { AGRIX: "assets/logos/AGRIX-logo-symbol-wordmark-sm.png", TERRIX: "assets/logos/TERRIX-logo-symbol-wordmark-sm.png", PARX: "assets/logos/PARX-logo-symbol-wordmark-sm.png", PONTIX: "assets/logos/PONTIX-logo-symbol-wordmark-sm.png", TECTIX: "assets/logos/TECTIX-logo-symbol-wordmark-sm.png", LINA: "assets/logos/LINA-logo-symbol-wordmark.png", AIRO: "assets/logos/AIRO-logo-symbol-wordmark.svg", ANDO: "assets/logos/ANDO-logo-symbol-wordmark.svg", CHILL: "assets/logos/CHILL-logo-symbol-wordmark.svg", DEPOT: "assets/logos/DEPOT-logo-symbol-wordmark.svg", DODO: "assets/logos/DODO-logo-symbol-wordmark.svg", EMON: "assets/logos/EMON-logo-symbol-wordmark-2026.svg", FEU: "assets/logos/FEU-logo-symbol-wordmark.svg", FLUXX: "assets/logos/FLUXX-logo-symbol-wordmark.svg", GLOW: "assets/logos/GLOW-logo-symbol-wordmark.svg", KALK: "assets/logos/KALK-logo-symbol-wordmark.svg", KERN: "assets/logos/KERN-logo-symbol-wordmark.svg", MOEBIUS: "assets/logos/MOEBIUS-logo-symbol-wordmark.svg", MOX: "assets/logos/MOX-logo-symbol-wordmark-2026.svg", MUKI: "assets/logos/MUKI-logo-symbol-wordmark.svg", NENDO: "assets/logos/NENDO-logo-symbol-wordmark-2026.svg", OGO: "assets/logos/OGO-logo-symbol-wordmark.svg", OZZY: "assets/logos/OZZY-logo-symbol-wordmark.svg", PACT: "assets/logos/PACT-logo-symbol-wordmark.svg", PROP: "assets/logos/PROP-logo-symbol-wordmark.svg", PUSH: "assets/logos/PUSH-logo-symbol-wordmark.svg", SHELTR: "assets/logos/SHELTR-logo-symbol-wordmark.svg", SYNQ: "assets/logos/SYNQ-logo-symbol-wordmark.svg", TOGU: "assets/logos/TOGU-logo-symbol-wordmark.svg", TRIBE: "assets/logos/TRIBE-logo-symbol-wordmark.svg", WURK: "assets/logos/WURK-logo-symbol-wordmark.svg", XOOM: "assets/logos/XOOM-logo-symbol-wordmark.svg" }; /* DEPTH-373 */
+const COMPANY = { heading: "Company", groups: [{ title: null, links: [["About", "STROHM.ENERGY - SITE - About - EN.dc.html"], ["Why", "STROHM.ENERGY - COMPANY - Why - EN.dc.html"], ["What", "STROHM.ENERGY - COMPANY - What - EN.dc.html"], ["How", "STROHM.ENERGY - COMPANY - How - EN.dc.html"], ["Who", "STROHM.ENERGY - COMPANY - Who - EN.dc.html"], ["Where", "STROHM.ENERGY - COMPANY - Where - EN.dc.html"], ["When", "STROHM.ENERGY - COMPANY - When - EN.dc.html"], ["Contact", "contact"]] }] };
+// Products, Systems, Projects and Finance come from nav-data.js, the same data as the top navigation.
+const fromNav = (key, heading) => { const m = window.STROHM_NAV && window.STROHM_NAV.menu(key); return m ? { heading, groups: m.groups.map(g => ({ title: g.title, links: g.items.map(it => [it.name, it.href]) })) } : null; };
+const buildFooter = () => [fromNav("products","Products"), fromNav("systems","Systems"), fromNav("projects","Projects"), fromNav("finance","Finance"), COMPANY].filter(Boolean);
+
+// Icons always show (supplied 2026-10-10). Profile URLs TO CONFIRM: empty url = icon without link.
+const SOCIAL = [
+  { key: "LinkedIn", icon: "assets/social/linkedin.png", url: "" },
+  { key: "Instagram", icon: "assets/social/instagram.png", url: "" },
+  { key: "Facebook", icon: "assets/social/facebook.png", url: "" },
+  { key: "YouTube", icon: "assets/social/youtube.png", url: "" },
+  { key: "X", icon: "assets/social/x.png", url: "" },
+];
+
+const MOBILE_MAX = 1023;
+
+class Component extends DCLogic {
+  state = { contactOpen: false, email: "", sent: false, invalid: false, newsEmail: "", newsSent: false, open: null, mOpen: {}, mobile: typeof window !== "undefined" && window.innerWidth <= MOBILE_MAX, wide: typeof window !== "undefined" && window.innerWidth >= 1280 };
+
+  componentDidMount() {
+    if (!window.STROHM_NAV) { this._nt = setInterval(() => { if (window.STROHM_NAV) { clearInterval(this._nt); this.forceUpdate(); } }, 50); }
+    this._onResize = () => { const m = window.innerWidth <= MOBILE_MAX, w = window.innerWidth >= 1280; if (m !== this.state.mobile || w !== this.state.wide) this.setState({ mobile: m, wide: w }); };
+    window.addEventListener("resize", this._onResize);
+    this._onResize();
+  }
+  componentWillUnmount() { if (this._nt) clearInterval(this._nt); window.removeEventListener("resize", this._onResize); }
+
+  onNewsSubmit(e){
+    e.preventDefault();
+    const email = (this.state.newsEmail||"").trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+    try {
+      const key = "strohm_newsletter_signups";
+      const list = JSON.parse(localStorage.getItem(key) || "[]");
+      list.push({ email, at: new Date().toISOString(), page: location.pathname });
+      localStorage.setItem(key, JSON.stringify(list));
+    } catch (err) {}
+    this.setState({ newsSent: true });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    const email = this.state.email.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { this.setState({ invalid: true }); return; }
+    try {
+      const key = "emon_ebook_signups";
+      const list = JSON.parse(localStorage.getItem(key) || "[]");
+      list.push({ email, at: new Date().toISOString(), page: location.pathname });
+      localStorage.setItem(key, JSON.stringify(list));
+    } catch (err) {}
+    this.setState({ sent: true, invalid: false });
+  }
+
+  renderVals() {
+    const st = this.state;
+    const mobile = st.mobile;
+    const social = SOCIAL.map(s => ({
+      url: /^https?:\/\//.test(s.url) ? s.url : undefined, icon: s.icon, label: "STRØHM.ENERGY on " + s.key,
+    }));
+    return {
+      contactOpen: st.contactOpen,
+      closeContact: () => this.setState({ contactOpen: false }),
+      showEbook: false, // DEPTH-966: no free ebook anywhere (user); block kept, never shown
+      showNewsletter: true,
+      newsEmail: st.newsEmail,
+      newsSent: st.newsSent,
+      newsNotSent: !st.newsSent,
+      onNewsInput: (e) => this.setState({ newsEmail: e.target.value }),
+      onNewsSubmit: (e) => this.onNewsSubmit(e),
+      email: st.email,
+      sent: st.sent,
+      notSent: !st.sent,
+      invalid: st.invalid,
+      onInput: (e) => this.setState({ email: e.target.value, invalid: false }),
+      onSubmit: (e) => this.onSubmit(e),
+      social,
+      socialDesktop: mobile ? [] : social,
+      hasSocialMobile: mobile && social.length > 0,
+      newsWrap: st.wide ? "nowrap" : "normal",
+      wide: st.wide,
+      showBarCopy: mobile || !st.wide,
+      isDesktop: !mobile, isMobile: mobile,
+      rowPad: "28px var(--web-side)",
+      barPad: "20px var(--web-side) 28px",
+      columns: buildFooter().map((c, i) => {
+        const id = c.heading.toLowerCase();
+        const groups = c.groups.map(g => ({ title: g.title || "", showTitle: !!g.title, links: g.links.map(l => ({ label: l[0], href: l[1] || undefined, isLogo: !!l[1] && l[1] !== "contact" && !!FT_LOGOS[l[0]], logoSrc: FT_LOGOS[l[0]] || "", isIcon: !!l[1] && l[1] !== "contact" && !!FT_ICONS[l[0]], iconSrc: FT_ICONS[l[0]] || "", isLink: !!l[1] && l[1] !== "contact" && !FT_LOGOS[l[0]] && !FT_ICONS[l[0]], isText: !l[1], isContact: l[1] === "contact", onClick: () => this.setState({ contactOpen: true }) })) }));
+        const isOpen = st.open === id;
+        const mIsOpen = !!st.mOpen[id];
+        return {
+          heading: c.heading, groups, justify: c.heading === "Company" ? "end" : "start",
+          btnId: "ft-btn-" + id, panelId: "ft-panel-" + id,
+          expanded: isOpen ? "true" : "false",
+          chevRot: isOpen ? "180deg" : "0deg",
+          titleColor: isOpen ? "#3A3A3A" : "#666666", titleWeight: 500,
+          mTitleColor: mIsOpen ? "#3A3A3A" : "#666666", mTitleWeight: 500,
+          panelDisplay: isOpen ? "block" : "none",
+          onToggle: () => this.setState(s => ({ open: s.open === id ? null : id })),
+          mBtnId: "ft-mbtn-" + id, mPanelId: "ft-mpanel-" + id,
+          mExpanded: mIsOpen ? "true" : "false",
+          mChevRot: mIsOpen ? "180deg" : "0deg",
+          mPanelDisplay: mIsOpen ? "block" : "none",
+          onMToggle: () => this.setState(s => ({ mOpen: { ...s.mOpen, [id]: !s.mOpen[id] } })),
+        };
+      }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

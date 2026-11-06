@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>ANDO Commissioning | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#F0EEEA; }
+  a { color:#4F4F4E; text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#F0EEEA;min-height:100vh;color:#4F4F4E;">
+  <dc-import name="NavBar" active="products" hint-size="100%,65px"></dc-import>
+  <dc-import name="AndoNav" active="ownership" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="ANDO" rgb="205,214,43" eyebrow="Commissioning &amp; monitoring" title="From layout plan to lifetime record." intro="One project QR code opens the plan." slot="ando-commissioning-hero" shot="ANDO · Commissioning · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 8px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:680px;">Every panel scan completes the record.</p>
+    <p style="margin:0 0 40px;font-size:var(--web-small-size);font-weight:300;letter-spacing:0.02em;color:#8FAF2E;max-width:760px;">Planned. Installed. Mapped. Confirmed.</p>
+  </section>
+
+  <!-- ===================== FLASH TEST (recreated) ===================== -->
+  <section id="flash" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div data-stack="1" style="border-top:1px solid #D8D5CE;padding-top:44px;display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:48px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:24px;">Flash test</div>
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Factory measurement.<br/>Visible at installation.</h2>
+      </div>
+      <div>
+        <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#3C3C3B;max-width:760px;">A flash test is a direct electrical measurement of a solar module under controlled Standard Test Conditions &#8212; 1000 W/m&#178; irradiance, AM1.5 spectral distribution, 25&#176;C cell temperature. The measurement takes a fraction of a second. In that interval, the complete current-voltage curve of the module is recorded: current at every voltage point, the maximum power point, short-circuit current, open-circuit voltage, and fill factor.</p>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#3C3C3B;max-width:760px;">Every ANDO module is flash-tested before dispatch. The result is stored against the module serial number &#8212; not against a batch, not against a production run. Against the individual unit. This record is linked to the QR code on the module and travels with it from the factory to the installation site.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;">
+      <div style="width:56px;height:2px;background:#8FAF2E;margin-bottom:24px;"></div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ flashSteps }}" as="s" hint-placeholder-count="4">
+          <div style="background:#FBFAF8;border-radius:12px;padding:28px 24px 40px;border-top:3px solid {{ s.topBar }};">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:20px;">{{ s.tag }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:300;color:var(--color-text-primary);margin-bottom:14px;line-height:var(--web-h3-lh);">{{ s.title }}</div>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#6B6B69;max-width:760px;">{{ s.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- EMON flash card + explanation -->
+    <div data-stack="1" style="margin-top:32px;display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:48px;align-items:start;">
+      <div style="background:#161616;border-radius:12px;padding:28px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:14px;">EMON app &#8212; flash test data per module</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:#A9CC4A;margin-bottom:20px;line-height:var(--web-small-lh);">SN: ANDO-2026-SL-W-004471 &#183; QR verified &#10003;</div>
+        <div style="border-top:1px solid #2C2C2C;">
+          <sc-for list="{{ flashData }}" as="d" hint-placeholder-count="6">
+            <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #2C2C2C;">
+              <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-small-lh);">{{ d.k }}</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-divider);line-height:var(--web-small-lh);">{{ d.v }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:18px;background:#1C2410;border-radius:8px;padding:12px 14px;">
+          <span style="font-size:12px;font-weight:400;color:#A9CC4A;">Positive power tolerance: +0,75% &#183; Confirmed &#10003;</span>
+        </div>
+      </div>
+      <div>
+        <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#3C3C3B;max-width:760px;">The data displayed in the EMON app at the moment of installation scan includes the measured peak power, the short-circuit current, the open-circuit voltage, the fill factor, and confirmation of positive power tolerance for that specific unit. The date of the STC measurement at the factory is also shown.</p>
+        <div style="width:56px;height:2px;background:#8FAF2E;margin:24px 0;"></div>
+        <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#3C3C3B;max-width:760px;">The EMON degradation curve is initialised from the measured Pmax value, not the nominal specification. This means the 99% guarantee after year one and the 80% guarantee after 30 years are applied to the actual measured starting point &#8212; not the lower datasheet value. The monitoring is more accurate as a result.</p>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#3C3C3B;max-width:760px;">No other consumer-accessible solar product delivers per-module flash test data automatically at the moment of installation via a standard phone scan. This closes the information chain from factory measurement to lifetime monitoring in a single action.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== A4 SCAN SHEET ===================== -->
+  <section id="scan-sheet" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div data-stack="1" style="border-top:1px solid #D8D5CE;padding-top:44px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr);gap:48px;align-items:start;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:16px;">EMON smart registration</div>
+        <h2 style="margin:0 0 20px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One sheet. <span style="color:#8E8E8E;">Every panel. The complete record.</span></h2>
+        <p style="margin:0 0 16px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#3C3C3B;max-width:560px;">Each ANDO panel carries a QR code. During installation, that code is placed into a numbered window on the EMON scan sheet. A single scan of the complete sheet registers every panel &#8212; serial number, position, orientation, string diagram, inverter assignment, and warranty &#8212; in one action.</p>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-grey-70);max-width:560px;">The main project QR opens the correct EMON project and approved layout. It does not replace scanning each panel identity.</p>
+      </div>
+      <div style="background:#FBFAF8;border-radius:12px;padding:22px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:4px;">EMON ANDO solar panel scan sheet &#8212; A4 landscape</div>
+        <div style="font-size:var(--web-min-size);font-weight:300;color:#9A9A98;margin-bottom:16px;line-height:var(--web-min-lh);">ANDO solar panels only &#183; one QR code each window &#183; 36 panels per sheet</div>
+        <dc-import name="AndoScanSheet" hint-size="100%,360px"></dc-import>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;">
+          <sc-for list="{{ legend }}" as="l" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:7px;"><span style="width:16px;height:12px;border:1.5px dashed {{ l.c }};display:inline-block;"></span><span style="font-size:var(--web-min-size);font-weight:300;color:#6B6B69;line-height:var(--web-min-lh);">{{ l.t }}</span></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <!-- registered-in-one-scan list -->
+    <div data-cols="2" style="margin-top:40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 64px;--cg:64px;">
+      <sc-for list="{{ registeredItems }}" as="r" hint-placeholder-count="8">
+        <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:18px 0;border-top:1px solid #D8D5CE;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#B0AEA9;letter-spacing:var(--web-eyebrow-ls);">{{ r.n }}</div>
+          <div>
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:var(--color-text-primary);margin-bottom:3px;line-height:var(--web-h3-lh);">{{ r.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#6B6B69;">{{ r.desc }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ===================== 8-FRAME SEQUENCE ===================== -->
+  <section id="sequence" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D8D5CE;padding-top:44px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:16px;">From paper plan to digital project</div>
+      <h2 style="margin:0 0 32px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Eight steps. <span style="color:#8E8E8E;">One connected record.</span></h2>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ frames }}" as="f" hint-placeholder-count="8">
+          <div style="background:#FBFAF8;border-radius:12px;overflow:hidden;">
+            <div style="aspect-ratio:4/3;background:#E7E4DE;"><image-slot id="{{ f.slotId }}" shape="rect" placeholder="{{ f.dir }}"></image-slot></div>
+            <div style="padding:18px 16px;">
+              <div style="font-size:11px;font-weight:700;color:#8FAF2E;margin-bottom:8px;">FRAME {{ f.n }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:6px;line-height:1.25;">{{ f.title }}</div>
+              <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#6B6B69;">{{ f.body }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== AS-BUILT COMPARE ===================== -->
+  <section id="as-built" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D8D5CE;padding-top:44px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:16px;">Output 1 &#183; As-built layout</div>
+      <h2 style="margin:0 0 32px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The plan becomes the installed record &#8212; <span style="color:#8E8E8E;">both are kept.</span></h2>
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;--cg:24px;">
+        <div style="background:#FBFAF8;border-radius:12px;overflow:hidden;">
+          <div style="padding:14px 18px;border-bottom:1px solid #D8D5CE;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;">Planned layout &#183; rev A</div>
+          <div style="aspect-ratio:16/10;"><image-slot id="ando-cx-planned" shape="rect" placeholder="ANDO_EMON_REPORTING_PLANNED-VS-AS-BUILT_01a · approved planned roof layout, position codes A01\u2026, string routes, no serials yet · 16:10 · still · placeholder (P1)"></image-slot></div>
+        </div>
+        <div style="border:1px solid #8FAF2E;background:#FBFAF8;border-radius:12px;overflow:hidden;">
+          <div style="padding:14px 18px;border-bottom:1px solid #D8D5CE;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6E8A1E;">Final as-built layout</div>
+          <div style="aspect-ratio:16/10;"><image-slot id="ando-cx-asbuilt" shape="rect" placeholder="ANDO_EMON_REPORTING_PLANNED-VS-AS-BUILT_01b · final as-built layout, serials mapped to positions, string membership, approved deviations highlighted · 16:10 · still · placeholder (P1)"></image-slot></div>
+        </div>
+      </div>
+      <p style="margin:20px 0 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-grey-70);max-width:760px;line-height:var(--web-small-lh);">The approved plan is retained with its revision history. Approved deviations are highlighted rather than overwritten.</p>
+    </div>
+  </section>
+
+  <!-- ===================== STRING DIAGRAM + REGISTER ===================== -->
+  <section id="string" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid #D8D5CE;padding-top:44px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;--cg:48px;">
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:16px;">Output 2 &#183; String diagram</div>
+        <h2 style="margin:0 0 20px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Every physical position linked <span style="color:#8E8E8E;">to its electrical position.</span></h2>
+        <div style="background:#FBFAF8;border-radius:12px;overflow:hidden;"><div style="aspect-ratio:4/3;"><image-slot id="ando-cx-string" shape="rect" placeholder="ANDO_EMON_REPORTING_STRING-DIAGRAM_01 · usable single-line string diagram: panels in electrical order, position code, short serial, DC isolator, surge protection, MOEBIUS inverter, MPPT assignment, string voltage/current, module count \u2014 not an abstract Sankey · 4:3 · still · placeholder (P1)"></image-slot></div></div>
+      </div>
+      <div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:16px;">Output 3 &#183; Individual panel record</div>
+        <h2 style="margin:0 0 20px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Every panel. <span style="color:#8E8E8E;">Its measured factory record.</span></h2>
+        <div style="background:#161616;border-radius:12px;padding:24px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:12px;">Flash-test register &#183; individual record</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#A9CC4A;margin-bottom:16px;line-height:var(--web-small-lh);">SN: ANDO-2026-SL-W-004471 &#183; A03 &#183; String 1 &#183; MPPT 1</div>
+          <div style="border-top:1px solid #2C2C2C;">
+            <sc-for list="{{ panelRecord }}" as="p" hint-placeholder-count="7">
+              <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #2C2C2C;">
+                <span style="font-size:12px;font-weight:300;color:var(--color-grey-70);">{{ p.k }}</span>
+                <span style="font-size:12px;font-weight:400;color:var(--color-divider);">{{ p.v }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="margin-top:14px;font-size:var(--web-min-size);font-weight:300;color:#7A7A78;line-height:var(--web-min-lh);">Dummy values shown &#8212; real model and batch data to be supplied.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DOC PREVIEWS ===================== -->
+  <section id="documents" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D8D5CE;padding-top:44px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:16px;">Outputs 4&#8211;5 &#183; Generated documents</div>
+      <h2 style="margin:0 0 32px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One verified data set. <span style="color:#8E8E8E;">Every required document.</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ docs }}" as="d" hint-placeholder-count="3">
+          <div style="background:#FBFAF8;border-radius:12px;overflow:hidden;">
+            <div style="aspect-ratio:3/4;background:#E7E4DE;"><image-slot id="{{ d.slotId }}" shape="rect" placeholder="{{ d.dir }}"></image-slot></div>
+            <div style="padding:16px;"><div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:3px;">{{ d.title }}</div><div style="font-size:var(--web-min-size);font-weight:300;color:#6B6B69;line-height:var(--web-min-lh);">{{ d.sub }}</div></div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:20px 0 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-grey-70);max-width:760px;line-height:var(--web-small-lh);">The installer scan creates the technical installation record. The owner overview photograph completes the ownership record. The eligible extended warranty activates after the photograph is accepted; a late photograph can still be reviewed and the record stays incomplete until acceptance. Warranty figures are dummy placeholders.</p>
+    </div>
+  </section>
+
+  <!-- ===================== DEGRADATION CURVE (live SVG) ===================== -->
+  <section id="curve" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D8D5CE;padding-top:44px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:16px;">Output 6 &#183; EMON performance monitoring</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Your panel has a curve. <span style="color:#8E8E8E;">You can see it.</span></h2>
+      <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);color:var(--color-text-primary);max-width:600px;line-height:var(--web-body-lh);">Not an industry average. Your specific panel. Updated with real system data.</p>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,0.8fr);gap:40px;align-items:start;">
+        <div style="background:#FBFAF8;border-radius:12px;padding:28px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:20px;">EMON &#8212; output curve view</div>
+          <div ref="{{ curveRef }}"></div>
+          <div style="display:flex;flex-wrap:wrap;gap:20px;margin-top:18px;">
+            <div style="display:flex;align-items:center;gap:8px;"><span style="width:22px;height:3px;background:#8FAF2E;"></span><span style="font-size:var(--web-min-size);color:#6B6B69;line-height:var(--web-min-lh);">Expected (from measured Pmax)</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span style="width:22px;height:3px;background:#21AE8F;"></span><span style="font-size:var(--web-min-size);color:#6B6B69;line-height:var(--web-min-lh);">Actual measured</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span style="width:22px;height:3px;background:#4F4F4E;"></span><span style="font-size:var(--web-min-size);color:#6B6B69;line-height:var(--web-min-lh);">Warranted minimum</span></div>
+            <div style="display:flex;align-items:center;gap:8px;"><span style="width:22px;height:0;border-top:2px dashed #9A9A98;"></span><span style="font-size:var(--web-min-size);color:#6B6B69;line-height:var(--web-min-lh);">Warranted floor</span></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="border-top:1px solid #D8D5CE;padding-top:14px;"><div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Year-one warranted output</div><div style="font-size:var(--web-small-size);font-weight:300;color:#6B6B69;line-height:var(--web-small-lh);">[99,0%] &#8212; dummy</div></div>
+            <div style="border-top:1px solid #D8D5CE;padding-top:14px;"><div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Annual degradation after year one</div><div style="font-size:var(--web-small-size);font-weight:300;color:#6B6B69;line-height:var(--web-small-lh);">[0,40%] &#8212; dummy</div></div>
+            <div style="border-top:1px solid #D8D5CE;padding-top:14px;"><div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Warranted output at year 30</div><div style="font-size:var(--web-small-size);font-weight:300;color:#6B6B69;line-height:var(--web-small-lh);">[87,4%] &#8212; dummy</div></div>
+            <div style="border-top:1px solid #D8D5CE;padding-top:14px;"><div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Data confidence</div><div style="font-size:var(--web-small-size);font-weight:300;color:#21AE8F;line-height:var(--web-small-lh);">Verified &#183; live system</div></div>
+          </div>
+          <p style="margin:20px 0 0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-grey-70);max-width:760px;">The expected curve is initialised from the measured factory Pmax. Live production is measured at the available inverter, string or system level; per-panel live monitoring appears only where module-level hardware is installed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STATUS STATES ===================== -->
+  <section id="status" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D8D5CE;padding-top:44px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:32px;">Performance status states</div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ states }}" as="s" hint-placeholder-count="3">
+          <div style="background:#FBFAF8;border-radius:12px;padding:24px;border-top:3px solid {{ s.bar }};">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:var(--color-text-primary);margin-bottom:12px;line-height:var(--web-h3-lh);">{{ s.title }}</div>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#6B6B69;max-width:760px;">{{ s.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VIDEO BRIEF ===================== -->
+  <section id="video" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D8D5CE;padding-top:44px;">
+      <div style="background:#FBFAF8;border-radius:12px;padding:40px;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">
+          <span style="width:44px;height:44px;border-radius:50%;background:#161616;display:inline-flex;align-items:center;justify-content:center;color:#A9CC4A;font-size:var(--web-small-size);line-height:var(--web-small-lh);">&#9654;</span>
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;">Video brief</span>
+        </div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;color:var(--color-text-primary);margin:12px 0 28px;line-height:var(--web-h3-lh);">From layout plan to lifetime performance record.</div>
+        <div style="display:grid;grid-template-columns:repeat(4,auto);gap:48px;padding-bottom:24px;border-bottom:1px solid #D8D5CE;">
+          <div><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:6px;">Format</div><div style="font-size:var(--web-small-size);color:#3C3C3B;line-height:var(--web-small-lh);">16:9 + 9:16 crop</div></div>
+          <div><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:6px;">Duration</div><div style="font-size:var(--web-small-size);color:#3C3C3B;line-height:var(--web-small-lh);">75&#8211;100 seconds</div></div>
+          <div><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:6px;">Audio</div><div style="font-size:var(--web-small-size);color:#3C3C3B;line-height:var(--web-small-lh);">No voiceover &#8212; captions</div></div>
+          <div><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#9A9A98;margin-bottom:6px;">Render</div><div style="font-size:var(--web-small-size);color:#3C3C3B;line-height:var(--web-small-lh);">UK English &#183; sentence case</div></div>
+        </div>
+        <sc-for list="{{ storyboard }}" as="sc" hint-placeholder-count="12">
+          <div style="display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;padding:14px 0;border-bottom:1px solid #E4E1DB;">
+            <div style="font-size:12px;font-weight:400;color:#8FAF2E;">{{ sc.t }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#3C3C3B;"><span style="font-weight:400;color:var(--color-text-primary);">{{ sc.scene }}.</span> {{ sc.caption }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:72px;"></div>
+  <dc-import name="AndoSections" show="installers" hint-size="100%,1200px"></dc-import>
+  <div style="height:32px;"></div>
+  <dc-import name="ContentSections" brand="ANDO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="ANDO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="ANDO" accent="var(--color-brand-ando)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:960}}">
+class Component extends DCLogic {
+  componentDidMount() { this.drawCurve(); }
+  componentDidUpdate() { this.drawCurve(); }
+
+  drawCurve() {
+    const host = this._curveEl;
+    if (!host) return;
+    const W = 560, H = 300, padL = 44, padB = 34, padT = 12, padR = 12;
+    const x0 = padL, x1 = W - padR, y0 = H - padB, y1 = padT;
+    const yr = 30;
+    const xf = (t) => x0 + (t / yr) * (x1 - x0);
+    // value% → y, scale 78..101
+    const vMin = 78, vMax = 101;
+    const yf = (v) => y0 - ((v - vMin) / (vMax - vMin)) * (y0 - y1);
+    // expected: starts 100 measured, -1% yr1 then -0.4%/yr → ~87.4 at 30
+    const expected = [], warranted = [], actual = [];
+    for (let t = 0; t <= yr; t++) {
+      const e = t === 0 ? 100 : 99 - (t - 1) * 0.4;
+      expected.push([t, e]);
+      const w = t === 0 ? 100 : 99 - (t - 1) * 0.62; // warranted min steeper
+      warranted.push([t, Math.max(80, w)]);
+      if (t <= 8) actual.push([t, (t === 0 ? 100 : 99 - (t - 1) * 0.34)]); // actual slightly above expected, to yr8
+    }
+    const path = (pts) => pts.map((p, i) => (i ? "L" : "M") + xf(p[0]).toFixed(1) + "," + yf(p[1]).toFixed(1)).join(" ");
+    const gy = [100, 99, 90, 80];
+    const grid = gy.map((v) => `<line x1="${x0}" y1="${yf(v).toFixed(1)}" x2="${x1}" y2="${yf(v).toFixed(1)}" stroke="#E4E1DB" stroke-width="1"/><text x="${x0-8}" y="${(yf(v)+3).toFixed(1)}" text-anchor="end" font-size="10" fill="#9A9A98" font-family="Helvetica,Arial,sans-serif">${v}%</text>`).join("");
+    const xt = [0,5,15,30].map((t) => `<text x="${xf(t).toFixed(1)}" y="${H-12}" text-anchor="middle" font-size="10" fill="#9A9A98" font-family="Helvetica,Arial,sans-serif">${t}yr</text>`).join("");
+    const floorY = yf(80).toFixed(1);
+    const svg = `<svg viewBox="0 0 ${W} ${H}" width="100%" style="display:block">
+      ${grid}${xt}
+      <line x1="${x0}" y1="${floorY}" x2="${x1}" y2="${floorY}" stroke="#9A9A98" stroke-width="2" stroke-dasharray="5 4"/>
+      <path d="${path(warranted)}" fill="none" stroke="#4F4F4E" stroke-width="2"/>
+      <path d="${path(expected)}" fill="none" stroke="#8FAF2E" stroke-width="3"/>
+      <path d="${path(actual)}" fill="none" stroke="#21AE8F" stroke-width="3"/>
+      <circle cx="${xf(0).toFixed(1)}" cy="${yf(100).toFixed(1)}" r="4" fill="#1E1E1E"/>
+      <circle cx="${xf(8).toFixed(1)}" cy="${yf(99-7*0.34).toFixed(1)}" r="4" fill="#21AE8F"/>
+    </svg>`;
+    host.innerHTML = svg;
+  }
+
+  renderVals() {
+    return {
+      curveRef: (el) => { if (el) { this._curveEl = el; this.drawCurve(); } },
+      flashSteps: [
+        { tag:"Step 01", title:"Flash test in factory", body:"Module measured under STC. Full I-V curve recorded. Pmax, Isc, Voc, fill factor documented. Positive power tolerance confirmed. Duration: one flash \u2014 a fraction of a second.", topBar:"transparent" },
+        { tag:"Step 02", title:"Result linked to serial number", body:"The measured values are stored against the module serial number. The serial number is encoded in the QR code on the module frame. The result and the module are now permanently linked.", topBar:"transparent" },
+        { tag:"Step 03 \u2014 unique", title:"Automatic display on installation scan", body:"When the installer scans the QR code during EMON registration, the flash test record for that module is displayed in the app. No request. No download. No portal login.", topBar:"#8FAF2E" },
+        { tag:"Step 04", title:"EMON curve starts from measured value", body:"The degradation curve in EMON is initialised from the flash test Pmax \u2014 the actual measured output \u2014 not the nominal datasheet value. Monitoring is calibrated to what the module produced on day zero.", topBar:"transparent" },
+      ],
+      flashData: [
+        { k:"Pmax (measured)", v:"403 Wp" }, { k:"Nominal rated", v:"400 Wp" },
+        { k:"Short-circuit current Isc", v:"11,24 A" }, { k:"Open-circuit voltage Voc", v:"45,6 V" },
+        { k:"Fill factor FF", v:"79,8%" }, { k:"STC test date", v:"2026-03-14" },
+        { k:"EMON curve start value", v:"403 Wp \u2190 measured" },
+      ],
+      legend: [
+        { c:"#C08A2E", t:"Landscape / pitched \u00b7 Portrait / flat" },
+        { c:"#3E6FB0", t:"Portrait / pitched \u00b7 Landscape / flat" },
+        { c:"#C9C6C0", t:"Obstacle \u2014 leave open" },
+      ],
+      registeredItems: [
+        { n:"01", title:"Panel serial number", desc:"Unique identifier linked to production batch, cell lot, and factory record." },
+        { n:"02", title:"Roof position", desc:"Row (A = top, D/F = bottom) and column \u2014 exact panel location on the roof surface." },
+        { n:"03", title:"Panel orientation", desc:"Landscape or portrait. Derived from the dashed border on the sheet window." },
+        { n:"04", title:"Roof type", desc:"Pitched or flat. Selected in the EMON app at scan time." },
+        { n:"05", title:"E-W pair configuration", desc:"Column pairs (1-2, 3-4, 5-6\u2026) define east-west panel pairs on flat roofs." },
+        { n:"06", title:"String diagram", desc:"Which panel connects to which MOEBIUS inverter MPPT input. Generated from the sheet layout." },
+        { n:"07", title:"MOEBIUS inverter assignment", desc:"Each inverter is linked to its panels using the same grid logic as the panel sheet." },
+        { n:"08", title:"Warranty activated", desc:"Registration timestamp becomes the warranty start date. 99% output guaranteed year one. 80% after 30 years. No separate registration required." },
+      ],
+      frames: [
+        { n:"1", title:"The approved plan", body:"A4 layout on a clean work surface \u2014 roof plan, project QR, positions, string routes, inverter references.", slotId:"ando-cx-f1", dir:"ANDO_OWNERSHIP_LAYOUT-PLAN_A4-APPROVED-PLAN_01 \u00b7 real technical file feel \u00b7 4:3 \u00b7 placeholder (P1)" },
+        { n:"2", title:"Scan the project", body:"Installer scans the project QR on the A4 sheet; EMON opens the correct project and layout revision. Correct roof safety.", slotId:"ando-cx-f2", dir:"ANDO_OWNERSHIP_COMMISSIONING_SCAN-PROJECT-QR_01 \u00b7 does not auto-identify all panels \u00b7 4:3 \u00b7 placeholder (P1)" },
+        { n:"3", title:"Confirm the planned position", body:"EMON shows digital layout, position A01 highlighted, model, string, inverter/MPPT, status: waiting for panel scan.", slotId:"ando-cx-f3", dir:"ANDO_EMON_COMMISSIONING_SELECT-PANEL-POSITION_01 \u00b7 interface \u00b7 4:3 \u00b7 placeholder (P1)" },
+        { n:"4", title:"Scan the panel identity", body:"Installer scans the panel QR/NFC; serial appears, model verified, flash-test record found, A01 confirmed.", slotId:"ando-cx-f4", dir:"ANDO_EMON_COMMISSIONING_SCAN-PANEL-IDENTITY_01 \u00b7 dummy serial/data \u00b7 4:3 \u00b7 placeholder (P1)" },
+        { n:"5", title:"Build the as-built map", body:"Roof layout fills panel by panel. Grey planned, ANDO tint scanned, EMON green verified, warning/error states. 23 of 28 mapped.", slotId:"ando-cx-f5", dir:"ANDO_EMON_COMMISSIONING_AS-BUILT-MODULE-MAP_01 \u00b7 progress indicator \u00b7 4:3 \u00b7 placeholder (P1)" },
+        { n:"6", title:"Confirm strings and MPPTs", body:"Panel map, string paths, inverter, MPPT 1/2, voltages, validation: quantity matches plan, within inverter range, no duplicates.", slotId:"ando-cx-f6", dir:"ANDO_EMON_COMMISSIONING_STRING-AND-MPPT-VALIDATION_01 \u00b7 4:3 \u00b7 placeholder (P1)" },
+        { n:"7", title:"Complete installation evidence", body:"Installer uploads technical photos + checklist. Separated clearly from the later owner overview photograph.", slotId:"ando-cx-f7", dir:"ANDO_EMON_COMMISSIONING_INSTALLATION-EVIDENCE_01 \u00b7 4:3 \u00b7 placeholder (P1)" },
+        { n:"8", title:"Generate the complete record", body:"One verified data set produces as-built layout, serial map, string diagram, flash-test register, commissioning, ownership, warranty, EMON baseline.", slotId:"ando-cx-f8", dir:"ANDO_EMON_REPORTING_AUTOMATIC-DOCUMENT-SET_01 \u00b7 document cards \u00b7 4:3 \u00b7 placeholder (P1)" },
+      ],
+      panelRecord: [
+        { k:"Pmax measured", v:"403 Wp" }, { k:"Nominal rated", v:"400 Wp" },
+        { k:"Short-circuit current Isc", v:"11,24 A" }, { k:"Open-circuit voltage Voc", v:"45,6 V" },
+        { k:"Fill factor", v:"79,8%" }, { k:"STC test date", v:"2026-03-14" },
+        { k:"Positive power tolerance", v:"+0,75%" },
+      ],
+      docs: [
+        { title:"Commissioning report", sub:"Project, installer, config, checks, serial register", slotId:"ando-cx-doc1", dir:"ANDO_EMON_REPORTING_COMMISSIONING-REPORT_01 \u00b7 professional PDF, not invoice/brochure \u00b7 3:4 \u00b7 placeholder (P1)" },
+        { title:"Ownership confirmation", sub:"Owner, serials, position map, as-built, monitoring link", slotId:"ando-cx-doc2", dir:"ANDO_OWNERSHIP_REPORT_OWNERSHIP-CONFIRMATION_01 \u00b7 no realistic personal data \u00b7 3:4 \u00b7 placeholder (P1)" },
+        { title:"Warranty confirmation", sub:"Start date, product + performance terms, claim route", slotId:"ando-cx-doc3", dir:"ANDO_OWNERSHIP_REPORT_WARRANTY-CONFIRMATION_01 \u00b7 dummy figures labelled \u00b7 3:4 \u00b7 placeholder (P1)" },
+      ],
+      states: [
+        { title:"Performance follows the expected curve", body:"The measured output is tracking the panel-specific model. No action is required. The warranty is tracking as expected.", bar:"#21AE8F" },
+        { title:"Performance is above the expected curve", body:"The measured output is higher than the panel-specific model currently predicts \u2014 favourable orientation, limited shading, lower operating temperature or a conservative baseline. Good conditions do not permanently change the degradation rate.", bar:"#8FAF2E" },
+        { title:"Performance is below the expected curve", body:"EMON has detected a persistent difference. It first determines whether the cause is operating conditions, availability, inverter behaviour, shading or soiling before a module issue. Alert stages: information \u2192 review \u2192 investigation \u2192 warranty threshold. A temporary reduction is not degradation.", bar:"#C08A2E" },
+      ],
+      storyboard: [
+        { t:"Scene 1", scene:"A4 layout plan is printed or opened on site", caption:"The project starts with an approved plan." },
+        { t:"Scene 2", scene:"Installer scans the project QR code", caption:"One scan opens the correct project and layout." },
+        { t:"Scene 3", scene:"Installer selects position A01", caption:"Every physical location has its own position code." },
+        { t:"Scene 4", scene:"Installer scans the panel QR identity", caption:"The serial number and factory data are linked to that position." },
+        { t:"Scene 5", scene:"Digital roof layout fills panel by panel", caption:"The planned layout becomes the as-built record." },
+        { t:"Scene 6", scene:"Strings, inverter and MPPTs are confirmed", caption:"Physical position and electrical position are connected." },
+        { t:"Scene 7", scene:"Installation photographs and checks completed", caption:"Commissioned with evidence." },
+        { t:"Scene 8", scene:"Owner uploads the required overview photograph", caption:"The owner completes the ownership record." },
+        { t:"Scene 9", scene:"Documents generate automatically", caption:"One verified data set. Every required document." },
+        { t:"Scene 10", scene:"EMON degradation curve appears", caption:"The measured factory starting point becomes the long-term baseline." },
+        { t:"Scene 11", scene:"Expected and actual curves update", caption:"Your panel has a curve. You can see it." },
+        { t:"Scene 12", scene:"Final installation view", caption:"From factory test to lifetime record." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

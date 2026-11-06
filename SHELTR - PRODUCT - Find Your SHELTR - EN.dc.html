@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>SHELTR Find Your SHELTR | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  ::placeholder { color:#6F6F6D; opacity:1; }
+  input:disabled, select:disabled, textarea:disabled { color:#C8C7C3; }
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  select:focus { outline:none; border-color:var(--color-brand-sheltr); }
+  .sh-seg:hover { color:var(--color-text-primary) !important; }
+  .sh-step:hover { border-color:var(--color-brand-sheltr) !important; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="SheltrNav" active="find" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="SHELTR" rgb="91,101,146" eyebrow="Find your SHELTR" title="Find the structure that fits the equipment." intro="Start from the equipment or from a family." slot="sheltr-find-your-sheltr-hero" shot="SHELTR · Find Your SHELTR · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:720px;">Both routes check the same technical requirements &#8212; a physical fit is never enough &#8212; before producing a recommendation.</p>
+    <div style="display:inline-flex;margin-bottom:40px;background:#F4F4F4;border-radius:12px;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="2">
+        <button class="sh-seg" onClick="{{ t.onClick }}" style="cursor:pointer;font-family:inherit;border:none;background:{{ t.bg }};color:{{ t.color }};font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;padding:13px 24px;border-radius:8px;">{{ t.label }}</button>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- SELECTOR BODY -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+    <div data-stack="1" style="display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:start;">
+      <div style="padding:32px;background:#F4F4F4;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:8px;">{{ activeTab.heading }}</div>
+        <p style="margin:0 0 24px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ activeTab.sub }}</p>
+        <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;--cg:16px;">
+          <sc-for list="{{ activeTab.fields }}" as="f" hint-placeholder-count="4">
+            <div>
+              <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">{{ f.label }}</label>
+              <select style="width:100%;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+                <sc-for list="{{ f.options }}" as="o" hint-placeholder-count="3"><option>{{ o }}</option></sc-for>
+              </select>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;">
+          <span style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-sheltr);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Check compatibility</span>
+          <a href="SHELTR - SUPPORT - Engineering - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;border:1px solid var(--color-divider);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Upload a datasheet</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="background:#F4F4F4;border-radius:12px;">
+          <div style="padding:18px 24px;border-bottom:1px solid var(--color-divider);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">The selector checks</span></div>
+          <div data-cols="2" style="padding:8px 24px 16px;display:grid;grid-template-columns:repeat(2,1fr);gap:0 20px;--cg:20px;">
+            <sc-for list="{{ checks }}" as="c" hint-placeholder-count="12">
+              <div style="font-size:12px;font-weight:300;color:var(--color-text-primary);padding:7px 0;border-bottom:1px solid var(--color-surface-card);display:flex;gap:8px;align-items:baseline;"><span style="color:var(--color-text-primary);font-size:8px;">&#9679;</span>{{ c }}</div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="border:1px solid var(--color-brand-sheltr);background:#F6F5FD;padding:24px;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;margin-bottom:14px;">You receive</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <sc-for list="{{ outputs }}" as="o" hint-placeholder-count="4"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);display:flex;gap:8px;align-items:baseline;"><span style="color:var(--color-text-primary);font-size:9px;">&#9679;</span>{{ o }}</span></sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="margin:24px 0 96px;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);max-width:900px;">The selector narrows options; it does not replace engineering review. Projects that fall outside a standard configuration are routed to SHELTR engineering for confirmation of roof loads, fixing, ballast, airflow, fire separation or acoustic performance.</p>
+  </section>
+
+  <dc-import name="ContentSections" brand="SHELTR" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="SHELTR" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="SHELTR" accent="var(--color-brand-sheltr)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+const TABS = [
+  { key: "equipment", label: "I know the equipment", heading: "Choose the equipment", sub: "Choose the equipment category, brand and model. We check the technical requirements before recommending a family.", fields: [
+    { label: "Equipment category", options: ["Inverter", "Battery", "Switchgear / control cabinet", "Combiner / metering", "EV charging", "Heat-pump outdoor unit", "Ventilation unit", "Pump / compressor"] },
+    { label: "Brand", options: ["Select brand", "STRØHM.ENERGY", "Other"] },
+    { label: "Model", options: ["Select model"] },
+    { label: "Installation environment", options: ["Residential", "Commercial", "Industrial", "Coastal / corrosive"] },
+  ] },
+  { key: "family", label: "I know the family", heading: "Open a family directly", sub: "Open CARA, KUBO or HUSH directly. Both routes check the same technical requirements before a recommendation.", fields: [
+    { label: "SHELTR family", options: ["CARA \u2014 open protection", "KUBO \u2014 enclosed (project)", "HUSH \u2014 acoustic (project)"] },
+    { label: "Installation location", options: ["Wall", "Ground", "Roof", "Double"] },
+    { label: "Equipment type", options: ["Inverter", "Battery", "Heat pump", "Ventilation", "Pump"] },
+    { label: "Installation environment", options: ["Residential", "Commercial", "Industrial", "Coastal / corrosive"] },
+  ] },
+];
+
+class Component extends DCLogic {
+  state = { tab: 0 };
+  renderVals() {
+    const st = this.state;
+    return {
+      tabs: TABS.map((t, i) => ({
+        label: t.label,
+        onClick: () => this.setState({ tab: i }),
+        bg: st.tab === i ? "var(--color-brand-sheltr)" : "#FFFFFF",
+        color: st.tab === i ? "#4F4F4E" : "#5F5E5E",
+      })),
+      activeTab: TABS[st.tab],
+      checks: ["Equipment dimensions", "Weight & load distribution", "Mounting points", "Required airflow", "Heat rejection", "Cable-entry direction", "Access panels & doors", "Maintenance space", "Manufacturer clearances", "Fire separation", "Installation environment", "Replacement flexibility"],
+      outputs: ["Recommended SHELTR family and configuration", "A usable equipment envelope", "A replacement compatibility class", "Required technical checks and next actions"],
+    };
+  }
+}
+</script>
+</body>
+</html>

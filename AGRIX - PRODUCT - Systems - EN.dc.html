@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>AGRIX Systems | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:#6B8E4E; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="AgrixNav" active="structures" hint-size="100%,57px"></dc-import>
+
+  <!-- HEADER -->
+  <dc-import name="PageHero" brand="AGRIX" rgb="107,142,78" eyebrow="System overview &#183; Five configurations" title="Start with the farm. Then select the structure." intro="Five configurations cover the principal ways of combining fixed solar infrastructure with active agriculture." slot="agri-systems-hero" shot="IMG-SYSTEMS-01 · 16:9 · minimal axonometric comparison of TWIG SP-1P, GB-2P, CN, HEDGE 1V and 2V above credible crop/livestock zones · awaiting upload" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;"><a href="AGRIX - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">Agri-PV</a> &#8250; <span style="color:var(--color-text-primary);">SYSTEMS</span></div>
+    <p style="margin:0 0 24px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:820px;">Each one is configurable; none should be selected from power output alone.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:44px;">
+      <a href="AGRIX - PRODUCT - Crop Selector - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;background:#6B8E4E;color:#FFFFFF;border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Use the crop selector<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <a href="AGRIX - PRODUCT - Calculator - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;background:var(--color-surface-card);color:var(--color-text-primary);border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Open the calculator</a>
+    </div>
+    
+  </section>
+
+  <!-- FAMILY OVERVIEW -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:8px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">The system family</div>
+      <h2 style="margin:0 0 24px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Two families. <span style="color:#8E8E8E;">TWIG above the crop, HEDGE between the rows.</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ systems }}" as="s" hint-placeholder-count="5">
+          <a href="{{ s.href }}" style="padding:24px;display:flex;flex-direction:column;gap:10px;background:#F4F4F4;border-radius:12px;" style-hover="border-color:#6B8E4E;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ s.famColor }};">{{ s.family }}</span>
+            </div>
+            <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ s.config }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ s.layout }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);padding-top:8px;border-top:1px solid var(--color-surface-card);">{{ s.message }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);margin-top:2px;line-height:var(--web-min-lh);">{{ s.use }}</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:8px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Agriculture-first comparison</div>
+      <h2 style="margin:0 0 24px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Compare by farm role &#8212; <span style="color:#8E8E8E;">not by power output.</span></h2>
+      <div style="border:1px solid var(--color-divider);overflow-x:auto;border-radius:12px;">
+        <div style="min-width:900px;">
+          <!-- header row -->
+          <div data-stack="1" style="display:grid;grid-template-columns:150px repeat(5,minmax(0,1fr));background:var(--color-surface-card);">
+            <div style="padding:14px 16px;font-size:11px;font-weight:700;"></div>
+            <sc-for list="{{ colHeads }}" as="h" hint-placeholder-count="5">
+              <div style="padding:14px 16px;font-size:12px;font-weight:700;border-left:1px solid var(--color-divider);">{{ h }}</div>
+            </sc-for>
+          </div>
+          <sc-for list="{{ rows }}" as="r" hint-placeholder-count="6">
+            <div data-stack="1" style="display:grid;grid-template-columns:150px repeat(5,minmax(0,1fr));border-top:1px solid var(--color-divider);">
+              <div style="padding:14px 16px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:var(--color-text-primary);background:#FAFAF9;border-radius:8px;">{{ r.label }}</div>
+              <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="5">
+                <div style="padding:14px 16px;font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);border-left:1px solid var(--color-divider);">{{ c }}</div>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DECISION -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">How to decide</div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <div style="padding:24px;background:#F4F4F4;border-radius:12px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Choose TWIG</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">When the farm needs overhead protection, managed rain, shade or a covered working zone.</div>
+        </div>
+        <div style="padding:24px;background:#F4F4F4;border-radius:12px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Choose HEDGE</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">When open-sky cultivation, broad machinery lanes, field division and morning/afternoon production are the priority.</div>
+        </div>
+        <div style="border:1px solid #6B8E4E;padding:24px;background:#FBECEC;border-radius:12px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Use the selector</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#8A3030;line-height:var(--web-small-lh);">When the answer depends on crop, climate or equipment. <a href="AGRIX - PRODUCT - Crop Selector - EN.dc.html" style="color:#6B8E4E;font-weight:var(--web-link-weight);font-size:var(--web-link-size);">Open it<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <a href="AGRIX - PRODUCT - Overview - EN.dc.html#project" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;border-top:1px solid var(--color-text-primary);border-bottom:1px solid var(--color-divider);padding:28px 0;color:var(--color-text-primary);" style-hover="color:var(--color-text-primary);">
+      <span style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Project request</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Send your site data and files to our engineers.</span></span>
+      <span style="font-size:var(--web-small-size);font-weight:300;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Start a project &#8250;</span>
+    </a>
+  </section>
+  <dc-import name="ContentSections" brand="AGRIX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="AGRIX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="AGRIX" accent="var(--color-brand-agrix)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    const TW = "#6B8E4E", HG = "#5F5E5E";
+    return {
+      systems: [
+        { family: "TWIG", famColor: TW, config: "TWIG SP-1P", href: "AGRIX - PRODUCT - TWIG SP-1P - EN.dc.html", layout: "1 portrait row, fixed single pitch", message: "The simplest fixed Agri-PV canopy, configured around the work of the farm.", use: "Grassland, cereals, forage, livestock" },
+        { family: "TWIG", famColor: TW, config: "TWIG GB-2P", href: "AGRIX - PRODUCT - TWIG GB-2P - EN.dc.html", layout: "2 portrait rows in gable form", message: "A protected growing climate without turning the field into a closed greenhouse.", use: "Berries, vegetables, fruit, horticulture" },
+        { family: "TWIG", famColor: TW, config: "TWIG CN", href: "AGRIX - PRODUCT - TWIG CN - EN.dc.html", layout: "Connected repeating bays", message: "A connected agricultural energy roof that can scale by bay.", use: "Commercial horticulture, poultry, livestock" },
+        { family: "HEDGE", famColor: HG, config: "HEDGE 1V", href: "AGRIX - PRODUCT - HEDGE 1V - EN.dc.html", layout: "1 vertical bifacial level", message: "A productive field boundary with morning and afternoon energy.", use: "Field division, biodiversity, smaller livestock" },
+        { family: "HEDGE", famColor: HG, config: "HEDGE 2V", href: "AGRIX - PRODUCT - HEDGE 2V - EN.dc.html", layout: "2 vertical bifacial levels", message: "More energy per metre while preserving broad cultivation lanes.", use: "Higher output, stronger separation, livestock" },
+      ],
+      colHeads: ["TWIG SP-1P", "TWIG GB-2P", "TWIG CN", "HEDGE 1V", "HEDGE 2V"],
+      rows: [
+        { label: "Primary use", cells: ["Grassland, cereals, forage, livestock", "Berries, vegetables, fruit, protected horticulture", "Commercial horticulture, poultry, livestock", "Field division, crop lanes, biodiversity strips", "Higher output, stronger separation, larger livestock"] },
+        { label: "Module layout", cells: ["1 portrait row, single pitch", "2 portrait rows, gable", "Connected repeating bays", "1 vertical bifacial level", "2 vertical bifacial levels"] },
+        { label: "Light strategy", cells: ["Transparent or spaced bifacial", "Crop-specific transparency + ridge zones", "Zoned coverage and open strips", "Open-sky, narrow moving shadow", "Open-sky, stronger vertical density"] },
+        { label: "Water strategy", cells: ["Selectable rain-through, sealed, drained", "Controlled ridge drainage + harvesting", "Mixed sealed and rain-through zones", "Natural drainage; optional strip", "Natural drainage; optional strip"] },
+        { label: "Machinery logic", cells: ["Span follows implement width and turning", "Service and harvest access protected", "Internal routes and fire access planned", "Row pitch from widest implement + headland", "Crossings, gates, removable sections"] },
+        { label: "Livestock logic", cells: ["Optional; mandatory safe package with access", "Shade possible; use project-specific", "Poultry/livestock with mandatory safety", "Open, mesh, rail or electric-fence zone", "Mandatory livestock-safe engineering"] },
+        { label: "Engineering", cells: ["Standard, with custom triggers", "Standard family, project dimensions", "Mostly engineered, standard parts", "Standard row, project pitch", "Custom engineering more likely"] },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

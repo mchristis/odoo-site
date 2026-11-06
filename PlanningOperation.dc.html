@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<style> a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } </style>
+</helmet>
+<section id="planning" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;font-family:var(--font-web);">
+  <div style="border-top:1px solid #D9D9D9;padding-top:32px;display:flex;flex-direction:column;gap:32px;">
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Planning and operation</div>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ fn }}</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;align-items:start;">
+
+      <sc-if value="{{ showKalkCard }}" hint-placeholder-val="{{ false }}"><div style="background:#F4F4F4;border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;">
+          <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Calculate with KALK</div>
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B07818;">{{ status }}</span>
+        </div>
+        <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">{{ kalkLine }}</p>
+        <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid #DDDDDD;padding-top:16px;">
+          <div style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-min-size);color:#898989;">Inputs</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#4F4F4E;">{{ inputs }}</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-min-size);color:#898989;">Outputs</span><span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#4F4F4E;">{{ outputs }}</span></div>
+        </div>
+        <sc-if value="{{ hasTool }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <sc-if value="{{ showToolBtn }}" hint-placeholder-val="{{ false }}"><a href="{{ tool }}" style="align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);box-sizing:border-box;border-radius:var(--cta-radius,8px);background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);font-weight:400;" style-hover="background:#5F5E5E;color:#F4F4F4;">{{ cta }}</a></sc-if>
+            <span style="font-size:var(--web-min-size);line-height:var(--web-min-lh);color:#898989;">Prototype. Results are indicative estimates.</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ planned }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#666666;">This calculation is planned and not available yet.</span>
+            <sc-if value="{{ hasPage }}" hint-placeholder-val="{{ false }}"><a href="{{ page }}" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);color:#4F4F4E;text-decoration:underline;text-underline-offset:3px;">View the planned calculation</a></sc-if>
+            <a href="{{ enquiry }}" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);color:#4F4F4E;text-decoration:underline;text-underline-offset:3px;">Ask about this calculation</a>
+          </div>
+        </sc-if>
+      </div></sc-if>
+
+      <sc-if value="{{ showEmonCard }}" hint-placeholder-val="{{ false }}"><div style="background:#F4F4F4;border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Operate with EMON</div>
+        <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">{{ emonLine }}</p>
+        <p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#666666;text-wrap:pretty;">{{ emon }}</p>
+        <a href="EMON - SYSTEM - Overview - EN.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);color:#4F4F4E;text-decoration:underline;text-underline-offset:3px;">Read more about EMON</a>
+      </div></sc-if>
+
+      <div style="background:#F4F4F4;border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:16px;">
+        <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Deliver with KERN</div>
+        <span style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#666666;">For professional project teams.</span>
+        <button type="button" onClick="{{ toggleKern }}" aria-expanded="{{ kernExpanded }}" style="align-self:flex-start;font-family:inherit;background:none;border:none;padding:0;min-height:44px;cursor:pointer;font-size:var(--web-small-size);color:#4F4F4E;text-decoration:underline;text-underline-offset:3px;">{{ kernToggleLabel }}</button>
+        <sc-if value="{{ kernOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid #DDDDDD;padding-top:16px;">
+            <p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#4F4F4E;text-wrap:pretty;">{{ kern }}</p>
+            <a href="KERN - SYSTEM - Overview - EN.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;font-size:var(--web-small-size);color:#4F4F4E;text-decoration:underline;text-underline-offset:3px;">Read more about KERN</a>
+          </div>
+        </sc-if>
+      </div>
+
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:760},&quot;brand&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;ANDO&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;ANDO&quot;,&quot;LINA&quot;,&quot;PROP&quot;,&quot;MOEBIUS&quot;,&quot;FLUXX&quot;,&quot;SYNQ&quot;,&quot;OZZY&quot;,&quot;NENDO&quot;,&quot;FEU&quot;,&quot;OGO&quot;,&quot;XOOM&quot;,&quot;AIRO&quot;,&quot;GLOW&quot;,&quot;MOX&quot;,&quot;AGRIX&quot;,&quot;TERRIX&quot;,&quot;PONTIX&quot;,&quot;TECTIX&quot;,&quot;PARX&quot;,&quot;CHILL&quot;,&quot;TOGU&quot;,&quot;DODO&quot;,&quot;SHELTR&quot;,&quot;MUKI&quot;,&quot;WURK&quot;]}}">
+class Component extends DCLogic {
+  /* DEPTH-1263: the tool button is hidden on pages that already link the tool in the range block under the hero (#range); card text stays */
+  state = { P: null, kernOpen: false };
+  componentDidMount() { import('./kalk-profiles.js').then((m) => this.setState({ P: m.default })).catch(() => {}); const chk = () => { const v = !document.getElementById("range"), e = !document.getElementById("emon"); if (v !== this.state.__showTool || e !== this.state.__showEmon) this.setState({ __showTool: v, __showEmon: e }); }; chk(); this.__t = setTimeout(chk, 1500); }
+  componentWillUnmount() { clearTimeout(this.__t); }
+  renderVals() {
+    const b = (this.props.brand || 'ANDO').toUpperCase();
+    const p = (this.state.P && this.state.P[b]) || {};
+    const hasTool = !!p.tool;
+    return { showToolBtn: this.state && this.state.__showTool === true, showKalkCard: this.state && this.state.__showTool === true, showEmonCard: this.state && this.state.__showEmon === true, /* DEPTH-1264: whole KALK card hidden where the range block already links the tool; text stays in kalk-profiles.js */
+      fn: p.fn || '', status: this.state.P ? (hasTool ? 'Prototype' : 'Planned') : '',
+      kalkLine: p.kalkLine || '', inputs: p.inputs || '', outputs: p.outputs || '',
+      hasPage: !hasTool && !!p.page, page: p.page || '#',
+      hasTool, planned: !!this.state.P && !hasTool, tool: p.tool || '#', cta: p.cta || '',
+      enquiry: 'STROHM.ENERGY - SITE - System Enquiry - EN.dc.html?brand=KALK&topic=' + encodeURIComponent(b + ' calculation'),
+      emonLine: p.emonLine || '', emon: p.emon || '', kern: p.kern || '',
+      kernOpen: this.state.kernOpen, kernExpanded: this.state.kernOpen ? 'true' : 'false',
+      kernToggleLabel: this.state.kernOpen ? 'Read less' : 'Read more',
+      toggleKern: () => this.setState((s) => ({ kernOpen: !s.kernOpen })),
+    };
+  }
+}
+</script>
+</body>
+</html>

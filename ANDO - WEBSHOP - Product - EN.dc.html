@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>ANDO product | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./eu-numbers.js"></script>
+<script src="./image-slot.js"></script>
+<script src="./ando-shop-data.js"></script>
+<style>body{margin:0;background:#FFFFFF;} a{color:#252525;text-decoration:none;} a:hover{color:#4F4F4E;}</style>
+</helmet>
+<dc-import name="WebshopHeader" brand="ANDO" active="{{ seriesKey }}" hint-size="100%,138px"></dc-import>
+<main data-screen-label="ANDO product" style="max-width:calc(var(--web-grid,1312px) + 2 * var(--web-side));margin:0 auto;padding:24px var(--web-side) 96px;box-sizing:border-box;font-family:var(--font-web);color:#252525;">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px;margin-bottom:24px;">
+    <nav aria-label="Breadcrumb" style="display:flex;gap:8px;flex-wrap:wrap;font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;">
+      <a href="WEBSHOP - SITE - Home - EN.dc.html" style="color:#5F5E5E;" style-hover="color:#252525;">Webshop</a><span aria-hidden="true">/</span>
+      <a href="ANDO - WEBSHOP - Shop - EN.dc.html" style="color:#5F5E5E;" style-hover="color:#252525;">ANDO</a><span aria-hidden="true">/</span>
+      <span aria-current="page" style="color:#252525;">{{ title }}</span>
+    </nav>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;">
+      <span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;background:#F4F4F4;border-radius:8px;padding:8px 12px;">Demonstration data. Stock, prices, dates and warehouses are examples.</span>
+      <div role="group" aria-label="Demo view" style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Demo view</span>
+        <div style="display:flex;background:#F4F4F4;border-radius:8px;padding:4px;gap:4px;">
+          <button type="button" onClick="{{ setOut }}" aria-pressed="{{ outPressed }}" style="min-height:44px;padding:0 12px;border:none;border-radius:6px;cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;background:{{ outBg }};color:{{ outFg }};">Logged out</button>
+          <button type="button" onClick="{{ setIn }}" aria-pressed="{{ inPressed }}" style="min-height:44px;padding:0 12px;border:none;border-radius:6px;cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;background:{{ inBg }};color:{{ inFg }};">Logged in</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ notFound }}" hint-placeholder-val="{{ false }}">
+    <div style="background:#F4F4F4;border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
+      <h1 style="margin:0;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;">Product not found.</h1>
+      <a href="ANDO - WEBSHOP - Shop - EN.dc.html" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);min-height:44px;display:inline-flex;align-items:center;">Back to the ANDO catalogue<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ found }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-wrap:wrap;gap:32px 40px;align-items:flex-start;">
+      <div style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;gap:12px;">
+        <div tabindex="0" aria-label="{{ galleryAria }}" onKeyDown="{{ galleryKey }}" style="position:relative;aspect-ratio:1/1;max-height:60vh;max-width:100%;border-radius:12px;overflow:hidden;background:#F4F4F4;">
+          <image-slot id="{{ slotId }}" shape="rect" placeholder="{{ slotPh }}"></image-slot>
+          <button type="button" onClick="{{ openZoom }}" aria-label="Expand image" style="position:absolute;top:12px;right:12px;min-width:44px;min-height:44px;padding:0 10px;display:flex;align-items:center;justify-content:center;background:#FFFFFF;border:none;border-radius:8px;cursor:pointer;font-family:inherit;">
+            <span title="Icon placeholder: expand" style="height:24px;padding:0 6px;display:inline-flex;align-items:center;border:1px dashed #BBBBBB;border-radius:8px;font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">expand</span>
+          </button>
+          <div style="position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;">
+            <sc-for list="{{ dots }}" as="d" hint-placeholder-count="4">
+              <button type="button" onClick="{{ d.pick }}" aria-label="{{ d.aria }}" aria-pressed="{{ d.sel }}" style="width:24px;height:24px;padding:0;border:none;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;"><span style="width:8px;height:8px;border-radius:50%;background:{{ d.bg }};"></span></button>
+            </sc-for>
+          </div>
+        </div>
+        <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;--cg:8px;">
+          <sc-for list="{{ thumbs }}" as="t" hint-placeholder-count="4">
+            <div style="position:relative;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:#F4F4F4;border:1px solid {{ t.border }};box-sizing:border-box;">
+              <image-slot id="{{ t.slotId }}" shape="rect" placeholder="{{ t.ph }}"></image-slot>
+              <button type="button" onClick="{{ t.pick }}" aria-label="{{ t.aria }}" aria-pressed="{{ t.sel }}" style="position:absolute;inset:0;background:none;border:none;padding:0;cursor:pointer;"></button>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;padding-top:12px;">
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">{{ eyebrow }}</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;">
+            <span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;overflow-wrap:anywhere;">{{ sku }}</span>
+            <sc-if value="{{ prov }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#4F4F4E;background:#F4F4F4;border-radius:8px;padding:4px 8px;">Provisional data</span></sc-if>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <a href="{{ dsHref }}" style="min-height:44px;padding:0 16px;display:flex;align-items:center;gap:6px;background:#F4F4F4;border-radius:8px;font-size:var(--web-btn-sm-size);font-weight:400;color:#252525;" style-hover="background:#E3E3E3;color:#252525;"><span aria-hidden="true">&#8595;</span>Datasheet</a>
+            <a href="{{ catHref }}" style="min-height:44px;padding:0 16px;display:flex;align-items:center;gap:6px;background:#F4F4F4;border-radius:8px;font-size:var(--web-btn-sm-size);font-weight:400;color:#252525;" style-hover="background:#E3E3E3;color:#252525;"><span aria-hidden="true">&#8595;</span>Catalogue</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:32px;">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <h1 style="margin:0;font-size:var(--web-h2card-size);font-weight:200;line-height:1.08;letter-spacing:-0.5px;text-wrap:balance;display:flex;flex-direction:column;gap:4px;"><span>{{ title }}</span><span style="color:#5F5E5E;">{{ subtitle }}</span></h1>
+          <sc-for list="{{ desc }}" as="d" hint-placeholder-count="2">
+            <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ d }}</p>
+          </sc-for>
+        </div>
+
+        <section id="supply" aria-label="Supply options" style="border-top:1px solid #DDDDDD;display:flex;flex-direction:column;">
+          <sc-for list="{{ routes }}" as="r" hint-placeholder-count="4">
+            <div style="border-bottom:1px solid #DDDDDD;">
+              <button type="button" onClick="{{ r.toggle }}" aria-expanded="{{ r.openStr }}" style="width:100%;display:flex;align-items:center;gap:16px;min-height:72px;padding:12px 0;background:none;border:none;cursor:pointer;font-family:inherit;text-align:left;color:#252525;box-sizing:border-box;">
+                <span style="display:flex;align-items:center;gap:12px;flex:1 1 auto;min-width:0;">
+                  <span aria-hidden="true" style="width:12px;height:12px;border-radius:50%;background:{{ r.dot }};flex:none;"></span>
+                  <span style="display:flex;flex-direction:column;gap:4px;min-width:0;"><span style="font-size:var(--web-body-size);font-weight:400;">{{ r.label }}</span><span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">{{ r.sub }}</span></span>
+                </span>
+                <sc-if value="{{ r.auth }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-body-size);font-weight:400;">{{ r.price }}</span></sc-if>
+                <span aria-hidden="true" style="width:8px;height:8px;border-right:1px solid #4F4F4E;border-bottom:1px solid #4F4F4E;transform:{{ r.chev }};margin:{{ r.chevM }};flex:none;"></span>
+              </button>
+              <sc-if value="{{ r.open }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:0 0 24px 16px;display:flex;flex-direction:column;gap:16px;">
+                  <sc-if value="{{ r.showWh }}" hint-placeholder-val="{{ false }}">
+                    <div role="radiogroup" aria-label="Warehouse" style="display:flex;flex-direction:column;gap:8px;">
+                      <sc-for list="{{ r.whs }}" as="w" hint-placeholder-count="3">
+                        <button type="button" role="radio" aria-checked="{{ w.sel }}" onClick="{{ w.pick }}" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:4px 16px;min-height:56px;padding:12px 16px;border:none;border-bottom:1px solid {{ w.line }};border-radius:8px;background:{{ w.bg }};cursor:pointer;font-family:inherit;text-align:left;color:#252525;">
+                          <span style="display:flex;flex-wrap:wrap;gap:4px 16px;font-size:var(--web-small-size);font-weight:300;"><span style="font-weight:400;">{{ w.name }}</span><span>{{ w.q }}</span><span>{{ w.dist }}</span></span>
+                          <span style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;"><span style="font-size:var(--web-small-size);font-weight:400;">{{ w.price }}</span><span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">Shipment surcharge included</span></span>
+                        </button>
+                      </sc-for>
+                      <span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">Prices include shipment by distance to the delivery address (demo address: Amsterdam).</span>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ r.showSplit }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;gap:8px;">
+                      <sc-for list="{{ r.split }}" as="c" hint-placeholder-count="3">
+                        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:4px 16px;padding:12px 16px;border-radius:8px;background:{{ c.bg }};">
+                          <span style="font-size:var(--web-small-size);font-weight:400;">{{ c.k }}</span>
+                          <span style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;"><span style="font-size:var(--web-small-size);font-weight:400;">{{ c.v }}</span><span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">{{ c.sub }}</span></span>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                  <div style="background:#F4F4F4;border-radius:8px;padding:16px;display:grid;grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr);gap:16px;">
+                    <div style="display:flex;gap:12px;align-items:flex-start;min-width:0;">
+                      <span title="{{ r.t1.iconTitle }}" style="height:24px;padding:0 6px;display:inline-flex;align-items:center;flex:none;border:1px dashed #BBBBBB;border-radius:8px;font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">{{ r.t1.icon }}</span>
+                      <span style="display:flex;flex-direction:column;gap:4px;min-width:0;"><span style="font-size:var(--web-small-size);font-weight:400;">{{ r.t1.k }}</span><span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">{{ r.t1.v }}</span><sc-if value="{{ r.t1.sub }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">{{ r.t1.sub }}</span></sc-if></span>
+                    </div>
+                    <div style="background:#DDDDDD;"></div>
+                    <div style="display:flex;gap:12px;align-items:flex-start;min-width:0;">
+                      <span title="{{ r.t2.iconTitle }}" style="height:24px;padding:0 6px;display:inline-flex;align-items:center;flex:none;border:1px dashed #BBBBBB;border-radius:8px;font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">{{ r.t2.icon }}</span>
+                      <span style="display:flex;flex-direction:column;gap:4px;min-width:0;"><span style="font-size:var(--web-small-size);font-weight:400;">{{ r.t2.k }}</span><span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">{{ r.t2.v }}</span><sc-if value="{{ r.t2.sub }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">{{ r.t2.sub }}</span></sc-if></span>
+                    </div>
+                  </div>
+                  <span style="align-self:flex-start;background:#F4F4F4;border-radius:8px;padding:8px 12px;font-size:var(--web-min-size);font-weight:300;color:#252525;">Payment terms: {{ r.pay }}</span>
+                  <p style="margin:0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;">{{ r.note }}</p>
+                  <sc-if value="{{ r.showLogin }}" hint-placeholder-val="{{ false }}">
+                    <a href="{{ loginHref }}" style="min-height:48px;display:flex;align-items:center;justify-content:center;background:#4F4F4E;color:#FFFFFF;border-radius:8px;font-size:var(--cta-font);font-weight:400;" style-hover="background:#5F5E5E;color:#FFFFFF;">Log in to see prices and stock</a>
+                  </sc-if>
+                  <sc-if value="{{ r.showOrder }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;gap:8px;">
+                      <span style="font-size:var(--web-small-size);font-weight:400;">Quantity <b style="font-weight:700;">{{ r.q }}</b> pcs</span>
+                      <span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">{{ r.hint }}</span>
+                      <input type="range" aria-label="Quantity" aria-valuetext="{{ r.qText }}" min="{{ r.qMin }}" max="{{ r.qMax }}" step="36" value="{{ r.q }}" onChange="{{ r.onQ }}" style="width:100%;min-height:44px;margin:0;accent-color:var(--color-brand-ando,#CDD62B);cursor:pointer;">
+                      <div style="font-size:var(--web-min-size);font-weight:300;color:#252525;display:flex;flex-wrap:wrap;gap:4px;"><span><b style="font-weight:700;">{{ r.q }}</b> pcs · <b style="font-weight:700;">{{ r.unit }}</b>/pc · total <b style="font-weight:700;">{{ r.total }}</b> ·</span><span style="font-weight:400;color:{{ r.statusFg }};">{{ r.statusLabel }}</span></div>
+                      <p style="margin:0;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;">{{ r.hold }}</p>
+                      <button type="button" onClick="{{ r.order }}" disabled="{{ r.orderDisabled }}" style="margin-top:8px;min-height:48px;border:none;border-radius:8px;background:#4F4F4E;color:#FFFFFF;cursor:pointer;font-family:inherit;font-size:var(--cta-font);font-weight:400;" style-hover="background:#5F5E5E;">{{ r.btn }}</button>
+                      <sc-if value="{{ r.ordered }}" hint-placeholder-val="{{ false }}">
+                        <p role="status" style="margin:0;background:#F4F4F4;border-radius:8px;padding:12px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#252525;">{{ r.orderedText }}</p>
+                      </sc-if>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ r.showNotify }}" hint-placeholder-val="{{ false }}">
+                    <div style="background:#F4F4F4;border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:16px;">
+                      <sc-if value="{{ r.notifyForm }}" hint-placeholder-val="{{ true }}">
+                        <span style="font-size:var(--web-body-size);font-weight:400;">{{ r.n.title }}</span>
+                        <div style="display:flex;flex-direction:column;gap:8px;">
+                          <span style="display:flex;gap:12px;align-items:center;font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;"><span title="Icon placeholder: mail" style="height:24px;padding:0 6px;display:inline-flex;align-items:center;flex:none;border:1px dashed #BBBBBB;border-radius:8px;">mail</span>{{ r.n.mail }}</span>
+                          <span style="display:flex;gap:12px;align-items:center;font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;"><span title="Icon placeholder: lock" style="height:24px;padding:0 6px;display:inline-flex;align-items:center;flex:none;border:1px dashed #BBBBBB;border-radius:8px;">lock</span>{{ r.n.lock }}</span>
+                        </div>
+                        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px 16px;">
+                          <input type="email" aria-label="Email address" placeholder="you@company.com" value="{{ r.email }}" onChange="{{ r.onEmail }}" style="flex:1 1 200px;min-height:44px;padding:0;border:none;border-bottom:1px solid #BBBBBB;border-radius:0;background:none;font-family:inherit;font-size:var(--web-input-size);font-weight:300;color:#252525;box-sizing:border-box;">
+                          <button type="button" onClick="{{ r.notify }}" style="min-height:44px;padding:0;background:none;border:none;cursor:pointer;font-family:inherit;font-size:var(--web-link-size);font-weight:400;color:#252525;text-decoration:underline;text-underline-offset:3px;">Notify me</button>
+                        </div>
+                        <sc-if value="{{ r.emailError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:var(--web-error-size);font-weight:var(--web-error-weight);color:#B23B3B;">Enter a valid email address.</span></sc-if>
+                      </sc-if>
+                      <sc-if value="{{ r.notifyDone }}" hint-placeholder-val="{{ false }}">
+                        <div role="status" style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-body-size);font-weight:400;">You're on the list</span><span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;">We'll email {{ r.email }} when stock is free to order on this route.</span></div>
+                        <button type="button" onClick="{{ r.changeEmail }}" style="align-self:flex-start;min-height:44px;padding:0;background:none;border:none;cursor:pointer;font-family:inherit;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#252525;text-decoration:underline;text-underline-offset:3px;">Change email</button>
+                      </sc-if>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </section>
+
+        <a href="ANDO - PRODUCT - Roof Planner - EN.dc.html" style="display:flex;align-items:center;gap:8px;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#252525;text-decoration:none;" style-hover="color:#4F4F4E;"><span aria-hidden="true" style="width:6px;height:6px;border-right:1px solid var(--color-brand-ando);border-top:1px solid var(--color-brand-ando);transform:rotate(45deg);flex:none;"></span>Plan your roof with the ANDO Roof planner</a>
+
+        <sc-if value="{{ showSummary }}" hint-placeholder-val="{{ false }}">
+          <section aria-label="Your order" style="background:#F4F4F4;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;"><h2 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.25;">Your order</h2><span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;">{{ lineCount }}</span></div>
+            <sc-for list="{{ lines }}" as="l" hint-placeholder-count="1">
+              <div style="background:#FFFFFF;border-radius:8px;padding:12px 16px;display:flex;flex-direction:column;gap:8px;">
+                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 16px;"><span style="font-size:var(--web-body-size);font-weight:400;">{{ l.label }}</span><span style="font-size:var(--web-body-size);font-weight:700;">{{ l.total }}</span></div>
+                <span style="font-size:var(--web-small-size);font-weight:300;color:#252525;">{{ l.qty }} · {{ l.unit }} · {{ l.status }}</span>
+                <span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;">{{ l.lead }} · {{ l.pay }}</span>
+                <span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;">{{ l.hold }}</span>
+                <button type="button" onClick="{{ l.remove }}" style="align-self:flex-start;min-height:44px;padding:0;background:none;border:none;cursor:pointer;font-family:inherit;font-size:var(--web-small-size);font-weight:300;color:#252525;text-decoration:underline;text-underline-offset:3px;">Remove line</button>
+              </div>
+            </sc-for>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:1px solid #DDDDDD;padding-top:12px;"><span style="font-size:var(--web-body-size);font-weight:400;">Order total</span><span style="font-size:var(--web-body-size);font-weight:700;">{{ grandTotal }}</span></div>
+            <button type="button" onClick="{{ placeOrder }}" style="min-height:48px;border:none;border-radius:8px;background:#4F4F4E;color:#FFFFFF;cursor:pointer;font-family:inherit;font-size:var(--cta-font);font-weight:400;" style-hover="background:#5F5E5E;">Review order</button>
+            <sc-if value="{{ placed }}" hint-placeholder-val="{{ false }}"><p role="status" style="margin:0;background:#FFFFFF;border-radius:8px;padding:12px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#252525;">{{ placedText }}</p></sc-if>
+          </section>
+        </sc-if>
+
+        <section aria-label="Key features" style="display:flex;flex-direction:column;gap:12px;">
+          <h2 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.25;">Key features</h2>
+          <ul style="margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:6px;">
+            <sc-for list="{{ features }}" as="f" hint-placeholder-count="5">
+              <li style="font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ f.k }}: {{ f.v }}</li>
+            </sc-for>
+          </ul>
+        </section>
+
+        <section aria-label="Warranty and performance" style="display:flex;flex-direction:column;gap:12px;">
+          <h2 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.25;">Warranty &amp; Performance</h2>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ warrantyText }}</p>
+          <sc-if value="{{ hasDeg }}" hint-placeholder-val="{{ false }}">
+            <div style="background:#F4F4F4;border-radius:12px;padding:8px 16px;">
+              <sc-for list="{{ degradation }}" as="g" hint-placeholder-count="5">
+                <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;padding:10px 0;border-bottom:1px solid #DDDDDD;font-size:var(--web-small-size);font-weight:300;"><span style="color:#5F5E5E;">{{ g.k }}</span><span style="color:#252525;">{{ g.v }}</span></div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </section>
+
+        <section aria-label="Registered in EMON" style="display:flex;flex-direction:column;gap:12px;">
+          <h2 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:1.25;">Registered in EMON</h2>
+          <div style="background:#F4F4F4;border-radius:12px;padding:8px 16px;">
+            <div style="display:flex;flex-direction:column;gap:4px;padding:12px 0;border-bottom:1px solid #DDDDDD;">
+              <span style="font-size:var(--web-small-size);font-weight:400;color:#252525;">Easy one-scan commissioning</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">A single QR scan in EMON registration links the serial number, defines panel position and orientation, and registers warranty and flash-test data. No manual entry.</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;padding:12px 0;">
+              <span style="font-size:var(--web-small-size);font-weight:400;color:#252525;">Automatic warranty activation</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;text-wrap:pretty;">Warranty is activated per individual panel at installation, not through a separate portal. Confirmation is linked to the installed panel set from day one.</span>
+            </div>
+          </div>
+          <a href="ANDO - PRODUCT - Overview - EN.dc.html#registration" style="display:flex;align-items:center;gap:8px;min-height:44px;font-size:var(--web-small-size);font-weight:300;color:#252525;text-decoration:none;" style-hover="color:#4F4F4E;"><span aria-hidden="true" style="width:6px;height:6px;border-right:1px solid var(--color-brand-ando);border-top:1px solid var(--color-brand-ando);transform:rotate(45deg);flex:none;"></span>Registration and traceability on the ANDO Overview</a>
+        </section>
+      </div>
+    </div>
+
+    <section aria-label="Product information" style="margin-top:64px;border:1px solid #DDDDDD;border-radius:12px;">
+      <button type="button" onClick="{{ toggleInfo }}" aria-expanded="{{ infoOpenStr }}" style="width:100%;min-height:64px;padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;cursor:pointer;font-family:inherit;text-align:left;color:#252525;box-sizing:border-box;">
+        <span style="font-size:var(--web-body-size);font-weight:400;">Product information</span>
+        <span aria-hidden="true" style="width:8px;height:8px;border-right:1px solid #4F4F4E;border-bottom:1px solid #4F4F4E;transform:{{ infoChev }};margin:{{ infoChevM }};flex:none;"></span>
+      </button>
+      <sc-if value="{{ infoOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:0 24px 24px;display:flex;flex-direction:column;gap:16px;">
+          <div role="tablist" aria-label="Product information" style="display:flex;flex-wrap:wrap;gap:4px 24px;">
+            <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+              <button type="button" role="tab" aria-selected="{{ t.sel }}" onClick="{{ t.pick }}" style="min-height:44px;padding:0;border:none;background:none;cursor:pointer;font-family:inherit;font-size:var(--web-small-size);font-weight:{{ t.w }};color:{{ t.fg }};text-decoration:{{ t.dec }};text-underline-offset:6px;">{{ t.label }}</button>
+            </sc-for>
+          </div>
+          <sc-if value="{{ tabDesc }}" hint-placeholder-val="{{ true }}">
+            <div style="max-width:760px;display:flex;flex-direction:column;gap:12px;">
+              <sc-for list="{{ desc }}" as="d" hint-placeholder-count="2"><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ d }}</p></sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ tabSpec }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:0 48px;">
+              <sc-for list="{{ specs }}" as="s" hint-placeholder-count="10">
+                <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #DDDDDD;font-size:var(--web-small-size);font-weight:300;"><span style="color:#5F5E5E;">{{ s.k }}</span><span style="color:{{ s.fg }};text-align:right;">{{ s.v }}</span></div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ tabDl }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:8px;">
+              <sc-for list="{{ docs }}" as="d" hint-placeholder-count="6">
+                <a href="{{ d.href }}" style="background:#F4F4F4;border-radius:8px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;color:#252525;" style-hover="background:#E3E3E3;color:#252525;">
+                  <span style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-body-size);font-weight:300;"><span aria-hidden="true">&#8595; </span>{{ d.label }}</span><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#5F5E5E;">Document pending</span></span>
+                  <span aria-hidden="true"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+                </a>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+    </section>
+    <a href="ANDO - WEBSHOP - Shop - EN.dc.html" style="margin-top:24px;font-size:var(--web-link-size);font-weight:var(--web-link-weight);min-height:44px;display:inline-flex;align-items:center;">Back to the ANDO catalogue<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+
+    <sc-if value="{{ zoom }}" hint-placeholder-val="{{ false }}">
+      <div role="dialog" aria-modal="true" aria-label="{{ zoomLabel }}" style="position:fixed;inset:0;z-index:1000;background:#FFFFFF;display:flex;flex-direction:column;gap:16px;padding:24px var(--web-side);box-sizing:border-box;font-family:var(--font-web);">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;">
+          <span style="font-size:var(--web-small-size);font-weight:300;color:#252525;">{{ zoomLabel }}</span>
+          <button type="button" onClick="{{ closeZoom }}" style="min-height:44px;padding:0 16px;background:#F4F4F4;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;color:#252525;">Close</button>
+        </div>
+        <div style="flex:1 1 auto;min-height:0;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="{{ slotId }}" shape="rect" fit="contain" placeholder="{{ slotPh }}"></image-slot></div>
+        <div style="display:flex;justify-content:center;gap:8px;">
+          <button type="button" onClick="{{ prevView }}" aria-label="Previous image" style="min-width:44px;min-height:44px;padding:0 16px;background:#F4F4F4;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);color:#252525;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg>Previous</button>
+          <button type="button" onClick="{{ nextView }}" aria-label="Next image" style="min-width:44px;min-height:44px;padding:0 16px;background:#F4F4F4;border:none;border-radius:8px;cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);color:#252525;">Next<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></button>
+        </div>
+      </div>
+    </sc-if>
+  </sc-if>
+</main>
+<dc-import name="Footer" show-ebook="{{ false }}" hint-size="100%,400px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { ready: !!window.ANDO_SHOP, auth: false, view: 0, zoom: false, open: { EU: true }, qty: {}, wh: null, infoOpen: false, tab: "desc", email: {}, notified: {}, emailErr: {}, placed: false, tick: 0 };
+  componentDidMount() {
+    const go = () => this.setState({ ready: true, auth: window.ANDO_SHOP.getAuth() });
+    if (window.ANDO_SHOP) go(); else this._t = setInterval(() => { if (window.ANDO_SHOP) { clearInterval(this._t); go(); } }, 50);
+    this._clock = setInterval(() => this.setState((s) => ({ tick: s.tick + 1 })), 30000);
+    this._change = () => this.setState((s) => ({ auth: window.ANDO_SHOP ? window.ANDO_SHOP.getAuth() : s.auth, tick: s.tick + 1 }));
+    window.addEventListener("ando-shop-change", this._change); window.addEventListener("storage", this._change);
+    this._key = (e) => { if (!this.state.zoom) return; if (e.key === "Escape") this.setState({ zoom: false }); else if (e.key === "ArrowRight") this.step(1); else if (e.key === "ArrowLeft") this.step(-1); };
+    document.addEventListener("keydown", this._key);
+  }
+  componentWillUnmount() { clearInterval(this._t); clearInterval(this._clock); document.removeEventListener("keydown", this._key); window.removeEventListener("ando-shop-change", this._change); window.removeEventListener("storage", this._change); }
+  step(k) { const n = window.ANDO_SHOP.VIEWS.length; this.setState((s) => ({ view: (s.view + k + n) % n })); }
+  setAuth(v) { window.ANDO_SHOP.setAuth(v); this.setState({ auth: v, placed: false }); }
+  set(key, r, v) { this.setState((s) => ({ [key]: Object.assign({}, s[key], { [r]: v }) })); }
+  renderVals() {
+    const D = window.ANDO_SHOP, st = this.state;
+    const base = { setOut: () => this.setAuth(false), setIn: () => this.setAuth(true), outBg: st.auth ? "#F4F4F4" : "#4F4F4E", outFg: st.auth ? "#252525" : "#FFFFFF", inBg: st.auth ? "#4F4F4E" : "#F4F4F4", inFg: st.auth ? "#FFFFFF" : "#252525", outPressed: st.auth ? "false" : "true", inPressed: st.auth ? "true" : "false" };
+    const empty = { routes: [], dots: [], thumbs: [], tabs: [], desc: [], features: [], degradation: [], specs: [], docs: [], lines: [], showSummary: false, zoom: false, infoOpen: false };
+    if (!st.ready || !D) return Object.assign(base, empty, { found: false, notFound: false });
+    const sku = new URLSearchParams(location.search).get("sku") || D.DEFAULT_SKU;
+    const p = D.PRODUCTS.find((x) => x.art === sku);
+    if (!p) return Object.assign(base, empty, { found: false, notFound: true, title: "Not found" });
+    if (document.title.indexOf(p.series) < 0) document.title = D.title(p) + " | ANDO Shop | STRØHM.ENERGY";
+    const auth = st.auth, c = D.content(p), t = D.title(p), V = D.VIEWS, vi = st.view, vName = V[vi][1];
+    const slot = (k) => "ando-shop-" + p.art + "-" + k;
+    const dots = V.map(([k, l], i) => ({ aria: "Image " + (i + 1) + " of " + V.length + ": " + l, sel: i === vi ? "true" : "false", bg: i === vi ? "#4F4F4E" : "#BBBBBB", pick: () => this.setState({ view: i }) }));
+    const thumbs = V.map(([k, l], i) => ({ slotId: slot(k), ph: l, aria: "Show " + l.toLowerCase() + " image", sel: i === vi ? "true" : "false", border: i === vi ? "#4F4F4E" : "#F4F4F4", pick: () => this.setState({ view: i }) }));
+    const cut = D.cutoff(), orderNow = auth ? D.getOrder() : [];
+    const chev = (open) => (open ? "rotate(-135deg)" : "rotate(45deg)"), chevM = (open) => (open ? "4px 4px 0" : "-4px 4px 0");
+    const tile = (icon, k, v, sub) => ({ icon, iconTitle: "Icon placeholder: " + icon, k, v, sub: sub || "" });
+    const routes = D.ORDER.map((r) => {
+      const R = D.ROUTES[r], d = p.rt[r], open = !!st.open[r], fr = D.free(p, r), launched = p.launched !== false, orderable = fr >= R.moq && launched;
+      const e = r === "Floating" ? D.eta(d.wk) : null;
+      const whSel = r === "EU" ? (st.wh || D.cheapestWh(p)) : null;
+      const cap = r === "EU" ? p.rt.EU.locs.find((l) => l.w === whSel).q : r === "MTO" ? D.MTO_MAX : fr;
+      const qMin = R.moq, qMax = Math.max(qMin, qMin + Math.floor((cap - qMin) / D.STEP) * D.STEP);
+      let q = st.qty[r] != null ? st.qty[r] : qMin; q = Math.min(qMax, Math.max(qMin, qMin + Math.round((q - qMin) / D.STEP) * D.STEP));
+      const unitMoq = D.unitAtMoq(p, r, whSel), s = D.status(r, q, unitMoq, R.moq);
+      const avail = r === "MTO" ? "Made to order" : fr > 0 ? fr + " pcs available" : "No free stock";
+      const sub = [r === "Floating" ? "ETA " + e.date : R.lead, "MOQ " + R.moq + " pcs"].concat(auth ? [avail] : []).join(" · ");
+      const t1 = tile("cart", "Minimum order", R.moqText);
+      const t2 = r === "EU" ? tile("truck", "Dispatch cut-off", cut.title, cut.line) : r === "Floating" ? tile("truck", "Named shipment", "SHIP " + d.sh) : tile("truck", "Lead time", R.lead, R.where);
+      const whs = r === "EU" ? p.rt.EU.locs.map((l) => { const sel = l.w === whSel; return { name: l.w, q: l.q + " pcs", dist: D.whDist(l.w), price: D.eur(D.whPrice(d.pr, l.w)), sel: sel ? "true" : "false", bg: sel ? "#E3E3E3" : "#F4F4F4", line: sel ? "#4F4F4E" : (sel ? "#E3E3E3" : "#F4F4F4"), pick: () => this.setState((ss) => ({ wh: l.w, qty: Object.assign({}, ss.qty, { EU: R.moq }) })) }; }) : [];
+      const splitSub = r === "Floating" ? "In transit, ETA by " + e.date + ", within " + e.days + " days" : "Ex-factory warehouse";
+      const split = r === "Floating" || r === "Factory" ? [{ k: "Available", v: d.q + " pcs", sub: splitSub, bg: "#F4F4F4" }, { k: "Reserved by others", v: d.r + " pcs", sub: splitSub, bg: "#FBEAE9" }, { k: "Free to order", v: fr + " pcs", sub: splitSub, bg: "var(--color-ando-20,#F5F7D5)" }] : [];
+      const email = st.email[r] || "", done = !!st.notified[r];
+      const line = orderNow.find((l) => l.sku === p.art && l.r === r), inOrder = !!line;
+      const setQ = (v) => this.set("qty", r, v);
+      return {
+        label: R.label, sub, auth, open, openStr: open ? "true" : "false", chev: chev(open), chevM: chevM(open),
+        toggle: () => this.set("open", r, !open), dot: orderable ? "var(--color-brand-ando,#CDD62B)" : "#BBBBBB", price: D.eur(unitMoq),
+        t1, t2, pay: R.pay, note: R.note, showWh: auth && r === "EU", whs, showSplit: auth && split.length > 0, split, showLogin: !auth,
+        showOrder: auth && orderable, q, qMin, qMax, qText: q + " pieces", hint: "Min order " + R.moq + " · steps of " + D.STEP + " · max " + qMax + " · drag to see shipment cost effect",
+        unit: D.eur(s.unit), total: D.eur(s.total), statusLabel: s.label, statusFg: s.key === "allowed" ? "#252525" : s.key === "consol" || s.key === "approval" ? "#A35A00" : "#D8392C",
+        btn: inOrder ? "Update order line" : s.key === "allowed" ? "Add to order" : s.btn, orderDisabled: !s.ok, hold: R.hold, onQ: (ev) => setQ(+ev.target.value),
+        order: () => { D.setOrder(D.getOrder().filter((l) => !(l.sku === p.art && l.r === r)).concat([{ sku: p.art, r, q, wh: whSel }])); this.setState({ placed: false }); },
+        ordered: inOrder, orderedText: inOrder ? "In your order: " + line.q + " pcs" + (line.wh ? " from " + line.wh : "") + "." + (line.q !== q || line.wh !== whSel ? " Press the button to update the line." : "") : "",
+        showNotify: auth && !orderable, n: launched ? D.NOTIFY.stock : D.NOTIFY.launch, notifyForm: !done, notifyDone: done, email, emailError: !!st.emailErr[r],
+        onEmail: (ev) => { this.set("email", r, ev.target.value); this.set("emailErr", r, false); },
+        notify: () => { if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) this.set("notified", r, true); else this.set("emailErr", r, true); },
+        changeEmail: () => this.set("notified", r, false),
+      };
+    });
+    const lineRows = (auth ? D.orderRows() : []).map((l) => ({ label: l.product + " · " + l.route, qty: l.q + " pcs", unit: D.eur(l.unit) + "/pc", total: D.eur(l.total), status: l.status,
+      lead: l.lead, pay: l.pay, hold: l.hold, _t: l.total, remove: () => { D.setOrder(D.getOrder().filter((x) => !(x.sku === l.sku && x.r === l.r))); this.setState({ placed: false }); } }));
+    const grand = lineRows.reduce((a, x) => a + x._t, 0), nLines = lineRows.length + (lineRows.length === 1 ? " line" : " lines");
+    const tabs = [["desc", "Description"], ["spec", "Specifications"], ["dl", "Downloads"]].map(([k, l]) => { const on = st.tab === k; return { label: l, sel: on ? "true" : "false", fg: on ? "#252525" : "#5F5E5E", w: on ? 400 : 300, dec: on ? "underline" : "none", pick: () => this.setState({ tab: k }) }; });
+    return Object.assign(base, {
+      seriesKey: p.series, found: true, notFound: false, title: t, eyebrow: "ANDO · " + p.series + " · Solar module", subtitle: c.subtitle, sku: p.art, prov: p.prov, desc: c.desc,
+      slotId: slot(V[vi][0]), slotPh: t + " · " + vName.toLowerCase() + " image", dots, thumbs,
+      galleryAria: "Product images, " + vName + ", " + (vi + 1) + " of " + V.length, galleryKey: (e) => { if (e.key === "ArrowRight") this.step(1); else if (e.key === "ArrowLeft") this.step(-1); },
+      zoom: st.zoom, zoomLabel: t + " · " + vName + " · " + (vi + 1) + " / " + V.length, openZoom: () => this.setState({ zoom: true }), closeZoom: () => this.setState({ zoom: false }), prevView: () => this.step(-1), nextView: () => this.step(1),
+      dsHref: D.docHref(p, "Datasheet"), catHref: D.docHref(p, "Catalogue"), loginHref: D.LOGIN, routes,
+      showSummary: auth && lineRows.length > 0, lines: lineRows, lineCount: nLines, grandTotal: D.eur(grand), placed: st.placed, placeOrder: () => this.setState({ placed: true }),
+      placedText: "Demonstration only. Nothing was ordered. In the live shop this opens checkout for " + nLines + ", total " + D.eur(grand) + ". Each line keeps its own lead time, payment terms and hold.",
+      features: c.features.map(([k, v]) => ({ k, v })), warrantyText: c.warrantyText, degradation: c.degradation.map(([k, v]) => ({ k, v })), hasDeg: c.degradation.length > 0,
+      infoOpen: st.infoOpen, infoOpenStr: st.infoOpen ? "true" : "false", infoChev: chev(st.infoOpen), infoChevM: chevM(st.infoOpen), toggleInfo: () => this.setState((s) => ({ infoOpen: !s.infoOpen })),
+      tabs, tabDesc: st.tab === "desc", tabSpec: st.tab === "spec", tabDl: st.tab === "dl",
+      specs: D.specs(p).map(([k, v]) => ({ k, v, fg: /pending|To confirm/.test(v) ? "#5F5E5E" : "#252525" })),
+      docs: D.DOCS.map((d) => ({ label: d, href: D.docHref(p, d) })),
+    });
+  }
+}
+</script>
+</body>
+</html>

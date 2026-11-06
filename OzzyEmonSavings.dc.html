@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="font-family:var(--font-web);color:#4F4F4E;">
+  <section id="emon-explainer" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D4D4D4;padding-top:40px;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px;">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">OZZY with EMON</div>
+          <h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The switch decides when. <span style="color:#8E8E8E;">EMON decides why.</span></h2>
+        </div>
+        <div style="grid-column:span 2;display:flex;flex-direction:column;gap:14px;">
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;max-width:820px;">An OZZY plug or switch only turns power on and off. Connected to EMON, it switches at the right moment: when electricity is cheapest, when your own solar is producing, or outside the hours when your grid fee is highest. The appliance does the same work. It just does it at a better time.</p>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;max-width:820px;">Suited to loads that can wait: water heaters, dishwashers, washing machines, dryers, pool pumps, dehumidifiers, e-bike and tool chargers, and with FLIP larger fixed loads such as boilers and heat pumps. Not for fridges, freezers, medical devices or anything that must stay on.</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;">
+        <sc-for list="{{ modes }}" as="m" hint-placeholder-count="3">
+          <button type="button" onClick="{{ m.pick }}" aria-pressed="{{ m.sel }}" style="font-family:inherit;text-align:left;cursor:pointer;border:1px solid {{ m.border }};background:{{ m.bg }};padding:24px;display:flex;flex-direction:column;gap:10px;border-radius:12px;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">{{ m.tag }}</span>
+            <span style="font-size:var(--web-h3-size);font-weight:300;color:#4F4F4E;line-height:var(--web-h3-lh);">{{ m.title }}</span>
+            <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ m.text }}</span>
+          </button>
+        </sc-for>
+      </div>
+
+      <div style="background:#F5F5F5;padding:28px;display:flex;flex-direction:column;gap:16px;border-radius:12px;">
+        <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ chartTitle }}</div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;text-transform:uppercase;">SAMPLE DAY, ILLUSTRATION</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(24,minmax(0,1fr));gap:3px;align-items:end;height:180px;">
+          <sc-for list="{{ bars }}" as="b" hint-placeholder-count="24">
+            <div style="display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:3px;">
+              <div style="height:{{ b.solarH }};background:#E0E0DC;"></div>
+              <div style="height:{{ b.priceH }};background:{{ b.priceColor }};"></div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(24,minmax(0,1fr));gap:3px;">
+          <sc-for list="{{ bars }}" as="b" hint-placeholder-count="24"><div style="height:14px;background:{{ b.runColor }};"></div></sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(24,minmax(0,1fr));gap:3px;">
+          <sc-for list="{{ bars }}" as="b" hint-placeholder-count="24"><div style="font-size:9px;font-weight:300;color:#8A8A88;text-align:center;">{{ b.label }}</div></sc-for>
+        </div>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;font-size:12px;font-weight:300;color:#5F5E5E;">
+          <span style="display:flex;gap:6px;align-items:center;"><span style="width:12px;height:12px;background:#8A8A88;"></span>Electricity price per hour</span>
+          <span style="display:flex;gap:6px;align-items:center;"><span style="width:12px;height:12px;background:#E0E0DC;"></span>Solar production</span>
+          <span style="display:flex;gap:6px;align-items:center;"><span style="width:12px;height:12px;background:#1E1E1E;"></span>OZZY switches the load on</span>
+          <span style="display:flex;gap:6px;align-items:center;"><span style="width:12px;height:12px;background:#D4D4D4;"></span>Without OZZY (runs when used)</span>
+        </div>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">{{ chartNote }}</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px;">
+        <sc-for list="{{ why }}" as="w" hint-placeholder-count="4">
+          <div style="background:#F4F4F4;padding:20px;display:flex;flex-direction:column;gap:8px;border-radius:12px;"><span style="font-size:14px;font-weight:700;">{{ w.t }}</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ w.d }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="savings" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D4D4D4;padding-top:40px;display:flex;flex-direction:column;gap:24px;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Calculator</div>
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">What does <span style="color:#8E8E8E;">it save?</span></h2>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">Pick an appliance, enter your prices and see the yearly saving per mode, the payback of the device and the installation cost you avoid with a plug-in OZZY.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;">
+        <div style="flex:3 1 460px;min-width:0;background:#F5F5F5;padding:28px;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;border-radius:12px;">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);grid-column:1/-1;">Appliance
+            <select value="{{ app }}" onChange="{{ onApp }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 8px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;color:#4F4F4E;font-weight:var(--web-input-weight);">
+              <sc-for list="{{ apps }}" as="a" hint-placeholder-count="8"><option value="{{ a.k }}">{{ a.label }}</option></sc-for>
+            </select>
+          </label>
+          <sc-for list="{{ fields }}" as="f" hint-placeholder-count="9">
+            <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">{{ f.label }}
+              <input type="number" step="any" min="0" value="{{ f.value }}" onChange="{{ f.onChange }}" style="font-family:inherit;font-size:var(--web-input-size);height:40px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;color:#4F4F4E;box-sizing:border-box;width:100%;font-weight:var(--web-input-weight);"></input>
+            </label>
+          </sc-for>
+          <div style="grid-column:1/-1;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#B07818;">SAMPLE values: prices, appliance power and device prices are starting values only. Enter your own contract prices. OZZY device prices TO CONFIRM.</div>
+        </div>
+        <div style="flex:2 1 300px;min-width:0;display:flex;flex-direction:column;gap:12px;">
+          <div style="background:#F5F5F5;padding:28px;display:flex;flex-direction:column;gap:10px;border-radius:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Yearly saving</div>
+            <sc-for list="{{ results }}" as="r" hint-placeholder-count="4">
+              <div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid #DDDDDD;padding-top:8px;"><span style="font-size:13px;font-weight:{{ r.w }};">{{ r.k }}</span><span style="font-size:var(--web-small-size);text-align:right;line-height:var(--web-small-lh);"><span style="font-weight:700;">{{ r.v }}</span> <span style="font-weight:300;">{{ r.u }}</span></span></div>
+            </sc-for>
+          </div>
+          <div style="background:#F5F5F5;padding:28px;display:flex;flex-direction:column;gap:10px;border-radius:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Installation cost saver</div>
+            <sc-for list="{{ install }}" as="r" hint-placeholder-count="4">
+              <div style="display:flex;justify-content:space-between;gap:12px;border-top:1px solid #DDDDDD;padding-top:8px;"><span style="font-size:13px;font-weight:{{ r.w }};">{{ r.k }}</span><span style="font-size:var(--web-small-size);text-align:right;line-height:var(--web-small-lh);"><span style="font-weight:700;">{{ r.v }}</span> <span style="font-weight:300;">{{ r.u }}</span></span></div>
+            </sc-for>
+            <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;">{{ installNote }}</div>
+          </div>
+        </div>
+      </div>
+      <details style="border-top:1px solid #D4D4D4;padding-top:12px;">
+        <summary style="font-size:var(--web-body-size);font-weight:500;cursor:pointer;">How the saving is calculated</summary>
+        <div style="margin-top:10px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:900px;">Energy per year = power × hours per day × 365. Time-of-use: the part of that energy moved from the peak price to the off-peak price. Dynamic tariff: moved from the average price to the average of the cheapest hours. Solar surplus: the share covered by your own solar is valued at the price you would have paid minus the feed-in price you no longer receive. Combined uses the larger of dynamic tariff and solar per kWh, not the sum. Payback = device price ÷ yearly saving. Installation cost saver compares a plug-in OZZY with a hardwired smart relay installed by an electrician.</div>
+      </details>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:1600}}">
+const APPS = {
+  boiler: ["Electric water heater", 2.0, 3, "flip"], dish: ["Dishwasher", 1.8, 1.2, "plug"], wash: ["Washing machine", 2.0, 1.2, "plug"], dryer: ["Tumble dryer", 2.5, 1.0, "plug"],
+  pool: ["Pool pump", 1.0, 6, "plug"], dehum: ["Dehumidifier", 0.4, 8, "plug"], ebike: ["E-bike and tool chargers", 0.3, 3, "plug"], heater: ["Heat pump or fixed heater (FLIP)", 3.0, 5, "flip"],
+};
+const PRICES = [0.24, 0.22, 0.20, 0.19, 0.19, 0.21, 0.28, 0.36, 0.34, 0.27, 0.20, 0.15, 0.12, 0.11, 0.13, 0.17, 0.24, 0.35, 0.42, 0.39, 0.33, 0.29, 0.27, 0.25];
+const SOLAR = [0, 0, 0, 0, 0, 0, 0.05, 0.15, 0.3, 0.5, 0.7, 0.85, 0.95, 0.95, 0.85, 0.7, 0.5, 0.3, 0.12, 0.02, 0, 0, 0, 0];
+const MODES = {
+  tou: { tag: "Time of use", title: "Fixed cheap hours", text: "Your contract has day and night prices. OZZY switches the load into the off-peak window EMON knows from your contract.", run: [0, 1, 2, 3, 4, 5], chart: "Time of use: the load runs in the night window." },
+  dynamic: { tag: "Dynamic tariff", title: "The cheapest hours of each day", text: "Prices change every hour and are published a day ahead. EMON picks the cheapest hours for each load, every day again.", run: [12, 13, 14], chart: "Dynamic tariff: EMON picks the three cheapest hours, today around noon." },
+  solar: { tag: "Solar surplus", title: "When your roof produces", text: "When the solar panels produce more than the house uses, EMON switches loads on instead of exporting the surplus for a low feed-in price.", run: [11, 12, 13], chart: "Solar surplus: the load runs while the roof produces most." },
+};
+const WITHOUT = [18, 19, 20];
+const eur = (n) => "€ " + (Math.round(n * 100) / 100).toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+class Component extends DCLogic {
+  state = { mode: "dynamic", app: "boiler", v: {} };
+  val(k, d) { const x = this.state.v[k]; const n = +String(x ?? d).replace(",", "."); return isFinite(n) ? n : 0; }
+  renderVals() {
+    const s = this.state, M = MODES[s.mode], A = APPS[s.app];
+    const F = [
+      ["kw", "Appliance power (kW)", A[1]], ["hours", "Hours per day", A[2]], ["peak", "Peak price (€/kWh)", 0.36], ["off", "Off-peak price (€/kWh)", 0.22],
+      ["avg", "Dynamic: average price (€/kWh)", 0.26], ["cheap", "Dynamic: cheapest hours (€/kWh)", 0.13], ["feed", "Feed-in price (€/kWh)", 0.04], ["solarShare", "Share covered by own solar (%)", 40],
+      ["device", "OZZY device price (€)", A[3] === "flip" ? 89 : 29], ["rate", "Electrician rate (€/h)", 65], ["elecHours", "Hours to hardwire a smart relay", 2], ["relay", "Hardwired smart relay price (€)", 60],
+    ].map(([k, label, d]) => ({ k, label, d, value: s.v[k + ":" + s.app] ?? s.v[k] ?? d, onChange: (e) => { const val = e.target.value; this.setState(st => ({ v: { ...st.v, [["kw", "hours", "device"].includes(k) ? k + ":" + st.app : k]: val } })); } }));
+    const g = (k) => { const f = F.find(x => x.k === k); const n = +String(f.value).replace(",", "."); return isFinite(n) ? n : 0; };
+    const kwh = g("kw") * g("hours") * 365;
+    const tou = kwh * Math.max(0, g("peak") - g("off"));
+    const dyn = kwh * Math.max(0, g("avg") - g("cheap"));
+    const sh = Math.min(100, Math.max(0, g("solarShare"))) / 100;
+    const sol = kwh * sh * Math.max(0, g("avg") - g("feed"));
+    const comb = kwh * (sh * Math.max(0, g("avg") - g("feed")) + (1 - sh) * Math.max(0, g("avg") - g("cheap")));
+    const best = Math.max(tou, dyn, sol, comb);
+    const payback = best > 0 ? g("device") / best : null;
+    const flip = A[3] === "flip";
+    const hardwired = g("rate") * g("elecHours") + g("relay");
+    const ozzyInstall = flip ? g("rate") * g("elecHours") + g("device") : g("device");
+    const maxP = Math.max(...PRICES);
+    return {
+      modes: Object.entries(MODES).map(([k, m]) => { const sel = k === s.mode; return { ...m, sel, pick: () => this.setState({ mode: k }), bg: sel ? "#F5F5F5" : "#FFFFFF", border: sel ? "#1E1E1E" : "#D4D4D4" }; }),
+      chartTitle: M.tag + ": when the load runs", chartNote: M.chart + " Without OZZY the same load often runs in the evening peak, when it is switched on by hand.",
+      bars: PRICES.map((p, h) => ({ priceH: Math.round(p / maxP * 70) + "%", priceColor: M.run.includes(h) ? "#4F4F4E" : "#8A8A88", solarH: (s.mode === "solar" ? Math.round(SOLAR[h] * 28) : 0) + "%", runColor: M.run.includes(h) ? "#4F4F4E" : WITHOUT.includes(h) ? "#D4D4D4" : "transparent", label: h % 3 === 0 ? String(h).padStart(2, "0") : "" })),
+      why: [
+        { t: "Same energy, lower price", d: "The appliance uses the same kWh. Moving them from expensive to cheap hours is where the saving comes from." },
+        { t: "Solar used at home", d: "A kWh used from your own roof saves the full purchase price. A kWh exported earns only the feed-in price." },
+        { t: "Lower peaks", d: "Where grid fees depend on your highest power, EMON keeps flexible loads out of the peak." },
+        { t: "No habits to change", d: "Load the dishwasher when it suits you. OZZY and EMON start it at the right time." },
+      ],
+      apps: Object.entries(APPS).map(([k, a]) => ({ k, label: a[0] })), app: s.app, onApp: (e) => this.setState({ app: e.target.value }),
+      fields: F,
+      results: [
+        { k: "Energy per year", v: Math.round(kwh).toLocaleString("de-DE"), u: "kWh", w: 300 },
+        { k: "Time of use", v: eur(tou), u: "/ year", w: 300 },
+        { k: "Dynamic tariff", v: eur(dyn), u: "/ year", w: 300 },
+        { k: "Solar surplus", v: eur(sol), u: "/ year", w: 300 },
+        { k: "Solar + dynamic combined", v: eur(comb), u: "/ year", w: 700 },
+        { k: "Device pays back in", v: payback == null ? "–" : payback < 1 ? Math.max(1, Math.round(payback * 12)) + "" : payback.toFixed(1).replace(".", ","), u: payback == null ? "" : payback < 1 ? "months" : "years", w: 700 },
+      ],
+      install: flip ? [
+        { k: "FLIP installed by an electrician", v: eur(ozzyInstall), u: "", w: 300 },
+        { k: "Hardwired smart relay installed", v: eur(hardwired + 0), u: "", w: 300 },
+        { k: "Difference", v: eur(hardwired - ozzyInstall), u: "", w: 700 },
+      ] : [
+        { k: "Plug-in OZZY, no electrician", v: eur(ozzyInstall), u: "", w: 300 },
+        { k: "Hardwired smart relay installed", v: eur(hardwired), u: "", w: 300 },
+        { k: "You save on installation", v: eur(hardwired - ozzyInstall), u: "", w: 700 },
+      ],
+      installNote: flip ? "Fixed loads above plug ratings need FLIP, installed by an electrician. It replaces a separate relay and timer and brings measurement and EMON control in one device." : "A plug-in OZZY goes between the socket and the appliance: no electrician, no wiring, and it moves with you.",
+    };
+  }
+}
+</script>
+</body>
+</html>

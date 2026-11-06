@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live stock map · STROHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#F7F7F5;color:#5B5B5B;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+a{color:#5B5B5B}a:hover{color:#FB8C00}
+.wrap{max-width:1296px;margin:0 auto;padding:64px 48px 80px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:24px}
+h2{margin:0;font-size:48px;line-height:1.05;font-weight:300}
+.lead{margin:12px 0 40px;font-size:18px;font-weight:300;max-width:620px;text-wrap:pretty}
+.grid{display:grid;grid-template-columns:minmax(260px,320px) minmax(0,1fr);gap:24px;align-items:start}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.panel{display:flex;flex-direction:column;gap:24px}
+.lbl{font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:14px;font-weight:700;letter-spacing:.04em;padding:10px 14px;border-radius:8px;border:1px solid #BBBBBB;background:#F7F7F5;color:#5B5B5B;cursor:pointer;display:flex;align-items:center;gap:8px;transition:color .15s}
+.chip .dot{width:10px;height:10px;border-radius:50%}
+.chip.on{background:#5B5B5B;color:#FFFFFF;border-color:#5B5B5B}
+.seg{display:flex;gap:8px}
+.seg button{font:inherit;font-size:14px;padding:10px 14px;border-radius:8px;border:1px solid #BBBBBB;background:#F7F7F5;color:#5B5B5B;cursor:pointer}
+.seg button.on{background:#5B5B5B;color:#FFFFFF;border-color:#5B5B5B}
+select{font:inherit;font-size:15px;width:100%;padding:10px 12px;border-radius:8px;border:1px solid #BBBBBB;background:#FFFFFF;color:#5B5B5B}
+select:focus{outline:none;border-color:#5B5B5B}
+.result{background:#5B5B5B;color:#FFFFFF;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.result .big{font-size:24px;font-weight:700;line-height:1.2}
+.result .row{font-size:14px;font-weight:300;display:flex;justify-content:space-between;gap:12px}
+.result .row b{font-weight:700;white-space:nowrap}
+.mapcard{background:#FFFFFF;border-radius:12px;overflow:hidden;position:relative}
+svg{display:block;width:100%;height:auto;cursor:crosshair}
+.hint{font-size:12px;font-weight:300;margin-top:16px}
+.list{display:flex;flex-direction:column;gap:6px;font-size:13px}
+.list .r{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;padding:6px 0;border-top:1px solid #DDDDDD}
+.list .r b{font-weight:700;text-align:right;white-space:nowrap}
+.list .r span.k{font-weight:300;white-space:nowrap;text-align:right;min-width:70px}
+.list .r.best{color:#5B5B5B}
+</style>
+</head>
+<body>
+<div class="wrap" data-screen-label="11 Live stock map">
+  <div class="eyebrow">Study 11 · DEPOT · live stock map</div>
+  <h2><span style="font-weight:400">EU</span> stock, live.</h2>
+  <p class="lead">Five European warehouses. Pick a product and quantity, set the delivery address, and the nearest warehouse with enough stock lights up.</p>
+  <div class="grid">
+    <div class="panel">
+      <div><div class="lbl">Product</div><div class="chips" id="prod"></div></div>
+      <div><div class="lbl">Quantity</div><div class="seg" id="qty"></div></div>
+      <div><div class="lbl">Delivery address</div><select id="city"></select></div>
+      <div class="result" id="res"></div>
+      <div><div class="lbl">All warehouses</div><div class="list" id="list"></div></div>
+    </div>
+    <div>
+      <div class="mapcard"><svg id="map" viewBox="0 0 900 760" role="img" aria-label="Map of European warehouses"></svg></div>
+      <div class="hint">Click anywhere on the map to set a custom delivery point. Provisional demo data: stock levels per warehouse. Surcharge bands from the webshop distance rules.</div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+const COL={MOEBIUS:"#FB8C00",ANDO:"#CDDB65",FLUXX:"#FECDC0",SYNQ:"#5F7673",OZZY:"#8BCF3F"};
+const WH=[{n:"Rotterdam NL",la:51.92,lo:4.48},{n:"Hamburg DE",la:53.55,lo:9.99},{n:"Poznan PL",la:52.41,lo:16.93},{n:"Milan IT",la:45.46,lo:9.19},{n:"Madrid ES",la:40.42,lo:-3.70}];
+const STOCK={MOEBIUS:[840,410,0,220,95],ANDO:[3200,1800,950,0,1200],FLUXX:[120,60,35,18,0],SYNQ:[600,0,140,210,90],OZZY:[300,180,0,75,40]};
+const CITIES=[["Amsterdam",52.37,4.90],["Brussels",50.85,4.35],["Paris",48.86,2.35],["Lyon",45.76,4.84],["Berlin",52.52,13.40],["Munich",48.14,11.58],["Vienna",48.21,16.37],["Warsaw",52.23,21.01],["Copenhagen",55.68,12.57],["Barcelona",41.39,2.17],["Lisbon",38.72,-9.14],["Rome",41.90,12.50]];
+const QTY=[10,100,500];
+const SUR=[[50,"< 50 km",0],[100,"50 to 100 km",2],[250,"100 to 250 km",4],[500,"250 to 500 km",7],[1e9,"> 500 km",11]];
+const st={p:"MOEBIUS",q:100,dest:{n:"Amsterdam",la:52.37,lo:4.90}};
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches, D=reduce?0:600;
+const sp=n=>String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g," ");
+function hav(a,b){const R=6371,r=x=>x*Math.PI/180,dl=r(b.la-a.la),dn=r(b.lo-a.lo);const q=Math.sin(dl/2)**2+Math.cos(r(a.la))*Math.cos(r(b.la))*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(q));}
+const band=km=>SUR.find(s=>km<s[0]);
+
+// controls
+const prod=document.getElementById("prod");
+Object.keys(COL).forEach(p=>{const b=document.createElement("button");b.className="chip";b.innerHTML='<span class="dot" style="background:'+COL[p]+'"></span>'+p;b.onclick=()=>{st.p=p;update();};b.dataset.p=p;prod.appendChild(b);});
+const qty=document.getElementById("qty");
+QTY.forEach(q=>{const b=document.createElement("button");b.textContent=q+" pcs";b.dataset.q=q;b.onclick=()=>{st.q=q;update();};qty.appendChild(b);});
+const city=document.getElementById("city");
+CITIES.forEach(c=>{const o=document.createElement("option");o.value=c[0];o.textContent=c[0];city.appendChild(o);});
+const oc=document.createElement("option");oc.value="__custom";oc.textContent="Custom location";oc.disabled=true;city.appendChild(oc);
+city.onchange=()=>{const c=CITIES.find(x=>x[0]===city.value);st.dest={n:c[0],la:c[1],lo:c[2]};update();};
+
+// map
+const W=900,H=760,svg=d3.select("#map");
+const proj=d3.geoMercator().fitExtent([[24,24],[W-24,H-24]],{type:"MultiPoint",coordinates:[[-10.5,36],[24,36],[24,58.5],[-10.5,58.5]]});
+const path=d3.geoPath(proj);
+const gLand=svg.append("g"),gLine=svg.append("g"),gWh=svg.append("g"),gDest=svg.append("g");
+svg.on("click",ev=>{const [x,y]=d3.pointer(ev);const [lo,la]=proj.invert([x,y]);st.dest={n:"Custom location",la,lo};update();});
+
+fetch("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json").then(r=>r.json()).then(topo=>{
+  const land=topojson.feature(topo,topo.objects.countries);
+  gLand.selectAll("path").data(land.features).join("path").attr("d",path).attr("fill","#F4F4F4").attr("stroke","#BBBBBB").attr("stroke-width",.6);
+  gLand.append("path").attr("d",path(d3.geoGraticule().step([5,5])())).attr("fill","none").attr("stroke","#EEEEEE").attr("stroke-width",.5).lower();
+}).catch(()=>{gLand.append("text").attr("x",24).attr("y",40).attr("font-size",13).attr("fill","#5B5B5B").text("Map data could not load. The warehouses still work.");});
+
+const whG=gWh.selectAll("g").data(WH).join("g").attr("transform",d=>"translate("+proj([d.lo,d.la])+")");
+whG.append("circle").attr("class","ring").attr("r",0).attr("fill","none").attr("stroke","#5B5B5B").attr("stroke-width",1).attr("opacity",0);
+whG.append("circle").attr("class","dot").attr("r",8).attr("stroke","#5B5B5B").attr("stroke-width",1);
+const lab=whG.append("g").attr("class","lab");
+lab.append("text").attr("class","n").attr("font-weight",700).attr("fill","#5B5B5B").attr("stroke","#FFFFFF").attr("paint-order","stroke").attr("stroke-linejoin","round");
+lab.append("text").attr("class","q").attr("font-weight",300).attr("fill","#5B5B5B").attr("stroke","#FFFFFF").attr("paint-order","stroke").attr("stroke-linejoin","round");
+const destG=gDest.append("g");
+destG.append("path").attr("d","M-9 0H9M0 -9V9").attr("stroke","#5B5B5B").attr("stroke-width",1.5);
+destG.append("circle").attr("r",4).attr("fill","#FFFFFF").attr("stroke","#5B5B5B");
+const destT=destG.append("text").attr("text-anchor","end").attr("font-weight",700).attr("fill","#5B5B5B").attr("stroke","#FFFFFF").attr("paint-order","stroke").attr("stroke-linejoin","round");
+let K=1;
+function applyScale(){
+  const w=svg.node().clientWidth||900; K=Math.max(1,900/w);
+  whG.select(".n").attr("font-size",13*K).attr("stroke-width",3*K);
+  whG.select(".q").attr("font-size",12*K).attr("dy",15*K).attr("stroke-width",3*K);
+  destT.attr("font-size",13*K).attr("stroke-width",3*K).attr("x",-12*K).attr("y",-12*K);
+  destG.select("path").attr("d","M"+(-9*K)+" 0H"+(9*K)+"M0 "+(-9*K)+"V"+(9*K));
+}
+window.addEventListener("resize",()=>{applyScale();update();});
+const line=gLine.append("path").attr("fill","none").attr("stroke-width",2);
+
+let lastBest=null;
+function update(){
+  const c=COL[st.p],S=STOCK[st.p],max=Math.max(...S);
+  prod.querySelectorAll(".chip").forEach(b=>b.classList.toggle("on",b.dataset.p===st.p));
+  qty.querySelectorAll("button").forEach(b=>b.classList.toggle("on",+b.dataset.q===st.q));
+  city.value=CITIES.some(x=>x[0]===st.dest.n)?st.dest.n:"__custom";
+  const rows=WH.map((w,i)=>({w,i,q:S[i],km:hav(w,st.dest)})).sort((a,b)=>a.km-b.km);
+  const best=rows.find(r=>r.q>=st.q);
+  whG.select(".dot").transition().duration(D).attr("r",(d,i)=>S[i]?6+20*Math.sqrt(S[i]/max):6)
+    .attr("fill",(d,i)=>S[i]===0?"#FFFFFF":best&&best.i===i?c:"#DDDDDD")
+    .attr("stroke-dasharray",(d,i)=>S[i]===0?"2 2":null);
+  whG.select(".lab").transition().duration(D).attr("transform",(d,i)=>"translate("+((S[i]?6+20*Math.sqrt(S[i]/max):6)+6*K)+","+(-2*K)+")");
+  whG.select(".n").text(d=>d.n);
+  whG.select(".q").text((d,i)=>S[i]?sp(S[i])+" pcs":"Out of stock");
+  const dp=proj([st.dest.lo,st.dest.la]);
+  destG.transition().duration(D).attr("transform","translate("+dp+")");
+  destT.text(st.dest.n);
+  const res=document.getElementById("res");
+  if(best){
+    const b=band(best.km),ln={type:"LineString",coordinates:[[best.w.lo,best.w.la],[st.dest.lo,st.dest.la]]};
+    line.attr("d",path(ln)).attr("stroke",c==="#FECDC0"||c==="#CDDB65"?"#5B5B5B":c);
+    const L=line.node().getTotalLength();
+    line.attr("stroke-dasharray",L+" "+L).attr("stroke-dashoffset",L).transition().duration(D*1.2).attr("stroke-dashoffset",0);
+    if(lastBest!==best.i&&!reduce){whG.filter((d,i)=>i===best.i).select(".ring").attr("r",10).attr("opacity",1).transition().duration(900).attr("r",40).attr("opacity",0);}
+    lastBest=best.i;
+    res.innerHTML='<div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">Ships from</div><div class="big">'+best.w.n+'</div>'+
+      '<div class="row"><span>Distance</span><b>'+sp(best.km)+' km</b></div>'+
+      '<div class="row"><span>Surcharge band</span><b>'+b[1]+' · '+b[2]+' %</b></div>'+
+      '<div class="row"><span>In stock</span><b>'+sp(best.q)+' pcs</b></div>'+
+      '<div class="row"><span>Lead time</span><b>1–5 working days</b></div>';
+  }else{
+    line.attr("d",null);lastBest=null;
+    res.innerHTML='<div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">No single warehouse</div><div class="big">'+sp(st.q)+' pcs not in one place</div><div class="row"><span>Split the order across warehouses, or use Floating stock.</span></div>';
+  }
+  document.getElementById("list").innerHTML=rows.map(r=>'<div class="r'+(best&&best.i===r.i?' best':'')+'"><span style="font-weight:'+(best&&best.i===r.i?700:300)+'">'+r.w.n+'</span><span class="k">'+sp(r.km)+' km</span><b>'+(r.q?sp(r.q)+' pcs':'—')+'</b></div>').join("");
+}
+applyScale();
+update();
+})();
+</script>
+</body>
+</html>

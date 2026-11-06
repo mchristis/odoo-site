@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;font-family:var(--font-web);color:#4F4F4E;">
+  <div style="border-top:1px solid #D4D4D4;padding-top:40px;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ accent }};margin-bottom:16px;">Automatic warranty documentation</div>
+    <h2 style="margin:0 0 8px;font-size:32px;font-weight:400;line-height:1.2;">{{ heading }}</h2>
+    <h2 style="margin:0 0 24px;font-size:32px;font-weight:300;line-height:1.2;color:#898989;">The warranty is not assumed. It is confirmed.</h2>
+    <p style="margin:0 0 40px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;max-width:860px;">{{ intro }}</p>
+
+    <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:40px;gap:12px;--cg:12px;">
+      <sc-for list="{{ flow }}" as="f" hint-placeholder-count="4">
+        <div style="padding:24px 20px;background:#F4F4F4;border-radius:12px;">
+          <div style="font-size:11px;font-weight:700;color:{{ accent }};margin-bottom:12px;">{{ f.n }}</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;">{{ f.title }}</div>
+          <div style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">{{ f.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;--cg:32px;">
+      <div style="padding:28px;background:#F4F4F4;border-radius:12px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">What the {{ productName }} PDF contains</div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ contents }}" as="c" hint-placeholder-count="8">
+            <div style="display:flex;gap:10px;padding:10px 0;border-top:1px solid #D4D4D4;">
+              <span style="color:{{ accent }};font-size:12px;flex:none;">&#10003;</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ c }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <div style="padding:24px;background:#F4F4F4;border-radius:12px;">
+          <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:10px;">Two versions, one record</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);margin-bottom:12px;">The installer receives the full technical dossier — serial numbers, factory data, measurements, configuration and commissioning tests. The buyer receives a clear confirmation of the products installed, warranty start and duration, and factory-test confirmation, without interpreting a technical report.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:6px 12px;background:#F4F5F4;color:#5F5E5E;border-radius:8px;">Installer: technical dossier</span>
+            <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:6px 12px;background:#F4F5F4;color:#5F5E5E;border-radius:8px;">Buyer: warranty confirmation</span>
+          </div>
+        </div>
+        <div style="padding:16px 24px;background:#F4F5F4;border-radius:12px;">
+          <p style="margin:0 0 8px;font-size:14px;font-weight:400;font-style:italic;color:#4F4F4E;line-height:1.6;max-width:760px;">Scan or tap during installation. Receive the complete proof automatically.</p>
+          <p style="margin:0;font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);max-width:760px;">This applies to every eligible Strohm.energy product carrying a QR code or NFC identity — a distinctive STRØHM.ENERGY standard connecting factory records, installation data and warranty confirmation across the whole system.</p>
+        </div>
+        <div style="aspect-ratio:16/10;">
+          <image-slot id="{{ slotId }}" shape="rounded" radius="12" placeholder="{{ placeholder }}"></image-slot>
+        </div>
+      </div>
+    </div>
+
+    <!-- MANUAL FALLBACK -->
+    <div style="margin-top:32px;background:#F4F4F4;border-radius:12px;">
+      <div style="padding:28px 28px 0;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:{{ accent }};margin-bottom:12px;">No automatic PDF? Register it here.</div>
+        <h3 style="margin:0 0 8px;font-size:22px;font-weight:400;line-height:1.25;">Installer did not register the installation? You can still get your certificate.</h3>
+        <p style="margin:0 0 24px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:820px;">If the installer did not complete the automatic EMON registration, upload a few photos and some basic details here. STRØHM.ENERGY reviews the submission and issues your {{ productName }} warranty certificate.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:0;border-top:1px solid #D4D4D4;">
+        <div style="padding:28px;border-right:1px solid #D4D4D4;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">1 · Upload photos</div>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;--cg:12px;">
+            <sc-for list="{{ uploadSlots }}" as="u" hint-placeholder-count="4">
+              <div style="aspect-ratio:4/3;">
+                <image-slot id="{{ u.id }}" shape="rounded" radius="8" placeholder="{{ u.label }}"></image-slot>
+              </div>
+            </sc-for>
+          </div>
+          <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);max-width:760px;">Clear photos of the product label (serial number / QR code), the installed product and the overall installation.</p>
+        </div>
+        <div style="padding:28px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:16px;">2 · Basic details</div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <sc-for list="{{ fields }}" as="fld" hint-placeholder-count="6">
+              <div>
+                <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#5F5E5E;margin-bottom:6px;">{{ fld.label }}</label>
+                <input type="text" placeholder="{{ fld.ph }}" style="width:100%;box-sizing:border-box;padding:11px 14px;border:1px solid #D4D4D4;font-size:var(--web-input-size);font-family:inherit;color:#4F4F4E;background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);" />
+              </div>
+            </sc-for>
+            <label style="display:flex;gap:10px;align-items:flex-start;margin-top:4px;">
+              <input type="checkbox" style="margin-top:3px;flex:none;" />
+              <span style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">I confirm these details are accurate and accept the warranty terms.</span>
+            </label>
+            <button style="cursor:pointer;font-family:inherit;font-size:var(--cta-font,16px);font-weight:400;padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;border:none;align-self:flex-start;min-height:var(--cta-height,56px);border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Request warranty certificate</button>
+            <p style="margin:0;font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);max-width:760px;">STRØHM.ENERGY reviews your submission and issues the certificate to your email and EMON account. Review typically takes a few business days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1400, &quot;height&quot;: 800}, &quot;accent&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#21AE8F&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;heading&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;From factory test to installed warranty.&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;productName&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;product&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;intro&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;slotId&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;warranty-pdf-img&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;placeholder&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;}, &quot;flow&quot;: {&quot;editor&quot;: null, &quot;tsType&quot;: &quot;Array&lt;{n:string,title:string,desc:string}&gt;&quot;}, &quot;contents&quot;: {&quot;editor&quot;: null, &quot;tsType&quot;: &quot;string[]&quot;}, &quot;uploadLabels&quot;: {&quot;editor&quot;: null, &quot;tsType&quot;: &quot;string[]&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accent: this.props.accent ?? "#21AE8F",
+      heading: this.props.heading ?? "From factory test to installed warranty.",
+      productName: this.props.productName ?? "product",
+      intro: this.props.intro ?? "Every eligible product carries a unique QR code, NFC identity or both, connecting the physical product to its factory data, installation record, commissioning results and warranty status. When the installer scans or taps it during installation, the product is added to the project in EMON. After commissioning is approved, EMON automatically creates a product-specific PDF — no separate registration, no uncertain serial-number lists, no missing warranty confirmation.",
+      slotId: this.props.slotId ?? "warranty-pdf-img",
+      placeholder: this.props.placeholder ?? "Drop a sample warranty PDF / dossier page",
+      flow: this.props.flow ?? [
+        { n: "01", title: "Factory test", desc: "Production and test data are linked to the serial number before the product ships." },
+        { n: "02", title: "Scan or tap", desc: "The installer adds the exact product to the project via QR or NFC." },
+        { n: "03", title: "Commission", desc: "Installation and test values are recorded and approved in EMON." },
+        { n: "04", title: "Receive the PDF", desc: "Installer and buyer are sent the product-specific dossier automatically." },
+      ],
+      contents: this.props.contents ?? [],
+      uploadSlots: (this.props.uploadLabels ?? [
+        "Product label / serial + QR",
+        "Installed product",
+        "Overall installation",
+        "Optional extra photo",
+      ]).map((label, i) => ({ id: (this.props.slotId ?? "wf") + "-up" + (i + 1), label })),
+      fields: [
+        { label: "Product model / article code", ph: "e.g. " + (this.props.productName ?? "product") + " …" },
+        { label: "Serial number", ph: "From the product label" },
+        { label: "Installation address", ph: "Street, city, country" },
+        { label: "Installation date", ph: "DD / MM / YYYY" },
+        { label: "Installer (if known)", ph: "Company or name" },
+        { label: "Your email", ph: "name@example.com" },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>Overview | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<style>
+  body { margin:0; background:#F7F7F5; }
+  a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:#898989; }
+  html { scroll-behavior:smooth; }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;color:var(--color-text-primary);min-height:100vh;">
+  <dc-import name="NavBar" active="projects" hint-size="100%,80px"></dc-import>
+
+  <dc-import name="BrandHero2" brand="PROJECTS" rgb="200,200,200" dark="#4F4F4E" title="Our products. Your projects." intro="" items="{{ heroItems }}" hint-size="100%,760px"></dc-import><div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+    <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:48px;padding:96px 0 104px;">
+      
+      <div style="padding-top:48px;max-width:640px;">
+        <p style="margin:0 0 28px;font-size:var(--web-lead-size);line-height:var(--web-lead-lh);font-weight:var(--web-lead-weight);max-width:760px;">We develop and manufacture connected energy products. Our EPC customers turn them into working projects.</p>
+        <p style="margin:0 0 40px;font-size:var(--web-body-size);line-height:var(--web-body-lh);font-weight:var(--web-body-weight);color:#898989;max-width:760px;">From homes to commercial buildings and utility infrastructure, local partners lead engineering, procurement and construction. STRØHM.ENERGY supports the products behind the installation.</p>
+        <a href="#environments" style="display:flex;justify-content:space-between;align-items:center;max-width:360px;padding:0 0 18px;font-size:var(--web-small-size);">Explore project applications <span style="font-size:var(--web-lead-size);">&#8600;</span></a>
+      </div>
+    </section>
+
+    <section id="environments" style="padding:72px 0 0;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:56px;">
+        <h2 style="margin:0;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Find your <span style="color:#898989;">project environment</span></h2>
+        <span style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;font-weight:var(--web-eyebrow-weight);">01 / Applications</span>
+      </div>
+      <div role="tablist" data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));--cg:0px;">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+          <button role="tab" onClick="{{ t.onClick }}" style="font-family:inherit;cursor:pointer;background:none;border:none;border-bottom:3px solid {{ t.bar }};text-align:left;padding:0 0 28px;margin-bottom:-1px;display:flex;align-items:flex-start;gap:14px;">
+            <span style="font-size:var(--web-h2-size);font-weight:300;letter-spacing:-0.01em;color:{{ t.color }};">{{ t.label }}</span>
+            <span style="font-size:var(--web-eyebrow-size);color:{{ t.color }};margin-top:6px;font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);">{{ t.n }}</span>
+          </button>
+        </sc-for>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;padding:56px 0 48px;align-items:start;">
+        <div style="max-width:640px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;margin-bottom:24px;">{{ env.eyebrow }}</div>
+          <h3 style="margin:0 0 24px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">{{ env.title }}</h3>
+          <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);font-weight:var(--web-body-weight);color:#898989;max-width:760px;">{{ env.body }}</p>
+        </div>
+        <div>
+          <div role="img" aria-label="{{ env.imgAria }}" data-slot="{{ env.slot }}" style="aspect-ratio:2.7/1;background:var(--color-surface-card-mid);border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">Image · {{ env.slot }}</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;margin-top:14px;line-height:var(--web-small-lh);">Application imagery · STRØHM.ENERGY design reference</div>
+        </div>
+      </div>
+
+      <div style="background:var(--color-card-strohm);border-radius:12px;padding:28px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px 32px;align-items:end;">
+        <label style="display:flex;flex-direction:column;gap:12px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Project country
+          <select onChange="{{ onCountry }}" value="{{ country }}" style="font-family:inherit;font-size:var(--web-input-size);background:transparent;border:none;border-bottom:1px solid var(--color-grey-40);padding:10px 4px;color:var(--color-text-primary);font-weight:var(--web-input-weight);">
+            <sc-for list="{{ countries }}" as="c" hint-placeholder-count="1"><option value="{{ c }}">{{ c }}</option></sc-for>
+          </select>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:12px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);">Product range
+          <select onChange="{{ onProduct }}" value="{{ product }}" style="font-family:inherit;font-size:var(--web-input-size);background:transparent;border:none;border-bottom:1px solid var(--color-grey-40);padding:10px 4px;color:var(--color-text-primary);font-weight:var(--web-input-weight);">
+            <sc-for list="{{ products }}" as="p" hint-placeholder-count="8"><option value="{{ p.value }}">{{ p.label }}</option></sc-for>
+          </select>
+        </label>
+        <button onClick="{{ reset }}" style="font-family:inherit;cursor:pointer;background:none;border:none;font-size:var(--web-body-size);text-align:left;padding:10px 0;">Reset filters &#8634;</button>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:28px 0 20px;font-size:var(--web-small-size);line-height:var(--web-small-lh);">
+        <span>{{ countLabel }}</span>
+        <span style="font-weight:300;color:#898989;">Application examples, not completed project references</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:0 32px;">
+        <sc-for list="{{ apps }}" as="a" hint-placeholder-count="3">
+          <div style="padding:32px 0 48px;display:flex;flex-direction:column;gap:16px;">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;letter-spacing:0.04em;">{{ a.n }} / {{ a.envUpper }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ a.title }}</div>
+            <div style="font-size:var(--web-body-size);line-height:var(--web-body-lh);font-weight:300;color:#898989;min-height:3.1em;">{{ a.body }}</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+              <sc-for list="{{ a.tags }}" as="g" hint-placeholder-count="5"><span style="font-size:var(--web-tag-size);padding:8px 10px;background:var(--color-surface-card-mid);border-radius:8px;font-weight:var(--web-tag-weight);">{{ g }}</span></sc-for>
+            </div>
+            <a href="{{ a.href }}" style="display:flex;justify-content:space-between;font-size:var(--web-body-size);margin-top:12px;">View application <span>&#8599;</span></a>
+          </div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ noApps }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:32px 0;font-size:var(--web-body-size);font-weight:300;color:#898989;line-height:var(--web-body-lh);">No application examples match that product range yet.</div>
+      </sc-if>
+
+      <sc-if value="{{ showCase }}" hint-placeholder-val="{{ true }}">
+        <div style="background:var(--color-surface-card-mid);border-radius:12px;padding:48px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:24px;">
+          <div style="max-width:760px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;margin-bottom:32px;">Netherlands / Residential / Concept case study</div>
+            <div style="font-size:var(--web-h2-size);line-height:1.15;font-weight:300;letter-spacing:-0.01em;margin-bottom:28px;">Shared rooftop solar.<br>One coordinated energy system.</div>
+            <div style="font-size:var(--web-body-size);margin-bottom:24px;line-height:var(--web-body-lh);">Rotterdam · 14 homes · 18,48 kWp solar · 56 kWh storage</div>
+            <div style="font-size:var(--web-body-size);line-height:var(--web-body-lh);font-weight:300;color:#898989;">Case study supplied in the design material. Project status and performance figures await confirmation.</div>
+          </div>
+          <a href="STROHM.ENERGY - PROJECT - Case Study - EN.dc.html" style="display:flex;gap:40px;justify-content:space-between;min-width:300px;padding-bottom:18px;font-size:var(--web-body-size);">Read the concept case study <span>&#8599;</span></a>
+        </div>
+      </sc-if>
+    </section>
+
+    <section style="padding:88px 0 0;margin-top:88px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:56px;">
+        <h2 style="margin:0;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Clear roles. <span style="color:#898989;">Connected delivery.</span></h2>
+        <span style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;font-weight:var(--web-eyebrow-weight);">02 / Responsibility</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:64px;">
+        <sc-for list="{{ roles }}" as="r" hint-placeholder-count="2">
+          <div style="background:{{ r.bg }};border-radius:12px;padding:48px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;margin-bottom:40px;">{{ r.eyebrow }}</div>
+            <div style="font-size:var(--web-h2-size);font-weight:300;letter-spacing:-0.01em;margin-bottom:24px;">{{ r.title }}</div>
+            <div style="font-size:var(--web-h3-size);line-height:var(--web-h3-lh);font-weight:300;color:#898989;margin-bottom:32px;max-width:640px;">{{ r.body }}</div>
+            <sc-for list="{{ r.items }}" as="i" hint-placeholder-count="4">
+              <div style="padding:18px 0;font-size:var(--web-body-size);line-height:var(--web-body-lh);">{{ i }}</div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:40px 0 0;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#898989;max-width:1000px;">The final division of responsibilities is defined in each project agreement. Product selection depends on site conditions, technical compatibility and local requirements.</p>
+    </section>
+
+    <section style="padding:88px 0 0;margin-top:88px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:40px;">
+        <h2 style="margin:0;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">From requirement <span style="color:#898989;">to supported product</span></h2>
+        <span style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;font-weight:var(--web-eyebrow-weight);">03 / Development</span>
+      </div>
+      <p style="margin:0 0 56px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">A project can expose a product requirement that standard equipment does not resolve. Development starts by defining that requirement and agreeing a feasible scope.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:40px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+          <div>
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;margin-bottom:28px;">{{ s.n }} / {{ s.k }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:24px;line-height:var(--web-h3-lh);">{{ s.t }}</div>
+            <div style="font-size:var(--web-body-size);line-height:var(--web-body-lh);font-weight:300;color:#898989;">{{ s.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:40px 0 0;font-size:var(--web-small-size);font-weight:300;color:#898989;max-width:760px;line-height:var(--web-small-lh);">Custom development, test programmes and manufacturing scope are agreed for each requirement.</p>
+    </section>
+
+    <section style="padding:88px 0 0;margin-top:88px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:40px;">
+        <h2 style="margin:0;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Specialists within <span style="color:#898989;">one ecosystem</span></h2>
+        <span style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;font-weight:var(--web-eyebrow-weight);">04 / Product brands</span>
+      </div>
+      <p style="margin:0 0 40px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">Each brand has a defined technical role. Select a product brand to explore its project applications.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:0 32px;">
+        <sc-for list="{{ brands }}" as="b" hint-placeholder-count="20">
+          <a href="{{ b.href }}" style="display:flex;flex-direction:column;gap:12px;padding:32px 0;">
+            <span style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ b.code }}</span>
+            <span style="font-size:var(--web-body-size);font-weight:300;color:#898989;line-height:var(--web-body-lh);">{{ b.sub }}</span>
+          </a>
+        </sc-for>
+      </div>
+      <button onClick="{{ toggleSystems }}" style="font-family:inherit;cursor:pointer;width:100%;background:none;border:none;border-bottom:1px solid var(--color-divider);display:flex;justify-content:space-between;padding:36px 0;font-size:var(--web-body-size);color:var(--color-text-primary);margin-top:40px;">Software and partner infrastructure <span>{{ systemsSign }}</span></button>
+      <sc-if value="{{ systemsOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:0 32px;">
+          <sc-for list="{{ systems }}" as="s" hint-placeholder-count="7">
+            <div style="display:flex;flex-direction:column;gap:8px;padding:24px 0;">
+              <span style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ s.code }}</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">{{ s.sub }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </section>
+
+    <div style="display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:64px 0;margin-top:88px;font-size:var(--web-body-size);font-weight:300;color:var(--color-text-primary);">
+      <span style="font-size:var(--web-lead-size);font-weight:500;letter-spacing:-0.02em;color:var(--color-text-primary);">STRØHM.ENERGY<span style="font-weight:400;">.ENERGY</span></span>
+      <span>Engineered and manufactured by STRØHM.ENERGY.<br>Projects delivered by our EPC customers.</span>
+    </div>
+  </div>
+  <div style="height:48px;"></div>
+  <dc-import name="ReachSpecialist" brand="PROJECTS" lead="TO CONFIRM" photo-slot-id="projects-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const ENVS = [
+  { key: "Residential", n: "01", eyebrow: "Home systems", title: "Energy, connected at home.", slot: "proj-env-residential",
+    body: "For individual homes, apartment buildings and residential communities. EPC customers specify and install the system around the building and its occupants.",
+    href: "STROHM.ENERGY - PROJECT - Residential - EN.dc.html",
+    apps: [
+      { title: "Solar and home storage", body: "Coordinate rooftop generation, battery storage and household energy use.", tags: ["ANDO", "MOX", "MOEBIUS", "FLUXX"], more: 4 },
+    ] },
+  { key: "Commercial", n: "02", eyebrow: "Business systems", title: "Built around your operation.", slot: "proj-env-commercial",
+    body: "For businesses, agriculture and industry. EPC customers coordinate site engineering and installation around energy demand, operating hours and available space.",
+    href: "STROHM.ENERGY - PROJECT - Commercial - EN.dc.html",
+    apps: [
+      { title: "Rooftop solar and storage", body: "Combine generation, power conversion and storage around a building\u2019s operating profile.", tags: ["ANDO", "MOX", "FLUXX", "MOEBIUS"], more: 4 },
+      { title: "Workplace and fleet charging", body: "Connect EV charging and energy infrastructure to the site\u2019s available power and control strategy.", tags: ["XOOM", "CHILL", "SHELTR", "GLOW"], more: 3 },
+      { title: "Agricultural and remote sites", body: "Assess solar, wind, storage and mounting requirements for productive land and remote facilities.", tags: ["ANDO", "PROP", "MOX", "MOEBIUS"], more: 5 },
+    ] },
+  { key: "Utility", n: "03", eyebrow: "Grid scale systems", title: "Engineered for a larger scale.", slot: "proj-env-utility",
+    body: "For large energy and infrastructure projects. EPC customers lead site engineering, grid coordination and construction, supported by defined product specifications.",
+    href: "STROHM.ENERGY - PROJECT - Utility - EN.dc.html",
+    apps: [
+      { title: "Battery energy storage", body: "Specify battery storage, power conversion and monitoring as part of a site-engineered system.", tags: ["FLUXX", "MOEBIUS", "SYNQ", "TOGU"], more: 3 },
+      { title: "Distributed generation and microgrids", body: "Evaluate generation, storage and controls for coordinated local energy infrastructure.", tags: ["ANDO", "PROP", "FLUXX", "MOEBIUS"], more: 4 },
+    ] },
+];
+const BRANDS = [
+  ["ANDO", "Solar generation", "ANDO - PRODUCT - Overview - EN.dc.html"], ["MOEBIUS", "Power conversion", "MOEBIUS - PRODUCT - Overview - EN.dc.html"], ["FLUXX", "Energy storage", "FLUXX - PRODUCT - Overview - EN.dc.html"], ["SYNQ", "Energy metering", "SYNQ - PRODUCT - Overview - EN.dc.html"],
+  ["OZZY", "Energy switching", "OZZY - PRODUCT - Overview - EN.dc.html"], ["NENDO", "Thermal systems", "NENDO - PRODUCT - Overview - EN.dc.html"], ["MOX", "Structural mounting", "MOX - PRODUCT - Overview - EN.dc.html"], ["TOGU", "Electrical connectivity", "TOGU - PRODUCT - Overview - EN.dc.html"],
+  ["OGO", "Water systems", "OGO - PRODUCT - Overview - EN.dc.html"], ["XOOM", "EV charging", "XOOM - PRODUCT - Overview - EN.dc.html"], ["CHILL", "Energy-integrated infrastructure", "CHILL - PRODUCT - Overview - EN.dc.html"], ["FEU", "Radiant heating", "FEU - PRODUCT - Overview - EN.dc.html"],
+  ["GLOW", "Solar lighting", "GLOW - PRODUCT - Overview - EN.dc.html"], ["PROP", "Wind generation", "PROP - PRODUCT - Overview - EN.dc.html"], ["AIRO", "Airflow systems", "AIRO - PRODUCT - Overview - EN.dc.html"], ["SHELTR", "Asset protection", "SHELTR - PRODUCT - Overview - EN.dc.html"],
+  ["MUKI", "Energy sets, defined", "MUKI - PRODUCT - Overview - EN.dc.html"], ["WURK", "Installation equipment", "WURK - PRODUCT - Overview - EN.dc.html"], ["DODO", "Bird protection", "DODO - PRODUCT - Overview - EN.dc.html"], ["EMON", "Energy management", "EMON - SYSTEM - Overview - EN.dc.html"],
+];
+const SYSTEMS = [
+  ["KALK", "Energy calculation"], ["TRIBE", "Distributed energy systems"], ["PUSH", "Installer growth"], ["PACT", "Group purchasing"], ["KERN", "Operational control"], ["DEPOT", "Supply infrastructure"],
+];
+const ROLES = [
+  { eyebrow: "STROHM.ENERGY", title: "The manufacturer", body: "Product development, manufacturing and the connected software platform.", bg: "#F4F4F4",
+    items: ["Product specifications and technical documentation", "Product selection and integration support", "Commissioning guidance and product training", "Product warranty and lifecycle support"] },
+  { eyebrow: "Our EPC customers", title: "The project executor", body: "Local engineering, procurement and construction for the project owner.", bg: "#E3E3E3",
+    items: ["Site assessment and detailed project engineering", "Local approvals and grid coordination", "Installation, integration and commissioning", "Site handover and contracted project services"] },
+];
+const STEPS = [
+  { n: "01", k: "Define", t: "Understand the requirement", d: "Describe the use case, installation constraints, interfaces and expected performance. Establish the technical brief before selecting a solution." },
+  { n: "02", k: "Develop", t: "Design and evaluate", d: "Review product architecture, materials and integration. Agree the need for prototypes, tooling and product-specific testing." },
+  { n: "03", k: "Verify", t: "Set acceptance criteria", d: "Define the checks, documentation and quality requirements needed to assess the product against its intended use." },
+  { n: "04", k: "Deliver", t: "Prepare for the field", d: "Coordinate manufacturing, documentation and product support with the EPC customer\u2019s installation programme." },
+];
+const RANGE = ["ANDO", "MOEBIUS", "FLUXX", "SYNQ", "TOGU", "MOX", "PROP", "XOOM", "CHILL", "SHELTR", "GLOW"];
+
+const HERO_ITEMS = [{"label":"Project environment","heading":"Find your project environment","sentence":"TO CONFIRM","media":{"type":"slot","slot":"strohm-energy-overview-hero","alt":"PROJECTS hero picture 1"}},{"label":"Clear roles","heading":"Clear roles. Connected delivery.","sentence":"The final division of responsibilities is defined in each project agreement.","media":{"type":"slot","slot":"project-hero-2","alt":"PROJECTS hero picture 2"}},{"label":"Requirement to product","heading":"From requirement to supported product","sentence":"TO CONFIRM","media":{"type":"slot","slot":"project-hero-3","alt":"PROJECTS hero picture 3"}},{"label":"Specialists","heading":"Specialists within one ecosystem","sentence":"Each brand has a defined technical role.","media":{"type":"slot","slot":"project-hero-4","alt":"PROJECTS hero picture 4"}}];
+class Component extends DCLogic {
+  renderVals() { return Object.assign({}, this._rvBase(), { heroItems: HERO_ITEMS }); }
+  state = { env: 0, country: "All countries", product: "All", systemsOpen: false };
+  componentDidMount() {
+    const q = new URLSearchParams(location.search);
+    const e = ENVS.findIndex((x) => x.key === q.get("environment"));
+    const p = q.get("product");
+    this.setState({ env: e >= 0 ? e : 0, product: p && RANGE.includes(p) ? p : "All" });
+  }
+  _rvBase() {
+    const st = this.state; const env = ENVS[st.env];
+    const apps = env.apps.filter((a) => st.product === "All" || a.tags.includes(st.product));
+    const sub = Object.fromEntries(BRANDS.map((b) => [b[0], b[1]]));
+    return {
+      tabs: ENVS.map((e, i) => ({ label: e.key, n: e.n, onClick: () => this.setState({ env: i }), color: i === st.env ? "#4F4F4E" : "#AEAEAE", bar: i === st.env ? "#4F4F4E" : "transparent" })),
+      env: { ...env, imgAria: "Application image: " + env.key.toLowerCase() + " project environment" },
+      countries: ["All countries"], country: st.country, onCountry: (e) => this.setState({ country: e.target.value }),
+      products: [{ value: "All", label: "All product ranges" }].concat(RANGE.map((r) => ({ value: r, label: r + " \u00b7 " + sub[r] }))),
+      product: st.product, onProduct: (e) => this.setState({ product: e.target.value }),
+      reset: () => this.setState({ country: "All countries", product: "All" }),
+      countLabel: apps.length + (apps.length === 1 ? " application" : " applications") + " / " + env.key,
+      apps: apps.map((a, i) => ({ ...a, n: String(i + 1).padStart(2, "0"), envUpper: env.key.toUpperCase(), href: env.href, tags: a.tags.concat(a.more ? ["+" + a.more] : []) })),
+      noApps: apps.length === 0,
+      showCase: env.key === "Residential",
+      roles: ROLES, steps: STEPS,
+      brands: BRANDS.map((b) => ({ code: b[0], sub: b[1], href: b[2] })),
+      systems: SYSTEMS.map((s) => ({ code: s[0], sub: s[1] })),
+      systemsOpen: st.systemsOpen, systemsSign: st.systemsOpen ? "\u2212" : "+",
+      toggleSystems: () => this.setState((s) => ({ systemsOpen: !s.systemsOpen })),
+    };
+  }
+}
+</script>
+</body>
+</html>

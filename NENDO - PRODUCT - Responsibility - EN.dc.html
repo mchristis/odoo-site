@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>NENDO Responsibility | STRØHM.ENERGY</title>
+<meta name="robots" content="noindex">
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="NendoNav" active="responsibility" hint-size="100%,57px"></dc-import>
+  <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:16px var(--web-side);box-sizing:border-box;font-size:12px;font-weight:700;letter-spacing:0.08em;color:#B07818;border-bottom:1px solid var(--color-divider);">DRAFT. Temporary text written without a NENDO source. Standards are named as applicable, not as held. Replace before publishing.</div>
+  <dc-import name="BrandResponsibility" brand="NENDO" unit="heat pump" intro="{{ intro }}" durability="{{ durability }}" materials="{{ materials }}" certs="{{ certs }}" packaging="{{ packaging }}" eol="{{ eol }}" hint-size="100%,2400px"></dc-import>
+  <dc-import name="ContentSections" brand="NENDO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="NENDO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="NENDO" accent="#4F4F4E" hint-size="100%,520px"></dc-import>
+  <section id="hot-water" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;"><div style="border-top:1px solid #D9D9D9;padding-top:32px;"><details><summary style="cursor:pointer;min-height:44px;display:flex;align-items:center;font-size:var(--web-small-size);color:#4F4F4E;text-decoration:underline;text-underline-offset:3px;">Read more: Hot water (heat pump boilers)</summary><div style="padding-top:16px;"><dc-import name="NendoHwResponsibility" hint-size="100%,800px"></dc-import></div></details></div></section>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const TC = (w) => `[TO CONFIRM: ${w}]`;
+    return {
+      intro: "Measured performance, a declared refrigerant, audited management systems and a documented end-of-life route. Every claim on this page is linked to a document.",
+      durability: [
+        { test: "Heating capacity and COP", standard: "EN 14511 (applicable)", result: TC("result per model") },
+        { test: "Seasonal performance (SCOP)", standard: "EN 14825 (applicable)", result: TC("result per model") },
+        { test: "Sound power", standard: "EN 12102-1 (applicable)", result: TC("dB(A) per model") },
+        { test: "Electrical and refrigerant safety", standard: "EN 60335-2-40 (applicable)", result: TC("result per model") },
+      ],
+      materials: [
+        { label: "Refrigerant", headline: "Refrigerant declared per family.", value: "R290 is stated for AERO. " + TC("refrigerant and charge per family") + " F-gas Regulation (EU) 2024/573 applies to fluorinated refrigerants.", dir: "NENDO_RESPONSIBILITY_MATERIALS_REFRIGERANT_01 · refrigerant circuit or rating-plate detail · 16:10 · placeholder (P2)" },
+        { label: "Declarations", headline: "Substances declared, not assumed.", value: "REACH and RoHS declarations and Ecodesign data per model. " + TC("which declarations exist"), dir: "NENDO_RESPONSIBILITY_MATERIALS_DECLARATION_01 · declaration document preview · 16:10 · placeholder (P2)" },
+      ],
+      certs: [
+        { code: "ISO 9001", label: "Quality management " + TC("held for NENDO facilities") },
+        { code: "ISO 14001", label: "Environmental management " + TC("held for NENDO facilities") },
+        { code: "ISO 45001", label: "Occupational health and safety " + TC("held for NENDO facilities") },
+      ],
+      packaging: TC("packaging materials and pallet take-back"),
+      eol: [
+        "Heat pump in use",
+        "Refrigerant recovered by a certified technician",
+        "Separate collection under the WEEE Directive 2012/19/EU",
+        "Approved treatment and material recovery",
+        "Recycling record",
+        "Closed ownership record",
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

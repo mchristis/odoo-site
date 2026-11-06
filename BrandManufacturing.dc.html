@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>[data-mfg="1"],[data-mfg="1"] *{color:#D6291F !important;border-color:#D6291F !important;}</style>
+<link rel="stylesheet" href="strohm-type.css">
+<script src="./image-slot.js"></script>
+<script src="manufacturing-data.js"></script>
+<script src="manufacturing-process-data.js"></script>
+<script src="manufacturing-detail-data.js"></script>
+</helmet>
+<div data-mfg="{{ mfgFlag }}" style="font-family:var(--font-web);color:#4F4F4E;">
+  <dc-import name="BrandHero2" brand="{{ brand }}" rgb="{{ heroRgb }}" dark="{{ heroDark }}" title="{{ headline }}" intro="{{ heroIntro }}" items="{{ heroItems }}" hint-size="100%,760px"></dc-import><section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;"><div style="font-size:12px;font-weight:300;color:#8A8A88;margin-bottom:20px;display:flex;gap:6px;"><a href="{{ overview }}" style="color:#8A8A88;">{{ brand }}</a><span>&#8250;</span><span style="color:#5F5E5E;">ENGINEERING AND MANUFACTURING</span></div><sc-if value="{{ hasClaim }}" hint-placeholder-val="{{ false }}"><p style="margin:8px 0 0;font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);max-width:780px;">{{ claim }}</p></sc-if>
+    <sc-if value="{{ draft }}" hint-placeholder-val="{{ false }}"><div style="margin-top:16px;font-size:12px;font-weight:700;letter-spacing:0.06em;color:#B07818;">DRAFT · brand-specific values TO CONFIRM</div></sc-if>
+  </section>
+  <sc-if value="{{ walk }}" hint-placeholder-val="{{ false }}">
+  <div id="mfg-walk" style="scroll-margin-top:156px;padding-top:48px;"><dc-import name="FactoryWalk" set="{{ walkSet }}" three="{{ walkThree }}" start="{{ walkStart }}" chapter="{{ walkChapter }}" film="{{ walkFilm }}" hint-size="100%,900px"></dc-import></div>
+  </sc-if>
+  <sc-if value="{{ notWalk }}" hint-placeholder-val="{{ true }}">
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:48px var(--web-side) 0;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;">
+    <sc-for list="{{ slots }}" as="s" hint-placeholder-count="3">
+      <figure style="margin:0;display:flex;flex-direction:column;gap:8px;"><div style="aspect-ratio:4/3;background:#F5F5F5;border-radius:12px;overflow:hidden;"><image-slot id="{{ s.id }}" shape="rounded" radius="12" placeholder="{{ s.ph }}"></image-slot></div><figcaption style="font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">{{ s.cap }}</figcaption></figure>
+    </sc-for>
+  </section>
+
+  <section id="mfg-engineering" style="scroll-margin-top:156px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px;">
+      <sc-for list="{{ points }}" as="p" hint-placeholder-count="9">
+        <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;">
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#8A8A88;">{{ p.num }}</span>
+          <span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ p.t }}</span>
+          <span style="font-size:14px;font-weight:300;line-height:1.6;color:{{ p.fg }};">{{ p.d }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <sc-if value="{{ hasProc }}" hint-placeholder-val="{{ false }}">
+  <section id="mfg-process" style="scroll-margin-top:156px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:24px;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">How {{ brand }} is made</div><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;border:1px solid #B07818;padding:2px 8px;border-radius:4px;text-transform:uppercase;">SAMPLE</span></div>
+      <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#4F4F4E;max-width:760px;">{{ procCap }}</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;">
+        <div style="background:#F4F4F4;border-radius:var(--radius-card,12px);padding:20px;display:flex;flex-direction:column;gap:12px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Machine park</div>
+          <sc-for list="{{ procMachines }}" as="m" hint-placeholder-count="5"><div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#4F4F4E;border-top:1px solid #DDDDDD;padding-top:8px;">{{ m }}</div></sc-for>
+        </div>
+        <div style="background:#F4F4F4;border-radius:var(--radius-card,12px);padding:20px;display:flex;flex-direction:column;gap:12px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Process</div>
+          <sc-for list="{{ procSteps }}" as="p" hint-placeholder-count="5"><div style="display:flex;gap:12px;font-size:14px;line-height:1.5;color:#4F4F4E;border-top:1px solid #DDDDDD;padding-top:8px;"><span style="color:#8A8A89;min-width:22px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);">{{ p.n }}</span><span>{{ p.t }}</span></div></sc-for>
+        </div>
+        <div style="background:#F4F4F4;border-radius:var(--radius-card,12px);padding:20px;display:flex;flex-direction:column;gap:12px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">Quality control</div>
+          <sc-for list="{{ procQc }}" as="q" hint-placeholder-count="4"><div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#4F4F4E;border-top:1px solid #DDDDDD;padding-top:8px;">{{ q }}</div></sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ hasDetail }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;">
+      <sc-for list="{{ details }}" as="d" hint-placeholder-count="9">
+        <div style="border:1px solid #DDDDDD;border-radius:var(--radius-card,12px);padding:20px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">{{ d.t }}</div>
+          <sc-for list="{{ d.items }}" as="i" hint-placeholder-count="3"><div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#4F4F4E;border-top:1px solid #EEEEEE;padding-top:8px;">{{ i }}</div></sc-for>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  </sc-if>
+
+  <section id="passport" style="scroll-margin-top:156px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #1E1E1E;padding-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:10px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Digital Product Passport</div><h2 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Identified for its <span style="color:#8E8E8E;">whole life.</span></h2></div>
+      <div style="grid-column:span 2;display:flex;flex-direction:column;gap:14px;">
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:780px;">{{ dpp }}</p>
+        <a href="{{ ownership }}" style="align-self:flex-start;font-size:14px;border-bottom:1px solid #1E1E1E;padding-bottom:2px;">Ownership record and QR/NFC registration &#8250;</a>
+      </div>
+    </div>
+  </section>
+
+  </sc-if>
+  <sc-if value="{{ notWalk }}" hint-placeholder-val="{{ true }}">
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:48px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <sc-if value="{{ hasShop }}" hint-placeholder-val="{{ true }}"><a href="{{ shop }}" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">{{ shopLabel }}</a></sc-if>
+      <a href="{{ responsibility }}" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#F5F5F5;color:#4F4F4E;border-radius:var(--cta-radius,8px);font-weight:400;justify-content:center;box-sizing:border-box;">Responsibility</a>
+    </div>
+  </section>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;brand&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;TOGU&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;walk&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;walkThree&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;none&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() { const v = this.__rv(), w = this.props.walk ?? ""; const on = !!w; if (on) v.heroItems = (v.heroItems || []).map((x) => Object.assign({}, x, { href: "mfg-walk" })); return Object.assign(v, { claim: v.claim || " ", hasClaim: !!(v.claim && String(v.claim).trim()), walk: on, notWalk: !on, walkSet: w || "", walkThree: this.props.walkThree ?? "none", walkStart: this.props.walkStart ?? "", walkChapter: this.props.walkChapter ?? "", walkFilm: this.props.walkFilm ?? "", mfgFlag: on ? "0" : "1", draft: on ? false : v.draft }); }
+  __rv() { const v = this.__rv0(); return Object.assign({}, this._phVals(v), v, this._hero(Object.assign({}, v, this._phVals(v)))); }
+  _hero(v) { const b=v.brand, c={"AGRIX":["107,142,78","#3A5228"],"AIRO":["0,131,187","#004A6B"],"CHILL":["107,192,176","#2D6B60"],"DODO":["229,183,59","#7A5E14"],"FEU":["237,112,76","#8A3418"],"FLUXX":["253,199,6","#5F5E5E"],"GLOW":["252,222,21","#7A6A0A"],"LINA":["181,198,74","#4F5C12"],"MOEBIUS":["241,147,27","#5F5E5E"],"MOX":["216,57,44","#7A1C14"],"MUKI":["223,85,12","#5F5E5E"],"NENDO":["27,139,154","#0F4D55"],"OGO":["0,160,227","#005A80"],"OZZY":["139,207,63","#46701A"],"SHELTR":["91,101,146","#323A5E"],"SYNQ":["89,143,148","#2E5054"],"TOGU":["196,135,35","#6E4A12"],"WURK":["158,61,46","#5E2219"],"XOOM":["142,177,95","#4A6526"],"ANDO":["205,214,43","#5F5E5E"],"PROP":["82,122,131","#2E4A50"],"PARX":["122,147,55","#556627"],"PONTIX":["6,118,138","#04434F"],"TECTIX":["74,91,115","#2A3547"],"TERRIX":["107,117,95","#3E4536"]}[b]||["200,200,200","#4F4F4E"]; const tr=s=>{ s=String(s||"").replace(/\s+/g," ").trim(); const m=s.match(/^(?:[^.!?]|[.!?](?=\S))*[.!?](?=\s|$)/); let o=m?m[0]:s; const w=o.split(" "); if(w.length<=20) return o; const cut=o.slice(0,w.slice(0,20).join(" ").length); const k=Math.max(cut.lastIndexOf(","),cut.lastIndexOf(":")); return (k>20?cut.slice(0,k):cut)+"."; }; const sl=v.heroSlot; const intro=Array.isArray(v.intro)?v.intro[0]:v.intro; const proc=!!v.hasProc; const items=[{label:"Engineering",heading:v.points.length+" engineering points",sentence:tr(v.claim),href:"mfg-engineering"},{label:"Manufacturing",heading:"How "+b+" is made",sentence:proc?tr(v.procCap):tr(v.claim),href:proc?"mfg-process":"mfg-engineering"},{label:"Quality",heading:"Digital Product Passport",sentence:tr(v.dpp),href:"passport"}].map((x,i)=>({...x,media:{type:"slot",slot:i===0?sl:sl.replace(/-hero$/,"")+"-hero-"+(i+1),alt:b+" engineering and manufacturing hero picture "+(i+1)}})); return { heroRgb:c[0], heroDark:c[1], heroIntro:tr(intro), heroItems:items }; }
+
+  componentDidMount() { const t = () => { if (window.MFG && window.MFG_PROCESS && window.MFG_DETAIL) this.forceUpdate(); else this.t = setTimeout(t, 100); }; t(); }
+  componentWillUnmount() { clearTimeout(this.t); }
+  _phVals(v){ const b=String(v.brandName||v.brand||this.props.brand||"").toLowerCase(); const sec=String(v.sectionUpper||"engineering-and-manufacturing").toLowerCase().replace(/[^a-z0-9]+/g,"-"); return { heroSlot: b+"-"+sec+"-hero", heroShot: (v.brandName||v.brand||"")+" · "+(v.sectionUpper||"Engineering and manufacturing")+" · hero photo or short muted loop (3–6 s)" }; }
+  __rv0() {
+    const M = window.MFG || { brands: {}, base: { points: [], intro: [], headline: "", claim: "", dpp: "" } };
+    const b = this.props.brand ?? "TOGU", B = M.brands[b] || { name: b };
+    const src = B.custom || M.base;
+    const fill = (s) => String(s).split("{BRAND}").join(b).split("{DRIVER}").join(B.driver || "the main material").split("{MATERIALS}").join(B.materials || "TO CONFIRM").split("{TESTS}").join(B.tests || "TO CONFIRM").split(b === "ANDO" ? " TO CONFIRM per brand." : "\u0000").join("").split(b === "ANDO" ? " TO CONFIRM." : "\u0000").join("");
+    const N = b.toUpperCase();
+    return {
+      brand: b, overview: B.overview || "#", ownership: B.ownership || B.overview || "#", responsibility: B.responsibility || B.overview || "#",
+      shop: B.shop || "", hasShop: !!B.shop, shopLabel: "Shop " + b,
+      headline: fill(src.headline), intro: src.intro.map(fill), claim: fill(src.claim), draft: !B.custom && b !== "ANDO",
+      points: src.points.map((p, i) => { const d = fill(p[1]); return { num: String(i + 1).padStart(2, "0"), t: fill(p[0]), d, fg: /TO CONFIRM/.test(d) ? "#B07818" : "#5F5E5E" }; }),
+      dpp: fill(src.dpp),
+      ...(() => { const P = window.MFG_PROCESS, D = window.MFG_DETAIL || {}, pr = D[b] || (P && P.profiles[P.brands[b]]); return { hasProc: !!pr, procCap: pr ? pr.cap : "", procMachines: pr ? pr.machines : [], procSteps: pr ? pr.steps.map((t, i) => ({ n: String(i + 1).padStart(2, "0"), t })) : [], procQc: pr ? pr.qc : [], hasDetail: !!(pr && pr.materials), details: pr && pr.materials ? [["Materials", pr.materials], ["Surface treatment", pr.surface], ["Tolerances and machining", pr.tolerances], ["Production capacity", pr.capacity], ["Standards and certification", pr.standards], ["Test and inspection plan", ["Incoming: " + pr.tests.incoming.join("; "), "In-process: " + pr.tests.inprocess.join("; "), "Final: " + pr.tests.final.join("; ")]], ["Project production", pr.project], ["Packaging and logistics", pr.packaging], ["Engineering support", pr.engineering]].map(([t, items]) => ({ t, items })) : [] }; })(),
+      slots: [["factory", "Factory line", "production line with " + b + " products in assembly"], ["test", "Test bench", "factory test of a " + b + " product"], ["batch", "Batch label", "batch label with QR code on a " + b + " product"]].map(([k, cap, d]) => ({ id: b.toLowerCase() + "-mfg-" + k, cap, ph: `IMG-${N}-MFG-${k.toUpperCase()}-01 · 4:3 · ${d} · see ${b} visual prompts` })),
+    };
+  }
+}
+</script>
+</body>
+</html>

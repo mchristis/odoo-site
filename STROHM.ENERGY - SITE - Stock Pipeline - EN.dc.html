@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Stock Pipeline | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>body{margin:0;background:#F7F7F5;color:#4F4F4E;font-family:var(--font-web)}a{color:#4F4F4E}a:hover{color:#F1931B}</style>
+</helmet>
+<section data-screen-label="10 Stock pipeline" style="padding:64px 48px 80px;max-width:1296px;margin:0 auto;color:#4F4F4E;font-family:var(--font-web)">
+  <div style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;margin-bottom:24px;font-weight:var(--web-eyebrow-weight);">
+<dc-import name="PageHero" brand="STROHM.ENERGY" rgb="200,200,200" title="Where the stock is." intro="From production slot to European warehouse." slot="strohm-energy-stock-pipeline-hero" shot="STROHM.ENERGY · Stock Pipeline · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import>
+Study 10 · Stock pipeline · {{ brand }}</div>
+  <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between;margin-bottom:40px">
+    <div>
+      <p style="margin:12px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);max-width:620px;text-wrap:pretty;line-height:var(--web-body-lh);">Every unit is visible on one of four routes.</p>
+    </div>
+    <button style-hover="background:#5F5E5E;color:#F4F4F4;" onClick="{{ togglePlay }}" style="font:inherit;font-size:var(--web-btn-sm-size);padding:10px 16px;border-radius:8px;border:1px solid #BBBBBB;cursor:pointer;background:#4F4F4E;color:#F4F4F4;min-width:88px;font-weight:var(--web-btn-weight);">{{ playLabel }}</button>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:stretch">
+
+    <button onClick="{{ pick3 }}" style="flex:1 1 170px;min-width:0;font:inherit;text-align:left;cursor:pointer;background:#F4F4F4;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px;color:#4F4F4E;border:1px solid {{ b3 }}">
+      <div style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;font-weight:var(--web-eyebrow-weight);">Route 04 · Asia</div>
+      <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Manufacturing</div>
+      <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Production slot · week {{ week }}</div>
+      <div style="height:8px;background:#E3E3E3;border-radius:4px;overflow:hidden"><div style="height:8px;width:{{ mfgPct }};background:{{ col }}"></div></div>
+      <div style="white-space:nowrap"><span style="font-size:var(--web-h3-size);font-weight:700;line-height:var(--web-h3-lh);">{{ mfgDone }}</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);"> / {{ batch }} pcs</span></div>
+    </button>
+
+    <button onClick="{{ pick2 }}" style="flex:1 1 170px;min-width:0;font:inherit;text-align:left;cursor:pointer;background:#F4F4F4;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px;color:#4F4F4E;border:1px solid {{ b2 }}">
+      <div style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;font-weight:var(--web-eyebrow-weight);">Route 03 · Asia</div>
+      <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Factory stock</div>
+      <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Next shipment join · {{ joinDate }}</div>
+      <div style="display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px">
+        <sc-for list="{{ facCells }}" as="c" hint-placeholder-count="30">
+          <div style="aspect-ratio:1;border-radius:2px;background:{{ c.bg }}"></div>
+        </sc-for>
+      </div>
+      <div style="white-space:nowrap"><span style="font-size:var(--web-h3-size);font-weight:700;line-height:var(--web-h3-lh);">{{ fac }}</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);"> pcs</span></div>
+    </button>
+
+    <button onClick="{{ pick1 }}" style="flex:3 1 420px;font:inherit;text-align:left;cursor:pointer;background:#FFFFFF;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px;color:#4F4F4E;border:1px solid {{ b1 }};min-width:0">
+      <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;font-weight:var(--web-eyebrow-weight);">Route 02 · Sea freight</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;margin-top:12px;line-height:var(--web-h3-lh);">Floating stock</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;margin-top:12px;line-height:var(--web-small-lh);">In transit under a named shipment</div>
+        </div>
+        <div style="text-align:right;white-space:nowrap"><span style="font-size:var(--web-h3-size);font-weight:700;line-height:var(--web-h3-lh);">{{ floatTotal }}</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);"> pcs</span><div style="font-size:var(--web-small-size);font-weight:300;margin-top:4px;line-height:var(--web-small-lh);">{{ floatFree }} free to order</div></div>
+      </div>
+      <div style="position:relative;height:136px;margin-top:8px">
+        <div style="position:absolute;left:0;right:0;top:28px;border-top:1px dashed #BBBBBB"></div>
+        <div style="position:absolute;left:0;top:22px;width:1px;height:13px;background:#4F4F4E"></div>
+        <div style="position:absolute;right:0;top:22px;width:1px;height:13px;background:#4F4F4E"></div>
+        <sc-for list="{{ ships }}" as="s" hint-placeholder-count="3">
+          <div style="position:absolute;top:16px;left:{{ s.left }};transform:translateX(-50%);opacity:{{ s.op }};display:flex;flex-direction:column;align-items:center;gap:6px;white-space:nowrap">
+            <div style="width:56px;height:24px;border-radius:2px;background:{{ col }};border:1px solid #4F4F4E"></div>
+            <div style="font-size:12px;font-weight:700">{{ s.name }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);">ETA {{ s.eta }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);">{{ s.res }} reserved</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);">{{ s.free }} free</div>
+          </div>
+        </sc-for>
+      </div>
+    </button>
+
+    <button onClick="{{ pick0 }}" style="flex:1.6 1 220px;min-width:0;font:inherit;text-align:left;cursor:pointer;background:#F4F4F4;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px;color:#4F4F4E;border:1px solid {{ b0 }}">
+      <div style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;font-weight:var(--web-eyebrow-weight);">Route 01 · Europe</div>
+      <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">EU stock</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <sc-for list="{{ whs }}" as="w" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;font-size:var(--web-small-size);line-height:var(--web-small-lh);">
+            <span style="font-weight:300">{{ w.name }}</span>
+            <span style="font-weight:var(--web-h3-weight);white-space:nowrap;font-size:var(--web-h3-size);line-height:var(--web-h3-lh);">{{ w.q }}</span>
+            <div style="grid-column:1/-1;height:4px;background:#E3E3E3;border-radius:2px;overflow:hidden"><div style="height:4px;width:{{ w.pct }};background:{{ col }}"></div></div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="white-space:nowrap;margin-top:auto"><span style="font-size:var(--web-h3-size);font-weight:700;line-height:var(--web-h3-lh);">{{ euTotal }}</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);"> pcs</span></div>
+    </button>
+  </div>
+
+  <div style="margin-top:8px;background:#4F4F4E;color:#FFFFFF;border-radius:12px;padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;align-items:start">
+    <div>
+      <div style="font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;font-weight:var(--web-eyebrow-weight);">Route {{ rNum }}</div>
+      <div style="font-size:var(--web-h3-size);font-weight:300;margin-top:8px;line-height:var(--web-h3-lh);">{{ rName }}</div>
+      <div style="font-size:var(--web-small-size);font-weight:300;margin-top:8px;line-height:var(--web-small-lh);">Lead time: {{ rLead }}</div>
+    </div>
+    <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);text-wrap:pretty">{{ rText }}</p>
+  </div>
+  <div style="font-size:var(--web-min-size);font-weight:300;margin-top:16px;line-height:var(--web-min-lh);">Click a stage for its order rules. Provisional demo data: quantities, shipment names, ETAs and warehouse split.</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;product&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;MOEBIUS&quot;,&quot;ANDO&quot;,&quot;FLUXX&quot;,&quot;SYNQ&quot;,&quot;OZZY&quot;],&quot;default&quot;:&quot;MOEBIUS&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.state = { t: 0, playing: true, sel: 1 };
+  }
+  componentDidMount() {
+    this.reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this.reduce) { this.setState({ t: 13, playing: false }); return; }
+    this.start();
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); }
+  start() {
+    let last = performance.now(), acc = 0;
+    const loop = now => {
+      const dt = (now - last) / 1000; last = now; acc += dt;
+      if (acc > 0.05) { const a = acc; acc = 0; this.setState(s => ({ t: (s.t || 0) + a })); }
+      this.raf = requestAnimationFrame(loop);
+    };
+    this.raf = requestAnimationFrame(loop);
+  }
+  renderVals() {
+    const s = this.state || {}, t = s.t || 0, sel = s.sel ?? 1;
+    const COLS = { MOEBIUS: '#F1931B', ANDO: '#CDD62B', FLUXX: '#FDC706', SYNQ: '#598F94', OZZY: '#8BCF3F' };
+    const brand = this.props.product ?? 'MOEBIUS', col = COLS[brand] || '#F1931B';
+    const P = 8, T = 24, batch = 600, days = 35;
+    const sp = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    const today = new Date(2026, 9, 15);
+    const fmt = d => d.getDate() + ' ' + ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()];
+    const addDays = n => new Date(today.getTime() + n * 864e5);
+    const ph = (t % P) / P, cycle = Math.floor(t / P);
+    const fac = 600 + batch * ph;
+    const ships = [];
+    for (let k = 0; k < 3; k++) {
+      const dep = (cycle - k) * P, u = (t - dep) / T;
+      const left = Math.min(100, Math.max(0, u * 100));
+      const res = Math.round(batch * 0.75 * Math.min(1, u * 1.2));
+      ships.push({ name: 'MS-' + (2600 + cycle - k), left: (6 + left * 0.88) + '%', op: u > 0.96 ? Math.max(0, (1 - u) / 0.04) : u < 0.03 ? u / 0.03 : 1, eta: fmt(addDays((1 - u) * days)), res: sp(res), free: sp(batch - res), resN: res });
+    }
+    const floatRes = ships.reduce((a, x) => a + x.resN, 0);
+    const WH = [['Rotterdam NL', 0.4, 620], ['Hamburg DE', 0.2, 310], ['Poznan PL', 0.15, 240], ['Milan IT', 0.15, 220], ['Madrid ES', 0.1, 150]];
+    const whs = WH.map(([name, share, base]) => { const q = base + share * batch * (1 - ph); return { name, q: sp(q) + ' pcs', pct: Math.min(100, q / 900 * 100) + '%', qn: q }; });
+    const ROUTES = [
+      ['01', 'EU Stock', '1–5 working days', 'Ships from EU warehouse. Daily 12:00 dispatch cut-off. 30 minute payment reservation; cart does not reserve; first completed payment wins.'],
+      ['02', 'Floating Stock', 'Varies by partner', 'In transit under a named shipment. ETA confirmed before payment. Reserved by others reduces the free-to-order count. 30 minute payment reservation.'],
+      ['03', 'Factory Stock', '2–6 weeks', 'Ex-factory warehouse. Order by the shipment join date to enter the run. Reserved by others reduces the free-to-order count. 30 minute payment reservation.'],
+      ['04', 'Manufacturing Order', 'By production slot', 'Made to order. 30 percent deposit confirms the production slot, balance before dispatch. No 30 minute timer on this route.']
+    ];
+    const R = ROUTES[sel], filled = Math.round(fac / 1200 * 30);
+    const out = {
+      brand, col, batch,
+      playLabel: s.playing ? 'Pause' : 'Play',
+      togglePlay: () => { if (s.playing) { cancelAnimationFrame(this.raf); this.setState({ playing: false }); } else { this.setState({ playing: true }); this.start(); } },
+      week: 46 + (cycle % 6), mfgPct: (ph * 100) + '%', mfgDone: sp(batch * ph),
+      joinDate: fmt(addDays((1 - ph) * (P / T) * days)),
+      facCells: Array.from({ length: 30 }, (_, i) => ({ bg: i < filled ? col : '#E3E3E3' })),
+      fac: sp(fac), ships,
+      floatTotal: sp(batch * 3), floatFree: sp(batch * 3 - floatRes),
+      whs, euTotal: sp(whs.reduce((a, w) => a + w.qn, 0)),
+      rNum: R[0], rName: R[1], rLead: R[2], rText: R[3]
+    };
+    for (let k = 0; k < 4; k++) { out['pick' + k] = () => this.setState({ sel: k }); out['b' + k] = k === sel ? '#4F4F4E' : 'transparent'; }
+    return out;
+  }
+}
+</script>
+</body>
+</html>

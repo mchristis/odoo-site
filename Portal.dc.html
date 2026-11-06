@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+  ::placeholder { color:#6F6F6D; opacity:1; }
+  input:disabled, select:disabled, textarea:disabled { color:#C8C7C3; }
+  body { margin:0; background:#FFFFFF; }
+  * { -webkit-font-smoothing:antialiased; }
+  a { color:#1E1E1E; text-decoration:none; }
+  a:hover { color:#0A6E82; }
+  .pt-scroll::-webkit-scrollbar { width:8px; height:8px; }
+  .pt-scroll::-webkit-scrollbar-thumb { background:#D4D4D4; border-radius:16px; }
+  input, select, button, textarea { font-family:var(--font-web); }
+  .pv-prod { position:relative; }
+  .pv-prod > summary { list-style:none; cursor:pointer; height:44px; display:flex; align-items:center; gap:7px; padding:0 15px; border:1px solid #D4D4D4; border-radius:16px; font-size:13.5px; font-weight:700; color:#1E1E1E; background:#FFFFFF; white-space:nowrap; }
+  .pv-prod > summary::-webkit-details-marker { display:none; }
+  .pv-prod[open] > summary { background:#1E1E1E; color:#FFFFFF; border-color:#1E1E1E; }
+  .pv-drop { position:absolute; left:0; top:calc(100% + 8px); width:620px; max-width:78vw; background:#FFFFFF; border:1px solid #D4D4D4; border-radius:16px; box-shadow:none; padding:16px 18px; display:grid; grid-template-columns:1fr 1fr; gap:0 20px; z-index:80; }
+  .pv-grp { grid-column:1/-1; font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:#B2B3B3; font-weight:700; margin:13px 0 4px; border-top:1px solid #D9D9D9; padding-top:10px; }
+  .pv-drop div.pv-grp:first-of-type { margin-top:0; border-top:none; padding-top:0; }
+  .pv-a { display:flex; justify-content:space-between; gap:12px; align-items:baseline; padding:7px 8px; border-radius:6px; color:#1E1E1E; }
+  .pv-a:hover { background:#F5F5F5; color:#1E1E1E; }
+  .pv-a b { font-weight:700; font-size:13px; }
+  .pv-a em { font-size:10.5px; color:#5F5E5E; font-style:normal; text-align:right; }
+</style>
+</helmet>
+<div data-stack="1" style="min-height:100vh;display:grid;grid-template-columns:264px 1fr;grid-template-rows:72px 1fr;font-family:var(--font-web);color:#4F4F4E;background:#F5F5F5;letter-spacing:-0.01em;">
+
+  <!-- TOPBAR -->
+  <header style="grid-column:1 / span 2;grid-row:1;display:grid;grid-template-columns:264px 1fr auto;align-items:center;background:#FFFFFF;border-bottom:1px solid #D4D4D4;position:sticky;top:0;z-index:20;">
+    <div style="height:100%;display:flex;align-items:center;gap:10px;padding:0 24px;border-right:1px solid #D4D4D4;">
+      <div style="font-size:20px;font-weight:700;letter-spacing:0.14em;">STRØHM.ENERGY</div>
+      <div style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.18em;background:#1E1E1E;color:#FFFFFF;padding:3px 6px;border-radius:8px;">PORTAL</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;padding:0 28px;min-width:0;">
+      <details class="pv-prod">
+        <summary>Products &#9662;</summary>
+        <div class="pv-drop">
+          <a class="pv-a" href="WEBSHOP - SITE - Catalogue - EN.dc.html" style="grid-column:1/-1;"><b>All product lines</b><em>Catalogue home</em></a>
+          <sc-for list="{{ catalogGroups }}" as="g" hint-placeholder-count="5">
+            <div class="pv-grp">{{ g.title }}</div>
+            <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+              <a class="pv-a" href="{{ it.href }}"><b>{{ it.name }}</b><em>{{ it.cat }}</em></a>
+            </sc-for>
+          </sc-for>
+        </div>
+      </details>
+      <div style="height:44px;flex:1;min-width:0;max-width:560px;border:1px solid #D4D4D4;border-radius:12px;background:#FFFFFF;display:flex;align-items:center;gap:10px;padding:0 14px;">
+        <span style="color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);">&#9906;</span>
+        <input placeholder="Search products, orders, documents, serials..." style="border:none;outline:none;width:100%;font-size:var(--web-input-size);color:#4F4F4E;background:transparent;font-weight:var(--web-input-weight);">
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;padding-right:24px;">
+      <div style="position:relative;width:40px;height:40px;border-radius:50%;border:1px solid #D4D4D4;display:grid;place-items:center;color:#5F5E5E;font-size:16px;">&#9737;<span style="position:absolute;top:-4px;right:-3px;background:#1E1E1E;color:#FFFFFF;border:2px solid #FFFFFF;border-radius:12px;min-width:18px;height:18px;display:grid;place-items:center;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);">4</span></div>
+      <div style="display:flex;align-items:center;gap:11px;border-left:1px solid #D4D4D4;padding-left:16px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:#F5F5F5;color:#5F5E5E;font-weight:300;display:grid;place-items:center;font-size:var(--web-small-size);line-height:var(--web-small-lh);">AC</div>
+        <div><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">ACME Industries GmbH</div><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">Customer 1002457 &middot; Approved buyer</div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside class="pt-scroll" style="grid-column:1;grid-row:2;background:#FFFFFF;border-right:1px solid #D4D4D4;padding:18px 14px;position:sticky;top:72px;height:calc(100vh - 72px);overflow:auto;">
+    <sc-for list="{{ navGroups }}" as="grp" hint-placeholder-count="5">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin:18px 12px 8px;">{{ grp.title }}</div>
+      <div style="display:flex;flex-direction:column;gap:2px;">
+        <sc-for list="{{ grp.items }}" as="it" hint-placeholder-count="3">
+          <button onClick="{{ it.onClick }}" style="width:100%;border:none;background:{{ it.bg }};display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;color:{{ it.color }};font-weight:var(--web-btn-weight);font-size:var(--web-btn-sm-size);cursor:pointer;text-align:left;font-family:inherit;">
+            <span style="width:20px;text-align:center;font-size:var(--web-body-size);line-height:var(--web-body-lh);">{{ it.icon }}</span><span>{{ it.label }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </sc-for>
+    <div style="margin-top:24px;border:1px solid #D4D4D4;border-radius:12px;padding:16px;background:#F5F5F5;">
+      <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:4px;line-height:var(--web-small-lh);">Need help?</div>
+      <p style="margin:0 0 12px;font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">Your account manager Thomas Weber is one click away.</p>
+      <a href="mailto:sales@strohm.energy" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#0A6E82;">Contact support<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="pt-scroll" style="grid-column:2;grid-row:2;padding:26px 30px 48px;overflow:auto;height:calc(100vh - 72px);">
+
+    <!-- ================= OVERVIEW ================= -->
+    <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:22px;">
+        <div><h1 style="font-size:var(--web-h1-size);line-height:var(--web-h1-lh);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;">Welcome back, <span style="font-weight:300;">ACME Industries</span></h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);line-height:var(--web-body-lh);">Here is where your account stands today.</p></div>
+        <div style="color:#898989;font-size:var(--web-min-size);white-space:nowrap;margin-top:8px;line-height:var(--web-min-lh);">Updated May 20, 2025 &middot; 09:30</div>
+      </div>
+
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;--cg:16px;">
+        <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+          <div style="background:#F5F5F5;border-radius:12px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;min-height:132px;">
+            <div style="display:flex;gap:14px;align-items:flex-start;">
+              <div style="width:48px;height:48px;border-radius:50%;background:{{ k.iconBg }};color:{{ k.iconColor }};display:grid;place-items:center;font-size:20px;flex:none;">{{ k.icon }}</div>
+              <div><div style="font-size:12px;color:#5F5E5E;font-weight:400;">{{ k.label }}</div><div style="margin-top:5px;"><span style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ k.value }}</span> <span style="font-size:var(--web-small-size);font-weight:300;color:#5F5E5E;line-height:var(--web-small-lh);">{{ k.unit }}</span></div></div>
+            </div>
+            <button onClick="{{ k.onClick }}" style="align-self:flex-start;border:none;background:none;cursor:pointer;font-family:inherit;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#0A6E82;padding:0;">{{ k.link }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></button>
+          </div>
+        </sc-for>
+      </div>
+
+      <div data-stack="1" style="display:grid;grid-template-columns:1.1fr 1.1fr 1.4fr;gap:16px;margin-top:16px;">
+        <!-- credit -->
+        <div style="background:#F5F5F5;border-radius:12px;padding:20px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:16px;line-height:var(--web-h3-lh);">Approved credit</div>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="width:120px;height:120px;border-radius:50%;background:conic-gradient(#1E1E1E 0 62.5%,#F5F5F5 62.5% 100%);display:grid;place-items:center;flex:none;"><div style="width:82px;height:82px;background:#F5F5F5;border-radius:50%;display:grid;place-items:center;text-align:center;"><div><div style="font-size:18px;font-weight:700;">62,5%</div><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">available</div></div></div></div>
+            <div style="flex:1;">
+              <div style="display:flex;justify-content:space-between;font-size:var(--web-small-size);margin-bottom:7px;line-height:var(--web-small-lh);"><span style="color:#5F5E5E;">Available</span><span style="font-weight:700;">&euro; 1.250.000</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:var(--web-small-size);margin-bottom:10px;line-height:var(--web-small-lh);"><span style="color:#5F5E5E;">Used</span><span style="font-weight:700;">&euro; 750.000</span></div>
+              <div style="height:10px;background:#F5F5F5;border-radius:99px;overflow:hidden;"><div style="height:100%;width:62.5%;background:#1E1E1E;border-radius:99px;"></div></div>
+              <button onClick="{{ goCredit }}" style="margin-top:12px;border:none;background:none;cursor:pointer;font-family:inherit;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#0A6E82;padding:0;">Credit &amp; factoring<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></button>
+            </div>
+          </div>
+        </div>
+        <!-- sources -->
+        <div style="background:#F5F5F5;border-radius:12px;padding:20px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:16px;line-height:var(--web-h3-lh);">Stock source access</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <sc-for list="{{ sources }}" as="s" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:12px 1fr auto;gap:11px;align-items:center;background:#FFFFFF;border-radius:16px;padding:11px 12px;">
+                <span style="width:11px;height:11px;border-radius:50%;background:{{ s.dot }};"></span>
+                <div><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ s.name }}</div><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ s.desc }}</div></div>
+                <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:{{ s.chipBg }};color:{{ s.chipColor }};padding:4px 9px;border-radius:99px;white-space:nowrap;">{{ s.status }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <!-- actions -->
+        <div style="background:#F5F5F5;border-radius:12px;padding:20px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:14px;line-height:var(--web-h3-lh);">Pending actions</div>
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ pendingActions }}" as="a" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:38px 1fr auto;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid #F5F5F5;">
+                <div style="width:38px;height:38px;border-radius:50%;background:{{ a.iconBg }};color:{{ a.iconColor }};display:grid;place-items:center;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ a.icon }}</div>
+                <div><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ a.title }}</div><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ a.desc }}</div></div>
+                <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:{{ a.chipBg }};color:{{ a.chipColor }};padding:4px 9px;border-radius:99px;white-space:nowrap;">{{ a.due }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div data-stack="1" style="display:grid;grid-template-columns:1.6fr 1fr;gap:16px;margin-top:16px;">
+        <div style="background:#F5F5F5;border-radius:12px;padding:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Recent documents</div><button onClick="{{ goDocuments }}" style="border:none;background:none;cursor:pointer;font-family:inherit;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#0A6E82;">View all<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></button></div>
+          <div style="overflow:auto;">
+            <table style="width:100%;border-collapse:collapse;font-size:13px;">
+              <thead><tr><th style="text-align:left;padding:9px 10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;letter-spacing:var(--web-eyebrow-ls);border-radius:8px;">Document</th><th style="text-align:left;padding:9px 10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;letter-spacing:var(--web-eyebrow-ls);border-radius:8px;">Type</th><th style="text-align:left;padding:9px 10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;letter-spacing:var(--web-eyebrow-ls);border-radius:8px;">Order</th><th style="text-align:left;padding:9px 10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;letter-spacing:var(--web-eyebrow-ls);border-radius:8px;">Date</th><th style="padding:9px 10px;background:#F5F5F5;border-radius:8px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;"></th></tr></thead>
+              <tbody>
+                <sc-for list="{{ recentDocs }}" as="d" hint-placeholder-count="6">
+                  <tr style="border-bottom:1px solid #F5F5F5;"><td style="padding:10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;"><span style="color:#B3261E;font-weight:700;margin-right:7px;">&#9635;</span>{{ d.name }}</td><td style="padding:10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ d.type }}</td><td style="padding:10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ d.order }}</td><td style="padding:10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ d.date }}</td><td style="padding:10px;text-align:right;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;"><span style="cursor:pointer;font-weight:700;">&#8595;</span></td></tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div style="background:#F5F5F5;border-radius:12px;padding:20px;">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:16px;line-height:var(--web-h3-lh);">Order SO-2504198 &mdash; timeline</div>
+          <div>
+            <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="6">
+              <div style="display:grid;grid-template-columns:28px 1fr;gap:12px;position:relative;padding-bottom:16px;">
+                <div style="width:28px;height:28px;border-radius:50%;background:{{ t.dotBg }};color:{{ t.dotColor }};display:grid;place-items:center;font-size:12px;font-weight:700;z-index:1;">{{ t.mark }}</div>
+                <div><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ t.label }}</div><div style="font-size:var(--web-min-size);color:#5F5E5E;margin-top:2px;line-height:var(--web-min-lh);">{{ t.date }}</div></div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- ================= CATALOG ================= -->
+    <sc-if value="{{ isCatalog }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:24px;">
+        <div><h1 style="font-size:var(--web-h1-size);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;line-height:var(--web-h1-lh);">Catalog <span style="font-weight:300;">&amp; stock sources</span></h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);max-width:70ch;line-height:var(--web-body-lh);">Every STRØHM.ENERGY line with its own technical filters, four stock routes &mdash; EU, floating, factory and manufacturing &mdash; and live availability. Open a line to browse and configure an order.</p></div>
+        <a href="WEBSHOP - SITE - Catalogue - EN.dc.html" style="flex:none;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius,8px);font-weight:400;font-size:var(--cta-font,16px);white-space:nowrap;justify-content:center;box-sizing:border-box;">Open full webshop<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      </div>
+      <sc-for list="{{ catalogGroups }}" as="g" hint-placeholder-count="5">
+        <div style="margin-bottom:24px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;border-bottom:1px solid #F5F5F5;padding-bottom:9px;margin-bottom:14px;">{{ g.title }}</div>
+          <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;--cg:14px;">
+            <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+              <a class="pt-cat-tile" href="{{ it.href }}" style="background:#F5F5F5;border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px;min-height:120px;color:#4F4F4E;">
+                <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:var(--web-h3-size);font-weight:300;letter-spacing:-0.01em;line-height:var(--web-h3-lh);">{{ it.name }}</span><span style="color:#898989;font-size:18px;">&#8250;</span></div>
+                <div style="font-size:var(--web-min-size);color:#5F5E5E;flex:1;line-height:var(--web-min-lh);">{{ it.cat }}</div>
+                <div style="font-size:11px;font-weight:700;color:#0A6E82;">View catalogue<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></div>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </sc-if>
+
+    <!-- ================= QUOTATIONS ================= -->
+    <sc-if value="{{ isQuotations }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;"><div><h1 style="font-size:var(--web-h1-size);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;line-height:var(--web-h1-lh);">Quotations</h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);line-height:var(--web-body-lh);">Open, accepted, expiring and section-level updates.</p></div><button style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border:none;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius,8px);font-weight:400;font-size:var(--cta-font,16px);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">New quotation request</button></div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:6px 20px 20px;">
+        <div style="overflow:auto;"><table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <thead><tr><sc-for list="{{ quoteCols }}" as="c" hint-placeholder-count="6"><th style="text-align:left;padding:12px 10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;letter-spacing:var(--web-eyebrow-ls);border-radius:8px;">{{ c }}</th></sc-for></tr></thead>
+          <tbody><sc-for list="{{ quotations }}" as="q" hint-placeholder-count="4"><tr style="border-bottom:1px solid #F5F5F5;"><td style="padding:12px 10px;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ q.id }}</td><td style="padding:12px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ q.po }}</td><td style="padding:12px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ q.sources }}</td><td style="padding:12px 10px;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ q.total }}</td><td style="padding:12px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ q.validity }}</td><td style="padding:12px 10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:{{ q.chipBg }};color:{{ q.chipColor }};padding:4px 9px;border-radius:99px;">{{ q.status }}</span></td></tr></sc-for></tbody>
+        </table></div>
+      </div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;--cg:16px;">
+        <sc-for list="{{ quoteRules }}" as="r" hint-placeholder-count="3"><div style="background:#F5F5F5;border-radius:12px;padding:20px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">{{ r.title }}</div><p style="margin:0;font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">{{ r.body }}</p></div></sc-for>
+      </div>
+    </sc-if>
+
+    <!-- ================= ORDERS LIST ================= -->
+    <sc-if value="{{ isOrders }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;"><div><h1 style="font-size:var(--web-h1-size);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;line-height:var(--web-h1-lh);">Orders</h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);line-height:var(--web-body-lh);">All confirmed and in-progress orders.</p></div></div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;--cg:16px;">
+        <sc-for list="{{ orderStats }}" as="s" hint-placeholder-count="4"><div style="background:#F5F5F5;border-radius:12px;padding:18px;"><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ s.label }}</div><div style="margin-top:6px;"><span style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ s.value }}</span> <span style="font-size:var(--web-min-size);color:#5F5E5E;font-weight:300;line-height:var(--web-min-lh);">{{ s.unit }}</span></div></div></sc-for>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:6px 20px 20px;">
+        <div style="overflow:auto;"><table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <thead><tr><sc-for list="{{ orderCols }}" as="c" hint-placeholder-count="7"><th style="text-align:left;padding:12px 10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;letter-spacing:var(--web-eyebrow-ls);border-radius:8px;">{{ c }}</th></sc-for></tr></thead>
+          <tbody><sc-for list="{{ orders }}" as="o" hint-placeholder-count="5"><tr style="border-bottom:1px solid #F5F5F5;cursor:pointer;" onClick="{{ openOrder }}"><td style="padding:12px 10px;font-weight:300;color:#0A6E82;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ o.id }}</td><td style="padding:12px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ o.date }}</td><td style="padding:12px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ o.sources }}</td><td style="padding:12px 10px;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ o.total }}</td><td style="padding:12px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ o.eta }}</td><td style="padding:12px 10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:{{ o.chipBg }};color:{{ o.chipColor }};padding:4px 9px;border-radius:99px;">{{ o.status }}</span></td><td style="padding:12px 10px;text-align:right;color:#898989;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">&#8250;</td></tr></sc-for></tbody>
+        </table></div>
+      </div>
+    </sc-if>
+
+    <!-- ================= ORDER DETAIL ================= -->
+    <sc-if value="{{ isOrderDetail }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ goOrders }}" style="border:none;background:none;cursor:pointer;font-family:inherit;font-size:var(--web-tag-size);color:#5F5E5E;padding:0;margin-bottom:14px;font-weight:var(--web-tag-weight);"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg>Back to orders</button>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;"><div><h1 style="font-size:var(--web-h1-size);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;line-height:var(--web-h1-lh);">Order SO-2504198</h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);line-height:var(--web-body-lh);">Mixed-source order &middot; 500 pcs &middot; &euro; 85.420,00</p></div><div style="display:flex;gap:10px;"><button style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border:1px solid #D4D4D4;background:#F5F5F5;border-radius:var(--cta-radius,8px);font-weight:400;font-size:var(--cta-font,16px);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">&#8595; Download all</button></div></div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;--cg:16px;">
+        <sc-for list="{{ orderSources }}" as="s" hint-placeholder-count="4"><div style="background:#F5F5F5;border-radius:12px;padding:18px;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><span style="width:11px;height:11px;border-radius:50%;background:{{ s.dot }};"></span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ s.name }}</span></div><div><span style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ s.qty }}</span> <span style="font-size:var(--web-min-size);color:#5F5E5E;font-weight:300;line-height:var(--web-min-lh);">pcs</span></div><div style="font-size:var(--web-min-size);color:#5F5E5E;margin:4px 0 8px;line-height:var(--web-min-lh);">ETA {{ s.eta }}</div><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:{{ s.chipBg }};color:{{ s.chipColor }};padding:4px 9px;border-radius:99px;">{{ s.status }}</span></div></sc-for>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:20px;margin-bottom:16px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:18px;line-height:var(--web-h3-lh);">Overall progress</div>
+        <div data-cols="6" style="display:grid;grid-template-columns:repeat(6,1fr);--cg:0px;">
+          <sc-for list="{{ orderProgress }}" as="p" hint-placeholder-count="6"><div style="text-align:center;"><div style="width:30px;height:30px;border-radius:50%;background:{{ p.dotBg }};color:{{ p.dotColor }};display:grid;place-items:center;margin:0 auto 8px;font-weight:700;font-size:12px;">{{ p.mark }}</div><div style="font-size:11.5px;font-weight:700;">{{ p.label }}</div><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ p.date }}</div></div></sc-for>
+        </div>
+      </div>
+      <div data-cols="3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;--cg:16px;">
+        <div style="background:#F5F5F5;border-radius:12px;padding:20px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:14px;line-height:var(--web-h3-lh);">Order summary</div><sc-for list="{{ orderSummary }}" as="r" hint-placeholder-count="6"><div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F5F5F5;font-size:var(--web-small-size);line-height:var(--web-small-lh);"><span style="color:#5F5E5E;">{{ r.k }}</span><span style="font-weight:700;">{{ r.v }}</span></div></sc-for></div>
+        <div style="background:#F5F5F5;border-radius:12px;padding:20px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:14px;line-height:var(--web-h3-lh);">Payment status</div><div style="display:flex;align-items:center;gap:14px;"><div style="width:96px;height:96px;border-radius:50%;background:conic-gradient(#1E1E1E 0 30%,#F5F5F5 30% 100%);display:grid;place-items:center;flex:none;"><div style="width:66px;height:66px;background:#F5F5F5;border-radius:50%;display:grid;place-items:center;text-align:center;"><div><div style="font-size:15px;font-weight:700;">30%</div><div style="font-size:9px;color:#5F5E5E;">paid</div></div></div></div><div style="font-size:12px;"><div style="margin-bottom:10px;"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:#E8F0E8;color:#2E6B3A;padding:3px 7px;border-radius:99px;">Deposit paid</span><div style="font-weight:700;margin-top:4px;">&euro; 25.626,00</div></div><div><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:#FFEB9E;color:#6B5A1A;padding:3px 7px;border-radius:99px;">Balance due</span><div style="font-weight:700;margin-top:4px;">&euro; 59.794,00</div></div></div></div></div>
+        <div style="background:#F5F5F5;border-radius:12px;padding:20px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:14px;line-height:var(--web-h3-lh);">Documents</div><div style="display:flex;flex-direction:column;gap:8px;"><sc-for list="{{ orderDocs }}" as="d" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:24px 1fr 20px;gap:10px;align-items:center;background:#FFFFFF;border-radius:16px;padding:10px;"><span style="color:#B3261E;font-weight:700;">&#9635;</span><div><div style="font-size:12.5px;font-weight:700;">{{ d.name }}</div><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ d.ref }}</div></div><span style="cursor:pointer;">&#8595;</span></div></sc-for></div></div>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:20px;margin-top:16px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:14px;line-height:var(--web-h3-lh);">Serial numbers by source</div>
+        <div style="overflow:auto;"><table style="width:100%;border-collapse:collapse;font-size:13px;"><thead><tr><th style="text-align:left;padding:10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;border-radius:8px;letter-spacing:var(--web-eyebrow-ls);">Source</th><th style="text-align:left;padding:10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;border-radius:8px;letter-spacing:var(--web-eyebrow-ls);">Qty</th><th style="text-align:left;padding:10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;border-radius:8px;letter-spacing:var(--web-eyebrow-ls);">Files</th></tr></thead><tbody><sc-for list="{{ serials }}" as="s" hint-placeholder-count="4"><tr style="border-bottom:1px solid #F5F5F5;"><td style="padding:10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ s.source }}</td><td style="padding:10px;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ s.qty }}</td><td style="padding:10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ s.files }}</td></tr></sc-for></tbody></table></div>
+      </div>
+    </sc-if>
+
+    <!-- ================= INVOICES ================= -->
+    <sc-if value="{{ isInvoices }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-bottom:20px;"><h1 style="font-size:var(--web-h1-size);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;line-height:var(--web-h1-lh);">Invoices</h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);line-height:var(--web-body-lh);">Open and paid invoices across all STRØHM.ENERGY companies.</p></div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;--cg:16px;">
+        <sc-for list="{{ invoiceStats }}" as="s" hint-placeholder-count="4"><div style="background:#F5F5F5;border-radius:12px;padding:18px;"><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ s.label }}</div><div style="margin-top:6px;"><span style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ s.value }}</span></div></div></sc-for>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:6px 20px 20px;"><div style="overflow:auto;"><table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead><tr><sc-for list="{{ invoiceCols }}" as="c" hint-placeholder-count="7"><th style="text-align:left;padding:12px 10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;letter-spacing:var(--web-eyebrow-ls);border-radius:8px;">{{ c }}</th></sc-for></tr></thead>
+        <tbody><sc-for list="{{ invoices }}" as="i" hint-placeholder-count="6"><tr style="border-bottom:1px solid #F5F5F5;"><td style="padding:12px 10px;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);"><span style="color:#B3261E;margin-right:7px;">&#9635;</span>{{ i.id }}</td><td style="padding:12px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ i.order }}</td><td style="padding:12px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ i.date }}</td><td style="padding:12px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ i.due }}</td><td style="padding:12px 10px;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ i.total }}</td><td style="padding:12px 10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:{{ i.chipBg }};color:{{ i.chipColor }};padding:4px 9px;border-radius:99px;">{{ i.status }}</span></td><td style="padding:12px 10px;text-align:right;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;"><span style="cursor:pointer;font-weight:700;">&#8595;</span></td></tr></sc-for></tbody>
+      </table></div></div>
+    </sc-if>
+
+    <!-- ================= DOCUMENTS ================= -->
+    <sc-if value="{{ isDocuments }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-bottom:20px;"><h1 style="font-size:var(--web-h1-size);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;line-height:var(--web-h1-lh);">Document center</h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);line-height:var(--web-body-lh);">Invoices, delivery docs, warranty files and reports.</p></div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;--cg:12px;">
+        <sc-for list="{{ docTiles }}" as="t" hint-placeholder-count="8"><div style="background:#F5F5F5;border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;"><div style="width:42px;height:42px;border-radius:50%;background:{{ t.bg }};color:{{ t.color }};display:grid;place-items:center;font-size:16px;">{{ t.icon }}</div><div><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ t.label }}</div><div style="font-size:20px;font-weight:700;">{{ t.count }}</div></div></div></sc-for>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:6px 20px 20px;"><div style="overflow:auto;"><table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead><tr><sc-for list="{{ docCols }}" as="c" hint-placeholder-count="6"><th style="text-align:left;padding:12px 10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;letter-spacing:var(--web-eyebrow-ls);border-radius:8px;">{{ c }}</th></sc-for></tr></thead>
+        <tbody><sc-for list="{{ documents }}" as="d" hint-placeholder-count="10"><tr style="border-bottom:1px solid #F5F5F5;"><td style="padding:11px 10px;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);"><span style="color:#B3261E;margin-right:7px;">&#9635;</span>{{ d.name }}</td><td style="padding:11px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ d.type }}</td><td style="padding:11px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ d.order }}</td><td style="padding:11px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ d.company }}</td><td style="padding:11px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ d.date }}</td><td style="padding:11px 10px;text-align:right;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;"><span style="cursor:pointer;font-weight:700;">&#8595;</span></td></tr></sc-for></tbody>
+      </table></div></div>
+    </sc-if>
+
+    <!-- ================= LOGISTICS ================= -->
+    <sc-if value="{{ isLogistics }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-bottom:20px;"><h1 style="font-size:var(--web-h1-size);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;line-height:var(--web-h1-lh);">Logistics tracking</h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);line-height:var(--web-body-lh);">Container, customs, shipment and delivery status per source.</p></div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;--cg:16px;">
+        <sc-for list="{{ logiStats }}" as="s" hint-placeholder-count="4"><div style="background:#F5F5F5;border-radius:12px;padding:18px;"><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ s.label }}</div><div style="margin-top:6px;"><span style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ s.value }}</span></div></div></sc-for>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:20px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:16px;line-height:var(--web-h3-lh);">Shipments &mdash; SO-2504198</div>
+        <div style="overflow:auto;"><table style="width:100%;border-collapse:collapse;font-size:13px;"><thead><tr><sc-for list="{{ logiCols }}" as="c" hint-placeholder-count="6"><th style="text-align:left;padding:11px 10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;border-radius:8px;letter-spacing:var(--web-eyebrow-ls);">{{ c }}</th></sc-for></tr></thead><tbody><sc-for list="{{ shipments }}" as="sh" hint-placeholder-count="4"><tr style="border-bottom:1px solid #F5F5F5;"><td style="padding:11px 10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ sh.source }}</td><td style="padding:11px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ sh.ref }}</td><td style="padding:11px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ sh.etd }}</td><td style="padding:11px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ sh.eta }}</td><td style="padding:11px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ sh.customs }}</td><td style="padding:11px 10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:{{ sh.chipBg }};color:{{ sh.chipColor }};padding:4px 9px;border-radius:99px;">{{ sh.status }}</span></td></tr></sc-for></tbody></table></div>
+      </div>
+    </sc-if>
+
+    <!-- ================= CREDIT ================= -->
+    <sc-if value="{{ isCredit }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-bottom:20px;"><h1 style="font-size:var(--web-h1-size);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;line-height:var(--web-h1-lh);">Credit <span style="font-weight:300;">&amp; factoring</span></h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);line-height:var(--web-body-lh);">Approved credit, per-source eligibility and factoring readiness.</p></div>
+      <div data-stack="1" style="display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:16px;">
+        <div style="background:#F5F5F5;border-radius:12px;padding:20px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Approved credit</div><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:#E8F0E8;color:#2E6B3A;padding:4px 9px;border-radius:99px;">Active</span></div><div style="display:flex;align-items:center;gap:16px;"><div style="width:110px;height:110px;border-radius:50%;background:conic-gradient(#1E1E1E 0 62.5%,#F5F5F5 62.5% 100%);display:grid;place-items:center;flex:none;"><div style="width:76px;height:76px;background:#F5F5F5;border-radius:50%;display:grid;place-items:center;text-align:center;"><div><div style="font-size:16px;font-weight:700;">62,5%</div><div style="font-size:9px;color:#5F5E5E;">available</div></div></div></div><div style="flex:1;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">&euro; 1.250.000</div><div style="font-size:var(--web-min-size);color:#5F5E5E;margin:4px 0 10px;line-height:var(--web-min-lh);">of &euro; 2.000.000 total limit</div><div style="height:10px;background:#F5F5F5;border-radius:99px;overflow:hidden;"><div style="height:100%;width:62.5%;background:#1E1E1E;"></div></div><div style="font-size:var(--web-min-size);color:#5F5E5E;margin-top:8px;line-height:var(--web-min-lh);">Used &euro; 750.000 &middot; valid until Sep 30, 2025</div></div></div></div>
+        <div style="background:#F5F5F5;border-radius:12px;padding:20px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:14px;line-height:var(--web-h3-lh);">Source eligibility</div><div style="display:flex;flex-direction:column;gap:8px;"><sc-for list="{{ eligibility }}" as="e" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:12px 1fr auto;gap:10px;align-items:center;background:#FFFFFF;border-radius:16px;padding:10px 11px;"><span style="width:11px;height:11px;border-radius:50%;background:{{ e.dot }};"></span><div><div style="font-size:12.5px;font-weight:700;">{{ e.name }}</div><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ e.note }}</div></div><span style="font-size:10px;font-weight:700;background:{{ e.chipBg }};color:{{ e.chipColor }};padding:3px 8px;border-radius:99px;white-space:nowrap;">{{ e.status }}</span></div></sc-for></div></div>
+        <div style="background:#F5F5F5;border-radius:12px;padding:20px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:10px;line-height:var(--web-h3-lh);">Blocks</div><p style="margin:0 0 14px;font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">Factoring is blocked by expired approval, over-limit, overdue, dispute, or missing POD / serial / packing documents.</p><button style="width:100%;min-height:var(--cta-height,56px);border:1px solid #D4D4D4;background:#F5F5F5;border-radius:var(--cta-radius,8px);font-weight:400;font-size:var(--cta-font,16px);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">View blocked items</button></div>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:20px;margin-top:16px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:14px;line-height:var(--web-h3-lh);">Factoring readiness checklist</div>
+        <div style="overflow:auto;"><table style="width:100%;border-collapse:collapse;font-size:13px;"><thead><tr><sc-for list="{{ factorCols }}" as="c" hint-placeholder-count="9"><th style="text-align:left;padding:10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;border-radius:8px;letter-spacing:var(--web-eyebrow-ls);">{{ c }}</th></sc-for></tr></thead><tbody><sc-for list="{{ factoring }}" as="f" hint-placeholder-count="3"><tr style="border-bottom:1px solid #F5F5F5;"><td style="padding:10px;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ f.order }}</td><td style="padding:10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ f.source }}</td><td style="padding:10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ f.invoice }}</td><td style="padding:10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ f.po }}</td><td style="padding:10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ f.packing }}</td><td style="padding:10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ f.serials }}</td><td style="padding:10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ f.shipdoc }}</td><td style="padding:10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ f.pod }}</td><td style="padding:10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:{{ f.chipBg }};color:{{ f.chipColor }};padding:4px 9px;border-radius:99px;">{{ f.status }}</span></td></tr></sc-for></tbody></table></div>
+      </div>
+    </sc-if>
+
+    <!-- ================= WARRANTY ================= -->
+    <sc-if value="{{ isWarranty }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-bottom:20px;"><h1 style="font-size:var(--web-h1-size);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;line-height:var(--web-h1-lh);">Warranty, service <span style="font-weight:300;">&amp; RMA</span></h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);line-height:var(--web-body-lh);">Activations, tickets, safety cases and claims.</p></div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;--cg:16px;">
+        <sc-for list="{{ warrantyStats }}" as="s" hint-placeholder-count="4"><div style="background:#F5F5F5;border-radius:12px;padding:18px;"><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ s.label }}</div><div style="margin-top:6px;"><span style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ s.value }}</span></div></div></sc-for>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:20px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:14px;line-height:var(--web-h3-lh);">Open tickets</div><div style="overflow:auto;"><table style="width:100%;border-collapse:collapse;font-size:13px;"><thead><tr><sc-for list="{{ ticketCols }}" as="c" hint-placeholder-count="6"><th style="text-align:left;padding:11px 10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;border-radius:8px;letter-spacing:var(--web-eyebrow-ls);">{{ c }}</th></sc-for></tr></thead><tbody><sc-for list="{{ tickets }}" as="t" hint-placeholder-count="5"><tr style="border-bottom:1px solid #F5F5F5;"><td style="padding:11px 10px;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ t.id }}</td><td style="padding:11px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ t.category }}</td><td style="padding:11px 10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ t.subject }}</td><td style="padding:11px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ t.product }}</td><td style="padding:11px 10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:{{ t.chipBg }};color:{{ t.chipColor }};padding:4px 9px;border-radius:99px;">{{ t.status }}</span></td><td style="padding:11px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ t.updated }}</td></tr></sc-for></tbody></table></div></div>
+    </sc-if>
+
+    <!-- ================= PRICE LISTS ================= -->
+    <sc-if value="{{ isPricelists }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-bottom:20px;"><h1 style="font-size:var(--web-h1-size);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;line-height:var(--web-h1-lh);">Price lists <span style="font-weight:300;">&amp; data export</span></h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);line-height:var(--web-body-lh);">Download your negotiated pricing as PDF, CSV or in your ERP format.</p></div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;--cg:16px;">
+        <sc-for list="{{ priceLists }}" as="p" hint-placeholder-count="6"><div style="background:#F5F5F5;border-radius:12px;padding:20px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:4px;line-height:var(--web-h3-lh);">{{ p.name }}</div><div style="font-size:var(--web-min-size);color:#5F5E5E;margin-bottom:14px;line-height:var(--web-min-lh);">{{ p.updated }}</div><div style="display:flex;flex-wrap:wrap;gap:8px;"><sc-for list="{{ p.formats }}" as="f" hint-placeholder-count="4"><button style="height:36px;padding:0 14px;border:1px solid #D4D4D4;background:#F5F5F5;border-radius:8px;font-weight:var(--web-tag-weight);font-size:var(--web-tag-size);cursor:pointer;">&#8595; {{ f }}</button></sc-for></div></div></sc-for>
+      </div>
+    </sc-if>
+
+    <!-- ================= PROJECTS ================= -->
+    <sc-if value="{{ isProjects }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;"><div><h1 style="font-size:var(--web-h1-size);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;line-height:var(--web-h1-lh);">Projects</h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);line-height:var(--web-body-lh);">Group orders and deliveries by job reference.</p></div><button style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border:none;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius,8px);font-weight:400;font-size:var(--cta-font,16px);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">New project</button></div>
+      <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;--cg:16px;">
+        <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4"><div style="background:#F5F5F5;border-radius:12px;padding:20px;"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;"><div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ p.name }}</div><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ p.ref }}</div></div><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:{{ p.chipBg }};color:{{ p.chipColor }};padding:4px 9px;border-radius:99px;">{{ p.status }}</span></div><div data-cols="3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;--cg:10px;"><div><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">Orders</div><div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ p.orders }}</div></div><div><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">Value</div><div style="font-size:18px;font-weight:700;">{{ p.value }}</div></div><div><div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">Updated</div><div style="font-size:var(--web-small-size);font-weight:300;padding-top:4px;line-height:var(--web-small-lh);">{{ p.updated }}</div></div></div></div></sc-for>
+      </div>
+    </sc-if>
+
+    <!-- ================= COUPONS ================= -->
+    <sc-if value="{{ isCoupons }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-bottom:20px;"><h1 style="font-size:var(--web-h1-size);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;line-height:var(--web-h1-lh);">Coupons</h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);line-height:var(--web-body-lh);">Vouchers available on your account.</p></div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:60px 20px;text-align:center;">
+        <div style="font-size:34px;margin-bottom:12px;">&#9866;</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:6px;line-height:var(--web-h3-lh);">No coupons yet.</div>
+        <p style="margin:0 auto;max-width:44ch;font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">When a voucher lands on your account it will wait for you here, patiently.</p>
+      </div>
+    </sc-if>
+
+    <!-- ================= ACCOUNT ================= -->
+    <sc-if value="{{ isAccount }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;"><div><h1 style="font-size:var(--web-h1-size);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;line-height:var(--web-h1-lh);">Company <span style="font-weight:300;">&amp; account</span></h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);line-height:var(--web-body-lh);">Profile, addresses and optional programmes.</p></div><button style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border:1px solid #D4D4D4;background:#F5F5F5;border-radius:var(--cta-radius,8px);font-weight:400;font-size:var(--cta-font,16px);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Submit for review</button></div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;--cg:16px;">
+        <div style="background:#F5F5F5;border-radius:12px;padding:20px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:10px;line-height:var(--web-h3-lh);">Buyer access</div><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:#E8F0E8;color:#2E6B3A;padding:4px 9px;border-radius:99px;">Approved buyer</span><p style="margin:12px 0 0;font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">EU, floating and factory stock enabled. Production / OEM access requires management approval.</p></div>
+        <div style="background:#F5F5F5;border-radius:12px;padding:20px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:10px;line-height:var(--web-h3-lh);">Missing data</div><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:#FFEB9E;color:#6B5A1A;padding:4px 9px;border-radius:99px;">2 open items</span><p style="margin:12px 0 0;font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">Updated VAT document required. Stock-sharing programme contact incomplete.</p></div>
+        <div style="background:#F5F5F5;border-radius:12px;padding:20px;"><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:10px;line-height:var(--web-h3-lh);">Optional modules</div><div style="display:flex;gap:6px;flex-wrap:wrap;"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:#CCEDF0;color:#0A6E82;padding:4px 9px;border-radius:99px;">Credit requested</span><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);background:#F5F5F5;color:#5F5E5E;padding:4px 9px;border-radius:99px;">Stock-sharing applicant</span></div><p style="margin:12px 0 0;font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">Normal buying stays open while optional modules are reviewed.</p></div>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:20px;margin-bottom:16px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:14px;line-height:var(--web-h3-lh);">Company profile</div>
+        <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;--cg:12px;">
+          <sc-for list="{{ profile }}" as="f" hint-placeholder-count="6"><div><label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#5F5E5E;margin-bottom:5px;">{{ f.label }}</label><input value="{{ f.value }}" style="width:100%;box-sizing:border-box;height:42px;border:1px solid #D4D4D4;border-radius:8px;padding:0 12px;background:#FFFFFF;font-size:var(--web-input-size);color:#4F4F4E;font-weight:var(--web-input-weight);"></div></sc-for>
+        </div>
+      </div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:20px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:14px;line-height:var(--web-h3-lh);">Delivery addresses</div>
+        <div style="overflow:auto;"><table style="width:100%;border-collapse:collapse;font-size:13px;"><thead><tr><sc-for list="{{ addressCols }}" as="c" hint-placeholder-count="5"><th style="text-align:left;padding:11px 10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;border-radius:8px;letter-spacing:var(--web-eyebrow-ls);">{{ c }}</th></sc-for></tr></thead><tbody><sc-for list="{{ addresses }}" as="a" hint-placeholder-count="3"><tr style="border-bottom:1px solid #F5F5F5;"><td style="padding:11px 10px;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ a.label }}</td><td style="padding:11px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ a.street }}</td><td style="padding:11px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ a.city }}</td><td style="padding:11px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ a.country }}</td><td style="padding:11px 10px;text-align:right;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;"><span style="cursor:pointer;color:#0A6E82;font-weight:700;">Edit</span></td></tr></sc-for></tbody></table></div>
+      </div>
+    </sc-if>
+
+    <!-- ================= USERS ================= -->
+    <sc-if value="{{ isUsers }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;"><div><h1 style="font-size:var(--web-h1-size);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;line-height:var(--web-h1-lh);">Users <span style="font-weight:300;">&amp; permissions</span></h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);line-height:var(--web-body-lh);">Create sub-users and set who may order, see prices and receive documents.</p></div><button style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border:none;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius,8px);font-weight:400;font-size:var(--cta-font,16px);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Create user</button></div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:6px 20px 20px;"><div style="overflow:auto;"><table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead><tr><sc-for list="{{ userCols }}" as="c" hint-placeholder-count="6"><th style="text-align:left;padding:12px 10px;background:#F5F5F5;color:#5F5E5E;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);text-transform:uppercase;letter-spacing:var(--web-eyebrow-ls);border-radius:8px;">{{ c }}</th></sc-for></tr></thead>
+        <tbody><sc-for list="{{ users }}" as="u" hint-placeholder-count="4"><tr style="border-bottom:1px solid #F5F5F5;"><td style="padding:12px 10px;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;"><span style="width:9px;height:9px;border-radius:50%;background:{{ u.dot }};display:inline-block;margin-right:8px;"></span>{{ u.status }}</td><td style="padding:12px 10px;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ u.name }}</td><td style="padding:12px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ u.email }}</td><td style="padding:12px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ u.role }}</td><td style="padding:12px 10px;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ u.rights }}</td><td style="padding:12px 10px;text-align:right;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;"><span style="cursor:pointer;color:#0A6E82;font-weight:700;">Edit</span></td></tr></sc-for></tbody>
+      </table></div></div>
+    </sc-if>
+
+    <!-- ================= NOTIFICATIONS ================= -->
+    <sc-if value="{{ isNotifications }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;"><div><h1 style="font-size:var(--web-h1-size);margin:0 0 6px;font-weight:100;letter-spacing:-0.03em;line-height:var(--web-h1-lh);">Notification <span style="font-weight:300;">recipients</span></h1><p style="margin:0;color:#5F5E5E;font-size:var(--web-body-size);line-height:var(--web-body-lh);">Choose who is emailed for new invoices, delivery notes and flash data. Up to 20 addresses.</p></div><button style="min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border:none;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius,8px);font-weight:400;font-size:var(--cta-font,16px);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Add recipient</button></div>
+      <div style="background:#F5F5F5;border-radius:12px;padding:20px;">
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ recipients }}" as="r" hint-placeholder-count="3"><div style="display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:#FFFFFF;border-radius:16px;padding:14px 16px;"><div style="display:flex;gap:6px;"><sc-for list="{{ r.flags }}" as="fl" hint-placeholder-count="3"><span style="width:26px;height:26px;border-radius:6px;background:{{ fl.bg }};color:{{ fl.color }};display:grid;place-items:center;font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ fl.icon }}</span></sc-for></div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ r.email }}</div><div style="display:flex;gap:10px;"><span style="cursor:pointer;color:#0A6E82;font-weight:300;font-size:var(--web-small-size);line-height:var(--web-small-lh);">Edit</span><span style="cursor:pointer;color:#B3261E;font-weight:var(--web-error-weight);font-size:var(--web-error-size);">Remove</span></div></div></sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:860}}">
+const DOT = { eu:"#5F7773", factory:"#F1931B", production:"#8BCF3F", floating:"#CDD62B" };
+const CHIP = {
+  ok:{bg:"#E8F0E8",color:"#2E6B3A"}, info:{bg:"#CCEDF0",color:"#0A6E82"},
+  warn:{bg:"#FFEB9E",color:"#6B5A1A"}, alert:{bg:"#F6E0DE",color:"#A03028"}, neutral:{bg:"#F5F5F5",color:"#5F5E5E"},
+};
+function chip(k){ return CHIP[k] || CHIP.neutral; }
+
+class Component extends DCLogic {
+  state = { view: "overview" };
+  go(v){ this.setState({ view:v }); const m = this.el && this.el.querySelector("main"); if (m) m.scrollTo({top:0,behavior:"smooth"}); }
+
+  renderVals() {
+    const v = this.state.view;
+    const nav = (view,label,icon) => ({ label, icon, onClick:()=>this.go(view),
+      bg: v===view ? "#F5F5F5" : "transparent", color: v===view ? "#4F4F4E" : "#5F5E5E", weight: v===view ? 400 : 400 });
+    const isDetail = v==="orderDetail";
+
+    return {
+      navGroups: [
+        { title:"Workspace", items:[ nav("overview","Overview","\u2302") ] },
+        { title:"Shop", items:[ nav("catalog","Catalog","\u25A6"), nav("quotations","Quotations","\u25A4"), nav("orders","Orders","\u25A9"), nav("invoices","Invoices","\u20AC"), nav("pricelists","Price lists","\u2261"), nav("coupons","Coupons","\u2666") ] },
+        { title:"Fulfilment", items:[ nav("logistics","Logistics","\u21C4"), nav("documents","Documents","\u25A3"), nav("warranty","Warranty & RMA","\u25C7"), nav("projects","Projects","\u25A0") ] },
+        { title:"Finance", items:[ nav("credit","Credit & factoring","\u25A5") ] },
+        { title:"Company", items:[ nav("account","Account & addresses","\u263B"), nav("users","Users","\u26AB"), nav("notifications","Notifications","\u2709") ] },
+      ],
+      isOverview:v==="overview", isCatalog:v==="catalog", isQuotations:v==="quotations",
+      isOrders:v==="orders", isOrderDetail:isDetail, isInvoices:v==="invoices", isDocuments:v==="documents",
+      isLogistics:v==="logistics", isCredit:v==="credit", isWarranty:v==="warranty", isPricelists:v==="pricelists",
+      isProjects:v==="projects", isCoupons:v==="coupons", isAccount:v==="account", isUsers:v==="users", isNotifications:v==="notifications",
+
+      goCredit:()=>this.go("credit"), goDocuments:()=>this.go("documents"), goOrders:()=>this.go("orders"), openOrder:()=>this.go("orderDetail"),
+
+      catalogGroups: [
+        { title:"Solar generation", items:[
+          { name:"ANDO", cat:"Solar modules", href:"ANDO - WEBSHOP - Shop - EN.dc.html" },
+          { name:"MOX", cat:"Structural PV platforms", href:"MOX - WEBSHOP - Shop - EN.dc.html" },
+          { name:"CHILL", cat:"Solar street furniture", href:"CHILL - WEBSHOP - Shop - EN.dc.html" },
+          { name:"GLOW", cat:"Solar lighting", href:"GLOW - WEBSHOP - Shop - EN.dc.html" },
+          { name:"PROP", cat:"Small wind turbines", href:"PROP - WEBSHOP - Shop - EN.dc.html" },
+        ]},
+        { title:"Inverters & storage", items:[
+          { name:"MOEBIUS", cat:"Inverters", href:"MOEBIUS - WEBSHOP - Shop - EN.dc.html" },
+          { name:"FLUXX", cat:"Batteries", href:"FLUXX - WEBSHOP - Shop - EN.dc.html" },
+          { name:"SHELTR", cat:"Inverter RoofShelter", href:"SHELTR - WEBSHOP - Shop - EN.dc.html" },
+        ]},
+        { title:"Heating & climate", items:[
+          { name:"NENDO", cat:"Heat pumps", href:"NENDO - WEBSHOP - Shop - EN.dc.html" },
+          { name:"OGO", cat:"Water storage", href:"STROHM.ENERGY - SITE - System Enquiry - EN.dc.html?brand=OGO" },
+          { name:"FEU", cat:"Infrared heating", href:"FEU - WEBSHOP - Shop - EN.dc.html" },
+          { name:"AIRO", cat:"Ventilation / MVHR", href:"AIRO - WEBSHOP - Shop - EN.dc.html" },
+        ]},
+        { title:"Control, metering & EV", items:[
+          { name:"SYNQ", cat:"Meters & monitoring", href:"SYNQ - WEBSHOP - Shop - EN.dc.html" },
+          { name:"OZZY", cat:"Smart switching", href:"OZZY - WEBSHOP - Shop - EN.dc.html" },
+          { name:"XOOM", cat:"EV charging", href:"XOOM - WEBSHOP - Shop - EN.dc.html" },
+          { name:"EMON", cat:"MON VISTA display", href:"EMON - WEBSHOP - Shop - EN.dc.html" },
+        ]},
+        { title:"Protection & installation", items:[
+          { name:"DODO", cat:"Bird protection", href:"DODO - WEBSHOP - Shop - EN.dc.html" },
+          { name:"TOGU", cat:"Installation materials", href:"TOGU - WEBSHOP - Shop - EN.dc.html" },
+          { name:"WURK", cat:"Installation equipment", href:"WURK - WEBSHOP - Shop - EN.dc.html" },
+        ]},
+      ],
+
+      kpis: [
+        { icon:"\u25A9", iconBg:"#F5F5F5", iconColor:"#4F4F4E", label:"Open orders", value:"12", unit:"", link:"View orders", onClick:()=>this.go("orders") },
+        { icon:"\u25A4", iconBg:"#F5F5F5", iconColor:"#4F4F4E", label:"Pending quotes", value:"7", unit:"", link:"View quotations", onClick:()=>this.go("quotations") },
+        { icon:"\u25A5", iconBg:"#F5F5F5", iconColor:"#4F4F4E", label:"Available credit", value:"\u20AC 1,25", unit:"M of \u20AC 2M", link:"Credit details", onClick:()=>this.go("credit") },
+        { icon:"\u2709", iconBg:"#F5F5F5", iconColor:"#4F4F4E", label:"Pending actions", value:"4", unit:"", link:"View actions", onClick:()=>this.go("account") },
+      ],
+      sources: [
+        { name:"EU stock", desc:"Warehouse + stock-sharing partners", dot:DOT.eu, status:"Available", chipBg:CHIP.ok.bg, chipColor:CHIP.ok.color },
+        { name:"Factory stock", desc:"Packed ready-to-ship stock", dot:DOT.factory, status:"Available", chipBg:CHIP.ok.bg, chipColor:CHIP.ok.color },
+        { name:"Production orders", desc:"MOQ and longer lead time", dot:DOT.production, status:"Limited", chipBg:CHIP.warn.bg, chipColor:CHIP.warn.color },
+        { name:"Floating stock", desc:"Container / batch stock in transit", dot:DOT.floating, status:"Available", chipBg:CHIP.info.bg, chipColor:CHIP.info.color },
+      ],
+      pendingActions: [
+        { icon:"\u2316", iconBg:"#F6E0DE", iconColor:"#A03028", title:"Confirm delivery address", desc:"Confirm your default delivery address.", due:"Overdue", chipBg:CHIP.alert.bg, chipColor:CHIP.alert.color },
+        { icon:"\u25C7", iconBg:"#FFF3CE", iconColor:"#6B5A1A", title:"Complete warranty activation", desc:"2 products need activation.", due:"3 days", chipBg:CHIP.warn.bg, chipColor:CHIP.warn.color },
+        { icon:"\u25A4", iconBg:"#CCEDF0", iconColor:"#0A6E82", title:"Review quotation update", desc:"QT-2025-0417 was updated.", due:"5 days", chipBg:CHIP.info.bg, chipColor:CHIP.info.color },
+        { icon:"\u25A5", iconBg:"#F5F5F5", iconColor:"#5F5E5E", title:"Upload VAT certificate", desc:"Updated version required.", due:"7 days", chipBg:CHIP.neutral.bg, chipColor:CHIP.neutral.color },
+      ],
+      recentDocs: [
+        { name:"INV-2025-0519-1021", type:"Invoice", order:"SO-2504198", date:"May 19" },
+        { name:"DN-2025-0518-0876", type:"Delivery note", order:"SO-2504198", date:"May 18" },
+        { name:"PL-2025-0518-0876", type:"Packing list", order:"SO-2504198", date:"May 18" },
+        { name:"POD-2025-0518-0876", type:"Proof of delivery", order:"SO-2504177", date:"May 18" },
+        { name:"WC-2025-0505-0003", type:"Warranty cert.", order:"SO-2503821", date:"May 5" },
+        { name:"RMA-2025-0504-0002", type:"RMA report", order:"RMA-2501248", date:"May 4" },
+      ],
+      timeline: [
+        { mark:"\u2713", dotBg:"#2E6B3A", dotColor:"#FFFFFF", label:"Order confirmed", date:"Apr 19, 09:15" },
+        { mark:"\u2713", dotBg:"#2E6B3A", dotColor:"#FFFFFF", label:"Production planned", date:"Apr 21, 11:00" },
+        { mark:"\u2713", dotBg:"#2E6B3A", dotColor:"#FFFFFF", label:"QC passed", date:"May 12, 16:30" },
+        { mark:"\u2713", dotBg:"#2E6B3A", dotColor:"#FFFFFF", label:"Ready to ship", date:"May 15, 08:45" },
+        { mark:"\u2192", dotBg:"#1E1E1E", dotColor:"#FFFFFF", label:"In transit", date:"Est. May 21" },
+        { mark:"\u25CB", dotBg:"#F5F5F5", dotColor:"#5F5E5E", label:"Delivered", date:"Est. May 23" },
+      ],
+
+      products: [
+        { icon:"\u25AF", name:"PowerBloc 5000", desc:"5,12 kWh LFP battery module", price:"\u20AC 1.325", pills:[{text:"EU 42",bg:CHIP.ok.bg,color:CHIP.ok.color},{text:"Factory 180",bg:CHIP.info.bg,color:CHIP.info.color},{text:"MOQ 100",bg:CHIP.warn.bg,color:CHIP.warn.color}] },
+        { icon:"\u26A1", name:"SunPack Hybrid 10K", desc:"3-phase hybrid inverter", price:"\u20AC 2.180", pills:[{text:"EU 12",bg:CHIP.ok.bg,color:CHIP.ok.color},{text:"Floating Jun 20",bg:CHIP.info.bg,color:CHIP.info.color}] },
+        { icon:"\u25A5", name:"SYNQ 3-phase meter", desc:"DIN rail meter, 2 CT channels", price:"\u20AC 86", pills:[{text:"EU 310",bg:CHIP.ok.bg,color:CHIP.ok.color},{text:"Factory 1200",bg:CHIP.info.bg,color:CHIP.info.color}] },
+        { icon:"\u25A3", name:"EMON Wi-Fi collector", desc:"Gateway for meters and devices", price:"\u20AC 49", pills:[{text:"EU 420",bg:CHIP.ok.bg,color:CHIP.ok.color},{text:"No MOQ",bg:CHIP.neutral.bg,color:CHIP.neutral.color}] },
+      ],
+
+      quoteCols: ["Quotation","Customer PO","Sources","Total","Validity","Status"],
+      quotations: [
+        { id:"QT-2025-0417", po:"PO-ACME-3391", sources:"EU + Floating + Factory", total:"\u20AC 85.420,00", validity:"7 days", status:"Updated", chipBg:CHIP.info.bg, chipColor:CHIP.info.color },
+        { id:"QT-2025-0412", po:"\u2014", sources:"Production order", total:"\u20AC 122.800,00", validity:"14 days", status:"Expiring", chipBg:CHIP.warn.bg, chipColor:CHIP.warn.color },
+        { id:"QT-2025-0398", po:"ACME-223", sources:"EU stock", total:"\u20AC 18.950,00", validity:"Expired", status:"Needs recalc", chipBg:CHIP.alert.bg, chipColor:CHIP.alert.color },
+        { id:"QT-2025-0388", po:"PO-ACME-3355", sources:"EU + Factory", total:"\u20AC 44.210,00", validity:"Accepted", status:"Accepted", chipBg:CHIP.ok.bg, chipColor:CHIP.ok.color },
+      ],
+      quoteRules: [
+        { title:"Quote validity", body:"EU stock quotes are valid 7 days. Floating stock can change if quantity or container allocation changes. Production pricing is valid 14 days unless BOM, freight or cell pricing changes." },
+        { title:"Transport validity", body:"Production/factory transport valid 7 days, floating transport valid 14 days. If you delay payment or release, transport can be recalculated." },
+        { title:"Section acceptance", body:"Accept the valid source sections now; invalid sections stay pending for sales and logistics to update." },
+      ],
+
+      orderStats: [
+        { label:"In progress", value:"12", unit:"orders" }, { label:"Ready to ship", value:"3", unit:"orders" },
+        { label:"In transit", value:"7", unit:"orders" }, { label:"Value open", value:"\u20AC 512K", unit:"" },
+      ],
+      orderCols: ["Order","Date","Sources","Total","ETA","Status",""],
+      orders: [
+        { id:"SO-2504198", date:"Apr 19, 2025", sources:"EU + Factory + Production + Floating", total:"\u20AC 85.420,00", eta:"May 21", status:"In transit", chipBg:CHIP.info.bg, chipColor:CHIP.info.color },
+        { id:"SO-2504177", date:"Apr 15, 2025", sources:"Factory stock", total:"\u20AC 32.180,00", eta:"May 28", status:"Ready", chipBg:CHIP.ok.bg, chipColor:CHIP.ok.color },
+        { id:"SO-2504162", date:"Apr 11, 2025", sources:"Production order", total:"\u20AC 122.800,00", eta:"Jun 05", status:"In production", chipBg:CHIP.info.bg, chipColor:CHIP.info.color },
+        { id:"SO-2504123", date:"Apr 03, 2025", sources:"EU stock", total:"\u20AC 18.950,00", eta:"Delivered", status:"Delivered", chipBg:CHIP.ok.bg, chipColor:CHIP.ok.color },
+        { id:"SO-2504101", date:"Mar 28, 2025", sources:"EU + Floating", total:"\u20AC 54.300,00", eta:"Jun 20", status:"Scheduled", chipBg:CHIP.warn.bg, chipColor:CHIP.warn.color },
+      ],
+
+      orderSources: [
+        { name:"EU stock", dot:DOT.eu, qty:"120", eta:"May 21", status:"In transit", chipBg:CHIP.info.bg, chipColor:CHIP.info.color },
+        { name:"Factory", dot:DOT.factory, qty:"80", eta:"May 28", status:"Confirmed", chipBg:CHIP.ok.bg, chipColor:CHIP.ok.color },
+        { name:"Production", dot:DOT.production, qty:"200", eta:"Jun 05", status:"In production", chipBg:CHIP.info.bg, chipColor:CHIP.info.color },
+        { name:"Floating", dot:DOT.floating, qty:"100", eta:"Jun 20", status:"Scheduled", chipBg:CHIP.warn.bg, chipColor:CHIP.warn.color },
+      ],
+      orderProgress: [
+        { mark:"\u2713", dotBg:"#2E6B3A", dotColor:"#FFFFFF", label:"Confirmed", date:"Apr 19" },
+        { mark:"\u2713", dotBg:"#2E6B3A", dotColor:"#FFFFFF", label:"Allocation", date:"Apr 21" },
+        { mark:"\u2192", dotBg:"#1E1E1E", dotColor:"#FFFFFF", label:"In transit", date:"Apr 22" },
+        { mark:"\u25CB", dotBg:"#F5F5F5", dotColor:"#5F5E5E", label:"At destination", date:"\u2014" },
+        { mark:"\u25CB", dotBg:"#F5F5F5", dotColor:"#5F5E5E", label:"Out for delivery", date:"\u2014" },
+        { mark:"\u25CB", dotBg:"#F5F5F5", dotColor:"#5F5E5E", label:"Delivered", date:"\u2014" },
+      ],
+      orderSummary: [
+        { k:"Order date", v:"Apr 19, 2025" }, { k:"Order type", v:"Mixed-source" },
+        { k:"Order total", v:"\u20AC 85.420,00" }, { k:"Currency", v:"EUR" },
+        { k:"Incoterm", v:"DAP Hamburg" }, { k:"Payment terms", v:"30% / 70%" },
+      ],
+      orderDocs: [
+        { name:"Invoice", ref:"INV-2025-0519-021" }, { name:"Delivery note", ref:"DN-2025-0519-676" },
+        { name:"Packing list", ref:"PL-2025-0519-0876" }, { name:"Serial number list", ref:"PDF / CSV" },
+      ],
+      serials: [
+        { source:"EU stock", qty:"120", files:"PDF \u00B7 CSV" }, { source:"Factory", qty:"80", files:"PDF \u00B7 CSV" },
+        { source:"Production", qty:"\u2014", files:"\u2014" }, { source:"Floating", qty:"100", files:"PDF \u00B7 CSV" },
+      ],
+
+      invoiceStats: [
+        { label:"Open invoices", value:"\u20AC 148K" }, { label:"Overdue", value:"\u20AC 0" },
+        { label:"Paid this month", value:"\u20AC 312K" }, { label:"Credit notes", value:"9" },
+      ],
+      invoiceCols: ["Invoice","Order","Date","Due","Total","Status",""],
+      invoices: [
+        { id:"INV-2025-0519-1021", order:"SO-2504198", date:"May 19", due:"Jun 18", total:"\u20AC 87.450,00", status:"Open", chipBg:CHIP.warn.bg, chipColor:CHIP.warn.color },
+        { id:"INV-2025-0512-0966", order:"SO-2504123", date:"May 12", due:"Jun 11", total:"\u20AC 18.950,00", status:"Paid", chipBg:CHIP.ok.bg, chipColor:CHIP.ok.color },
+        { id:"INV-2025-0508-0921", order:"SO-2504101", date:"May 08", due:"Jun 07", total:"\u20AC 26.100,00", status:"Paid", chipBg:CHIP.ok.bg, chipColor:CHIP.ok.color },
+        { id:"CN-2025-0518-0876", order:"SO-2504198", date:"May 18", due:"\u2014", total:"\u2212 \u20AC 1.240,00", status:"Credit note", chipBg:CHIP.info.bg, chipColor:CHIP.info.color },
+        { id:"INV-2025-0502-0855", order:"SO-2504066", date:"May 02", due:"Jun 01", total:"\u20AC 41.320,00", status:"Paid", chipBg:CHIP.ok.bg, chipColor:CHIP.ok.color },
+        { id:"PI-2025-0517-0633", order:"SO-2504177", date:"May 17", due:"May 22", total:"\u20AC 32.180,00", status:"Proforma", chipBg:CHIP.neutral.bg, chipColor:CHIP.neutral.color },
+      ],
+
+      docTiles: [
+        { icon:"\u25A3", bg:"#F5F5F5", color:"#4F4F4E", label:"Invoices", count:"124" },
+        { icon:"\u25A3", bg:"#E8F0E8", color:"#2E6B3A", label:"Delivery notes", count:"86" },
+        { icon:"\u25A4", bg:"#CCEDF0", color:"#0A6E82", label:"Packing lists", count:"71" },
+        { icon:"\u2713", bg:"#FFF3CE", color:"#6B5A1A", label:"Proof of delivery", count:"43" },
+        { icon:"\u20AC", bg:"#F5F5F5", color:"#4F4F4E", label:"Payment requests", count:"28" },
+        { icon:"\u25C7", bg:"#CCEDF0", color:"#0A6E82", label:"Warranty certs", count:"19" },
+        { icon:"\u25A3", bg:"#F6E0DE", color:"#A03028", label:"RMA reports", count:"12" },
+        { icon:"\u21BA", bg:"#FFF3CE", color:"#6B5A1A", label:"Credit notes", count:"9" },
+      ],
+      docCols: ["Document","Type","Order","Company","Date",""],
+      documents: [
+        { name:"INV-2025-0519-1021", type:"Invoice", order:"SO-2504198", company:"STRØHM.ENERGY EU", date:"May 19" },
+        { name:"CN-2025-0518-0876", type:"Credit note", order:"SO-2504198", company:"STRØHM.ENERGY EU", date:"May 18" },
+        { name:"DN-2025-0518-0876", type:"Delivery note", order:"SO-2504198", company:"STRØHM.ENERGY EU", date:"May 18" },
+        { name:"PL-2025-0518-0876", type:"Packing list", order:"SO-2504198", company:"STRØHM.ENERGY EU", date:"May 18" },
+        { name:"POD-2025-0518-0876", type:"Proof of delivery", order:"SO-2504177", company:"ACME Logistics", date:"May 18" },
+        { name:"PI-2025-0517-0633", type:"Proforma invoice", order:"SO-2504177", company:"STRØHM.ENERGY HK", date:"May 17" },
+        { name:"PR-2025-0516-0452", type:"Payment request", order:"SO-2504162", company:"STRØHM.ENERGY EU", date:"May 16" },
+        { name:"WC-2025-0505-0003", type:"Warranty certificate", order:"SO-2503821", company:"EMON / Odoo", date:"May 5" },
+        { name:"SNL-2025-0509-0055", type:"Serial number list", order:"SO-2504066", company:"STRØHM.ENERGY EU", date:"May 9" },
+        { name:"RMA-2025-0504-0002", type:"RMA decision report", order:"RMA-2501248", company:"STRØHM.ENERGY EU", date:"May 4" },
+      ],
+
+      logiStats: [
+        { label:"In transit", value:"7" }, { label:"Customs review", value:"2" },
+        { label:"Delivered", value:"38" }, { label:"Delay alerts", value:"1" },
+      ],
+      logiCols: ["Source","Shipment ref","ETD","ETA","Customs","Status"],
+      shipments: [
+        { source:"EU stock", ref:"DHL-784412", etd:"May 18", eta:"May 21", customs:"Not required", status:"In transit", chipBg:CHIP.info.bg, chipColor:CHIP.info.color },
+        { source:"Factory stock", ref:"LCL-HAM-0922", etd:"May 24", eta:"May 28", customs:"Docs OK", status:"Ready", chipBg:CHIP.ok.bg, chipColor:CHIP.ok.color },
+        { source:"Production order", ref:"CNTR-OOCL-2281", etd:"Jun 01", eta:"Jun 05", customs:"Docs pending", status:"Awaiting QC", chipBg:CHIP.warn.bg, chipColor:CHIP.warn.color },
+        { source:"Floating stock", ref:"CNTR-MSC-9912", etd:"Jun 02", eta:"Jun 20", customs:"Broker scheduled", status:"Scheduled", chipBg:CHIP.info.bg, chipColor:CHIP.info.color },
+      ],
+
+      eligibility: [
+        { name:"EU stock", note:"Easiest approval", dot:DOT.eu, status:"Eligible", chipBg:CHIP.ok.bg, chipColor:CHIP.ok.color },
+        { name:"Factory stock", note:"After proof approved", dot:DOT.factory, status:"Review", chipBg:CHIP.info.bg, chipColor:CHIP.info.color },
+        { name:"Production", note:"After QC / ready-to-ship", dot:DOT.production, status:"Conditional", chipBg:CHIP.warn.bg, chipColor:CHIP.warn.color },
+        { name:"Floating stock", note:"Factor must accept batch", dot:DOT.floating, status:"Restricted", chipBg:CHIP.warn.bg, chipColor:CHIP.warn.color },
+      ],
+      factorCols: ["Order","Source","Invoice","PO","Packing","Serials","Ship doc","POD","Status"],
+      factoring: [
+        { order:"SO-2504198", source:"EU stock", invoice:"\u2713", po:"\u2713", packing:"\u2713", serials:"\u2713", shipdoc:"\u2713", pod:"Pending", status:"Pending", chipBg:CHIP.info.bg, chipColor:CHIP.info.color },
+        { order:"SO-2504177", source:"Factory", invoice:"\u2713", po:"\u2713", packing:"Missing", serials:"\u2713", shipdoc:"Pending", pod:"\u2014", status:"Blocked", chipBg:CHIP.alert.bg, chipColor:CHIP.alert.color },
+        { order:"SO-2504162", source:"Production", invoice:"Draft", po:"\u2713", packing:"\u2014", serials:"Pending", shipdoc:"\u2014", pod:"\u2014", status:"Not ready", chipBg:CHIP.neutral.bg, chipColor:CHIP.neutral.color },
+      ],
+
+      warrantyStats: [
+        { label:"Pending activation", value:"8" }, { label:"Active warranties", value:"74" },
+        { label:"Open tickets", value:"12" }, { label:"Open RMAs", value:"5" },
+      ],
+      ticketCols: ["Ticket","Category","Subject","Product / site","Status","Updated"],
+      tickets: [
+        { id:"TKT-2025-0519-1021", category:"Technical", subject:"Inverter communication loss", product:"SunPack 6000 / Site A", status:"Under review", chipBg:CHIP.info.bg, chipColor:CHIP.info.color, updated:"1h ago" },
+        { id:"TKT-2025-0518-0876", category:"Warranty", subject:"Warranty activation support", product:"PowerBloc 5000 / Site B", status:"Waiting for you", chipBg:CHIP.warn.bg, chipColor:CHIP.warn.color, updated:"3h ago" },
+        { id:"TKT-2025-0518-0764", category:"RMA", subject:"RMA request \u2013 fan module", product:"PowerBloc 5000 / Site B", status:"Under review", chipBg:CHIP.info.bg, chipColor:CHIP.info.color, updated:"5h ago" },
+        { id:"TKT-2025-0517-0602", category:"Logistics", subject:"Delivery delay query", product:"SunPack 6000 / Site C", status:"Waiting for you", chipBg:CHIP.warn.bg, chipColor:CHIP.warn.color, updated:"1d ago" },
+        { id:"TKT-2025-0515-0338", category:"EMS", subject:"EMS event notification", product:"PowerBloc 5000 / Site D", status:"Escalated", chipBg:CHIP.alert.bg, chipColor:CHIP.alert.color, updated:"2d ago" },
+      ],
+
+      priceLists: [
+        { name:"Full catalogue", updated:"Updated May 18, 2025", formats:["PDF","CSV","TSV","Syntess"] },
+        { name:"Batteries", updated:"Updated May 18, 2025", formats:["PDF","CSV","Syntess"] },
+        { name:"Inverters", updated:"Updated May 18, 2025", formats:["PDF","CSV","Syntess"] },
+        { name:"Mounting", updated:"Updated May 15, 2025", formats:["PDF","CSV"] },
+        { name:"Smart meters & EMON", updated:"Updated May 15, 2025", formats:["PDF","CSV"] },
+        { name:"Outlet / clearance", updated:"Updated May 20, 2025", formats:["PDF","CSV"] },
+      ],
+
+      projects: [
+        { name:"Bahrenfeld rooftop 240 kWp", ref:"PRJ-ACME-014", orders:"4", value:"\u20AC 210K", updated:"May 19", status:"Active", chipBg:CHIP.ok.bg, chipColor:CHIP.ok.color },
+        { name:"Altona storage retrofit", ref:"PRJ-ACME-011", orders:"2", value:"\u20AC 88K", updated:"May 12", status:"Active", chipBg:CHIP.ok.bg, chipColor:CHIP.ok.color },
+        { name:"Harburg carport", ref:"PRJ-ACME-009", orders:"3", value:"\u20AC 134K", updated:"Apr 30", status:"Delivering", chipBg:CHIP.info.bg, chipColor:CHIP.info.color },
+        { name:"Wandsbek residential batch", ref:"PRJ-ACME-006", orders:"6", value:"\u20AC 76K", updated:"Apr 22", status:"Closed", chipBg:CHIP.neutral.bg, chipColor:CHIP.neutral.color },
+      ],
+
+      profile: [
+        { label:"Legal company name", value:"ACME Industries GmbH" }, { label:"VAT / tax number", value:"DE123456789" },
+        { label:"Website", value:"https://acme-industries.example" }, { label:"Business type", value:"Installer / distributor" },
+        { label:"Billing address", value:"Bahrenfelder Chaussee 49, Hamburg" }, { label:"Primary contact", value:"Anna Schmidt" },
+      ],
+      addressCols: ["Label","Street","City","Country",""],
+      addresses: [
+        { label:"Default delivery", street:"Receiving Dept, Gate 3", city:"22761 Hamburg", country:"Germany" },
+        { label:"Head office", street:"Bahrenfelder Chaussee 49", city:"22761 Hamburg", country:"Germany" },
+        { label:"Site A store", street:"Industriestrasse 8", city:"20537 Hamburg", country:"Germany" },
+      ],
+
+      userCols: ["Status","Name","Email","Role","Rights",""],
+      users: [
+        { dot:"#2E6B3A", status:"Active", name:"Anna Schmidt", email:"anna.schmidt@acme.de", role:"Main buyer", rights:"Order + prices + docs" },
+        { dot:"#2E6B3A", status:"Active", name:"Lukas Meier", email:"lukas.meier@acme.de", role:"Logistics", rights:"Docs + tracking" },
+        { dot:"#2E6B3A", status:"Active", name:"Claudia Richter", email:"finance@acme.de", role:"Finance", rights:"Invoices + credit" },
+        { dot:"#B2B3B3", status:"Inactive", name:"Jonas Pohl", email:"jonas.pohl@acme.de", role:"Viewer", rights:"View only" },
+      ],
+
+      recipients: [
+        { email:"anna.schmidt@acme.de", flags:[{icon:"\u25A4",bg:"#F5F5F5",color:"#4F4F4E"},{icon:"\u25A6",bg:"#E8F0E8",color:"#2E6B3A"},{icon:"\u25A3",bg:"#CCEDF0",color:"#0A6E82"}] },
+        { email:"finance@acme.de", flags:[{icon:"\u25A4",bg:"#F5F5F5",color:"#4F4F4E"}] },
+        { email:"lukas.meier@acme.de", flags:[{icon:"\u25A6",bg:"#E8F0E8",color:"#2E6B3A"}] },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

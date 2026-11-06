@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<title>SYNQ Meter finder | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-brand-synq); } html { scroll-behavior:smooth; } [id] { scroll-margin-top:120px; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="BrandBar" brand="SYNQ" hint-size="100%,73px"></dc-import>
+  <dc-import name="PageHero" brand="SYNQ" rgb="89,143,148" eyebrow="SYNQ · Meter Finder" title="Meter finder" intro="Use KALK to select the metering arrangement." slot="synq-meter-finder-hero" shot="SYNQ · Meter Finder · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import>
+  <section id="what" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">What</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Find <span style="color:#8E8E8E;">your meter.</span></h2>
+      <p style="margin:0 0 32px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Metering starts with how you connect to the installation. Choose the connection method, then filter by phase and current. SYNQ devices carry NFC identity and QR commissioning and report into one EMON record. CINCH, TALLY and LEDGER add integrated Wi-Fi mesh.</p>
+
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:16px;--cg:16px;">
+        <div>
+          <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:8px;">Connection method</label>
+          <select onChange="{{ onConnChange }}" style="width:100%;padding:12px 14px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-input-weight);">
+            <sc-for list="{{ connOptions }}" as="o" hint-placeholder-count="6"><option value="{{ o }}">{{ o }}</option></sc-for>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:8px;">Phase</label>
+          <select onChange="{{ onPhaseChange }}" style="width:100%;padding:12px 14px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-input-weight);">
+            <sc-for list="{{ phaseOptions }}" as="o" hint-placeholder-count="3"><option value="{{ o }}">{{ o }}</option></sc-for>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:8px;">Application</label>
+          <select onChange="{{ onAppChange }}" style="width:100%;padding:12px 14px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-input-weight);">
+            <sc-for list="{{ appOptions }}" as="o" hint-placeholder-count="3"><option value="{{ o }}">{{ o }}</option></sc-for>
+          </select>
+        </div>
+      </div>
+      <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);margin-bottom:32px;line-height:var(--web-min-lh);">{{ resultCount }} matching {{ resultLabel }}</div>
+
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ results }}" as="p" hint-placeholder-count="8">
+          <div style="padding:24px;display:flex;flex-direction:column;background:#F4F4F4;border-radius:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:8px;">{{ p.series }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:4px;line-height:var(--web-h3-lh);">{{ p.title }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);margin-bottom:14px;line-height:var(--web-min-lh);">{{ p.conn }}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
+              <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:5px 10px;background:#F4F5F4;color:var(--color-text-primary);border-radius:8px;">{{ p.phase }}</span>
+              <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:5px 10px;background:#F4F5F4;color:var(--color-text-primary);border-radius:8px;">{{ p.range }}</span>
+              <sc-if value="{{ p.mid }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:5px 10px;background:#E4EEEC;color:#4a5c59;border-radius:8px;">MID</span></sc-if>
+            </div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);margin-top:auto;line-height:var(--web-min-lh);">{{ p.note }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:32px;text-align:center;background:#F4F4F4;border-radius:12px;">
+          <div style="font-size:16px;font-weight:400;margin-bottom:8px;">No matching devices</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Try widening a filter.</div>
+        </div>
+      </sc-if>
+    </div>
+  </section><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;display:flex;gap:6px;"><a href="SYNQ - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">SYNQ</a><span>&#8250;</span><span style="color:var(--color-text-primary);">Meter finder</span></div>
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:24px;"><a href="KALK - SYSTEM - Overview - EN.dc.html" style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);" style-hover="color:#8E6F93;">Powered by KALK</a><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B07818;">Planned</span></div>
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;max-width:960px;">
+      <h2 style="margin:0 0 12px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Meter and measurement configuration</h2>
+      <p style="margin:0 0 24px;max-width:720px;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;">This calculation is planned and not available yet.</p>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-small-size);line-height:var(--web-small-lh);"><span style="color:#666666;">Inputs</span><span style="color:#4F4F4E;">Country and meter interface, phase count, service current, P1 or CT availability, metering points, import/export direction, network access and data resolution.</span></div><div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);gap:16px;padding:14px 0;border-bottom:1px solid #D9D9D9;font-size:var(--web-small-size);line-height:var(--web-small-lh);"><span style="color:#666666;">Outputs</span><span style="color:#4F4F4E;">Meter selection, CT rating and quantity, measurement topology, interface compatibility and data-quality requirements.</span></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;"><a href="STROHM.ENERGY - SITE - System Enquiry - EN.dc.html?brand=KALK&amp;topic=SYNQ%20calculation" style="display:inline-flex;align-items:center;justify-content:center;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);box-sizing:border-box;border-radius:var(--cta-radius,8px);background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);font-weight:400;" style-hover="background:#5F5E5E;color:#F4F4F4;">Ask about this calculation</a></div>
+    </div>
+  </section>
+  <div style="height:72px;"></div>
+  <dc-import name="ContentSections" brand="SYNQ" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="SYNQ" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="SYNQ" accent="var(--color-brand-synq)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const DEVICES = [
+  { series: "PIP", title: "P1 Dongle", conn: "P1 port · RJ12 → Wi-Fi + pass-through", method: "P1", phase: "1P / 3P", app: "Residential", range: "Smart-meter P1", mid: false, note: "Plug-in P1 reader with pass-through splitter. The fastest way to read a modern smart meter." },
+  { series: "LINQ", title: "TIC Reader (Linky)", conn: "TIC port plug-in", method: "TIC (Linky)", phase: "1P / 3P", app: "Residential", range: "France + Belgium", mid: false, note: "Plugs into the Linky TIC port. USB-C power, RS485. For France and Belgium." },
+  { series: "IRIS", title: "Optical Probe", conn: "Optical LED-pulse reader", method: "Optical pulse", phase: "1P / 3P", app: "Residential", range: "Utility meters", mid: false, note: "Clip-on optical sensor that reads the LED pulse of an existing utility meter." },
+  { series: "CINCH", title: "CT Smart Meter Kit", conn: "DIN rail + split-core CT", method: "CT clamp", phase: "1P", app: "Residential", range: "100 / 250 / 600 A", mid: false, note: "DIN-rail meter with split-core CT. No busbar disconnection required." },
+  { series: "CINCH", title: "CT Smart Meter Kit — 3P", conn: "DIN rail + 3× split-core CT", method: "CT clamp", phase: "3P", app: "Commercial", range: "100 / 250 / 600 / 1000 / 3000 A", mid: false, note: "Three-phase CT metering up to 3000 A for commercial and industrial supplies." },
+  { series: "TALLY", title: "Direct Smart Meter", conn: "DIN rail, direct inline", method: "Direct", phase: "1P", app: "Residential", range: "100 A · MID / non-MID", mid: true, note: "Direct-connected DIN meter to 100 A. MID-certified option for billing." },
+  { series: "TALLY", title: "Direct Smart Meter — 3P", conn: "DIN rail, direct inline", method: "Direct", phase: "3P", app: "Commercial", range: "100 A · MID / non-MID", mid: true, note: "Three-phase direct meter to 100 A. MID-certified option for billing." },
+  { series: "HALO", title: "CT Clamp", conn: "Split-core CT clamp", method: "CT clamp", phase: "1P / 3P", app: "Commercial", range: "100 / 250 / 600 / 1000 / 3000 A", mid: false, note: "Standalone split-core current transformer clamps across the full range." },
+  { series: "LEDGER", title: "Data Logger", conn: "RS485 / Ethernet / Wi-Fi mesh / 4G / 5G", method: "Energy Hub", phase: "1P / 3P", app: "Commercial", range: "Multi-device gateway", mid: false, note: "Wall-mount logger and gateway aggregating multiple devices to EMON." },
+];
+class Component extends DCLogic {
+  state = { conn: "All", phase: "All", app: "All" };
+  renderVals() {
+    const st = this.state;
+    const results = DEVICES.filter(d => {
+      if (st.conn !== "All" && d.method !== st.conn) return false;
+      if (st.phase !== "All" && !d.phase.includes(st.phase === "Single-phase" ? "1P" : "3P")) return false;
+      if (st.app !== "All" && d.app !== st.app) return false;
+      return true;
+    });
+    return {
+      connOptions: ["All", "P1", "TIC (Linky)", "Optical pulse", "CT clamp", "Direct", "Energy Hub"],
+      phaseOptions: ["All", "Single-phase", "Three-phase"],
+      appOptions: ["All", "Residential", "Commercial"],
+      onConnChange: (e) => this.setState({ conn: e.target.value }),
+      onPhaseChange: (e) => this.setState({ phase: e.target.value }),
+      onAppChange: (e) => this.setState({ app: e.target.value }),
+      results, resultCount: results.length, resultLabel: results.length === 1 ? "device" : "devices", noResults: results.length === 0,
+    };
+  }
+}
+</script>
+</body>
+</html>

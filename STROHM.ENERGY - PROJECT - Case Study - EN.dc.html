@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet data-dc-atomics>
+<title>Case Study | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4F4F4E; }
+  a:hover { color:#21AE8F; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;">
+
+  <dc-import name="NavBar" active="projects" hint-size="100%,80px"></dc-import>
+
+  <dc-import name="BrandHero2" brand="PROJECTS" rgb="200,200,200" dark="#4F4F4E" title="42-panel rooftop array with EMON-managed battery reserve" intro="" items="{{ heroItems }}" hint-size="100%,760px"></dc-import><section data-screen-label="Case Study — Hero" style="position:relative;">
+    <div style="width:calc(100% - 2 * var(--web-side));max-width:var(--web-grid);margin:var(--web-hero-top) auto 0;height:var(--web-hero-h);border-radius:var(--web-hero-radius);overflow:hidden;">
+      <image-slot id="case-hero" shape="rounded" radius="24" placeholder="Drop real site photography"></image-slot>
+    </div>
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;">
+      <div style="display:flex;gap:16px;align-items:center;margin-bottom:16px;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;background:#21AE8F;color:#FFFFFF;padding:5px 12px;border-radius:12px;">Residential</span>
+        <span style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;line-height:var(--web-small-lh);">Rotterdam, Netherlands · 2026</span>
+      </div>
+      
+    </div>
+  </section>
+
+  <section data-screen-label="Case Study — Summary">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 96px;box-sizing:border-box;">
+      <div data-cols="5" style="background:#F5F5F5;border-radius:12px;padding:32px 40px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;--cg:24px;">
+        <sc-for list="{{ summary }}" as="s" hint-placeholder-count="5">
+          <div>
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;margin-bottom:6px;">{{ s.label }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;line-height:var(--web-h3-lh);">{{ s.value }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Case Study — Challenge and Solution" style="background:#FFFFFF;">
+    <div data-cols="2" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;--cg:64px;">
+      <div>
+        <h2 style="margin:0 0 24px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Challenge</h2>
+        <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">A newly built housing block of 14 units needed a shared rooftop solar array within a constrained roof surface, plus enough battery reserve to cover evening peak demand without exceeding grid import limits set by the local operator.</p>
+      </div>
+      <div>
+        <h2 style="margin:0 0 24px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Solution</h2>
+        <p style="margin:0 0 20px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">42 ANDO 440 Black panels mounted on MOX rail systems, paired with FLUXX battery storage and a MOEBIUS string inverter. EMON manages reserve thresholds across all 14 units from a single dashboard.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <sc-for list="{{ productsUsed }}" as="p" hint-placeholder-count="4">
+            <a href="{{ p.href }}" style="text-decoration:none;display:flex;align-items:center;gap:10px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:{{ p.color }};"></span>
+              <span style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;">{{ p.name }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Case Study — Results">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+      <h2 style="margin:0 0 40px;font-size:var(--web-h2-size);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Results</h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:48px;--cg:16px;">
+        <sc-for list="{{ results }}" as="r" hint-placeholder-count="3">
+          <div style="background:#F5F5F5;border-radius:12px;padding:28px;">
+            <div style="font-size:var(--web-h2card-size);font-weight:500;color:#4F4F4E;">{{ r.value }}<span style="font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);"> {{ r.unit }}</span></div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-top:8px;line-height:var(--web-small-lh);">{{ r.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="max-width:640px;padding-left:24px;">
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);font-style:italic;color:#4F4F4E;line-height:var(--web-body-lh);max-width:760px;">"Grid import dropped by a third within the first billing cycle. Every resident can see their own consumption in EMON."</p>
+        <div style="margin-top:12px;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;line-height:var(--web-small-lh);">— Housing association board member</div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Case Study — Download" style="background:#F5F5F5;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side);box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+      <div style="font-size:var(--web-body-size);font-weight:400;color:#4F4F4E;">Download the full case study as PDF.</div>
+      <span style="text-decoration:none;height:48px;padding:0 28px;display:flex;align-items:center;white-space:nowrap;background:#4F4F4E;color:#D9DADA;font-size:var(--cta-font);letter-spacing:0.04em;border-radius:12px;font-weight:var(--web-btn-weight);" data-placeholder-link="true">Download PDF</span>
+    </div>
+  </section>
+
+  <dc-import name="SupportModule" kind="project" accent="#4F4F4E" hint-size="100%,520px"></dc-import>
+
+  <div style="height:48px;"></div>
+  <dc-import name="ReachSpecialist" brand="PROJECTS" lead="TO CONFIRM" photo-slot-id="projects-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+const HERO_ITEMS = [{"label":"Challenge","heading":"Challenge","sentence":"A newly built housing block of 14 units needed a shared rooftop solar array within a constrained roof surface.","media":{"type":"slot","slot":"strohm-energy-case-study-hero","alt":"PROJECTS hero picture 1"}},{"label":"Solution","heading":"Solution","sentence":"42 ANDO 440 Black panels mounted on MOX rail systems, paired with FLUXX battery storage and a MOEBIUS string inverter.","media":{"type":"slot","slot":"project-case-hero-2","alt":"PROJECTS hero picture 2"}},{"label":"Results","heading":"Results","sentence":"Grid import dropped by a third within the first billing cycle.","media":{"type":"slot","slot":"project-case-hero-3","alt":"PROJECTS hero picture 3"}}];
+class Component extends DCLogic {
+  renderVals() { return Object.assign({}, this._rvBase(), { heroItems: HERO_ITEMS }); }
+  _rvBase() {
+    return {
+      summary: [
+        { label: "Client type", value: "Housing association" },
+        { label: "Scale", value: "18,4 kWp" },
+        { label: "Storage", value: "56 kWh" },
+        { label: "Year", value: "2026" },
+        { label: "Brands used", value: "ANDO, MOX, FLUXX, EMON" },
+      ],
+      productsUsed: [
+        { name: "ANDO — Solar Panels", color: "#CDD62B", href: "ANDO - PRODUCT - Overview - EN.dc.html" },
+        { name: "MOX — Structural Mounting", color: "#D8392C", href: "MOX - PRODUCT - Overview - EN.dc.html" },
+        { name: "FLUXX — Battery Storage", color: "#FDC706", href: "FLUXX - PRODUCT - Overview - EN.dc.html" },
+        { name: "EMON — Energy Management", color: "#21AE8F", href: "EMON - SYSTEM - System - EN.dc.html" },
+      ],
+      results: [
+        { value: "15 200", unit: "kWh / year", label: "Generated" },
+        { value: "6,1", unit: "t CO₂ / year", label: "Saved" },
+        { value: "33", unit: "%", label: "Reduction in grid import" },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>WURK Selector | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  .wk-route:hover { background:#FAFAF8 !important; }
+  .wk-route:hover .wk-route-t { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="WurkNav" active="selector" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="WURK" rgb="158,61,46" eyebrow="WURK selector" title="Find the right equipment before the team reaches site." intro="The selector uses the real task, risk and site conditions to narrow the WURK range." slot="wurk-selector-hero" shot="WURK · Selector · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 40px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:720px;">Choose a route to begin.</p>
+  </section>
+
+  <!-- FOUR ROUTES (interactive) -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+    <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;--cg:12px;">
+      <sc-for list="{{ routes }}" as="r" hint-placeholder-count="4">
+        <button class="wk-route" onClick="{{ r.onClick }}" style="cursor:pointer;font-family:inherit;text-align:left;border:none;border-top:3px solid {{ r.bar }};padding:24px 22px;background:{{ r.bg }};display:flex;flex-direction:column;gap:8px;border-radius:12px;">
+          <span style="font-size:11px;font-weight:700;color:var(--color-text-primary);">Route {{ r.letter }}</span>
+          <span class="wk-route-t" style="font-size:15px;font-weight:700;letter-spacing:0.02em;text-transform:uppercase;color:{{ r.color }};line-height:1.2;">{{ r.label }}</span>
+          <span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);">{{ r.sub }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- QUESTIONS + RESULT PREVIEW -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div data-stack="1" style="display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:start;">
+      <div style="background:#F4F4F4;border-radius:12px;">
+        <div style="padding:20px 28px;border-bottom:1px solid var(--color-divider);background:#FBFBFA;">
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">{{ activeRoute.label }}</span>
+        </div>
+        <div style="padding:8px 28px 24px;">
+          <sc-for list="{{ activeRoute.questions }}" as="q" hint-placeholder-count="7">
+            <div style="display:grid;grid-template-columns:26px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--color-surface-card);align-items:baseline;">
+              <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);letter-spacing:var(--web-eyebrow-ls);">{{ q.n }}</span>
+              <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ q.t }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="background:#F4F4F4;border-radius:12px;">
+          <div style="padding:18px 24px;border-bottom:1px solid var(--color-divider);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Result language</span></div>
+          <sc-for list="{{ resultLanguage }}" as="l" hint-placeholder-count="4">
+            <div style="padding:14px 24px;border-bottom:1px solid var(--color-surface-card);display:grid;grid-template-columns:14px 1fr;gap:12px;align-items:start;">
+              <span style="width:9px;height:9px;background:{{ l.color }};margin-top:4px;"></span>
+              <div>
+                <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:3px;">{{ l.label }}</div>
+                <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);">{{ l.desc }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="border:1px solid var(--color-brand-wurk);background:#FBF9EF;padding:24px;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;margin-bottom:12px;">When you finish</div>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <sc-for list="{{ finishActions }}" as="a" hint-placeholder-count="4"><span style="font-size:12px;font-weight:400;color:var(--color-text-primary);display:flex;gap:8px;align-items:baseline;"><span style="color:var(--color-text-primary);font-size:9px;">&#9679;</span>{{ a }}</span></sc-for>
+          </div>
+          <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="WURK - SUPPORT - Ownership and Support - EN.dc.html" style="margin-top:18px;font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Save project summary</a>
+        </div>
+      </div>
+    </div>
+    <p style="margin:20px 0 96px;font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);max-width:900px;">The selector narrows options; it does not replace project risk assessment, competent inspection or country-specific requirements. Safety-critical and project-supply items always require technical confirmation before supply.</p>
+  </section>
+
+  <dc-import name="ContentSections" brand="WURK" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="WURK" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="WURK" accent="var(--color-brand-wurk)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+const ROUTES = [
+  { key: "tools", letter: "A", label: "Tools & test equipment", sub: "Preparation, connection and electrical checks.", questions: [
+    "What are you installing?", "Which work must be completed?", "Which connector and cable?", "Which voltage and phase?",
+    "Which electrical tests?", "Do you require calibration certificates?", "How many crews?",
+  ] },
+  { key: "height", letter: "B", label: "Working at height", sub: "Ladders, towers, platforms and access.", questions: [
+    "Access only or a work position?", "Working height?", "Task duration?", "Both hands required?", "Number of users?",
+    "Tools and materials carried?", "Ground and roof conditions?", "Indoor or outdoor?", "Electrical proximity?", "Country?",
+  ] },
+  { key: "battery", letter: "C", label: "Battery & heavy equipment", sub: "Handling, route survey and positioning.", questions: [
+    "Product mass and dimensions?", "Route?", "Stairs?", "Thresholds?", "Door and lift dimensions?",
+    "Final installation height?", "Number of operators?", "Is powered handling permitted?",
+  ] },
+  { key: "safety", letter: "D", label: "Project safety", sub: "Edge protection and fall-protection systems.", questions: [
+    "Roof plan?", "Edge length?", "Roof construction?", "Anchor strategy?", "User count?",
+    "Project duration?", "Inspection responsibility?", "Country?", "Required training?",
+  ] },
+];
+
+class Component extends DCLogic {
+  state = { route: 0 };
+  renderVals() {
+    const st = this.state;
+    return {
+      routes: ROUTES.map((r, i) => ({
+        letter: r.letter, label: r.label, sub: r.sub,
+        onClick: () => this.setState({ route: i }),
+        bg: st.route === i ? "#FBF9EF" : "#FFFFFF",
+        bar: st.route === i ? "var(--color-brand-wurk)" : "transparent",
+        color: st.route === i ? "#4F4F4E" : "#5F5E5E",
+      })),
+      activeRoute: { label: ROUTES[st.route].label, questions: ROUTES[st.route].questions.map((t, i) => ({ n: String(i + 1).padStart(2, "0"), t })) },
+      resultLanguage: [
+        { label: "Recommended", color: "#4CAF50", desc: "The information entered matches the current product envelope." },
+        { label: "Technical confirmation required", color: "var(--color-brand-wurk)", desc: "One or more project values require review before supply." },
+        { label: "Not suitable", color: "#D8392C", desc: "The product does not match the stated height, load, voltage, connector, surface or country." },
+        { label: "Project supply", color: "#5F5E5E", desc: "Supplied only with project-specific documentation, support or service." },
+      ],
+      finishActions: ["Share with my team", "Request technical review", "Add to quotation", "Book online equipment review"],
+    };
+  }
+}
+</script>
+</body>
+</html>

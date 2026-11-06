@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Who | STRØHM.ENERGY</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<script src="./regional-map-data.js"></script>
+<script src="./field-sales-data.js"></script>
+<script src="./who-content.js"></script>
+<script src="./who-data.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; font-family:var(--font-web); font-weight:300; color:#5F5E5E; }
+  a { color:#252525; text-decoration:none; }
+  a:hover { color:#B9473F; }
+  @keyframes wlSlide { from { transform:translateX(32px); opacity:0; } to { transform:none; opacity:1; } }
+  @keyframes wlUp { from { transform:translateY(12px); opacity:0; } to { transform:none; opacity:1; } }
+  @media (prefers-reduced-motion: reduce) { * { animation-duration:1ms !important; } }
+  button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:focus-visible { outline:1px solid #4F4F4E; outline-offset:2px; }
+  summary::-webkit-details-marker { display:none; }
+  details:not([open]) [data-rm-less], details[open] [data-rm-more] { display:none; }
+  [data-rm-arrow] { transition:transform 200ms ease; }
+  details[open] [data-rm-arrow] { transform:rotate(-90deg); }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;color:#4F4F4E;min-height:100vh;">
+  <dc-import name="NavBar" active="company" hint-size="100%,89px"></dc-import>
+  <dc-import name="CompanyNav" active="who" hint-size="100%,57px"></dc-import>
+<dc-import name="BrandHero2" brand="COMPANY" rgb="247,104,1" dark="#4F4F4E" title="The people who make it happen." intro="The people behind STRØHM.ENERGY. One international team, organised so you always reach the right contact and speak directly with a specialist." items="{{ heroItems }}" hint-size="100%,760px"></dc-import>
+
+  <div ref="{{ wrapRef }}" style="position:relative;">
+    <div aria-hidden="true" style="position:absolute;left:0;top:0;width:0;height:0;z-index:40;pointer-events:none;">
+      <sc-for list="{{ introSyms }}" as="s" hint-placeholder-count="0">
+        <div style="position:absolute;left:0;top:0;width:{{ s.size }}px;height:{{ s.size }}px;transform-origin:0 0;transform:{{ s.tf }};opacity:{{ s.op }};transition:{{ s.tr }};">
+          <dc-import name="RoleSymbol" role="{{ s.id }}" style="display:block;width:100%;height:100%;" hint-size="100%,100%"></dc-import>
+        </div>
+      </sc-for>
+    </div>
+
+    <section data-editor-only="" data-screen-label="01 Hero" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 48px;box-sizing:border-box;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px 56px;align-items:center;">
+      <div style="min-width:0;">
+      
+      
+      <div style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-end;justify-content:space-between;margin-top:36px;">
+        
+      </div>
+      </div>
+      <img src="assets/who/hero-people.png?v=2" alt="STRØHM.ENERGY team meeting next to a wall-mounted storage unit" style="display:block;width:100%;height:clamp(260px,30vw,420px);object-fit:cover;object-position:60% center;border-radius:20px;">
+      </div>
+    </section>
+
+    <section id="contact" data-screen-label="02 People chooser" style="scroll-margin-top:146px;">
+      <div ref="{{ chooserRef }}" style="position:relative;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 56px;box-sizing:border-box;display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;">
+        <svg aria-hidden="true" style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:3;overflow:visible;">
+          <sc-for list="{{ lines }}" as="l" hint-placeholder-count="0">
+            <g><line x1="{{ l.x1 }}" y1="{{ l.y1 }}" x2="{{ l.x2 }}" y2="{{ l.y2 }}" stroke="#4F4F4E" stroke-width="1" style="stroke-dasharray:{{ l.len }};stroke-dashoffset:{{ l.off }};opacity:{{ l.op }};transition:stroke-dashoffset 760ms cubic-bezier(.22,1,.36,1), opacity 300ms ease;"></line><circle cx="{{ l.x2 }}" cy="{{ l.y2 }}" r="3" fill="#4F4F4E" style="opacity:{{ l.op }};transition:opacity 300ms ease 400ms;"></circle></g>
+          </sc-for>
+        </svg>
+
+        <div aria-label="Discover" style="flex:1 1 100%;min-width:0;background:#FFFFFF;border:1px solid #E6E6E6;box-sizing:border-box;padding:28px;border-radius:12px;display:flex;flex-direction:column;gap:24px;">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;justify-content:space-between;gap:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;"><span>01 / Discover</span><span>7 roles · 1 team</span></div>
+            <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Find the right person <span style="color:#8E8E8E;">for your project</span></h2>
+            <p style="margin:0;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">We believe the people who design, manufacture and understand our products should remain accessible to the people who install and use them.</p><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;max-width:760px;">Choose the area that matches your question. We will guide you to the relevant specialist, team or local contact.</p>
+          </div>
+
+          <div style="position:relative;">
+            <label for="who-lab-q" style="position:absolute;left:-9999px;">Search people, countries or products</label>
+            <input id="who-lab-q" type="search" autocomplete="off" value="{{ q }}" onChange="{{ onQ }}" onFocus="{{ qFocusOn }}" onBlur="{{ qFocusOff }}" placeholder="Search people, countries or products" style="width:100%;box-sizing:border-box;height:44px;border:1px solid #BBBBBB;padding:0 14px;font:inherit;font-size:var(--web-input-size);color:#252525;background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+            <sc-if value="{{ showResults }}" hint-placeholder-val="{{ false }}">
+              <div role="listbox" style="border-radius:12px;overflow:hidden;position:absolute;left:0;right:0;top:46px;z-index:20;background:#FFFFFF;border:1px solid #4F4F4E;display:flex;flex-direction:column;">
+                <sc-for list="{{ results }}" as="r" hint-placeholder-count="3">
+                  <button type="button" role="option" onMouseDown="{{ r.pick }}" style="text-align:left;cursor:pointer;background:#FFFFFF;border:0;border-bottom:1px solid #E6E6E6;padding:10px 14px;font:inherit;display:flex;justify-content:space-between;gap:12px;" style-hover="background:#F7F7F5;"><span style="font-size:var(--web-small-size);color:#252525;line-height:var(--web-small-lh);">{{ r.label }}</span><span style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ r.kindLabel }} · {{ r.sub }}</span></button>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}"><div style="border-radius:12px;overflow:hidden;position:absolute;left:0;right:0;top:46px;z-index:20;background:#FFFFFF;border:1px solid #4F4F4E;padding:12px 14px;font-size:var(--web-tag-size);color:#5F5E5E;border-radius:20px;font-weight:var(--web-tag-weight);">No match. Try a country, a brand or a name.</div></sc-if>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Step 1 · What can we help you with?</div>
+            <div role="group" aria-label="Role" style="display:grid;grid-template-columns:{{ roleCols }};gap:8px;">
+              <sc-for list="{{ roles }}" as="r" hint-placeholder-count="5">
+                <button type="button" onClick="{{ r.pick }}" onMouseEnter="{{ r.enter }}" onMouseLeave="{{ r.leave }}" onFocus="{{ r.enter }}" onBlur="{{ r.leave }}" aria-pressed="{{ r.pressed }}" aria-describedby="{{ r.descId }}" style="cursor:pointer;text-align:center;font:inherit;border:0;border-radius:12px;background:{{ r.bg }};padding:20px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;min-height:170px;min-width:0;box-shadow:inset 0 0 0 2px {{ r.ring }};transition:background-color 180ms ease;">
+                  <span ref="{{ r.iconRef }}" style="display:block;width:40px;height:40px;opacity:{{ r.iconOp }};transition:opacity 200ms ease;"><dc-import name="RoleSymbol" role="{{ r.id }}" style="display:block;width:100%;height:100%;" hint-size="40px,40px"></dc-import></span>
+                  <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#252525;hyphens:auto;">{{ r.label }}</span>
+                  <span id="{{ r.descId }}" style="font-size:12px;font-weight:300;line-height:1.4;color:#5F5E5E;opacity:{{ r.subOp }};transition:opacity 180ms ease;">{{ r.sub }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+
+          </div>
+
+        <aside aria-label="Refine your search" style="flex:{{ asideFlex }};min-width:0;background:#FFFFFF;border:1px solid #E6E6E6;box-sizing:border-box;padding:28px;display:flex;flex-direction:column;gap:28px;border-radius:12px;">
+          <div style="display:flex;justify-content:space-between;gap:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;"><span>02 / Refine your search</span><sc-if value="{{ showRoute }}" hint-placeholder-val="{{ false }}"><span>{{ refineNote }}</span></sc-if></div>
+          <sc-if value="{{ noRole }}" hint-placeholder-val="{{ true }}"><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;">Choose one of the seven roles above. Then search by location or by product.</p></sc-if>
+          <sc-if value="{{ false }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;">These specialists work in our Product Lab and engineering teams. Their pages are linked on the right.</p></sc-if>
+          <sc-if value="{{ showRoute }}" hint-placeholder-val="{{ false }}">
+            <div role="group" aria-label="Search by" data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border:1px solid #4F4F4E;border-radius:8px;overflow:hidden;--cg:0px;">
+              <sc-for list="{{ routeTabs }}" as="rt" hint-placeholder-count="2"><button type="button" onClick="{{ rt.pick }}" aria-pressed="{{ rt.pressed }}" style="cursor:pointer;font:inherit;font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;height:44px;border:0;background:{{ rt.bg }};color:{{ rt.fg }};">{{ rt.label }}</button></sc-for>
+            </div>
+          </sc-if>
+<sc-if value="{{ isFounders }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Choose a founder</div>
+              <div style="display:flex;flex-direction:column;border-top:1px solid #E6E6E6;">
+                <sc-for list="{{ founderList }}" as="f" hint-placeholder-count="3">
+                  <button type="button" onClick="{{ f.pick }}" aria-pressed="{{ f.pressed }}" style="cursor:pointer;text-align:left;font:inherit;border:0;border-bottom:1px solid #E6E6E6;background:{{ f.bg }};padding:12px;display:flex;flex-direction:column;gap:2px;" style-hover="background:#F7F7F5;"><span style="font-size:15px;font-weight:500;color:#252525;">{{ f.name }}</span><span style="font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">{{ f.title }} · {{ f.base }}</span></button>
+                </sc-for>
+              </div>
+              <p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;">From product concept to real-world installation via EPC.</p>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isBuilders }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Choose a discipline</div>
+              <div style="display:flex;flex-direction:column;border-top:1px solid #E6E6E6;">
+                <sc-for list="{{ deptList }}" as="d" hint-placeholder-count="8">
+                  <button type="button" onClick="{{ d.pick }}" aria-pressed="{{ d.pressed }}" style="cursor:pointer;text-align:left;font:inherit;border:0;border-bottom:1px solid #E6E6E6;background:{{ d.bg }};padding:11px 12px;display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;align-items:baseline;" style-hover="background:#F7F7F5;"><span style="font-size:var(--web-eyebrow-size);color:#5F5E5E;line-height:var(--web-min-lh);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);">{{ d.n }}</span><span style="font-size:var(--web-small-size);color:#252525;line-height:var(--web-small-lh);">{{ d.short }}</span></button>
+                </sc-for>
+              </div>
+              <p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;">Eight disciplines. One connected product ecosystem.</p>
+            </div>
+          </sc-if>
+
+          <div style="display:{{ ctxDisp }};flex-direction:column;gap:28px;">
+            <sc-if value="{{ wizOn }}" hint-placeholder-val="{{ false }}">
+              <div style="order:0;display:flex;flex-direction:column;gap:14px;background:#F4F4F4;border-radius:12px;padding:20px;">
+                <div role="list" aria-label="Steps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px;">
+                  <sc-for list="{{ wizSteps }}" as="w" hint-placeholder-count="3"><button type="button" role="listitem" onClick="{{ w.go }}" aria-current="{{ w.cur }}" style="cursor:pointer;font:inherit;text-align:left;border:0;border-radius:12px;padding:10px 12px;background:{{ w.bg }};display:flex;flex-direction:column;gap:2px;"><span style="font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:{{ w.fg2 }};">Step {{ w.n }} · {{ w.state }}</span><span style="font-size:14px;font-weight:300;color:{{ w.fg }};">{{ w.label }}</span><span style="font-size:12px;font-weight:300;color:{{ w.fg2 }};">{{ w.val }}</span></button></sc-for>
+                </div>
+                <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#4F4F4E;">{{ wizWhy }}</p>
+              </div>
+            </sc-if>
+            <div style="order:1;display:{{ sysSecDisp }};flex-direction:column;gap:12px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Step 1 · Choose a system</div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px;background:#F4F4F4;border-radius:12px;padding:16px 12px;">
+                <sc-for list="{{ sysOpts }}" as="o" hint-placeholder-count="7"><button type="button" onClick="{{ o.pick }}" onMouseEnter="{{ o.enter }}" onMouseLeave="{{ o.leave }}" onFocus="{{ o.enter }}" onBlur="{{ o.leave }}" aria-pressed="{{ o.pressed }}" aria-label="{{ o.label }}, {{ o.sub }}" style="cursor:pointer;font:inherit;border:0;border-radius:12px;background:{{ o.bg }};padding:14px 8px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0;"><span style="position:relative;display:block;width:34px;height:34px;transform:scale({{ o.scale }});transition:transform 180ms ease;"><img ref="{{ o.logoRef }}" alt="" style="display:block;width:100%;height:100%;object-fit:contain;visibility:{{ o.colVis }};"><span ref="{{ o.maskRef }}" style="position:absolute;inset:0;background:#A3A3A3;visibility:{{ o.monoVis }};"></span></span><span style="font-size:12px;font-weight:500;letter-spacing:0.08em;color:#252525;margin-top:{{ o.labGap }};transition:margin-top 180ms ease;">{{ o.label }}</span><span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;text-align:center;">{{ o.sub }}</span></button></sc-for>
+              </div>
+            </div>
+            <div style="order:1;display:{{ projSecDisp }};flex-direction:column;gap:12px;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Step 1 · Choose engineering or project type</div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:6px;background:#F4F4F4;border-radius:12px;padding:12px;">
+                <sc-for list="{{ projOpts }}" as="o" hint-placeholder-count="2"><button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.pressed }}" style="cursor:pointer;font:inherit;text-align:left;border:0;border-radius:12px;background:{{ o.bg }};padding:18px 16px;display:flex;flex-direction:column;gap:6px;" style-hover="background:#FFFFFF;"><span style="display:flex;align-items:center;gap:10px;"><img ref="{{ o.iconRef }}" alt="" style="width:26px;height:26px;object-fit:contain;"><span style="font-size:var(--web-h3-size);font-weight:300;color:#252525;line-height:var(--web-h3-lh);">{{ o.label }}</span></span><span style="font-size:var(--web-body-size);font-weight:300;color:#252525;line-height:var(--web-body-lh);">{{ o.sub }}</span><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ o.text }}</span></button></sc-for>
+              </div>
+            </div>
+            <div style="order:3;display:{{ langSecDisp }};flex-direction:column;gap:12px;">
+                  <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">{{ langStep }}</div>
+                  <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">{{ langNote }}</p><div style="display:flex;flex-wrap:wrap;gap:6px;">
+                    <sc-for list="{{ langOpts }}" as="l" hint-placeholder-count="8"><button type="button" onClick="{{ l.pick }}" aria-pressed="{{ l.pressed }}" style="cursor:pointer;font:inherit;font-size:var(--web-btn-sm-size);height:32px;padding:0 12px;background:{{ l.bg }};color:{{ l.fg }};border:1px solid {{ l.bd }};border-radius:8px;font-weight:var(--web-btn-weight);">{{ l.label }}</button></sc-for>
+                  </div>
+                </div>
+            <div style="order:{{ prodOrder }};display:{{ prodSecDisp }};flex-direction:column;gap:12px;">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
+                <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">{{ prodStep }}</div>
+                <sc-if value="{{ prodOptional }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ toggleProd }}" aria-expanded="{{ prodExp }}" style="cursor:pointer;background:none;border:0;padding:4px 0;font:inherit;font-size:var(--web-body-size);color:#252525;border-bottom:1px solid #4F4F4E;font-weight:500;">{{ prodToggleLabel }}</button></sc-if>
+              </div>
+              <div style="display:{{ prodBodyDisp }};flex-direction:column;gap:12px;">
+                <div onMouseLeave="{{ prodLeave }}" data-cols="5" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px 6px;background:#F4F4F4;border-radius:12px;padding:16px 12px;--cg:6px;">
+                  <sc-for list="{{ products }}" as="p" hint-placeholder-count="0">
+                    <button type="button" data-prod="{{ p.id }}" onClick="{{ p.pick }}" onMouseEnter="{{ p.enter }}" onFocus="{{ p.enter }}" aria-pressed="{{ p.pressed }}" aria-label="{{ p.aria }}" style="cursor:pointer;font:inherit;background:transparent;border:0;padding:10px 0 6px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;min-width:0;min-height:84px;">
+                      <span style="position:relative;display:block;width:30px;height:30px;transform:scale({{ p.scale }});transform-origin:center top;transition:transform 180ms ease;"><img ref="{{ p.logoRef }}" alt="" style="display:block;width:100%;height:100%;object-fit:contain;visibility:{{ p.colVis }};"><span ref="{{ p.maskRef }}" style="position:absolute;inset:0;background:#A3A3A3;visibility:{{ p.monoVis }};"></span></span>
+                      <span style="display:flex;flex-direction:column;align-items:center;gap:2px;margin-top:{{ p.labGap }};opacity:{{ p.labOp }};transition:opacity 180ms ease,margin-top 180ms ease;text-align:center;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);line-height:1;color:#4F4F4E;text-transform:uppercase;">{{ p.label }}</span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);line-height:1.2;text-transform:uppercase;color:#5F5E5E;">{{ p.cat }}</span></span>
+                    </button>
+                  </sc-for>
+                </div>
+                <div style="min-height:36px;font-size:var(--web-min-size);line-height:var(--web-min-lh);color:#5F5E5E;">{{ prodHint }}</div>
+              </div>
+            </div>
+
+            <div style="order:{{ mktOrder }};display:{{ mktSecDisp }};flex-direction:column;gap:12px;">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
+                <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">{{ mktStep }}</div>
+                <sc-if value="{{ mktOptional }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ toggleMkt }}" aria-expanded="{{ mktExp }}" style="cursor:pointer;background:none;border:0;padding:4px 0;font:inherit;font-size:var(--web-body-size);color:#252525;border-bottom:1px solid #4F4F4E;font-weight:500;">{{ mktToggleLabel }}</button></sc-if>
+              </div>
+              <div style="display:{{ mktBodyDisp }};flex-direction:column;gap:12px;">
+                <div role="group" aria-label="Region" style="display:flex;flex-wrap:wrap;gap:4px;">
+                  <sc-for list="{{ regionTabs }}" as="t" hint-placeholder-count="7">
+                    <button type="button" onClick="{{ t.pick }}" aria-pressed="{{ t.pressed }}" style="cursor:pointer;font:inherit;font-size:var(--web-btn-sm-size);height:30px;padding:0 10px;background:{{ t.bg }};color:{{ t.fg }};border:1px solid {{ t.bd }};border-radius:8px;font-weight:var(--web-btn-weight);">{{ t.label }}</button>
+                  </sc-for>
+                </div>
+                <nav aria-label="Map location" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;letter-spacing:0.04em;color:#5F5E5E;">
+                  <sc-for list="{{ crumbs }}" as="c" hint-placeholder-count="1">
+                    <span style="display:inline-flex;gap:6px;align-items:center;"><sc-if value="{{ c.sep }}" hint-placeholder-val="{{ false }}"><span>/</span></sc-if><button type="button" onClick="{{ c.go }}" style="cursor:pointer;background:none;border:0;padding:2px 0;font:inherit;color:{{ c.fg }};text-transform:uppercase;letter-spacing:0.08em;">{{ c.label }}</button></span>
+                  </sc-for>
+                </nav>
+                <div style="border-radius:12px;overflow:hidden;border:1px solid #E6E6E6;background:#FFFFFF;">
+                  <iframe ref="{{ mapRef }}" src="Who Regional Map.html" title="Tangram map. Choose a region or country." style="display:block;width:100%;height:{{ mapH }}px;border:0;background:#FFFFFF;transition:height 400ms cubic-bezier(.22,1,.36,1);border-radius:20px;"></iframe>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px 14px;font-size:12px;line-height:1.35;color:#4F4F4E;">
+                  <span style="display:flex;gap:8px;align-items:center;"><span style="flex:0 0 auto;width:12px;height:12px;background:#4657B8;;border-radius:3px"></span>Dedicated person in this sub-region</span>
+                  <span style="display:flex;gap:8px;align-items:center;"><span style="flex:0 0 auto;width:10px;height:10px;border:1px solid #4657B8;;border-radius:3px"></span>Covered from another base</span>
+                  <span style="display:flex;gap:8px;align-items:center;"><span style="flex:0 0 auto;width:10px;height:10px;border:1px dotted #4657B8;;border-radius:3px"></span>Served via International Sales</span>
+                  <span style="display:flex;gap:8px;align-items:center;"><span style="flex:0 0 auto;width:12px;height:12px;background:#E6E6E6;;border-radius:3px"></span>Not served</span>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px;">
+                  <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#5F5E5E;">Sub-region
+                    <select value="{{ subVal }}" onChange="{{ pickSub }}" style="height:40px;border:1px solid #BBBBBB;padding:0 8px;font:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);letter-spacing:0;text-transform:none;color:#252525;background:#FFFFFF;border-radius:8px;">
+                      <option value="">All sub-regions</option>
+                      <sc-for list="{{ subOpts }}" as="o" hint-placeholder-count="6"><option value="{{ o.v }}">{{ o.label }}</option></sc-for>
+                    </select>
+                  </label>
+                  <label style="display:flex;flex-direction:column;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#5F5E5E;">Country or territory
+                    <select value="{{ codeVal }}" onChange="{{ pickCode }}" style="height:40px;border:1px solid #BBBBBB;padding:0 8px;font:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);letter-spacing:0;text-transform:none;color:#252525;background:#FFFFFF;border-radius:8px;">
+                      <option value="">Select…</option>
+                      <sc-for list="{{ codeOpts }}" as="o" hint-placeholder-count="10"><option value="{{ o.v }}" disabled="{{ o.dis }}">{{ o.label }}</option></sc-for>
+                    </select>
+                  </label>
+                </div>
+                <sc-if value="{{ hasUnits }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;gap:6px;">
+                    <div style="font-size:12px;color:#5F5E5E;">{{ unitNote }}</div>
+                    <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                      <sc-for list="{{ unitOpts }}" as="u" hint-placeholder-count="2"><button type="button" onClick="{{ u.pick }}" aria-pressed="{{ u.pressed }}" style="cursor:pointer;font:inherit;font-size:var(--web-btn-sm-size);min-height:32px;padding:4px 10px;text-align:left;background:{{ u.bg }};color:{{ u.fg }};border:1px solid {{ u.bd }};border-radius:8px;font-weight:var(--web-btn-weight);">{{ u.label }}</button></sc-for>
+                    </div>
+                  </div>
+                </sc-if>
+                
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <main aria-live="polite" style="border-radius:12px;position:{{ stickyPos }};top:162px;max-height:{{ leftMaxH }};overflow-y:{{ mainOverflow }};flex:{{ mainFlex }};min-width:0;background:#FFFFFF;border:1px solid #E6E6E6;box-sizing:border-box;padding:clamp(24px,3vw,40px);">
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-bottom:1px solid #E6E6E6;padding-bottom:18px;margin-bottom:28px;">
+            <span style="display:block;width:28px;height:28px;"><dc-import name="RoleSymbol" role="{{ glyphRole }}" morph="{{ true }}" style="display:block;width:100%;height:100%;" hint-size="28px,28px"></dc-import></span>
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">03 / Meet your contact</span>
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#252525;">{{ headRole }}</span>
+            <sc-if value="{{ hasCov }}" hint-placeholder-val="{{ false }}"><span style="margin-left:auto;display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#4F4F4E;"><span style="width:10px;height:10px;background:{{ covBg }};border:1px {{ covLine }} {{ covBd }};"></span>{{ covLabel }}</span></sc-if>
+          </div>
+
+          <div style="opacity:{{ fade }};transition:opacity 140ms ease;display:flex;flex-direction:column;gap:40px;">
+            <sc-if value="{{ vNone }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;gap:24px;">
+                <div style="display:flex;flex-direction:column;gap:8px;max-width:560px;"><h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Start with <span style="color:#8E8E8E;">a role.</span></h3><p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;">Choose one of the seven roles above, then search by location or by product. Your contact appears here.</p></div>
+                
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ vFounder }}" hint-placeholder-val="{{ false }}">
+              <article style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:32px;align-items:start;">
+                <div data-anchor="portrait" style="border-radius:20px;overflow:hidden;min-width:0;width:100%;max-width:380px;"><dc-import name="WhoPortrait" role="founders" seed="{{ fd.id }}" slot="{{ fd.slot }}" placeholder="{{ fd.slotPh }}" reduced="{{ reduced }}" hint-size="100%,440px"></dc-import></div>
+                <div style="min-width:0;display:flex;flex-direction:column;gap:14px;">
+                  <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">{{ fd.roleTitle }}</span>
+                  <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">{{ fd.name }}</h3>
+                  <div style="font-size:var(--web-h3-size);color:#4F4F4E;font-weight:300;line-height:var(--web-h3-lh);">{{ fd.title }}</div>
+                  <div style="font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">{{ fd.base }}</div>
+                  <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;">{{ fd.intro }}</p>
+                  <div style="border-top:1px solid #E6E6E6;padding-top:14px;display:flex;flex-direction:column;gap:6px;"><div style="font-size:var(--web-h3-size);line-height:var(--web-h3-lh);color:#252525;font-weight:var(--web-h3-weight);">{{ fd.statement }}</div><div style="font-size:var(--web-min-size);line-height:var(--web-min-lh);color:#5F5E5E;">{{ fd.statementNote }}</div></div>
+                  <div style="display:flex;flex-wrap:wrap;gap:6px;"><sc-for list="{{ fd.flags }}" as="x" hint-placeholder-count="2"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.1em;color:#4F4F4E;border:1px solid #BBBBBB;padding:3px 6px;border-radius:6px;">{{ x }}</span></sc-for></div>
+                  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;">
+                    <button type="button" onClick="{{ fd.open }}" style="cursor:pointer;min-height:var(--cta-height,56px);padding:0 18px;background:#4F4F4E;color:#F4F4F4;border:1px solid #4F4F4E;font:inherit;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);">Full profile</button>
+                  </div>
+                </div>
+              </article>
+              <div style="display:flex;flex-direction:column;gap:0;"><div style="margin-top:8px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;">
+      <div style="background:#F4F4F4;padding:24px;border-radius:8px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:10px;">Founder 01</div><div style="font-size:var(--web-h3-size);color:#252525;margin-bottom:6px;font-weight:300;line-height:var(--web-h3-lh);">Strategy</div><div style="font-size:14px;font-weight:500;color:#4F4F4E;margin-bottom:2px;">Mathieu</div><div style="font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">Product direction and development</div></div>
+      <div style="background:#F4F4F4;padding:24px;border-radius:8px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:10px;">Founder 02</div><div style="font-size:var(--web-h3-size);color:#252525;margin-bottom:6px;font-weight:300;line-height:var(--web-h3-lh);">Manufacturing</div><div style="font-size:14px;font-weight:500;color:#4F4F4E;margin-bottom:2px;">Huang Tzu Chi</div><div style="font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">Production network and supply chain</div></div>
+      <div style="background:#F4F4F4;padding:24px;border-radius:8px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:10px;">Founder 03</div><div style="font-size:var(--web-h3-size);color:#252525;margin-bottom:6px;font-weight:300;line-height:var(--web-h3-lh);">EPC support</div><div style="font-size:14px;font-weight:500;color:#4F4F4E;margin-bottom:2px;">Ronny</div><div style="font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">EPC technical support and practice</div></div>
+    </div>
+    <div style="margin-top:32px;font-size:var(--web-lead-size);letter-spacing:0.06em;text-transform:uppercase;line-height:var(--web-lead-lh);color:#252525;font-weight:var(--web-lead-weight);">From product concept to real-world installation via EPC.</div>
+    <p style="margin:10px 0 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;text-transform:uppercase;">PROPOSED JOINT POSITIONING OF THE FOUNDING TEAM. TO CONFIRM</p>
+              <sc-if value="{{ expandAll }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px;border-top:1px solid #4F4F4E;padding-top:32px;">
+        <sc-for list="{{ triptych }}" as="f" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:12px;min-width:0;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Full profile · {{ f.name }}</div>
+            <sc-for list="{{ f.blocks }}" as="b" hint-placeholder-count="6">
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <sc-if value="{{ b.isH }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">{{ b.text }}</div></sc-if>
+                <sc-if value="{{ b.isP }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#4F4F4E;">{{ b.text }}</p></sc-if>
+                <sc-if value="{{ b.isDet }}" hint-placeholder-val="{{ false }}">
+                  <div style="border-top:1px solid #E6E6E6;padding-top:10px;display:flex;flex-direction:column;gap:6px;">
+                    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#252525;">{{ b.title }}</div>
+                    <sc-for list="{{ b.paras }}" as="x" hint-placeholder-count="1"><p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#4F4F4E;">{{ x }}</p></sc-for>
+                    <sc-if value="{{ b.hasList }}" hint-placeholder-val="{{ false }}"><ul style="margin:0;padding-left:18px;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#4F4F4E;"><sc-for list="{{ b.list }}" as="x" hint-placeholder-count="3"><li>{{ x }}</li></sc-for></ul></sc-if>
+                    <sc-if value="{{ b.hasKv }}" hint-placeholder-val="{{ false }}"><dl style="margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;font-size:14px;line-height:1.5;"><sc-for list="{{ b.kv }}" as="k" hint-placeholder-count="3"><div style="display:contents;"><dt style="color:#5F5E5E;">{{ k.k }}</dt><dd style="margin:0;color:#252525;">{{ k.v }}</dd></div></sc-for></dl></sc-if>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if></div>
+            </sc-if>
+
+            <sc-if value="{{ vDept }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:28px;"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px 40px;align-items:start;border-bottom:1px solid #E6E6E6;padding-bottom:28px;">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">The people who build <span style="color:#8E8E8E;">the system</span></h3>
+        <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#4F4F4E;">Leadership and management, product design and engineering, graphic and web design, software development, manufacturing and quality, operations and supply chain, applications and installation, and regional account management. Team members are shown where identity and role are confirmed.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;">Meet the designers, engineers, developers and professionals responsible for creating our products, developing our technology, managing manufacturing and coordinating our international operations.</p>
+        <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;">From initial concepts and engineering drawings to digital interfaces, product testing and market delivery, our work brings together different disciplines across multiple countries.</p>
+        <div style="font-size:var(--web-h3-size);line-height:var(--web-h3-lh);color:#252525;font-weight:300;">Eight disciplines. One connected product ecosystem.</div>
+      </div>
+    </div>
+              <article style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:32px;align-items:start;">
+                <div data-anchor="portrait" style="border-radius:12px;overflow:hidden;min-width:0;width:100%;max-width:380px;aspect-ratio:4 / 3;background:#F4F4F4;"><image-slot id="{{ dp.teamSlot }}" shape="rounded" radius="20" placeholder="Team photo · {{ dp.title }}" style="display:block;width:100%;height:100%;"></image-slot></div>
+                <div style="min-width:0;display:flex;flex-direction:column;gap:14px;">
+                  <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Team · {{ dp.title }}</span>
+                  <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">{{ dp.title }}</h3>
+                  <div style="font-size:var(--web-h3-size);line-height:var(--web-h3-lh);color:#4F4F4E;font-weight:300;">{{ dp.line }}</div>
+                  <sc-for list="{{ dp.paras }}" as="x" hint-placeholder-count="2"><p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ x }}</p></sc-for>
+                  <sc-if value="{{ dp.isLead }}" hint-placeholder-val="{{ false }}">
+                    <div style="border-top:1px solid #E6E6E6;padding-top:14px;display:flex;flex-direction:column;gap:2px;">
+                      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-bottom:6px;">Founders</div>
+                      <sc-for list="{{ founderList }}" as="f" hint-placeholder-count="3"><button type="button" onClick="{{ f.pick }}" style="cursor:pointer;text-align:left;background:none;border:0;border-bottom:1px solid #E6E6E6;padding:10px 0;font:inherit;display:flex;justify-content:space-between;gap:12px;"><span style="font-size:var(--web-body-size);color:#252525;line-height:var(--web-body-lh);">{{ f.name }}</span><span style="font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">{{ f.title }}</span></button></sc-for>
+                    </div>
+                  </sc-if>
+                  
+                  <div style="border-top:1px solid #E6E6E6;padding-top:14px;display:flex;flex-direction:column;gap:10px;"><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">This page introduces the team. To speak with someone, go to {{ dp.goLabel }}.</p><button type="button" onClick="{{ dp.goRole }}" style="align-self:flex-start;cursor:pointer;min-height:var(--cta-height,56px);padding:0 18px;background:#4F4F4E;color:#F4F4F4;border:0;font:inherit;font-size:var(--cta-font,16px);font-weight:300;border-radius:var(--cta-radius,8px);">{{ dp.goLabel }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></button></div>
+                </div>
+              </article>
+              <sc-if value="{{ expandAll }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;">
+        <sc-for list="{{ deptTiles }}" as="d" hint-placeholder-count="8">
+          <div style="background:#F4F4F4;padding:24px;display:flex;flex-direction:column;gap:8px;border-radius:8px;">
+            <span style="font-size:var(--web-eyebrow-size);color:#5F5E5E;font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);">{{ d.n }}</span>
+            <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">{{ d.title }}</div>
+            <div style="font-size:14px;font-weight:500;line-height:1.4;color:#4F4F4E;">{{ d.line }}</div>
+            <sc-for list="{{ d.paras }}" as="x" hint-placeholder-count="2"><p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;">{{ x }}</p></sc-for>
+            <div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ d.memberNote }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if></div>
+            </sc-if>
+
+            <sc-if value="{{ vGroups }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:32px 28px;align-items:start;">
+                <sc-for list="{{ groups }}" as="g" hint-placeholder-count="1">
+                  <div style="display:flex;flex-direction:column;gap:20px;min-width:0;">
+                    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#252525;border-bottom:1px solid #4F4F4E;padding-bottom:8px;">{{ g.title }}</div>
+                    <sc-for list="{{ g.cards }}" as="c" hint-placeholder-count="1">
+                      <article data-card="{{ c.id }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:24px;align-items:start;padding-bottom:24px;border-bottom:1px solid #E6E6E6;">
+                        <div data-anchor="{{ c.anchor }}" style="min-width:0;width:100%;max-width:340px;"><dc-import name="WhoPortrait" role="{{ c.geo }}" seed="{{ c.id }}" slot="{{ c.slot }}" placeholder="{{ c.ph }}" reduced="{{ reduced }}" hint-size="100%,400px"></dc-import></div>
+                        <div style="min-width:0;display:flex;flex-direction:column;gap:14px;">
+                          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">{{ c.eyebrow }}</span><sc-if value="{{ c.hasTag }}" hint-placeholder-val="{{ false }}"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.1em;color:#4F4F4E;background:#EDEDEB;padding:3px 6px;border-radius:6px;">{{ c.tag }}</span></sc-if></div>
+                          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">{{ c.name }}</h3>
+                          <div style="font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#4F4F4E;">{{ c.title }}</div>
+                          <sc-if value="{{ c.hasTime }}" hint-placeholder-val="{{ false }}"><div style="display:inline-flex;align-items:center;gap:8px;font-size:var(--web-small-size);color:#4F4F4E;line-height:var(--web-small-lh);"><span style="width:8px;height:8px;border-radius:50%;background:{{ c.timeCol }};"></span>{{ c.timeLabel }}</div></sc-if>
+                          <dl style="margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 20px;font-size:14px;line-height:1.5;border-top:1px solid #E6E6E6;padding-top:14px;">
+                            <sc-for list="{{ c.facts }}" as="f" hint-placeholder-count="2"><div style="display:contents;"><dt style="color:#5F5E5E;">{{ f.k }}</dt><dd style="margin:0;color:#252525;">{{ f.v }}</dd></div></sc-for>
+                          </dl>
+                          <sc-if value="{{ c.hasLangs }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;margin-right:4px;">Languages</span><sc-for list="{{ c.langs }}" as="l" hint-placeholder-count="2"><button type="button" onClick="{{ l.pick }}" aria-pressed="{{ l.pressed }}" title="Show sub-regions with this language on the map" style="cursor:pointer;height:28px;padding:0 10px;border:1px solid {{ l.bd }};background:{{ l.bg }};color:{{ l.fg }};font:inherit;font-size:var(--web-btn-sm-size);border-radius:8px;font-weight:var(--web-btn-weight);">{{ l.l }}</button></sc-for></div></sc-if>
+                          <sc-if value="{{ c.hasIntro }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">{{ c.intro }}</p></sc-if>
+                          <sc-if value="{{ c.hasFlags }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-wrap:wrap;gap:6px;"><sc-for list="{{ c.flags }}" as="x" hint-placeholder-count="1"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.1em;color:#4F4F4E;border:1px solid #BBBBBB;padding:3px 6px;border-radius:6px;">{{ x }}</span></sc-for></div></sc-if>
+                          <div style="display:{{ c.barDisp }};flex-wrap:wrap;gap:8px;">
+                            <button type="button" onClick="{{ c.aChat }}" style="cursor:pointer;min-height:var(--cta-height,56px);padding:0 16px;background:#4F4F4E;color:#F4F4F4;border:1px solid #4F4F4E;font:inherit;font-size:var(--cta-font,16px);display:inline-flex;align-items:center;gap:8px;border-radius:var(--cta-radius,8px);"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v11H10l-6 4z"></path></svg>Chat now</button>
+                            <button type="button" onClick="{{ c.aBook }}" style="cursor:pointer;height:44px;padding:0 16px;background:#FFFFFF;color:#252525;border:1px solid #4F4F4E;font:inherit;font-size:14px;display:inline-flex;align-items:center;gap:8px;border-radius:var(--cta-radius,8px);"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="5" width="16" height="15"></rect><path d="M4 10h16M9 3v4M15 3v4"></path></svg>Book 20 min meeting</button>
+                            <sc-for list="{{ c.acts }}" as="a" hint-placeholder-count="4">
+                              <button type="button" onClick="{{ a.go }}" aria-pressed="{{ a.pressed }}" style="cursor:pointer;height:44px;padding:0 14px;background:{{ a.bg }};color:#4F4F4E;border:1px solid #BBBBBB;font:inherit;font-size:14px;display:inline-flex;align-items:center;gap:8px;border-radius:var(--cta-radius,8px);">
+                                <sc-if value="{{ a.iCall }}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3l3 4-2 2a11 11 0 0 0 7 7l2-2 4 3-2 3C11 20 4 13 4 5z"></path></svg></sc-if>
+                                <sc-if value="{{ a.iMail }}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="12"></rect><path d="M3 6l9 7 9-7"></path></svg></sc-if>
+                                <sc-if value="{{ a.iBack }}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12a8 8 0 1 1-2.3-5.7"></path><path d="M20 4v4h-4"></path></svg></sc-if>
+                                <sc-if value="{{ a.iCard }}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14"></rect><circle cx="9" cy="11" r="2.2"></circle><path d="M5.5 16c.8-1.6 2-2.4 3.5-2.4s2.7.8 3.5 2.4M14 10h4M14 14h4"></path></svg></sc-if>
+                                {{ a.label }}
+                              </button>
+                            </sc-for>
+                          </div>
+                          <sc-if value="{{ c.hasPanel }}" hint-placeholder-val="{{ false }}">
+                            <div style="background:#F7F7F5;padding:16px;display:flex;flex-direction:column;gap:10px;font-size:14px;line-height:1.5;color:#4F4F4E;border-radius:12px;">
+                              <sc-if value="{{ c.pConcept }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;background:#FFFFFF;padding:3px 6px;border-radius:6px;">Concept: not connected</span></sc-if>
+                              <sc-if value="{{ c.pCall }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:4px;"><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;"><span style="font-size:var(--web-h3-size);color:#252525;font-weight:300;line-height:var(--web-h3-lh);">{{ c.phone }}</span><button type="button" disabled="{{ true }}" style="height:32px;padding:0 10px;border:1px solid #BBBBBB;background:#FFFFFF;color:#5F5E5E;font:inherit;font-size:var(--web-tag-size);border-radius:8px;font-weight:var(--web-tag-weight);">Copy</button></div><span style="color:#5F5E5E;">{{ c.hours }}</span><span style="color:#5F5E5E;">{{ c.localTime }}</span></div></sc-if>
+                              <sc-if value="{{ c.pEmail }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:6px;"><span style="color:#5F5E5E;">Subject</span><span style="color:#252525;">{{ c.subject }}</span><sc-if value="{{ c.hasMail }}" hint-placeholder-val="{{ false }}"><a href="{{ c.mailHref }}" style="align-self:flex-start;border-bottom:1px solid #4F4F4E;font-size:var(--web-link-size);font-weight:var(--web-link-weight);">Contact International Sales<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a></sc-if><span style="color:#5F5E5E;">{{ c.mailNote }}</span></div></sc-if>
+                              <sc-if value="{{ c.pBack }}" hint-placeholder-val="{{ false }}">
+                                <sc-if value="{{ c.cbForm }}" hint-placeholder-val="{{ true }}">
+                                  <form onSubmit="{{ c.cbSubmit }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px;">
+                                    <label style="display:flex;flex-direction:column;gap:4px;font-size:var(--web-label-size);color:#5F5E5E;font-weight:var(--web-label-weight);">Name<input required name="name" style="height:40px;border:1px solid #BBBBBB;padding:0 10px;font:inherit;font-size:var(--web-input-size);border-radius:8px;font-weight:var(--web-input-weight);"></label>
+                                    <label style="display:flex;flex-direction:column;gap:4px;font-size:var(--web-label-size);color:#5F5E5E;font-weight:var(--web-label-weight);">Phone<input required name="phone" type="tel" style="height:40px;border:1px solid #BBBBBB;padding:0 10px;font:inherit;font-size:var(--web-input-size);border-radius:8px;font-weight:var(--web-input-weight);"></label>
+                                    <label style="display:flex;flex-direction:column;gap:4px;font-size:var(--web-label-size);color:#5F5E5E;font-weight:var(--web-label-weight);">Preferred time ({{ visitorTz }})<select name="win" style="height:40px;border:1px solid #BBBBBB;padding:0 8px;font:inherit;font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);"><option>Morning</option><option>Afternoon</option><option>Evening</option></select></label>
+                                    <label style="display:flex;flex-direction:column;gap:4px;font-size:var(--web-label-size);color:#5F5E5E;font-weight:var(--web-label-weight);">Topic<input name="topic" value="{{ c.topic }}" readOnly="{{ false }}" style="height:40px;border:1px solid #BBBBBB;padding:0 10px;font:inherit;font-size:var(--web-input-size);border-radius:8px;font-weight:var(--web-input-weight);"></label>
+                                    <button type="submit" style="cursor:pointer;height:44px;background:#4F4F4E;color:#F4F4F4;border:1px solid #4F4F4E;font:inherit;font-size:14px;align-self:end;border-radius:var(--cta-radius,8px);">Request a call back</button>
+                                  </form>
+                                </sc-if>
+                                <sc-if value="{{ c.cbSent }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-body-size);color:#252525;line-height:var(--web-body-lh);">We will call you within 1 working day.</div></sc-if>
+                              </sc-if>
+                              <sc-if value="{{ c.pCard }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:8px;"><span style="color:#5F5E5E;">{{ c.vcardNote }}</span><sc-if value="{{ c.canVcard }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ c.vcard }}" style="align-self:flex-start;cursor:pointer;height:40px;padding:0 14px;background:#FFFFFF;border:1px solid #4F4F4E;font:inherit;font-size:14px;border-radius:var(--cta-radius,8px);">Download .vcf</button></sc-if></div></sc-if>
+                            </div>
+                          </sc-if>
+                          <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;">
+                            <button type="button" onClick="{{ c.open }}" style="cursor:pointer;background:none;border:0;border-bottom:1px solid #4F4F4E;padding:4px 0;font:inherit;font-size:14px;color:#252525;">View profile</button>
+                            <sc-if value="{{ c.hasHref }}" hint-placeholder-val="{{ false }}"><a href="{{ c.href }}" style="font-size:14px;color:#5F5E5E;">{{ c.hrefLabel }}</a></sc-if>
+                          </div>
+                        </div>
+                      </article>
+                    </sc-for>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ vPartner }}" hint-placeholder-val="{{ false }}">
+              <div style="border:1px solid #4F4F4E;padding:28px;display:flex;flex-direction:column;gap:14px;border-radius:12px;">
+                <div style="display:flex;gap:12px;align-items:center;"><span style="display:block;width:36px;height:36px;"><dc-import name="RoleSymbol" role="{{ glyphRole }}" style="display:block;width:100%;height:100%;" hint-size="36px,36px"></dc-import></span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Country contact · {{ partnerPlace }}</span></div>
+                <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">No representative in {{ partnerPlace }} <span style="color:#8E8E8E;">yet</span></h3>
+                <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;max-width:620px;">STRØHM.ENERGY has not appointed a representative for {{ partnerPlace }}. Your enquiry goes to our International Sales team, with the country and product you selected.</p>
+                <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;max-width:620px;">We welcome enquiries from EPC companies, professional installers, distributors, wholesalers and potential regional representatives.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                  <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#4F4F4E;border:1px solid #D4D4D4;padding:6px 10px;border-radius:6px;">Country · {{ enqCountry }}</span>
+                  <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#4F4F4E;border:1px solid #D4D4D4;padding:6px 10px;border-radius:6px;">Product · {{ enqProduct }}</span>
+                  <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#4F4F4E;border:1px solid #D4D4D4;padding:6px 10px;border-radius:6px;">Route · International Sales</span>
+                </div>
+                <sc-if value="{{ partnerForm }}" hint-placeholder-val="{{ true }}">
+                  <form onSubmit="{{ partnerSubmit }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;">
+                    <label style="display:flex;flex-direction:column;gap:4px;font-size:var(--web-label-size);color:#5F5E5E;font-weight:var(--web-label-weight);">Company<input required name="company" style="height:40px;border:1px solid #BBBBBB;padding:0 10px;font:inherit;font-size:var(--web-input-size);border-radius:8px;font-weight:var(--web-input-weight);"></label>
+                    <label style="display:flex;flex-direction:column;gap:4px;font-size:var(--web-label-size);color:#5F5E5E;font-weight:var(--web-label-weight);">Name<input required name="name" style="height:40px;border:1px solid #BBBBBB;padding:0 10px;font:inherit;font-size:var(--web-input-size);border-radius:8px;font-weight:var(--web-input-weight);"></label>
+                    <label style="display:flex;flex-direction:column;gap:4px;font-size:var(--web-label-size);color:#5F5E5E;font-weight:var(--web-label-weight);">Email<input required name="email" type="email" style="height:40px;border:1px solid #BBBBBB;padding:0 10px;font:inherit;font-size:var(--web-input-size);border-radius:8px;font-weight:var(--web-input-weight);"></label>
+                    <label style="display:flex;flex-direction:column;gap:4px;font-size:var(--web-label-size);color:#5F5E5E;font-weight:var(--web-label-weight);">You are<select name="type" style="height:40px;border:1px solid #BBBBBB;padding:0 8px;font:inherit;font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);"><option>EPC company</option><option>Professional installer</option><option>Distributor</option><option>Wholesaler</option><option>Potential regional representative</option></select></label>
+                    <label style="display:flex;flex-direction:column;gap:4px;font-size:var(--web-label-size);color:#5F5E5E;font-weight:var(--web-label-weight);">Enquiry<select name="etype" style="height:40px;border:1px solid #BBBBBB;padding:0 8px;font:inherit;font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);"><option>Product enquiry</option><option>Quotation</option><option>Distributor partnership</option><option>Regional representation</option><option>Project support</option></select></label>
+                    <input type="hidden" name="country" value="{{ enqCode }}"><input type="hidden" name="product" value="{{ enqProdCode }}"><input type="hidden" name="sub" value="{{ enqSub }}">
+                    <label style="grid-column:1 / -1;display:flex;flex-direction:column;gap:4px;font-size:var(--web-label-size);color:#5F5E5E;font-weight:var(--web-label-weight);">Message<textarea name="msg" rows="3" style="border:1px solid #BBBBBB;padding:10px;font:inherit;font-size:var(--web-input-size);resize:vertical;border-radius:8px;font-weight:var(--web-input-weight);"></textarea></label>
+                    <button type="submit" style="cursor:pointer;min-height:var(--cta-height,56px);padding:0 18px;background:#4F4F4E;color:#F4F4F4;border:1px solid #4F4F4E;font:inherit;font-size:var(--cta-font,16px);justify-self:start;border-radius:var(--cta-radius,8px);">Send enquiry</button>
+                  </form>
+                </sc-if>
+                <sc-if value="{{ partnerSent }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:8px;"><div style="font-size:var(--web-h3-size);font-weight:300;color:#252525;line-height:var(--web-h3-lh);">Received. Routed to {{ enqSummary }}.</div><span style="align-self:flex-start;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;background:#EDEDEB;padding:3px 6px;border-radius:6px;">Concept: not connected</span></div></sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ vProdIntro }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;max-width:640px;">
+                <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Product experts</span>
+                <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">The experts <span style="color:#8E8E8E;">behind every solution</span></h3>
+                <p style="margin:0;font-size:var(--web-h3-size);color:#4F4F4E;font-weight:300;line-height:var(--web-h3-lh);">Find Expertise by Product</p>
+                <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;">Technical product knowledge, specifications, integration and application support. Choose one of the 25 product brands on the left.</p>
+                <a href="STROHM.ENERGY - COMPANY - Who - Product Experts - EN.dc.html" style="align-self:flex-start;font-size:var(--web-link-size);border-bottom:1px solid #4F4F4E;padding-bottom:2px;font-weight:var(--web-link-weight);">Product experts<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ vRamIntro }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;max-width:680px;">
+                <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Regional sales</span>
+                <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Local Relationships. <span style="color:#8E8E8E;">International Support.</span></h3>
+                <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#252525;">Regional Account Management</div>
+                <p style="margin:0;font-size:18px;line-height:1.45;color:#252525;">One dedicated contact. From first enquiry to completed order.</p>
+                <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;">Our Regional Account Managers support EPC partners, professional installers, distributors and wholesalers across Europe.</p>
+                <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;">They assist with B2B webshop accounts, coordinate quotations, follow up orders and deliveries, and ensure every commercial enquiry is handled accurately and efficiently.</p>
+                <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;">Each Regional Account Manager remains the primary point of contact throughout the entire commercial process.</p>
+                <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;">Specialist technical enquiries are coordinated with our Product Experts, while financial, administrative and logistics matters are handled in cooperation with our central teams.</p>
+                <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#252525;">12 European regions. Dedicated local support. One connected B2B platform.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:20px;"><span style="font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">Or choose your region on the map. Outside Europe: International Sales, below.</span></div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ vGate }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;">
+                <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">{{ gateEyebrow }}</span>
+                <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Now choose <span style="color:#8E8E8E;">{{ gateNeed }}.</span></h3>
+                <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;">{{ gateWhy }}</p>
+                <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid #E6E6E6;">
+                  <sc-if value="{{ gateHasFirst }}" hint-placeholder-val="{{ true }}"><div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #E6E6E6;font-size:14px;font-weight:300;"><span style="color:#5F5E5E;">{{ gateFirst }}</span><span style="color:#252525;">{{ gateProduct }}</span></div></sc-if>
+                  <div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #E6E6E6;font-size:14px;font-weight:300;"><span style="color:#5F5E5E;">Location</span><span style="color:#252525;">{{ gateCountry }}</span></div>
+                  <div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #E6E6E6;font-size:14px;font-weight:300;"><span style="color:#5F5E5E;">Language</span><span style="color:#252525;">{{ gateLang }}</span></div>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ vSysIntro }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;max-width:640px;">
+                <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">System specialists</span>
+                <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">The people behind <span style="color:#8E8E8E;">the seven systems</span></h3><div style="font-size:14px;font-weight:300;color:#252525;background:#F4F4F4;border-radius:12px;padding:10px 14px;">{{ gateProduct }} · {{ gateCountry }} · {{ gateLang }}</div>
+                <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;">Technical support for energy management, calculation, installer network, data core, notifications, contracts and logistics.</p>
+                <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;">System specialists work in our Product Lab and R&amp;D team.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:6px;"><a href="EMON - SYSTEM - Overview - EN.dc.html" style="font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);color:#4F4F4E;border:1px solid #D4D4D4;border-radius:6px;padding:6px 10px;">EMON</a><a href="KALK - SYSTEM - Overview - EN.dc.html" style="font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);color:#4F4F4E;border:1px solid #D4D4D4;border-radius:6px;padding:6px 10px;">KALK</a><a href="KERN - SYSTEM - Overview - EN.dc.html" style="font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);color:#4F4F4E;border:1px solid #D4D4D4;border-radius:6px;padding:6px 10px;">KERN</a><a href="TRIBE - SYSTEM - Overview - EN.dc.html" style="font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);color:#4F4F4E;border:1px solid #D4D4D4;border-radius:6px;padding:6px 10px;">TRIBE</a><a href="PUSH - SYSTEM - Overview - EN.dc.html" style="font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);color:#4F4F4E;border:1px solid #D4D4D4;border-radius:6px;padding:6px 10px;">PUSH</a><a href="PACT - SYSTEM - Overview - EN.dc.html" style="font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);color:#4F4F4E;border:1px solid #D4D4D4;border-radius:6px;padding:6px 10px;">PACT</a><a href="DEPOT - SYSTEM - Overview - EN.dc.html" style="font-size:var(--web-btn-sm-size);font-weight:var(--web-btn-weight);color:#4F4F4E;border:1px solid #D4D4D4;border-radius:6px;padding:6px 10px;">DEPOT</a></div>
+                <a href="STROHM.ENERGY - SITE - Product Lab and R and D - EN.dc.html" style="align-self:flex-start;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;line-height:var(--web-small-lh);">&gt;&gt; Product Lab and R&amp;D</a>
+                <span style="align-self:flex-start;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;background:#EDEDEB;padding:3px 6px;border-radius:6px;">Names to confirm</span>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ vProjIntro }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;max-width:640px;">
+                <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Project specialists</span>
+                <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Engineering <span style="color:#8E8E8E;">for every project</span></h3><div style="font-size:14px;font-weight:300;color:#252525;background:#F4F4F4;border-radius:12px;padding:10px 14px;">{{ gateProduct }} · {{ gateCountry }} · {{ gateLang }}</div>
+                <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;">{{ projText }}</p>
+                
+                <a href="{{ projHref }}" style="align-self:flex-start;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;line-height:var(--web-small-lh);">&gt;&gt; {{ projLinkLabel }}</a>
+                <span style="align-self:flex-start;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;background:#EDEDEB;padding:3px 6px;border-radius:6px;">Names to confirm</span>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ vLocalIntro }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;max-width:640px;">
+                <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Local sales</span>
+                <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Choose a region <span style="color:#8E8E8E;">or country.</span></h3>
+                <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;">On-site visits, installer relationships, EPC partners, distributors and regional business development.</p>
+                <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;">The map shows who covers each market. Filled tiles have a dedicated person, outlined tiles are covered from another base, dotted tiles are served by International Sales.</p>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ vTech }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ toProduct }}" style="align-self:flex-start;cursor:pointer;background:none;border:0;border-bottom:1px solid #4F4F4E;padding:4px 0;font:inherit;font-size:14px;color:#252525;">Technical question? Find a Product Expert</button></sc-if>
+
+            <sc-if value="{{ vIntl }}" hint-placeholder-val="{{ false }}">
+              <details open="{{ intlOpen }}" style="border-top:1px solid #E6E6E6;padding-top:16px;">
+                <summary style="cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:baseline;font-size:var(--web-body-size);font-weight:500;"><span style="font-size:var(--web-h3-size);font-weight:300;color:#252525;line-height:var(--web-h3-lh);">International Sales &amp; Partnerships</span><span style="font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">Read more</span></summary>
+                <div style="display:flex;flex-direction:column;gap:10px;padding-top:12px;max-width:640px;">
+                  <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;">Outside Europe, commercial enquiries, distribution opportunities and regional partnership proposals are managed individually by our central International Sales team.</p>
+                  <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#252525;">Interested in developing STRØHM.ENERGY in your market?</p>
+                  <p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#5F5E5E;">We welcome enquiries from EPC companies, professional installers, distributors, wholesalers and potential regional representatives.</p>
+                  <button type="button" onClick="{{ toIntlForm }}" style="align-self:flex-start;cursor:pointer;background:none;border:0;border-bottom:1px solid #4F4F4E;padding:0 0 2px;font:inherit;font-size:14px;color:#252525;">Contact International Sales<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></button>
+                </div>
+              </details>
+            </sc-if>
+          </div>
+        </main>
+      </div>
+    </section>
+  </div>
+
+  <!-- DEPTH-626: founders band removed; founders only in 02 / Meet your contact -->
+
+  <!-- DEPTH-631: team band removed; team text and Expand-all departments in the Builders result -->
+
+  <section id="good-hands" data-screen-label="05 Good hands" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:120px var(--web-side) 0;box-sizing:border-box;scroll-margin-top:146px;display:flex;flex-direction:column;gap:clamp(48px,6vw,88px);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px;">
+      <div style="border-radius:20px;overflow:hidden;height:clamp(300px,34vw,480px);"><img src="assets/who/good-hands-support.png?v=2" alt="FLUXX specialist on a call with PV layouts and inverter data" style="display:block;width:calc(100% + 40px);max-width:none;margin-left:-28px;height:100%;object-fit:cover;"></div>
+      <img src="assets/who/good-hands-partners.png?v=2" alt="STRØHM.ENERGY specialist advising two customers" style="display:block;width:100%;height:calc(clamp(300px,34vw,480px) / 2);object-fit:cover;object-position:80% center;border-radius:20px;;align-self:start;">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:28px;max-width:860px;">
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The right people. <span style="color:#8E8E8E;">The right expertise.</span></h2>
+      <p style="margin:0;font-size:clamp(18px,1.6vw,22px);font-weight:300;line-height:1.45;color:#4F4F4E;text-wrap:pretty;">At STRØHM.ENERGY, we believe that good products are only part of a successful energy project. What matters just as much is having access to the people who understand how those products are designed, manufactured, integrated, installed and supported.</p>
+      <p style="margin:0;font-size:var(--web-lead-size);font-weight:var(--web-lead-weight);line-height:var(--web-lead-lh);color:#4F4F4E;text-wrap:pretty;">That is why we connect installers, EPC contractors, distributors and project partners directly with the relevant people in our organisation.</p>
+      <p style="margin:0;font-size:var(--web-lead-size);font-weight:var(--web-lead-weight);line-height:var(--web-lead-lh);color:#4F4F4E;text-wrap:pretty;">Whether your question concerns a single product, a complete energy system, project engineering, an order or a local market, we want you to reach the right expertise without unnecessary layers in between.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;">
+        <article style="background:#F4F4F4;border-radius:12px;padding:20px 20px 24px;display:flex;flex-direction:column;gap:16px;min-width:0;">
+          <div style="aspect-ratio:4 / 3;border-radius:12px;overflow:hidden;background:#E3E3E3;"><image-slot id="who-lab-gh-1" shape="rounded" radius="16" placeholder="Photo 1" style="display:block;width:100%;height:100%;"></image-slot></div>
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Real people. <span style="color:#8E8E8E;">Relevant expertise.</span></h3>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Not every question belongs with a salesperson, and not every technical issue belongs in a general support queue.</p>
+          <details><summary style="cursor:pointer;display:flex;justify-content:flex-end;align-items:center;gap:8px;list-style:none;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#5F5E5E;"><svg data-rm-arrow="" aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg><span data-rm-more="">Read more</span><span data-rm-less="">Read less</span></summary><div style="display:flex;flex-direction:column;gap:12px;margin-top:12px;"><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Our organisation brings together product designers, engineers, system specialists, project specialists, manufacturing teams and commercial professionals.</p><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">We make these different areas of expertise accessible so you can speak with the people who understand your particular requirements.</p></div></details>
+        </article>
+        <article style="background:#F4F4F4;border-radius:12px;padding:20px 20px 24px;display:flex;flex-direction:column;gap:16px;min-width:0;">
+          <div style="aspect-ratio:4 / 3;border-radius:12px;overflow:hidden;background:#E3E3E3;"><image-slot id="who-lab-gh-2" shape="rounded" radius="16" placeholder="Photo 2" style="display:block;width:100%;height:100%;"></image-slot></div>
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">Close to installers <span style="color:#8E8E8E;">and EPC partners</span></h3>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">We develop our products with the people who specify, install and work with them in mind.</p>
+          <details><summary style="cursor:pointer;display:flex;justify-content:flex-end;align-items:center;gap:8px;list-style:none;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#5F5E5E;"><svg data-rm-arrow="" aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg><span data-rm-more="">Read more</span><span data-rm-less="">Read less</span></summary><div style="display:flex;flex-direction:column;gap:12px;margin-top:12px;"><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">For installers, this means access to practical product knowledge, installation guidance, commissioning support and technical documentation.</p><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">For EPC contractors, it means support with system compatibility, engineering decisions, project requirements and technical coordination.</p><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The objective is simple: fewer misunderstandings, faster decisions and less unnecessary work on site.</p></div></details>
+        </article>
+        <article style="background:#F4F4F4;border-radius:12px;padding:20px 20px 24px;display:flex;flex-direction:column;gap:16px;min-width:0;">
+          <div style="aspect-ratio:4 / 3;border-radius:12px;overflow:hidden;background:#E3E3E3;"><image-slot id="who-lab-gh-3" shape="rounded" radius="16" placeholder="Photo 3" style="display:block;width:100%;height:100%;"></image-slot></div>
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">The right specialist <span style="color:#8E8E8E;">at the right moment</span></h3>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A project rarely requires the same expertise from beginning to end.</p>
+          <details><summary style="cursor:pointer;display:flex;justify-content:flex-end;align-items:center;gap:8px;list-style:none;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#5F5E5E;"><svg data-rm-arrow="" aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg><span data-rm-more="">Read more</span><span data-rm-less="">Read less</span></summary><div style="display:flex;flex-direction:column;gap:12px;margin-top:12px;"><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Product specialists help with specifications and selection. System specialists address integration and compatibility. Project specialists support complex applications and engineering coordination.</p><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Account managers help with quotations, orders and delivery. Local sales representatives understand their markets and maintain relationships with professional partners.</p><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">When additional expertise is needed, the relevant people can become involved.</p></div></details>
+        </article>
+        <article style="background:#F4F4F4;border-radius:12px;padding:20px 20px 24px;display:flex;flex-direction:column;gap:16px;min-width:0;">
+          <div style="aspect-ratio:4 / 3;border-radius:12px;overflow:hidden;background:#E3E3E3;"><image-slot id="who-lab-gh-4" shape="rounded" radius="16" placeholder="Photo 4" style="display:block;width:100%;height:100%;"></image-slot></div>
+          <h3 style="margin:0;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">One connected <span style="color:#8E8E8E;">organisation</span></h3>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Product development, engineering, manufacturing, software, commercial operations and technical support should not operate as disconnected departments.</p>
+          <details><summary style="cursor:pointer;display:flex;justify-content:flex-end;align-items:center;gap:8px;list-style:none;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#5F5E5E;"><svg data-rm-arrow="" aria-hidden="true" width="8" height="12" viewBox="0 0 8 12" fill="none" stroke="#F76801" stroke-width="1"><polyline points="1.5,1 6.5,6 1.5,11"></polyline></svg><span data-rm-more="">Read more</span><span data-rm-less="">Read less</span></summary><div style="display:flex;flex-direction:column;gap:12px;margin-top:12px;"><p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">We work to keep these disciplines connected, so decisions made during product development remain understandable during installation, commissioning and long-term operation.</p></div></details>
+        </article>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 56px;align-items:start;">
+      <div style="font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Products matter. <span style="color:#8E8E8E;">The people behind them matter more.</span></div>
+      <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A technically strong product can still become a difficult project when communication, documentation or support fails. STRØHM.ENERGY keeps product engineering, manufacturing, software, business development and technical support connected. This gives our partners direct access to the people who understand the decisions behind the product and can help move the project forward.</p>
+    </div>
+  </section>
+
+  <section id="concept-data" data-screen-label="06 Concept data" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:120px var(--web-side) 0;box-sizing:border-box;">
+    <div style="background:#F7F7F5;border:1px solid #E6E6E6;padding:24px;display:flex;flex-direction:column;gap:20px;border-radius:12px;">
+      <div style="display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#252525;">Concept data · internal</span>
+        <span style="font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">Swap list of fictional people, unpublished draft records and the symbol and colour sheet.</span>
+        <button type="button" onClick="{{ toggleConcept }}" aria-expanded="{{ conceptExp }}" style="margin-left:auto;cursor:pointer;height:40px;padding:0 16px;background:#FFFFFF;border:1px solid #4F4F4E;font:inherit;font-size:var(--web-body-size);border-radius:var(--cta-radius,8px);font-weight:500;">{{ conceptLabel }}</button>
+      </div>
+      <sc-if value="{{ concept }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:40px;">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;"><div style="font-size:var(--web-h3-size);font-weight:300;color:#252525;line-height:var(--web-h3-lh);">Swap list · {{ swapCount }} records</div><button type="button" onClick="{{ downloadSwap }}" style="cursor:pointer;height:36px;padding:0 14px;background:#4F4F4E;color:#F4F4F4;border:1px solid #4F4F4E;font:inherit;font-size:var(--web-tag-size);border-radius:8px;font-weight:var(--web-tag-weight);">Download JSON</button></div>
+            <div style="border-radius:12px;overflow-x:auto;background:#FFFFFF;border:1px solid #E6E6E6;">
+              <table style="width:100%;border-collapse:collapse;font-size:13px;line-height:1.4;">
+                <thead><tr style="text-align:left;color:#5F5E5E;"><th style="padding:10px 12px;border-bottom:1px solid #E6E6E6;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Name</th><th style="padding:10px 12px;border-bottom:1px solid #E6E6E6;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Role</th><th style="padding:10px 12px;border-bottom:1px solid #E6E6E6;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Sub-region or brand</th><th style="padding:10px 12px;border-bottom:1px solid #E6E6E6;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Source</th><th style="padding:10px 12px;border-bottom:1px solid #E6E6E6;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">Status</th></tr></thead>
+                <tbody><sc-for list="{{ swap }}" as="r" hint-placeholder-count="6"><tr><td style="padding:8px 12px;border-bottom:1px solid #F0F0EE;color:#252525;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ r.name }}</td><td style="padding:8px 12px;border-bottom:1px solid #F0F0EE;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ r.role }}</td><td style="padding:8px 12px;border-bottom:1px solid #F0F0EE;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ r.scope }}</td><td style="padding:8px 12px;border-bottom:1px solid #F0F0EE;color:#5F5E5E;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ r.source }}</td><td style="padding:8px 12px;border-bottom:1px solid #F0F0EE;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;">{{ r.status }}</td></tr></sc-for></tbody>
+              </table>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="font-size:20px;font-weight:300;color:#252525;">Draft records · not published</div>
+            <p style="margin:0;font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">Kept from the previous Who page (Leadership &amp; Management). The founders cover this discipline on this page. Remove only on explicit approval.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;">
+              <sc-for list="{{ drafts }}" as="d" hint-placeholder-count="2">
+                <div style="background:#FFFFFF;border:1px solid #E6E6E6;padding:20px;display:flex;flex-direction:column;gap:8px;border-radius:12px;">
+                  <span style="align-self:flex-start;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.1em;color:#4F4F4E;background:#EDEDEB;padding:3px 6px;border-radius:6px;">{{ d.tag }}</span>
+                  <div style="font-size:var(--web-h3-size);font-weight:300;color:#252525;line-height:var(--web-h3-lh);">{{ d.name }}</div>
+                  <div style="font-size:var(--web-small-size);color:#4F4F4E;line-height:var(--web-small-lh);">{{ d.title }} · {{ d.base }}</div>
+                  <p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#5F5E5E;">{{ d.line }}</p>
+                  <div style="font-size:var(--web-small-size);color:#252525;line-height:var(--web-small-lh);">{{ d.quote }}</div>
+                  <details><summary style="cursor:pointer;font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#252525;font-weight:var(--web-eyebrow-weight);">Full draft text</summary><div style="display:flex;flex-direction:column;gap:6px;padding-top:8px;"><sc-for list="{{ d.body }}" as="x" hint-placeholder-count="4"><p style="margin:0;font-size:var(--web-small-size);line-height:var(--web-small-lh);color:#4F4F4E;">{{ x }}</p></sc-for></div></details>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="font-size:20px;font-weight:300;color:#252525;">Symbols and colour tokens</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:12px;">
+              <sc-for list="{{ roles }}" as="r" hint-placeholder-count="5">
+                <div style="background:#FFFFFF;padding:20px;display:flex;flex-direction:column;gap:10px;border-radius:8px;"><span style="display:block;width:56px;height:56px;"><dc-import name="RoleSymbol" role="{{ r.id }}" style="display:block;width:100%;height:100%;" hint-size="56px,56px"></dc-import></span><span style="font-size:var(--web-eyebrow-size);color:#5F5E5E;line-height:var(--web-min-lh);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);">{{ r.n }}</span><span style="font-size:14px;font-weight:500;color:#252525;">{{ r.label }}</span><span style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ r.symbolName }}</span></div>
+              </sc-for>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:12px;">
+              <sc-for list="{{ tints }}" as="t" hint-placeholder-count="7"><div style="display:flex;flex-direction:column;gap:6px;"><span style="display:block;height:56px;background:{{ t.hex }};"></span><span style="font-size:var(--web-small-size);color:#252525;line-height:var(--web-small-lh);">{{ t.name }}</span><span style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ t.token }} · {{ t.hex }}</span></div></sc-for>
+            </div>
+            <p style="margin:0;font-size:var(--web-min-size);line-height:var(--web-min-lh);color:#5F5E5E;">Interface: #111111 headings, #3A3A3A subheadings, #6E6E6E body, #E6E6E6 rules, #F7F7F5 backgrounds, #FFFFFF. Functional: #2F7D4F available now, #B07818 pending or opens later, #B3261E not served.</p>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section data-screen-label="07 Next page" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:120px var(--web-side) 120px;box-sizing:border-box;"><a href="STROHM.ENERGY - COMPANY - Where - EN.dc.html" style="text-decoration:none;border-top:1px solid #4F4F4E;padding-top:24px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;transition:border-color 180ms ease;" style-hover="border-top-color:#F76801;"><span style="font-size:var(--web-min-size);letter-spacing:0.08em;color:#5F5E5E;line-height:var(--web-min-lh);">Next · 04 / 06</span><span style="font-size:clamp(28px,3vw,40px);font-weight:200;color:#252525;">Where<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></a></section>
+
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+
+  <sc-if value="{{ drawerOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeDrawer }}" style="position:fixed;inset:0;z-index:200;"></div>
+    <aside role="dialog" aria-modal="true" aria-label="{{ dr.name }}" style="border-radius:20px 0 0 20px;position:fixed;top:0;right:0;bottom:0;width:min(640px,100%);background:#FFFFFF;border-left:1px solid #4F4F4E;z-index:201;overflow-y:auto;padding:32px;box-sizing:border-box;animation:wlSlide 340ms cubic-bezier(.22,1,.36,1) both;display:flex;flex-direction:column;gap:16px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;"><div style="display:flex;gap:10px;align-items:center;"><span style="display:block;width:28px;height:28px;"><dc-import name="RoleSymbol" role="{{ dr.geo }}" style="display:block;width:100%;height:100%;" hint-size="28px,28px"></dc-import></span><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">{{ dr.eyebrow }}</span></div><button type="button" onClick="{{ closeDrawer }}" aria-label="Close" style="cursor:pointer;width:44px;height:44px;background:#FFFFFF;border:1px solid #4F4F4E;font:inherit;font-size:18px;color:#252525;border-radius:var(--cta-radius,8px);">×</button></div>
+      <sc-if value="{{ dr.hasTag }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.1em;color:#4F4F4E;background:#EDEDEB;padding:3px 6px;border-radius:6px;">{{ dr.tag }}</span></sc-if>
+      <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ dr.name }}</h2>
+      <div style="font-size:var(--web-h3-size);line-height:var(--web-h3-lh);color:#4F4F4E;font-weight:300;">{{ dr.title }}</div>
+      <sc-if value="{{ dr.hasBase }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">{{ dr.base }}</div></sc-if>
+      <sc-if value="{{ dr.hasFlags }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-wrap:wrap;gap:6px;"><sc-for list="{{ dr.flags }}" as="x" hint-placeholder-count="2"><span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.1em;color:#4F4F4E;border:1px solid #BBBBBB;padding:3px 6px;border-radius:6px;">{{ x }}</span></sc-for></div></sc-if>
+      <div style="border-top:1px solid #E6E6E6;padding-top:16px;display:flex;flex-direction:column;gap:14px;">
+        <sc-for list="{{ dr.blocks }}" as="b" hint-placeholder-count="6">
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <sc-if value="{{ b.isImg }}" hint-placeholder-val="{{ false }}"><div style="width:160px;height:160px;border-radius:50%;overflow:hidden;background:#EDEDEB;"><image-slot id="{{ b.id }}" shape="circle" placeholder="{{ b.placeholder }}" style="display:block;width:100%;height:100%;"></image-slot></div></sc-if>
+            <sc-if value="{{ b.isH }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#252525;">{{ b.text }}</div></sc-if>
+            <sc-if value="{{ b.isP }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#4F4F4E;">{{ b.text }}</p></sc-if>
+            <sc-if value="{{ b.isDet }}" hint-placeholder-val="{{ false }}">
+              <div style="border-top:1px solid #E6E6E6;padding-top:12px;display:flex;flex-direction:column;gap:6px;">
+                <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#252525;">{{ b.title }}</div>
+                <sc-for list="{{ b.paras }}" as="x" hint-placeholder-count="1"><p style="margin:0;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#4F4F4E;">{{ x }}</p></sc-for>
+                <sc-if value="{{ b.hasList }}" hint-placeholder-val="{{ false }}"><ul style="margin:0;padding-left:18px;font-size:var(--web-body-size);line-height:var(--web-body-lh);color:#4F4F4E;"><sc-for list="{{ b.list }}" as="x" hint-placeholder-count="3"><li>{{ x }}</li></sc-for></ul></sc-if>
+                <sc-if value="{{ b.hasKv }}" hint-placeholder-val="{{ false }}"><dl style="margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;font-size:14px;line-height:1.5;"><sc-for list="{{ b.kv }}" as="k" hint-placeholder-count="3"><div style="display:contents;"><dt style="color:#5F5E5E;">{{ k.k }}</dt><dd style="margin:0;color:#252525;">{{ k.v }}</dd></div></sc-for></dl></sc-if>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ dr.hasLink }}" hint-placeholder-val="{{ false }}"><a href="{{ dr.href }}" style="align-self:flex-start;font-size:14px;border-bottom:1px solid #4F4F4E;padding-bottom:2px;">{{ dr.hrefLabel }}</a></sc-if>
+      <sc-if value="{{ dr.hasAction }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ dr.action }}" style="align-self:flex-start;cursor:pointer;min-height:var(--cta-height,56px);padding:0 18px;background:#4F4F4E;color:#F4F4F4;border:1px solid #4F4F4E;font:inherit;font-size:var(--cta-font,16px);border-radius:var(--cta-radius,8px);">{{ dr.actionLabel }}</button></sc-if>
+    </aside>
+  </sc-if>
+
+  <sc-if value="{{ chatOpen }}" hint-placeholder-val="{{ false }}">
+    <section role="dialog" aria-label="Chat" style="border-radius:12px;overflow:hidden;position:fixed;right:16px;bottom:16px;width:min(380px,calc(100% - 32px));height:min(540px,calc(100vh - 120px));background:#FFFFFF;border:1px solid #4F4F4E;z-index:210;display:flex;flex-direction:column;animation:wlUp 280ms cubic-bezier(.22,1,.36,1) both;">
+      <div style="padding:14px 16px;border-bottom:1px solid #E6E6E6;display:flex;gap:12px;align-items:flex-start;">
+        <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;"><span style="font-size:15px;font-weight:500;color:#252525;">{{ ch.name }}</span><span style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">{{ ch.title }}</span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#4F4F4E;"><span style="width:8px;height:8px;border-radius:50%;background:{{ ch.col }};"></span>{{ ch.status }}</span></div>
+        <button type="button" onClick="{{ closeChat }}" aria-label="Close chat" style="cursor:pointer;width:36px;height:36px;background:#FFFFFF;border:1px solid #BBBBBB;font:inherit;font-size:16px;border-radius:8px;">×</button>
+      </div>
+      <div style="padding:10px 16px;border-bottom:1px solid #E6E6E6;display:flex;flex-wrap:wrap;gap:6px;"><sc-for list="{{ ch.ctx }}" as="x" hint-placeholder-count="2"><span style="font-size:var(--web-tag-size);color:#4F4F4E;background:#F7F7F5;padding:3px 8px;font-weight:var(--web-tag-weight);">{{ x }}</span></sc-for></div>
+      <div style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;">
+        <sc-for list="{{ ch.msgs }}" as="m" hint-placeholder-count="2"><div style="align-self:{{ m.align }};max-width:84%;background:{{ m.bg }};color:{{ m.fg }};padding:9px 12px;font-size:14px;line-height:1.45;">{{ m.text }}</div></sc-for>
+      </div>
+      <form onSubmit="{{ sendChat }}" style="display:flex;border-top:1px solid #E6E6E6;"><label for="who-lab-chat" style="position:absolute;left:-9999px;">Message</label><input id="who-lab-chat" value="{{ draft }}" onChange="{{ onDraft }}" placeholder="Write a message" style="flex:1;min-width:0;height:48px;border:0;padding:0 14px;font:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);"><button type="submit" style="cursor:pointer;height:48px;padding:0 16px;background:#4F4F4E;color:#F4F4F4;border:0;font:inherit;font-size:14px;border-radius:var(--cta-radius,8px);">Send</button></form>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ bookOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeBook }}" style="position:fixed;inset:0;z-index:220;background:#F7F7F5;opacity:0.86;"></div>
+    <section role="dialog" aria-modal="true" aria-label="Book 20 min meeting" style="border-radius:12px;position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(760px,calc(100% - 32px));max-height:calc(100vh - 64px);overflow:auto;background:#FFFFFF;border:1px solid #4F4F4E;z-index:221;padding:28px;box-sizing:border-box;display:flex;flex-direction:column;gap:18px;">
+      <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;"><div style="display:flex;flex-direction:column;gap:4px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Book 20 min meeting</span><span style="font-size:var(--web-h3-size);font-weight:300;color:#252525;line-height:var(--web-h3-lh);">{{ bk.name }}</span><span style="font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">{{ bk.title }} · Times in your time zone: {{ visitorTz }}</span></div><button type="button" onClick="{{ closeBook }}" aria-label="Close" style="cursor:pointer;width:44px;height:44px;background:#FFFFFF;border:1px solid #4F4F4E;font:inherit;font-size:18px;border-radius:var(--cta-radius,8px);">×</button></div>
+      <sc-if value="{{ bk.concept }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;background:#EDEDEB;padding:3px 6px;border-radius:6px;">Concept: not connected</span></sc-if>
+      <sc-if value="{{ bk.isSlot }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div role="group" aria-label="Day" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:4px;"><sc-for list="{{ bk.days }}" as="d" hint-placeholder-count="5"><button type="button" onClick="{{ d.pick }}" aria-pressed="{{ d.pressed }}" style="cursor:pointer;height:48px;font:inherit;font-size:var(--web-small-size);background:{{ d.bg }};color:{{ d.fg }};border:1px solid {{ d.bd }};border-radius:var(--cta-radius,8px);line-height:var(--web-small-lh);">{{ d.label }}</button></sc-for></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:6px;"><sc-for list="{{ bk.slots }}" as="s" hint-placeholder-count="8"><button type="button" onClick="{{ s.pick }}" style="cursor:pointer;height:40px;font:inherit;font-size:14px;background:#FFFFFF;border:1px solid #BBBBBB;color:#252525;border-radius:var(--cta-radius,8px);" style-hover="border-color:#4F4F4E;">{{ s.label }}</button></sc-for></div>
+          <sc-if value="{{ bk.noSlots }}" hint-placeholder-val="{{ false }}"><div style="font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">No free slots this day.</div></sc-if>
+          <div style="font-size:var(--web-min-size);color:#5F5E5E;line-height:var(--web-min-lh);">Office hours of the contact: 09:00 to 17:00, Monday to Friday, their local time. Free slots are a demo.</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ bk.isForm }}" hint-placeholder-val="{{ false }}">
+        <form onSubmit="{{ bk.submit }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;">
+          <div style="grid-column:1 / -1;font-size:var(--web-body-size);color:#252525;line-height:var(--web-body-lh);">{{ bk.when }} <button type="button" onClick="{{ bk.back }}" style="cursor:pointer;background:none;border:0;border-bottom:1px solid #4F4F4E;padding:0;margin-left:10px;font:inherit;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);">Change</button></div>
+          <label style="display:flex;flex-direction:column;gap:4px;font-size:var(--web-label-size);color:#5F5E5E;font-weight:var(--web-label-weight);">Name<input required name="name" style="height:40px;border:1px solid #BBBBBB;padding:0 10px;font:inherit;font-size:var(--web-input-size);border-radius:8px;font-weight:var(--web-input-weight);"></label>
+          <label style="display:flex;flex-direction:column;gap:4px;font-size:var(--web-label-size);color:#5F5E5E;font-weight:var(--web-label-weight);">Company<input required name="company" style="height:40px;border:1px solid #BBBBBB;padding:0 10px;font:inherit;font-size:var(--web-input-size);border-radius:8px;font-weight:var(--web-input-weight);"></label>
+          <label style="display:flex;flex-direction:column;gap:4px;font-size:var(--web-label-size);color:#5F5E5E;font-weight:var(--web-label-weight);">Topic<input name="topic" value="{{ bk.topic }}" readOnly="{{ false }}" style="height:40px;border:1px solid #BBBBBB;padding:0 10px;font:inherit;font-size:var(--web-input-size);border-radius:8px;font-weight:var(--web-input-weight);"></label>
+          <label style="display:flex;flex-direction:column;gap:4px;font-size:var(--web-label-size);color:#5F5E5E;font-weight:var(--web-label-weight);">Product<input name="product" value="{{ bk.product }}" readOnly="{{ false }}" style="height:40px;border:1px solid #BBBBBB;padding:0 10px;font:inherit;font-size:var(--web-input-size);border-radius:8px;font-weight:var(--web-input-weight);"></label>
+          <button type="submit" style="cursor:pointer;height:44px;padding:0 18px;background:#4F4F4E;color:#F4F4F4;border:1px solid #4F4F4E;font:inherit;font-size:14px;justify-self:start;border-radius:var(--cta-radius,8px);">Confirm meeting</button>
+        </form>
+      </sc-if>
+      <sc-if value="{{ bk.isDone }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="font-size:var(--web-h3-size);color:#252525;line-height:var(--web-h3-lh);font-weight:var(--web-h3-weight);">{{ bk.doneTitle }}</div>
+          <div style="font-size:var(--web-body-size);color:#4F4F4E;line-height:var(--web-body-lh);">{{ bk.when }}</div>
+          <div style="font-size:var(--web-small-size);color:#5F5E5E;line-height:var(--web-small-lh);">{{ bk.videoNote }}</div>
+          <button type="button" onClick="{{ bk.ics }}" style="align-self:flex-start;cursor:pointer;height:44px;padding:0 18px;background:#FFFFFF;border:1px solid #4F4F4E;font:inherit;font-size:14px;border-radius:var(--cta-radius,8px);">Download calendar file (.ics)</button>
+        </div>
+      </sc-if>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ mobileBar }}" hint-placeholder-val="{{ false }}">
+    <div data-cols="5" style="position:fixed;left:0;right:0;bottom:0;z-index:190;background:#FFFFFF;border-top:1px solid #4F4F4E;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));--cg:0px;">
+      <button type="button" onClick="{{ mb.chat }}" aria-label="Chat now" style="cursor:pointer;height:56px;background:#4F4F4E;color:#F4F4F4;border:0;display:flex;align-items:center;justify-content:center;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v11H10l-6 4z"></path></svg></button>
+      <button type="button" onClick="{{ mb.call }}" aria-label="Call" style="cursor:pointer;height:56px;background:#FFFFFF;color:#252525;border:0;border-left:1px solid #E6E6E6;display:flex;align-items:center;justify-content:center;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 3l3 4-2 2a11 11 0 0 0 7 7l2-2 4 3-2 3C11 20 4 13 4 5z"></path></svg></button>
+      <button type="button" onClick="{{ mb.book }}" aria-label="Book 20 min meeting" style="cursor:pointer;height:56px;background:#FFFFFF;color:#252525;border:0;border-left:1px solid #E6E6E6;display:flex;align-items:center;justify-content:center;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="5" width="16" height="15"></rect><path d="M4 10h16M9 3v4M15 3v4"></path></svg></button>
+      <button type="button" onClick="{{ mb.email }}" aria-label="Email" style="cursor:pointer;height:56px;background:#FFFFFF;color:#252525;border:0;border-left:1px solid #E6E6E6;display:flex;align-items:center;justify-content:center;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="12"></rect><path d="M3 6l9 7 9-7"></path></svg></button>
+      <button type="button" onClick="{{ mb.more }}" aria-expanded="{{ mb.moreExp }}" style="cursor:pointer;height:56px;background:#FFFFFF;color:#252525;border:0;border-left:1px solid #E6E6E6;font:inherit;font-size:var(--web-body-size);font-weight:500;">More</button>
+    </div>
+    <sc-if value="{{ more }}" hint-placeholder-val="{{ false }}">
+      <div style="position:fixed;left:0;right:0;bottom:56px;z-index:191;background:#FFFFFF;border-top:1px solid #4F4F4E;display:flex;flex-direction:column;">
+        <button type="button" onClick="{{ mb.callback }}" style="cursor:pointer;height:52px;text-align:left;padding:0 20px;background:#FFFFFF;border:0;border-bottom:1px solid #E6E6E6;font:inherit;font-size:15px;color:#252525;">Request a call back</button>
+        <button type="button" onClick="{{ mb.vcard }}" style="cursor:pointer;height:52px;text-align:left;padding:0 20px;background:#FFFFFF;border:0;font:inherit;font-size:15px;color:#252525;">Download vCard</button>
+      </div>
+    </sc-if>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;intro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;full&quot;,&quot;reduced&quot;],&quot;default&quot;:&quot;full&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;defaultRole&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;none&quot;,&quot;founders&quot;,&quot;builders&quot;,&quot;product&quot;,&quot;webshop&quot;,&quot;local&quot;],&quot;default&quot;:&quot;none&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Chooser&quot;}}">
+const HERO_ITEMS = [{"label":"Find a person","heading":"Find the right person for your project","sentence":"We believe the people who design, manufacture and understand our products should remain accessible to the people who install and use them.","href":"#contact","media":{"type":"img","src":"assets/who/hero-people.png?v=2","alt":"STRØHM.ENERGY team meeting next to a wall-mounted storage unit"}},{"label":"The right expertise","heading":"The right people. The right expertise.","sentence":"At STRØHM.ENERGY, we believe that good products are only part of a successful energy project.","href":"#good-hands","media":{"type":"slot","slot":"who-hero-2","alt":"Who hero picture 2"}}];
+class Component extends DCLogic {
+  renderVals() { return Object.assign({}, this._rvBase(), { heroItems: HERO_ITEMS }); }
+  state = { ready: false, role: null, founder: 'f-mathieu', dept: 1, product: null, hoverProd: null, region: null, sub: null, code: null, unit: null, lang: null, q: '', qFocus: false, drawer: null, chat: null, msgs: [], draft: '', book: null, act: null, cbSent: false, partnerSent: false, fade: 1, intro: 'pre', expandAll: false, hoverF: null, concept: false, mobile: false, mapH: 240, lines: [], linesOn: false, more: false, tick: 0, prodOpen: false, mktOpen: false, vh: 900 };
+
+  wrapRef = (el) => { this._wrap = el; };
+  heroRef = (el) => { this._hero = el; };
+  chooserRef = (el) => { this._chooser = el; };
+  mapRef = (el) => { this._map = el; };
+  _iconRefs = {};
+  iconRef(id) { if (!this._iconRefs[id]) this._iconRefs[id] = (el) => { if (el) (this._icons = this._icons || {})[id] = el; }; return this._iconRefs[id]; }
+  L() { return window.WHO_LAB; }
+
+  componentDidMount() {
+    this.reduced = this.props.motion === 'reduced' || !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const boot = () => {
+      const W = window.WHO_LAB;
+      if (!(W && window.RAM_DATA && window.WHO_SRC && window.FIELD_SALES)) return false;
+      this.db = W.build(); if (!this.db) return false;
+      const init = this.fromUrl();
+      this.setState(Object.assign({ ready: true }, init), () => this.startIntro());
+      return true;
+    };
+    const safe = () => { try { return boot(); } catch (err) { console.warn('WHO boot: ' + (err && err.stack ? err.stack.split('\n').slice(0, 3).join(' | ') : err)); clearInterval(this._boot); return true; } };
+    if (!safe()) this._boot = setInterval(() => { if (safe()) clearInterval(this._boot); }, 80);
+    this._onMsg = (e) => this.onMsg(e); window.addEventListener('message', this._onMsg);
+    this._onRs = () => { this.setState({ mobile: window.innerWidth < 760, vh: window.innerHeight }); this.queueLines(); }; window.addEventListener('resize', this._onRs); this._onRs();
+    this._onSc = () => { if (this._raf) return; this._raf = requestAnimationFrame(() => { this._raf = null; this.sendScroll(); this.measureLines(); }); };
+    window.addEventListener('scroll', this._onSc, { passive: true });
+    this._clock = setInterval(() => { this._ti = {}; this.setState((s) => ({ tick: s.tick + 1 })); }, 30000);
+    this._onKey = (e) => { if (e.key === 'Escape') this.setState({ drawer: null, book: null, chat: null, more: false }); };
+    window.addEventListener('keydown', this._onKey);
+  }
+  componentWillUnmount() {
+    clearInterval(this._boot); clearInterval(this._clock); (this._timers || []).forEach(clearTimeout);
+    window.removeEventListener('message', this._onMsg); window.removeEventListener('resize', this._onRs); window.removeEventListener('scroll', this._onSc); window.removeEventListener('keydown', this._onKey);
+  }
+  componentDidUpdate() {
+    const s = this.state, ps = this._prev || {}; this._prev = Object.assign({}, s);
+    if (['ready', 'role', 'region', 'sub', 'code', 'unit', 'lang', 'q'].some((k) => ps[k] !== s[k])) this.sendMap();
+    if (['role', 'product', 'code', 'unit', 'founder', 'dept', 'sub', 'region'].some((k) => ps[k] !== s[k])) { this.toUrl(); this.queueLines(true); }
+    if (ps.prodOpen !== s.prodOpen || ps.mktOpen !== s.mktOpen || ps.mapH !== s.mapH || ps.intro !== s.intro) this.queueLines();
+  }
+  later(fn, ms) { const t = setTimeout(fn, ms); (this._timers = this._timers || []).push(t); return t; }
+
+  defaultUnit(code) {
+    const R = window.RAM_DATA, c = this.db.C[code]; if (!c) return null;
+    const rule = R.rules && R.rules[code];
+    if (rule && rule.options) { const o = rule.options.find((x) => x.region === rule.default) || rule.options[0]; return o.unit; }
+    return c.units[0] || null;
+  }
+  cname(code) { const c = this.db.C[code]; return (c && c.name) || (this._xn && this._xn[code] && this._xn[code].name) || code; }
+  langKey(l) { return String(l).split(/\s+/)[0]; }
+
+  fromUrl() {
+    const q = new URLSearchParams(location.search), o = {}, db = this.db, L = this.L();
+    const role = q.get('role');
+    if (['local', 'webshop', 'product', 'founders', 'builders', 'system', 'project'].includes(role)) o.role = role;
+    else if (this.props.defaultRole && this.props.defaultRole !== 'none') o.role = this.props.defaultRole;
+    const c = (q.get('country') || '').toUpperCase();
+    if (c && db.C[c] && db.C[c].state !== 'excluded') { o.code = c; o.region = db.C[c].region; o.unit = q.get('unit') || this.defaultUnit(c); o.sub = L.subForUnit(db, c, o.unit) || db.C[c].sub; o.mktOpen = true; if (!o.role) o.role = 'local'; }
+    const p = (q.get('product') || '').toUpperCase();
+    if (p && db.products.some((x) => x.id === p)) { o.product = p; o.prodOpen = true; if (!o.role) o.role = 'product'; }
+    const f = q.get('founder'); if (f && db.P['f-' + f]) o.founder = 'f-' + f;
+    const d = +q.get('dept'); if (d >= 1 && d <= 8) o.dept = d;
+    const sub = q.get('sub'); if (sub && db.subs[sub] && !o.sub) { o.sub = sub; o.region = db.subs[sub].region; o.mktOpen = true; }
+    const reg = q.get('region'); if (reg && !o.region && L.REGIONS.some((r) => r.id === reg)) o.region = reg;
+    return o;
+  }
+  toUrl() {
+    try {
+      const s = this.state, q = new URLSearchParams(location.search), set = (k, v) => { if (v) q.set(k, v); else q.delete(k); };
+      const c = s.code && this.db.C[s.code];
+      set('role', s.role); set('country', s.code); set('unit', c && c.units.length > 1 ? s.unit : null); set('product', s.product);
+      set('founder', s.role === 'founders' ? s.founder.replace('f-', '') : null); set('dept', s.role === 'builders' ? String(s.dept) : null);
+      set('sub', s.code ? null : s.sub); set('region', s.code || s.sub ? null : s.region);
+      const qs = q.toString(); history.replaceState(history.state, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
+    } catch (e) {}
+  }
+
+  startIntro() {
+    if (this.props.intro === false || this.reduced) { this.setState({ intro: 'done' }); return; }
+    this.later(() => { this.measureIntro(); this.setState({ intro: 'pre' }); this.later(() => this.setState({ intro: 'assemble' }), 50); }, 80);
+    this.later(() => { this.measureIntro(); this.setState({ intro: 'dock' }); }, 3600);
+    this.later(() => this.setState({ intro: 'done' }), 6400);
+  }
+  measureIntro() {
+    const w = this._wrap, a = this._hero; if (!w || !a) return;
+    const wr = w.getBoundingClientRect(), ar = a.getBoundingClientRect(); if (!ar.width) return;
+    const gap = ar.width * 0.03, s = (ar.width - gap * 6) / 7;
+    const hero = [0, 1, 2, 3, 4, 5, 6].map((i) => [ar.left - wr.left + i * (s + gap), ar.top - wr.top + (ar.height - s) / 2]);
+    const dock = ['founders', 'builders', 'product', 'system', 'project', 'webshop', 'local'].map((id, i) => { const el = this._icons && this._icons[id]; if (!el) return [hero[i][0], hero[i][1], s]; const r = el.getBoundingClientRect(); return [r.left - wr.left, r.top - wr.top, r.width]; });
+    this._ig = { s, hero, dock };
+  }
+
+  onMsg(e) {
+    const d = e.data || {};
+    if (!(d.labReady || d.labPick || typeof d.labMapH === 'number' || d.labPos)) return;
+    if (this._map && e.source && e.source !== this._map.contentWindow) return;
+    if (d.labReady) this.sendMap();
+    if (typeof d.labMapH === 'number' && d.labMapH !== this.state.mapH) this.setState({ mapH: d.labMapH });
+    if (d.labPos) { this._mpos = d.labPos; this.measureLines(); }
+    if (d.labPick) this.pickCountry(d.labPick.code, d.labPick.region, d.labPick.name);
+  }
+  sendMap() {
+    const f = this._map; if (!f || !f.contentWindow || !this.db) return; const s = this.state;
+    f.contentWindow.postMessage({ labSet: { role: s.role === 'webshop' ? 'webshop' : 'local', region: s.region, sub: s.sub, code: s.code, unit: s.unit, lang: s.lang, hi: this.searchHi() } }, '*');
+  }
+  sendScroll() {
+    const f = this._map; if (!f || !f.contentWindow) return; const r = f.getBoundingClientRect(); if (!r.height) return;
+    const p = ((r.top + r.height / 2) - innerHeight / 2) / innerHeight; f.contentWindow.postMessage({ labScroll: Math.max(-1, Math.min(1, p)) }, '*');
+  }
+
+  swap(patch) {
+    if (this.reduced) { this.setState(patch); return; }
+    this.setState({ fade: 0 }); clearTimeout(this._fadeT);
+    this._fadeT = this.later(() => this.setState(Object.assign({}, patch, { fade: 1 })), 140);
+  }
+  pickCountry(code, region, name) {
+    const db = this.db, c = db.C[code], L = this.L();
+    if (!c && name) { this._xn = this._xn || {}; this._xn[code] = { name, region }; }
+    if (c && c.state === 'excluded') return;
+    let role = this.state.role; if (!role || role === 'founders' || role === 'builders') role = 'local';
+    const unit = c ? this.defaultUnit(code) : null;
+    const sub = c ? (L.subForUnit(db, code, unit) || c.sub) : null;
+    this.swap({ lang: (this.state.lang && L.langsFor(code).indexOf(this.state.lang) >= 0) ? this.state.lang : null, wizBack: null, role, code, unit, sub, region: (c && c.region) || region || this.state.region, act: null, mktOpen: true, partnerSent: false });
+  }
+  pickRole(id) {
+    const s = this.state;
+    this.swap({ role: id, route: null, wizBack: null, act: null, mktOpen: id === 'product' ? !!(s.code || s.sub) : true, prodOpen: id === 'product' ? true : !!s.product });
+  }
+  pickPerson(id) {
+    const p = this.db.P[id]; if (!p) return;
+    if (p.role === 'founders') return this.swap({ role: 'founders', founder: id });
+    if (p.role === 'product') return this.swap({ role: 'product', product: p.products[0], prodOpen: true });
+    const sb = this.db.subs[p.sub]; const code = sb && sb.key && sb.key[0]; if (!code) return;
+    const unit = (sb.units || []).find((u) => u.split('-')[0] === code) || this.defaultUnit(code);
+    this.swap({ role: p.role, code, unit, sub: sb.id, region: sb.region, mktOpen: true, act: null });
+  }
+
+  results() {
+    const q = (this.state.q || '').trim().toLowerCase(); if (q.length < 2 || !this.db) return [];
+    const db = this.db, out = [];
+    db.products.forEach((p) => { if (p.kw.indexOf(q) >= 0) out.push({ kind: 'product', id: p.id, label: p.label, sub: p.cat }); });
+    Object.values(db.C).forEach((c) => { if (c.state !== 'excluded' && c.name.toLowerCase().indexOf(q) >= 0) out.push({ kind: 'country', id: c.code, label: c.name, sub: (db.subs[c.sub] && db.subs[c.sub].label) || 'International Sales' }); });
+    Object.values(db.subs).forEach((s) => { if (s.label.toLowerCase().indexOf(q) >= 0) out.push({ kind: 'sub', id: s.id, label: s.label, sub: s.region }); });
+    Object.values(db.P).forEach((p) => { if (p.id !== 'intl' && p.name && p.name.toLowerCase().indexOf(q) >= 0) out.push({ kind: 'person', id: p.id, label: p.name, sub: p.roleTitle }); });
+    return out.slice(0, 8);
+  }
+  searchHi() {
+    const db = this.db, codes = [];
+    this.results().forEach((x) => { if (x.kind === 'country') codes.push(x.id); if (x.kind === 'sub') codes.push(...(db.subs[x.id].key || []), ...(db.subs[x.id].also || [])); });
+    return codes;
+  }
+  pickResult(x) {
+    const db = this.db; this.setState({ q: '', qFocus: false });
+    if (x.kind === 'product') { const role = (this.state.role === 'webshop' || this.state.role === 'local') ? this.state.role : 'product'; if (role !== 'product') return this.swap({ act: null }); this.swap({ role, product: x.id, prodOpen: true }); }
+    else if (x.kind === 'country') this.pickCountry(x.id);
+    else if (x.kind === 'sub') { const s = db.subs[x.id]; let role = this.state.role; if (!['local', 'webshop', 'product', 'system', 'project'].includes(role)) role = 'local'; this.swap({ role, sub: s.id, region: s.region, code: null, unit: null, mktOpen: true }); }
+    else if (x.kind === 'person') this.pickPerson(x.id);
+  }
+
+  fmt(tz) { this._fm = this._fm || {}; if (!this._fm[tz]) this._fm[tz] = new Intl.DateTimeFormat('en-GB', { timeZone: tz, weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }); return this._fm[tz]; }
+  wall(tz, d) {
+    const parts = this.fmt(tz).formatToParts(d), g = (t) => (parts.find((x) => x.type === t) || {}).value;
+    const wd = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(g('weekday')), h = +g('hour');
+    return { wd, h, open: wd >= 1 && wd <= 5 && h >= 9 && h < 17, hm: g('hour') + ':' + g('minute') };
+  }
+  timeInfo(tz) {
+    if (!tz) return null; this._ti = this._ti || {}; if (this._ti[tz]) return this._ti[tz];
+    let out = null;
+    try {
+      const now = new Date(), w = this.wall(tz, now);
+      if (w.open) out = { label: 'Available now · ' + w.hm + ' local time', col: '#2F7D4F', time: w.hm, open: true };
+      else { let mins = 0; for (let i = 1; i <= 4 * 24 * 4; i++) { if (this.wall(tz, new Date(now.getTime() + i * 900000)).open) { mins = i * 15; break; } } out = { label: 'Opens in ' + Math.max(1, Math.round(mins / 60)) + ' h · ' + w.hm + ' local time', col: '#B07818', time: w.hm, open: false }; }
+    } catch (e) { out = null; }
+    this._ti[tz] = out; return out;
+  }
+  slots(tz) {
+    const key = tz + '|' + Math.floor(Date.now() / 600000); if (this._sl && this._sl.key === key) return this._sl.v;
+    const vis = new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: 'numeric', month: 'short' }), vt = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+    let t = Math.ceil((Date.now() + 2 * 3600000) / 1200000) * 1200000; const days = []; let cur = null;
+    for (let i = 0; i < 7 * 72; i++, t += 1200000) {
+      const d = new Date(t); if (!this.wall(tz || 'Europe/Brussels', d).open) continue;
+      const lab = vis.format(d); if (!cur || cur.label !== lab) { if (days.length === 5) break; cur = { label: lab, slots: [] }; days.push(cur); }
+      if (((Math.floor(t / 1200000) * 2654435761) >>> 0) % 100 < 46) cur.slots.push({ t, label: vt.format(d) });
+    }
+    this._sl = { key, v: days }; return days;
+  }
+  download(name, text, type) { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+  icsFor(b) {
+    const p = this.db.P[b.pid], dt = (t) => new Date(t).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+    const body = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//STROHM.ENERGY//WHO//EN', 'BEGIN:VEVENT', 'UID:' + b.t + '-' + b.pid + '@strohm.energy', 'DTSTAMP:' + dt(Date.now()), 'DTSTART:' + dt(b.t), 'DTEND:' + dt(b.t + 1200000), 'SUMMARY:STRØHM.ENERGY · 20 min meeting with ' + p.name, 'DESCRIPTION:' + (p.concept ? 'Concept booking. Not connected.' : 'Video link follows by email.'), 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+    this.download('STROHM-ENERGY-meeting.ics', body, 'text/calendar');
+  }
+  vcardFor(p) { const v = ['BEGIN:VCARD', 'VERSION:3.0', 'FN:' + p.name, 'ORG:STRØHM.ENERGY', 'TITLE:' + p.title, 'NOTE:Languages: ' + (p.lang || []).join(', ') + '. Phone and email follow after approval.', 'END:VCARD'].join('\r\n'); this.download(this.L().slug(p.name) + '.vcf', v, 'text/vcard'); }
+  openChat(p, ctx) {
+    const t = this.timeInfo(p.tz), msgs = [];
+    if (p.concept) msgs.push({ who: 'sys', text: 'Concept: not connected. Demo conversation.' });
+    msgs.push({ who: 'them', text: 'Hello. You are talking to ' + p.name + ', ' + p.title + '.' });
+    const about = [ctx.product, ctx.country].filter(Boolean).join(' in ');
+    msgs.push({ who: 'them', text: about ? 'You are looking at ' + about + '. How can I help?' : 'How can I help?' });
+    this.setState({ chat: { pid: p.id, ctx, online: !!(t && t.open) }, msgs, draft: '', more: false });
+  }
+  scrollToCard(id) { this.later(() => { const el = document.querySelector('[data-card="' + id + '"]'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 160, behavior: this.reduced ? 'auto' : 'smooth' }); }, 60); }
+
+  queueLines(reset) { if (reset) this._lsig = null; clearTimeout(this._lt1); clearTimeout(this._lt2); this._lt1 = this.later(() => this.measureLines(), 120); this._lt2 = this.later(() => this.measureLines(), 800); }
+  measureLines() {
+    const root = this._chooser, s = this.state;
+    if (!root || s.mobile || s.intro !== 'done' || !this._prim) { if (s.lines.length) { this._lsig = null; this.setState({ lines: [] }); } return; }
+    const rb = root.getBoundingClientRect(), anchor = root.querySelector('[data-anchor="portrait"]'), out = [];
+    if (anchor) {
+      const ab = anchor.getBoundingClientRect(), fx = ab.left - rb.left, fy = ab.top - rb.top + ab.height * 0.4;
+      const aside = root.querySelector('aside'), sb = aside ? aside.getBoundingClientRect() : null;
+      const vis = (y) => !sb || (y >= sb.top + 4 && y <= sb.bottom - 4);
+      (this._prim.products || []).forEach((pid) => { const el = root.querySelector('[data-prod="' + pid + '"]'); if (!el) return; const r = el.getBoundingClientRect(); if (!r.width || !vis(r.top + r.height / 2)) return; out.push({ k: 'p' + pid, x: r.right - rb.left, y: r.top - rb.top + r.height / 2 }); });
+      const mp = this._mpos, fr = this._map;
+      if (mp && fr && this._prim.geo) {
+        const r = fr.getBoundingClientRect();
+        if (r.width > 0) { const pts = (mp.sel ? [mp.sel] : []).concat(mp.keys || []); pts.forEach((p, i) => { const y = r.top + p[1]; if (!vis(y)) return; const sel = i === 0 && !!mp.sel; out.push({ k: 'c' + i + (sel ? 's' : ''), x: r.left - rb.left + p[0], y: y - rb.top, thin: !sel }); }); }
+      }
+      out.forEach((l) => { l.x1 = Math.round(fx); l.y1 = Math.round(fy); l.x2 = Math.round(l.x); l.y2 = Math.round(l.y); l.len = Math.round(Math.hypot(l.x2 - l.x1, l.y2 - l.y1)) + 2; });
+    }
+    const sig = this._prim.id + '|' + out.map((l) => l.k).join(','), pos = JSON.stringify(out.map((l) => [l.x1, l.y1, l.x2, l.y2]));
+    if (sig !== this._lsig) { this._lsig = sig; this._lpos = pos; this.setState({ lines: out, linesOn: false }); this.later(() => this.setState({ linesOn: true }), 60); }
+    else if (pos !== this._lpos) { this._lpos = pos; this.setState({ lines: out }); }
+  }
+
+  blocksOf(list, withImg) {
+    return (list || []).filter((b) => withImg || b.type !== 'img').map((b) => ({
+      isH: b.type === 'h', isP: b.type === 'p', isDet: b.type === 'details', isImg: b.type === 'img',
+      text: b.text || '', title: b.title || '', id: b.id || '', placeholder: b.placeholder || 'Portrait',
+      paras: b.paras || [], list: b.list || [], hasList: !!(b.list && b.list.length), kv: (b.kv || []).map((x) => ({ k: x[0], v: x[1] })), hasKv: !!(b.kv && b.kv.length),
+    }));
+  }
+
+  card(p, g, primary) {
+    const s = this.state, db = this.db, sub = p.sub && db.subs[p.sub];
+    const geo = { founders: 'founders', product: 'product', webshop: 'webshop', local: 'local', route: 'webshop' }[p.role] || 'local';
+    const t = this.timeInfo(p.tz), facts = [];
+    if (p.base) facts.push({ k: 'Base', v: p.base });
+    if (g && g.cov && g.cov.state === 'outlined' && sub && sub.contact) facts.push({ k: 'Coverage', v: 'Covered from ' + sub.contact.base });
+    else if (sub) facts.push({ k: 'Region', v: sub.label });
+    if (p.markets && p.markets.length) facts.push({ k: 'Markets', v: p.markets.join(', ') });
+    if (p.products && p.products.length) facts.push({ k: 'Products', v: p.products.join(', ') });
+    if (p.role === 'webshop' || p.role === 'local') facts.push({ k: 'Response time', v: 'Within one working day' });
+    const country = s.code ? this.cname(s.code) : (sub ? sub.label : null);
+    const ctx = { product: s.product, country };
+    const act = s.act && s.act.id === p.id ? s.act.type : null;
+    const mk = (type) => () => this.setState({ act: act === type ? null : { id: p.id, type }, cbSent: false });
+    const acts = [['call', 'Call', 'iCall'], ['email', 'Email', 'iMail'], ['callback', 'Request a call back', 'iBack'], ['vcard', 'Download vCard', 'iCard']].map((x) => { const o = { id: x[0], label: x[1], go: mk(x[0]), pressed: act === x[0] ? 'true' : 'false', bg: act === x[0] ? '#F7F7F5' : '#FFFFFF' }; o[x[2]] = true; return o; });
+    const langs = (p.lang || []).map((l) => { const k = this.langKey(l), on = s.lang === k; return { l, pressed: on ? 'true' : 'false', bg: on ? '#4F4F4E' : '#FFFFFF', fg: on ? '#FFFFFF' : '#3A3A3A', bd: on ? '#4F4F4E' : '#BBBBBB', pick: () => this.setState({ lang: on ? null : k, wizBack: null }) }; });
+    const cityTz = p.tz ? p.tz.split('/').pop().replace(/_/g, ' ') : '';
+    const isRoute = p.role === 'route';
+    return {
+      id: p.id, anchor: primary ? 'portrait' : 'card', geo, slot: p.slot, ph: 'Drop approved portrait · ' + p.name,
+      eyebrow: p.roleTitle + (sub && !isRoute ? ' · ' + sub.label : ''), tag: p.tag, hasTag: !!p.tag,
+      name: p.name, title: p.title, facts, langs, hasLangs: langs.length > 0,
+      hasTime: !!t, timeLabel: t ? t.label : '', timeCol: t ? t.col : '#B07818',
+      intro: isRoute ? 'Outside Europe, commercial enquiries, distribution opportunities and regional partnership proposals are managed individually by our central International Sales team.' : (p.intro || ''),
+      hasIntro: isRoute || !!p.intro, flags: p.flags || [], hasFlags: !!(p.flags && p.flags.length),
+      barDisp: s.mobile ? 'none' : 'flex', acts,
+      aChat: () => this.openChat(p, ctx), aBook: () => this.setState({ book: { pid: p.id, ctx, step: 'slot', day: 0, t: null }, more: false }),
+      hasPanel: !!act, pConcept: !!p.concept, pCall: act === 'call', pEmail: act === 'email', pBack: act === 'callback', pCard: act === 'vcard',
+      phone: p.concept ? 'Not connected' : 'Number pending approval',
+      hours: 'Office hours 09:00 to 17:00, Monday to Friday' + (cityTz ? ' (' + cityTz + ' time)' : ''),
+      localTime: t ? 'Now ' + t.time + ' local time' : 'Local time to confirm',
+      subject: [s.product || 'General enquiry', country || 'International', s.lang || null, 'via WHO page'].filter(Boolean).join(' / '),
+      hasMail: isRoute, mailHref: p.href || '#', mailNote: p.concept ? 'Email address not connected.' : (isRoute ? 'Routes to the International Sales contact form.' : 'Email address pending approval.'),
+      cbForm: !s.cbSent, cbSent: !!s.cbSent, cbSubmit: (e) => { e.preventDefault(); this.setState({ cbSent: true }); }, topic: [s.product, country].filter(Boolean).join(' · '),
+      canVcard: !p.concept, vcard: () => this.vcardFor(p), vcardNote: p.concept ? 'Concept profile. No contact card.' : 'Contact card without phone or email. Details follow after approval.',
+      open: () => this.setState({ drawer: { kind: 'person', id: p.id } }),
+      hasHref: !!p.href && !isRoute, href: p.href || '#', hrefLabel: p.role === 'product' ? 'Product experts →' : 'Full profile',
+      _p: p, _ctx: ctx,
+    };
+  }
+
+  computeView() {
+    const s0 = this.state, db = this.db, L = this.L(), v = { groups: [], kind: 'none', cov: null, partner: false, intl: false, tech: false };
+    const okLang = s0.lang && (!s0.code || L.langsFor(s0.code).indexOf(s0.lang) >= 0) ? s0.lang : null;
+    const s = Object.assign({}, s0, { lang: okLang });
+    if (!s.role) return v;
+    const lpId = (r) => 'lp-' + r + '-' + String(s.lang || '').toLowerCase();
+    if (s.role === 'founders') { v.kind = 'founder'; return v; }
+    if (s.role === 'builders') { v.kind = 'dept'; return v; }
+    if ((s.role === 'system' && !s.system) || (s.role === 'project' && !s.ptype) || ((s.role === 'system' || s.role === 'project') && !(s.code && s.lang))) { v.kind = 'gate'; v.gateNeed = [(s.role === 'system' ? !s.system && 'a system' : !s.ptype && 'an engineering or project type'), !s.code && 'a location', !s.lang && 'a language'].filter(Boolean).join(', '); return v; }
+    if (s.role === 'system' || s.role === 'project') { const cn = this.cname(s.code); v.groups.push({ title: (s.role === 'system' ? 'System specialist · ' + s.system : 'Project specialist · ' + s.ptype) + ' · ' + cn + ' · ' + s.lang, ids: [lpId(s.role)] }); v.kind = 'groups'; v.lead = s.role; return v; }
+    if ((s.role === 'webshop' || s.role === 'local') && !(s.code && s.lang)) { v.gate = true; v.gateNeed = [!s.code && 'a location', !s.lang && 'a language'].filter(Boolean).join(', '); }
+    if (s.role === 'product' && !(s.product && s.code && s.lang)) { v.gate = true; v.gateNeed = [!s.product && 'a product', !s.code && 'a location', !s.lang && 'a language'].filter(Boolean).join(', '); }
+    if (s.product && !v.gate && s.role !== 'webshop' && s.role !== 'local') { if (s.role === 'product') v.groups.push({ title: 'Product specialist · ' + s.product + ' · ' + s.lang, ids: [lpId('product')] }); else { const pr = db.products.find((p) => p.id === s.product); if (pr) v.groups.push({ title: (pr.specialists.length > 1 ? 'Technical specialists · ' : 'Technical specialist · ') + pr.label, ids: pr.specialists }); } }
+    const covRole = s.role === 'webshop' ? 'webshop' : 'local';
+    const roleWord = covRole === 'webshop' ? 'Webshop specialist & account manager' : (s.role === 'product' ? 'Commercial contact' : 'Local sales');
+    if (s.code && !v.gate) {
+      const cov = L.coverage(db, s.code, covRole); v.cov = cov;
+      const subId = db.C[s.code] ? (L.subForUnit(db, s.code, s.unit) || cov.sub) : null, sb = subId && db.subs[subId];
+      let ids = [];
+      if (cov.state !== 'dotted' && sb) ids = (covRole === 'webshop' ? sb.webshop : sb.local) || [];
+      const cn = this.cname(s.code);
+      if (s.lang && cov.state !== 'excluded') { const speaks = (id) => db.P[id] && (db.P[id].lang || []).some((l) => String(l).toLowerCase().indexOf(s.lang.toLowerCase()) === 0); let hit = ids.filter(speaks); if (!hit.length && cov.state !== 'dotted' && db.C[s.code] && db.C[s.code].units) { for (const u of db.C[s.code].units) { const ub = db.subs[L.subForUnit(db, s.code, u)]; const uids = ub ? ((covRole === 'webshop' ? ub.webshop : ub.local) || []).filter(speaks) : []; if (uids.length) { hit = uids; break; } } } ids = hit.length ? hit : [lpId(covRole)]; }
+      if (ids.length) v.groups.push({ title: roleWord + ' · ' + cn + (s.lang ? ' · ' + s.lang : ''), ids, cov });
+      else if (cov.state !== 'excluded') { v.partner = true; v.partnerPlace = cn; } /* DEPTH-625: country card, routed internally to International Sales */
+    } else if (!v.gate && s.sub && (s.role !== 'product' || s.mktOpen)) {
+      const sb = db.subs[s.sub]; const ids = sb ? ((covRole === 'webshop' ? sb.webshop : sb.local) || []) : [];
+      if (ids.length) v.groups.push({ title: roleWord + ' · ' + sb.label, ids, cov: { state: 'solid' } });
+      else { v.partner = true; v.partnerPlace = sb ? sb.label : ''; }
+    }
+    if (v.gate) { v.kind = 'gate'; v.tech = false; return v; }
+    if (!v.groups.length && !v.partner) { v.kind = s.role === 'product' ? 'prodIntro' : (s.role === 'webshop' ? 'ramIntro' : 'localIntro'); v.intl = s.role !== 'product'; }
+    else v.kind = 'groups';
+    if (!v.groups.length && !v.partner && s.role !== 'product') v.intl = true;
+    if (v.intl && s0.intlForm && s0.intlForm === s0.role && !s0.code && !s0.sub) { v.partner = true; v.partnerPlace = 'your market'; v.intl = false; v.kind = 'groups'; } /* DEPTH-520 */
+    v.tech = s.role !== 'product' && v.kind !== 'none';
+    return v;
+  }
+
+  _rvBase() {
+    const s = this.state, db = this.db, L = this.L();
+    const allLabel = s.expandAll ? 'Collapse all' : 'Expand all';
+    const base = {
+      reduced: !!this.reduced, wrapRef: this.wrapRef, heroRef: this.heroRef, chooserRef: this.chooserRef, mapRef: this.mapRef,
+      allLabel, allRot: s.expandAll ? '180deg' : '0deg', allPressed: s.expandAll ? 'true' : 'false',
+      toFounders: () => this.pickRole('founders'), toTeam: () => this.pickRole('builders'),
+      toggleAll: () => { const v = !this.state.expandAll; this.setState({ expandAll: v }); if (v && !this.state.role) this.pickRole('founders'); if (v) this.later(() => { const el = document.getElementById('contact'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 150, behavior: this.reduced ? 'auto' : 'smooth' }); }, 60); },
+      expandAll: s.expandAll, concept: s.concept, conceptLabel: s.concept ? 'Hide concept data' : 'Show concept data', conceptExp: s.concept ? 'true' : 'false', toggleConcept: () => this.setState({ concept: !this.state.concept }),
+      visitorTz: (() => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) { return 'local time'; } })(),
+      langStep: 'Preferred language', langNote: '', roleCols: s.mobile ? 'repeat(auto-fit,minmax(min(100%,140px),1fr))' : 'repeat(7,minmax(0,1fr))', mapH: s.mapH, more: s.more, draft: s.draft, q: s.q, fade: s.fade,
+    };
+    if (!db) return Object.assign(base, { introSyms: [], lines: [], roles: [], products: [], regionTabs: [], crumbs: [], subOpts: [], codeOpts: [], unitOpts: [], langOpts: [], results: [], groups: [], triptych: [], deptTiles: [], deptList: [], founderList: [], swap: [], drafts: [], tints: [], vNone: true, ctxDisp: 'none', stickyPos: 'static', leftMaxH: 'none', prodStep: '', prodHint: '', mktStep: '', headRole: '', glyphRole: '', fd: { flags: [] }, dp: { paras: [] }, dr: { blocks: [], flags: [] }, ch: { ctx: [], msgs: [] }, bk: { days: [], slots: [] }, mb: {} });
+    const S = window.WHO_SRC;
+    const roleIds = ['founders', 'builders', 'product', 'system', 'project', 'webshop', 'local'];
+    const symbolName = { system: 'Quarter circle', project: 'Half circle on a bar', founders: 'Circle, square and dot', builders: 'Square outline', product: 'Triangle', webshop: 'Concentric circles', local: 'Four petals on sand' };
+    const roles = db.roles.map((r, i) => {
+      const on = s.role === r.id, src = r.srcTitle ? S.contact.types.find((x) => x.title === r.srcTitle) : null;
+      return { id: r.id, n: r.n, label: r.label, sub: r.sub || (src && src.desc) || '', subOp: (on || s.hoverRole === r.id) ? 1 : 0, descId: 'who-role-' + r.id, enter: () => this.setState({ hoverRole: r.id }), leave: () => this.setState((p) => p.hoverRole === r.id ? { hoverRole: null } : null), symbolName: symbolName[r.id], pressed: on ? 'true' : 'false', ring: 'transparent', bg: on ? '#D9D9D9' : (s.hoverRole === r.id ? '#EBEBEB' : '#F4F4F4'), bar: on ? '#111111' : 'transparent', iconRef: this.iconRef(r.id), iconOp: s.intro === 'done' ? 1 : 0, pick: () => this.pickRole(r.id) };
+    });
+    const ig = this._ig;
+    const introSyms = (s.intro === 'done' || !ig) ? [] : roleIds.map((id, i) => {
+      const h = ig.hero[i], d = ig.dock[i]; let x, y, k = 1, r = 0, op = 1, tr;
+      if (s.intro === 'pre') { const a = (i * (360 / 7) - 90) * Math.PI / 180; x = h[0] + Math.cos(a) * 360; y = h[1] + Math.sin(a) * 220 - 120; r = -150 + i * 45; k = 0.5; op = 0; tr = 'none'; }
+      else if (s.intro === 'assemble') { x = h[0]; y = h[1]; tr = 'transform 1900ms cubic-bezier(.34,1.18,.64,1) ' + (i * 160) + 'ms, opacity 700ms ease ' + (i * 160) + 'ms'; }
+      else { x = d[0]; y = d[1]; k = (d[2] || ig.s) / ig.s; tr = 'transform 1700ms cubic-bezier(.65,0,.25,1) ' + (i * 140) + 'ms'; }
+      return { id, size: Math.round(ig.s), tf: 'translate(' + Math.round(x) + 'px,' + Math.round(y) + 'px) rotate(' + r + 'deg) scale(' + k.toFixed(3) + ')', op, tr };
+    });
+
+    const isP = s.role === 'product', isWL = s.role === 'webshop' || s.role === 'local';
+    const route = isP ? 'product' : (s.route || 'location'), byP = route === 'product';
+    const isSP = s.role === 'system' || s.role === 'project', wizRole = isP || isSP || isWL;
+    const SYS = [['EMON', 'Energy management'], ['KALK', 'Energy calculation'], ['KERN', 'Operational control'], ['TRIBE', 'Distributed energy systems'], ['PUSH', 'Installer lead distribution'], ['PACT', 'Group purchasing'], ['DEPOT', 'Partner stockholding']];
+    const PROJ = [['STRØHM LAB', 'Custom product engineering', 'Design and develop dedicated products, hardware and components for EPC partners.', 'assets/icons/strohm-lab-symbol.svg', 'STROHM.ENERGY - SITE - Product Lab and R and D - EN.dc.html'], ['STRØHM ENGINEERING', 'Project engineering', 'Technical design, dimensioning and system integration for EPC-led energy projects.', 'assets/icons/strohm-engineering-symbol.svg', 'STROHM.ENERGY - PROJECT - Engineering - EN.dc.html'], ['Residential', 'Homes and communities', 'Energy solutions for houses, apartments and shared residential buildings.', '', 'STROHM.ENERGY - PROJECT - Residential - EN.dc.html'], ['Commercial', 'Business and industry', 'Energy systems for commercial buildings, agriculture and industrial sites.', '', 'STROHM.ENERGY - PROJECT - Commercial - EN.dc.html'], ['Utility and Infrastructure', 'Large-scale applications', 'Renewable energy projects for larger sites and public infrastructure.', '', 'STROHM.ENERGY - PROJECT - Utility - EN.dc.html']];
+    const projSel = PROJ.find((p) => p[0] === s.ptype);
+    const first = isWL ? 'skip' : (isP ? s.product : (s.role === 'system' ? s.system : (s.role === 'project' ? s.ptype : null)));
+    const autoStep = !first ? 1 : (!s.code ? 2 : (!s.lang ? 3 : 4));
+    const step = wizRole ? (s.wizBack && s.wizBack < autoStep ? s.wizBack : autoStep) : 0;
+    const ctxOn = isP || isWL || isSP;
+    const pr = s.product && db.products.find((x) => x.id === s.product);
+    const hov = s.hoverProd && db.products.find((x) => x.id === s.hoverProd);
+    const prodHintOf = (x) => x ? x.label + ' · ' + x.cat + ' · ' + x.specialists.map((id) => db.P[id].name).join(', ') : '25 product brands · hover a logo to see its specialist, click to open the profile';
+    const products = db.products.map((x) => { const on = s.product === x.id, act = on || s.hoverProd === x.id; return { id: x.id, label: x.label, logo: x.logo, cat: x.cat, scale: act ? 1.4 : 1, colVis: act ? 'visible' : 'hidden', monoVis: act ? 'hidden' : 'visible', labOp: act ? 1 : 0, labGap: act ? '12px' : '0px', logoRef: (el) => { if (el && el.getAttribute('src') !== x.logo) el.setAttribute('src', x.logo); }, maskRef: (el) => { if (el && !el.dataset.m) { const u = "url('" + x.logo + "') center / contain no-repeat"; el.style.webkitMask = u; el.style.mask = u; el.dataset.m = '1'; } }, aria: x.label + ', ' + x.cat, pressed: on ? 'true' : 'false', bg: on ? '#F7F7F5' : '#FFFFFF', bd: on ? '#4F4F4E' : '#E6E6E6', pick: () => this.swap({ product: on ? null : x.id, role: isWL ? s.role : 'product', act: null, mktOpen: true, wizBack: null }), enter: () => this.setState({ hoverProd: x.id }) }; });
+
+    const regionTabs = [{ id: null, label: 'World' }].concat(L.REGIONS).map((r) => { const on = (s.region || null) === r.id; return { label: r.label, pressed: on ? 'true' : 'false', bg: on ? '#4F4F4E' : '#FFFFFF', fg: on ? '#FFFFFF' : '#252525', bd: on ? '#4F4F4E' : '#BBBBBB', pick: () => this.swap({ region: r.id, sub: null, code: null, unit: null, act: null }) }; });
+    const reg = s.region && L.REGIONS.find((r) => r.id === s.region), sb = s.sub && db.subs[s.sub];
+    const crumbs = [{ label: 'World', go: () => this.swap({ region: null, sub: null, code: null, unit: null }) }];
+    if (reg) crumbs.push({ label: reg.label, go: () => this.swap({ sub: null, code: null, unit: null }) });
+    if (sb) crumbs.push({ label: sb.label, go: () => this.swap({ code: null, unit: null }) });
+    if (s.code) crumbs.push({ label: this.cname(s.code), go: () => {} });
+    crumbs.forEach((c, i) => { c.sep = i > 0; c.fg = i === crumbs.length - 1 ? '#111111' : '#6E6E6E'; });
+    const subOpts = Object.values(db.subs).filter((x) => (!s.region || x.region === s.region) && !(s.role === 'webshop' && x.region !== 'europe')).map((x) => ({ v: x.id, label: (s.region ? '' : (L.REGIONS.find((r) => r.id === x.region) || {}).label + ' · ') + (x.n ? x.n + ' ' : '') + x.label }));
+    const codeOpts = !ctxOn ? [] : Object.values(db.C).filter((c) => (s.region ? c.region === s.region : true)).sort((a, b) => a.name.localeCompare(b.name)).map((c) => ({ v: c.code, label: c.name + (c.state === 'excluded' ? ' (not served)' : ''), dis: c.state === 'excluded' }));
+    const rule = s.code && window.RAM_DATA.rules && window.RAM_DATA.rules[s.code];
+    const unitOpts = rule && rule.options ? rule.options.map((o) => { const on = s.unit === o.unit; return { label: o.label, pressed: on ? 'true' : 'false', bg: on ? '#4F4F4E' : '#FFFFFF', fg: on ? '#FFFFFF' : '#252525', bd: on ? '#4F4F4E' : '#BBBBBB', pick: () => this.swap({ unit: o.unit, sub: db.subs[o.region] ? o.region : 'CENTRAL', act: null }) }; }) : [];
+    const langCount = {};
+    Object.values(db.P).forEach((p) => { if ((s.role === 'webshop' ? p.role === 'webshop' : p.role === 'local')) (p.lang || []).forEach((l) => { const k = this.langKey(l); if (/^[A-Z][a-z]+$/.test(k)) langCount[k] = (langCount[k] || 0) + 1; }); });
+    const langOpts = (s.code ? L.langsFor(s.code) : ['English', 'Dutch', 'German', 'Italian', 'Spanish', 'French', 'Arabic', 'Chinese', 'Portuguese', 'Turkish', 'Hindi', 'Japanese', 'Ukrainian']).map((k) => { const on = s.lang === k; return { label: k, pressed: on ? 'true' : 'false', bg: on ? '#4F4F4E' : '#FFFFFF', fg: on ? '#FFFFFF' : '#3A3A3A', bd: on ? '#4F4F4E' : '#BBBBBB', pick: () => this.setState({ lang: on ? null : k, wizBack: null }) }; });
+
+    const results = this.results().map((x) => ({ label: x.label, sub: x.sub, kindLabel: { product: 'Product', country: 'Country', sub: 'Sub-region', person: 'Person' }[x.kind], pick: (e) => { e.preventDefault(); this.pickResult(x); } }));
+
+    const view = this.computeView();
+    let firstCard = null;
+    const groups = view.groups.map((g, gi) => ({ title: g.title, cards: g.ids.map((id, ci) => { const p = db.P[id]; const c = this.card(p, g, gi === 0 && ci === 0); if (!firstCard) firstCard = c; return c; }) }));
+    const fdP = db.P[s.founder] || db.P['f-mathieu'];
+    const deptsSrc = S.depts;
+    const dSrc = deptsSrc[(s.dept || 1) - 1];
+    const DMAP = { '01': 'founders', '02': 'product', '03': 'system', '04': 'system', '05': 'product', '06': 'webshop', '07': 'project', '08': 'webshop' };
+    const dRole = DMAP[dSrc.n] || 'product', dRoleLabel = (db.roles.find((r) => r.id === dRole) || {}).label || '';
+    const dp = { teamSlot: 'who-lab-team-' + dSrc.n, goLabel: dRoleLabel, goRole: () => { this.pickRole(dRole); this.later(() => { const el = document.getElementById('contact'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 150, behavior: this.reduced ? 'auto' : 'smooth' }); }, 60); }, n: dSrc.n, title: dSrc.title, line: dSrc.line, paras: dSrc.paras, geo: dSrc.n === '01' ? 'founders' : (dSrc.n === '08' ? 'webshop' : 'builders'), slot: (dSrc.n === '01' || dSrc.n === '08') ? 'who-lab-dept-' + (+dSrc.n) : 'company-team-dept-' + (+dSrc.n), isLead: dSrc.n === '01', isRam: dSrc.n === '08', hasTbc: !['01', '08'].includes(dSrc.n) };
+    if (view.kind === 'founder') this._prim = { id: fdP.id, products: [], geo: false };
+    else if (view.kind === 'groups' && firstCard) { const p = firstCard._p; this._prim = { id: p.id + '|' + (s.code || '') + (s.sub || ''), products: p.products || [], geo: (p.role === 'local' || p.role === 'webshop' || p.role === 'route') && !!(s.code || s.sub) }; }
+    else this._prim = null;
+    const lines = s.lines.map((l) => ({ x1: l.x1, y1: l.y1, x2: l.x2, y2: l.y2, len: l.len, off: s.linesOn ? 0 : l.len, op: s.linesOn ? (l.thin ? 0.35 : 0.85) : 0 }));
+
+    let covLabel = '', covBg = '#FFFFFF', covBd = '#3F3F3F', covLine = 'solid';
+    if (view.cov) {
+      const st = view.cov.state;
+      covLabel = st === 'solid' ? 'Dedicated contact' : st === 'outlined' ? 'Covered from another base' : 'Served via International Sales';
+      if (st === 'solid') covBg = '#3F3F3F'; if (st === 'dotted') covLine = 'dotted';
+    }
+    const founders = ['f-mathieu', 'f-huang', 'f-ronny'].map((id) => db.P[id]);
+    const founderList = founders.map((f) => { const on = s.role === 'founders' && s.founder === f.id; return { name: f.name, title: f.title, base: f.base, pressed: on ? 'true' : 'false', bg: on ? '#F7F7F5' : '#FFFFFF', pick: () => this.swap({ role: 'founders', founder: f.id }) }; });
+    const triptych = founders.map((f) => ({ id: f.id, name: f.name, roleTitle: f.roleTitle, title: f.title, base: f.base, intro: f.intro, statement: f.statement, statementNote: f.statementNote, flags: f.flags, slot: 'who-lab-triptych-' + f.id.replace('f-', ''), slotPh: f.slotPh, grow: s.mobile || !s.hoverF ? 1 : (s.hoverF === f.id ? 1.7 : 0.72), enter: () => { if (this.state.hoverF !== f.id) this.setState({ hoverF: f.id }); }, open: () => this.setState({ drawer: { kind: 'person', id: f.id } }), blocks: this.blocksOf(f.src.profile, false) }));
+    const deptTiles = deptsSrc.map((d, i) => ({ n: d.n, short: d.short, title: d.title, line: d.line, paras: d.paras, sym: d.n === '01' ? 'founders' : (d.n === '08' ? 'webshop' : 'builders'), memberNote: d.n === '01' ? 'Founders: Mathieu, Huang Tzu Chi, Ronny.' : (d.n === '08' ? 'The regional managers are listed under Find your contact › By region →' : 'Team member to be announced'), open: () => this.setState({ drawer: { kind: 'dept', n: i + 1 } }) }));
+    const deptList = deptsSrc.map((d, i) => { const on = s.dept === i + 1; return { n: d.n, short: d.short, pressed: on ? 'true' : 'false', bg: on ? '#F7F7F5' : '#FFFFFF', pick: () => this.swap({ dept: i + 1 }) }; });
+
+    // drawer
+    let dr = null;
+    if (s.drawer && s.drawer.kind === 'person') {
+      const p = db.P[s.drawer.id];
+      if (p) {
+        let blocks = [];
+        if (p.kind === 'founder') blocks = this.blocksOf(p.src.profile, true);
+        else if (p.kind === 'local') { blocks = [{ type: 'p', text: p.intro }].concat((p.profile || []).map((t) => ({ type: 'p', text: t }))); if (p.resp && p.resp.length) blocks.push({ type: 'details', title: 'Areas of responsibility', list: p.resp }); if (p.approach) blocks.push({ type: 'details', title: 'Working approach', paras: [p.approach] }); if (p.webshopNote) blocks.push({ type: 'details', title: 'Webshop specialist & account manager', paras: [p.webshopNote] }); blocks = this.blocksOf(blocks, false); }
+        else if (p.kind === 'webshop') blocks = this.blocksOf([{ type: 'p', text: p.intro }, { type: 'details', title: 'Areas of responsibility', list: p.resp }, { type: 'details', title: 'Markets', paras: [p.markets.join(', ')] }], false);
+        else if (p.kind === 'product') blocks = this.blocksOf([{ type: 'details', title: 'Products', paras: [p.products.join(', ')] }, { type: 'p', text: 'Technical product knowledge, specifications, integration and application support.' }], false);
+        else if (p.kind === 'lab') blocks = this.blocksOf([{ type: 'p', text: 'Profile text pending.' }, { type: 'details', title: 'Markets', paras: [p.markets.join(', ')] }, { type: 'details', title: 'Languages', paras: [p.lang.join(', ')] }], false);
+        else if (p.kind === 'route') blocks = this.blocksOf([{ type: 'p', text: 'Outside Europe, commercial enquiries, distribution opportunities and regional partnership proposals are managed individually by our central International Sales team.' }, { type: 'p', text: 'Interested in developing STRØHM.ENERGY in your market?' }, { type: 'p', text: 'We welcome enquiries from EPC companies, professional installers, distributors, wholesalers and potential regional representatives.' }], false);
+        const sub = p.sub && db.subs[p.sub];
+        dr = { geo: p.role === 'route' ? 'webshop' : p.role, eyebrow: p.roleTitle + (sub ? ' · ' + sub.label : ''), name: p.name, title: p.title, base: p.base || '', hasBase: !!p.base, tag: p.tag, hasTag: !!p.tag, flags: p.flags || [], hasFlags: !!(p.flags && p.flags.length), blocks, hasLink: !!p.href, href: p.href || '#', hrefLabel: p.role === 'product' ? 'Product experts →' : (p.role === 'route' ? 'Contact International Sales →' : 'Full profile'), hasAction: false };
+      }
+    } else if (s.drawer && s.drawer.kind === 'dept') {
+      const d = deptsSrc[s.drawer.n - 1];
+      const blocks = [{ type: 'p', text: d.line }].concat(d.paras.map((t) => ({ type: 'p', text: t })));
+      if (d.n === '01') blocks.push({ type: 'details', title: 'Founders', list: founders.map((f) => f.name + ' · ' + f.title) });
+      else if (d.n === '08') blocks.push({ type: 'p', text: 'The regional managers are listed under Find your contact › By region →' });
+      else blocks.push({ type: 'details', title: 'Team', paras: ['Team member to be announced'] });
+      const go = d.n === '08' ? () => { this.setState({ drawer: null }); this.pickRole('webshop'); this.later(() => { const el = document.getElementById('contact'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 146, behavior: 'smooth' }); }, 80); } : () => { this.setState({ drawer: null }); this.swap({ role: d.n === '01' ? 'founders' : 'builders', dept: s.drawer.n }); this.later(() => { const el = document.getElementById('contact'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 146, behavior: 'smooth' }); }, 80); };
+      dr = { geo: d.n === '01' ? 'founders' : (d.n === '08' ? 'webshop' : 'builders'), eyebrow: 'Team ' + d.n, name: d.title, title: d.short, base: '', hasBase: false, tag: '', hasTag: false, flags: [], hasFlags: false, blocks: this.blocksOf(blocks, false), hasLink: false, href: '#', hrefLabel: '', hasAction: true, action: go, actionLabel: d.n === '08' ? 'Webshop & Account Managers' : 'Show in the people chooser' };
+    }
+
+    // chat + booking
+    let ch = null;
+    if (s.chat) {
+      const p = db.P[s.chat.pid];
+      ch = { name: p.name, title: p.title, col: s.chat.online ? '#2F7D4F' : '#B07818', status: s.chat.online ? 'Online' : 'Leave a message, reply within 24 h', ctx: [p.roleTitle, s.chat.ctx.product, s.chat.ctx.country].filter(Boolean), msgs: s.msgs.map((m) => ({ text: m.text, align: m.who === 'me' ? 'flex-end' : (m.who === 'sys' ? 'center' : 'flex-start'), bg: m.who === 'me' ? '#4F4F4E' : (m.who === 'sys' ? '#FFFFFF' : '#F7F7F5'), fg: m.who === 'me' ? '#FFFFFF' : (m.who === 'sys' ? '#6E6E6E' : '#111111') })) };
+    }
+    let bk = null;
+    if (s.book) {
+      const p = db.P[s.book.pid], days = this.slots(p.tz), day = days[s.book.day] || { slots: [] };
+      const whenF = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+      bk = {
+        name: p.name, title: p.title, concept: !!p.concept, isSlot: s.book.step === 'slot', isForm: s.book.step === 'form', isDone: s.book.step === 'done',
+        days: days.map((d, i) => { const on = i === s.book.day; return { label: d.label, pressed: on ? 'true' : 'false', bg: on ? '#4F4F4E' : '#FFFFFF', fg: on ? '#FFFFFF' : '#252525', bd: on ? '#4F4F4E' : '#BBBBBB', pick: () => this.setState({ book: Object.assign({}, this.state.book, { day: i }) }) }; }),
+        slots: day.slots.map((x) => ({ label: x.label, pick: () => this.setState({ book: Object.assign({}, this.state.book, { step: 'form', t: x.t }) }) })), noSlots: !day.slots.length,
+        when: s.book.t ? whenF.format(new Date(s.book.t)) + ' · 20 min' : '', back: () => this.setState({ book: Object.assign({}, this.state.book, { step: 'slot' }) }),
+        topic: [s.book.ctx.country, 'via WHO page'].filter(Boolean).join(' · '), product: s.book.ctx.product || '',
+        submit: (e) => { e.preventDefault(); this.setState({ book: Object.assign({}, this.state.book, { step: 'done' }) }); },
+        doneTitle: p.concept ? 'Demo booking saved. No meeting was created.' : 'Booked.', videoNote: p.concept ? 'Concept: not connected. A video link is created once the booking system is connected.' : 'A video link follows by email.',
+        ics: () => this.icsFor(s.book),
+      };
+    }
+    const mbP = firstCard;
+    const mb = mbP ? { chat: mbP.aChat, book: mbP.aBook, call: () => { this.setState({ act: { id: mbP.id, type: 'call' }, more: false }); this.scrollToCard(mbP.id); }, email: () => { this.setState({ act: { id: mbP.id, type: 'email' }, more: false }); this.scrollToCard(mbP.id); }, callback: () => { this.setState({ act: { id: mbP.id, type: 'callback' }, more: false, cbSent: false }); this.scrollToCard(mbP.id); }, vcard: () => { this.setState({ act: { id: mbP.id, type: 'vcard' }, more: false }); this.scrollToCard(mbP.id); }, more: () => this.setState({ more: !this.state.more }), moreExp: s.more ? 'true' : 'false' } : {};
+
+    const swapRows = Object.values(db.P).filter((p) => p.concept).map((p) => ({ name: p.name, role: p.roleTitle, scope: p.products && p.products.length ? p.products.join(', ') : ((db.subs[p.sub] || {}).label || ''), source: p.kind === 'lab' ? 'LAB v2 brief' : (p.kind === 'product' ? 'Live Who page · expert list' : 'regional-map-data.js / field-sales-data.js'), status: 'Replace before go-live' }));
+    const draftSrc = (deptsSrc[0].members || []);
+    const drafts = draftSrc.map((m) => ({ tag: m.texts[6] || 'CONCEPT PROFILE · FICTIONAL', name: m.texts[1], title: m.texts[2], base: m.texts[3], line: m.texts[4], quote: m.texts[5], body: (m.profile || []).map((x) => x.text) }));
+    draftSrc.forEach((m) => swapRows.push({ name: m.texts[1], role: m.texts[2], scope: 'Leadership & Management', source: 'Live Who page · team 01', status: 'Draft record, not published' }));
+    const tints = [['Terracotta', 'terracotta', '#D9734A'], ['Brick red', 'brick', '#B9473F'], ['Ochre', 'ochre', '#C9A13B'], ['Ultramarine (muted)', 'ultra', '#4657B8'], ['Soft blue', 'soft', '#8DB3DD'], ['Sand', 'sand', '#E6D9C2'], ['Charcoal', 'charcoal', '#3F3F3F']].map((t) => ({ name: t[0], token: '--who-' + t[1], hex: t[2] }));
+    const roleTitleHead = s.role ? db.roles.find((r) => r.id === s.role).label : '';
+    const cn = s.code ? this.cname(s.code) : '';
+
+    return Object.assign(base, {
+      introSyms, lines, roles, products, regionTabs, crumbs, subOpts, codeOpts, unitOpts, langOpts, results, groups, triptych, deptTiles, deptList, founderList, swap: swapRows, swapCount: swapRows.length, drafts, tints,
+      showResults: s.qFocus && results.length > 0, noResults: s.qFocus && s.q.trim().length >= 2 && !results.length,
+      onQ: (e) => this.setState({ q: e.target.value, qFocus: true }), qFocusOn: () => this.setState({ qFocus: true }), qFocusOff: () => this.later(() => this.setState({ qFocus: false }), 120),
+      isFounders: s.role === 'founders', isBuilders: s.role === 'builders',
+      ctxDisp: ctxOn ? 'flex' : 'none', prodOrder: byP ? 1 : 2, mktOrder: byP ? 2 : 1,
+      wizOn: wizRole, wizWhy: isWL ? 'Account managers and local sales handle all products in their market, so we only need your location and language. These two steps make sure you reach the person who works in your market and speaks your language.' : 'Our specialists are organised by product, by region and by language. These three steps make sure you reach the person who knows your product, works in your market and speaks your language. We take that seriously.', sysSecDisp: s.role === 'system' && step === 1 ? 'flex' : 'none', projSecDisp: s.role === 'project' && step === 1 ? 'flex' : 'none',
+      prodSecDisp: wizRole ? (isP && step === 1 ? 'flex' : 'none') : 'flex', mktSecDisp: wizRole ? (step === 2 ? 'flex' : 'none') : 'flex',
+      langSecDisp: wizRole ? (step >= 3 ? 'flex' : 'none') : ((!byP || s.mktOpen) ? 'flex' : 'none'),
+      langStep: isWL ? 'Step 2 · Choose a language' : wizRole ? 'Step 3 · Choose a language' : 'Preferred language', langNote: s.code ? ('Available for ' + this.cname(s.code) + ': ' + L.langsFor(s.code).join(', ') + '.') : 'Thirteen languages. Choose a location first to see the languages for that country.',
+      wizSteps: [[1, isP ? 'Product' : (s.role === 'system' ? 'System' : 'Engineering'), first], [2, 'Location', s.code ? this.cname(s.code) : ''], [3, 'Language', s.lang || '']].filter((x) => !(isWL && x[0] === 1)).map(([n0, label, val]) => { const n = n0, nShow = isWL ? n0 - 1 : n0; const done = n < autoStep, cur = n === step; return { n: nShow, label, val: val || (cur ? 'Choose now' : '—'), state: done ? 'Done · change' : (cur ? 'Now' : 'Next'), cur: cur ? 'step' : 'false', bg: cur ? '#FFFFFF' : 'transparent', fg: '#252525', fg2: '#5F5E5E', go: () => { if (n <= autoStep) this.setState({ wizBack: n }); } }; }),
+      sysOpts: SYS.map(([id, sub]) => { const on = s.system === id, act = on || s.hoverSys === id, src = 'assets/logos/' + id + '-symbol.svg'; return { label: id, sub, pressed: on ? 'true' : 'false', bg: on ? '#FFFFFF' : 'transparent', scale: act ? 1.3 : 1, labGap: act ? '6px' : '0px', colVis: act ? 'visible' : 'hidden', monoVis: act ? 'hidden' : 'visible', enter: () => this.setState({ hoverSys: id }), leave: () => this.setState((p) => p.hoverSys === id ? { hoverSys: null } : null), logoRef: (el) => { if (el && el.getAttribute('src') !== src) el.setAttribute('src', src); }, maskRef: (el) => { if (el && !el.dataset.m) { const u = "url('" + src + "') center / contain no-repeat"; el.style.webkitMask = u; el.style.mask = u; el.dataset.m = '1'; } }, pick: () => this.swap({ system: id, wizBack: null, mktOpen: true }) }; }),
+      projHref: projSel ? projSel[4] : 'STROHM.ENERGY - PROJECT - Engineering - EN.dc.html', projLinkLabel: projSel ? projSel[0] : 'STRØHM ENGINEERING', projText: projSel ? projSel[2] : '',
+      projOpts: PROJ.map(([id, sub, text, icon]) => { const on = s.ptype === id; return { label: id, sub, text, iconRef: (el) => { if (!el) return; if (!icon) { el.style.display = 'none'; return; } if (el.getAttribute('src') !== icon) el.setAttribute('src', icon); }, pressed: on ? 'true' : 'false', bg: on ? '#FFFFFF' : 'transparent', pick: () => this.swap({ ptype: id, wizBack: null, mktOpen: true }) }; }),
+      noRole: !s.role, showRoute: false, refineNote: byP ? 'Product, then location' : 'Location, then product',
+      routeTabs: [['location', 'By location'], ['product', 'By product']].map(([id, label]) => { const on = route === id; return { label, pressed: on ? 'true' : 'false', bg: on ? '#4F4F4E' : '#FFFFFF', fg: on ? '#FFFFFF' : '#4F4F4E', pick: () => this.setState(id === 'product' ? { route: id, prodOpen: true } : { route: id, mktOpen: true }) }; }),
+      prodStep: wizRole ? 'Step 1 · Choose a product' : (byP ? 'Choose a product' : 'Then a product'), prodOptional: !byP && !wizRole, prodExp: (byP || s.prodOpen) ? 'true' : 'false', prodToggleLabel: s.prodOpen ? 'Hide' : 'Optional · Show', toggleProd: () => this.setState({ prodOpen: !this.state.prodOpen }), prodBodyDisp: (byP || s.prodOpen) ? 'flex' : 'none',
+      prodHint: prodHintOf(hov || pr), prodLeave: () => this.setState({ hoverProd: null }),
+      mktStep: isWL ? 'Step 1 · Choose a location' : wizRole ? 'Step 2 · Choose a location' : (byP ? 'Then a location' : 'Choose a region or country'), mktOptional: byP && !wizRole, mktExp: (!byP || s.mktOpen) ? 'true' : 'false', mktToggleLabel: s.mktOpen ? 'Hide' : 'Optional · Show', toggleMkt: () => this.setState({ mktOpen: !this.state.mktOpen }), mktBodyDisp: (wizRole || !byP || s.mktOpen) ? 'flex' : 'none',
+      subVal: s.sub || '', pickSub: (e) => { const id = e.target.value; if (!id) { this.swap({ sub: null, code: null, unit: null }); return; } const x = db.subs[id]; this.swap({ sub: id, region: x.region, code: null, unit: null, act: null }); },
+      codeVal: s.code && db.C[s.code] ? s.code : '', pickCode: (e) => { if (e.target.value) this.pickCountry(e.target.value); else this.swap({ code: null, unit: null }); },
+      hasUnits: unitOpts.length > 0, unitNote: (rule && rule.note) || 'Choose the language area.',
+      stickyPos: s.mobile ? 'static' : 'sticky', leftMaxH: s.mobile ? 'none' : 'calc(100vh - 178px)', mainOverflow: s.mobile ? 'visible' : 'auto', asideFlex: s.mobile ? '1 1 100%' : '2 1 0', mainFlex: s.mobile ? '1 1 100%' : '1 1 0',
+      glyphRole: s.role || '', headRole: roleTitleHead,
+      hasCov: !!view.cov, covLabel, covBg, covBd, covLine,
+      vNone: view.kind === 'none', vFounder: view.kind === 'founder', vDept: view.kind === 'dept', vGroups: view.kind === 'groups', vProdIntro: view.kind === 'prodIntro', vRamIntro: view.kind === 'ramIntro', vLocalIntro: view.kind === 'localIntro', vSysIntro: view.kind === 'sysIntro', vGate: view.kind === 'gate', gateProduct: (s.role === 'system' ? s.system : (s.role === 'project' ? s.ptype : (isWL ? 'All products' : s.product))) || 'Not selected', gateFirst: s.role === 'system' ? 'System' : (s.role === 'project' ? 'Engineering' : 'Product'), gateEyebrow: s.role === 'system' ? 'System specialist' : (s.role === 'project' ? 'Project specialist' : (s.role === 'webshop' ? 'Webshop & account manager' : (s.role === 'local' ? 'Local sales' : 'Product specialist'))), gateNeed: (view.gateNeed || '').replace(/, ([^,]*)$/, ' and $1'), gateHasFirst: !isWL, gateWhy: isWL ? 'Your contact depends on where your project is and which language you want to speak. Complete the two steps on the left.' : 'Your specialist depends on your product, where your project is and which language you want to speak. Complete the three steps on the left.', gateCountry: s.code ? this.cname(s.code) : 'Not selected', gateLang: s.lang || 'Not selected', vProjIntro: view.kind === 'projIntro', isSysProj: s.role === 'system' || s.role === 'project', vPartner: view.partner, vIntl: view.intl, toIntlForm: () => this.setState({ intlForm: this.state.role, partnerSent: false }), vTech: view.tech, intlOpen: view.intl && view.kind === 'groups',
+      countryName: cn, partnerPlace: view.partnerPlace || cn, partnerForm: !s.partnerSent, partnerSent: !!s.partnerSent,
+      enqCountry: view.partnerPlace || cn || 'Not selected', enqProduct: s.product || 'No product selected', enqRole: (L.ROLES.find((r) => r.id === s.role) || {}).label || '', enqCode: s.code || '', enqProdCode: s.product || '', enqSub: s.sub || '',
+      enqSummary: s.partnerSent ? ['International Sales', view.partnerPlace || cn, s.product].filter(Boolean).join(' · ') : '',
+      partnerSubmit: (e) => { e.preventDefault(); const fd = new FormData(e.target); const lead = { route: 'INTERNATIONAL_SALES', country_code: s.code || null, sub_region: s.sub || null, product: s.product || null, language: s.lang || null, role_selected: s.role, enquiry_type: fd.get('etype'), contact_type: fd.get('type'), company: fd.get('company'), name: fd.get('name'), email: fd.get('email'), message: fd.get('msg'), originating_page: 'Company - Who' }; this.setState({ partnerSent: true, partnerLead: lead }); },
+      toProduct: () => this.swap({ role: 'product', prodOpen: true, act: null }), toWebshop: () => this.pickRole('webshop'),
+      fd: { id: fdP.id, name: fdP.name, roleTitle: fdP.roleTitle, title: fdP.title, base: fdP.base, intro: fdP.intro, statement: fdP.statement, statementNote: fdP.statementNote, flags: fdP.flags, slot: fdP.slot, slotPh: fdP.slotPh, open: () => this.setState({ drawer: { kind: 'person', id: fdP.id } }) },
+      dp, triLeave: () => this.setState({ hoverF: null }),
+      drawerOpen: !!dr, dr: dr || { blocks: [], flags: [] }, closeDrawer: () => this.setState({ drawer: null }),
+      chatOpen: !!ch, ch: ch || { ctx: [], msgs: [] }, closeChat: () => this.setState({ chat: null }), onDraft: (e) => this.setState({ draft: e.target.value }),
+      sendChat: (e) => { e.preventDefault(); const txt = (this.state.draft || '').trim(); if (!txt) return; this.setState((st) => ({ msgs: st.msgs.concat({ who: 'me', text: txt }), draft: '' })); this.later(() => this.setState((st) => ({ msgs: st.msgs.concat({ who: 'them', text: 'Thank you. This is a demo. Your message was not sent.' }) })), 700); },
+      bookOpen: !!bk, bk: bk || { days: [], slots: [] }, closeBook: () => this.setState({ book: null }),
+      mobileBar: s.mobile && !!mbP && !dr && !bk && !ch, mb,
+      downloadSwap: () => this.download('WHO_LAB_swap_list.json', JSON.stringify(swapRows, null, 2), 'application/json'),
+    });
+  }
+  startIntro() { this.setState({ intro: 'done' }); }
+}
+</script>
+</body>
+</html>

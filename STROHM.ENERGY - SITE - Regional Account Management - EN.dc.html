@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Regional Account Management | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4F4F4E; text-decoration:none; }
+  a:hover { color:#1E1E1E; }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+  <dc-import name="NavBar" active="company" hint-size="100%,80px"></dc-import>
+
+  <dc-import name="PageHero" brand="STROHM.ENERGY" rgb="200,200,200" eyebrow="STRØHM.ENERGY" title="Regional Account Management" slot="strohm-energy-regional-account-management-hero" shot="STROHM.ENERGY · Regional Account Management · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    
+    <h2 style="margin:0 0 32px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Your regional contact. <span style="color:#8E8E8E;">From enquiry to delivery.</span></h2>
+    <div style="max-width:720px;">
+      <p style="margin:0 0 16px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">Our Regional Account Managers provide a dedicated point of contact for customers, installers, distributors and business partners throughout Europe.</p>
+      <p style="margin:0 0 16px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">Whether you need assistance with your webshop account, a quotation, an existing order or delivery information, your regional contact helps you move forward.</p>
+      <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">For detailed technical product questions, our Account Managers connect you with the appropriate STRØHM.ENERGY Product Expert.</p>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;">
+      <h3 style="margin:0 0 32px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">How we can help</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;">
+        <sc-for list="{{ help }}" as="h" hint-placeholder-count="6">
+          <div style="background:#F4F4F4;padding:28px;border-radius:12px;"><div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);margin-bottom:10px;">{{ h.title }}</div><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:1.65;max-width:760px;">{{ h.text }}</p></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="find" style="scroll-margin-top:100px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;">
+      <h3 style="margin:0 0 12px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);">Find your regional contact.</h3>
+      <p style="margin:0 0 24px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:640px;">Select your country to find the person responsible for your webshop account, quotations and orders.</p>
+      <label for="ram-country" style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#6E6E6E;margin-bottom:8px;">Country or territory</label>
+      <select id="ram-country" onChange="{{ onCountry }}" value="{{ country }}" style="font-family:inherit;font-size:var(--web-input-size);font-weight:var(--web-input-weight);color:#4F4F4E;height:48px;min-width:min(100%,360px);padding:0 14px;border:1px solid #BBBBBB;border-radius:8px;background:#FFFFFF;">
+        <sc-for list="{{ countries }}" as="c" hint-placeholder-count="10"><option value="{{ c.name }}">{{ c.name }}</option></sc-for>
+      </select>
+      <div style="margin-top:32px;background:#F3F2F1;padding:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:32px;align-items:start;border-radius:12px;">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A89;margin-bottom:12px;">Your regional team</div>
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);margin-bottom:6px;">{{ sel.title }}</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#6E6E6E;line-height:var(--web-small-lh);">{{ sel.languages }}</div>
+        </div>
+        <div>
+          <p style="margin:0 0 16px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">{{ sel.blurb }}</p>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#8A8A89;line-height:var(--web-small-lh);">Contact person to be assigned</div>
+        </div>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;max-width:760px;text-transform:uppercase;">INTERACTIVE CONCEPT. REAL CONTACT PEOPLE TO BE ASSIGNED. TO CONFIRM</p>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;">
+      <h3 style="margin:0 0 12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">European Sales Management &#183; 12 regions</h3>
+      <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:720px;">Our Regional Account Managers assist with webshop registration, account management, quotations, orders, delivery coordination and business enquiries. For specialist technical advice, they work directly with our Product Experts.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px;">
+        <sc-for list="{{ regions }}" as="r" hint-placeholder-count="12">
+          <div style="background:{{ r.bg }};padding:24px;display:flex;flex-direction:column;border-radius:12px;">
+            <div style="aspect-ratio:3/4;background:#E3E1DB;margin-bottom:16px;overflow:hidden;border-radius:8px;"><sc-if value="{{ r.hasPhoto }}" hint-placeholder-val="{{ false }}"><img src="{{ r.photo }}" alt="{{ r.person }}, fictional portrait concept" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"></img></sc-if></div>
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#8A8A89;margin-bottom:6px;text-transform:uppercase;">{{ r.n }} / REGION</div>
+            <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);margin-bottom:4px;">{{ r.name }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;line-height:var(--web-small-lh);">{{ r.person }}</div><div style="font-size:var(--web-small-size);font-weight:300;color:#8A8A89;margin-bottom:4px;line-height:var(--web-small-lh);">Regional Account Manager</div><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;margin-bottom:12px;text-transform:uppercase;">{{ r.tag }}</div>
+            <p style="margin:0 0 8px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);max-width:760px;"><span style="font-weight:500;">Countries:</span> {{ r.countries }}</p>
+            <p style="margin:0 0 8px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);max-width:760px;"><span style="font-weight:500;">Languages:</span> {{ r.languages }}</p>
+            <p style="margin:0 0 16px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);max-width:760px;"><span style="font-weight:500;">Email:</span> to be assigned</p><details style="border-top:1px solid #D9D9D9;padding-top:10px;margin-bottom:16px;"><summary style="cursor:pointer;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">{{ r.sheetLabel }}</summary><div style="padding-top:12px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);"><p style="margin:0 0 8px;max-width:760px;"><span style="font-weight:500;">Age:</span> {{ r.age }}</p><p style="margin:0 0 8px;max-width:760px;"><span style="font-weight:500;">Languages:</span> {{ r.plang }}</p><p style="margin:0 0 8px;max-width:760px;"><span style="font-weight:500;">Background:</span> {{ r.history }}</p><p style="margin:0 0 8px;max-width:760px;"><span style="font-weight:500;">Personality:</span> {{ r.pers }}</p><p style="margin:0 0 8px;max-width:760px;"><span style="font-weight:500;">Tasks:</span> {{ r.tasks }}</p><p style="margin:0;max-width:760px;"><span style="font-weight:500;">Portrait brief:</span> {{ r.portrait }}</p></div></details>
+            <span data-placeholder-link="true" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#FFFFFF;font-size:var(--cta-font,16px);font-weight:400;border-radius:var(--cta-radius,8px);margin-top:auto;justify-content:center;box-sizing:border-box;">Contact</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:24px 0 8px;font-size:var(--web-small-size);font-weight:300;line-height:1.6;max-width:760px;">Luxembourg, multilingual Belgian areas and Switzerland are assigned by the customer&#8217;s language and location. Ukraine and other European markets are followed centrally until a separate commercial activation is approved. If the assigned contact is unavailable, our central team handles the enquiry.</p>
+      <p style="margin:0 0 32px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#B07818;max-width:760px;text-transform:uppercase;">PROPOSED STRUCTURE. THE NAMES ARE FICTIONAL CONCEPTS, NOT VERIFIED EMPLOYEES, EXCEPT SCOTT EDWARDS (UK), A REAL TEAM MEMBER. PORTRAITS ARE VISUAL CHARACTER REFERENCES, NOT OFFICIAL STAFF PHOTOGRAPHS. EMAIL ADDRESSES TO BE ASSIGNED. TO CONFIRM</p>
+      <details style="border-top:1px solid #D9D9D9;padding-top:16px;"><summary style="cursor:pointer;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">Previous version: nine regions</summary><div style="padding-top:24px;">      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px;">
+        <sc-for list="{{ oldRegions }}" as="r" hint-placeholder-count="9">
+          <div style="background:{{ r.bg }};padding:28px;display:flex;flex-direction:column;border-radius:12px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#8A8A89;margin-bottom:8px;text-transform:uppercase;">{{ r.n }} &#183; {{ r.name }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);margin-bottom:14px;">{{ r.title }}</div>
+            <p style="margin:0 0 10px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);max-width:760px;">Coverage: {{ r.coverage }}</p>
+            <p style="margin:0 0 14px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);max-width:760px;">{{ r.languages }}</p>
+            <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;line-height:1.65;flex:1;max-width:760px;">{{ r.blurb }}</p>
+            <span data-placeholder-link="true" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#FFFFFF;font-size:var(--cta-font,16px);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Contact Regional Account Manager</span>
+          </div>
+        </sc-for>
+      </div></div></details>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:32px;">
+      <h3 style="margin:0 0 12px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);">One Contact. Complete Coordination.</h3>
+      <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:640px;">Your Regional Account Manager remains your primary commercial contact throughout the customer journey.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+          <div style="background:#F4F4F4;padding:24px;border-radius:12px;"><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#8A8A89;margin-bottom:10px;">{{ s.n }}</div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">{{ s.title }}</div><p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:1.6;max-width:760px;">{{ s.text }}</p></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:24px;">
+      <div style="background:#F3F2F1;padding:32px;border-radius:12px;">
+        <h3 style="margin:0 0 12px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Need Technical Product Advice?</h3>
+        <p style="margin:0 0 12px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">Our Product Experts provide specialist knowledge about product specifications, system compatibility, technical applications and installation requirements.</p>
+        <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">Your Regional Account Manager can connect you with the relevant specialist.</p>
+        <a href="STROHM.ENERGY - COMPANY - Who - Product Experts - EN.dc.html" style="display:inline-flex;align-items:center;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Find a Product Expert</a>
+      </div>
+      <div style="background:#F3F2F1;padding:32px;border-radius:12px;">
+        <h3 style="margin:0 0 12px;font-size:var(--web-h2card-size);font-weight:var(--web-h2card-weight);line-height:var(--web-h2card-lh);">Not Sure Who to Contact?</h3>
+        <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">Tell us where your business is located and what you need assistance with. We will direct your enquiry to the appropriate regional contact.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+          <a href="#find" style="display:inline-flex;align-items:center;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Find My Regional Contact</a>
+          <span data-placeholder-link="true" style="display:inline-flex;align-items:center;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border:1px solid #303030;color:#303030;font-size:var(--cta-font,16px);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">General Enquiry</span>
+        </div>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:1.6;max-width:760px;">Contact our central team if your enquiry involves multiple countries or is not linked to a specific region.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 120px;box-sizing:border-box;">
+    <details style="border-top:1px solid #D9D9D9;padding-top:16px;">
+      <summary style="cursor:pointer;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;">Role description: Regional Account Manager (internal draft)</summary>
+      <div style="padding-top:28px;max-width:760px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:#B07818;margin-bottom:20px;letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">INTERNAL DRAFT, NOT FOR PUBLIC DISPLAY. TO CONFIRM</div>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A89;margin-bottom:8px;">Position</div>
+        <p style="margin:0 0 12px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">The Regional Account Manager is responsible for customer account management, webshop assistance, commercial administration and order coordination within an assigned European territory.</p>
+        <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">The role provides customers, installers, distributors and professional partners with a consistent point of contact throughout the commercial process.</p>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A89;margin-bottom:8px;">Main Responsibilities</div>
+        <ul style="margin:0 0 28px;padding-left:20px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);">
+          <sc-for list="{{ duties }}" as="d" hint-placeholder-count="10"><li>{{ d }}</li></sc-for>
+        </ul>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A89;margin-bottom:8px;">Technical Responsibilities</div>
+        <p style="margin:0 0 12px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">Regional Account Managers are expected to understand the STRØHM.ENERGY product portfolio at a general commercial level.</p>
+        <p style="margin:0 0 12px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">Detailed technical consultation, product engineering, system compatibility assessments and specialist application questions are handled by the relevant Product Experts.</p>
+        <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">The Account Manager remains responsible for communicating the outcome to the customer and ensuring the enquiry is properly closed.</p>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A89;margin-bottom:8px;">Required Competencies</div>
+        <p style="margin:0 0 12px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">Professional communication, account management, webshop operations, CRM and ERP experience, organisational discipline and strong commercial administration skills.</p>
+        <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">Fluency in the relevant regional language or languages is required.</p>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A89;margin-bottom:8px;">Reporting</div>
+        <p style="margin:0 0 12px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">Reports to the European Commercial Operations Manager.</p>
+        <p style="margin:0 0 28px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">Works closely with Product Experts, Logistics, Finance and Customer Support.</p>
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#8A8A89;margin-bottom:8px;">Core Principle</div>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);max-width:760px;">One accountable contact for every customer. Specialist expertise whenever required.</p>
+      </div>
+    </details>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const REGIONS = [
+  { n: "01", name: "Benelux Dutch", title: "Netherlands & Flanders", coverage: "Netherlands and Dutch-speaking Belgium.", languages: "Languages: Dutch, English.", blurb: "Your dedicated contact for webshop accounts, commercial enquiries, quotations and order follow-up in the Dutch-speaking market.", short: "Webshop support, quotations, account management and order follow-up." },
+  { n: "02", name: "Francophone Europe", title: "France & French-Speaking Markets", coverage: "France, Wallonia, French-speaking Brussels, French-speaking Luxembourg, French-speaking Switzerland and Monaco.", languages: "Languages: French, English.", blurb: "Your dedicated contact for webshop assistance, customer administration, quotations and commercial coordination in French-speaking markets." },
+  { n: "03", name: "DACH", title: "Germany, Austria & Switzerland", coverage: "Germany, Austria, German-speaking Switzerland and Liechtenstein.", languages: "Languages: German, English.", blurb: "Your dedicated contact for webshop orders, installer and distributor accounts, quotations and commercial follow-up across the German-speaking market." },
+  { n: "04", name: "United Kingdom & Ireland", title: "UK & Ireland", coverage: "England, Scotland, Wales, Northern Ireland and Ireland.", languages: "Language: English.", blurb: "Your dedicated contact for webshop accounts, quotations, orders, delivery enquiries and commercial documentation for UK and Irish customers." },
+  { n: "05", name: "Iberia", title: "Spain & Portugal", coverage: "Spain, Portugal and Andorra.", languages: "Languages: Spanish, Portuguese, English.", blurb: "Your dedicated contact for commercial enquiries, webshop assistance, quotations and order coordination throughout the Iberian market." },
+  { n: "06", name: "Italy & Mediterranean", title: "Italy & Mediterranean Markets", coverage: "Italy, Italian-speaking Switzerland, San Marino, Vatican City and Malta.", languages: "Languages: Italian, English.", blurb: "Your dedicated contact for webshop accounts, quotations, order processing, commercial enquiries and customer support." },
+  { n: "07", name: "Nordics", title: "Northern Europe", coverage: "Sweden, Denmark, Norway, Finland and Iceland.", languages: "Languages: English and relevant Nordic languages.", blurb: "Your dedicated contact for professional webshop customers, quotations, orders, distributor enquiries and commercial coordination." },
+  { n: "08", name: "Central & Eastern Europe North", title: "CEE North", coverage: "Poland, Czechia, Slovakia, Estonia, Latvia, Lithuania and Ukraine.", languages: "Languages: English and relevant local languages.", blurb: "Your dedicated contact for webshop accounts, customer enquiries, quotations, ordering and regional commercial administration." },
+  { n: "09", name: "Central & Eastern Europe South", title: "CEE South", coverage: "Hungary, Romania, Bulgaria, Slovenia, Croatia, Serbia, Bosnia and Herzegovina, Montenegro, Kosovo, Albania, North Macedonia, Greece, Cyprus and Moldova.", languages: "Languages: English and relevant local languages.", blurb: "Your dedicated contact for webshop account management, quotations, commercial coordination, order follow-up and regional customer assistance." },
+];
+const MAP = {
+  "Netherlands": 0, "Belgium (Dutch-speaking)": 0,
+  "France": 1, "Belgium (French-speaking)": 1, "Luxembourg (French-speaking)": 1, "Switzerland (French-speaking)": 1, "Monaco": 1,
+  "Germany": 2, "Austria": 2, "Switzerland (German-speaking)": 2, "Liechtenstein": 2,
+  "United Kingdom": 3, "Ireland": 3,
+  "Spain": 4, "Portugal": 4, "Andorra": 4,
+  "Italy": 5, "Switzerland (Italian-speaking)": 5, "San Marino": 5, "Vatican City": 5, "Malta": 5,
+  "Sweden": 6, "Denmark": 6, "Norway": 6, "Finland": 6, "Iceland": 6,
+  "Poland": 7, "Czechia": 7, "Slovakia": 7, "Estonia": 7, "Latvia": 7, "Lithuania": 7, "Ukraine": 7,
+  "Hungary": 8, "Romania": 8, "Bulgaria": 8, "Slovenia": 8, "Croatia": 8, "Serbia": 8, "Bosnia and Herzegovina": 8, "Montenegro": 8, "Kosovo": 8, "Albania": 8, "North Macedonia": 8, "Greece": 8, "Cyprus": 8, "Moldova": 8,
+};
+const REGIONS12 = [{"n":"01","name":"Benelux Dutch","countries":"Netherlands, Flanders","languages":"Dutch, English","person":"Sophie van der Meer","age":"38","plang":"Dutch, English","history":"Dutch B2B commerce and technical wholesale. 12 years of experience with professional webshops, installers and business customers.","pers":"Practical, friendly, organised and direct.","tasks":"Customer registrations, quotations, price requests, order follow-up and installer accounts.","portrait":"Shoulder-length dark blonde hair, black jacket, white blouse, natural smile, neutral light grey studio background."},{"n":"02","name":"Francophone Europe","countries":"France, Wallonia, French-speaking Brussels, Monaco, French-speaking customers in Luxembourg and Switzerland","languages":"French, English","person":"Julien Moreau","age":"42","plang":"French, English","history":"French technical distribution and commercial inside sales. 15 years of experience with distributors, quotations and project customers.","pers":"Diplomatic, careful and communicative.","tasks":"French-language customer guidance, commercial documentation, quotations, account follow-up and coordination with technical specialists.","portrait":"Dark wavy hair, short beard, navy blazer, white shirt, warm but professional appearance."},{"n":"03","name":"Germany","countries":"Germany","languages":"German, English","person":"Lukas Schneider","age":"45","plang":"German, English","history":"German electrical wholesale, commercial project administration and ERP-based order management. 17 years of experience.","pers":"Precise, reliable, methodical and results-oriented.","tasks":"German customer accounts, quotations, order documentation, commercial follow-up and alignment of product-specific questions.","portrait":"Short light brown hair, fine glasses, dark blazer and white shirt. Neutral expression with a subtle smile."},{"n":"04","name":"Alpine Region","countries":"Austria, Switzerland (German and Italian), Liechtenstein","languages":"German, English, Italian preferred","person":"Elena Bianchi","age":"40","plang":"German, Italian, English","history":"Swiss B2B distribution and international customer administration. 13 years of experience with business deliveries and cross-border order processes.","pers":"Calm, multilingual, structured and customer-focused.","tasks":"Alpine customer accounts, quotations, international order follow-up, delivery documentation and alignment with Finance and Logistics.","portrait":"Long dark brown hair, beige blazer, white blouse, restrained smile and neutral studio lighting."},{"n":"05","name":"UK & Ireland","countries":"United Kingdom, Ireland","languages":"English","person":"Scott Edwards","age":"25–29 years of experience","plang":"English","history":"Multidisciplinary sales experience, 25–29 years (confirmed). Previous employers, qualifications and career history to be confirmed.","pers":"Friendly and approachable.","tasks":"UK EPC field sales: visits EPC companies and installers, builds personal relationships, introduces products and collects UK market feedback, supported by UK Online Sales Support.","portrait":"Official portrait pending."},{"n":"06","name":"Iberia","countries":"Spain, Portugal, Andorra","languages":"Spanish, Portuguese, English","person":"Carlos Mendes","age":"39","plang":"Spanish, Portuguese, English","history":"Iberian commercial distribution, installer networks and online B2B order processing. 13 years of experience.","pers":"Energetic, personal, proactive and flexible.","tasks":"Multilingual account guidance, webshop conversion, open quotations, customer relations and delivery follow-up.","portrait":"Dark wavy hair, neat short beard, anthracite blazer, light shirt, natural smile."},{"n":"07","name":"Italy & Mediterranean","countries":"Italy, Malta, San Marino, Vatican City","languages":"Italian, English","person":"Giulia Rossi","age":"37","plang":"Italian, English","history":"Italian electrical distribution, commercial customer service and order administration. 11 years of experience.","pers":"Communicative, attentive, accurate and proactive.","tasks":"Italian webshop accounts, quotations, customer follow-up, administrative questions and coordination of commercial complaints.","portrait":"Dark brown shoulder-length hair, black blazer, white blouse, modest jewellery, neutral light grey background."},{"n":"08","name":"Nordics","countries":"Sweden, Denmark, Norway, Finland, Iceland","languages":"English, relevant local languages","person":"Erik Lundqvist","age":"41","plang":"Swedish, English, Danish, Norwegian","history":"Scandinavian B2B e-commerce, sustainable technology and professional distribution. 14 years of experience.","pers":"Analytical, independent, transparent and service-oriented.","tasks":"Northern European accounts, order support, delivery arrangements, returning business customers and coordination of Finnish language support.","portrait":"Short blond hair, dark blue blazer, light blue shirt, calm appearance and soft studio lighting."},{"n":"09","name":"Poland & Baltics","countries":"Poland, Lithuania, Latvia, Estonia","languages":"Polish, English","person":"Katarzyna Nowak","age":"36","plang":"Polish, English, basic Lithuanian","history":"Polish business distribution, operational customer service and international order administration. 10 years of experience.","pers":"Quick, careful, independent and committed.","tasks":"Accounts in Poland and the Baltic states, commercial enquiries, quotations, order processing and regional customer communication with additional local language support.","portrait":"Medium-length blonde hair, black jacket, light blouse, open gaze, business studio shot."},{"n":"10","name":"Central Europe","countries":"Czechia, Slovakia, Hungary","languages":"Czech or Slovak, English, Hungarian preferred","person":"Marek Svoboda","age":"44","plang":"Czech, Slovak, English","history":"Central European electrical trade, ERP processes and business order administration. 17 years of experience.","pers":"Methodical, discreet, accurate and solution-oriented.","tasks":"Accounts, quotation checks, business orders, delivery coordination and support through Hungarian-speaking colleagues where needed.","portrait":"Short brown hair, rectangular glasses, dark blazer, light blue shirt, composed business posture."},{"n":"11","name":"Southeastern Europe","countries":"Romania, Bulgaria, Greece, Cyprus, Moldova","languages":"English and regional languages","person":"Andreea Popescu","age":"38","plang":"Romanian, English, basic French","history":"Southeastern European trading activities, customer coordination and international B2B distribution. 12 years of experience.","pers":"Empathetic, flexible, persistent and structured.","tasks":"Regional customer accounts, order coordination, commercial follow-up, multilingual communication and escalations on delivery problems.","portrait":"Dark medium-length hair, black blazer, light blouse, warm smile and a sober studio background."},{"n":"12","name":"Adriatic & Balkans","countries":"Slovenia, Croatia, Serbia, Bosnia and Herzegovina, Montenegro, Kosovo, Albania, North Macedonia","languages":"English and relevant local languages","person":"Nikola Petrović","age":"40","plang":"Croatian, Serbian, Bosnian, English","history":"Regional technical trade, B2B customer relations and export-oriented sales administration. 14 years of experience.","pers":"Reliable, relationship-oriented, practical and persistent.","tasks":"Webshop accounts, quotations, commercial order follow-up, export coordination and alignment with local language support.","portrait":"Short dark hair, neat beard, navy blazer, white shirt, calm professional posture."}];
+const MAP12 = {"Netherlands":0,"Belgium (Dutch-speaking)":0,"France":1,"Belgium (French-speaking)":1,"Monaco":1,"Luxembourg":1,"Switzerland (French-speaking)":1,"Germany":2,"Austria":3,"Switzerland (German-speaking)":3,"Switzerland (Italian-speaking)":3,"Liechtenstein":3,"United Kingdom":4,"Ireland":4,"Spain":5,"Portugal":5,"Andorra":5,"Italy":6,"Malta":6,"San Marino":6,"Vatican City":6,"Sweden":7,"Denmark":7,"Norway":7,"Finland":7,"Iceland":7,"Poland":8,"Lithuania":8,"Latvia":8,"Estonia":8,"Czechia":9,"Slovakia":9,"Hungary":9,"Romania":10,"Bulgaria":10,"Greece":10,"Cyprus":10,"Moldova":10,"Slovenia":11,"Croatia":11,"Serbia":11,"Bosnia and Herzegovina":11,"Montenegro":11,"Kosovo":11,"Albania":11,"North Macedonia":11,"Ukraine":-1};
+const CUSTOMER_TEXT = "Our Regional Account Managers assist with webshop registration, account management, quotations, orders, delivery coordination and business enquiries. For specialist technical advice, they work directly with our Product Experts.";
+class Component extends DCLogic {
+  state = { country: "Netherlands" };
+  renderVals() {
+    const idx = MAP[this.state.country] ?? 0;
+    const idx12 = MAP12[this.state.country];
+    const sel12 = idx12 >= 0 ? REGIONS12[idx12] : null;
+    const sel = REGIONS[idx];
+    return {
+      country: this.state.country,
+      onCountry: (e) => this.setState({ country: e.target.value }),
+      countries: Object.keys(MAP12).sort((a, b) => a.localeCompare(b)).map((name) => ({ name })),
+      sel: sel12 ? { title: sel12.name, languages: sel12.languages, blurb: CUSTOMER_TEXT } : { title: "Central team", languages: "English", blurb: "This market is followed centrally until a separate commercial activation is approved. Contact our central team." },
+      oldRegions: REGIONS.map((r, i) => ({ ...r, bg: "#F3F2F1" })),
+      regions: REGIONS12.map((r, i) => ({ ...r, bg: i === idx12 ? "#E3E1DB" : "#F3F2F1", slot: "ram-region-" + r.n, photo: "assets/team/regional-" + r.n + ".png", hasPhoto: r.n !== "05", tag: r.n === "05" ? "PORTRAIT PENDING" : "FICTIONAL CONCEPT", sheetLabel: r.n === "05" ? "Profile details" : "Character sheet (fictional)" })),
+      help: [
+        { title: "Webshop Assistance", text: "Help with account registration, business accounts, ordering, product availability and webshop enquiries." },
+        { title: "Quotations and Orders", text: "Assistance with quotation requests, order confirmation, commercial documentation and order follow-up." },
+        { title: "Account Management", text: "A consistent regional contact for customer information, account administration, business relationships and ongoing enquiries." },
+        { title: "Delivery Coordination", text: "Information about order processing, shipment status, estimated delivery dates and delivery-related questions." },
+        { title: "Finance and Administration", text: "Assistance with invoice enquiries, payment status and commercial documentation, in coordination with our finance department." },
+        { title: "Technical Coordination", text: "Direct referral to our Product Experts for technical specifications, compatibility, installation requirements and specialist guidance." },
+      ],
+      steps: [
+        { n: "01", title: "Enquiry", text: "Contact us with a product, webshop or business enquiry." },
+        { n: "02", title: "Assistance", text: "Your regional contact helps with account information, quotations, ordering and administrative questions." },
+        { n: "03", title: "Specialist Support", text: "When technical expertise is required, your Account Manager involves the appropriate Product Expert." },
+        { n: "04", title: "Order Follow-Up", text: "Receive coordinated information about your quotation, order status, payment documentation and delivery." },
+        { n: "05", title: "Continued Support", text: "Your regional contact remains available for future orders, account enquiries and ongoing business requirements." },
+      ],
+      duties: [
+        "Assist customers with webshop registration, accounts and ordering.",
+        "Manage customer relationships and commercial correspondence.",
+        "Prepare and follow up quotations and sales orders.",
+        "Monitor orders, payments, delivery progress and outstanding actions.",
+        "Coordinate technical enquiries with the relevant STRØHM.ENERGY Product Experts.",
+        "Maintain accurate customer records in the CRM.",
+        "Support installers, distributors and professional customers.",
+        "Coordinate issue resolution with Finance, Logistics and Technical Support.",
+        "Monitor customer satisfaction and repeat business.",
+        "Report regional webshop performance, enquiries, conversion and account activity.",
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>GLOW Tender and Custom Design | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } input,select,textarea { font-family:inherit; } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="GlowNav" active="tender" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="GLOW" rgb="252,222,21" eyebrow="Tender &amp; custom design" title="Submit your project specification. We assess it and propose a solution." intro="Most GLOW public-lighting projects are procured through a tender or RFP." slot="glow-tender-and-custom-design-hero" shot="GLOW · Tender and Custom Design · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;"><a href="GLOW - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">GLOW</a> &#8250; <span style="color:var(--color-text-primary);">TENDER &amp; CUSTOM DESIGN</span></div>
+    <p style="margin:0 0 44px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Send us the requirement and we assess technical feasibility before proposing a configuration or a custom design — subject to an agreed scope.</p>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 56px;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;">
+      <h2 style="margin:0 0 24px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">How a submission <span style="color:#8E8E8E;">is handled</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;--cg:20px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="6">
+          <div><div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);margin-bottom:8px;letter-spacing:var(--web-eyebrow-ls);">{{ s.n }}</div><div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">{{ s.t }}</div><div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ s.d }}</div></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 56px;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;">
+      <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">What's <span style="color:#8E8E8E;">in scope</span></h2>
+      <p style="margin:0 0 20px;max-width:700px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Depending on the project, our response can include:</p>
+      <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px;--cg:32px;">
+        <sc-for list="{{ scope }}" as="s" hint-placeholder-count="6">
+          <div style="font-size:var(--web-small-size);font-weight:300;padding-left:16px;border-left:2px solid #B0A020;">{{ s }}</div>
+        </sc-for>
+      </div>
+      <p style="margin:24px 0 0;font-size:var(--web-small-size);font-weight:300;color:var(--color-grey-70);max-width:700px;line-height:var(--web-small-lh);">Exact scope, deliverables and responsibilities are confirmed per project and set out in the resulting agreement.</p>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 56px;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;">
+      <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Submit a tender or <span style="color:#8E8E8E;">project specification</span></h2>
+      <p style="margin:0 0 28px;max-width:700px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Provide as much of the following as you have. Missing information is not a blocker — we follow up on what's needed.</p>
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1px solid var(--color-divider);border-radius:12px;padding:32px;background:var(--color-card-glow);">
+          <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">Submission received.</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">We will review it and get in touch to confirm how to proceed.</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onSubmit }}" data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;--cg:16px;">
+          <sc-for list="{{ fields }}" as="f" hint-placeholder-count="12">
+            <div style="{{ f.span }}">
+              <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">{{ f.label }}</label>
+              <sc-if value="{{ f.isTextarea }}" hint-placeholder-val="{{ false }}">
+                <textarea rows="3" style="width:100%;box-sizing:border-box;padding:12px;border:1px solid #BBBBBB;border-radius:8px;font-size:var(--web-input-size);resize:vertical;font-weight:var(--web-input-weight);"></textarea>
+              </sc-if>
+              <sc-if value="{{ f.isFile }}" hint-placeholder-val="{{ false }}">
+                <input type="file" multiple="{{ true }}" style="width:100%;box-sizing:border-box;padding:10px;border:1px solid #BBBBBB;border-radius:8px;font-size:13px;background:#FFFFFF;" />
+              </sc-if>
+              <sc-if value="{{ f.isPlain }}" hint-placeholder-val="{{ true }}">
+                <input type="{{ f.type }}" required="{{ f.required }}" style="width:100%;box-sizing:border-box;height:44px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-size:var(--web-input-size);font-weight:var(--web-input-weight);" />
+              </sc-if>
+            </div>
+          </sc-for>
+          <div style="grid-column:1/-1;margin-top:8px;">
+            <button style-hover="background:#5F5E5E;color:#F4F4F4;" type="submit" style="cursor:pointer;height:var(--cta-height);padding:0 var(--cta-pad-x);background:#4F4F4E;color:#F4F4F4;border:none;border-radius:var(--cta-radius);font-size:var(--cta-font);font-family:inherit;">Submit tender or specification</button>
+          </div>
+        </form>
+      </sc-if>
+    </div>
+  </section>
+
+  <dc-import name="ContentSections" brand="GLOW" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="GLOW" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="GLOW" accent="var(--color-brand-glow)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const STEPS = [
+  { n: "01", t: "Submit requirements", d: "Send your project specification through this form or as a tender document." },
+  { n: "02", t: "Technical assessment", d: "We assess technical feasibility against the requirement." },
+  { n: "03", t: "Proposed solution", d: "We propose a module configuration or a custom design direction." },
+  { n: "04", t: "Design and validation", d: "For custom work, the design is developed and validated against the requirement." },
+  { n: "05", t: "Commercial proposal", d: "Pricing, delivery schedule and terms are set out for review." },
+  { n: "06", t: "Agreed delivery scope", d: "Manufacturing and delivery proceed against the agreed scope." },
+];
+const SCOPE = [
+  "Selecting from existing modules, inserts and heads",
+  "Combining modules into a project-specific configuration",
+  "Lighting calculations for the site layout",
+  "Original luminaire design outside the existing range",
+  "Manufacturing to a custom specification",
+  "Installation coordination through EPC partners",
+];
+const FIELDS = [
+  { label: "Application & site location", type: "text" },
+  { label: "Quantities & delivery schedule", type: "text" },
+  { label: "Dimensions / mounting constraints", type: "text" },
+  { label: "Light output, power & efficacy targets", type: "text" },
+  { label: "Colour temperature / CRI / glare requirements", type: "text" },
+  { label: "Dimming / controls requirements", type: "text" },
+  { label: "IP rating, materials, finishes", type: "text" },
+  { label: "Standards & certificates required", type: "text" },
+  { label: "Budget & commercial terms", type: "text" },
+  { label: "Submission deadline", type: "date" },
+  { label: "Photometric files, drawings, renders or lighting calculations", isFile: true, span: "grid-column:1/-1;" },
+  { label: "Anything else we should know", isTextarea: true, span: "grid-column:1/-1;" },
+];
+class Component extends DCLogic {
+  state = { submitted: false };
+  renderVals() {
+    return {
+      steps: STEPS,
+      scope: SCOPE,
+      fields: FIELDS.map((f) => ({
+        label: f.label, span: f.span || "",
+        isTextarea: !!f.isTextarea, isFile: !!f.isFile,
+        isPlain: !f.isTextarea && !f.isFile,
+        type: f.type || "text", required: false,
+      })),
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      onSubmit: (e) => { e.preventDefault(); this.setState({ submitted: true }); },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

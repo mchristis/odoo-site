@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>GLOW Responsibility | STRØHM.ENERGY</title>
+<meta name="robots" content="noindex">
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="GlowNav" active="responsibility" hint-size="100%,49px"></dc-import>
+  <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:16px var(--web-side);box-sizing:border-box;font-size:12px;font-weight:700;letter-spacing:0.08em;color:#B07818;border-bottom:1px solid var(--color-divider);">DRAFT. Temporary text written without a GLOW source. Standards are named as applicable, not as held. Replace before publishing.</div>
+  <dc-import name="BrandResponsibility" brand="GLOW" unit="solar light" intro="{{ intro }}" durability="{{ durability }}" materials="{{ materials }}" certs="{{ certs }}" packaging="{{ packaging }}" eol="{{ eol }}" hint-size="100%,2400px"></dc-import>
+  <dc-import name="ContentSections" brand="GLOW" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="GLOW" photo-slot-id="glow-overview-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="GLOW" accent="var(--color-brand-glow)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const TC = (w) => `[TO CONFIRM: ${w}]`;
+    return {
+      intro: "Tested luminaires, safe batteries, lighting that respects the night, and a documented end-of-life route for every part. Every claim on this page is linked to a document.",
+      durability: [
+        { test: "Road and street luminaires", standard: "EN 60598-2-3 (applicable)", result: TC("result per head") },
+        { test: "Lighting classes for roads and paths", standard: "EN 13201 (applicable, design per project)", result: TC("class per project") },
+        { test: "Battery safety", standard: "IEC 62133 (applicable)", result: TC("result per battery module") },
+        { test: "Ingress and impact protection", standard: "IP and IK ratings (IEC 60529, IEC 62262)", result: TC("IP/IK per module") },
+      ],
+      materials: [
+        { label: "Batteries", headline: "Batteries declared and taken back.", value: "LiFePO₄ and NiMH batteries fall under the EU Battery Regulation (EU) 2023/1542: labelling, collection and recycling. " + TC("battery passport and take-back scheme"), dir: "GLOW_RESPONSIBILITY_MATERIALS_BATTERY_01 · battery module in the frame · 16:10 · placeholder (P2)" },
+        { label: "Frame", headline: "Frame and modules made to be separated.", value: TC("frame material, coating and separation of modules at end of life"), dir: "GLOW_RESPONSIBILITY_MATERIALS_FRAME_01 · open module frame detail · 16:10 · placeholder (P2)" },
+      ],
+      certs: [
+        { code: "CE", label: "CE marking under the applicable directives " + TC("per configuration") },
+        { code: "ISO 9001", label: "Quality management " + TC("held for GLOW production") },
+        { code: "ISO 14001", label: "Environmental management " + TC("held for GLOW production") },
+      ],
+      packaging: TC("packaging materials and pallet take-back"),
+      eol: ["Light in use", "Battery replaced and returned under the Battery Regulation", "Light removed by the maintenance partner", "Separate collection under the WEEE Directive 2012/19/EU", "Approved treatment and material recovery", "Closed ownership record"],
+    };
+  }
+}
+</script>
+</body>
+</html>

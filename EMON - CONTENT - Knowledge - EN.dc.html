@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>EMON Knowledge | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style> body { margin:0; } </style>
+</helmet>
+<dc-import name="ContentArchive" brand="EMON" section="knowledge" lead="{{ lead }}" lead-title="Installer checklist" lead-intro="Five questions to ask before commissioning." list2="{{ list2 }}" list2-title="Read more" list2-intro="" hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const EMON_LEAD = [{"title":"01","text":"Which external services does the device use?"},{"title":"02","text":"Who can change settings or issue remote commands?"},{"title":"03","text":"Which functions remain available without internet?"},{"title":"04","text":"How are firmware updates authenticated and recorded?"},{"title":"05","text":"Can access permissions and event logs be reviewed?"}];
+const EMON_LIST = [{"title":"Security Explained","text":"The problem, four scenarios and how EMON addresses the risks.","link":"Read on Security Explained","href":"EMON - SYSTEM - Security Explained - EN.dc.html#sec-5"}];
+class Component extends DCLogic { renderVals() { return { lead: EMON_LEAD, list2: EMON_LIST }; } }
+</script>
+</body>
+</html>

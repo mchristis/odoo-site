@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>SHELTR Overview | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style> @media (max-width:720px){ .hero-card{width:calc(100% - 40px) !important;margin-top:20px !important;min-height:calc((100vw - 40px) * 1.25) !important;align-items:flex-end !important;} .hero-card-panel{width:100% !important;align-self:auto !important;padding:28px 20px !important;} } 
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  select:focus { outline:none; border-color:var(--color-brand-sheltr); }
+  .sh-route:hover { border-color:var(--color-brand-sheltr) !important; }
+  .sh-route:hover .sh-route-t { color:var(--color-text-primary); }
+  .sh-fam:hover { border-color:var(--color-brand-sheltr) !important; }
+  .sh-fam:hover .sh-fam-t { color:var(--color-text-primary); }
+  .sh-util:hover { border-color:var(--color-brand-sheltr) !important; }
+  .sh-util:hover .sh-util-t { color:var(--color-text-primary); }
+  .sh-seg:hover { color:var(--color-text-primary) !important; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="SheltrNav" active="" hint-size="100%,57px"></dc-import>
+  <!-- 01. HERO -->
+  <dc-import name="BrandHero2" brand="SHELTR" rgb="91,101,146" dark="#323A5E" title="Protect the equipment behind renewable energy." intro="SHELTR creates modular outdoor protection for inverters, batteries, electrical equipment, EV charging systems, heat pumps, ventilation units and pumps." items="{{ brandSix }}" hint-size="100%,760px"></dc-import>
+  <!-- DEPTH-1261: shared range block (ANDO layout); former block archived in _ARCHIVE/DEPTH-1261 range block/ -->
+  <dc-import name="RangeBlock" hide-tool="1" brand="SHELTR" hint-size="100%,900px"></dc-import>
+  <!-- KALK CHECK (DEPTH-1354) -->
+  <section id="kalk-check" data-screen-label="KALK check" data-stack="1" style="position:relative;width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:72px auto 0;min-height:max(380px,calc(min(100vw - 2 * var(--web-side),1312px) / 3.2));border-radius:24px;overflow:hidden;background:#4F4F4E;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);box-sizing:border-box;">
+    
+    <div style="grid-column:span 1;background:#FFFFFF;padding:clamp(24px,2.6vw,36px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:12px;">
+      <div style="display:flex;align-items:center;gap:8px;font-size:15px;color:#252525;">SHELTR by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:20px;width:auto;display:block;filter:brightness(0);"></div>
+      <h2 style="margin:0;font-size:clamp(28px,2.6vw,38px);font-weight:200;line-height:1.1;letter-spacing:-0.5px;color:#252525;text-wrap:balance;">Plan your SHELTR project</h2>
+      
+      <p style="margin:0;font-size:15px;font-weight:300;line-height:1.45;color:#5F5E5E;text-wrap:pretty;">Name your project, then choose the SHELTR enclosures from a list or put dots on the map where each one goes. KALK makes the product list. Your local distributor sends an offer with price and lead time.</p>
+      <a href="KALK - Enclosure SHELTR - EN.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:8px;background:#5B6592;color:#252525;font-size:16px;text-decoration:none;" style-hover="background:#252525;color:#FFFFFF;">Start the SHELTR project check &#8250;</a>
+      <a href="KERN - SYSTEM - Overview - EN.dc.html" style="align-self:flex-start;font-size:14px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #BBBBBB;padding-bottom:2px;" style-hover="color:#252525;border-bottom-color:#252525;">Professional project team? Deliver with KERN &#8250;</a>
+      
+    </div>
+    <div style="grid-column:span 1;position:relative;min-height:240px;"><img src="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=3.7180,51.0670,3.7260,51.0700&bboxSR=4326&imageSR=3857&size=1600,760&format=jpg&f=image" alt="Satellite view" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+  
+  </section>
+  <!-- WHO IT IS FOR (DEPTH-1329) -->
+  <dc-import name="AudienceTiles" brand="SHELTR" rgb="91,101,146" hint-size="100%,640px"></dc-import>
+  <!-- DEPTH-1265: BRAND with EMON block under the range -->
+  <dc-import name="EmonBlock" brand="SHELTR" hint-size="100%,860px"></dc-import>
+  <dc-import name="PlanningOperation" brand="SHELTR" hint-size="100%,760px"></dc-import>
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:32px var(--web-side) 0;box-sizing:border-box;"><p style="margin:0 0 16px;max-width:760px;font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);color:#4F4F4E;"></p><p style="margin:0 0 16px;margin:12px 0 0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#4F4F4E;text-wrap:pretty;max-width:760px;">Select an open CARA, enclosed KUBO or acoustic HUSH configuration. The selector checks the equipment, location, airflow, weight, clearances and service requirements before recommending a solution.</p><div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:0;"><a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#selector" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;white-space:nowrap;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Find your SHELTR</a><a href="#families" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;white-space:nowrap;background:#FFFFFF;color:#4F4F4E;border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Explore the three families</a></div></section>
+  <section id="selector" style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Find your SHELTR</div>
+      <h2 style="margin:0 0 12px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Find the structure <span style="color:#8E8E8E;">that fits the equipment.</span></h2>
+      <p style="margin:0 0 32px;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Start in either of two ways. Both routes check the same technical requirements before producing a recommendation.</p>
+      <div style="display:inline-flex;background:var(--color-surface-card);margin-bottom:24px;border-radius:12px;">
+        <sc-for list="{{ selectorTabs }}" as="t" hint-placeholder-count="2">
+          <button class="sh-seg" onClick="{{ t.onClick }}" style="cursor:pointer;font-family:inherit;border:none;background:{{ t.bg }};color:{{ t.color }};font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;padding:12px 22px;border-radius:8px;">{{ t.label }}</button>
+        </sc-for>
+      </div>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px;align-items:start;">
+        <div style="background:var(--color-surface-card);padding:32px;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:8px;">{{ activeTab.heading }}</div>
+          <p style="margin:0 0 22px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">{{ activeTab.sub }}</p>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <sc-for list="{{ activeTab.fields }}" as="f" hint-placeholder-count="3">
+              <div>
+                <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">{{ f.label }}</label>
+                <select style="width:100%;height:44px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);background:#FFFFFF;border-radius:8px;font-weight:var(--web-input-weight);">
+                  <sc-for list="{{ f.options }}" as="o" hint-placeholder-count="3"><option>{{ o }}</option></sc-for>
+                </select>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;">
+            <a href="#compatibility" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-sheltr);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Start the selector</a>
+            <a href="#engineering" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;border:1px solid var(--color-divider);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Upload a datasheet</a>
+          </div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid var(--color-brand-sheltr);padding:28px;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;margin-bottom:14px;">The selector produces</div>
+          <div style="display:flex;flex-direction:column;gap:11px;">
+            <sc-for list="{{ selectorOutputs }}" as="o" hint-placeholder-count="4"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);display:flex;gap:8px;align-items:baseline;"><span style="color:var(--color-text-primary);font-size:9px;">&#9679;</span>{{ o }}</span></sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <dc-import name="AndoPattern" brand="SHELTR" items="facts" hint-size="100%,600px"></dc-import>
+  
+  <!-- 02. AUDIENCE ROUTES -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;--cg:20px;">
+      <sc-for list="{{ routes }}" as="r" hint-placeholder-count="2">
+        <a class="sh-route" href="{{ r.href }}" style="display:flex;flex-direction:column;background:#F4F4F4;border-radius:12px;">
+          <div style="aspect-ratio:16/9;background:var(--color-surface-card);border-radius:8px;overflow:hidden;">
+            <image-slot id="{{ r.slot }}" shape="rounded" radius="8" placeholder="{{ r.ph }}"></image-slot>
+          </div>
+          <div style="padding:28px;display:flex;flex-direction:column;gap:12px;flex:1;">
+            <div class="sh-route-t" style="font-size:20px;font-weight:700;letter-spacing:-0.01em;">{{ r.title }}</div>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);flex:1;max-width:760px;">{{ r.body }}</p>
+            <span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">{{ r.cta }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+  <!-- 03. THE PROBLEM -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">The problem</div>
+      <h2 style="margin:0 0 16px;max-width:760px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Outdoor equipment needs more than <span style="color:#8E8E8E;">an empty space.</span></h2>
+      <p style="margin:0 0 32px;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Technical equipment must remain accessible, ventilated and correctly supported throughout its working life. SHELTR combines these decisions in one product and project workflow.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start;--cg:24px;">
+        <div data-cols="3" style="grid-column:span 2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;--cg:12px;">
+          <sc-for list="{{ considerations }}" as="c" hint-placeholder-count="9">
+            <div style="background:#F4F4F4;padding:20px 18px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);line-height:1.4;color:var(--color-text-primary);min-height:66px;display:flex;align-items:center;border-radius:12px;">{{ c }}</div>
+          </sc-for>
+        </div>
+        <div style="aspect-ratio:1/1;background:var(--color-surface-card);border-radius:12px;overflow:hidden;">
+          <image-slot id="sheltr-risk" shape="rounded" radius="12" placeholder="Animated risk layers around one install: weather \u2192 airflow \u2192 structure \u2192 access \u2192 cables \u2192 documentation"></image-slot>
+        </div>
+      </div>
+      <div style="margin-top:24px;"><a href="#selector" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">See what SHELTR checks<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a></div>
+    </div>
+  </section>
+  <!-- MORE CHAPTERS behind Read more (DEPTH-1329) -->
+  <details data-screen-label="More about SHELTR" style="margin:0;padding:0;"><summary style="list-style:none;cursor:pointer;max-width:calc(1312px + 2 * var(--web-side));margin:48px auto 0;padding:0 var(--web-side);box-sizing:border-box;min-height:44px;display:flex;align-items:center;font-family:var(--font-web);font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;"><span style="border-bottom:1px solid #4F4F4E;padding-bottom:2px;">Read more about SHELTR (6)</span></summary>
+  <!-- 04. THREE PRODUCT FAMILIES -->
+  <!-- 05. SELECTOR (interactive) -->
+  
+  <!-- 06. TECHNICAL COMPATIBILITY -->
+  <section id="compatibility" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div data-stack="1" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center;">
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Technical compatibility</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">A physical fit is <span style="color:#8E8E8E;">not enough.</span></h2>
+        <p style="margin:0 0 20px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">The selector evaluates the full technical envelope, not just external cabinet dimensions. The result includes a usable equipment envelope and a replacement compatibility class.</p>
+        <a href="#engineering" style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);">How compatibility works<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      </div>
+      <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ compatibilityFactors }}" as="c" hint-placeholder-count="12">
+          <div style="background:#F4F4F4;padding:13px 16px;font-size:12px;font-weight:300;color:var(--color-text-primary);display:flex;gap:8px;align-items:baseline;border-radius:12px;"><span style="color:var(--color-text-primary);font-size:8px;">&#9679;</span>{{ c }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <!-- 07. ENGINEERING -->
+  <section id="engineering" style="background:var(--color-text-primary);margin-top:96px;color:#FFFFFF;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;--cg:48px;">
+        <div>
+          <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Engineering</div>
+          <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#FFFFFF;text-wrap:balance;">Standard where possible. <span style="color:#B2B3B3;">Engineered where necessary.</span></h2>
+          <p style="margin:0 0 24px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Some projects fit a standard SHELTR configuration. Others require confirmation of roof loads, wall fixing, ballast, airflow, fire separation or acoustic performance. Upload the equipment data and installation information; SHELTR engineering returns the suitable configuration, required conditions and next actions.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <span style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-sheltr);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Submit a project</span>
+            <span style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;border:1px solid #4A4A48;color:#FFFFFF;font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Engineering requirements</span>
+          </div>
+        </div>
+        <div style="aspect-ratio:4/3;background:#2A2A28;border-radius:12px;overflow:hidden;">
+          <image-slot id="sheltr-engineering" shape="rounded" radius="12" placeholder="Mechanical engineer reviewing equipment data, roof plan and a 3D SHELTR model"></image-slot>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 08. INSTALL & REGISTER -->
+  <section id="install" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Installation & registration</div>
+      <h2 style="margin:0 0 12px;max-width:720px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Install it once. <span style="color:#8E8E8E;">Keep the record for its complete life.</span></h2>
+      <p style="margin:0 0 32px;max-width:820px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Each SHELTR installation is linked to its product and project record. The installer scans the identity, confirms the configuration, records the protected equipment, uploads photographs and completes the handover through EMON.</p>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:start;">
+        <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;--cg:12px;">
+          <sc-for list="{{ recordFile }}" as="r" hint-placeholder-count="10">
+            <div style="background:#F4F4F4;padding:14px 18px;font-size:12px;font-weight:300;color:var(--color-text-primary);display:flex;gap:8px;align-items:baseline;border-radius:12px;"><span style="color:var(--color-text-primary);font-size:8px;">&#9679;</span>{{ r }}</div>
+          </sc-for>
+        </div>
+        <div style="aspect-ratio:4/3;background:var(--color-surface-card);border-radius:12px;overflow:hidden;">
+          <image-slot id="sheltr-register" shape="rounded" radius="12" placeholder="Scan \u2192 equipment link \u2192 photo guidance \u2192 installer declaration \u2192 PDF record"></image-slot>
+        </div>
+      </div>
+      <div style="margin-top:20px;"><span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);" data-placeholder-link="true">See Install &amp; Register<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></div>
+    </div>
+  </section>
+  <!-- 09. BIODIVERSITY -->
+  <section style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:center;">
+        <div style="aspect-ratio:4/3;background:#EDEDEB;border-radius:12px;overflow:hidden;">
+          <image-slot id="sheltr-biodiversity" shape="rounded" radius="12" placeholder="SHELTR install with a small, correctly separated insect module and nearby planting (never attached to electrical equipment)"></image-slot>
+        </div>
+        <div>
+          <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Biodiversity</div>
+          <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Renewable energy should leave more room <span style="color:#8E8E8E;">for life.</span></h2>
+          <p style="margin:0 0 16px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">STRØHM.ENERGY manufactures renewable-energy products because nature has value in itself. Where it is technically safe, SHELTR can include or support a separate biodiversity module &#8212; kept completely outside ventilation openings, cable routes, drainage paths, electrical zones and service areas.</p>
+          <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">After a completed installation is registered with the required warranty photographs, the applicant can receive a free insect house. Permission to use project photographs is requested separately &#8212; never required for warranty or for receiving the insect house.</p>
+          <span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);" data-placeholder-link="true">Read our biodiversity principle<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 10. PROJECTS -->
+  <section id="projects" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:32px;">
+        <div>
+          <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Projects</div>
+          <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Protected. <span style="color:#8E8E8E;">Installed. Documented.</span></h2>
+        </div>
+        <span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);white-space:nowrap;" data-placeholder-link="true">View projects<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+      </div>
+      <p style="margin:0 0 28px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Every published reference shows the technical context, not only the finished photograph.</p>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;--cg:20px;">
+        <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+          <div class="sh-util" style="display:flex;flex-direction:column;background:#F4F4F4;border-radius:12px;">
+            <div style="aspect-ratio:16/10;background:var(--color-surface-card);border-radius:8px;overflow:hidden;">
+              <image-slot id="{{ p.slot }}" shape="rounded" radius="8" placeholder="{{ p.ph }}"></image-slot>
+            </div>
+            <div style="padding:20px;display:flex;flex-direction:column;gap:8px;">
+              <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ p.family }} &#183; {{ p.equipment }}</span>
+              <span class="sh-util-t" style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ p.title }}</span>
+              <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ p.context }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">KUBO and HUSH references are published only once real projects exist.</p>
+    </div>
+  </section>
+  <!-- 11. KNOWLEDGE -->
+  
+  <!-- SUPPORT anchor + 12. FINAL CTA -->
+  <section id="support" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 96px;box-sizing:border-box;">
+    <div style="background:var(--color-brand-sheltr);padding:64px 56px;color:var(--color-text-primary);border-radius:12px;">
+      <div style="margin-bottom:20px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Start with the equipment</div>
+      <h2 style="margin:0 0 16px;max-width:760px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Start with the equipment. <span style="color:#8E8E8E;">Finish with a verified installation.</span></h2>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;">
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="#selector" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Find your SHELTR</a>
+        <a href="#engineering" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:transparent;border:1px solid var(--color-text-primary);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Submit a project</a>
+        <a href="#install" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:transparent;border:1px solid var(--color-text-primary);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Register an installation</a>
+      </div>
+    </div>
+  </section>
+  </details>
+  <!-- ENGINEERING AND MANUFACTURING LINK (DEPTH-77) -->
+  <!-- MANUFACTURING (DEPTH-1230) -->
+  <section id="manufacturing" data-screen-label="Manufacturing" style="scroll-margin-top:156px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;display:flex;flex-direction:column;gap:40px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px 72px;align-items:center;">
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Manufacturing</h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Fabricated frames and panels are combined with application-specific weather protection, ventilation and service access. KUBO adds configured enclosure and thermal management components; HUSH adds validated acoustic treatment and airflow passages. Approved assemblies are inspected, identified and packed with their equipment compatibility and installation records.</p>
+        <a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - SHELTR - EN.dc.html#em-sheltr-machines" style="align-self:flex-start;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;" style-hover="color:#F76801;border-bottom-color:#F76801;">Explore the manufacturing process &#8250;</a>
+      </div>
+      <div style="aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#F4F4F4;"><image-slot id="sheltr-manufacturing-photo" shape="rounded" radius="12" placeholder="SHELTR manufacturing photo, 4:3: production line or test station"></image-slot></div>
+    </div>
+    <details style="border-top:1px solid #DDDDDD;padding-top:16px;">
+      <summary style="cursor:pointer;list-style:none;display:inline-flex;align-items:center;min-height:44px;font-size:15px;font-weight:300;color:#4F4F4E;border-bottom:1px solid #4F4F4E;">Read more</summary>
+      <div style="display:flex;flex-direction:column;gap:16px;padding-top:24px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Production · 14 stages</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px;">
+        <a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - SHELTR - EN.dc.html#em-sheltr-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-sheltr,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">01</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Equipment compatibility</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - SHELTR - EN.dc.html#em-sheltr-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-sheltr,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">02</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Engineer the configuration</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - SHELTR - EN.dc.html#em-sheltr-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-sheltr,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">03</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Frames and supports</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - SHELTR - EN.dc.html#em-sheltr-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-sheltr,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">04</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Custom extrusions</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - SHELTR - EN.dc.html#em-sheltr-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-sheltr,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">05</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Roofs, panels and doors</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - SHELTR - EN.dc.html#em-sheltr-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-sheltr,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">06</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Finishes</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - SHELTR - EN.dc.html#em-sheltr-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-sheltr,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">07</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Fittings and seals</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - SHELTR - EN.dc.html#em-sheltr-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-sheltr,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">08</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">HUSH acoustic assemblies</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - SHELTR - EN.dc.html#em-sheltr-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-sheltr,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">09</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Ventilation and thermal</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - SHELTR - EN.dc.html#em-sheltr-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-sheltr,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">10</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Controls and monitoring</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - SHELTR - EN.dc.html#em-sheltr-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-sheltr,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">11</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">CARA, KUBO, HUSH assembly</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - SHELTR - EN.dc.html#em-sheltr-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-sheltr,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">12</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Test with equipment</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - SHELTR - EN.dc.html#em-sheltr-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-sheltr,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">13</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">Identification and packing</span></a><a href="STROHM.ENERGY - COMPANY - How - Engineering and Manufacturing - SHELTR - EN.dc.html#em-sheltr-machines" style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:16px;color:#4F4F4E;min-height:44px;" style-hover="background:var(--color-card-sheltr,#E3E3E3);"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);color:#5F5E5E;">14</span><span style="font-size:var(--web-small-size);font-weight:400;line-height:var(--web-small-lh);color:#252525;">From factory to site</span></a></div>
+      </div>
+    </details>
+    <div data-editor-only="" style="display:flex;flex-direction:column;gap:8px;border:1px dashed #BBBBBB;border-radius:12px;padding:16px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Earlier titles · editor only</div>
+      <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#5F5E5E;">01 Frames and supports · 02 Roofs, panels and doors · 03 Corrosion protection and finishes · 04 CARA, KUBO and HUSH assembly · 05 Ventilation and thermal management · 06 Equipment and enclosure test · 07 Final inspection and packing</p>
+    </div>
+  </section>
+  
+  <section id="knowledge" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:32px;">
+        <div>
+          <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Knowledge Centre</div>
+          <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Outdoor technical equipment, <span style="color:#8E8E8E;">explained properly.</span></h2>
+        </div>
+        <span style="font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:var(--color-text-primary);white-space:nowrap;" data-placeholder-link="true">Open the Knowledge Centre<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span>
+      </div>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ knowledge }}" as="k" hint-placeholder-count="8">
+          <div class="sh-util" style="padding:22px 20px;display:flex;flex-direction:column;gap:8px;min-height:120px;background:#F4F4F4;border-radius:12px;">
+            <span class="sh-util-t" style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ k }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+  <dc-import name="ContentSections" brand="SHELTR" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="SHELTR" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="SHELTR" accent="var(--color-brand-sheltr)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+const TABS = [
+  { key: "equipment", label: "I know the equipment", heading: "Choose the equipment", sub: "Choose the equipment category, brand and model. We check the technical requirements before recommending a family.", fields: [
+    { label: "Equipment category", options: ["Inverter", "Battery", "Switchgear / control cabinet", "Combiner / metering", "EV charging", "Heat-pump outdoor unit", "Ventilation unit", "Pump / compressor"] },
+    { label: "Brand", options: ["Select brand", "STRØHM.ENERGY", "Other"] },
+    { label: "Model", options: ["Select model"] },
+  ] },
+  { key: "family", label: "I know the family", heading: "Open a family directly", sub: "Open CARA, KUBO or HUSH directly. Both routes check the same technical requirements before a recommendation.", fields: [
+    { label: "SHELTR family", options: ["CARA \u2014 open protection", "KUBO \u2014 enclosed (project)", "HUSH \u2014 acoustic (project)"] },
+    { label: "Installation location", options: ["Wall", "Ground", "Roof", "Double"] },
+    { label: "Environment", options: ["Residential", "Commercial", "Industrial", "Coastal / corrosive"] },
+  ] },
+];
+
+class Component extends DCLogic {
+  state = { frame: 0,  tab: 0 };
+  componentDidMount() {
+    if (!(window.omelette && window.omelette.writeFile)) document.querySelectorAll('[data-editor-only]').forEach((el) => { el.style.display = 'none'; });  }
+  componentWillUnmount() { if (this._heroTimer) clearInterval(this._heroTimer); }
+  heroVals() { const fr = this.state.frame || 0, hv = {}; for (let i = 0; i < 6; i++) { hv["op" + i] = i === fr ? 1 : 0; hv["pe" + i] = i === fr ? "auto" : "none"; } hv.heroDots = [0, 1, 2, 3, 4, 5].map(i => ({ w: i === fr ? "22px" : "10px", bg: i === fr ? "#5B6592" : "rgba(255,255,255,0.4)" })); return hv; }
+  renderVals() { return { brandSix: [{"label":"Range","heading":"Three families, one equipment-first method.","sentence":"Select an open CARA, enclosed KUBO or acoustic HUSH configuration.","media":{"type":"slot","slot":"sheltr-hero","alt":"SHELTR · Range · drop a photo or video"}},{"label":"Installation","heading":"Engineered where necessary.","sentence":"Standard where possible. Engineered where necessary.","media":{"type":"slot","slot":"sheltr-hero-2","alt":"SHELTR · Installation · drop a photo or video"}},{"label":"QR record","heading":"A record for its complete life.","sentence":"Install it once. Keep the record for its complete life.","media":{"type":"slot","slot":"sheltr-hero-3","alt":"SHELTR · QR record · drop a photo or video"}},{"label":"The problem","heading":"More than an empty space.","sentence":"Outdoor equipment needs more than an empty space.","media":{"type":"slot","slot":"sheltr-hero-4","alt":"SHELTR · The problem · drop a photo or video"}},{"label":"Compatibility","heading":"A physical fit is not enough.","sentence":"Find the structure that fits the equipment.","media":{"type":"slot","slot":"sheltr-hero-5","alt":"SHELTR · Compatibility · drop a photo or video"}},{"label":"Families","heading":"Open, enclosed or quiet.","sentence":"Start with what the equipment needs.","media":{"type":"slot","slot":"sheltr-hero-6","alt":"SHELTR · Families · drop a photo or video"}}], ...this.heroVals(), ...this._rv() }; }
+  _rv() {
+    const st = this.state;
+    return {
+      routes: [
+        { title: "Protect equipment at my home or building", body: "Understand the available protection options, check whether a standard solution fits and connect the project to a qualified installer.", cta: "Start as an owner", href: "#selector", slot: "sheltr-owner", ph: "Homeowner / building owner beside a protected outdoor installation" },
+        { title: "Specify and install SHELTR professionally", body: "Select equipment, check compatibility, submit site information, obtain engineering review and register the completed installation.", cta: "Start as a professional", href: "#engineering", slot: "sheltr-installer", ph: "Installer / engineer reviewing SHELTR configuration on site" },
+      ],
+      considerations: ["Direct weather exposure", "Equipment temperature & airflow", "Structural weight", "Roof or wall conditions", "Cable entry & drainage", "Maintenance access", "Noise", "Fire & separation", "Future equipment replacement"],
+      families: [
+        { code: "CARA", chip: "", headline: "Open protection with free airflow.", body: "CARA supports equipment beneath a protective roof while keeping ventilation and service access open. Best for compatible inverters and electrical equipment that do not require a sealed enclosure.", cta: "Explore CARA", slot: "sheltr-cara", ph: "CARA open-frame roof over a rooftop inverter" },
+        { code: "KUBO", chip: "Project solutions", headline: "Enclosed protection configured around the equipment.", body: "KUBO protects compatible electrical equipment inside a controlled cabinet. Passive ventilation, active ventilation, thermal management and enhanced separation are selected by equipment and location.", cta: "Explore KUBO", slot: "sheltr-kubo", ph: "KUBO enclosed cabinet for battery / switchgear" },
+        { code: "HUSH", chip: "Project solutions", headline: "Reduce noise without restricting the machine.", body: "HUSH combines acoustic treatment, weather protection and designed airflow around heat pumps, ventilation units, pumps and similar equipment.", cta: "Explore HUSH", slot: "sheltr-hush", ph: "HUSH acoustic enclosure around a heat pump" },
+      ],
+      selectorTabs: TABS.map((t, i) => ({
+        label: t.label,
+        onClick: () => this.setState({ tab: i }),
+        bg: st.tab === i ? "var(--color-brand-sheltr)" : "#FFFFFF",
+        color: st.tab === i ? "#4F4F4E" : "#5F5E5E",
+      })),
+      activeTab: TABS[st.tab],
+      selectorOutputs: ["Recommended SHELTR family and configuration", "A usable equipment envelope", "A replacement compatibility class", "Required technical checks and next actions"],
+      compatibilityFactors: ["Equipment dimensions", "Weight & load distribution", "Mounting points", "Required airflow", "Heat rejection", "Cable-entry direction", "Access panels & doors", "Maintenance space", "Manufacturer clearances", "Fire separation", "Installation environment", "Replacement flexibility"],
+      recordFile: ["SHELTR product & serial identity", "Protected equipment details", "Mounting or ballast confirmation", "Installation location", "Required clearances", "Photographic evidence", "Engineering-file reference", "Warranty confirmation", "Manuals & drawings", "Inspection & service history"],
+      projects: [
+        { family: "CARA", equipment: "Rooftop inverter", title: "Rooftop inverter protection", context: "Open protection with free airflow and full service access.", slot: "sheltr-proj-1", ph: "Rooftop inverter under a CARA structure" },
+        { family: "KUBO", equipment: "Battery / switchgear", title: "Enclosed battery project", context: "Controlled cabinet with ventilation and enhanced separation.", slot: "sheltr-proj-2", ph: "Enclosed battery / switchgear KUBO project" },
+        { family: "HUSH", equipment: "Heat pump", title: "Acoustic heat-pump project", context: "Acoustic treatment with designed airflow around the unit.", slot: "sheltr-proj-3", ph: "Acoustic HUSH enclosure around a heat pump" },
+      ],
+      knowledge: ["Equipment protection basics", "Ventilation & heat rejection", "Roof loading & ballast", "Service clearances", "Acoustics for outdoor equipment", "Corrosion environments", "Cable entry & drainage", "Documented installation"],
+    };
+  }
+}
+</script>
+</body>
+</html>

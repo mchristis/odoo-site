@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<style>
+  .mp-box:hover { border-color:#DA5E70; }
+</style>
+</helmet>
+<div class="mp-box" style="position:relative;width:100%;height:100%;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;background:#F4F4F4;padding:16px;font-family:var(--font-web);overflow:hidden;border-radius:12px;">
+  <div style="position:absolute;top:12px;left:12px;width:14px;height:14px;border-left:1px solid #C7C7C4;border-top:1px solid #C7C7C4;"></div>
+  <div style="position:absolute;top:12px;right:12px;width:14px;height:14px;border-right:1px solid #C7C7C4;border-top:1px solid #C7C7C4;"></div>
+  <div style="position:absolute;bottom:12px;left:12px;width:14px;height:14px;border-left:1px solid #C7C7C4;border-bottom:1px solid #C7C7C4;"></div>
+  <div style="position:absolute;bottom:12px;right:12px;width:14px;height:14px;border-right:1px solid #C7C7C4;border-bottom:1px solid #C7C7C4;"></div>
+
+  <div style="display:flex;align-items:center;gap:8px;">
+    <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#FFFFFF;background:{{ badgeColor }};padding:4px 8px;border-radius:3px;">{{ kindLabel }}</span>
+    <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">{{ ratio }}</span>
+  </div>
+
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:14px 2px;">
+    <div style="font-size:var(--web-small-size);font-weight:300;letter-spacing:0.04em;color:#5F5E5E;font-family:var(--font-web);font-variant-numeric:tabular-nums;word-break:break-word;line-height:var(--web-small-lh);">{{ code }}</div>
+    <div style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:#5F5E5E;max-width:340px;">{{ direction }}</div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:6px 14px;border-top:1px solid #E0E0DD;padding-top:10px;">
+    <sc-for list="{{ specs }}" as="s" hint-placeholder-count="3">
+      <div style="display:flex;flex-direction:column;gap:1px;">
+        <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#B8B8B5;">{{ s.k }}</span>
+        <span style="font-size:var(--web-min-size);font-weight:400;color:#5F5E5E;line-height:var(--web-min-lh);">{{ s.v }}</span>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:240},&quot;code&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;IMG-FEU-HOME-HERO-01&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;kind&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;IMG&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;VID&quot;,&quot;IMG&quot;,&quot;RND&quot;,&quot;ANM&quot;,&quot;UI&quot;,&quot;DGM&quot;,&quot;DRW&quot;,&quot;DTL&quot;,&quot;CHT&quot;,&quot;360&quot;,&quot;PRJ&quot;,&quot;PDF&quot;]},&quot;ratio&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;16 : 9&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;direction&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;env&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;visibility&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;people&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;priority&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const KINDS = {
+  VID: { label: "Video", color: "#DA5E70" },
+  IMG: { label: "Photography", color: "#8A8A88" },
+  RND: { label: "Product render", color: "#5F5E5E" },
+  ANM: { label: "Animation", color: "#C24A5C" },
+  UI:  { label: "Interface", color: "#5F7773" },
+  DGM: { label: "Diagram", color: "#516B83" },
+  DRW: { label: "Technical drawing", color: "#5F5E5E" },
+  DTL: { label: "Product detail", color: "#5F5E5E" },
+  CHT: { label: "Chart", color: "#516B83" },
+  "360": { label: "360° view", color: "#5F5E5E" },
+  PRJ: { label: "Project case", color: "#8A8A88" },
+  PDF: { label: "Generated report", color: "#B84A5A" },
+};
+
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    const kind = (p.kind || "IMG").toUpperCase();
+    const k = KINDS[kind] || KINDS.IMG;
+    const specs = [];
+    if (p.env) specs.push({ k: "Environment", v: p.env });
+    if (p.visibility) specs.push({ k: "Product", v: p.visibility });
+    if (p.people) specs.push({ k: "People", v: p.people });
+    if (p.priority) specs.push({ k: "Priority", v: p.priority });
+    return {
+      code: p.code || "TYPE-FEU-PAGE-USE-01",
+      kindLabel: k.label,
+      badgeColor: k.color,
+      ratio: p.ratio || "16 : 9",
+      direction: p.direction || "Visual direction to be supplied.",
+      specs,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>Compare FLUXX Products | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="FluxxNav" active="compare" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="FLUXX" rgb="253,199,6" title="Compare up to three products." intro="Pick families below." slot="fluxx-compare-hero" shot="FLUXX · Compare · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;"><a href="FLUXX - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">FLUXX</a> &#8250; <span style="color:var(--color-text-primary);">COMPARE</span></div>
+    <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:700px;">Where a value isn't published, the table shows "Not confirmed" rather than a value that looks like zero.</p>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 32px;box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;">
+      <sc-for list="{{ options }}" as="o" hint-placeholder-count="12">
+        <button onClick="{{ o.onToggle }}" disabled="{{ o.disabled }}" style="cursor:pointer;font-family:inherit;text-align:left;padding:12px 14px;border-radius:12px;border:1px solid {{ o.border }};background:{{ o.bg }};color:{{ o.color }};font-size:var(--web-btn-sm-size);font-weight:400;">{{ o.label }}</button>
+      </sc-for>
+    </div>
+  </section>
+
+  <sc-if value="{{ hasSelection }}" hint-placeholder-val="{{ false }}">
+    <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 56px;box-sizing:border-box;">
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:13.5px;min-width:600px;">
+          <thead><tr style="border-bottom:2px solid var(--color-text-primary);">
+            <th style="text-align:left;padding:10px 12px;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">&nbsp;</th>
+            <sc-for list="{{ selected }}" as="s" hint-placeholder-count="3">
+              <th style="text-align:left;padding:10px 12px;font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;">{{ s.name }}</th>
+            </sc-for>
+          </tr></thead>
+          <tbody>
+            <sc-for list="{{ rows }}" as="r" hint-placeholder-count="8">
+              <tr style="border-bottom:1px solid var(--color-divider);">
+                <td style="padding:10px 12px;font-weight:300;color:var(--color-text-primary);font-size:var(--web-small-size);line-height:var(--web-small-lh);">{{ r.label }}</td>
+                <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="3">
+                  <td style="padding:10px 12px;color:{{ c.color }};">{{ c.value }}</td>
+                </sc-for>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ noSelection }}" hint-placeholder-val="{{ true }}">
+    <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side) 56px;box-sizing:border-box;">
+      <div style="border:none;background:#EBECEC;border-radius:12px;padding:48px;text-align:center;color:var(--color-grey-70);font-size:14px;">Select up to three products above to compare them.</div>
+    </section>
+  </sc-if>
+
+  <div style="height:32px;"></div>
+  <dc-import name="ContentSections" brand="FLUXX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="FLUXX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="FLUXX" accent="var(--color-brand-fluxx)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const NC = "Not confirmed";
+const FAMILIES = [
+  { id: "pico", name: "PICO", group: "Portable", cap: "2,56 kWh", power: NC, included: "Battery + built-in output", coupling: "n.a.", form: "Portable", app: "Portable / off-grid", expansion: "None documented", backup: NC },
+  { id: "torq", name: "TORQ", group: "Portable", cap: "5,12 kWh", power: NC, included: "Battery + built-in output", coupling: "n.a.", form: "Portable", app: "Portable / off-grid", expansion: "None documented", backup: NC },
+  { id: "dock", name: "DOCK", group: "Portable", cap: "10,24 kWh", power: NC, included: "Battery + built-in output", coupling: "n.a.", form: "Portable", app: "Portable / off-grid", expansion: "None documented", backup: NC },
+  { id: "kubuz", name: "KUBUZ", group: "Plug & play", cap: "2,56 kWh (battery, separate SKU)", power: "2.5 kVA (inverter, separate SKU)", included: "Inverter and battery ordered separately", coupling: "AC-coupled", form: "Wall", app: "Residential", expansion: NC, backup: NC },
+  { id: "pouf", name: "POUF", group: "Plug & play", cap: "2,56 kWh", power: "2.5 kVA", included: "Inverter + battery, all-in-one", coupling: "AC-coupled", form: "Floor, monobloc", app: "Residential", expansion: NC, backup: NC },
+  { id: "otto", name: "OTTO", group: "Plug & play", cap: "5,12 kWh", power: "2.5 kVA", included: "Inverter + battery, all-in-one", coupling: "AC-coupled", form: "Floor, monobloc", app: "Residential", expansion: NC, backup: NC },
+  { id: "bowipnp", name: "BOWI PNP", group: "Monobloc all-in-one", cap: "5.12 / 10.24 / 16,08 kWh", power: "2.5 kVA", included: "Inverter + battery, all-in-one", coupling: "AC-coupled", form: "Floor, monobloc", app: "Residential", expansion: NC, backup: NC },
+  { id: "bowipro", name: "BOWI PRO", group: "Monobloc all-in-one", cap: "16.08 / 32,16 kWh", power: "3.6 / 4.6 kVA", included: "Inverter + battery, all-in-one", coupling: "AC-coupled", form: "Floor, monobloc", app: "Residential", expansion: NC, backup: NC },
+  { id: "triffid", name: "TRIFFID", group: "Monobloc all-in-one", cap: "1.28 to 32,12 kWh (7 variants)", power: "0.8 to 11.0 kVA", included: "Inverter + battery, all-in-one (flex on-grid)", coupling: "AC-coupled", form: "Floor, monobloc", app: "Residential", expansion: NC, backup: NC },
+  { id: "bloq", name: "BLOQ", group: "Battery only", cap: "5.12 to 32,12 kWh", power: "n.a. (no inverter)", included: "Battery only — requires separate inverter", coupling: "n.a.", form: "Floor, monobloc", app: "Residential", expansion: "None (fixed capacity)", backup: NC },
+  { id: "staqlv", name: "STAQ LV", group: "Stackable battery", cap: "2.56 / 5,12 kWh per module", power: "n.a. (pairs with MOEBIUS ALVIX)", included: "Battery module + BMS/foot/cover/frame kit", coupling: "n.a.", form: "Floor, stackable", app: "Residential", expansion: "By adding modules — limit not stated", backup: NC },
+  { id: "linea", name: "LINEA", group: "Modular platform", cap: "5,12 kWh (stackable battery)", power: "3 to 12 kVA (power module)", included: "Power module + stackable battery, sold separately", coupling: "DC-coupled (AC optional)", form: "Floor, stackable", app: "Residential", expansion: "By adding battery modules — limit not stated", backup: NC },
+  { id: "kyuz", name: "KYUZ", group: "Commercial modular", cap: "12,06 kWh per module", power: "50 to 125 kVA", included: "BMS/cover modules + hybrid inverter + stackable battery", coupling: "DC-coupled (AC optional)", form: "Floor, stackable", app: "Commercial / C&I", expansion: "By adding modules — limit not stated", backup: NC },
+  { id: "kofr", name: "KOFR", group: "Commercial enclosure", cap: "128 kWh (+128 kWh extension)", power: "30 / 50 / 80 kVA", included: "All-in-one container, air-cooled", coupling: "AC-coupled", form: "Container", app: "Commercial / C&I", expansion: "One battery extension documented", backup: NC },
+  { id: "silo", name: "SILO", group: "Commercial enclosure", cap: "144 to 241 kWh", power: NC, included: "Cabinet, air-cooled; inverter & switchgear shelter is a separate extension", coupling: "AC-coupled", form: "Cabinet", app: "Commercial / C&I", expansion: "One shelter extension documented", backup: NC },
+];
+const ROW_DEFS = [
+  ["group", "Group"], ["cap", "Capacity"], ["power", "Power"], ["included", "What's included"],
+  ["coupling", "Coupling"], ["form", "Form"], ["app", "Application"], ["expansion", "Expansion"], ["backup", "Backup capability"],
+];
+class Component extends DCLogic {
+  state = { sel: [] };
+  toggle(id) {
+    this.setState((s) => {
+      const has = s.sel.includes(id);
+      if (has) return { sel: s.sel.filter((x) => x !== id) };
+      if (s.sel.length >= 3) return s;
+      return { sel: [...s.sel, id] };
+    });
+  }
+  renderVals() {
+    const sel = this.state.sel;
+    const selectedFamilies = sel.map((id) => FAMILIES.find((f) => f.id === id));
+    return {
+      options: FAMILIES.map((f) => {
+        const isSel = sel.includes(f.id);
+        const full = sel.length >= 3 && !isSel;
+        return {
+          label: f.name, onToggle: () => this.toggle(f.id), disabled: full,
+          bg: isSel ? "#252525" : "#FFFFFF", color: isSel ? "#FFFFFF" : full ? "#E3E3E3" : "#4F4F4E",
+          border: isSel ? "#252525" : "#E3E3E3",
+        };
+      }),
+      hasSelection: sel.length > 0,
+      noSelection: sel.length === 0,
+      selected: selectedFamilies,
+      rows: ROW_DEFS.map(([key, label]) => ({
+        label,
+        cells: selectedFamilies.map((f) => ({ value: f[key], color: f[key] === NC ? "#898989" : "#4F4F4E" })),
+      })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

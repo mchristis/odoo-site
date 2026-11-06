@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<script src="./moebius-configurator-data.js"></script>
+<script src="./ando-shop-data.js"></script>
+<script src="./image-slot.js"></script>
+<style>:root{--web-side:clamp(20px,5.8vw,84px);}body{margin:0;background:#F7F7F5;font-family:var(--font-web);}a{color:#4F4F4E;}a:hover{color:#FB8C00;}</style>
+<style data-q4-reflow>/* Q4 grid reflow (DEPTH-897, user 26 Oct 2026). Desktop above 1024px unchanged.
+   data-cols="N": equal 2–6 column grids reflow by available width, cards at least 240px, never more than N columns.
+   data-stack: mixed-width grids stack to one column below 720px. Charts (7+ columns) and label/value rows are not marked. */
+@media (max-width:1024px){
+ [data-cols="2"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 1 * var(--cg,0px)) / 2 - 1px))),1fr)) !important}
+ [data-cols="3"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 2 * var(--cg,0px)) / 3 - 1px))),1fr)) !important}
+ [data-cols="4"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 3 * var(--cg,0px)) / 4 - 1px))),1fr)) !important}
+ [data-cols="5"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 4 * var(--cg,0px)) / 5 - 1px))),1fr)) !important}
+ [data-cols="6"]{grid-template-columns:repeat(auto-fill,minmax(min(100%,max(240px,calc((100% - 5 * var(--cg,0px)) / 6 - 1px))),1fr)) !important}
+ [data-cols]>[style*="grid-column:span"],[data-cols]>[style*="grid-column: span"]{grid-column:1/-1 !important}
+}
+@media (max-width:720px){
+ [data-stack]{grid-template-columns:minmax(0,1fr) !important}
+ [data-stack]>*{grid-column:auto !important;grid-row:auto !important}
+}</style>
+</helmet>
+<div data-screen-label="KALK Inverter MOEBIUS" style="display:flex;flex-direction:column;min-height:100vh;">
+  <dc-import name="NavBar" active="systems" hint-size="100%,80px"></dc-import>
+  <div style="width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:24px auto 48px;min-height:clamp(600px,calc(100vh - 160px),820px);border-radius:24px;overflow:hidden;background:#FFFFFF;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));box-sizing:border-box;">
+    <div style="background:#F4F4F4;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;box-sizing:border-box;">
+      <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#5F5E5E;">{{ visualTitle }}</div>
+      <div style="width:100%;display:flex;justify-content:center;">{{ visual }}</div>
+      <sc-if value="{{ showPhoto }}" hint-placeholder-val="{{ false }}"><div style="width:min(100%,360px);aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#E3E3E3;"><image-slot id="moebius-kalk-inverter-photo" shape="rounded" radius="12" placeholder="Photo of the recommended MOEBIUS inverter, installed indoors"></image-slot></div></sc-if>
+    </div>
+    <div style="padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:16px;box-sizing:border-box;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:15px;color:#252525;">MOEBIUS by<img src="assets/logos/KALK-logo-symbol-wordmark.svg" alt="KALK" style="height:20px;width:auto;display:block;filter:brightness(0);"></div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:14px;color:#5F5E5E;"><div style="width:64px;height:4px;border-radius:2px;background:#E3E3E3;overflow:hidden;"><div style="height:4px;width:{{ progressPct }};background:#FB8C00;"></div></div><span>{{ progressLabel }}</span></div>
+      </div>
+
+      <sc-if value="{{ isPanels }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <h1 style="margin:0;font-size:32px;font-weight:200;line-height:1.1;color:#252525;">Calculate your inverter</h1>
+          <p style="margin:0;font-size:15px;font-weight:300;line-height:1.5;color:#5F5E5E;">{{ fromScan }}</p>
+          <div style="font-size:14px;color:#252525;">Which panels</div>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+            <sc-for list="{{ panelOpts }}" as="o" hint-placeholder-count="5"><button onClick="{{ o.pick }}" style="min-height:48px;padding:6px 10px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:13px;color:#252525;cursor:pointer;text-align:left;"><b>{{ o.label }}</b><br>{{ o.wp }} Wp</button></sc-for>
+          </div>
+          <sc-if value="{{ isOther }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:8px;background:#F4F4F4;border-radius:8px;padding:12px;">
+              <div style="font-size:13px;color:#252525;">Values from the data sheet of your panel</div>
+              <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;--cg:8px;">
+                <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#5F5E5E;">Power (Wp)<input type="number" value="{{ oWp }}" onChange="{{ onOWp }}" style="min-height:40px;padding:0 8px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;"></label>
+                <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#5F5E5E;">Open-circuit voltage Voc (V)<input type="number" value="{{ oVoc }}" onChange="{{ onOVoc }}" style="min-height:40px;padding:0 8px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;"></label>
+                <label style="display:flex;flex-direction:column;gap:4px;font-size:12px;color:#5F5E5E;">Short-circuit current Isc (A)<input type="number" value="{{ oIsc }}" onChange="{{ onOIsc }}" style="min-height:40px;padding:0 8px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;"></label>
+              </div>
+              <div style="font-size:12px;font-weight:300;color:#5F5E5E;">Voc sets how many panels fit in one string; Isc is checked against the MPPT input current.</div>
+            </div>
+          </sc-if>
+          <div style="font-size:14px;color:#252525;">How many panels</div>
+          <input type="number" min="1" value="{{ n }}" onChange="{{ onN }}" style="min-height:48px;padding:0 16px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:16px;color:#252525;outline:none;" style-focus="border-color:#FB8C00;">
+          <div style="display:flex;justify-content:space-between;background:#F4F4F4;border-radius:8px;padding:12px 16px;font-size:14px;color:#252525;"><span>Total DC power</span><b>{{ kwpTxt }} kWp</b></div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isSystem }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Your system type</h2>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <sc-for list="{{ sysOpts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.pick }}" style="display:flex;flex-direction:column;gap:2px;text-align:left;padding:12px 14px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);color:#252525;cursor:pointer;"><b style="font-size:15px;">{{ o.label }}</b><span style="font-size:13px;font-weight:300;">{{ o.sub }}</span></button></sc-for>
+          </div>
+          <div style="font-size:14px;color:#252525;">Battery</div>
+          <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;--cg:6px;">
+            <sc-for list="{{ battOpts }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.pick }}" style="min-height:44px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:14px;color:#252525;cursor:pointer;">{{ o.label }}</button></sc-for>
+          </div>
+          <sc-if value="{{ battLocked }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:13px;font-weight:300;color:#5F5E5E;">Off-grid always needs a battery.</p></sc-if>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isGrid }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Your grid connection</h2>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+            <sc-for list="{{ phases }}" as="o" hint-placeholder-count="2"><button onClick="{{ o.pick }}" style="min-height:56px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:14px;color:#252525;cursor:pointer;"><b>{{ o.label }}</b><br>{{ o.sub }}</button></sc-for>
+          </div>
+          <div style="font-size:14px;color:#252525;">Main switch rating</div>
+          <div data-cols="6" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;--cg:6px;">
+            <sc-for list="{{ amps }}" as="o" hint-placeholder-count="6"><button onClick="{{ o.pick }}" style="min-height:44px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:14px;color:#252525;cursor:pointer;">{{ o.label }}</button></sc-for>
+          </div>
+          <label style="display:flex;flex-direction:column;gap:8px;padding:14px 16px;border:1px dashed #BBBBBB;border-radius:8px;font-size:14px;color:#252525;cursor:pointer;">
+            <span><b>Upload a photo of your main switch</b></span>
+            <span style="font-weight:300;color:#5F5E5E;">The rating (for example 40 A) is printed on the switch. Our installer checks it. Reading the photo automatically is TO CONFIRM.</span>
+            <input type="file" accept="image/*" onChange="{{ onPhoto }}" style="font-family:var(--font-web);font-size:13px;">
+          </label>
+          <sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}"><img src="{{ photoUrl }}" alt="Main switch photo" style="width:100%;max-height:180px;object-fit:contain;border-radius:8px;background:#F4F4F4;"></sc-if>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isPlace }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Where in Europe</h2>
+          <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:#5F5E5E;">The coldest winter morning decides the highest panel voltage, so the location sets how many panels fit in one string.</p>
+          <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;--cg:6px;">
+            <sc-for list="{{ climates }}" as="o" hint-placeholder-count="6"><button onClick="{{ o.pick }}" style="min-height:52px;padding:4px 8px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:13px;color:#252525;cursor:pointer;"><b>{{ o.label }}</b><br>{{ o.sub }}</button></sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isDirs }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">How many roof directions</h2>
+          <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:#5F5E5E;">Each direction to the sun needs its own MPPT input on the inverter.</p>
+          <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;--cg:8px;">
+            <sc-for list="{{ dirOpts }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.pick }}" style="min-height:48px;border:0;border-radius:8px;background:{{ o.bg }};font-family:var(--font-web);font-size:15px;color:#252525;cursor:pointer;">{{ o.label }}</button></sc-for>
+          </div>
+          <sc-for list="{{ groups }}" as="g" hint-placeholder-count="1">
+            <div style="display:flex;align-items:center;gap:12px;background:#F4F4F4;border-radius:8px;padding:10px 12px;font-size:14px;color:#252525;">
+              <span style="flex:1;">Direction {{ g.no }}</span>
+              <select value="{{ g.face }}" onChange="{{ g.onFace }}" style="min-height:36px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);"><option>S</option><option>SE</option><option>SW</option><option>E</option><option>W</option><option>N</option></select>
+              <input type="number" min="1" value="{{ g.n }}" onChange="{{ g.onN }}" style="width:64px;min-height:36px;padding:0 8px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);">
+              <span>panels</span>
+            </div>
+          </sc-for>
+          <sc-if value="{{ sumWarn }}" hint-placeholder-val="{{ false }}"><p style="margin:0;background:#FFEB9E;border-radius:8px;padding:10px 12px;font-size:13px;color:#252525;">The directions add up to {{ sumN }} panels, your total is {{ n }}.</p></sc-if>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Your MOEBIUS inverter</h2>
+          <sc-if value="{{ hasBest }}" hint-placeholder-val="{{ true }}">
+            <div style="background:#FB8C00;border-radius:12px;padding:16px;color:#252525;display:flex;flex-direction:column;gap:4px;"><span style="font-size:14px;">Recommended</span><span style="font-size:28px;"><b>{{ best.name }}</b></span><span style="font-size:14px;">{{ best.type }} · {{ best.phase }} · {{ best.range }} · MPPT {{ best.mppt }}</span></div>
+          </sc-if>
+          <sc-if value="{{ noBest }}" hint-placeholder-val="{{ false }}"><p style="margin:0;background:#FFEB9E;border-radius:8px;padding:12px;font-size:14px;color:#252525;">No available MOEBIUS inverter matches all inputs. A MOEBIUS specialist checks your setup.</p></sc-if>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+            <sc-for list="{{ figures }}" as="f" hint-placeholder-count="4"><div style="background:#F4F4F4;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;"><span style="font-size:12px;color:#5F5E5E;">{{ f.label }}</span><span style="font-size:17px;color:#252525;"><b>{{ f.value }}</b> {{ f.unit }}</span></div></sc-for>
+          </div>
+          <sc-if value="{{ hasOthers }}" hint-placeholder-val="{{ false }}"><div style="font-size:13px;color:#5F5E5E;">Also possible: {{ others }}</div></sc-if>
+          <p style="margin:0;font-size:12px;font-weight:300;line-height:1.5;color:#5F5E5E;">Inverters from the MOEBIUS range data. Indicative check, not a detailed calculation. Voltage and current limits per model are TO CONFIRM; the string split is indicative. Detailed design: KALK Pro.</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Receive your configuration</h2>
+          <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:#5F5E5E;">The inverter choice, the DC diagram are sent as a PDF. Your local distributor sends the price. A TRIBE installer checks the main switch and the cabling on site.</p>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;--cg:8px;">
+            <input placeholder="First name" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+            <input placeholder="Last name" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+            <input placeholder="Email" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+            <input placeholder="Phone" style="min-height:48px;padding:0 12px;border:1px solid #BBBBBB;border-radius:8px;font-family:var(--font-web);font-size:14px;">
+          </div>
+          <label style="display:flex;gap:12px;align-items:flex-start;font-size:13px;line-height:1.5;color:#252525;"><input type="checkbox" checked="{{ consent }}" onChange="{{ toggleConsent }}" style="margin-top:3px;accent-color:#FB8C00;"><span>I agree that STRØHM.ENERGY uses these details to send my configuration and passes them to a local distributor for the price. Required. <a href="#">Privacy policy</a></span></label>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <h2 style="margin:0;font-size:24px;font-weight:300;color:#252525;">Sent</h2>
+          <p style="margin:0;font-size:16px;font-weight:300;line-height:1.5;color:#5F5E5E;">Your inverter configuration is on its way as a PDF. A TRIBE installer will contact you.</p>
+          <a href="MOEBIUS - PRODUCT - Overview - EN.dc.html" style="font-size:14px;">Back to MOEBIUS &#8250;</a>
+        </div>
+      </sc-if>
+
+      <div style="margin-top:auto;display:flex;justify-content:space-between;gap:12px;">
+        <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}"><button onClick="{{ back }}" style="min-height:48px;padding:0 20px;border:0;border-radius:8px;background:#F4F4F4;font-family:var(--font-web);font-size:16px;color:#252525;cursor:pointer;">&#8249; Back</button></sc-if>
+        <sc-if value="{{ showNext }}" hint-placeholder-val="{{ true }}"><button onClick="{{ next }}" disabled="{{ nextDisabled }}" style="margin-left:auto;min-height:48px;padding:0 24px;border:0;border-radius:8px;background:{{ nextBg }};font-family:var(--font-web);font-size:16px;color:#252525;cursor:pointer;">{{ nextLabel }} &#8250;</button></sc-if>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;diagramStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Technical&quot;,&quot;Sketch&quot;],&quot;default&quot;:&quot;Technical&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;advice&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;One recommendation&quot;,&quot;All matches&quot;],&quot;default&quot;:&quot;One recommendation&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Advice&quot;},&quot;prefill&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Use roof scan&quot;,&quot;Start blank&quot;],&quot;default&quot;:&quot;Use roof scan&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Flow&quot;}}">
+const PANELS = [
+  { k: "aalto", label: "ANDO AALTO", wp: 460, voc: 41.5, isc: 0 },
+  { k: "mies", label: "ANDO MIES", wp: 500, voc: 45.0 },
+  { k: "nvl", label: "ANDO NOUVEL L", wp: 460, voc: 41.0 },
+  { k: "nvxl", label: "ANDO NOUVEL XL", wp: 555, voc: 49.5 },
+  { k: "lina", label: "LINA", wp: 430, voc: 39.0 }
+];
+const CLIM = [["mild", "Atlantic coast", "−5 °C"], ["temp", "Benelux, UK, FR", "−10 °C"], ["cont", "DE, PL, CZ, AT", "−15 °C"], ["alpine", "Alps", "−20 °C"], ["nordic", "Nordics, Baltics", "−25 °C"], ["south", "ES, IT, PT, GR", "0 °C"]];
+const TMIN = { mild: -5, temp: -10, cont: -15, alpine: -20, nordic: -25, south: 0 };
+class Component extends DCLogic {
+  state = { step: 0, pv: null, panel: "aalto", n: 12, phase: "1P", amps: 40, photo: "", clim: "temp", dirs: 1, groups: [{ face: "S", n: 12 }], consent: false, sys: "grid", batt: 0, oWp: 420, oVoc: 38, oIsc: 13.5 };
+  componentDidMount() {
+    if ((this.props.prefill ?? "Use roof scan") !== "Use roof scan") return;
+    let pv = null; try { pv = JSON.parse(localStorage.getItem("kalk-pv") || "null"); } catch (e) {}
+    if (!pv || !pv.n) return;
+    const p = PANELS.find((x) => pv.panel && pv.panel.toUpperCase().indexOf(x.label.replace("ANDO ", "")) >= 0) || (pv.brand === "LINA" ? PANELS[4] : PANELS[0]);
+    const n = Math.min(pv.n, 200); this.setState({ pv, panel: p.k, n, groups: [{ face: "S", n }] });
+  }
+  setDirs(d) { this.setState((s) => { const base = Math.floor(s.n / d), g = []; for (let i = 0; i < d; i++) g.push({ face: ["S", "E", "W", "SE"][i], n: i === d - 1 ? s.n - base * (d - 1) : base }); return { dirs: d, groups: g }; }); }
+  calc() {
+    const s = this.state, P = s.panel === "other" ? { label: "Other panel", wp: +s.oWp || 0, voc: +s.oVoc || 1, isc: +s.oIsc || 0 } : PANELS.find((p) => p.k === s.panel), kwp = s.n * P.wp / 1000;
+    const acMax = (s.phase === "3P" ? 3 : 1) * 230 * s.amps / 1000;
+    const vocCold = P.voc * (1 + 0.0027 * (25 - TMIN[s.clim]));
+    const maxPerString = Math.max(1, Math.floor(1000 / vocCold));
+    const want = s.sys === "off" ? ["Off-grid", "Off-grid hybrid"] : s.batt > 0 ? ["Hybrid"] : ["String"];
+    const inv = ((window.MOEBIUS_CONFIG_DATA || {}).inverters || []).filter((i) => (s.sys === "off" || i.status === "Available") && want.indexOf(i.type) >= 0 && (s.sys === "off" || ( i.range && i.range.length === 2 && i.phase === s.phase && (i.mpptMax || 1) >= s.dirs && kwp / 1.3 <= i.range[1] && kwp / 0.8 >= i.range[0] && i.range[0] <= acMax)));
+    inv.sort((a, b) => Math.abs((a.range[0] + a.range[1]) / 2 - kwp / 1.1) - Math.abs((b.range[0] + b.range[1]) / 2 - kwp / 1.1));
+    return { P, kwp, acMax, vocCold, maxPerString, inv };
+  }
+  diagram(c) {
+    const e = React.createElement, s = this.state, g = s.groups, sketch = (this.props.diagramStyle ?? "Technical") === "Sketch";
+    const rowH = 56, H = Math.max(240, 50 + g.length * rowH + 40), k = [], wire = sketch ? "#898989" : "#D6291F";
+    const t = (x, y, txt, o) => k.push(e("text", Object.assign({ key: "t" + k.length, x, y, fontSize: 12, fill: "#252525", fontFamily: "inherit" }, o || {}), txt));
+    g.forEach((gr, i) => {
+      const y = 30 + i * rowH, nS = Math.max(1, Math.ceil(gr.n / c.maxPerString));
+      for (let j = 0; j < Math.min(6, gr.n); j++) k.push(e("rect", { key: "p" + i + "-" + j, x: 10 + j * 18, y, width: 14, height: 22, rx: sketch ? 4 : 2, fill: "#CDDB65", stroke: sketch ? "none" : "#4F4F4E", strokeWidth: 0.8 }));
+      if (!sketch) t(10, y + 38, gr.face + " · " + gr.n + " panels · " + nS + " string" + (nS > 1 ? "s" : ""), { fontSize: 11 });
+      else t(10, y + 38, gr.face, { fontSize: 11, fill: "#5F5E5E" });
+      k.push(e("path", { key: "l" + i, d: "M122 " + (y + 11) + " H220 V" + (H / 2 - 14 + i * 9), fill: "none", stroke: wire, strokeWidth: sketch ? 2 : 1.2, strokeLinecap: "round" }));
+      if (!sketch) t(140, y + 6, "DC +/−", { fontSize: 10, fill: wire });
+    });
+    k.push(e("rect", { key: "inv", x: 220, y: H / 2 - 40, width: 96, height: 80, rx: sketch ? 16 : 8, fill: "#FB8C00" }));
+    t(234, H / 2 - 6, "MOEBIUS", { fontSize: 12 }); t(234, H / 2 + 12, s.dirs + " MPPT", { fontSize: 11 });
+    k.push(e("path", { key: "ac", d: "M316 " + H / 2 + " H376", stroke: "#252525", strokeWidth: sketch ? 2 : 1.4, strokeLinecap: "round" }));
+    if (!sketch) t(322, H / 2 - 6, "AC " + (s.phase === "3P" ? "3~" : "1~"), { fontSize: 10 });
+    k.push(e("rect", { key: "sw", x: 376, y: H / 2 - 24, width: 74, height: 48, rx: sketch ? 14 : 6, fill: "#FFFFFF", stroke: "#4F4F4E" }));
+    t(384, H / 2 - 4, "Main switch", { fontSize: 10 }); t(384, H / 2 + 12, s.amps + " A", { fontSize: 11 });
+    return e("svg", { width: "100%", viewBox: "0 0 460 " + H, style: { maxWidth: 460 }, "aria-label": "DC diagram" }, k);
+  }
+  renderVals() {
+    const s = this.state, fmt = (v, d) => Number(v || 0).toLocaleString("nl-BE", { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 });
+    const c = this.calc(), allMode = (this.props.advice ?? "One recommendation") === "All matches";
+    const pick = (cond) => (cond ? "#FB8C00" : "#F4F4F4");
+    const bestI = c.inv[0], sumN = s.groups.reduce((a, g) => a + (+g.n || 0), 0);
+    const fromScan = s.pv && s.pv.n ? "From your " + s.pv.brand + " roof scan: " + s.pv.n + " panels, " + fmt(s.pv.kwp, 1) + " kWp. Check or change the panels below." : "Choose your panels and how many. Coming from a KALK roof scan fills this in for you.";
+    const can = [s.n > 0, true, true, true, true, true, s.consent, false][s.step];
+    const map = (i) => ({ name: i.name, type: i.type, phase: i.phase === "3P" ? "3-phase" : "1-phase", range: i.rangeLabel, mppt: i.mpptLabel });
+    return {
+      visualTitle: s.step >= 5 ? "DC diagram" : "Your system", visual: this.diagram(c), showPhoto: s.step === 5,
+      progressPct: Math.round(Math.min(s.step, 6) / 6 * 100) + "%", progressLabel: Math.min(s.step + 1, 7) + " of 7",
+      isPanels: s.step === 0, isSystem: s.step === 1, isGrid: s.step === 2, isPlace: s.step === 3, isDirs: s.step === 4, isResult: s.step === 5, isContact: s.step === 6, isDone: s.step === 7,
+      sysOpts: [["grid", "On-grid", "Connected to the grid, surplus goes to the grid"], ["hybrid", "On-grid with battery", "Connected to the grid, surplus stored in a FLUXX battery, backup possible"], ["off", "Off-grid", "No grid connection, solar and battery only"]].map(([v, l, sub]) => ({ label: l, sub, bg: pick(s.sys === v), pick: () => this.setState({ sys: v, batt: v === "grid" ? 0 : (s.batt || 10) }) })),
+      battOpts: [[0, "None"], [5, "5 kWh"], [10, "10 kWh"], [15, "15+ kWh"]].map(([v, l]) => ({ label: l, bg: pick(s.batt === v), pick: () => { if (s.sys === "off" && v === 0) return; this.setState({ batt: v, sys: v === 0 ? "grid" : (s.sys === "grid" ? "hybrid" : s.sys) }); } })),
+      battLocked: s.sys === "off",
+      fromScan, panelOpts: PANELS.concat([{ k: "other", label: "Other panel", wp: "enter" }]).map((p) => ({ label: p.label, wp: p.wp, bg: pick(s.panel === p.k), pick: () => this.setState({ panel: p.k }) })),
+      isOther: s.panel === "other", oWp: s.oWp, oVoc: s.oVoc, oIsc: s.oIsc, onOWp: (e) => this.setState({ oWp: e.target.value }), onOVoc: (e) => this.setState({ oVoc: e.target.value }), onOIsc: (e) => this.setState({ oIsc: e.target.value }),
+      n: s.n, onN: (e) => { const n = Math.max(1, +e.target.value || 1); this.setState({ n }, () => this.setDirs(this.state.dirs)); }, kwpTxt: fmt(c.kwp, 2),
+      phases: [["1P", "Single phase", "230 V"], ["3P", "Three phase", "400 V"]].map(([v, l, sub]) => ({ label: l, sub, bg: pick(s.phase === v), pick: () => this.setState({ phase: v }) })),
+      amps: [25, 32, 40, 50, 63, 80].map((a) => ({ label: a + " A", bg: pick(s.amps === a), pick: () => this.setState({ amps: a }) })),
+      onPhoto: (e) => { const f = e.target.files && e.target.files[0]; if (f) this.setState({ photo: URL.createObjectURL(f) }); }, hasPhoto: !!s.photo, photoUrl: s.photo,
+      climates: CLIM.map(([v, l, sub]) => ({ label: l, sub: "coldest " + sub, bg: pick(s.clim === v), pick: () => this.setState({ clim: v }) })),
+      dirOpts: [1, 2, 3, 4].map((d) => ({ label: String(d), bg: pick(s.dirs === d), pick: () => this.setDirs(d) })),
+      groups: s.groups.map((g, i) => ({ no: i + 1, face: g.face, n: g.n, onFace: (e) => { const v = e.target.value; this.setState((st) => ({ groups: st.groups.map((x, j) => (j === i ? { ...x, face: v } : x)) })); }, onN: (e) => { const v = Math.max(0, +e.target.value || 0); this.setState((st) => ({ groups: st.groups.map((x, j) => (j === i ? { ...x, n: v } : x)) })); } })),
+      sumWarn: sumN !== s.n, sumN,
+      hasBest: !!bestI, noBest: !bestI, best: bestI ? map(bestI) : { name: "", type: "", phase: "", range: "", mppt: "" },
+      figures: [{ label: "DC power", value: fmt(c.kwp, 2), unit: "kWp" }, { label: s.sys === "off" ? "Battery" : "Grid limit", value: s.sys === "off" ? fmt(s.batt) : fmt(c.acMax, 1), unit: s.sys === "off" ? "kWh" : "kW" }, { label: "Panels per string max", value: fmt(c.maxPerString), unit: "" }, { label: "Cold-morning voltage per panel", value: fmt(c.vocCold, 1), unit: "V" }, { label: "Panel Isc", value: c.P.isc ? fmt(c.P.isc, 1) : "TO CONFIRM", unit: c.P.isc ? "A" : "" }],
+      hasOthers: allMode && c.inv.length > 1, others: c.inv.slice(1, 6).map((i) => i.name + " (" + i.rangeLabel + ")").join(", "),
+      consent: s.consent, toggleConsent: () => this.setState({ consent: !s.consent }),
+      canBack: s.step > 0 && s.step < 7, back: () => this.setState({ step: s.step - 1 }),
+      showNext: s.step < 7, nextLabel: ["Next", "Next", "Next", "Next", "Calculate", "Receive the configuration", "Send", ""][s.step], nextDisabled: !can, nextBg: can ? "#FB8C00" : "#E3E3E3",
+      next: () => { if (can) this.setState({ step: s.step + 1 }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

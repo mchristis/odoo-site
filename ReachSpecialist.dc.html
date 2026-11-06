@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<script src="./image-slot.js"></script>
+</helmet>
+<section id="specialist" style="scroll-margin-top:156px;max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+  <div style="border-top:1px solid #DDDDDD;padding-top:40px;">
+    <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#AEAEAE;margin-bottom:16px;">Get help now</div>
+    <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Contact <span style="color:#8E8E8E;">a specialist.</span></h2>
+    <p style="margin:0 0 32px;font-size:var(--web-small-size);font-weight:300;color:#898989;max-width:760px;line-height:var(--web-small-lh);">Every route reaches the technical team. Not sales.</p>
+    <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;">
+      <div style="background:#F4F4F4;border-radius:12px;padding:28px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:start;">
+        <div>
+          <div style="font-size:var(--web-body-size);font-weight:300;margin-bottom:16px;">{{ heading }}</div>
+          <p style="margin:0 0 14px;font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);max-width:760px;">{{ lead }}</p>
+          <p style="margin:0 0 20px;font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);max-width:760px;">No quotes, no upsell. If the answer is a smaller system or none at all, that is what you will hear.</p>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;text-decoration:underline;margin-bottom:10px;">Available for</div>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <sc-for list="{{ availableFor }}" as="a" hint-placeholder-count="4">
+              <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">{{ a }}</div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="text-align:center;">
+          <div style="width:96px;height:96px;border-radius:50%;overflow:hidden;background:#EBECEC;margin-bottom:10px;">
+            <image-slot id="{{ photoSlotId }}" shape="circle" placeholder="Specialist photo"></image-slot>
+          </div>
+          <sc-if value="{{ showName }}" hint-placeholder-val="{{ true }}"><div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">{{ name }}</div></sc-if>
+          <div style="font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">{{ role }}</div>
+          <sc-if value="{{ isDummy }}" hint-placeholder-val="{{ false }}"><div style="font-size:10px;font-weight:700;letter-spacing:0.06em;color:#B07818;margin-top:4px;">{{ dummyLabel }}</div></sc-if>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-rows:1fr auto;gap:12px;">
+        <button onClick="{{ openMeeting }}" style="cursor:pointer;text-align:left;font-family:inherit;border:none;border-radius:12px;background:#F4F4F4;padding:22px;display:flex;flex-direction:column;justify-content:space-between;">
+          <span style="align-self:flex-end;width:30px;height:30px;border-radius:50%;background:#4F4F4E;color:#D9DADA;display:flex;align-items:center;justify-content:center;font-size:14px;">&#8599;</span>
+          <span style="font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">Video call</span>
+        </button>
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;--cg:12px;">
+          <button onClick="{{ openChat }}" style="cursor:pointer;text-align:left;font-family:inherit;border:none;border-radius:12px;background:#F4F4F4;padding:18px;display:flex;flex-direction:column;justify-content:space-between;min-height:88px;">
+            <span style="align-self:flex-end;width:26px;height:26px;border-radius:50%;background:#4F4F4E;color:#D9DADA;display:flex;align-items:center;justify-content:center;font-size:12px;">&#8599;</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">Live chat</span>
+          </button>
+          <button onClick="{{ openForm }}" style="cursor:pointer;text-align:left;font-family:inherit;border:none;border-radius:12px;background:#F4F4F4;padding:18px;display:flex;flex-direction:column;justify-content:space-between;min-height:88px;">
+            <span style="align-self:flex-end;width:26px;height:26px;border-radius:50%;background:#4F4F4E;color:#D9DADA;display:flex;align-items:center;justify-content:center;font-size:12px;">&#8599;</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">Contact form</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <sc-if value="{{ showExpertLink }}" hint-placeholder-val="{{ false }}"><div style="padding:24px 0 0;display:flex;"><a href="STROHM.ENERGY - COMPANY - Who - Product Experts - EN.dc.html" style="align-self:flex-start;text-decoration:none;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;" style-hover="color:#222222;">Find your product expert<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a></div></sc-if>
+  </div>
+</section>
+<dc-import name="ContactModal" open="{{ modalOpen }}" onClose="{{ closeModal }}" hint-size="100%,860px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:420},&quot;brand&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;product&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;since&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2008&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;specialistName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Mr. Rowi&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;role&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;R&amp;D and electronics-software engineer&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;photoSlotId&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;}}">
+// Dummy specialists per brand (DEPTH-53). Replace with real names; isDummy removes the PLACEHOLDER label.
+const SPEC = {
+  EMON: ["Geert Noels", "TO CONFIRM", ["Setup", "Commissioning", "Digital passport", "Flexibility", "EMS modules"], false],
+  PROJECTS: ["Geert Noels", "TO CONFIRM", ["Residential", "Commercial", "Utility", "Engineering"], false],
+  FINANCE: ["Henry Rollins", "TO CONFIRM", ["Lease", "Fund", "Invest", "Cooperatives", "Product Angel"], false],
+  // Previous ANDO placeholder: ["Mr. Rowi", "Solar module engineer", ["Module selection", "Roof layout", "Yield and shading", "Warranty claims"]]
+  ANDO: ["Thomas Vermeulen", "Senior Photovoltaic Manufacturing & Reliability Engineer", ["PV module selection", "Manufacturing quality", "Testing standards", "Certification documentation", "Failure analysis", "Long-term reliability"]],
+  // Previous LINA entry: LINA: ["Elise Maes", "Rooftop systems engineer", ["Flat and green roofs", "Roof loads", "Bifacial yield", "Quotations"]],
+  LINA: ["Piotr Zieliński", "Vertical PV & Flat-Roof Mounting Systems Engineer", ["Vertical photovoltaic systems", "Flat-roof solar mounting", "Structural interfaces", "Wind loading", "Mechanical product design", "Manufacturing", "Module integration", "Architectural solar applications"]],
+  // Previous MOEBIUS entry: MOEBIUS: ["Mr. Rowi", "R&D and electronics-software engineer", ["R&D and product design", "Commissioning and faults", "Electronics and software", "Installer field knowledge"], false],
+  MOEBIUS: ["Arjun Menon", "Power Conversion & Embedded Control Engineer", ["Hybrid inverter architecture", "Battery communication", "Grid compliance", "Inverter diagnostics", "Embedded control", "System commissioning"]],
+  // Previous FLUXX entry: FLUXX: ["Tom Jacobs", "Battery systems engineer", ["Battery sizing", "Inverter pairing", "Backup and EPS", "Commissioning"]],
+  FLUXX: ["Bram de Vries", "Battery Systems & BMS Reliability Engineer", ["Battery selection", "BMS architecture", "Inverter compatibility", "Battery safety", "Energy storage diagnostics", "Manufacturing quality", "SoC/SoH interpretation", "Long-term reliability"]],
+  // Previous SYNQ entry: SYNQ: ["Sara Peeters", "Metering and integration engineer", ["Meter selection", "Protocols", "EMON integration", "Installation"]],
+  SYNQ: ["Ananya Rao", "Smart Metering & Embedded Instrumentation Engineer", ["P1 compatibility", "DIN metering", "CT sensor configuration", "Wireless communication", "Commissioning", "Measurement accuracy", "Embedded electronics"]],
+  // Previous OZZY entry: OZZY: ["Jonas Claes", "Smart switching specialist", ["Choosing a device", "Load limits", "Wi-Fi mesh", "EMON automation"]],
+  OZZY: ["Meera Kulkarni", "Smart Switching & Embedded Controls Engineer", ["Smart switching", "Electrical load compatibility", "Connected plugs", "Energy monitoring", "Automation", "Relay reliability", "Electrical safety", "EMON integration"]],
+  // Previous XOOM entry: XOOM: ["Lisa Wouters", "EV charging engineer", ["Charger selection", "Load management", "Grid connection", "Installation"]],
+  XOOM: ["Lukas Schneider", "Senior EV Charging & Grid Integration Technician", ["EV charger selection", "Electrical installation", "AC/DC charging", "Vehicle compatibility", "OCPP", "Load balancing", "Commissioning", "Charging diagnostics", "EMON integration"]],
+  // Previous NENDO entry: NENDO: ["Pieter Janssens", "Heat pump engineer", ["System sizing", "Hydraulics", "EMON control", "Commissioning"]],
+  NENDO: ["Mihai Ionescu", "Senior Heat Pump, HVAC & Hot Water Specialist", ["Heat pump selection", "Hydronic design", "Heating system compatibility", "Commissioning", "Refrigeration diagnostics", "Seasonal efficiency", "Retrofit installations", "Energy management integration"]],
+  // Previous OGO entry: OGO: ["Nina Hermans", "Water heating specialist", ["Tank selection", "PV-direct heating", "Hygiene cycles", "Installation"]],
+  // Previous OGO title (before DEPTH-979): "Senior Heat Pump, HVAC & Hot Water Specialist"; focus areas (before DEPTH-980): Heat pump water heaters, Domestic hot water, Storage tank sizing, Water hygiene, PV-assisted water heating, EMON hot water scheduling
+  OGO: ["Mihai Ionescu", "Water systems specialist", ["Rainwater storage", "Tank selection", "Collection and overflow", "Pump and irrigation", "EMON water control", "Installation"]],
+  // Previous FEU entry: FEU: ["Marc Dubois", "Radiant heating engineer", ["Panel layout", "Room heat demand", "Controls", "Installation"]],
+  FEU: ["Kateryna Hrytsenko", "Radiant Heating & Building Physics Specialist", ["Infrared heating", "Radiant comfort", "Room heat-loss assessment", "Panel positioning", "Thermal performance", "Electrical heating controls", "Installation design", "Architectural integration"]],
+  // Previous AIRO entry: AIRO: ["Eva Lambert", "Ventilation engineer", ["System design", "Air balancing", "Filters and maintenance", "Projects"]],
+  AIRO: ["Andrei Popescu", "Ventilation & Indoor Air Quality Commissioning Specialist", ["Central and decentralised MVHR", "Airflow balancing", "Ductwork", "Acoustic performance", "Ventilation commissioning", "Indoor air quality", "Humidity control", "System integration"]],
+  // Previous AGRIX entry: AGRIX: ["Koen Vermeulen", "Agri-PV engineer", ["Crop and layout", "Structure height", "Water and climate", "Permits"]],
+  PARX: ["Hendrik Van Aelst", "Senior Structural, Mounting & Equipment Protection Engineer", ["Carport structures", "Bikeports", "EV charging integration", "Foundations", "Drainage and cabling"]],
+  TECTIX: ["Hendrik Van Aelst", "Senior Structural, Mounting & Equipment Protection Engineer", ["Flat-roof systems", "Tiled and slate roofs", "Roof loads and ballast", "Waterproofing interfaces", "Wind and snow loads"]],
+  PONTIX: ["Hendrik Van Aelst", "Senior Structural, Mounting & Equipment Protection Engineer", ["Floating platforms", "Mooring and anchoring", "Water-level movement", "Shore connection", "Marine-grade materials"]],
+  TERRIX: ["Hendrik Van Aelst", "Senior Structural, Mounting & Equipment Protection Engineer", ["Fixed-tilt structures", "Single-axis trackers", "Foundations and piling", "Site and soil assessment", "Wind and snow loads"]],
+  AGRIX: ["Dr. Klaus Reinhardt", "Senior Agrivoltaics & Agricultural Engineering Specialist", ["Agrivoltaics", "Agricultural solar installations", "Elevated PV structures", "Farm equipment clearance", "Mechanical engineering", "Irrigation integration", "Outdoor durability", "Agricultural energy systems", "Field maintenance"]],
+  // Previous MOX entry: MOX: ["Bart De Smet", "Structural engineer", ["Loads and foundations", "Drainage", "Approvals", "Project review"]],
+  MOX: ["Hendrik Van Aelst", "Senior Structural, Mounting & Equipment Protection Engineer", ["PV mounting systems", "Structural connections", "Wind and snow loading", "Material durability", "Mechanical safety", "Installation requirements", "Manufacturing quality"]],
+  // Previous DODO entry: DODO: ["Ruben Martens", "Installation protection specialist", ["Bird protection", "Cable management", "Roof access", "Installer kits"]],
+  DODO: ["Charlotte Whitmore", "Product Safety & Protective Systems Specialist", ["Product safety", "Protective hardware", "Environmental protection", "Ingress protection", "Mechanical safety", "Equipment enclosures", "Intelligent monitoring", "Conformity assessment", "Installation safety"]],
+  // Previous SHELTR entry: SHELTR: ["Anke Willems", "Equipment shelter engineer", ["Shelter selection", "Ballast and fixing", "Roof compatibility", "Custom projects"]],
+  SHELTR: ["Hendrik Van Aelst", "Senior Structural, Mounting & Equipment Protection Engineer", ["Equipment shelters", "Protective enclosures", "Wind and snow loading", "Weather resistance", "Material durability", "Fixing and anchoring", "Mechanical safety", "Installation requirements"]],
+  // Previous WURK entry: WURK: ["Dries Goossens", "Installation equipment specialist", ["Tool selection", "Safety equipment", "Inspection", "Kits"]],
+  WURK: ["Marek Kováč", "Access Equipment & Installation Safety Specialist", ["Mobile scaffolding", "Temporary access equipment", "Materials handling", "Transport trolleys", "Structural stability", "Ergonomics", "Mechanical durability", "Equipment testing", "Installer safety"]],
+  TRIBE: ["Geert Noels", "Distributed energy systems specialist", ["Programme overview", "Applications", "Partner roles", "Support"], false],
+  KERN: ["Geert Noels", "Operations software specialist", ["Modules", "Process", "Documents", "Demo request"], false],
+  PUSH: ["Geert Noels", "Installer growth specialist", ["Installer network", "Lead assignment", "Joining", "Support"], false],
+  PACT: ["Geert Noels", "Group purchasing specialist", ["Group purchasing", "Joining a group", "Professional buyers", "Support"], false],
+  DEPOT: ["Geert Noels", "Stock Partner programme specialist", ["Stock Partner programme", "Requirements", "Logistics", "Application"], false],
+  KALK: ["Geert Noels", "Calculation platform specialist", ["KALK PLAN", "Tool selection", "Storage and energy", "Support"], false],
+  // Previous TOGU entry: TOGU: ["Laura Maes", "Electrical connectivity engineer", ["Cable selection", "Connectors", "CPR classes", "Cable routing"]],
+  TOGU: ["Mei-Ling Lin", "Senior Cable, Connector & Electrical Interconnection Specialist", ["Solar DC cables", "Power cables", "Electrical connectors", "Cable assemblies", "Terminations", "Material selection", "Electrical testing", "Manufacturing quality"]],
+  // Previous GLOW entry: GLOW: ["Sven Hendrickx", "Solar lighting engineer", ["Lighting design", "Autonomy", "Tenders", "Custom design"]],
+  GLOW: ["Milica Petrović", "Solar Lighting & Architectural Illumination Specialist", ["Solar lighting", "LED optics", "Photometry", "Colour quality", "Outdoor illumination", "Battery autonomy", "Lighting controls", "Product specification", "Architectural lighting integration"]],
+  // Previous CHILL entry: CHILL: ["Hanne Pauwels", "Integrated furniture designer", ["Product choice", "Placement", "Charging", "Public projects"]],
+  CHILL: ["Elīna Ozoliņa", "Architectural Product & Energy-Integrated Infrastructure Designer", ["Energy-integrated furniture", "Architectural infrastructure", "Product design", "Material selection", "Manufacturing", "Ergonomics", "Outdoor durability", "Technical integration"]],
+  // Previous PROP entry: PROP: ["Wim Coppens", "Small wind engineer", ["Site wind assessment", "Mast and height", "Permits", "Hybrid systems"]],
+  PROP: ["Viktoria Stoyanova", "Wind Turbine Testing & Rotor Development Specialist", ["Vertical-axis wind turbines", "Rotor aerodynamics", "Turbine selection", "Site wind conditions", "Vibration", "Blade development", "Performance testing", "Manufacturing and maintenance"]],
+  // Previous MUKI entry: MUKI: ["Charlotte Aerts", "Energy set specialist", ["Choosing a set", "Upgrades", "Installation", "Support"]],
+  MUKI: ["Filip De Smet", "Senior Electrical Systems Integration & Preconfiguration Engineer", ["Integrated PV and battery systems", "Inverter compatibility", "Preconfigured energy kits", "Factory testing", "Installation commissioning", "Energy management integration", "Technical documentation", "System reliability"]],
+};
+class Component extends DCLogic {
+  state = { modalOpen: false };
+  renderVals() {
+    return { showExpertLink: !this.props.brand,
+      since: this.props.since ?? "2008",
+      ...(() => { const s = SPEC[this.props.brand] || null; const prod = this.props.product; return {
+        name: this.props.specialistName ?? (s ? s[0] : "Mr. Rowi"),
+        showName: !!(this.props.specialistName ?? (s ? s[0] : "Mr. Rowi")),
+        dummyLabel: s && s[0] === null ? "PLACEHOLDER ROLE" : "PLACEHOLDER NAME",
+        heading: s && s[0] === null ? "A specialist for " + this.props.brand + "." : "Your technical contact for " + this.props.brand + ".",
+        role: this.props.role ?? (s ? s[1] + (prod ? " · " + prod : "") : "R&D and electronics-software engineer"),
+        isDummy: this.props.specialistName ? false : (s ? s[3] !== false : false),
+        lead: this.props.lead ?? (s ? `Talk to the ${s[1].toLowerCase()} behind ${prod || this.props.brand}, not a sales desk. They know the difficulties installers face on site, and answer on that basis.` : "Talk to an R&D and electronics-software engineer, not a sales desk. He knows the difficulties installers face on site, and answers on that basis."),
+        brandAvail: s ? s[2] : null }; })(),
+      photoSlotId: this.props.photoSlotId ?? ("reach-specialist-" + String(this.props.brand || "photo").toLowerCase()),
+      availableFor: this.props.availableFor ?? ((SPEC[this.props.brand] || [])[2]) ?? ["R&D & product design", "Commissioning & faults", "Electronics & software", "Installer field knowledge"],
+      modalOpen: this.state.modalOpen,
+      openMeeting: () => this.setState({ modalOpen: true }),
+      openChat: () => this.setState({ modalOpen: true }),
+      openForm: () => this.setState({ modalOpen: true }),
+      closeModal: () => this.setState({ modalOpen: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

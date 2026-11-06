@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<style>@media (max-width:1024px){ .bh-card{grid-template-columns:1fr !important;aspect-ratio:auto !important;} .bh-media{aspect-ratio:4/3;grid-row:1 !important;} .bh-panel{grid-row:2 !important;grid-column:1 !important;padding:40px 32px !important;} } @media (max-width:720px){ .bh-card{width:calc(100% - 40px) !important;margin-top:20px !important;} .bh-panel{padding:28px 20px !important;} } @media (prefers-reduced-motion:reduce){ .bh-media *{transition:none !important;} }</style>
+</helmet>
+<div>
+<section class="bh-card" tabindex="0" aria-roledescription="carousel" aria-label="{{ brand }}" onKeyDown="{{ onKey }}" data-stack="1" style="position:relative;width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:83px auto 0;aspect-ratio:2.1/1;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);outline:none;font-family:var(--font-web);">
+  <div class="bh-media" onTouchStart="{{ onTouchStart }}" onTouchEnd="{{ onTouchEnd }}" style="position:relative;min-width:0;background:#EBECEC;grid-column:1 / -1;grid-row:1 / -1;">
+    <sc-for list="{{ slides }}" as="m" hint-placeholder-count="1">
+      <div aria-hidden="{{ m.hidden }}" style="position:absolute;inset:0;opacity:{{ m.op }};transition:opacity 0.6s ease;pointer-events:{{ m.pe }};">
+        <sc-if value="{{ m.isSlot }}" hint-placeholder-val="{{ false }}"><image-slot id="{{ m.slot }}" shape="rect" placeholder="{{ m.alt }}"></image-slot></sc-if>
+        {{ m.el }}
+      </div>
+    </sc-for>
+  </div>
+  <div class="bh-panel" style="grid-column:1;grid-row:1;position:relative;z-index:1;container-type:inline-size;min-width:0;box-sizing:border-box;padding:56px 48px;background:{{ panelBg }};color:#252525;display:flex;flex-direction:column;justify-content:space-between;gap:32px;">
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <h1 style="margin:0;font-size:clamp(28px,8.4cqi,44px);font-weight:100;line-height:1.2;letter-spacing:0.01em;word-spacing:0.12em;color:#252525;text-transform:uppercase;text-wrap:balance;overflow-wrap:normal;hyphens:manual;">{{ title }}</h1>
+      <p style="margin:0;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#252525;text-wrap:pretty;max-width:440px;">{{ intro }}</p>
+    </div>
+    <div style="display:flex;align-items:center;gap:4px;">
+      <button type="button" onClick="{{ prev }}" aria-label="Previous" style-hover="color:#000000;" style="width:32px;height:56px;border:none;background:transparent;color:#252525;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;flex:none;"><svg width="14" height="40" viewBox="0 0 14 40" aria-hidden="true" style="display:block;"><polyline points="13,1 1,20 13,39" fill="none" stroke="currentColor" stroke-width="1"></polyline></svg></button>
+      <div aria-live="polite" data-cols="3" style="flex:1;min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;--cg:12px;">
+        <sc-for list="{{ trio }}" as="d" hint-placeholder-count="3">
+          <a href="{{ d.href }}" onClick="{{ d.onClick }}" aria-current="{{ d.current }}" style="display:flex;flex-direction:column;gap:4px;text-decoration:none;color:{{ d.color }};cursor:pointer;transition:color 0.6s ease;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);font-variant-numeric:tabular-nums;">{{ d.n }}</span>
+            <span style="font-size:var(--web-small-size);font-weight:400;line-height:1.3;text-wrap:balance;">{{ d.title }}</span>
+          </a>
+        </sc-for>
+      </div>
+      <button type="button" onClick="{{ next }}" aria-label="Next" style-hover="color:#000000;" style="width:32px;height:56px;border:none;background:transparent;color:#252525;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;flex:none;"><svg width="14" height="40" viewBox="0 0 14 40" aria-hidden="true" style="display:block;"><polyline points="1,1 13,20 1,39" fill="none" stroke="currentColor" stroke-width="1"></polyline></svg></button>
+    </div>
+  </div>
+</section>
+<!-- DEPTH-1094: optional full numbered index (prop index="all") -->
+<sc-if value="{{ showIndex }}" hint-placeholder-val="{{ false }}">
+  <nav aria-label="{{ brand }} hero slides" style="width:calc(100% - 2 * var(--web-side));max-width:1312px;margin:16px auto 0;font-family:var(--font-web);">
+    <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px;--cg:24px;">
+      <sc-for list="{{ index }}" as="x" hint-placeholder-count="8">
+        <button type="button" onClick="{{ x.onClick }}" aria-current="{{ x.current }}" style="display:flex;gap:12px;align-items:baseline;min-height:52px;padding:14px 0;border:0;border-top:{{ x.rule }};background:none;text-align:left;cursor:pointer;font-family:var(--font-web);color:{{ x.color }};transition:color 0.6s ease;" style-focus="outline:2px solid #252525;outline-offset:2px;">
+          <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);font-variant-numeric:tabular-nums;">{{ x.n }}</span>
+          <span style="font-size:var(--web-small-size);font-weight:{{ x.weight }};line-height:1.3;text-wrap:balance;">{{ x.title }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </nav>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:760},&quot;brand&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;LINA&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;rgb&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;181,198,74&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;dark&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#4F5C12&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;light&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#7E8C34&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Vertical solar for flat roofs.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;intro&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;items&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;{n:string,title:string,href?:string,media?:{type:'img'|'video'|'slot',src?:string,slot?:string,alt?:string}}[]&quot;}}">
+class Component extends DCLogic {
+  state = { frame: 0 };
+  _vids = {};
+  items() { return this.props.items || []; }
+  componentDidMount() {
+    this._rm = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+    this._vids = this._vids || {};
+    this._schedule();
+  }
+  componentWillUnmount() { clearTimeout(this._t); }
+  _go(i) { const n = this.items().length || 1; this.setState({ frame: (i + n) % n }, () => this._schedule()); }
+  _schedule() {
+    clearTimeout(this._t);
+    const it = this.items(), cur = it[this.state.frame], reduced = this._rm && this._rm.matches;
+    Object.keys(this._vids).forEach(k => { const v = this._vids[k]; if (v && +k !== this.state.frame) v.pause(); });
+    if (!cur) return;
+    if (cur.media && cur.media.type === "video") { const v = this._vids[this.state.frame]; if (v) { v.currentTime = 0; if (!reduced) v.play().catch(() => {}); } return; }
+    if (!reduced && it.length > 1) this._t = setTimeout(() => this._go(this.state.frame + 1), 7000);
+  }
+  renderVals() {
+    const it = this.items(), f = this.state.frame, N = it.length;
+    const rgb = this.props.rgb || "205,214,43";
+    const fill = { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" };
+    const slides = it.map((x, i) => {
+      const m = x.media || { type: "slot", slot: (this.props.brand || "brand").toLowerCase() + "-hero-" + (i + 1), alt: (this.props.brand || "") + " hero picture " + (i + 1) };
+      const on = i === f;
+      let el = null;
+      if (m.type === "img") el = React.createElement("img", { src: m.src, alt: m.alt || "", style: fill });
+      if (m.type === "video") el = React.createElement("video", { ref: (v) => { if (this._vids) this._vids[i] = v; }, src: m.src, muted: true, playsInline: true, preload: "metadata", "aria-label": (m.alt || "Video") + " (click to pause or play)", onClick: (e) => { const v = e.currentTarget; v.paused ? v.play().catch(() => {}) : v.pause(); }, onEnded: () => this._go(this.state.frame + 1), style: { ...fill, cursor: "pointer" } });
+      return { isSlot: m.type === "slot", slot: m.slot, alt: m.alt, el, op: on ? 1 : 0, pe: on ? "auto" : "none", hidden: on ? "false" : "true" };
+    });
+    const trio = N ? [-1, 0, 1].map(o => { const i = (f + o + N) % N, w = it[i]; return { n: w.n, title: w.title, href: w.href || "#", current: o === 0 ? "true" : "false", color: o === 0 ? (this.props.dark || "#252525") : (this.props.light || "#6B6B6B"), onClick: (e) => { e.preventDefault(); this._go(i); } }; }) : [];
+    return {
+      brand: this.props.brand || "", title: this.props.title || "", intro: this.props.intro || "",
+      panelBg: `linear-gradient(rgba(${rgb},0.3),rgba(${rgb},0.3)),rgba(255,255,255,0.6)`,
+      slides, trio,
+      showIndex: this.props.index === "all" && N > 0,
+      index: it.map((w, i) => { const on = i === f; return { n: w.n, title: w.title, current: on ? "true" : "false", color: on ? (this.props.dark || "#252525") : "#5F5E5E", weight: on ? 400 : 300, rule: on ? "2px solid " + (this.props.dark || "#252525") : "1px solid #DDDDDD", onClick: () => this._go(i) }; }),
+      prev: () => this._go(f - 1), next: () => this._go(f + 1),
+      onKey: (e) => { if (e.key === "ArrowLeft") { e.preventDefault(); this._go(f - 1); } if (e.key === "ArrowRight") { e.preventDefault(); this._go(f + 1); } },
+      onTouchStart: (e) => { this._tx = e.touches[0].clientX; },
+      onTouchEnd: (e) => { if (this._tx == null) return; const dx = e.changedTouches[0].clientX - this._tx; this._tx = null; if (Math.abs(dx) > 40) this._go(f + (dx < 0 ? 1 : -1)); }
+    };
+  }
+}
+</script>
+</body>
+</html>

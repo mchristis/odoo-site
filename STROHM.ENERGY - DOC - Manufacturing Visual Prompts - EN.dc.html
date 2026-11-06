@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>Manufacturing Visual Prompts | STRØHM.ENERGY</title>
+<script src="./doc-page.js"></script>
+<style> doc-page:not(:defined){visibility:hidden} body { margin:0; } a { color:var(--color-text-primary); } </style>
+</helmet>
+<doc-page size="a4" margin="18mm">
+<div style="font-family:var(--font-web);color:var(--color-text-primary);font-size:10pt;line-height:1.5;">
+  <div style="font-size:8pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-text-primary);">STRØHM.ENERGY · All brands · Internal document</div>
+  <h1 style="margin:8px 0 6px;font-size:24pt;font-weight:700;">Manufacturing visual prompts</h1>
+  <div style="font-size:10pt;font-weight:300;color:var(--color-text-primary);margin-bottom:16px;">Version 1 · 27 September 2026 · 3 images per brand for the Engineering and Manufacturing pages (factory line, test bench, batch label with QR). Slot ids: [brand]-mfg-factory, -test, -batch.</div>
+  <h2 style="margin:14px 0 6px;font-size:13pt;font-weight:700;border-top:1px solid var(--color-text-primary);padding-top:10px;">Style base</h2>
+  <div style="background:var(--color-surface-card);padding:8px 10px;font-family:Menlo,Consolas,monospace;font-size:8.3pt;">Industrial documentary photograph, clean modern European factory, neutral grey floors and white walls, even overhead LED light, calm organised workstations, operators in plain dark workwear seen from behind or cropped (no faces), no logos except the brand wordmark on products, no text overlays, neutral colour grade, 35 mm lens, shallow depth of field on the product, 4:3</div>
+  <p style="margin:6px 0 0;font-weight:300;"><b>Avoid:</b> robots with sparks, blue glowing light, dirty or chaotic halls, staged smiles, Asian or European flags, visible supplier names.</p>
+  <sc-for list="{{ brands }}" as="b" hint-placeholder-count="21">
+    <div style="break-inside:avoid;border-top:1px solid var(--color-divider);padding:10px 0 6px;">
+      <div style="font-size:11pt;font-weight:700;margin-bottom:4px;">{{ b.name }} <span style="font-weight:300;color:var(--color-text-primary);">· {{ b.what }}</span></div>
+      <sc-for list="{{ b.items }}" as="p" hint-placeholder-count="3">
+        <div data-stack="1" style="display:grid;grid-template-columns:44mm 1fr;gap:10px;padding:3px 0;"><b style="font-size:9pt;">{{ p.id }}</b><span style="font-family:Menlo,Consolas,monospace;font-size:8.2pt;color:var(--color-text-primary);">{{ p.prompt }}</span></div>
+      </sc-for>
+    </div>
+  </sc-for>
+</div>
+</doc-page>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const B = [
+  ["ANDO", "solar panels", "framed solar modules on an automated lay-up and lamination line", "a module under an electroluminescence tester, cell grid visible on the screen", "the rear label of a solar module with serial number and QR code"],
+  ["LINA", "vertical rooftop solar units", "vertical bifacial LINA units being assembled on a frame jig", "a LINA unit on a flash tester with a technician's gloved hand", "a batch label with QR on the LINA frame"],
+  ["MOEBIUS", "inverters", "inverter housings on a clean electronics assembly line, circuit boards being mounted", "an inverter on a burn-in and load test rack, cables connected, test screen blurred", "an inverter side label with serial, rating plate and QR"],
+  ["FLUXX", "batteries", "battery modules being assembled from prismatic cells on a workstation", "a battery pack on a charge and discharge test bench", "the battery rating plate with serial, capacity and QR"],
+  ["SYNQ", "smart meters and plugs", "smart meters on an SMT and final assembly line", "a meter in a calibration test rig", "a meter label with serial and QR"],
+  ["OZZY", "smart switching", "switching units being wired on a DIN-rail assembly table", "a switching unit in a relay endurance test fixture", "the product label with serial and QR on a DIN device"],
+  ["XOOM", "EV chargers", "wallbox chargers on an assembly line, front covers off", "a charger connected to an EV simulator test bench", "the charger rating plate with serial and QR"],
+  ["NENDO", "heat pumps", "outdoor heat pump units on a production line with refrigerant circuits exposed", "a heat pump in a climate test chamber, pipes and sensors connected", "the heat pump rating plate with refrigerant, serial and QR"],
+  ["OGO", "heat pump water heaters", "hot-water cylinders with heat pump tops on an assembly line", "a cylinder on a pressure test station", "the cylinder rating plate with serial and QR"],
+  ["FEU", "radiant heating panels", "infrared glass and metal panels being assembled and framed", "a panel on a thermal imaging test, surface temperature map blurred", "the rear label of a panel with serial and QR"],
+  ["AIRO", "ventilation units", "ventilation units with heat exchangers being assembled", "a unit on an airflow and sound test rig", "the unit label with serial, airflow class and QR"],
+  ["AGRIX", "agri-PV structures", "steel and aluminium profiles for agri-PV structures being cut and drilled", "a structural profile on a load test frame", "a stamped profile label with batch number and QR"],
+  ["MOX", "mounting structures", "aluminium mounting profiles coming out of an extrusion and cutting line", "a mounting assembly on a pull-out and load test", "a profile bundle label with batch and QR"],
+  ["DODO", "bird and installation protection", "bird protection mesh and clips being cut and packed", "a mesh sample in a UV weathering test cabinet", "a roll label with batch and QR"],
+  ["SHELTR", "equipment shelters", "shelter panels and frames being welded and powder-coated", "a shelter door on an ingress (IP) spray test", "the shelter rating plate with serial and QR"],
+  ["WURK", "installation equipment", "installation tools and carts being assembled", "a lifting device on a load test", "a tool label with serial and QR"],
+  ["TOGU", "electrical connectivity", "solar cable being extruded and wound on returnable drums", "cable samples on a high-voltage and insulation test bench", "a cable drum label with batch, CPR class and QR"],
+  ["GLOW", "solar lighting", "GLOW columns with four-sided solar modules being assembled", "a GLOW head and battery module on a burn-in rack at night light level", "the column label with serial and QR"],
+  ["CHILL", "energy-integrated furniture", "benches and street furniture with integrated PV being assembled", "a bench on an impact and load test", "a furniture label with serial and QR"],
+  ["PROP", "small wind turbines", "small wind turbine generators and blades being assembled", "a turbine on a dynamometer test stand", "the turbine rating plate with serial and QR"],
+  ["MUKI", "preconfigured energy sets", "preconfigured energy sets being kitted and packed on a line", "a complete set being function-tested on a test table before packing", "the set box label with contents list and QR"],
+];
+class Component extends DCLogic {
+  renderVals() {
+    return { brands: B.map(([n, what, f, t, b]) => { const k = n.toUpperCase(); return { name: n, what, items: [["IMG-" + k + "-MFG-FACTORY-01", "[Style base] + " + f], ["IMG-" + k + "-MFG-TEST-01", "[Style base] + " + t], ["IMG-" + k + "-MFG-BATCH-01", "[Style base] + close-up macro of " + b + ", sharp focus, rest of product softly blurred"]].map(([id, prompt]) => ({ id, prompt })) }; }) };
+  }
+}
+</script>
+</body>
+</html>

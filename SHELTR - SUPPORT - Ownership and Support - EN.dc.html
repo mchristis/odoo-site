@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>SHELTR Ownership and Support | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  ::placeholder { color:#6F6F6D; opacity:1; }
+  input:disabled, select:disabled, textarea:disabled { color:#C8C7C3; }
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  input:focus, select:focus { outline:none; border-color:var(--color-brand-sheltr); }
+  .sh-route:hover { border-color:var(--color-brand-sheltr) !important; }
+  .sh-route:hover .sh-route-t { color:var(--color-text-primary); }
+  .sh-doc:hover { background:#FAFAFC !important; }
+  .sh-doc:hover .sh-doc-n { color:var(--color-text-primary); }
+  .sh-fchip:hover { border-color:var(--color-text-primary) !important; color:var(--color-text-primary) !important; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="SheltrNav" active="support" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="SHELTR" rgb="91,101,146" eyebrow="SHELTR support &amp; downloads" title="Find the document, record or answer you need." intro="Manuals, datasheets, engineering guidance, warranty and installation records &#8212; everything that keeps a SHELTR installation supported for its complete life." slot="sheltr-ownership-and-support-hero" shot="SHELTR · Ownership and Support · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import>
+
+  <!-- SUPPORT ROUTES -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:0 var(--web-side);box-sizing:border-box;">
+    <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;--cg:12px;">
+      <sc-for list="{{ routes }}" as="r" hint-placeholder-count="8">
+        <a class="sh-route" href="{{ r.href }}" style="background:#F4F4F4;padding:24px 20px;display:flex;flex-direction:column;gap:8px;min-height:130px;border-radius:12px;">
+          <span class="sh-route-t" style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;line-height:1.2;">{{ r.t }}</span>
+          <span style="font-size:var(--web-min-size);font-weight:300;line-height:var(--web-min-lh);color:var(--color-text-primary);">{{ r.d }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- DOWNLOADS LIBRARY -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:24px;">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Downloads</div>
+          <h2 style="margin:0;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Documents by product <span style="color:#8E8E8E;">and type.</span></h2>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="6">
+          <span class="sh-fchip" style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);letter-spacing:0.04em;text-transform:uppercase;color:{{ f.color }};border:1px solid {{ f.border }};background:{{ f.bg }};padding:6px 13px;cursor:pointer;border-radius:8px;">{{ f.label }}</span>
+        </sc-for>
+      </div>
+      <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+        <div style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr) minmax(0,0.8fr) minmax(0,0.8fr) auto;gap:16px;padding:14px 24px;background:#FBFBFA;border-bottom:1px solid var(--color-divider);">
+          <sc-for list="{{ docHeaders }}" as="h" hint-placeholder-count="6"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ h }}</span></sc-for>
+        </div>
+        <sc-for list="{{ documents }}" as="d" hint-placeholder-count="9">
+          <div class="sh-doc" style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr) minmax(0,0.8fr) minmax(0,0.8fr) auto;gap:16px;padding:16px 24px;border-bottom:1px solid var(--color-surface-card);align-items:center;">
+            <span class="sh-doc-n" style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ d.name }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ d.product }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ d.type }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ d.lang }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ d.rev }}</span>
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);white-space:nowrap;" data-placeholder-link="true">{{ d.file }} &#8595;</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARRANTY + CONTACT -->
+  <section style="background:var(--color-bg-canvas);margin-top:96px;">
+    <div style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);box-sizing:border-box;">
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:48px;align-items:start;">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Warranty &amp; records</div>
+          <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The installation record is <span style="color:#8E8E8E;">your warranty.</span></h2>
+          <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">A registered SHELTR installation links product identity, protected equipment, photographs and the engineering-file reference into one record that activates and holds the warranty.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="SHELTR - SUPPORT - Install and Register - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-sheltr);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Register an installation</a>
+            <span style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;border:1px solid var(--color-divider);color:var(--color-text-primary);font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Open a record</span>
+          </div>
+        </div>
+        <div style="background:var(--color-surface-card);padding:32px;border-radius:12px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:8px;">Contact technical support</div>
+          <p style="margin:0 0 22px;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);max-width:760px;">Submit the product identity, protected equipment and issue. A SHELTR specialist responds with the next action.</p>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;--cg:16px;">
+            <sc-for list="{{ formFields }}" as="f" hint-placeholder-count="6">
+              <div style="grid-column:{{ f.span }};">
+                <label style="display:block;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:var(--color-text-primary);margin-bottom:6px;">{{ f.label }}</label>
+                <input type="text" placeholder="{{ f.ph }}" style="width:100%;box-sizing:border-box;height:42px;padding:0 12px;border:1px solid var(--color-divider);font-size:var(--web-input-size);border-radius:8px;font-weight:var(--web-input-weight);">
+              </div>
+            </sc-for>
+          </div>
+          <span style="margin-top:22px;font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-text-primary);color:#FFFFFF;font-weight:400;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;" data-placeholder-link="true">Submit support request</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);box-sizing:border-box;">
+    <div style="background:var(--color-brand-sheltr);padding:56px;color:var(--color-text-primary);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;border-radius:12px;">
+      <div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Have the product <span style="color:#8E8E8E;">in front of you?</span></h2>
+        <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);color:#3D3785;max-width:560px;line-height:var(--web-body-lh);">Open its record to reach documents, warranty and service history directly.</p>
+      </div>
+      <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="SHELTR - SUPPORT - Install and Register - EN.dc.html" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;font-weight:400;white-space:nowrap;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Open a record</a>
+    </div>
+  </section>
+
+  <dc-import name="AndoPattern" brand="SHELTR" items="ownership,privacy" hint-size="100%,600px"></dc-import>
+  <dc-import name="ContentSections" brand="SHELTR" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="SHELTR" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="SHELTR" accent="var(--color-brand-sheltr)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    const filterLabels = ["All", "CARA", "KUBO", "HUSH", "Manuals", "Datasheets", "Engineering"];
+    return {
+      routes: [
+        { t: "Find a document", d: "Search manuals, datasheets and drawings by product.", href: "SHELTR - CONTENT - Knowledge - EN.dc.html" },
+        { t: "Register an installation", d: "Create the product and warranty record.", href: "SHELTR - SUPPORT - Install and Register - EN.dc.html" },
+        { t: "Warranty", d: "Access warranty status and the installation passport.", href: "Content Pending.dc.html?brand=SHELTR&topic=Warranty" },
+        { t: "Replacement parts", d: "Find parts by product family and configuration.", href: "SHELTR - WEBSHOP - Shop - EN.dc.html" },
+        { t: "Engineering review", d: "Submit a project outside the standard envelope.", href: "SHELTR - SUPPORT - Engineering - EN.dc.html" },
+        { t: "Professional registration", d: "Register as a qualified SHELTR installer.", href: "STROHM.ENERGY - SITE - Register - EN.dc.html" },
+        { t: "Downloads", d: "Manuals, datasheets, CAD and installation guides.", href: "#downloads" },
+        { t: "Contact", d: "Technical product and project support.", href: "STROHM.ENERGY - SITE - System Enquiry - EN.dc.html?brand=SHELTR" },
+      ],
+      filters: filterLabels.map((label, i) => ({
+        label,
+        color: i === 0 ? "#4F4F4E" : "#5F5E5E",
+        border: i === 0 ? "var(--color-brand-sheltr)" : "#D4D4D4",
+        bg: i === 0 ? "#F6F5FD" : "#FFFFFF",
+      })),
+      docHeaders: ["Document", "Product", "Type", "Language", "Revision", ""],
+      documents: [
+        { name: "CARA installation manual", product: "CARA", type: "Manual", lang: "EN", rev: "v1.0", file: "PDF" },
+        { name: "CARA-WALL datasheet", product: "CARA-WALL", type: "Datasheet", lang: "EN", rev: "v1.0", file: "PDF" },
+        { name: "CARA dimensional variants", product: "CARA", type: "Reference", lang: "EN", rev: "v1.0", file: "PDF" },
+        { name: "CARA CAD / BIM pack", product: "CARA", type: "CAD", lang: "\u2014", rev: "v1.0", file: "ZIP" },
+        { name: "KUBO engineering requirements", product: "KUBO", type: "Engineering", lang: "EN", rev: "Draft", file: "PDF" },
+        { name: "HUSH acoustic guidance", product: "HUSH", type: "Engineering", lang: "EN", rev: "Draft", file: "PDF" },
+        { name: "Ballast & fixing guidance", product: "All families", type: "Manual", lang: "EN", rev: "v1.0", file: "PDF" },
+        { name: "Installation photo checklist", product: "All families", type: "Reference", lang: "EN", rev: "v1.0", file: "PDF" },
+        { name: "Warranty terms", product: "All families", type: "Warranty", lang: "EN", rev: "v1.0", file: "PDF" },
+      ],
+      formFields: [
+        { label: "Company", ph: "Company name", span: "auto" },
+        { label: "Email", ph: "you@company.com", span: "auto" },
+        { label: "Product family", ph: "CARA / KUBO / HUSH", span: "auto" },
+        { label: "Product / serial", ph: "Identity or serial", span: "auto" },
+        { label: "Issue", ph: "Describe the issue", span: "1 / -1" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

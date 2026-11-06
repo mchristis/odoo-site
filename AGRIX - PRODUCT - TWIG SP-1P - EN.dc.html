@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>AGRIX TWIG SP-1P | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:#6B8E4E; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="AgrixNav" active="structures" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="AGRIX" rgb="107,142,78" eyebrow="TWIG configuration &#183; Single-pitch, one portrait row" title="The most direct route into fixed Agri-PV." intro="TWIG SP-1P uses one portrait module row on a fixed single-pitch structure." slot="agri-sp1p-hero" shot="BNR-TWIG-SP1P-01 · 21:9 · forage field with repeated single-pitch lines, open tractor route, livestock in a shaded strip · awaiting upload" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;"><a href="AGRIX - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">Agri-PV</a> &#8250; <a href="AGRIX - PRODUCT - TWIG - EN.dc.html" style="color:var(--color-grey-70);">TWIG</a> &#8250; <span style="color:var(--color-text-primary);">SP-1P</span></div>
+    <p style="margin:0 0 24px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:820px;">It is designed for projects that need clear agricultural access, simple repetition and a controlled balance between energy production and open sky.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:44px;">
+      <a href="AGRIX - PRODUCT - Calculator - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;background:#6B8E4E;color:#FFFFFF;border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Start a SP-1P study<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+      <a href="AGRIX - PRODUCT - TWIG GB-2P - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;background:var(--color-surface-card);color:var(--color-text-primary);border-radius:var(--radius-btn);font-weight:var(--web-btn-weight);">Compare with GB-2P</a>
+    </div>
+    
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#6B8E4E;margin-bottom:16px;">How SP-1P is designed</div>
+      <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:16px 48px;--cg:48px;">
+        <sc-for list="{{ principles }}" as="p" hint-placeholder-count="4">
+          <div style="padding:20px 0;border-top:1px solid var(--color-surface-card);">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:8px;line-height:var(--web-h3-lh);">{{ p.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ p.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:88px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Where it fits</div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;--cg:12px;">
+        <sc-for list="{{ fits }}" as="f" hint-placeholder-count="3">
+          <div style="background:#F4F4F4;padding:24px;border-radius:12px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">{{ f.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ f.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="AgriConfigCTA" hint-size="100%,320px"></dc-import>
+  <div style="height:96px;"></div>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <a href="AGRIX - PRODUCT - Overview - EN.dc.html#project" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;border-top:1px solid var(--color-text-primary);border-bottom:1px solid var(--color-divider);padding:28px 0;color:var(--color-text-primary);" style-hover="color:var(--color-text-primary);">
+      <span style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Project request</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Send your site data and files to our engineers.</span></span>
+      <span style="font-size:var(--web-small-size);font-weight:300;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Start a project &#8250;</span>
+    </a>
+  </section>
+  <dc-import name="EpcInfo" brand="AGRIX" product="TWIG SP-1P" hint-size="100%,420px"></dc-import>
+  <dc-import name="ContentSections" brand="AGRIX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="AGRIX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="AGRIX" accent="var(--color-brand-agrix)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      principles: [
+        { title: "The field defines the geometry", desc: "SP-1P suits grassland, forage, selected cereals, rotational grazing and crop rows where a narrow protected strip helps but broad open zones must remain. It can also form repeated shade lines across a pasture." },
+        { title: "Transparent or spaced modules", desc: "Use transparent bifacial modules where distributed light below the canopy is the priority. Use standard bifacial modules with engineered gaps where cost and energy density matter more. The selector recommends a starting strategy; the study confirms it." },
+        { title: "Standard height classes, adjusted to the farm", desc: "There is no universal height. Clearance follows the tallest machine, animal behaviour, crop growth, drainage slope, maintenance access and structural loads." },
+        { title: "Simple does not mean unengineered", desc: "Driven piles, ground screws, concrete or micropiles can be used. The correct option depends on soil, groundwater, corrosion, wind, snow, reversibility and agricultural impact." },
+      ],
+      fits: [
+        { title: "Forage & grassland", desc: "Repeated shade lines and a narrow protected strip while broad grazing and mowing zones stay open." },
+        { title: "Selected cereals", desc: "Simple repetition across the field with a clear machinery route between structures." },
+        { title: "Livestock", desc: "A shaded strip animals can use without crowding, with a mandatory livestock-safe package where they reach the structure." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

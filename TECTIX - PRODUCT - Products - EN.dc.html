@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>TECTIX Products | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>body { margin:0; }</style>
+</helmet>
+<dc-import name="StructureCategory"
+  brand="TECTIX"
+  category="Products"
+  eyebrow="TECTIX · Products"
+  heading="Roof PV mounting."
+  intro="Mounting systems for flat roofs and pitched roofs with tiles, slates and other coverings."
+  hero-slot-id="tectix-products-hero"
+  hero-placeholder="TECTIX · Products banner · awaiting upload"
+  products-heading="Two roof mounting systems."
+  products="{{ products }}"
+  guidance-heading="Flat or pitched?"
+  guidance="{{ guidance }}"
+  engineering="{{ engineering }}"
+  hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      products: [
+        { name: "FLAT ROOF", status: "View page", statusColor: "#4F4F4E", href: "TECTIX - PRODUCT - FLAT ROOF - EN.dc.html", tagline: "Flat roof mounting", desc: "Ballasted and fixed mounting for flat roofs." },
+        { name: "PITCHED ROOF", status: "View page", statusColor: "#4F4F4E", href: "TECTIX - PRODUCT - PITCHED ROOF - EN.dc.html", tagline: "Tiled, slate and other pitched roofs", desc: "Tiled, slate and other pitched roofs structure." },
+      ],
+      guidance: [
+        { name: "FLAT ROOF", when: "Ballasted and fixed mounting for flat roofs." },
+        { name: "PITCHED ROOF", when: "Tiled, slate and other pitched roofs." },
+      ],
+      engineering: [],
+    };
+  }
+}
+</script>
+</body>
+</html>

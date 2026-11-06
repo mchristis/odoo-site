@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>DEPOT Knowledge | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style> body { margin:0; } </style>
+</helmet>
+<dc-import name="ContentArchive" brand="DEPOT" section="knowledge" lead="{{ lead }}" lead-title="Frequently asked questions" lead-intro="Answers for applicants and approved Stock Partners." hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const DEPOT_LEAD = [{"title":"What is DEPOT?","text":"DEPOT is the STRØHM.ENERGY Stock Partner programme. Approved partners buy STRØHM.ENERGY stock in volume, hold it in EU warehouses and supply installers on STRØHM.ENERGY instructions.","note":"","link":"","href":""},{"title":"Is DEPOT a separate webshop?","text":"No. Installers order through the STRØHM.ENERGY webshop, ERP or sales network. DEPOT operates behind those channels.","note":"","link":"","href":""},{"title":"Who can apply?","text":"Registered professional businesses such as EPCs, installers, wholesalers and distributors with a suitable EU warehouse. Acceptance is not guaranteed.","note":"","link":"","href":""},{"title":"Do I need to change my ERP?","text":"Not necessarily. An ERP system and API connection are required. Compatibility is assessed individually.","note":"","link":"","href":""},{"title":"Can I use the stock for my own installs?","text":"Yes. You can draw from the same local stock at your volume purchase price.","note":"","link":"","href":""},{"title":"Who sets the prices?","text":"Purchase and repurchase prices are agreed with you before you invest. They are not published and not negotiated per installer.","note":"","link":"","href":""},{"title":"When am I paid?","text":"STRØHM.ENERGY pays you before goods are released for an allocated order.","note":"To confirm","link":"","href":""},{"title":"What does joining cost?","text":"To be confirmed. Any onboarding or integration arrangements are discussed individually.","note":"","link":"","href":""},{"title":"What if the ERP connection fails?","text":"Affected inventory is suspended from new orders until a reliable availability and reservation check has been restored.","note":"","link":"","href":""},{"title":"How is my data protected?","text":"Each partner can access only its own data. Confidential prices and identities are restricted.","note":"","link":"","href":""},{"title":"Can I leave the programme?","text":"Termination conditions are defined in the partner agreement. Confirmed orders remain binding.","note":"","link":"","href":""},{"title":"Are sales guaranteed?","text":"No. Capital is committed to stock before installer demand is confirmed. Sales volume, turnover and profit cannot be guaranteed.","note":"","link":"","href":""},{"title":"How do I apply?","text":"Select Apply as Stock Partner, choose Distributor / stock partner as your goal and complete the company, warehouse, ERP and financial details.","note":"","link":"","href":""}];
+class Component extends DCLogic { renderVals() { return { lead: DEPOT_LEAD }; } }
+</script>
+</body>
+</html>

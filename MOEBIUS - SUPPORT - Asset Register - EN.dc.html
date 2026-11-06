@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="archive-status" content="ARCHIVE: duplicate of MOEBIUS - DOC - Range and Visual Asset Register - EN.dc.html (rename could not delete this copy: needs project owner)">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>MOEBIUS Asset Register | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { text-decoration:none; color:var(--color-text-primary); }
+  a:hover { color:var(--color-text-primary); }
+  .mar-chips { scrollbar-width:none; } .mar-chips::-webkit-scrollbar { display:none; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoebiusNav" active="support" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="MOEBIUS" rgb="241,147,27" eyebrow="Internal reference" title="MOEBIUS confirmed range and visual-asset register." intro="The confirmed product range from the current screenshots, with availability exactly as shown, and the master visual-asset list." slot="moebius-asset-register-hero" shot="MOEBIUS · Asset Register · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:var(--color-grey-70);margin-bottom:20px;"><a href="MOEBIUS - PRODUCT - Overview - EN.dc.html" style="color:var(--color-grey-70);">MOEBIUS</a> &#8250; <span style="color:var(--color-text-primary);">ASSET REGISTER</span></div>
+    <p style="margin:0 0 8px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Names marked "final name confirmed"; off-grid model names follow later.</p>
+  </section>
+
+  <!-- PRODUCT RANGE TABLE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:48px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;">
+      <h2 style="margin:0 0 20px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Confirmed <span style="color:#8E8E8E;">product range</span></h2>
+      <div class="mar-chips" style="display:flex;gap:8px;overflow-x:auto;margin-bottom:20px;">
+        <sc-for list="{{ familyChips }}" as="c" hint-placeholder-count="4">
+          <button onClick="{{ c.onClick }}" style="cursor:pointer;font-family:inherit;white-space:nowrap;font-size:var(--web-btn-sm-size);font-weight:400;padding:8px 14px;border-radius:12px;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.color }};">{{ c.label }}</button>
+        </sc-for>
+      </div>
+      <div style="background:var(--color-card-moebius);border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+        <div style="display:grid;grid-template-columns:110px minmax(0,1.1fr) minmax(0,1.4fr) minmax(0,0.9fr) minmax(0,1.3fr);background:var(--color-card-moebius);border-bottom:1px solid var(--color-divider);">
+          <sc-for list="{{ headers }}" as="h" hint-placeholder-count="5">
+            <div style="padding:14px 16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ h }}</div>
+          </sc-for>
+        </div>
+        <sc-for list="{{ rows }}" as="r" hint-placeholder-count="12">
+          <div style="display:grid;grid-template-columns:110px minmax(0,1.1fr) minmax(0,1.4fr) minmax(0,0.9fr) minmax(0,1.3fr);border-bottom:1px solid var(--color-surface-card);">
+            <div style="padding:14px 16px;font-size:12px;font-weight:400;color:var(--color-text-primary);">{{ r.family }}</div>
+            <div style="padding:14px 16px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ r.product }}</div>
+            <div style="padding:14px 16px;font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ r.application }}</div>
+            <div style="padding:14px 16px;font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ r.power }}</div>
+            <div style="padding:14px 16px;">
+              <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:4px 9px;border-radius:8px;background:{{ r.statusBg }};color:{{ r.statusColor }};white-space:nowrap;">{{ r.status }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:16px;">
+        <sc-for list="{{ legend }}" as="l" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:300;color:var(--color-text-primary);"><span style="width:10px;height:10px;border-radius:3px;background:{{ l.color }};"></span>{{ l.label }}</div>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:var(--color-grey-70);max-width:820px;line-height:var(--web-min-lh);">Availability labels reproduced exactly as shown in the current screenshots. Off-grid and off-grid hybrid model names to follow. [Dummy data for layout — confirm before publication.]</p>
+    </div>
+  </section>
+
+  <!-- ASSET REGISTER -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:32px;">
+      <h2 style="margin:0 0 20px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Visual-asset register</h2>
+      <div style="background:var(--color-card-moebius);border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+        <div style="display:grid;grid-template-columns:220px minmax(0,1fr) 120px;background:var(--color-card-moebius);border-bottom:1px solid var(--color-divider);">
+          <div style="padding:14px 16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Asset ID</div>
+          <div style="padding:14px 16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Composition brief</div>
+          <div style="padding:14px 16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Page</div>
+        </div>
+        <sc-for list="{{ assets }}" as="a" hint-placeholder-count="10">
+          <div style="display:grid;grid-template-columns:220px minmax(0,1fr) 120px;border-bottom:1px solid var(--color-surface-card);">
+            <div style="padding:14px 16px;font-size:12px;font-weight:400;color:var(--color-text-primary);font-family:var(--font-web);font-variant-numeric:tabular-nums;">{{ a.id }}</div>
+            <div style="padding:14px 16px;font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ a.brief }}</div>
+            <div style="padding:14px 16px;font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ a.page }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:80px;"></div>
+  <dc-import name="ContentSections" brand="MOEBIUS" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOEBIUS" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MOEBIUS" accent="var(--color-brand-moebius)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:960}}">
+const S = {
+  avail: { label: "Available", bg: "#F4F4F4", color: "#5F5E5E" },
+  soon: { label: "Coming soon", bg: "#F4F4F4", color: "#5F5E5E" },
+  prelim: { label: "Preliminary spec", bg: "#F4F4F4", color: "#5F5E5E" },
+};
+const RANGE = [
+  ["Micro", "PIXIE 400 W", "Residential · module-level", "400 W", "avail"],
+  ["Micro", "PIXIE 500 W", "Residential · module-level", "500 W", "avail"],
+  ["Micro", "PIXIE 800 W", "Residential · module-level", "800 W", "avail"],
+  ["Micro", "PIXIE 1 000 W", "Residential · module-level", "1 000 W", "avail"],
+  ["String", "EGOS", "Residential grid-conform · single-phase entry", "\u2014", "avail"],
+  ["String", "EGOM", "Residential grid-conform · single-phase", "3.68\u20136 kVA", "avail"],
+  ["String", "TRIAD", "Residential grid-conform · three-phase", "\u2014", "avail"],
+  ["String", "MONO", "Residential flexible-grid · single-phase", "\u2014", "avail"],
+  ["String", "BEAM SOLO", "Residential flexible-grid · single MPPT", "\u2014", "soon"],
+  ["String", "BEAM DUAL", "Residential flexible-grid · dual MPPT", "\u2014", "soon"],
+  ["String", "ARIX", "Commercial & C&I · three-phase", "\u2014", "avail"],
+  ["String", "TARO", "Commercial & C&I · higher-power three-phase", "\u2014", "soon"],
+  ["String", "KOLOZ", "Utility & project · three-phase utility", "\u2014", "soon"],
+  ["String", "ATLAS", "Utility & project · large-format utility", "\u2014", "prelim"],
+  ["Hybrid", "EDGE STANDARD M", "Residential flexible-grid · single-phase · LV battery", "\u2014", "avail"],
+  ["Hybrid", "EDGE STANDARD L", "Residential flexible-grid · single-phase · LV battery", "\u2014", "avail"],
+  ["Hybrid", "URBAN SMART-LOAD S/M/L", "Residential flexible-grid · single-phase · smart-load", "\u2014", "avail"],
+  ["Hybrid", "FLEXA", "Residential flexible-grid hybrid", "\u2014", "soon"],
+  ["Hybrid", "SHIFT EXT / INT", "Residential flexible-grid · external/integrated battery", "\u2014", "soon"],
+  ["Hybrid", "VERSA", "Commercial flexible-grid · three-phase C&I hybrid", "\u2014", "avail"],
+  ["Hybrid", "PIVOT", "Commercial flexible-grid · three-phase C&I hybrid", "\u2014", "soon"],
+  ["Hybrid", "LUNOX LV / HV", "Residential single-phase grid-conform · LV/HV battery", "\u2014", "avail"],
+  ["Hybrid", "ALVIX LV", "Residential single-phase grid-conform · LV battery", "\u2014", "avail"],
+  ["Off-grid", "Model names to follow", "Isolated & off-grid operation", "\u2014", "prelim"],
+  ["Off-grid hybrid", "Model names to follow", "Off-grid hybrid · battery-coupled", "\u2014", "prelim"],
+];
+const ASSETS = [
+  ["VID-MOEBIUS-COMMISSIONING-01", "10\u201315s loop: scan A4 project QR / tap passive NFC on unpowered inverter; project opens; devices appear; record builds", "Commissioning"],
+  ["IMG-MOEBIUS-IDENTITY-01", "Close detail: passive NFC tap on unpowered inverter, QR label, EMON opening the exact record", "Commissioning"],
+  ["IMG-MOEBIUS-OWNERSHIP-01", "Owner's EMON view on phone beside the installed inverter; calm domestic context", "Ownership"],
+  ["IMG-MOEBIUS-SERVICE-01", "Service technician opening the project record by QR/NFC at the inverter", "Ownership"],
+  ["IMG-MOEBIUS-RESPONSIBILITY-01", "Inverter in a real electrical context with grid connection and labelling visible", "Responsibility"],
+  ["IMG-MOEBIUS-SOFTWARE-01", "Firmware version history against a commissioned record in EMON", "Responsibility"],
+  ["IMG-MOEBIUS-HERO-01", "Representative micro, string and hybrid units in correct relative scale", "Products"],
+  ["IMG-MOEBIUS-SYSTEM-01", "Labelled architecture diagram: MOEBIUS with ANDO, FLUXX, SYNQ, EMON", "Energy System"],
+];
+class Component extends DCLogic {
+  state = { family: "All" };
+  renderVals() {
+    const fam = this.state.family;
+    const families = ["All", "Micro", "String", "Hybrid", "Off-grid", "Off-grid hybrid"];
+    const rows = RANGE.filter((r) => fam === "All" || r[0] === fam).map((r) => ({
+      family: r[0], product: r[1], application: r[2], power: r[3],
+      status: S[r[4]].label, statusBg: S[r[4]].bg, statusColor: S[r[4]].color,
+    }));
+    return {
+      headers: ["Family", "Product", "Application", "Power", "Status"],
+      familyChips: families.map((f) => ({
+        label: f, onClick: () => this.setState({ family: f }),
+        bg: fam === f ? "#4F4F4E" : "#FFFFFF", color: fam === f ? "#FFFFFF" : "#5F5E5E",
+        border: fam === f ? "#252525" : "#E3E3E3",
+      })),
+      rows,
+      legend: [
+        { label: "Available", color: S.avail.color },
+        { label: "Coming soon", color: S.soon.color },
+        { label: "Preliminary spec", color: S.prelim.color },
+      ],
+      assets: ASSETS.map((a) => ({ id: a[0], brief: a[1], page: a[2] })),
+    };
+  }
+}
+</script>
+</body>
+</html>

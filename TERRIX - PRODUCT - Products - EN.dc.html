@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>TERRIX Products | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>body { margin:0; }</style>
+</helmet>
+<dc-import name="StructureCategory"
+  brand="TERRIX"
+  category="Products"
+  eyebrow="TERRIX · Products"
+  heading="Utility PV mounting."
+  intro="Ground-mounted structures for utility-scale solar installations."
+  hero-slot-id="terrix-products-hero"
+  hero-placeholder="TERRIX · Products banner · awaiting upload"
+  products-heading="Four ground-mounted structures."
+  products="{{ products }}"
+  guidance-heading=""
+  guidance="{{ guidance }}"
+  engineering="{{ engineering }}"
+  hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      products: [
+        { name: "FIXED-TILT", status: "View page", statusColor: "#4F4F4E", href: "TERRIX - PRODUCT - FIXED-TILT - EN.dc.html", tagline: "Fixed-tilt ground mount", desc: "Fixed-tilt ground-mount structure." },
+        { name: "TRACKER", status: "View page", statusColor: "#4F4F4E", href: "TERRIX - PRODUCT - TRACKER - EN.dc.html", tagline: "Single-axis tracker", desc: "Single-axis tracker structure." },
+        { name: "CONTAINERIZED", status: "In preparation", statusColor: "#898989", href: "TERRIX - PRODUCT - CONTAINERIZED - EN.dc.html", tagline: "Deployable PV unit", desc: "PV wings folded inside a standard container frame. Craned into place, unfolded on site in hours and moved to the next site when the job is done." },
+        { name: "UTILITY FENCE", status: "In preparation", statusColor: "#898989", href: "TERRIX - PRODUCT - UTILITY FENCE - EN.dc.html", tagline: "Utility-scale solar fence", desc: "Large-scale ground-mounted vertical solar fence for industrial perimeters and utility-scale land division." },
+      ],
+      guidance: [],
+      engineering: [],
+    };
+  }
+}
+</script>
+</body>
+</html>

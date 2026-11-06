@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>ANDO Range | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4F4F4E; text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+  <dc-import name="NavBar" active="products" hint-size="100%,65px"></dc-import>
+  <dc-import name="AndoNav" active="products" hint-size="100%,57px"></dc-import>
+
+  <!-- 5.1 PRODUCTS HERO -->
+  <dc-import name="PageHero" brand="ANDO" rgb="205,214,43" eyebrow="Products" title="Find the right ANDO panel." intro="Four product families across residential, commercial and utility applications." slot="ando-products-hero" shot="ANDO_PRODUCTS_HERO_BANNER_FOUR-FAMILIES_01 · four families together showing increasing scale — AALTO small framed, MIES mid framed, FOSTER large framed, NOUVEL flexible frameless · clean studio/technical composition, accurate proportions (do not fake equal sizes) · 21:9 desktop / 4:5 mobile · text area left · still · placeholder (P1)" hint-size="100%,625px"></dc-import><section id="products" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:640px;">Framed glass-glass modules and flexible frameless modules. Every panel ships with a traceable record.</p>
+    
+  </section>
+
+  <!-- 5.2 PRODUCT FINDER -->
+  <section id="finder" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;scroll-margin-top:120px;">
+    <span id="aalto" style="display:block;scroll-margin-top:120px;"></span><span id="mies" style="display:block;scroll-margin-top:120px;"></span><span id="foster" style="display:block;scroll-margin-top:120px;"></span><span id="nouvel" style="display:block;scroll-margin-top:120px;"></span>
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Product finder</div>
+      <h2 style="margin:0 0 28px;max-width:600px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Filter by application, <span style="color:#8E8E8E;">series, size, finish and Wp.</span></h2>
+      <dc-import name="AndoProductFinder" hint-size="100%,900px"></dc-import>
+    </div>
+  </section>
+
+  <!-- 5.3 TECHNOLOGY AND PERFORMANCE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Technology and performance</div>
+      <h2 style="margin:0 0 28px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">TOPCon square-cell. <span style="color:#8E8E8E;">Bifacial. Glass-glass and flexible construction.</span></h2>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:16px;--cg:16px;">
+        <sc-for list="{{ techVisuals }}" as="t" hint-placeholder-count="6">
+          <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+            <div style="aspect-ratio:4/3;background:var(--color-card-ando);"><image-slot id="{{ t.slotId }}" shape="rect" placeholder="{{ t.dir }}"></image-slot></div>
+            <div style="padding:16px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);">{{ t.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="border:1px solid var(--color-divider);border-radius:24px;overflow:hidden;">
+        <div style="aspect-ratio:21/9;background:var(--color-text-primary);"><image-slot id="ando-products-tech-video" shape="rect" placeholder="ANDO_PRODUCTS_TECHNOLOGY_VIDEO_NINE-COMPONENTS_01 · exploded module build (front glass, encapsulation, cells, interconnection, rear glass or flexible rear, frame where applicable, junction box, cables, connectors) · separate sequences for framed glass-glass vs NOUVEL flexible · calm, technical, short labels · 45–60s · silent · 16:9 · placeholder (P2)"></image-slot></div>
+        <div style="padding:18px 20px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Nine components. Each one matters.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.4 FLASH TEST AND QUALITY -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Flash test and quality</div>
+      <h2 style="margin:0 0 28px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Measured in the factory. <span style="color:#8E8E8E;">Visible on site. Tracked for thirty years.</span></h2>
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;--cg:16px;">
+        <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+          <div style="aspect-ratio:16/10;background:var(--color-card-ando);"><image-slot id="ando-products-flash-banner" shape="rect" placeholder="ANDO_PRODUCTS_FLASH-TEST_BANNER_FACTORY_01 · module positioned in flash-test equipment, test screen visible, controlled factory environment, no staged sparks · 16:10 · still · placeholder (P1)"></image-slot></div>
+          <div style="padding:16px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);">Factory flash test</div>
+        </div>
+        <div style="border:1px solid var(--color-divider);border-radius:12px;overflow:hidden;">
+          <div style="aspect-ratio:16/10;background:var(--color-card-ando);"><image-slot id="ando-products-record-chain" shape="rect" placeholder="ANDO_PRODUCTS_FLASH-TEST_DIAGRAM_RECORD-CHAIN_01 · labelled chain: factory identity → serial → flash-test result → shipment → installation → owner photograph → warranty record → EMON monitoring · restrained technical diagram, real labels · 16:10 · still · placeholder (P1)"></image-slot></div>
+          <div style="padding:16px;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);">Panel record chain</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.5 DOWNLOADS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:12px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Downloads and product support</div>
+      <h2 style="margin:0 0 24px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Documentation per family <span style="color:#8E8E8E;">and model.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+        <sc-for list="{{ downloads }}" as="d" hint-placeholder-count="6">
+          <span style="background:#F4F4F4;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:6px;min-height:96px;" data-placeholder-link="true">
+            <span style="font-size:var(--web-small-size);font-weight:400;color:var(--color-text-primary);">{{ d.title }}</span>
+            <span style="font-size:var(--web-min-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-min-lh);">{{ d.type }}</span>
+          </span>
+        </sc-for>
+      </div>
+      <p style="margin:20px 0 0;font-size:var(--web-min-size);font-weight:300;color:var(--color-grey-70);max-width:760px;line-height:var(--web-min-lh);">Support, downloads and contact remain contextual — no separate main-navigation Support page.</p>
+    </div>
+  </section>
+
+  <div style="height:64px;"></div>
+  <dc-import name="AndoSections" show="technical,quality,docs" hint-size="100%,1200px"></dc-import>
+  <div style="height:32px;"></div>
+  <dc-import name="ContentSections" brand="ANDO" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="ANDO" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="ANDO" accent="var(--color-brand-ando)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:960}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      techVisuals: [
+        { label:"TOPCon square-cell macro", slotId:"ando-tech-topcon", dir:"ANDO_PRODUCTS_TECHNOLOGY_MACRO_TOPCON-CELL_01 · square TOPCon cell macro, conductive pathways visible · 4:3 · still · placeholder (P2)" },
+        { label:"Bifacial front and rear", slotId:"ando-tech-bifacial", dir:"ANDO_PRODUCTS_TECHNOLOGY_DIAGRAM_BIFACIAL_01 · front and rear operation, restrained diagram · 4:3 · still · placeholder (P2)" },
+        { label:"Glass-glass section", slotId:"ando-tech-glassglass", dir:"ANDO_PRODUCTS_TECHNOLOGY_SECTION_GLASS-GLASS_01 · glass-glass cross-section, labelled layers · 4:3 · still · placeholder (P2)" },
+        { label:"NOUVEL flexible section", slotId:"ando-tech-nouvel", dir:"ANDO_PRODUCTS_TECHNOLOGY_SECTION_NOUVEL-FLEXIBLE_01 · flexible frameless construction section · 4:3 · still · placeholder (P2)" },
+        { label:"Degradation curve", slotId:"ando-tech-degradation", dir:"ANDO_PRODUCTS_TECHNOLOGY_CHART_DEGRADATION_01 · 30-year degradation curve, dummy values labelled · 4:3 · still · placeholder (P2)" },
+        { label:"Junction box and connector", slotId:"ando-tech-junction", dir:"ANDO_PRODUCTS_TECHNOLOGY_DETAIL_JUNCTION-BOX_01 · junction-box and connector detail macro · 4:3 · still · placeholder (P3)" },
+      ],
+      downloads: [
+        { title:"Datasheet", type:"PDF preview" },
+        { title:"Installation guide", type:"PDF preview" },
+        { title:"Certificate", type:"PDF preview" },
+        { title:"Declaration of performance", type:"PDF preview" },
+        { title:"Warranty document", type:"PDF preview" },
+        { title:"Product drawing", type:"PDF preview" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

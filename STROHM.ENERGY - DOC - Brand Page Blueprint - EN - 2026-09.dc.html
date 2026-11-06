@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="strohm-type.css">
+<title>Brand Page Blueprint | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#F7F7F5; }
+  a { color:var(--color-text-primary); } a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);color:var(--color-text-primary);max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 96px;box-sizing:border-box;">
+  <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-grey-70);margin-bottom:12px;">Internal · for approval</div>
+  <h1 style="margin:0 0 12px;font-size:40px;font-weight:300;line-height:1.1;">Brand page <span style="font-weight:700;">blueprint</span></h1>
+  <p style="margin:0 0 20px;font-size:16px;font-weight:300;line-height:1.6;color:var(--color-text-primary);max-width:760px;">One structure for every product brand. The major sections and their order are fixed. Section headlines, sub-headers and navigation dropdown items are written per brand.</p>
+  <div style="display:flex;gap:20px;flex-wrap:wrap;font-size:13px;font-weight:300;color:var(--color-text-primary);margin-bottom:48px;">
+    <span style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;border-radius:50%;background:var(--color-text-primary);"></span>Fixed: every brand, same position</span>
+    <span style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;border-radius:50%;background:#FFFFFF;border:1.5px solid var(--color-text-primary);box-sizing:border-box;"></span>When applicable: included if the brand has the content</span>
+    <span style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;border-radius:50%;background:#FFEB9E;"></span>Brand slot: content and headline decided per brand</span>
+  </div>
+
+  <div style="background:#FFFFFF;border-radius:var(--radius-card);padding:32px;margin-bottom:24px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-grey-70);margin-bottom:10px;">Navigation</div>
+    <h2 style="margin:0 0 16px;font-size:24px;font-weight:700;">Brand bar</h2>
+    <div style="display:flex;flex-direction:column;">
+      <sc-for list="{{ nav }}" as="s" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:24px 220px minmax(0,1fr);gap:16px;padding:12px 0;border-top:1px solid var(--color-divider);align-items:start;">
+          <span style="width:12px;height:12px;border-radius:50%;margin-top:4px;background:{{ s.dot }};border:{{ s.border }};box-sizing:border-box;"></span>
+          <span style="font-size:14px;font-weight:700;">{{ s.t }}</span>
+          <span style="font-size:13.5px;font-weight:300;line-height:1.5;color:var(--color-text-primary);">{{ s.d }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="background:#FFFFFF;border-radius:var(--radius-card);padding:32px;margin-bottom:24px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-grey-70);margin-bottom:10px;">Brand differences</div>
+    <h2 style="margin:0 0 16px;font-size:24px;font-weight:700;">USPs</h2>
+    <div style="display:flex;flex-direction:column;">
+      <sc-for list="{{ usp }}" as="s" hint-placeholder-count="4">
+        <div style="display:grid;grid-template-columns:24px 220px minmax(0,1fr);gap:16px;padding:12px 0;border-top:1px solid var(--color-divider);align-items:start;">
+          <span style="width:12px;height:12px;border-radius:50%;margin-top:4px;background:{{ s.dot }};border:{{ s.border }};box-sizing:border-box;"></span>
+          <span style="font-size:14px;font-weight:700;">{{ s.t }}</span>
+          <span style="font-size:13.5px;font-weight:300;line-height:1.5;color:var(--color-text-primary);">{{ s.d }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <sc-for list="{{ pages }}" as="p" hint-placeholder-count="5">
+    <div style="background:#FFFFFF;border-radius:var(--radius-card);padding:32px;margin-bottom:24px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-grey-70);margin-bottom:10px;">{{ p.type }} · {{ p.file }}</div>
+      <h2 style="margin:0 0 6px;font-size:24px;font-weight:700;">{{ p.name }}</h2>
+      <p style="margin:0 0 16px;font-size:14px;font-weight:300;line-height:1.55;color:var(--color-text-primary);max-width:760px;">{{ p.purpose }}</p>
+      <div style="display:flex;flex-direction:column;">
+        <sc-for list="{{ p.sections }}" as="s" hint-placeholder-count="8">
+          <div style="display:grid;grid-template-columns:24px 32px 220px minmax(0,1fr);gap:16px;padding:12px 0;border-top:1px solid var(--color-divider);align-items:start;">
+            <span style="width:12px;height:12px;border-radius:50%;margin-top:4px;background:{{ s.dot }};border:{{ s.border }};box-sizing:border-box;"></span>
+            <span style="font-size:13px;font-weight:300;color:var(--color-grey-70);">{{ s.n }}</span>
+            <span style="font-size:14px;font-weight:700;">{{ s.t }}</span>
+            <span style="font-size:13.5px;font-weight:300;line-height:1.5;color:var(--color-text-primary);">{{ s.d }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-for>
+
+  <div style="background:#FFFFFF;border-radius:var(--radius-card);padding:32px;">
+    <h2 style="margin:0 0 12px;font-size:20px;font-weight:700;">Rules for every page</h2>
+    <sc-for list="{{ rules }}" as="r" hint-placeholder-count="6">
+      <div style="padding:10px 0;border-top:1px solid var(--color-divider);font-size:14px;font-weight:300;line-height:1.5;color:#4F4F4E;">{{ r }}</div>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const F = { dot: "#1E1E1E", border: "none" };
+const W = { dot: "#FFFFFF", border: "1.5px solid var(--color-text-primary)" };
+const B = { dot: "#FFEB9E", border: "none" };
+const NAV = [
+  { t: "Brand name + official subtitle", d: "Exact subtitle from the logo guideline (e.g. SYNQ · Smart metering).", ...F },
+  { t: "Five core items", d: "Overview · Products · Install & commission · Ownership & support · Responsibility. Same labels, same order for every brand. Responsibility is hidden until it has content.", ...F },
+  { t: "Dropdown items", d: "Written per brand: product lines, tools, guides. Each links to a section or an extra page.", ...B },
+  { t: "Extra pages", d: "Genuine tools or deep product lines (PIXIE, NEXUS, a calculator) sit inside the matching dropdown, not as extra top items.", ...B },
+  { t: "USP item", d: "A brand may promote its defining USP to a sixth top item with its own page (e.g. MOEBIUS Commissioning).", ...W },
+  { t: "Shop [BRAND]", d: "Right-hand button to the trade webshop.", ...F },
+];
+const PAGES = [
+  { type: "PRODUCT", name: "Overview", file: "BRAND - PRODUCT - Overview - EN", purpose: "Who the brand is, what it makes and why it is different. Concise; every detail is one click away.", sections: [
+    { t: "Hero", d: "Eyebrow (brand · category), headline, one sentence, hero image. Buttons: Find your [product] + Find an installer.", ...F },
+    { t: "Key facts", d: "Four short verified facts.", ...F },
+    { t: "What it is", d: "The brand's position in one section. Headline per brand.", ...B },
+    { t: "Range teaser", d: "One card per product line, linking to Products.", ...F },
+    { t: "USP blocks (1–3)", d: "One block per brand USP, in the brand's own order and words. Each links to the page where the USP is explained in depth.", ...B },
+    { t: "Install & commission teaser", d: "Steps in brief, linking to the page.", ...F },
+    { t: "Ownership & support teaser", d: "Monitoring and warranty in brief, linking to the page.", ...F },
+    { t: "Responsibility teaser", d: "Confirmed commitments only.", ...W },
+    { t: "Reach a specialist", d: "Shared component; the specialist differs per brand and country.", ...F },
+    { t: "References · News · Knowledge", d: "Shared component; verified items only.", ...F },
+  ] },
+  { type: "PRODUCT", name: "Products", file: "BRAND - PRODUCT - Products - EN", purpose: "Choose the right model. Every spec comes from the master workbook.", sections: [
+    { t: "Header", d: "Headline, one sentence, catalogue download, jump links to the product groups.", ...F },
+    { t: "Finder", d: "Filters by application, phase, size, power. Only when the brand has more than six models.", ...W },
+    { t: "Product lines", d: "Grouped cards with spec tables and article codes. Group names per brand.", ...F },
+    { t: "Works with", d: "Accessories from other STRØHM.ENERGY brands, named as in the master.", ...W },
+    { t: "Technology", d: "The brand's technical sections (mesh, protocols, cell technology). Headlines per brand.", ...B },
+    { t: "Documents", d: "Datasheets and manuals, named with a YYYY-MM revision.", ...W },
+    { t: "Trade strip", d: "Trade customer? Shop [BRAND] + Find an installer.", ...F },
+    { t: "Reach a specialist · Knowledge", d: "Shared components.", ...F },
+  ] },
+  { type: "SUPPORT", name: "Install & commission", file: "BRAND - SUPPORT - Install and Commission - EN", purpose: "How an installer identifies, connects, tests and hands over. Written for installers.", sections: [
+    { t: "Header", d: "Headline and one sentence.", ...F },
+    { t: "Steps", d: "Four to eight numbered steps from scan to handover.", ...F },
+    { t: "Identify", d: "QR, NFC and what the scan loads.", ...F },
+    { t: "The installation record", d: "What is recorded against the serial number.", ...F },
+    { t: "Brand tools", d: "Scan sheets, flash data, grid profile, roof layout. Per brand.", ...B },
+    { t: "Downloads", d: "Scan sheets and installation manuals.", ...W },
+    { t: "Reach a specialist · Knowledge", d: "Shared components.", ...F },
+  ] },
+  { type: "SUPPORT", name: "Ownership & support", file: "BRAND - SUPPORT - Ownership and Support - EN", purpose: "Life after handover: monitoring, warranty, service. Written for owners.", sections: [
+    { t: "Header", d: "Headline and one sentence.", ...F },
+    { t: "Monitoring in EMON", d: "What the owner sees and controls.", ...F },
+    { t: "Warranty", d: "Standard and extended terms + shared WarrantyPhoto block (60 days).", ...F },
+    { t: "Support topics", d: "Remote support, documents, software, access, service and transfer.", ...F },
+    { t: "Brand ownership feature", d: "LED status, degradation curve, local-first. Per brand.", ...B },
+    { t: "Reach a specialist", d: "Shared component.", ...F },
+  ] },
+  { type: "PRODUCT", name: "Responsibility", file: "BRAND - PRODUCT - Responsibility - EN", purpose: "Verified commitments on Europe, data, safety, materials and end of life.", sections: [
+    { t: "Header", d: "Headline and one sentence.", ...F },
+    { t: "Commitments", d: "Proof points, each tagged Confirmed or In progress.", ...F },
+    { t: "Regulation", d: "Framework · what it means · brand position.", ...W },
+    { t: "Data and security", d: "Where data is hosted and who controls access.", ...W },
+    { t: "Materials and end of life", d: "Verifiable facts only.", ...F },
+    { t: "Brand commitments", d: "Anything specific to the brand.", ...B },
+    { t: "Reach a specialist", d: "Shared component.", ...F },
+  ] },
+];
+const USP = [
+  { t: "USP register", d: "Every brand lists 1–3 USPs: name, one-line claim, proof (verified fact), home page.", ...F },
+  { t: "Home page of a USP", d: "The core page the USP deepens: e.g. ANDO flash test → Install & commission; MOEBIUS no screen → Ownership & support; SYNQ one record → Install & commission.", ...F },
+  { t: "USP section", d: "On its home page the USP gets the first brand slot, directly after the header.", ...F },
+  { t: "Own page", d: "Only when the USP has enough verified content and the brand brief calls it defining.", ...W },
+];
+const RULES = [
+  "Information only. No prices, carts or ordering. Sales happen in the trade webshop.",
+  "Consumer pages end with Find an installer. Trade visitors see Shop [BRAND].",
+  "Every model, spec and article code comes from the master workbook (ART. STRUCTURE juli 21 v1).",
+  "Unconfirmed claims, sample references and sample news stay out of final copy.",
+  "European number format: 52,6 kW. Units always included. No exclamation marks.",
+  "Section headlines are written per brand; the section itself and its position are fixed.",
+];
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      nav: NAV, rules: RULES, usp: USP,
+      pages: PAGES.map((p) => ({ ...p, sections: p.sections.map((s, i) => ({ ...s, n: String(i + 1).padStart(2, "0") })) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

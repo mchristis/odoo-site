@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Product expert finder · STROHM.ENERGY</title>
+<script src="nav-data.js"></script><script src="image-slot.js"></script>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fff;color:#4F4F4E;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif}
+.cap{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#8A8A89;margin:0 0 12px}
+#hint{margin:20px 0 0;font-size:14px;font-weight:300;color:#6E6E6E}
+#panel{margin-top:24px;border:1px solid #111;display:none;grid-template-columns:minmax(200px,280px) minmax(0,1fr);gap:0}
+#panel.on{display:grid}
+.ph{aspect-ratio:4/5;background:#E3E1DB;display:block;width:100%}
+.left{padding:24px;border-right:1px solid #D9D9D9}
+.right{padding:24px 28px}
+.tag{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.nm{font-size:26px;font-weight:300;color:#111;margin:0 0 4px}.rl{font-size:14px;font-weight:500;line-height:1.4;margin:0 0 16px}
+.l{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#8A8A89;margin:0 0 4px}
+p{margin:0 0 14px;font-size:14px;font-weight:300;line-height:1.6}
+.am{font-size:12px;font-weight:300;letter-spacing:.04em;color:#B07818}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px 24px;margin:0 0 22px}
+.seg{display:inline-flex;border:1px solid #111;margin:0 0 16px}
+.seg button{all:unset;cursor:pointer;padding:0 18px;height:38px;display:inline-flex;align-items:center;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#111}
+.seg button[aria-pressed=true]{background:#111;color:#fff}.seg button:focus-visible{outline:2px solid #111;outline-offset:2px}
+.btn{display:inline-flex;align-items:center;height:40px;padding:0 20px;background:#303030;color:#fff;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.btn.alt{background:#fff;color:#111;border:1px solid #111}
+.sub{display:flex;gap:8px;margin:0 0 16px}.sub button{all:unset;cursor:pointer;font-size:12px;font-weight:500;letter-spacing:.04em;padding:6px 12px;border:1px solid #D0D0D0;color:#6E6E6E}.sub button[aria-pressed=true]{border-color:#111;color:#111}
+#chat{border:1px solid #D0D0D0;max-width:460px}.hd{padding:10px 14px;border-bottom:1px solid #D9D9D9;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#111;display:flex;justify-content:space-between}
+.msgs{padding:14px;display:flex;flex-direction:column;gap:8px;min-height:120px;max-height:220px;overflow:auto}
+.m{font-size:14px;line-height:1.5;padding:8px 12px;max-width:85%;background:#F4F4F4}.m.u{align-self:flex-end;background:#303030;color:#fff}
+.in{display:flex;border-top:1px solid #D9D9D9}.in input{flex:1;border:0;padding:0 14px;height:42px;font:inherit;font-size:14px;outline:0}.in input:focus{box-shadow:inset 0 0 0 2px #111}.in button{all:unset;cursor:pointer;padding:0 18px;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#111;border-left:1px solid #D9D9D9}
+body{position:relative}
+#modal{position:fixed;inset:0;background:#F4F4F4;z-index:20;overflow:auto;padding:16px}
+#modal .card{background:#fff;border:1px solid #111;max-width:760px;margin:0 auto;padding:28px}
+#modal h3{margin:0 0 8px;font-size:28px;font-weight:300;color:#111}
+#modal .x{all:unset;cursor:pointer;float:right;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#111;border:1px solid #111;padding:8px 14px}
+#modal .opt{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;border:1px solid #D0D0D0;padding:18px 20px;margin:0 0 10px}
+#modal .opt:hover,#modal .opt:focus-visible{border-color:#111;outline:0;box-shadow:inset 0 0 0 1px #111}
+#modal .opt b{display:block;font-size:16px;font-weight:700;color:#111;margin:0 0 4px}#modal .opt span{font-size:14px;font-weight:300;line-height:1.5;color:#4F4F4E}
+#modal form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 20px;margin-top:18px}
+#modal .fl{display:flex;flex-direction:column;gap:5px}#modal .fl.w{grid-column:1/-1}
+#modal label,#modal .lb{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#6E6E6E}
+#modal input,#modal select,#modal textarea{font:inherit;font-size:14px;color:#111;border:1px solid #BBB;border-radius:0;padding:0 10px;height:40px;background:#fff;width:100%}
+#modal textarea{height:96px;padding:10px;resize:vertical}#modal input:focus,#modal select:focus,#modal textarea:focus{outline:0;border-color:#111;box-shadow:inset 0 0 0 1px #111}
+#modal .er{font-size:12px;font-weight:300;color:#B3261E}#modal input.bad,#modal select.bad,#modal textarea.bad{border-color:#B3261E}
+#modal .ctx{margin:12px 0 0;padding:10px 12px;background:#F4F4F4;font-size:14px}
+#modal .rad{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}#modal .rad label{font-size:14px;font-weight:400;letter-spacing:0;text-transform:none;color:#111;display:flex;gap:6px;align-items:center}#modal .rad input{width:auto;height:auto}
+#modal .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;grid-column:1/-1}
+#modal pre{background:#F4F4F4;padding:12px;font-size:12px;overflow:auto;margin:12px 0}
+@media(max-width:700px){#modal form{grid-template-columns:1fr}#modal .card{padding:20px}}
+@media(max-width:700px){#panel{grid-template-columns:1fr}.left{border-right:0;border-bottom:1px solid #D9D9D9}.ph{max-width:240px}}
+
+#eco{display:flex;flex-wrap:wrap;gap:24px}
+#grid{flex:1 1 560px;min-width:0;box-sizing:border-box;background:#F4F4F4;border-radius:20px;padding:clamp(24px,4vw,56px);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(8px,1.6vw,24px);align-content:center;border:0}
+#grid button{all:unset;box-sizing:border-box;cursor:pointer;padding:12px 0;min-height:112px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;min-width:0}
+#grid button:focus-visible{outline:1px solid #4F4F4E;outline-offset:2px}
+#grid .sym{position:relative;display:block;height:clamp(28px,3vw,40px);width:clamp(28px,3vw,40px);transform-origin:center top;transition:transform 180ms ease}
+#grid .sym img{display:block;height:100%;width:100%;object-fit:contain;visibility:hidden}
+#grid .sym i{position:absolute;inset:0;background:#A3A3A3}
+#grid .lab{display:flex;flex-direction:column;align-items:center;gap:3px;opacity:0;transition:opacity 180ms ease,margin-top 180ms ease;text-align:center}
+#grid .lab b{font-size:12px;font-weight:500;letter-spacing:.08em;line-height:1;color:#4F4F4E}
+#grid .lab s{text-decoration:none;font-size:11px;font-weight:500;letter-spacing:.1em;line-height:1.2;text-transform:uppercase;color:#5F5E5E}
+#grid button.on .sym{transform:scale(1.4)}#grid button.on .sym img{visibility:visible}#grid button.on .sym i{visibility:hidden}#grid button.on .lab{opacity:1;margin-top:14px}
+#aside{flex:1 1 320px;min-width:0;min-height:400px;box-sizing:border-box;padding:36px 32px 24px;border-radius:20px;background:#F7F7F5;transition:background-color 220ms ease;display:flex;flex-direction:column;justify-content:space-between;gap:32px;color:#5F5E5E}
+#aside .let{display:flex;flex-direction:column;align-items:center;gap:4px;padding-top:8px}#aside .let span{font-size:32px;font-weight:100;line-height:1.1}
+#aside .t{font-size:clamp(32px,3.4vw,52px);font-weight:100;letter-spacing:.15em;line-height:1.05;text-transform:uppercase;overflow-wrap:anywhere}
+#aside .st{margin-top:12px;font-size:clamp(18px,1.6vw,24px);font-weight:200;line-height:1.2}
+#aside .tx{margin-top:16px;font-size:16px;font-weight:300;line-height:1.5;max-width:340px}
+#aside .fl{margin-top:12px;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+#aside .ln{margin-top:32px;height:1px;background:currentColor}
+#aside .lk{margin-top:20px;display:flex;flex-direction:column;gap:10px}
+#aside .lk button{all:unset;cursor:pointer;font-size:18px;font-weight:300;padding:6px 0;align-self:flex-start}#aside .lk button:hover{text-decoration:underline}
+#aside .ft{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:12px;font-weight:300}
+#aside .bars{all:unset;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;gap:6px;transition:transform 220ms ease}#aside .bars span{display:block;width:1px;height:28px;background:currentColor}
+@media(max-width:700px){#grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+</style></head><body>
+<div id="eco"><div id="grid" role="group" aria-label="Product brands"></div><aside id="aside" aria-live="polite"></aside></div>
+<p id="hint" style="display:none"></p>
+<div id="panel" role="region" aria-live="polite" aria-label="Product expert"></div>
+<p class="am" style="margin:18px 0 0">ADDRESSES, PHONE, LANGUAGES, REGIONS, RESPONSE TIME AND AGENDA LINK TO CONFIRM</p>
+<script>
+(function(){
+var P=[{"id":"ando","name":"Thomas Vermeulen","role":"Senior Photovoltaic Manufacturing & Reliability Engineer","brands":["ANDO"],"note":"Residential and commercial module expertise","topics":"PV module selection, manufacturing quality, testing standards, certification documentation, failure analysis and long-term reliability."},{"id":"agrix","name":"Dr. Klaus Reinhardt","role":"Senior Agrivoltaics & Agricultural Engineering Specialist","brands":["AGRIX"],"topics":"Agrivoltaics, agricultural solar installations, elevated PV structures, farm equipment clearance, mechanical engineering, irrigation integration, outdoor durability, agricultural energy systems and field maintenance."},{"id":"lina","name":"Piotr Zieliński","role":"Vertical PV & Flat-Roof Mounting Systems Engineer","brands":["LINA"],"topics":"Vertical photovoltaic systems, flat-roof solar mounting, structural interfaces, wind loading, mechanical product design, manufacturing, module integration and architectural solar applications."},{"id":"prop","name":"Viktoria Stoyanova","role":"Wind Turbine Testing & Rotor Development Specialist","brands":["PROP"],"topics":"Vertical-axis wind turbines, rotor aerodynamics, turbine selection, site wind conditions, vibration, blade development, performance testing, manufacturing and maintenance."},{"id":"moebius","name":"Arjun Menon","role":"Power Conversion & Embedded Control Engineer","brands":["MOEBIUS"],"topics":"Hybrid inverter architecture, battery communication, grid compliance, inverter diagnostics, embedded control and system commissioning."},{"id":"fluxx","name":"Bram de Vries","role":"Battery Systems & BMS Reliability Engineer (residential)","brands":["FLUXX"],"topics":"Battery selection, BMS architecture, inverter compatibility, battery safety, energy storage diagnostics, manufacturing quality, SoC/SoH interpretation and long-term reliability."},{"id":"fluxx-bess","name":"Dr. Markus Feldmann","role":"Senior Battery Energy Storage & Grid Integration Engineer (commercial and utility)","brands":["FLUXX"],"topics":"Commercial and industrial BESS, utility-scale energy storage, battery cabinets, containerised systems, PCS integration, BMS, grid connection, electrical protection, HVAC, fire-risk engineering, performance testing, commissioning and lifecycle planning."},{"id":"nendo","name":"Mihai Ionescu","role":"Senior Heat Pump, HVAC & Hot Water Specialist","brands":["NENDO","OGO"],"topics":"Heat pumps, HVAC, thermal storage, domestic hot water, PV-assisted water heating, installation diagnostics, system commissioning and EMON integration."},{"id":"xoom","name":"Lukas Schneider","role":"Senior EV Charging & Grid Integration Technician","brands":["XOOM"],"topics":"EV charger selection, electrical installation, AC/DC charging, vehicle compatibility, OCPP, load balancing, commissioning, charging diagnostics and EMON integration."},{"id":"feu","name":"Kateryna Hrytsenko","role":"Radiant Heating & Building Physics Specialist","brands":["FEU"],"topics":"Infrared heating, radiant comfort, room heat-loss assessment, panel positioning, thermal performance, electrical heating controls, installation design and architectural integration."},{"id":"airo","name":"Andrei Popescu","role":"Ventilation & Indoor Air Quality Commissioning Specialist","brands":["AIRO"],"topics":"Central and decentralised MVHR, airflow balancing, ductwork, acoustic performance, ventilation commissioning, indoor air quality, humidity control and system integration."},{"id":"glow","name":"Milica Petrović","role":"Solar Lighting & Architectural Illumination Specialist","brands":["GLOW"],"topics":"Solar lighting, LED optics, photometry, colour quality, outdoor illumination, battery autonomy, lighting controls, product specification and architectural lighting integration."},{"id":"chill","name":"Elīna Ozoliņa","role":"Architectural Product & Energy-Integrated Infrastructure Designer","brands":["CHILL"],"topics":"Energy-integrated furniture, architectural infrastructure, product design, material selection, manufacturing, ergonomics, outdoor durability and technical integration."},{"id":"synq","name":"Ananya Rao","role":"Smart Metering & Embedded Instrumentation Engineer","brands":["SYNQ"],"topics":"P1 compatibility, DIN metering, CT sensor configuration, wireless communication, commissioning, measurement accuracy and embedded electronics."},{"id":"ozzy","name":"Meera Kulkarni","role":"Smart Switching & Embedded Controls Engineer","brands":["OZZY"],"topics":"Smart switching, electrical load compatibility, connected plugs, energy monitoring, automation, relay reliability, electrical safety and EMON integration."},{"id":"togu","name":"Mei-Ling Lin","role":"Senior Cable, Connector & Electrical Interconnection Specialist","brands":["TOGU"],"topics":"Solar DC cables, power cables, electrical connectors, cable assemblies, terminations, material selection, electrical testing and manufacturing quality."},{"id":"mox","name":"Hendrik Van Aelst","role":"Senior Structural, Mounting & Equipment Protection Engineer","brands":["MOX","SHELTR","TERRIX","PARX","TECTIX","PONTIX"],"topics":"PV mounting systems, structural connections, equipment shelters, protective enclosures, wind and snow loading, material durability, weather resistance, mechanical safety and installation requirements."},{"id":"dodo","name":"Charlotte Whitmore","role":"Product Safety & Protective Systems Specialist","brands":["DODO"],"topics":"Product safety, protective hardware, environmental protection, ingress protection, mechanical safety, equipment enclosures, intelligent monitoring, conformity assessment and installation safety."},{"id":"wurk","name":"Marek Kováč","role":"Access Equipment & Installation Safety Specialist","brands":["WURK"],"topics":"Mobile scaffolding, temporary access equipment, materials handling, transport trolleys, structural stability, ergonomics, mechanical durability, equipment testing and installer safety."},{"id":"muki","name":"Filip De Smet","role":"Senior Electrical Systems Integration & Preconfiguration Engineer","brands":["MUKI"],"topics":"Integrated PV and battery systems, inverter compatibility, preconfigured energy kits, factory testing, installation commissioning, energy management integration, technical documentation and system reliability."}];
+var BR=["ANDO","LINA","PROP","MOEBIUS","FLUXX","NENDO","OGO","FEU","XOOM","AIRO","GLOW","SYNQ","OZZY","MOX","AGRIX","TERRIX","TECTIX","PARX","CHILL","PONTIX","TOGU","DODO","SHELTR","MUKI","WURK"];
+var PNG={AGRIX:1,TERRIX:1,PARX:1,PONTIX:1,TECTIX:1,LINA:1};/* DEPTH-622: symbol grid + colour panel, as the homepage brand chooser (EcosystemGrid grid5) */
+function logo(b){return "assets/logos/"+b+"-symbol."+(PNG[b]?"png":"svg")}
+function catOf(b){try{var N=window.STROHM_NAV,m=N&&N.menu&&N.menu("products");var gs=m?m.groups:[];for(var i=0;i<gs.length;i++)for(var j=0;j<gs[i].items.length;j++){var it=gs[i].items[j];if(it.name===b)return it.subtitle||gs[i].title||""}}catch(e){}return ""}
+function ink(hex){var c=hex.replace("#",""),v=[0,2,4].map(function(i){var x=parseInt(c.substr(i,2),16)/255;return x<=.03928?x/12.92:Math.pow((x+.055)/1.055,2.4)}),L=.2126*v[0]+.7152*v[1]+.0722*v[2];return (1.05/(L+.05))>=4.5?"#FFFFFF":"#4F4F4E"}
+var COL=(window.STROHM_NAV&&window.STROHM_NAV.COLOUR)||{};
+var grid=document.getElementById('grid'),panel=document.getElementById('panel'),hint=document.getElementById('hint');
+var state={b:null,pi:0,mode:'email'};
+try{var sq=sessionStorage.getItem('strohm_expert_q');if(sq)state.q=JSON.parse(sq)}catch(e){}
+function saveQ(){try{if(state.q)sessionStorage.setItem('strohm_expert_q',JSON.stringify(state.q));else sessionStorage.removeItem('strohm_expert_q')}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function who(b){return P.filter(function(p){return p.brands.indexOf(b)>=0})}
+var hov=null,ht=null,aside=document.getElementById('aside');
+BR.forEach(function(b){var x=who(b)[0],bt=document.createElement('button');bt.type='button';bt.setAttribute('aria-pressed','false');bt.setAttribute('aria-label',b+', expert '+x.name);bt.dataset.b=b;
+ bt.innerHTML='<span class="sym"><img src="'+logo(b)+'" alt=""><i style="-webkit-mask:url(\''+logo(b)+'\') center / contain no-repeat;mask:url(\''+logo(b)+'\') center / contain no-repeat"></i></span><span class="lab"><b>'+b+'</b><s>'+esc(catOf(b))+'</s></span>';
+ bt.onmouseenter=function(){clearTimeout(ht);ht=setTimeout(function(){hov=b;paint()},80)};bt.onfocus=function(){hov=b;paint()};bt.onclick=function(){pick(b)};grid.appendChild(bt)});
+grid.onmouseleave=function(){clearTimeout(ht);hov=null;paint()};
+function paint(){var a=hov||state.b;
+ [].forEach.call(grid.children,function(bt){var on=bt.dataset.b===a;bt.className=on?'on':'';bt.setAttribute('aria-pressed',bt.dataset.b===state.b)});
+ if(!a){aside.style.background='#F7F7F5';aside.style.color='#5F5E5E';aside.innerHTML='<div class="let">'+'EXPERTS'.split('').map(function(c){return '<span>'+c+'</span>'}).join('')+'</div><div class="ft"><span>Hover a logo to preview.</span><button type="button" class="bars" aria-label="Back to all brands"><span></span><span></span><span></span></button></div>';post();return}
+ var ps=who(a),p=ps[a===state.b?Math.min(state.pi,ps.length-1):0],col=COL[a]||'#E3E3E3',k=ink(col);aside.style.background=col;aside.style.color=k;
+ aside.innerHTML='<div style="display:flex;flex-direction:column;justify-content:center;flex:1;min-width:0"><div class="t">'+a+'</div><div class="st">'+esc(p.name)+(ps.length>1?' <span style="font-size:15px">+'+(ps.length-1)+'</span>':'')+'</div><div class="tx">'+esc(p.role)+'</div><div class="fl">Product expert · concept profile, to confirm</div><div class="ln"></div><div class="lk"><button type="button" data-go="contact">&gt;&gt; contact</button><button type="button" data-go="profile">&gt;&gt; full profile</button></div></div><div class="ft"><span>'+(a===state.b?'Contact options below.':'Click a logo to contact the expert.')+'</span><button type="button" class="bars" aria-label="Back to all brands" style="transform:rotate('+(state.b?'90deg':'0deg')+')"><span></span><span></span><span></span></button></div>';
+ aside.querySelector('[data-go=contact]').onclick=function(){if(state.b!==a)pick(a)};
+ aside.querySelector('[data-go=profile]').onclick=function(){try{parent.location.hash='expert-'+p.id}catch(e){}};
+ var bb=aside.querySelector('.bars');bb.onclick=function(){state.b=null;hov=null;render()};post()}
+function pick(b){state.b=b;state.pi=0;state.mode='email';render()}
+var chatLog={};
+function render(){
+ paint();
+ if(!state.b){panel.className='';panel.innerHTML='';post();return}
+ var ps=who(state.b),p=ps[Math.min(state.pi,ps.length-1)],col=COL[state.b]||'#111';
+ var first=p.name.replace(/^Dr\.\s+/,'').split(' ')[0];
+ var sub=ps.length>1?'<div class="sub" role="group" aria-label="Choose expert">'+ps.map(function(q,i){return '<button type="button" data-i="'+i+'" aria-pressed="'+(i===state.pi)+'">'+esc(q.name)+'</button>'}).join('')+'</div>':'';
+ var other=p.brands.length>1?'<p class="l">Also responsible for</p><p>'+p.brands.filter(function(x){return x!==state.b}).join(', ')+'</p>':'';
+ var pane;
+ if(!state.q)pane='<p class="l">Contact</p><p>Expert contact is for professional customers. Two short questions first.</p><button type="button" class="btn" id="talk">Talk to an expert</button>';
+ else if(state.mode==='email')pane=who0()+'<p class="l">Email</p><p><a href="#" onclick="return false" style="color:#111;font-size:16px">XXX@strohm.energy</a> <span class="am">TO CONFIRM</span></p><p class="l">Phone</p><p>+XX XXX XXX XXX <span class="am">TO CONFIRM</span></p>';
+ else if(state.mode==='meeting')pane=who0()+'<p class="l">Appointment</p><p>30-minute consultation in the online agenda.</p><p><a class="btn" href="#" onclick="return false" rel="noopener">Book a meeting</a> <span class="am">AGENDA LINK TO CONFIRM</span></p>';
+ else{var k=p.id;chatLog[k]=chatLog[k]||[{t:'Hello, this is '+first+'. How can I help with '+state.b+'?'}];
+  pane=who0()+'<div id="chat"><div class="hd"><span>Quick chat · '+esc(first)+'</span><span class="am">PROTOTYPE</span></div><div class="msgs" id="msgs">'+chatLog[k].map(function(m){return '<div class="m'+(m.u?' u':'')+'">'+esc(m.t)+'</div>'}).join('')+'</div><form class="in" id="cf"><input id="ci" aria-label="Message" placeholder="Write a message" autocomplete="off"><button type="submit">Send</button></form></div><p class="am" style="margin-top:8px">MESSAGES ARE NOT SENT. CHAT TOOL TO CONFIRM</p>'}
+ panel.className='on';
+ panel.innerHTML='<div class="left"><image-slot class="ph" id="finder-'+p.id+'" shape="rect" placeholder="Drop a professional photograph"></image-slot></div>'+
+ '<div class="right">'+sub+'<div class="tag" style="color:'+col+'">'+state.b+' · Product expert</div><h3 class="nm">'+esc(p.name)+'</h3><div class="rl">'+esc(p.role)+'</div>'+other+
+ '<p class="l">Technical consultation topics</p><p>'+esc(p.topics)+'</p>'+
+ '<div class="facts"><div><p class="l">Languages</p><p><span class="am">TO CONFIRM</span></p></div><div><p class="l">Regions</p><p><span class="am">TO CONFIRM</span></p></div><div><p class="l">Response time</p><p>Replies within one working day <span class="am">TO CONFIRM</span></p></div></div>'+
+ '<p class="l">Preferred contact method</p><div class="seg" role="group" aria-label="Contact method">'+['email','meeting','chat'].map(function(m){return '<button type="button" data-m="'+m+'" aria-pressed="'+(state.mode===m)+'">'+({email:'Email',meeting:'Meeting',chat:'Quick chat'})[m]+'</button>'}).join('')+'</div><div id="pane">'+pane+'</div></div>';
+ [].forEach.call(panel.querySelectorAll('[data-i]'),function(e){e.onclick=function(){state.pi=+e.dataset.i;render()}});
+ [].forEach.call(panel.querySelectorAll('[data-m]'),function(e){e.onclick=function(){if(!state.q){openModal(e.dataset.m);return}state.mode=e.dataset.m;render();if(state.mode==='chat'){var i=document.getElementById('ci');if(i)i.focus()}}});
+ var cg=document.getElementById('chg');if(cg)cg.onclick=function(){state.q=null;saveQ();openModal(state.mode)};
+ var tk=document.getElementById('talk');if(tk)tk.onclick=function(){openModal(state.mode)};
+ var cf=document.getElementById('cf');if(cf)cf.onsubmit=function(ev){ev.preventDefault();var i=document.getElementById('ci'),v=i.value.trim();if(!v)return;chatLog[p.id].push({t:v,u:1});chatLog[p.id].push({t:'Thank you. This is a prototype, so the message was not sent.'});render();document.getElementById('ci').focus();var mm=document.getElementById('msgs');mm.scrollTop=mm.scrollHeight};
+ post();
+}
+function who0(){return '<p style="font-size:13px;margin:0 0 12px">Contacting as <b>'+(state.q.type==='A'?'EPC / Professional Installer':'Business / Distribution Partner')+'</b> · <button type="button" id="chg" style="all:unset;cursor:pointer;text-decoration:underline;color:#111">Change</button></p>'}
+var M=null,FREE=/@(gmail|googlemail|hotmail|outlook|live|yahoo|icloud|me|aol|gmx|proton|protonmail)\./i;
+var CT=['Wholesaler','Distributor','Developer','Engineering company','Manufacturer','Other professional organisation'];
+var MN={email:'Email',meeting:'Meeting',chat:'Quick chat'};
+function openModal(method){M={step:'pick',method:method||'email',vals:{},err:{}};drawModal();try{parent.postMessage({expModal:1},'*')}catch(e){}}
+function closeModal(){M=null;drawModal()}
+function opt(id,t,d){return '<button type="button" class="opt" data-t="'+id+'"><b>'+t+'</b><span>'+d+'</span></button>'}
+function fld(n,l,html,w,req){return '<div class="fl'+(w?' w':'')+'"><label for="f-'+n+'">'+l+(req?' *':'')+'</label>'+html+(M.err[n]?'<div class="er" role="alert">'+M.err[n]+'</div>':'')+'</div>'}
+function inp(n,type,ph){var v=M.vals[n]||'';return '<input id="f-'+n+'" name="'+n+'" type="'+(type||'text')+'" value="'+esc(v)+'"'+(ph?' placeholder="'+ph+'"':'')+(M.err[n]?' class="bad"':'')+'>'}
+function sel(n,opts){var v=M.vals[n]||'';return '<select id="f-'+n+'" name="'+n+'"'+(M.err[n]?' class="bad"':'')+'><option value="">Select</option>'+opts.map(function(o){return '<option'+(o===v?' selected':'')+'>'+esc(o)+'</option>'}).join('')+'</select>'}
+function drawModal(){
+ var m=document.getElementById('modal');
+ if(!M){if(m)m.remove();post();return}
+ if(!m){m=document.createElement('div');m.id='modal';m.setAttribute('role','dialog');m.setAttribute('aria-modal','true');m.setAttribute('aria-label','Contact qualification');document.body.appendChild(m)}
+ var ps=who(state.b||''),p=ps[Math.min(state.pi,ps.length-1)],h='<div class="card"><button type="button" class="x" id="mx">Close</button>';
+ if(M.step==='pick'){
+  h+='<h3>Who are you contacting us as?</h3><p>To connect you with the right specialist, please tell us how you work with energy products.</p><div style="margin-top:18px">'+opt('A','A. EPC / Professional Installer','I represent an EPC contractor, electrical installer, HVAC installer or renewable energy installation company.')+opt('B','B. Business / Distribution Partner','I represent a wholesaler, distributor, developer, engineering company, manufacturer or other professional organisation.')+opt('C','C. Private Consumer / Homeowner','I am looking for an energy solution for my home or private property.')+'</div>';
+ } else if(M.step==='consumer'){
+  h+='<div class="ctx" style="margin:0 0 14px"><b>'+esc(state.b||'')+'</b> · '+esc(p?p.name:'')+'</div><h3>Looking for a solution for your home?</h3><p>STROHM.ENERGY supplies its products through professional EPC contractors, installers and distribution partners. Our installation partners can help you select and install the right solution.</p><div class="row" style="margin-top:16px"><a class="btn" target="_top" href="STROHM.ENERGY - SITE - Find an Installer - EN.dc.html">Find an installation partner</a><button type="button" class="btn alt" id="mb">Back</button></div><p class="am" style="margin-top:14px">CONSENT STEP BEFORE SHARING DETAILS WITH INSTALLERS: TO CONFIRM</p>';
+ } else if(M.step==='form'){
+  var A=M.type==='A';
+  h+='<div class="tag" style="margin:0 0 6px">'+(A?'EPC / Professional Installer':'Business / Distribution Partner')+'</div><h3>Tell us about your company</h3><div class="ctx"><b>'+esc(state.b||'')+'</b> · '+esc(p?p.name:'')+' <span style="color:#6E6E6E">· preselected</span></div><form id="qf" novalidate>'+
+  fld('name','Full name',inp('name'),0,1)+fld('company','Company name',inp('company'),0,1)+
+  fld('country','Country',inp('country'),0,1)+fld('email','Business email',inp('email','email','name@company.com'),0,1)+
+  (A?'':fld('ctype','Company type',sel('ctype',CT),0,1))+fld('website','Company website (optional)',inp('website','text','https://'),0,0)+
+  fld('interest','Area of interest / product category',sel('interest',BR.concat(['Not sure yet'])),0,1)+
+  fld('reason','Reason for contacting the expert','<textarea id="f-reason" name="reason"'+(M.err.reason?' class="bad"':'')+'>'+esc(M.vals.reason||'')+'</textarea>',1,1)+
+  '<div class="fl w"><span class="lb">Preferred contact method</span><div class="rad">'+['email','meeting','chat'].map(function(k){return '<label><input type="radio" name="method" value="'+k+'"'+(M.method===k?' checked':'')+'> '+MN[k]+'</label>'}).join('')+'</div></div>'+
+  '<div class="row"><button type="submit" class="btn">'+(A?'Continue to expert':'Continue')+'</button><button type="button" class="btn alt" id="mb">Back</button></div></form>';
+ } else {
+  var L=M.lead;
+  h+='<h3>Details accepted</h3><p>You can now contact '+esc(L.expert)+' ('+esc(L.brand)+') by '+MN[L.contact_method].toLowerCase()+'.</p><p class="am">PROTOTYPE: NOT SENT TO CRM. ODOO INTEGRATION TO CONFIRM</p><details><summary style="cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Lead record</summary><pre>'+esc(JSON.stringify(L,null,2))+'</pre></details><div class="row" style="margin-top:12px"><button type="button" class="btn" id="mo">Open '+MN[L.contact_method].toLowerCase()+'</button></div>';
+ }
+ h+='</div>';m.innerHTML=h;
+ var q=function(s){return m.querySelector(s)};
+ q('#mx').onclick=closeModal;
+ var b=q('#mb');if(b)b.onclick=function(){M.step='pick';M.err={};drawModal()};
+ [].forEach.call(m.querySelectorAll('[data-t]'),function(o){o.onclick=function(){var t=o.dataset.t;if(t==='C'){M.step='consumer'}else{M.type=t;M.step='form';M.vals.interest=M.vals.interest||state.b||''}drawModal()}});
+ var f=q('#qf');if(f)f.onsubmit=function(ev){ev.preventDefault();var fd=new FormData(f),v={};['name','company','country','email','ctype','website','interest','reason'].forEach(function(k){v[k]=(fd.get(k)||'').toString().trim()});M.vals=v;M.method=fd.get('method')||M.method;
+  var er={};['name','company','country','interest','reason'].forEach(function(k){if(!v[k])er[k]='Required'});
+  if(M.type==='B'&&!v.ctype)er.ctype='Required';
+  if(!v.email)er.email='Required';else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.email))er.email='Enter a valid email address';else if(FREE.test(v.email))er.email='Please use your business email address';
+  M.err=er;if(Object.keys(er).length){drawModal();var bad=m.querySelector('.bad');if(bad)bad.focus();return}
+  var pp=ps[Math.min(state.pi,ps.length-1)];
+  M.lead={lead_type:M.type==='A'?'EPC_INSTALLER':'BUSINESS_PARTNER',originating_page:'Company - About#experts',brand:state.b,expert:pp.name,expert_id:pp.id,contact_method:M.method,country:v.country,company:v.company,company_type:M.type==='B'?v.ctype:undefined,name:v.name,business_email:v.email,website:v.website||undefined,interest:v.interest,message:v.reason};
+  state.q={type:M.type,lead:M.lead};saveQ();M.step='done';drawModal()};
+ var o=q('#mo');if(o)o.onclick=function(){state.mode=M.lead.contact_method;closeModal();render()};
+ var first=m.querySelector('input,select,textarea,.opt,.btn,.x');if(first)first.focus();
+ post();
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&M)closeModal()});
+window.addEventListener('message',function(e){var d=e.data;if(!d||!d.expPick||BR.indexOf(d.expPick)<0)return;var ps=who(d.expPick),i=0;ps.forEach(function(p,k){if(p.id===d.pid)i=k});state.b=d.expPick;state.pi=i;state.mode='email';render()});
+function post(){setTimeout(function(){try{parent.postMessage({expHeight:Math.max(Math.ceil(document.body.getBoundingClientRect().height),M?(document.getElementById('modal')?document.getElementById('modal').firstChild.offsetHeight+48:0):0)},'*')}catch(e){}},30)}
+window.addEventListener('load',post);window.addEventListener('resize',post);if(window.ResizeObserver)new ResizeObserver(post).observe(document.body);
+render();
+})();
+</script></body></html>

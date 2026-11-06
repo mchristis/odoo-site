@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>How Ten Chapters | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./nav-data.js"></script>
+<script src="./image-slot.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:#4F4F4E; text-decoration:none; }
+  a:hover { color:#1E1E1E; }
+</style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:#4F4F4E;">
+  <dc-import name="NavBar" active="company" hint-size="100%,89px"></dc-import>
+  <dc-import name="CompanyNav" active="how" sub="quality" hint-size="100%,57px"></dc-import>
+  <dc-import name="PageHero" brand="STROHM.ENERGY" rgb="247,104,1" title="The pursuit of quality: ten ways of looking" slot="strohm-energy-how-ten-chapters-hero" shot="STROHM.ENERGY · How - Ten Chapters · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section data-screen-label="HOW — Ten chapters" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;"><div style="border-top:1px solid #1E1E1E;padding-top:20px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;"><a href="STROHM.ENERGY - COMPANY - How - EN.dc.html#quality-head" style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#4F4F4E;"><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-right:0.4em;flex:none;"><polyline points="7,1 1,7 7,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg>How</a><span style="font-size:var(--web-small-size);font-weight:300;color:#6E6E6E;line-height:var(--web-small-lh);">Quality</span></div>
+  <iframe title="The pursuit of quality: ten ways of looking" src="Quality Ten.html" style="width:100%;border:0;display:block;height:{{ qtH }}px;"></iframe>
+  <p style="margin:16px 0 0;font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#4F4F4E;max-width:760px;">Robert M. Pirsig, <em>Zen and the Art of Motorcycle Maintenance: An Inquiry into Values</em>.</p></section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 120px;box-sizing:border-box;"><a href="STROHM.ENERGY - COMPANY - When - EN.dc.html" style="text-decoration:none;border-top:1px solid #4F4F4E;padding-top:24px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;transition:border-color 180ms ease;" style-hover="border-top-color:#F76801;"><span style="font-size:var(--web-min-size);letter-spacing:0.08em;color:#5F5E5E;line-height:var(--web-min-lh);">Next · 06 / 06</span><span style="font-size:clamp(28px,3vw,40px);font-weight:200;color:#252525;">When<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></a></section>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { qtH: 900 };
+  componentDidMount() { this._m = (e) => { if (e.data && typeof e.data.qtHeight === "number" && e.data.qtHeight > 100) this.setState({ qtH: Math.ceil(e.data.qtHeight) + 8 }); }; window.addEventListener("message", this._m); }
+  componentWillUnmount() { window.removeEventListener("message", this._m); }
+  renderVals() { return { qtH: this.state.qtH }; }
+}
+</script>
+</body>
+</html>

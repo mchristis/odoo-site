@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<style>
+  ::placeholder { color:#6F6F6D; opacity:1; }
+  input:disabled, select:disabled, textarea:disabled { color:#C8C7C3; }
+  @keyframes cmFade { from { opacity:0; } to { opacity:1; } }
+  @keyframes cmRise { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+  .cm-scroll { scrollbar-width:thin; }
+</style>
+</helmet>
+<sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:1000;font-family:var(--font-web);">
+  <div onClick="{{ onClose }}" style="position:absolute;inset:0;background:rgba(28,28,28,0.55);animation:cmFade 0.16s ease;"></div>
+
+  <div class="cm-scroll" style="position:absolute;inset:0;overflow-y:auto;display:flex;align-items:flex-start;justify-content:center;padding:40px 24px;">
+    <div style="position:relative;width:100%;max-width:1120px;background:#FFFFFF;border-radius:8px;animation:cmRise 0.2s ease;padding:40px 44px 24px;box-sizing:border-box;">
+
+      <button onClick="{{ onClose }}" aria-label="Close" style="position:absolute;top:32px;right:36px;width:30px;height:30px;border:none;cursor:pointer;background:none;display:flex;align-items:center;justify-content:center;color:#4F4F4E;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><line x1="3" y1="3" x2="17" y2="17"></line><line x1="17" y1="3" x2="3" y2="17"></line></svg>
+      </button>
+
+      <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:#4F4F4E;margin-bottom:8px;line-height:var(--web-h3-lh);">GET IN TOUCH</div>
+      <p style="margin:0 0 24px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#898989;">Choose how much information you want to provide. We will connect you with the right person.</p>
+
+      <!-- CONFIRMATION -->
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:64px 20px 80px;">
+          <div style="width:56px;height:56px;border-radius:50%;background:#4F4F4E;display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.6"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>
+          </div>
+          <h2 style="margin:0 0 12px;font-size:28px;font-weight:300;color:#4F4F4E;">Request received.</h2>
+          <p style="margin:0 0 8px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#898989;max-width:52ch;">We will send your request to the most suitable specialist.</p>
+          <p style="margin:0 0 24px;font-size:var(--web-body-size);font-weight:300;line-height:var(--web-body-lh);color:#898989;max-width:52ch;">{{ confirmDetail }}</p>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;margin-bottom:28px;line-height:var(--web-small-lh);">Request number <span style="color:#4F4F4E;font-weight:400;">{{ refNumber }}</span></div>
+          <button onClick="{{ onClose }}" style="cursor:pointer;font-family:inherit;min-height:var(--cta-height,56px);padding:4px var(--cta-pad-x,32px);border:1px solid #DDDDDD;background:#F4F4F4;color:#4F4F4E;font-size:var(--cta-font,16px);font-weight:400;border-radius:var(--cta-radius,8px);display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;">Close</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+
+      <!-- MODE TOGGLE -->
+      <div style="display:inline-flex;gap:3px;background:#EBECEC;border-radius:9px;padding:4px;margin-bottom:28px;">
+        <sc-for list="{{ modeTabs }}" as="m" hint-placeholder-count="2">
+          <button onClick="{{ m.onClick }}" style="border:none;cursor:pointer;font-family:inherit;padding:11px 30px;border-radius:6px;font-size:12px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;background:{{ m.bg }};color:{{ m.color }};">{{ m.label }}</button>
+        </sc-for>
+      </div>
+
+      <div data-stack="1" style="display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:start;">
+
+        <!-- FORM COLUMN -->
+        <div style="background:#F4F4F4;border-radius:8px;padding:32px;">
+
+          <div style="display:flex;align-items:flex-start;gap:14px;padding-bottom:20px;border-bottom:1px solid #DDDDDD;margin-bottom:24px;">
+            <div style="width:46px;height:46px;border-radius:50%;background:#F4F4F4;display:flex;align-items:center;justify-content:center;flex:none;" data-om-raster>{{ modeIcon }}</div>
+            <div>
+              <div style="font-size:var(--web-h3-size);font-weight:300;color:#4F4F4E;margin-bottom:4px;line-height:var(--web-h3-lh);">{{ modeTitle }}</div>
+              <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;max-width:56ch;">{{ modeBlurb }}</p>
+            </div>
+          </div>
+
+          <!-- FAST -->
+          <sc-if value="{{ isFast }}" hint-placeholder-val="{{ true }}">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:12px;line-height:var(--web-small-lh);">1. Choose a topic</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
+              <sc-for list="{{ fastTopics }}" as="t" hint-placeholder-count="4">
+                <button onClick="{{ t.onClick }}" style="cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;padding:9px 16px;border-radius:8px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};">{{ t.label }}</button>
+              </sc-for>
+            </div>
+
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:12px;line-height:var(--web-small-lh);">2. Choose how to contact us</div>
+            <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px;--cg:8px;">
+              <sc-for list="{{ fastMethods }}" as="m" hint-placeholder-count="2">
+                <button onClick="{{ m.onClick }}" style="cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;padding:13px 14px;border-radius:8px;border:1px solid {{ m.border }};background:{{ m.bg }};color:{{ m.color }};">{{ m.label }}</button>
+              </sc-for>
+            </div>
+
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:12px;line-height:var(--web-small-lh);">3. Your details</div>
+            <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;--cg:8px;">
+              <input placeholder="Your name" style="box-sizing:border-box;font-family:inherit;font-size:var(--web-input-size);color:#4F4F4E;background:#FFFFFF;border:1px solid #DDDDDD;border-radius:8px;padding:12px 14px;font-weight:var(--web-input-weight);">
+              <input placeholder="Email or phone number" style="box-sizing:border-box;font-family:inherit;font-size:var(--web-input-size);color:#4F4F4E;background:#FFFFFF;border:1px solid #DDDDDD;border-radius:8px;padding:12px 14px;font-weight:var(--web-input-weight);">
+            </div>
+            <div style="position:relative;margin-bottom:20px;">
+              <textarea placeholder="Your message" maxlength="500" style="width:100%;box-sizing:border-box;font-family:inherit;font-size:var(--web-input-size);color:#4F4F4E;background:#FFFFFF;border:1px solid #DDDDDD;border-radius:8px;padding:12px 14px;min-height:120px;resize:vertical;font-weight:var(--web-input-weight);"></textarea>
+              <span style="position:absolute;right:12px;bottom:10px;font-size:11px;font-weight:300;color:#AEAEAE;">0 / 500</span>
+            </div>
+            <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;--cg:10px;">
+              <button style-hover="background:#5F5E5E;color:#F4F4F4;" onClick="{{ onSubmitMessage }}" style="cursor:pointer;font-family:inherit;min-height:var(--cta-height,56px);border:none;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);font-weight:400;border-radius:var(--cta-radius,8px);display:flex;align-items:center;justify-content:center;gap:8px;padding:4px var(--cta-pad-x,32px);box-sizing:border-box;">Send message <span><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></button>
+              <button onClick="{{ onSubmitMeeting }}" style="cursor:pointer;font-family:inherit;min-height:var(--cta-height,56px);background:#FFFFFF;color:#4F4F4E;border:1px solid #4F4F4E;font-size:var(--cta-font,16px);font-weight:400;border-radius:var(--cta-radius,8px);display:flex;align-items:center;justify-content:center;gap:8px;box-sizing:border-box;">Request a meeting <span><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></button>
+            </div>
+          </sc-if>
+
+          <!-- DETAILED -->
+          <sc-if value="{{ isDetailed }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:12px;line-height:var(--web-small-lh);">1. Choose a topic</div>
+            <select style="width:100%;box-sizing:border-box;font-family:inherit;font-size:var(--web-input-size);color:#4F4F4E;background:#FFFFFF;border:1px solid #DDDDDD;border-radius:8px;padding:12px 14px;margin-bottom:20px;font-weight:var(--web-input-weight);">
+              <sc-for list="{{ detailedTopics }}" as="t" hint-placeholder-count="8"><option>{{ t }}</option></sc-for>
+            </select>
+
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:12px;line-height:var(--web-small-lh);">2. Select the product</div>
+            <select style="width:100%;box-sizing:border-box;font-family:inherit;font-size:var(--web-input-size);color:#4F4F4E;background:#FFFFFF;border:1px solid #DDDDDD;border-radius:8px;padding:12px 14px;margin-bottom:20px;font-weight:var(--web-input-weight);">
+              <sc-for list="{{ brands }}" as="b" hint-placeholder-count="6"><option>{{ b }}</option></sc-for>
+            </select>
+
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:12px;line-height:var(--web-small-lh);">3. Choose how to contact us</div>
+            <div data-cols="3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px;--cg:8px;">
+              <sc-for list="{{ detailedMethods }}" as="m" hint-placeholder-count="3">
+                <button onClick="{{ m.onClick }}" style="cursor:pointer;font-family:inherit;font-size:var(--web-btn-sm-size);font-weight:400;padding:12px 8px;border-radius:8px;border:1px solid {{ m.border }};background:{{ m.bg }};color:{{ m.color }};">{{ m.label }}</button>
+              </sc-for>
+            </div>
+
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:12px;line-height:var(--web-small-lh);">4. Your details</div>
+            <div data-cols="2" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;--cg:8px;">
+              <input placeholder="Your name" style="box-sizing:border-box;font-family:inherit;font-size:var(--web-input-size);color:#4F4F4E;background:#FFFFFF;border:1px solid #DDDDDD;border-radius:8px;padding:12px 14px;font-weight:var(--web-input-weight);">
+              <input placeholder="Company (optional)" style="box-sizing:border-box;font-family:inherit;font-size:var(--web-input-size);color:#4F4F4E;background:#FFFFFF;border:1px solid #DDDDDD;border-radius:8px;padding:12px 14px;font-weight:var(--web-input-weight);">
+              <input placeholder="Email" style="box-sizing:border-box;font-family:inherit;font-size:var(--web-input-size);color:#4F4F4E;background:#FFFFFF;border:1px solid #DDDDDD;border-radius:8px;padding:12px 14px;font-weight:var(--web-input-weight);">
+              <input placeholder="Phone number" style="box-sizing:border-box;font-family:inherit;font-size:var(--web-input-size);color:#4F4F4E;background:#FFFFFF;border:1px solid #DDDDDD;border-radius:8px;padding:12px 14px;font-weight:var(--web-input-weight);">
+              <select style="box-sizing:border-box;font-family:inherit;font-size:var(--web-input-size);color:#898989;background:#FFFFFF;border:1px solid #DDDDDD;border-radius:8px;padding:12px 14px;font-weight:var(--web-input-weight);"><option>Country</option><sc-for list="{{ countries }}" as="c" hint-placeholder-count="5"><option>{{ c }}</option></sc-for></select>
+              <select style="box-sizing:border-box;font-family:inherit;font-size:var(--web-input-size);color:#898989;background:#FFFFFF;border:1px solid #DDDDDD;border-radius:8px;padding:12px 14px;font-weight:var(--web-input-weight);"><option>Preferred language</option><sc-for list="{{ languages }}" as="l" hint-placeholder-count="5"><option>{{ l }}</option></sc-for></select>
+            </div>
+
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:12px;line-height:var(--web-small-lh);">5. Tell us more about your question</div>
+            <div style="position:relative;margin-bottom:20px;">
+              <textarea placeholder="Describe your question, including any relevant details." maxlength="1000" style="width:100%;box-sizing:border-box;font-family:inherit;font-size:var(--web-input-size);color:#4F4F4E;background:#FFFFFF;border:1px solid #DDDDDD;border-radius:8px;padding:12px 14px;min-height:110px;resize:vertical;font-weight:var(--web-input-weight);"></textarea>
+              <label style="position:absolute;left:12px;bottom:10px;display:flex;align-items:center;gap:6px;font-size:var(--web-label-size);font-weight:var(--web-label-weight);color:#898989;cursor:pointer;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="8 8 12 4 16 8"></polyline><line x1="12" y1="4" x2="12" y2="16"></line></svg>
+                Upload files (optional)<input type="file" style="display:none;">
+              </label>
+              <span style="position:absolute;right:12px;bottom:10px;font-size:11px;font-weight:300;color:#AEAEAE;">0 / 1000</span>
+            </div>
+
+            <sc-if value="{{ detailedMeeting }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:12px;line-height:var(--web-small-lh);">Preferred date and time <span style="font-weight:300;color:#898989;">(optional)</span></div>
+              <input type="datetime-local" style="width:100%;box-sizing:border-box;font-family:inherit;font-size:var(--web-input-size);color:#898989;background:#FFFFFF;border:1px solid #DDDDDD;border-radius:8px;padding:11px 14px;margin-bottom:20px;font-weight:var(--web-input-weight);">
+            </sc-if>
+
+            <button style-hover="background:#5F5E5E;color:#F4F4F4;" onClick="{{ onSubmitDetailed }}" style="width:100%;cursor:pointer;font-family:inherit;min-height:var(--cta-height,56px);border:none;background:#4F4F4E;color:#F4F4F4;font-size:var(--cta-font,16px);font-weight:400;border-radius:var(--cta-radius,8px);display:flex;align-items:center;justify-content:center;gap:10px;padding:4px var(--cta-pad-x,32px);box-sizing:border-box;">Send detailed request <span><svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></span></button>
+          </sc-if>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div>
+          <div style="font-size:var(--web-body-size);font-weight:300;color:#4F4F4E;margin-bottom:20px;">What you get</div>
+          <div style="display:flex;flex-direction:column;gap:22px;margin-bottom:28px;">
+            <sc-for list="{{ perks }}" as="p" hint-placeholder-count="4">
+              <div style="display:flex;gap:14px;">
+                <div style="color:#4F4F4E;flex:none;margin-top:2px;" data-om-raster>{{ p.icon }}</div>
+                <div>
+                  <div style="font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;margin-bottom:3px;">{{ p.t }}</div>
+                  <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;">{{ p.d }}</p>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="background:#F4F4F4;border-radius:8px;padding:22px;">
+            <div style="font-size:14px;font-weight:400;color:#4F4F4E;margin-bottom:8px;">Not sure what to choose?</div>
+            <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;">Choose Quick question for a simple question. Choose Project request for complex or technical topics so we can prepare.</p>
+            <div style="margin-top:12px;"><a href="STROHM.ENERGY - COMPANY - Who - Product Experts - EN.dc.html" style="align-self:flex-start;text-decoration:none;font-size:var(--web-link-size);font-weight:var(--web-link-weight);color:#4F4F4E;border-bottom:1px solid #4F4F4E;padding-bottom:2px;" style-hover="color:#222222;">Find your product expert<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid #DDDDDD;font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"></path></svg>
+        Your data is safe with us. We only use it to handle your request.
+      </div>
+      </sc-if>
+
+    </div>
+  </div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1120,&quot;height&quot;:860},&quot;open&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;onClose&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+const FAST_TOPICS = [
+  { key:"product", label:"Product information" },
+  { key:"webshop", label:"Webshop support" },
+  { key:"service", label:"Service or warranty" },
+  { key:"other", label:"Other" },
+];
+const DETAILED_TOPICS = [
+  "Technical product information", "Product selection or compatibility", "Installation or commissioning",
+  "Webshop, order or delivery", "Service or warranty", "Project advice", "Partnership or distribution", "Other",
+];
+const FAST_METHODS = [ { key:"message", label:"Message" }, { key:"meeting", label:"Video call" } ];
+const DETAILED_METHODS = [ { key:"written", label:"Written reply" }, { key:"phone", label:"Phone call" }, { key:"meeting", label:"Video call" } ];
+const BRANDS = [
+  "Select brand, series or model",
+  "ANDO — Solar modules", "MOEBIUS — Inverters and power conversion", "FLUXX — Battery storage",
+  "EMON — Energy management and monitoring", "SYNQ — Smart meters, gateways and data loggers",
+  "OZZY — Smart plugs and smart switches", "XOOM — EV charging", "NENDO — Heat pumps",
+  "OGO — Heat-pump boilers", "FEU — Infrared heating", "AIRO — Ventilation",
+  "MOX — Architectural PV structures", "AGRIX — Agri-PV structures", "TERRIX — Utility PV mounting", "PONTIX — Floating PV mounting", "TECTIX — Roof PV mounting", "PARX — Solar parking", "SHELTR — Equipment protection",
+  "DODO — Bird protection, cable guidance and drainage", "Other STRØHM.ENERGY product",
+];
+const COUNTRIES = ["Netherlands","Belgium","Germany","France","Denmark","Other EU country"];
+const LANGUAGES = ["Dutch","English","German","French","Danish"];
+
+function icon(name, size) {
+  const P = React.createElement;
+  const s = { width:size||22, height:size||22, viewBox:"0 0 24 24", fill:"none", stroke:"#4F4F4E", strokeWidth:1.4 };
+  const paths = {
+    bolt: [P("path",{key:1,d:"M13 2L4 14h6l-1 8 9-12h-6z",fill:"#4F4F4E",stroke:"none"})],
+    list: [P("line",{key:1,x1:8,y1:6,x2:20,y2:6}), P("line",{key:2,x1:8,y1:12,x2:20,y2:12}), P("line",{key:3,x1:8,y1:18,x2:20,y2:18}), P("circle",{key:4,cx:4,cy:6,r:1}), P("circle",{key:5,cx:4,cy:12,r:1}), P("circle",{key:6,cx:4,cy:18,r:1})],
+    user: [P("circle",{key:1,cx:12,cy:8,r:4}), P("path",{key:2,d:"M4 21c0-4 4-6 8-6s8 2 8 6"})],
+    clock: [P("circle",{key:1,cx:12,cy:12,r:9}), P("path",{key:2,d:"M12 7v5l3 2"})],
+    cal: [P("rect",{key:1,x:4,y:5,width:16,height:16,rx:2}), P("line",{key:2,x1:4,y1:9,x2:20,y2:9}), P("line",{key:3,x1:9,y1:3,x2:9,y2:6}), P("line",{key:4,x1:15,y1:3,x2:15,y2:6})],
+    lock: [P("rect",{key:1,x:5,y:11,width:14,height:9,rx:2}), P("path",{key:2,d:"M8 11V8a4 4 0 018 0v3"})],
+  };
+  return P("svg", s, paths[name]);
+}
+
+class Component extends DCLogic {
+  state = { mode:"fast", fastTopic:null, fastMethod:null, detailedMethod:null, submitted:false, submittedKind:null, ref:null };
+
+  componentDidUpdate(prev) {
+    if (!prev.open && this.props.open) {
+      this.setState({ mode:(this.props.mode === "detailed" ? "detailed" : "fast"), fastTopic:null, fastMethod:null, detailedMethod:null, submitted:false, submittedKind:null, ref:null });
+    }
+  }
+
+  finish(kind) {
+    const ref = "SE-" + Math.random().toString(36).slice(2, 7).toUpperCase();
+    this.setState({ submitted:true, submittedKind:kind, ref });
+  }
+
+  renderVals() {
+    const st = this.state;
+    const isFast = st.mode === "fast";
+    const chip = (on) => ({ bg: on ? "#4F4F4E" : "#FFFFFF", color: on ? "#FFFFFF" : "#898989", border: on ? "#4F4F4E" : "#DDDDDD" });
+    const mkTab = (k, label) => ({ label, onClick: () => this.setState({ mode:k }), bg: st.mode === k ? "#FFFFFF" : "transparent", color: st.mode === k ? "#4F4F4E" : "#898989" });
+
+    return {
+      open: !!this.props.open,
+      onClose: () => { if (this.props.onClose) this.props.onClose(); },
+      notSubmitted: !st.submitted,
+      submitted: st.submitted,
+      isFast,
+      isDetailed: !isFast,
+      detailedMeeting: st.detailedMethod === "meeting",
+
+      modeTabs: [ mkTab("fast","Quick question"), mkTab("detailed","Project request") ],
+      modeIcon: isFast ? icon("bolt") : icon("list"),
+      modeTitle: isFast ? "QUICK QUESTION" : "PROJECT REQUEST",
+      modeBlurb: isFast ? "Send a quick message and we will direct it to the right person." : "Give us more information so the right specialist can prepare before contacting you.",
+
+      fastTopics: FAST_TOPICS.map((t) => ({ label:t.label, onClick:() => this.setState({ fastTopic:t.key }), ...chip(st.fastTopic === t.key) })),
+      fastMethods: FAST_METHODS.map((m) => ({ label:m.label, onClick:() => this.setState({ fastMethod:m.key }), ...chip(st.fastMethod === m.key) })),
+      detailedTopics: DETAILED_TOPICS,
+      detailedMethods: DETAILED_METHODS.map((m) => ({ label:m.label, onClick:() => this.setState({ detailedMethod:m.key }), ...chip(st.detailedMethod === m.key) })),
+      brands: BRANDS,
+      countries: COUNTRIES,
+      languages: LANGUAGES,
+
+      onSubmitMessage: () => this.finish("message"),
+      onSubmitMeeting: () => this.finish("meeting"),
+      onSubmitDetailed: () => this.finish(st.detailedMethod === "meeting" ? "meeting" : "message"),
+
+      confirmDetail: st.submittedKind === "meeting"
+        ? "We will confirm the meeting time by email. Your request is not final until you receive confirmation."
+        : "You will normally receive a reply within one business day.",
+      refNumber: st.ref || "",
+
+      perks: [
+        { icon: icon("user"), t:"The right specialist", d:"We connect you with the expert for your question." },
+        { icon: icon("clock"), t:"Fast response", d:"We aim to reply within one business day." },
+        { icon: icon("cal"), t:"Prepared meetings", d:"For meetings, we prepare in advance so we can help you better." },
+        { icon: icon("lock"), t:"Your data is safe", d:"We only use your information to handle your request." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<title>MOX PROFILES | STRØHM.ENERGY</title>
+<style> body { margin:0; background:#FFFFFF; } a { color:var(--color-text-primary); text-decoration:none; } a:hover { color:var(--color-text-primary); } </style>
+</helmet>
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoxNav" active="products" hint-size="100%,73px"></dc-import>
+  <dc-import name="PageHero" brand="MOX" rgb="216,57,44" eyebrow="MOX · Profiles" title="PROFILES" intro="Profiles, base plates and connectors to build your own structure." slot="mox-profiles-hero" shot="MOX · Profiles · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <div style="font-size:12px;font-weight:300;color:#898989;margin-bottom:20px;display:flex;gap:6px;"><a href="MOX - PRODUCT - Overview - EN.dc.html" style="color:#898989;">MOX</a><span>&#8250;</span><span style="color:var(--color-text-primary);">Profiles</span></div>
+    
+    <div style="margin:40px 0 0;"><image-slot id="mox-profiles-hero" shape="rounded" radius="12" placeholder="MOX PROFILES · structure built from profiles · awaiting upload" style="aspect-ratio:21/9;"></image-slot></div>
+  </section>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid #DDDDDD;padding-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;">
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+        <div style="background:#F4F4F4;border-radius:var(--radius-card,12px);padding:20px;display:flex;flex-direction:column;gap:16px;">
+          <div style="aspect-ratio:4/3;"><image-slot id="{{ g.slot }}" shape="rounded" radius="8" placeholder="{{ g.ph }}"></image-slot></div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">{{ g.name }}</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);">Sizes and specifications: <span style="color:#B07818;font-weight:400;">TO CONFIRM</span></div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="border-left:2px solid #B07818;padding:0 0 0 24px;margin-top:40px;"><div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;line-height:var(--web-small-lh);">Product status: TO CONFIRM</div><div style="font-size:var(--web-small-size);line-height:var(--web-small-lh);font-weight:300;color:#898989;max-width:800px;">Profile sections, lengths, material, coating, connection method, load data and certification are not confirmed yet.</div></div>
+  </section>
+  <div style="height:160px;"></div>
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <a href="MOX - PRODUCT - Overview - EN.dc.html#project" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;border-top:1px solid var(--color-text-primary);border-bottom:1px solid var(--color-divider);padding:28px 0;color:var(--color-text-primary);" style-hover="color:var(--color-text-primary);">
+      <span style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">Project request</span><span style="font-size:var(--web-h3-size);font-weight:300;line-height:var(--web-h3-lh);">Send your site data and files to our engineers.</span></span>
+      <span style="font-size:var(--web-small-size);font-weight:300;border-bottom:1px solid var(--color-text-primary);padding-bottom:2px;">Start a project &#8250;</span>
+    </a>
+  </section>
+  <dc-import name="EpcInfo" brand="MOX" product="Profiles" hint-size="100%,420px"></dc-import>
+  <dc-import name="ContentSections" brand="MOX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MOX" accent="var(--color-brand-mox)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return { groups: [
+      { name: "Profiles", slot: "mox-profiles-profiles", ph: "Profiles · product photo" },
+      { name: "Base plates", slot: "mox-profiles-baseplates", ph: "Base plates · product photo" },
+      { name: "Connectors", slot: "mox-profiles-connectors", ph: "Connectors · product photo" },
+    ] };
+  }
+}
+</script>
+</body>
+</html>

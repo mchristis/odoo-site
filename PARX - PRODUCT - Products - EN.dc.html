@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>PARX Products | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>body { margin:0; }</style>
+</helmet>
+<dc-import name="StructureCategory"
+  brand="PARX"
+  category="Products"
+  eyebrow="PARX · Products"
+  heading="Parking that produces its own charging energy."
+  intro="Vehicle and bicycle structures that combine shelter, PV generation and EV charging, from a single private carport to modular rows for commercial car parks."
+  body="A car park is one of the largest unused surfaces on most sites. A carport turns that surface into generation directly above the place where vehicles charge. PARX carports are designed as structures, not as racks: drainage is collected and discharged through the columns, cables run inside the profiles, and electrical positions for inverters and chargers are planned from the start. Residential and commercial systems share the same method at different scales."
+  hero-slot-id="parx-products-hero"
+  hero-src="assets/mox/mox-curve-strohm-render-01.png"
+  hero-placeholder="PARX · Products banner · awaiting upload"
+  products-heading="Five parking structures."
+  products="{{ products }}"
+  guidance-heading="Car or bicycle, rational or architectural?"
+  guidance="{{ guidance }}"
+  engineering="{{ engineering }}"
+  hint-size="100%,100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const S = "#898989";
+    return {
+      products: [
+        { name: "RESIDENTIAL Carport", status: "View page", statusColor: "#4F4F4E", href: "PARX - PRODUCT - RESIDENTIAL Carport - EN.dc.html", tagline: "Residential PV carport", desc: "Aluminium PV carport for one or two cars at a private residence. Four sizes, 6° roof tilt, EV-charger ready." },
+        { name: "CLASSIC Carport", status: "View page", statusColor: "#4F4F4E", href: "PARX - PRODUCT - CLASSIC Carport - EN.dc.html", tagline: "Commercial PV carport system", desc: "Modular carport system for commercial car parks. Mono-pitch and duo-pitch roofs, cantilever, centre-post and portal-row structures." },
+        { name: "CURVE Carport", status: "View page", statusColor: "#4F4F4E", href: "PARX - PRODUCT - CURVE Carport - EN.dc.html", tagline: "Curved commercial PV carport", desc: "Curved-roof carport kits for 2 to 5 parking spaces on two pillars. Architectural profile, clear parking lane." },
+        { name: "HOME Bikeport", status: "In preparation", statusColor: "#898989", href: "PARX - PRODUCT - HOME Bikeport - EN.dc.html", tagline: "Residential PV bike shelter", desc: "Small PV roof for one or two bicycle bays at a private house. Weather cover and optional e-bike charging." },
+        { name: "PUBLIC Bikeport", status: "In preparation", statusColor: "#898989", href: "PARX - PRODUCT - Public Bikeport - EN.dc.html", tagline: "Public PV bike shelter", desc: "Modular-length PV bike shelter for schools, stations and cycle routes. Vandal-resistant detailing, optional e-bike charging." },
+      ],
+      guidance: [
+        { name: "RESIDENTIAL Carport", when: "For one or two cars at a private residence." },
+        { name: "Bicycles", when: "For bicycles and e-bikes, see Bikeports." },
+      ],
+      engineering: [
+        { title: "Vehicle clearance", desc: "Parking layout, column positions and headroom are set before structure and charging." },
+        { title: "Wind & snow loading", desc: "Span and exposure drive the structural design; confirmed per project." },
+        { title: "Foundations", desc: "Ground screws, driven piles or concrete, selected for the actual ground." },
+        { title: "Drainage", desc: "Water directed away from parking, charging points and access routes." },
+        { title: "EV charging", desc: "Protected, measured charging positions coordinated with the electrical design." },
+        { title: "Expansion", desc: "Additional bays and conduits anticipated for future charging demand." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

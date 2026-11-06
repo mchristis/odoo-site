@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<title>MOEBIUS PIXIE | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="MoebiusNav" hint-size="100%,73px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="MOEBIUS" rgb="241,147,27" eyebrow="MOEBIUS PIXIE &#183; Microinverters" title="Every module works independently. The complete system works together." intro="PIXIE converts solar energy at module level." slot="pixie-hero" shot="Roof of modules with PIXIE units — restrained technical photograph, no floating product" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#898989;max-width:720px;">Each module operates independently, while the microinverters form an adaptive dual-band Wi-Fi mesh across the roof &#8212; discovering their own devices, choosing the strongest route and connecting to EMON. Small systems run without a gateway; larger and three-phase systems add the EMON Gateway for advanced control.</p>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center;margin-bottom:24px;">
+      <div style="font-size:14px;font-weight:400;">400 W &#183; 500 W &#183; 800 W &#183; 1.000 W</div>
+      <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">1 or 2 independent module inputs</div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:20px;">
+      <a href="MOEBIUS - PRODUCT - Find Your Inverter - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;white-space:nowrap;background:var(--color-brand-moebius);color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-btn-weight);">Select your PIXIE</a>
+      <a href="MOEBIUS - SUPPORT - Install and Commission - EN.dc.html#workflow" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;white-space:nowrap;background:var(--color-card-moebius);color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-btn-weight);">For installers</a>
+    </div>
+    <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:32px;line-height:var(--web-small-lh);">Module-level conversion. System-level intelligence.</div>
+    
+  </section>
+
+  <section id="classes" style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:72px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">The range</div>
+      <h2 style="margin:0 0 28px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">One family. <span style="color:#8E8E8E;">Four power classes.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;">
+        <sc-for list="{{ pixieClasses }}" as="p" hint-placeholder-count="4">
+          <div style="background:#F4F4F4;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:6px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ p.power }}</div>
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ p.mppt }} · single-phase</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;">{{ p.note }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px 40px;margin-top:40px;">
+        <sc-for list="{{ whyMicro }}" as="w" hint-placeholder-count="3">
+          <div style="border-top:1px solid var(--color-divider);padding-top:16px;display:flex;flex-direction:column;gap:4px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ w.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:#898989;">{{ w.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONE PLATFORM / ROOFS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">One platform for every roof</div>
+      <h2 style="margin:0 0 32px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Each roof has a different reason <span style="color:#8E8E8E;">to work at module level.</span></h2>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ roofs }}" as="r" hint-placeholder-count="4">
+          <div style="background:#F4F4F4;border-radius:12px;padding:24px;">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:10px;line-height:var(--web-h3-lh);">{{ r.name }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">{{ r.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADAPTIVE MESH -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Adaptive dual-band Wi-Fi mesh</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The roof becomes its <span style="color:#8E8E8E;">own network.</span></h2>
+      <p style="margin:0 0 28px;max-width:780px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Every PIXIE joins the local network, using 2,4 GHz for range and wall penetration and 5 GHz where a cleaner link is available. Devices do not each need a direct link to the router &#8212; data hops through neighbouring PIXIE units until it reaches the internet bridge or EMON Gateway.</p>
+      <div data-cols="4" style="display:grid;gap:12px;grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:20px;--cg:12px;">
+        <sc-for list="{{ meshProof }}" as="m" hint-placeholder-count="4">
+          <div style="border-radius:12px;background:#F4F4F4;padding:22px 20px;">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:6px;line-height:var(--web-small-lh);">{{ m.tag }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">{{ m.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--color-divider);--cg:0px;">
+        <sc-for list="{{ meshBehaviour }}" as="b" hint-placeholder-count="3">
+          <div style="padding:22px 24px 22px 0;border-bottom:1px solid var(--color-divider);">
+            <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;line-height:var(--web-small-lh);">{{ b.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">{{ b.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 0;font-size:var(--web-min-size);font-weight:300;font-style:italic;color:#AEAEAE;max-width:760px;line-height:var(--web-min-lh);">No permanently assigned master device. PIXIE uses an active coordinator with automatic failover &#8212; not a fixed hierarchy.</p>
+    </div>
+  </section>
+
+  <!-- GATEWAY MODES -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Two operating modes</div>
+      <h2 style="margin:0 0 28px;max-width:720px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">No unnecessary hardware for a small system. <span style="color:#8E8E8E;">No unnecessary limits for a large one.</span></h2>
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;--cg:24px;">
+        <div style="background:#F4F4F4;border-radius:12px;padding:28px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:6px;">Compact system mode</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:14px;line-height:var(--web-h3-lh);">Gateway-free, where simplicity matters</div>
+          <p style="margin:0 0 16px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Small residential and balcony systems run without a separate gateway &#8212; one PIXIE bridges the local mesh to the customer&#8217;s Wi-Fi.</p>
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ compactMode }}" as="c" hint-placeholder-count="6">
+              <div style="display:flex;gap:8px;padding:6px 0;"><span style="color:var(--color-text-primary);font-size:12px;flex:none;">&#10003;</span><span style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">{{ c }}</span></div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background:#F4F4F4;border-radius:12px;padding:28px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:6px;">EMON Gateway mode</div>
+          <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:14px;line-height:var(--web-h3-lh);">Gateway-controlled, where coordination matters</div>
+          <p style="margin:0 0 16px;font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);max-width:760px;">For larger rooftops, three-phase installs and complete energy systems, the EMON Gateway becomes the local coordination and control layer.</p>
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ gatewayMode }}" as="g" hint-placeholder-count="6">
+              <div style="display:flex;gap:8px;padding:6px 0;"><span style="color:var(--color-text-primary);font-size:12px;flex:none;">+</span><span style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">{{ g }}</span></div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFETY + DISTRIBUTED INTELLIGENCE -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Module-level safety</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">No high-voltage DC string <span style="color:#8E8E8E;">across the roof.</span></h2>
+      <p style="margin:0 0 28px;max-width:780px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">PIXIE converts at the individual module. DC voltage stays limited to the connected module or module pair rather than combining many panels into one high-voltage string. At shutdown, AC output disconnects and each input returns to its local module voltage.</p>
+      <div data-cols="3" style="display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:16px;--cg:12px;">
+        <sc-for list="{{ safety }}" as="s" hint-placeholder-count="3">
+          <div style="border-radius:12px;background:#F4F4F4;padding:24px;">
+            <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;line-height:var(--web-small-lh);">{{ s.title }}</div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">{{ s.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <sc-for list="{{ safetyValues }}" as="v" hint-placeholder-count="3">
+          <span style="font-size:var(--web-min-size);font-weight:400;padding:8px 14px;border:none;background:#EBECEC;border-radius:8px;color:#8E8E8E;line-height:var(--web-min-lh);">{{ v }} &#183; from certified datasheet</span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE LAYERS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">The architecture, in clear layers</div>
+      <h2 style="margin:0 0 28px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The system does not depend on <span style="color:#8E8E8E;">one communication box.</span></h2>
+      <div data-cols="4" style="display:grid;gap:12px;grid-template-columns:repeat(4,minmax(0,1fr));--cg:12px;">
+        <sc-for list="{{ layers }}" as="l" hint-placeholder-count="4">
+          <div style="border-radius:12px;background:#F4F4F4;padding:24px 20px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:8px;">Layer {{ l.n }}</div>
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);margin-bottom:6px;line-height:var(--web-h3-lh);">{{ l.name }}</div>
+            <div style="font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">{{ l.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZERO EXPORT + PHASE DETECTION -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Export control &amp; automatic phase detection</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Measure once. <span style="color:#8E8E8E;">Control the complete installation.</span></h2>
+      <p style="margin:0 0 28px;max-width:780px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">With EMON metering, PIXIE continuously adjusts production to the permitted export limit, coordinating microinverters over the low-latency mesh. At commissioning, EMON identifies the phase associated with each PIXIE group &#8212; the installer does not assign every unit manually, and the detected phase structure becomes part of the permanent record.</p>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:start;">
+        <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;--cg:10px;">
+          <sc-for list="{{ exportModes }}" as="e" hint-placeholder-count="8">
+            <div style="background:#F4F4F4;border-radius:12px;padding:12px 16px;font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);color:#898989;">{{ e }}</div>
+          </sc-for>
+        </div>
+        <div style="border-radius:12px;background:#F4F4F4;padding:20px 24px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">Phase detection is a lifecycle asset</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">Detected phase mapping feeds export control, system validation, troubleshooting, the commissioning PDF and future maintenance &#8212; not only faster setup.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MESH DIAGNOSTICS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Visual mesh diagnostics</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The communication network should <span style="color:#8E8E8E;">not be invisible.</span></h2>
+      <p style="margin:0 0 28px;max-width:780px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">A production problem and a communication problem are not the same. EMON separates them &#8212; showing which device is the active coordinator, how devices connect and where quality needs attention &#8212; helping installers diagnose the cause before visiting the site.</p>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:start;">
+        <div style="aspect-ratio:16/10;">
+          <image-slot id="pixie-mesh-topology" shape="rounded" radius="12" placeholder="EMON mesh topology view — coordinator, links, signal quality"></image-slot>
+        </div>
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;margin-bottom:12px;">The topology view identifies</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            <sc-for list="{{ diagnostics }}" as="d" hint-placeholder-count="8">
+              <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:6px 12px;border-radius:8px;background:var(--color-card-moebius);color:#898989;">{{ d }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMISSIONING WORKFLOW -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Commission the roof from one place</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Automatically discovered. <span style="color:#8E8E8E;">Deliberately verified.</span></h2>
+      <p style="margin:0 0 28px;max-width:780px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">PIXIE devices join the mesh automatically when powered. QR and NFC are not needed to build the network &#8212; they verify product identity, tie the correct serial to the project and create the permanent installation record. Speed does not replace verification.</p>
+      <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;--cg:40px;">
+        <sc-for list="{{ commissioning }}" as="c" hint-placeholder-count="10">
+          <div style="display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:16px 0;border-bottom:1px solid var(--color-divider);">
+            <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);color:var(--color-text-primary);line-height:var(--web-h3-lh);">{{ c.num }}</div>
+            <div>
+              <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:4px;line-height:var(--web-small-lh);">{{ c.title }}</div>
+              <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">{{ c.desc }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI LAYOUT -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;--cg:48px;">
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">AI-assisted roof layout</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Let AI prepare the layout. <span style="color:#8E8E8E;">Let the installer approve it.</span></h2>
+        <p style="margin:0 0 16px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Upload a roof drawing, system proposal or completed-installation photograph. EMON identifies visible module groups, orientations and roof sections and creates an editable first layout. The installer reviews, adjusts and assigns the detected PIXIE devices &#8212; and remains responsible for approval.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <sc-for list="{{ aiSupports }}" as="a" hint-placeholder-count="6">
+            <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:6px 12px;border-radius:8px;background:var(--color-card-moebius);color:#898989;">{{ a }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div style="aspect-ratio:4/3;">
+        <image-slot id="pixie-ai-layout" shape="rounded" radius="12" placeholder="EMON roof-layout map generated from a plan, with module groups"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE MONITORING -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Module-level monitoring</div>
+      <h2 style="margin:0 0 28px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">See the complete energy flow. <span style="color:#8E8E8E;">Find the exact module behind it.</span></h2>
+      <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ monitorLevels }}" as="m" hint-placeholder-count="4">
+          <div style="background:#F4F4F4;border-radius:12px;padding:24px;">
+            <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">{{ m.level }}</div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <sc-for list="{{ m.items }}" as="i" hint-placeholder-count="5">
+                <span style="font-size:var(--web-min-size);font-weight:300;color:#898989;line-height:var(--web-min-lh);">{{ i }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Part of the energy system</div>
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Solar is not the destination. <span style="color:#8E8E8E;">It is the beginning.</span></h2>
+      <p style="margin:0 0 28px;max-width:780px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">EMON coordinates PIXIE generation with the rest of the building, allocating surplus solar in a clear control order rather than simply displaying connected products.</p>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:32px;align-items:start;">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <sc-for list="{{ ecosystem }}" as="e" hint-placeholder-count="8">
+            <span style="font-size:12px;font-weight:400;padding:8px 14px;border-radius:8px;border:1px solid var(--color-divider);color:#898989;">{{ e }}</span>
+          </sc-for>
+        </div>
+        <div style="background:#F4F4F4;border-radius:12px;padding:20px 24px;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:12px;">Surplus solar priority</div>
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ priority }}" as="p" hint-placeholder-count="6">
+              <div style="display:flex;gap:10px;padding:5px 0;font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);"><span style="color:var(--color-text-primary);font-weight:var(--web-eyebrow-weight);font-size:var(--web-eyebrow-size);letter-spacing:var(--web-eyebrow-ls);">{{ p.n }}</span>{{ p.text }}</div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCUMENTATION (primary USP) -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="background:#F4F4F4;border-radius:12px;color:#252525;padding:48px 40px;">
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#5F5E5E;">Commissioned means documented</div>
+        <h2 style="margin:0 0 16px;max-width:720px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The installation does not disappear when <span style="color:#8E8E8E;">the installer leaves.</span></h2>
+        <p style="margin:0 0 28px;max-width:760px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Completing the EMON commissioning workflow automatically generates the installation PDF &#8212; retrievable by the customer, installer and authorised service team through EMON or the product&#8217;s QR/NFC identity.</p>
+        <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #DDDDDD;--cg:0px;">
+          <sc-for list="{{ pdfContents }}" as="d" hint-placeholder-count="12">
+            <div style="padding:14px 16px 14px 0;border-right:1px solid #DDDDDD;font-size:var(--web-min-size);font-weight:300;color:#5F5E5E;line-height:var(--web-min-lh);">{{ d }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARRANTY + DURABILITY -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div data-cols="2" style="border-top:1px solid var(--color-divider);padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;--cg:24px;">
+      <div style="background:#F4F4F4;border-radius:12px;padding:28px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">Warranty connected to the actual installation</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:14px;line-height:var(--web-h3-lh);">A warranty that knows which product it belongs to.</div>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);max-width:760px;">Registered automatically through EMON at commissioning, and linked to the installed device rather than a purchase invoice. Standard and extended terms depend on the model and on residential, commercial or utility use.</p>
+      </div>
+      <div style="background:#F4F4F4;border-radius:12px;padding:28px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:14px;">Built for permanent outdoor installation</div>
+        <div style="font-size:var(--web-h3-size);font-weight:300;margin-bottom:14px;line-height:var(--web-h3-lh);">Designed for the complete service life.</div>
+        <p style="margin:0 0 16px;font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);max-width:760px;">Designed for long-term operation beneath solar modules in changing outdoor conditions. Final verified values shown per certified datasheet.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <sc-for list="{{ durability }}" as="d" hint-placeholder-count="6">
+            <span style="font-size:var(--web-tag-size);font-weight:var(--web-tag-weight);padding:6px 10px;border-radius:8px;background:var(--color-card-moebius);color:#898989;">{{ d }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <h2 style="margin:0 0 12px;max-width:640px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Build the installation once. <span style="color:#8E8E8E;">Understand it for its complete service life.</span></h2>
+      <p style="margin:0 0 28px;max-width:720px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">PIXIE combines module-level conversion, adaptive Wi-Fi mesh and EMON commissioning in one expandable system. Start compact and gateway-free, or connect the whole building through the EMON Gateway.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="MOEBIUS - PRODUCT - Find Your Inverter - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;background:var(--color-brand-moebius);color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-btn-weight);">Select the right PIXIE</a>
+        <a href="MOEBIUS - PRODUCT - Find Your Inverter - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;background:var(--color-card-moebius);color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-btn-weight);">Design a system</a>
+        <a href="MOEBIUS - SUPPORT - Install and Commission - EN.dc.html#workflow" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;background:var(--color-card-moebius);color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-btn-weight);">Register as an installer</a>
+        <a href="MOEBIUS - CONTENT - Knowledge - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;background:var(--color-card-moebius);color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-btn-weight);">Download technical documents</a>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="WarrantyPhoto" brand="MOEBIUS" accent="var(--color-brand-moebius)" slot-id="m2-pixie-warranty-photo-upload" hint-size="100%,480px"></dc-import>
+
+  <div style="height:88px;"></div>
+
+  <!-- DEPTH-1119: own closing block under Read more (ANDO pattern ends with the shared blocks) -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:56px var(--web-side) 0;box-sizing:border-box;">
+    <details>
+      <summary style="cursor:pointer;min-height:44px;display:inline-flex;align-items:center;font-size:var(--web-small-size);font-weight:300;color:#4F4F4E;text-decoration:underline;text-underline-offset:3px;">Read more: trade customers</summary>
+      <div style="margin:0 calc(-1 * var(--web-side));"><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:64px var(--web-side) 0;box-sizing:border-box;">
+    <div style="background:var(--color-card-moebius);border-radius:12px;padding:28px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Trade customer?</div>
+        <div style="font-size:var(--web-small-size);font-weight:300;color:#898989;line-height:var(--web-small-lh);">Prices, stock and ordering are in the webshop after trade login. Homeowners buy through an installer.</div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a style-hover="background:#5F5E5E;color:#F4F4F4;" href="MOEBIUS - WEBSHOP - Shop - EN.dc.html" style="font-size:var(--cta-font);padding:0 var(--cta-pad-x);height:var(--cta-height);display:inline-flex;align-items:center;background:#4F4F4E;color:#F4F4F4;border-radius:var(--cta-radius);">Shop MOEBIUS<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></a>
+        <a href="MOEBIUS - SUPPORT - Talk to an Expert - EN.dc.html" style="font-size:var(--cta-font);padding:0 22px;height:44px;display:inline-flex;align-items:center;background:#FFFFFF;color:var(--color-text-primary);border-radius:8px;font-weight:var(--web-btn-weight);">Contact a specialist</a>
+      </div>
+    </div>
+  </section></div>
+    </details>
+  </section>
+
+  <div style="height:32px;"></div>
+  <dc-import name="EpcInfo" brand="MOEBIUS" product="PIXIE" hint-size="100%,420px"></dc-import>
+  <dc-import name="ContentSections" brand="MOEBIUS" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="MOEBIUS" photo-slot-id="moebius2-pixie-specialist" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="MOEBIUS" accent="var(--color-brand-moebius)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      pixieClasses: [
+        { power: "400 W", mppt: "1 MPPT", note: "Single-module conversion for standard residential panels." },
+        { power: "500 W", mppt: "1 MPPT", note: "Higher headroom for larger-format modules." },
+        { power: "800 W", mppt: "2 MPPT", note: "Dual-module conversion, two independent inputs." },
+        { power: "1.000 W", mppt: "2 MPPT", note: "Top of the range for high-power module pairs." },
+      ],
+      whyMicro: [
+        { title: "Panel-level resilience", desc: "Shade, soiling or one weak module affects only that panel, not the whole string." },
+        { title: "Complex roofs", desc: "Different orientations and inclinations on one roof, without string compromises." },
+        { title: "Per-panel visibility", desc: "EMON reports output per module, so an underperforming panel is found precisely." },
+      ],
+      roofs: [
+        { name: "Balcony solar", desc: "One or two modules with no unnecessary communication hardware. PIXIE forms its local network, connects to EMON and monitors at module level; plug-and-play where national rules permit." },
+        { name: "Residential rooftops", desc: "Each module operates independently, reducing the effect of partial shading, mixed orientations and uneven module performance on the rest of the array." },
+        { name: "Complex roofs", desc: "Dormers, extensions, east-west roofs and facades combine without forcing the whole installation into one conventional string." },
+        { name: "Expandable systems", desc: "Start small and add modules later. Every new PIXIE joins the existing mesh automatically and appears in EMON." },
+      ],
+      meshProof: [
+        { tag: "Dual band", desc: "2,4 GHz for range, 5 GHz for a cleaner link." },
+        { tag: "Adaptive", desc: "Automatic communication-route selection." },
+        { tag: "Resilient", desc: "Automatic active-coordinator failover." },
+        { tag: "Expandable", desc: "New devices join the mesh automatically." },
+      ],
+      meshBehaviour: [
+        { title: "Automatic coordinator selection", desc: "In compact systems, the PIXIE with the strongest link becomes the active communication coordinator." },
+        { title: "Automatic failover", desc: "No fixed master. If the active coordinator loses connection, another PIXIE takes over." },
+        { title: "Self-healing communication", desc: "The mesh recalculates its routes as conditions change, without reconfiguring every device." },
+      ],
+      compactMode: ["Automatic device discovery", "Guided EMON commissioning", "Module-level production monitoring", "Device status, alerts & network health", "Firmware management", "QR/NFC identity, warranty & documentation"],
+      gatewayMode: ["Advanced mesh topology management", "Three-phase measurement & phase-aware control", "Zero-export regulation", "Local energy-management logic & offline continuity", "Dynamic-tariff, battery & EV-charging control", "Heating, cooling & hot-water integration"],
+      safety: [
+        { title: "Rapid shutdown", desc: "Module-level shutdown brings the array to a safer electrical state quickly." },
+        { title: "Independent protection", desc: "An issue at one module or microinverter does not disable the whole installation." },
+        { title: "No conventional DC string", desc: "Avoids long rooftop DC strings, string-combination constraints and a central string inverter." },
+      ],
+      safetyValues: ["Rapid-shutdown voltage", "Maximum input voltage", "Protection response time"],
+      layers: [
+        { n: "1", name: "PIXIE", desc: "Module conversion and local device intelligence." },
+        { n: "2", name: "Adaptive mesh", desc: "Communication and coordination across the roof." },
+        { n: "3", name: "EMON Gateway", desc: "Site-level control and local EMS." },
+        { n: "4", name: "EMON", desc: "Monitoring, optimisation, documentation and service." },
+      ],
+      exportModes: ["Zero export", "Fixed export limit", "Import-priority operation", "Three-phase net control", "Phase-aware regulation", "Installer-defined settings", "Dynamic limitation by site", "Automatic phase detection"],
+      diagnostics: ["Weak communication routes", "Missing devices", "Repeated disconnections", "Dead zones", "Coordinator changes", "Gateway connection quality", "Firmware inconsistencies", "Devices in the wrong position", "Historical signal quality", "Device temperature", "Event history", "Suggested corrective action"],
+      commissioning: [
+        { num: "01", title: "Create the project", desc: "Site, customer, installer and electrical-system information." },
+        { num: "02", title: "Discover the system", desc: "EMON detects nearby PIXIE units and builds the initial network." },
+        { num: "03", title: "Verify the devices", desc: "Scan QR or tap NFC to confirm serial numbers and product identity." },
+        { num: "04", title: "Create the roof layout", desc: "Upload a plan or photo, or build the module field in EMON." },
+        { num: "05", title: "Assign positions", desc: "Link each PIXIE and module to its physical roof position." },
+        { num: "06", title: "Detect phases", desc: "EMON identifies the phase structure and validates the configuration." },
+        { num: "07", title: "Configure export control", desc: "Set the permitted export value or activate zero export." },
+        { num: "08", title: "Validate the installation", desc: "EMON checks communication, grid conditions, device status and configuration." },
+        { num: "09", title: "Add installation evidence", desc: "Upload photos of roof, cabling, protection, meter and completed work." },
+        { num: "10", title: "Complete commissioning", desc: "EMON activates the warranty and creates the installation documentation." },
+      ],
+      aiSupports: ["Multiple roof orientations", "Irregular module fields", "Dormers & interruptions", "Separate buildings", "Balcony arrays", "Extensions added later", "Portrait & landscape"],
+      monitorLevels: [
+        { level: "Complete site", items: ["Current production", "Daily / monthly / lifetime yield", "Consumption & self-consumption", "Import, export & export limit", "System status"] },
+        { level: "Roof section", items: ["Orientation", "Installed power", "Production comparison", "Shading pattern", "Communication quality"] },
+        { level: "Individual PIXIE", items: ["AC output power", "DC input voltage & current", "AC voltage & frequency", "Temperature & state", "Firmware, events, warranty"] },
+        { level: "Individual module", items: ["Current output", "Daily & historical yield", "Neighbour comparison", "Deviation alerts", "Roof position & PIXIE input"] },
+      ],
+      ecosystem: ["FLUXX battery storage", "XOOM EV charging", "OGO hot water", "NENDO heating & cooling", "AIRO ventilation", "SYNQ meters & control", "OZZY connected loads", "Dynamic tariffs", "Grid import/export limits"],
+      priority: [
+        { n: "1 ", text: "Supply current building consumption" },
+        { n: "2 ", text: "Charge the battery" },
+        { n: "3 ", text: "Heat water" },
+        { n: "4 ", text: "Charge the vehicle" },
+        { n: "5 ", text: "Run flexible heating or cooling" },
+        { n: "6 ", text: "Export within the permitted limit" },
+      ],
+      pdfContents: ["Project & installation address", "Customer details", "Installer & company", "Product models & serials", "Module & PIXIE mapping", "Roof layout & orientations", "Phase assignments", "Mesh network validation", "Grid & export settings", "Meter configuration", "Firmware versions", "Commissioning measurements", "Installation photographs", "Date & time", "Warranty activation", "Service access information"],
+      durability: ["Ingress-protection class", "Operating-temperature range", "Max humidity & altitude", "Cooling method", "Connector system", "Corrosion resistance", "Surge & grid protection", "Safety, EMC & grid certifications"],
+    };
+  }
+}
+</script>
+</body>
+</html>

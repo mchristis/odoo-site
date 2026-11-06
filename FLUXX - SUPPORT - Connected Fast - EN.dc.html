@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>FLUXX Connected fast | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="products" hint-size="100%,80px"></dc-import>
+  <dc-import name="FluxxNav" active="installation" hint-size="100%,57px"></dc-import>
+
+  <dc-import name="PageHero" brand="FLUXX" rgb="253,199,6" eyebrow="Connected fast" title="Connected from one scan." intro="Wi-Fi Mesh finds every FLUXX element automatically. FLUXX joins the same mesh as the MOEBIUS inverter." slot="fluxx-connected-fast-hero" shot="FLUXX · Connected fast · hero photo or short muted loop (3–6 s)" hint-size="100%,625px"></dc-import><section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;box-sizing:border-box;">
+    <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:640px;">There is no manual pairing and no gateway to set up.</p>
+    <div style="border-radius:12px;padding:12px 20px;background:var(--color-card-fluxx, #F1EFE9);display:inline-block;">
+      <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">Tap. Scan. Connected.</div>
+      <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">The battery identifies itself, joins the mesh and appears in EMON.</div>
+    </div>
+  </section>
+
+  
+
+  <!-- WI-FI MESH -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Standard Wi-Fi Mesh</div>
+      <h2 style="margin:0 0 20px;max-width:560px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Every FLUXX element joins the network, <span style="color:#8E8E8E;">without setup.</span></h2>
+      <div data-stack="1" style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:start;">
+        <div>
+          <p style="margin:0 0 18px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">The battery joins the mesh. You press one button. FLUXX joins the same Wi-Fi mesh as the MOEBIUS inverter, and EMON finds it automatically. There is no manual pairing and no gateway to set up.</p>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:760px;">Every FLUXX element is detected automatically: stackable modules, plug and play units, monobloc and portable power stations.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ meshBenefits }}" as="m" hint-placeholder-count="7">
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);padding:12px 0;border-top:1px solid var(--color-divider);line-height:var(--web-small-lh);">{{ m }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMISSIONING FLOW -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:16px;">Commissioning from one scan</div>
+      <h2 style="margin:0 0 32px;max-width:560px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The battery introduces itself <span style="color:#8E8E8E;">to EMON.</span></h2>
+      <div data-cols="3" style="display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:24px;--cg:12px;">
+        <div style="border-radius:12px;background:#F4F4F4;padding:28px;">
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:12px;line-height:var(--web-small-lh);">NFC</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;line-height:var(--web-small-lh);">Identifies the physical module</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">Unique QR and passive NFC on every module. Readable before power-up.</div>
+        </div>
+        <div style="border-radius:12px;background:#F4F4F4;padding:28px;">
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:12px;line-height:var(--web-small-lh);">Wi-Fi Mesh</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;line-height:var(--web-small-lh);">Connects the battery</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">The battery joins the mesh and EMON finds it automatically.</div>
+        </div>
+        <div style="border-radius:12px;background:#F4F4F4;padding:28px;">
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:12px;line-height:var(--web-small-lh);">EMON</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;margin-bottom:8px;line-height:var(--web-small-lh);">Organises the system</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">The system maps itself: location, stack, inverter, AC, backup and meter, recorded as the work happens.</div>
+        </div>
+      </div>
+      <p style="margin:0;font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);max-width:760px;line-height:var(--web-small-lh);">No manual serial entry: the exact product record opens from the scan.</p>
+    </div>
+  </section>
+
+  <!-- TECH LINKS -->
+  <section style="max-width:calc(1312px + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side) 0;box-sizing:border-box;">
+    <div style="border-top:1px solid var(--color-divider);padding-top:40px;">
+      <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:24px;">Go deeper</div>
+      <div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;--cg:16px;">
+        <sc-for list="{{ techLinks }}" as="t" hint-placeholder-count="4">
+          <a href="{{ t.href }}" style="text-decoration:none;background:#F4F4F4;border-radius:12px;padding:24px;display:block;">
+            <div style="font-size:var(--web-body-size);font-weight:300;color:var(--color-text-primary);margin-bottom:8px;">{{ t.title }}<svg width="0.5em" height="0.9em" viewBox="0 0 8 14" aria-hidden="true" style="display:inline-block;vertical-align:-0.12em;margin-left:0.4em;flex:none;"><polyline points="1,1 7,7 1,13" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"></polyline></svg></div>
+            <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ t.desc }}</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:96px;"></div>
+  <dc-import name="ContentSections" brand="FLUXX" scope="brand" hint-size="100%,1600px"></dc-import>
+  <dc-import name="ReachSpecialist" brand="FLUXX" hint-size="100%,420px"></dc-import>
+  <dc-import name="SupportModule" kind="product" brand="FLUXX" accent="var(--color-brand-fluxx)" hint-size="100%,520px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      meshBenefits: ["No manual pairing", "No gateway to set up", "One button", "EMON finds it automatically", "Stackable modules", "Plug and play units", "Monobloc and portable"],
+      techLinks: [
+        { title: "Commissioning", desc: "Eight steps in the EMON installer app.", href: "FLUXX - SUPPORT - Commissioning - EN.dc.html" },
+        { title: "NFC and QR", desc: "Unique QR and passive NFC on every module.", href: "FLUXX - SUPPORT - NFC and QR - EN.dc.html" },
+        { title: "FLUXX with EMON", desc: "What EMON does after handover.", href: "FLUXX - PRODUCT - FLUXX with EMON - EN.dc.html" },
+        { title: "MOEBIUS Connected fast", desc: "How the MOEBIUS mesh works.", href: "MOEBIUS - SUPPORT - Connected Fast - EN.dc.html" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

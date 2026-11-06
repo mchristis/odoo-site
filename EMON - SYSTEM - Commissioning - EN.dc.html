@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<title>EMON Commissioning | STRØHM.ENERGY</title>
+<link rel="stylesheet" href="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/colors_and_type.css">
+<link rel="stylesheet" href="strohm-type.css">
+<script src="_ds/emon-strohm-energy-design-system-19842d9c-a171-4ea8-9e9e-bb2ea0c78d1d/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FFFFFF; }
+  a { color:var(--color-text-primary); text-decoration:none; }
+  a:hover { color:var(--color-text-primary); }
+  .em-step:hover { border-color:var(--color-brand-emon) !important; }
+  .em-tab:hover { color:var(--color-text-primary) !important; }
+  .em-field:hover { background:var(--color-bg-canvas) !important; }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-web);background:#FFFFFF;min-height:100vh;color:var(--color-text-primary);">
+
+  <dc-import name="NavBar" active="systems" hint-size="100%,80px"></dc-import>
+  <dc-import name="EmonNav" active="commissioning" hint-size="100%,57px"></dc-import>
+
+  <!-- HERO -->
+  <dc-import name="PageHero" brand="EMON" rgb="33,174,143" title="Scan. Connect. Validate. Document. Handover." intro="Commissioning is not a support feature, it is one of the main reasons EMON exists." slot="emon-comm-hero" shot="Installer scans QR on MOEBIUS inverter; EMON discovers SYNQ and FLUXX nearby, validates and generates a commissioning PDF" hint-size="100%,625px"></dc-import><section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:40px var(--web-side) 0;">
+    <p style="margin:0 0 32px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);max-width:800px;">A guided workflow scans the product, discovers the system, validates it, documents it and activates the warranty and digital passport.</p>
+    
+  </section>
+
+  <!-- 14-STEP FLOW -->
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;">
+    <div style="border-top:1px solid #D9D9D9;padding-top:40px;">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">The commissioning flow</div>
+      <h2 style="margin:0 0 32px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">Fourteen guided steps, <span style="color:#8E8E8E;">one automatic record.</span></h2>
+      <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;">
+        <sc-for list="{{ flow }}" as="f" hint-placeholder-count="14">
+          <div style="background:#F4F4F4;padding:18px 14px;display:flex;flex-direction:column;gap:8px;min-height:120px;border-radius:12px;overflow:hidden;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-text-primary);letter-spacing:var(--web-eyebrow-ls);">{{ f.n }}</span>
+            <span style="font-size:12px;font-weight:400;line-height:1.35;color:var(--color-text-primary);">{{ f.t }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANDO / MOEBIUS DETAIL (interactive tabs) -->
+  <section style="margin-top:96px;">
+    <div style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:80px var(--web-side);">
+      <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Product-specific commissioning</div>
+      <h2 style="margin:0 0 28px;max-width:680px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">{{ activeProduct.title }}</h2>
+      <div style="display:inline-flex;background:#F4F4F4;margin-bottom:24px;border-radius:12px;overflow:hidden;">
+        <sc-for list="{{ productTabs }}" as="t" hint-placeholder-count="2">
+          <button class="em-tab" onClick="{{ t.onClick }}" style="cursor:pointer;font-family:inherit;border:none;background:{{ t.bg }};color:{{ t.color }};font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;padding:13px 24px;border-radius:8px;">{{ t.label }}</button>
+        </sc-for>
+      </div>
+
+      <!-- intro + functions -->
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start;margin-bottom:16px;--cg:28px;">
+        <div>
+          <p style="margin:0 0 20px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:var(--color-text-primary);">{{ activeProduct.intro }}</p>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:12px;">Commissioning functions</div>
+          <div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px;--cg:20px;">
+            <sc-for list="{{ activeProduct.functions }}" as="fn" hint-placeholder-count="8"><span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);display:flex;gap:8px;align-items:baseline;"><span style="color:var(--color-text-primary);font-size:9px;">&#9679;</span>{{ fn }}</span></sc-for>
+          </div>
+        </div>
+        <div style="background:#F4F4F4;border-radius:12px;overflow:hidden;">
+          <div style="padding:16px 24px;border-bottom:1px solid #D9D9D9;background:#EDEDED;display:flex;align-items:center;gap:10px;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ activeProduct.pdfTitle }}</span>
+          </div>
+          <div style="padding:8px 24px 16px;">
+            <sc-for list="{{ activeProduct.fields }}" as="d" hint-placeholder-count="10">
+              <div class="em-field" data-stack="1" style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;padding:11px 0;border-bottom:1px solid var(--color-surface-card);align-items:baseline;">
+                <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);">{{ d.k }}</span>
+                <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);line-height:var(--web-small-lh);">{{ d.v }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <!-- scan document + as-built line diagram -->
+      <div data-cols="2" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:32px;--cg:16px;">
+        <div style="background:#F4F4F4;padding:22px;border-radius:12px;overflow:hidden;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:4px;">{{ activeProduct.scanTitle }}</div>
+          <div style="font-size:var(--web-min-size);font-weight:300;color:#9A9A98;margin-bottom:16px;line-height:var(--web-min-lh);">{{ activeProduct.scanSub }}</div>
+          <sc-if value="{{ isAndo }}" hint-placeholder-val="{{ true }}">
+            <dc-import name="AndoScanSheet" hint-size="100%,360px"></dc-import>
+            <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;">
+              <sc-for list="{{ scanLegend }}" as="l" hint-placeholder-count="3">
+                <div style="display:flex;align-items:center;gap:7px;"><span style="width:16px;height:12px;border:1.5px dashed {{ l.c }};display:inline-block;"></span><span style="font-size:var(--web-min-size);font-weight:300;color:#6B6B69;line-height:var(--web-min-lh);">{{ l.t }}</span></div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ isMoebius }}" hint-placeholder-val="{{ false }}">
+            <div style="aspect-ratio:4/3;background:#F4F4F4;border-radius:8px;overflow:hidden;"><image-slot id="emon-cx-moebius-scandoc" shape="rounded" radius="8" placeholder="MOEBIUS location scan document: inverter position on the site plan, project reference, serial and QR code, phase and grid-code fields"></image-slot></div>
+          </sc-if>
+        </div>
+        <div style="background:#F4F4F4;padding:22px;border-radius:12px;overflow:hidden;">
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:4px;">As-built line diagram</div>
+          <div style="font-size:var(--web-min-size);font-weight:300;color:#9A9A98;margin-bottom:16px;line-height:var(--web-min-lh);">{{ activeProduct.lineSub }}</div>
+          <div style="aspect-ratio:4/3;background:#F4F4F4;border-radius:8px;overflow:hidden;"><image-slot id="{{ activeProduct.lineSlot }}" shape="rounded" radius="8" placeholder="{{ activeProduct.linePh }}"></image-slot></div>
+        </div>
+      </div>
+
+      <!-- product measured-record card (ANDO flash test / MOEBIUS validation) -->
+      <div data-stack="1" style="margin-top:16px;background:var(--color-text-primary);padding:28px;display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:40px;align-items:start;border-radius:12px;">
+        <div>
+          <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-grey-70);margin-bottom:14px;">{{ activeProduct.measuredTitle }}</div>
+          <div style="font-size:var(--web-small-size);font-weight:300;color:var(--color-text-primary);margin-bottom:18px;line-height:var(--web-small-lh);">{{ activeProduct.measuredRef }}</div>
+          <div style="border-top:1px solid #2C2C2C;">
+            <sc-for list="{{ activeProduct.measured }}" as="m" hint-placeholder-count="7">
+              <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #2C2C2C;gap:12px;">
+                <span style="font-size:var(--web-small-size);font-weight:300;color:var(--color-grey-70);line-height:var(--web-small-lh);">{{ m.k }}</span>
+                <span style="font-size:var(--web-small-size);font-weight:300;color:#D9D9D9;text-align:right;line-height:var(--web-small-lh);">{{ m.v }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <p style="margin:0;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#B8B8B5;">{{ activeProduct.measuredNote }}</p>
+        </div>
+      </div>
+
+      <!-- USP cards -->
+      <div style="margin-top:40px;">
+        <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);margin-bottom:16px;">Why it matters</div>
+        <div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;--cg:12px;">
+          <sc-for list="{{ activeProduct.usps }}" as="u" hint-placeholder-count="4">
+            <div style="background:#F4F4F4;padding:24px 22px;display:flex;flex-direction:column;gap:8px;min-height:170px;border:1px solid transparent;border-radius:12px;overflow:hidden;">
+              <div style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);color:var(--color-grey-70);letter-spacing:var(--web-eyebrow-ls);">{{ u.n }}</div>
+              <div style="font-size:var(--web-h3-size);font-weight:var(--web-h3-weight);line-height:var(--web-h3-lh);">{{ u.title }}</div>
+              <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ u.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIGITAL PASSPORT -->
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side) 0;">
+    <div data-stack="1" style="border-top:1px solid #D9D9D9;padding-top:40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center;">
+      <div>
+        <div style="margin-bottom:16px;font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:#898989;">Digital installation passport</div>
+        <h2 style="margin:0 0 16px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#252525;text-wrap:balance;">The record <span style="color:#8E8E8E;">that outlives the installation visit.</span></h2>
+        <p style="margin:0 0 16px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Every commissioned STRØHM.ENERGY system receives a permanent digital passport, a single source of truth for service, warranty, resale and future replacement.</p>
+        <p style="margin:0;font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">Access: owner, authorised installer and STRØHM.ENERGY support, transferable to a new owner or service company with permission controls.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1px;background:#D9D9D9;border:1px solid #D9D9D9;border-radius:12px;overflow:hidden;">
+        <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="6">
+          <div style="background:#FFFFFF;padding:16px 22px;display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;align-items:baseline;">
+            <span style="font-size:var(--web-eyebrow-size);font-weight:var(--web-eyebrow-weight);letter-spacing:var(--web-eyebrow-ls);text-transform:uppercase;color:var(--color-text-primary);">{{ t.stage }}</span>
+            <span style="font-size:var(--web-small-size);font-weight:300;line-height:var(--web-small-lh);color:var(--color-text-primary);">{{ t.desc }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:calc(var(--web-grid) + 2 * var(--web-side));margin:0 auto;padding:96px var(--web-side);">
+    <div style="background:var(--color-text-primary);padding:56px;color:#FFFFFF;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;border-radius:12px;">
+      <div>
+        <h2 style="margin:0 0 8px;font-size:clamp(36px,3.6vw,52px);font-weight:200;line-height:1.08;letter-spacing:-1px;color:#FFFFFF;text-wrap:balance;">Commission the whole system <span style="color:#B2B3B3;">in one flow.</span></h2>
+        <p style="margin:0;max-width:560px;font-size:var(--web-body-size);font-weight:var(--web-body-weight);line-height:var(--web-body-lh);color:#5F5E5E;text-wrap:pretty;">Scan, validate, document and hand over, with a permanent passport and remote support from day one.</p>
+      </div>
+      <a href="EMON - SYSTEM - Overview - EN.dc.html#define" style="font-size:var(--cta-font,16px);padding:4px var(--cta-pad-x,32px);min-height:var(--cta-height,56px);display:inline-flex;align-items:center;background:var(--color-brand-emon);color:#FFFFFF;font-weight:400;white-space:nowrap;border-radius:var(--cta-radius,8px);justify-content:center;box-sizing:border-box;">Become an EMON installer</a>
+    </div>
+  </section>
+
+  <dc-import name="Footer" show-ebook="{{ true }}" hint-size="100%,400px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+const PRODUCTS = [
+  { key: "ando", label: "ANDO", title: "ANDO commissioning: every panel verified, mapped and documented.",
+    intro: "ANDO is solar hardware, so EMON does not control the panel directly. It documents, maps and connects each module to the system record using QR/NFC identity and the installer workflow.",
+    functions: ["Scan module QR code", "Register serial numbers", "Attach factory flash-test data", "Record measured peak power", "Map panel position on the roof", "Assign panel to string", "Assign string to MOEBIUS MPPT", "Record orientation and tilt", "Upload roof & installation photos", "Create panel layout plan", "Attach warranty information", "Generate commissioning PDF"],
+    pdfTitle: "ANDO commissioning record", 
+    fields: [
+      { k: "Project", v: "Name & installation address" }, { k: "Installer", v: "Company & date" },
+      { k: "Module type", v: "Model & serial number" }, { k: "Flash-test", v: "Attached file & peak power" },
+      { k: "String", v: "String number & row / position" }, { k: "Orientation", v: "Azimuth & tilt" },
+      { k: "Inverter", v: "MOEBIUS & MPPT input" }, { k: "Photos", v: "Roof & installation evidence" },
+      { k: "Warranty", v: "Status & passport link" },
+    ],
+    scanTitle: "EMON ANDO solar panel scan sheet \u2014 A4 landscape",
+    scanSub: "ANDO panels only \u00b7 one QR code each window \u00b7 36 panels per sheet. A single scan registers serial, position, orientation, string and warranty.",
+    lineSub: "Every physical roof position linked to its electrical position \u2014 string, DC isolator, surge protection and MOEBIUS MPPT.",
+    lineSlot: "emon-cx-ando-line",
+    linePh: "ANDO as-built single-line string diagram: panels in electrical order with position code and short serial, DC isolator, surge protection, MOEBIUS inverter and MPPT assignment, string voltage / current and module count",
+    measuredTitle: "EMON app \u2014 flash-test data per module",
+    measuredRef: "SN: ANDO-2026-SL-W-004471 \u00b7 QR verified \u2713",
+    measured: [
+      { k: "Pmax (measured)", v: "403 Wp" }, { k: "Nominal rated", v: "400 Wp" },
+      { k: "Short-circuit current Isc", v: "11,24 A" }, { k: "Open-circuit voltage Voc", v: "45,6 V" },
+      { k: "Fill factor FF", v: "79,8%" }, { k: "STC test date", v: "2026-03-14" },
+      { k: "EMON curve start value", v: "403 Wp \u2190 measured" },
+    ],
+    measuredNote: "Every ANDO module is flash-tested before dispatch and the result is stored against the individual serial, not a batch. On the installation scan, EMON initialises the degradation curve from the measured Pmax \u2014 so the 99% year-one and 80% year-30 guarantees track the real starting point, not the lower datasheet value.",
+    usps: [
+      { n: "01", title: "One-scan commissioning", body: "A single scan of the sheet registers serial, position, orientation, string diagram and warranty. No manual entry." },
+      { n: "02", title: "Panel-level traceability", body: "Every panel traceable by serial from production to installation \u2014 flash-test, shipment and registration on one record." },
+      { n: "03", title: "Automatic warranty activation", body: "Warranty activates per panel at installation, not through a separate portal. Linked to the installed set from day one." },
+      { n: "04", title: "Monitoring from measured value", body: "The EMON curve starts from the module's own measured output, so degradation monitoring is calibrated to reality." },
+    ] },
+  { key: "moebius", label: "MOEBIUS", title: "MOEBIUS commissioning: inverter setup without scattered paperwork.",
+    intro: "EMON turns MOEBIUS commissioning into a structured guided process \u2014 scan, connect to the project, map MPPTs and strings, confirm grid settings, link meter and battery, validate communication and create the record automatically.",
+    functions: ["QR scan / NFC tap", "Serial number recognition", "Wi-Fi mesh discovery", "Firmware status", "Grid-country & grid-code setting", "Phase setup", "MPPT & string mapping", "ANDO panel link", "Battery & SYNQ meter link", "EPS / backup status", "Export-limit setting", "Communication & pass/fail test"],
+    pdfTitle: "MOEBIUS commissioning record",
+    fields: [
+      { k: "Inverter", v: "Model & serial number" }, { k: "Firmware", v: "Version & status" },
+      { k: "Grid", v: "Country & grid code" }, { k: "Phase", v: "Single / three-phase" },
+      { k: "MPPT map", v: "Strings per MPPT" }, { k: "Panels", v: "Model & quantity per string" },
+      { k: "Battery", v: "FLUXX connection" }, { k: "Meter", v: "SYNQ connection" },
+      { k: "EPS / backup", v: "Setting & export-limit mode" }, { k: "Test result", v: "Pass/fail & photo evidence" },
+    ],
+    scanTitle: "MOEBIUS location scan document",
+    scanSub: "Scan the inverter QR to place it on the site plan and open the project. Position, serial, phase and grid code are captured in one action.",
+    lineSub: "The commissioned system drawn as one single-line diagram \u2014 strings and MPPTs through the inverter to battery, meter and grid.",
+    lineSlot: "emon-cx-moebius-line",
+    linePh: "MOEBIUS as-built single-line diagram: strings \u2192 MPPT 1 / MPPT 2 \u2192 MOEBIUS inverter \u2192 FLUXX battery and SYNQ meter \u2192 grid, showing phase, export limit and EPS / backup path",
+    measuredTitle: "EMON app \u2014 validation & communication test",
+    measuredRef: "SN: MOEBIUS-2026-HY-3P-002218 \u00b7 QR verified \u2713",
+    measured: [
+      { k: "Grid code", v: "VDE-AR-N 4105 \u2713" }, { k: "Firmware", v: "Up to date \u2713" },
+      { k: "MPPT / string map", v: "6 strings, 2 MPPT \u2713" }, { k: "FLUXX battery link", v: "Connected \u2713" },
+      { k: "SYNQ meter link", v: "Connected \u2713" }, { k: "Export limit", v: "70% \u2713" },
+      { k: "Communication test", v: "22 / 22 passed \u2713" },
+    ],
+    measuredNote: "EMON walks the installer through firmware, grid code, phase and MPPT / string mapping, then links the FLUXX battery and SYNQ meter and runs the pass / fail checks. Nothing is written on paper \u2014 the validated settings and communication test become the commissioning record automatically.",
+    usps: [
+      { n: "01", title: "Guided grid-code setup", body: "Country and grid code are selected from a guided list and validated \u2014 no wrong-region settings, no re-visits." },
+      { n: "02", title: "Whole-system linking", body: "Panels, battery and meter are mapped to the inverter in one flow, so the system is understood as one system." },
+      { n: "03", title: "Communication pass / fail", body: "Every check runs on site and flags anything outside tolerance before handover, with photo evidence attached." },
+      { n: "04", title: "Report generated automatically", body: "The MOEBIUS commissioning report and passport entry are produced from the validated data, not typed up later." },
+    ] },
+];
+
+class Component extends DCLogic {
+  state = { product: 1 };
+  renderVals() {
+    const st = this.state;
+    return {
+      flow: [
+        { n: "01", t: "Scan QR or tap NFC" }, { n: "02", t: "Identify product & serial" },
+        { n: "03", t: "Assign project & location" }, { n: "04", t: "Detect connected devices" },
+        { n: "05", t: "Confirm wiring & communication" }, { n: "06", t: "Map product relationships" },
+        { n: "07", t: "Upload installation photos" }, { n: "08", t: "Validate settings" },
+        { n: "09", t: "Run product-specific checks" }, { n: "10", t: "Generate commissioning report" },
+        { n: "11", t: "Activate warranty" }, { n: "12", t: "Create digital passport" },
+        { n: "13", t: "Handover to owner" }, { n: "14", t: "Enable remote support" },
+      ],
+      productTabs: PRODUCTS.map((p, i) => ({
+        label: p.label,
+        onClick: () => this.setState({ product: i }),
+        bg: st.product === i ? "var(--color-brand-emon)" : "#FFFFFF",
+        color: st.product === i ? "#FFFFFF" : "#5F5E5E",
+      })),
+      activeProduct: PRODUCTS[st.product],
+      isAndo: st.product === 0,
+      isMoebius: st.product === 1,
+      scanLegend: [
+        { c: "#C08A2E", t: "Landscape / pitched \u00b7 Portrait / flat" },
+        { c: "#3E6FB0", t: "Portrait / pitched \u00b7 Landscape / flat" },
+        { c: "#C9C6C0", t: "Obstacle \u2014 leave open" },
+      ],
+      timeline: [
+        { stage: "Scan", desc: "Product identity and serial captured on site." },
+        { stage: "Commissioning", desc: "Settings, mapping and checks recorded automatically." },
+        { stage: "Warranty", desc: "Warranty activated against the verified installation." },
+        { stage: "Service visit", desc: "Every intervention added to the history." },
+        { stage: "Replacement", desc: "Component changes logged with new identities." },
+        { stage: "Ownership transfer", desc: "Passport handed to a new owner with permission controls." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
